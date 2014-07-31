@@ -10,8 +10,10 @@ test_that("makeSingleObjectiveOTFFunction", {
 	expect_true(isOTFFunction(fn))
 	expect_false(isNoisy(fn))
 	expect_equal(name, getName(fn))
+	expect_equal(getNumberOfParameters(fn), 2L)
+	expect_is(getParamSet(fn), "ParamSet")
+	expect_equal(getNumberOfObjectives(fn), 1L)
 
-	pl = autoplot(fn)
-	expect_is(pl, "ggplot")
-	expect_is(pl, "gg")
+	library(ggplot2)
+	expect_error(autoplot(fn))
 })
