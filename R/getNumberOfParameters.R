@@ -5,5 +5,6 @@
 #' @return [\code{integer(1)}]
 #' @export
 getNumberOfParameters = function(fn) {
-	return(sum(getParamLengths(attr(fn, "par.set"))))
+	assertClass(fn, "otf_function")
+	return(sum(getParamLengths(getParamSet(fn))))
 }

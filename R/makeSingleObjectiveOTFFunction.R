@@ -55,18 +55,18 @@ print.otf_function = function(x, ...) {
 	n.objectives.text = ifelse(isSingleobjective(x), "Single", "Multi")
 	catf("%s-objective function.", n.objectives.text)
 	if (isMultiobjective(x)) {
-		catf("Number of objectives: %i", attr(x, "n.objectives"))
+		catf("Number of objectives: %i", getNumberOfObjectives(x))
 	}
-	catf("Noisy: %s", as.character(attr(x, "noisy")))
-	par.set = attr(x, "par.set")
-	catf("Number of parameters: %i", sum(getParamLengths(par.set)))
-	print(par.set)
+	catf("Noisy: %s", as.character(isNoisy(x)))
+	catf("Number of parameters: %i", getNumberOfParameters(x))
+	print(getParamSet(x))
 }
 
 #' @export
 autoplot.otf_function = function(x, ...) {
-	par.set = attr(x, "par.set")
-	if (!isNumeric(par.set, include.int = FALSE)) {
+	par.set = getParamSet(x)
+	n.params = getNumberOfParameters(x)
+	if (!isNumeric(par.set, include.int = FALSE) | n.params > 1L) {
 		stopf("Currently only 1D numeric functions can be plotted.")
 	}
 	if (isNoisy(x)) {
@@ -77,7 +77,6 @@ autoplot.otf_function = function(x, ...) {
 	}
 	lower = getLower(par.set)
 	upper = getUpper(par.set)
-	#FIXME: this sucks
 	if (is.infinite(lower)) {
 		lower = -10L
 	}
@@ -90,7 +89,7 @@ autoplot.otf_function = function(x, ...) {
 	data = data.frame(x = x.grid, y = x(x.grid))
 	pl = ggplot(data = data, mapping = aes_string(x = "x", y = "y"))
 	pl = pl + geom_line()
-	pl = pl + ggtitle(paste("Function:", attr(x, "name")))
+	pl = pl + ggtitle(paste("Function:", getName(x)))
 	pl = pl + xlab(param.id)
 	return(pl)
 }
