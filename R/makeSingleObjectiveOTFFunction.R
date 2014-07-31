@@ -23,6 +23,22 @@ makeSingleObjectiveOTFFunction = function(
 	noisy = FALSE,
 	global.opt.params = NULL,
 	global.opt.value = NULL) {
+
+	# sanity checks
+	assertCharacter(name, len = 1L, any.missing = FALSE)
+	assertFunction(fn)
+	assertClass(par.set, "ParamSet")
+	assertFlag(noisy, na.ok = FALSE)
+	if (!is.null(global.opt.params)) {
+		#FIXME: we have to check for names and types here as well!
+		#FIXME: furthermore check if params are within the bounds.
+		assertList(global.opt.params)
+	}
+	if (!is.null(global.opt.value)) {
+		#FIXME: later enable discrete functions and stuff like that too.
+		assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
+	}
+	
 	structure(
 		fn, 
 		name = name,
