@@ -34,6 +34,20 @@ makeSingleObjectiveOTFFunction = function(
 		class = c("otf_function", "otf_single_objective_function"))
 }
 
+#' @export
+print.otf_function = function(x) {
+	n.objectives.text = ifelse(isSingleobjective(x), "Single", "Multi")
+	catf("%s-objective function.", n.objectives.text)
+	if (isMultiobjective(x)) {
+		catf("Number of objectives: %i", attr(x, "n.objectives"))
+	}
+	catf("Noisy: %s", as.character(attr(x, "noisy")))
+	par.set = attr(x, "par.set")
+	catf("Number of parameters: %i", sum(getParamLengths(par.set)))
+	print(par.set)
+}
+
+
 # @param n.objectives [\code{integer(1)}]\cr
 #   Number of objectives of the target function. Default is single-objective, i. e., \code{n-objectives}
 #   equals \code{1}.
