@@ -51,7 +51,7 @@ makeSingleObjectiveOTFFunction = function(
 }
 
 #' @export
-print.otf_function = function(x) {
+print.otf_function = function(x, ...) {
 	n.objectives.text = ifelse(isSingleobjective(x), "Single", "Multi")
 	catf("%s-objective function.", n.objectives.text)
 	if (isMultiobjective(x)) {
@@ -88,7 +88,7 @@ autoplot.otf_function = function(x, ...) {
 	#FIXME: make the stepsize customizable?
 	x.grid = seq(lower, upper, by = 0.02)
 	data = data.frame(x = x.grid, y = x(x.grid))
-	pl = ggplot(data = data, mapping = aes(x = x, y = y))
+	pl = ggplot(data = data, mapping = aes_string(x = "x", y = "y"))
 	pl = pl + geom_line()
 	pl = pl + ggtitle(paste("Function:", attr(x, "name")))
 	pl = pl + xlab(param.id)
