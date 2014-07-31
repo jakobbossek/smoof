@@ -7,4 +7,5 @@ test_that("is{Multi,Single}objective works fine", {
 		par.set = makeNumericParamSet(id = "x", len = 2L)
 	)
 	expect_false(isMultiobjective(fn))
+	expect_true(isSingleObjective(fn))
 })
