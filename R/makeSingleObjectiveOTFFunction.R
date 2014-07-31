@@ -28,6 +28,7 @@ makeSingleObjectiveOTFFunction = function(
 		name = name,
 		par.set = par.set,
 		noisy = noisy,
+		n.objectives = 1L,
 		global.opt.params = global.opt.params,
 		global.opt.value = global.opt.value,
 		class = c("otf_function", "otf_single_objective_function"))
