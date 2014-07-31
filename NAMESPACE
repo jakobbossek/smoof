@@ -2,8 +2,11 @@
 
 S3method(isMultiobjective,otf_function)
 S3method(isSingleobjective,otf_function)
+S3method(print,otf_function)
 export(isMultiobjective)
+export(isNoisy)
 export(isOTFFunction)
 export(isSingleobjective)
 export(makeSingleObjectiveOTFFunction)
+import(BBmisc)
 import(ParamHelpers)
