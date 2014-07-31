@@ -1,0 +1,20 @@
+#!/usr/bin/env Rscript --vanilla
+
+library(methods)
+
+options(BBmisc.ProgressBar.style = "off")
+options(BatchJobs.verbose = FALSE)
+
+wd = getwd()
+pkg.name = basename(wd)
+setwd("/tmp/pkgdocs")
+on.exit(setwd(wd))
+ok = try ({
+  library(knitr)
+  require(pkg.name, character.only=TRUE)
+  knit_rd(pkg.name)
+})
+
+quit(status = as.integer(inherits(ok, "try-error")))
+
+# vim: ft=r
