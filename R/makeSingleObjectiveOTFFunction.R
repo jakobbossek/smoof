@@ -38,7 +38,7 @@ makeSingleObjectiveOTFFunction = function(
 		#FIXME: later enable discrete functions and stuff like that too.
 		assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
 	}
-	
+
 	structure(
 		fn, 
 		name = name,
@@ -63,6 +63,37 @@ print.otf_function = function(x) {
 	print(par.set)
 }
 
+#' @export
+autoplot.otf_function = function(x, ...) {
+	par.set = attr(x, "par.set")
+	if (!isNumeric(par.set, include.int = FALSE)) {
+		stopf("Currently only 1D numeric functions can be plotted.")
+	}
+	if (isNoisy(x)) {
+		stopf("Currently plotting of 'noisy' functions is not supported.")
+	}
+	if (isMultiobjective(x)) {
+		stopf("Plotting of multiobjective functions not possible.")
+	}
+	lower = getLower(par.set)
+	upper = getUpper(par.set)
+	#FIXME: this sucks
+	if (is.infinite(lower)) {
+		lower = -10L
+	}
+	if (is.infinite(upper)) {
+		upper = 10L
+	}
+	param.id = getParamIds(par.set)
+	#FIXME: make the stepsize customizable?
+	x.grid = seq(lower, upper, by = 0.02)
+	data = data.frame(x = x.grid, y = x(x.grid))
+	pl = ggplot(data = data, mapping = aes(x = x, y = y))
+	pl = pl + geom_line()
+	pl = pl + ggtitle(paste("Function:", attr(x, "name")))
+	pl = pl + xlab(param.id)
+	return(pl)
+}
 
 # @param n.objectives [\code{integer(1)}]\cr
 #   Number of objectives of the target function. Default is single-objective, i. e., \code{n-objectives}
