@@ -94,7 +94,12 @@ autoplot.otf_function = function(x, ...) {
 	if (isNoisy(x)) {
 		pl = pl + geom_point()
 	} else {		
-		pl = pl + geom_line()	
+		pl = pl + geom_line()
+		if (!is.null(attr(x, "global.opt.params"))) {
+			pl = pl + geom_vline(xintercept = as.numeric(attr(x, "global.opt.params")), linetype = "dashed", colour = "grey")
+			point.data = data.frame(x = unlist(attr(x, "global.opt.params")), y = attr(x, "global.opt.value"))
+			pl = pl + geom_point(data = point.data, colour = "tomato")
+		}
 	}
 	pl = pl + ggtitle(paste("Function:", getName(x)))
 	pl = pl + xlab(param.id)
