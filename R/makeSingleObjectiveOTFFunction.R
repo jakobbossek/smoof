@@ -69,12 +69,10 @@ autoplot.otf_function = function(x, ...) {
 	if (!isNumeric(par.set, include.int = FALSE) | n.params > 1L) {
 		stopf("Currently only 1D numeric functions can be plotted.")
 	}
-	if (isNoisy(x)) {
-		stopf("Currently plotting of 'noisy' functions is not supported.")
-	}
 	if (isMultiobjective(x)) {
 		stopf("Plotting of multiobjective functions not possible.")
 	}
+
 	lower = getLower(par.set)
 	upper = getUpper(par.set)
 	if (is.infinite(lower)) {
@@ -83,12 +81,21 @@ autoplot.otf_function = function(x, ...) {
 	if (is.infinite(upper)) {
 		upper = 10L
 	}
+
+	getPlotData = function(fn, lower, upper, stepsize = ifelse(isNoisy(fn), 0.08, 0.01)) {
+		x.grid = seq(lower, upper, by = stepsize)
+		data.frame(x = x.grid, y = fn(x.grid))
+	}
+
+	data = getPlotData(x, lower, upper)
 	param.id = getParamIds(par.set)
 	#FIXME: make the stepsize customizable?
-	x.grid = seq(lower, upper, by = 0.02)
-	data = data.frame(x = x.grid, y = x(x.grid))
 	pl = ggplot(data = data, mapping = aes_string(x = "x", y = "y"))
-	pl = pl + geom_line()
+	if (isNoisy(x)) {
+		pl = pl + geom_point()
+	} else {		
+		pl = pl + geom_line()	
+	}
 	pl = pl + ggtitle(paste("Function:", getName(x)))
 	pl = pl + xlab(param.id)
 	return(pl)
