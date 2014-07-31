@@ -9,4 +9,5 @@ Authors@R: c(person("Jakob", "Bossek", email = "j.bossek@gmail.com", role =
     c("aut", "cre")))
 License: thinking about it
 Depends:
-    ParamHelpers (>= 1.3)
+    ParamHelpers (>= 1.3),
+    BBmisc (>= 1.6)
