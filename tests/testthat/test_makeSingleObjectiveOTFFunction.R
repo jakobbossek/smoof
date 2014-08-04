@@ -1,8 +1,8 @@
-context("makeSingleObjectiveOTFFunction")
+context("makeSingleObjectiveFunction")
 
-test_that("makeSingleObjectiveOTFFunction", {
+test_that("makeSingleObjectiveFunction", {
 	name = "Test function"
-	fn = makeSingleObjectiveOTFFunction(
+	fn = makeSingleObjectiveFunction(
 		name = name,
 		fn = function(x) x^2,
 		par.set = makeNumericParamSet(len = 2L)

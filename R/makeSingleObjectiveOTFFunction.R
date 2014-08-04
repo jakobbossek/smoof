@@ -16,7 +16,7 @@
 #'   Global optimum value if known. Default is \code{NULL}.
 #' @return [\code{function}] Target function with additional stuff attached as attributes.
 #' @export
-makeSingleObjectiveOTFFunction = function(
+makeSingleObjectiveFunction = function(
 	name,
 	fn,
 	par.set,
