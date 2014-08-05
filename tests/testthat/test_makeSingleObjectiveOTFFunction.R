@@ -17,3 +17,20 @@ test_that("makeSingleObjectiveFunction", {
 	library(ggplot2)
 	expect_error(autoplot(fn))
 })
+
+test_that("global optimum is provided properly", {
+
+	generateTestFunction = function(global.opt.params) {
+		fn = makeSingleObjectiveFunction(
+			name = "My test function",
+			fn = function(x) x^2,
+			par.set = makeParamSet(
+				makeNumericParam("num1", lower = -10, upper = 10)
+			),
+			global.opt.params = global.opt.params
+		)
+	}
+	
+	expect_error(generateTestFunction(list(num1 = 100)))
+	expect_is(generateTestFunction(list(num1 = 0)), "otf_function")
+})
