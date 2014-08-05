@@ -88,7 +88,7 @@ autoplot.otf_function = function(x, ...) {
 
 	getPlotData = function(fn, lower, upper, stepsize = ifelse(isNoisy(fn), 0.08, 0.01)) {
 		x.grid = seq(lower, upper, by = stepsize)
-		data.frame(x = x.grid, y = fn(x.grid))
+		data.frame(x = x.grid, y = sapply(x.grid, fn))
 	}
 
 	data = getPlotData(x, lower, upper)
