@@ -30,9 +30,13 @@ makeSingleObjectiveFunction = function(
 	assertClass(par.set, "ParamSet")
 	assertFlag(noisy, na.ok = FALSE)
 	if (!is.null(global.opt.params)) {
-		#FIXME: we have to check for names and types here as well!
-		#FIXME: furthermore check if params are within the bounds.
 		assertList(global.opt.params)
+		if (!inBounds(par.set, global.opt.params)) {
+			stopf("Global optimum out of bounds.")
+		}
+		if (!setequal(getParamIds(par.set), names(global.opt.params))) {
+			stopf("Names of values and parameter names do not match.")
+		}
 	}
 	if (!is.null(global.opt.value)) {
 		#FIXME: later enable discrete functions and stuff like that too.
