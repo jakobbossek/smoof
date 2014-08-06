@@ -6,9 +6,10 @@
 #'   Further parameters passed to soo function generator. See the different
 #'   soo functions for examples. Probably the most important one is 'dimensions'.
 #' @return [\code{otf_function}]
-#' @examples
+#' @examples \dontrun{
 #'   branin.fn = makeSingleObjectiveFunctionFromSOOFunction("branin")
 #'   print(branin.fn)
+#' }
 #' @export
 makeSingleObjectiveFunctionFromSOOFunction = function(id, ...) {
 	generator = paste(id, "function", sep = "_")
