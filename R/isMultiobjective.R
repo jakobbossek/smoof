@@ -1,7 +1,6 @@
 #' Checks whether the given function is multi-objective.
 #'
-#' @param fn [\code{otf_function}]\cr
-#'   Target function.
+#' @template arg_otf_function
 #' @return [\code{logical(1)}] \code{TRUE} if function is multi-objective.
 #' @export
 isMultiobjective = function(fn) {
@@ -15,8 +14,7 @@ isMultiobjective.otf_function = function(fn) {
 
 #' Checks whether the given function is single-objective.
 #'
-#' @param fn [\code{otf_function}]\cr
-#'   Target function.
+#' @template arg_otf_function
 #' @return [\code{logical(1)}] \code{TRUE} if function is single-objective.
 #' @export
 isSingleobjective = function(fn) {

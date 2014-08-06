@@ -1,7 +1,6 @@
 #' Get parameter set.
 #'
-#' @param fn [\code{otf_function}]\cr
-#'   Objective function.
+#' @template arg_otf_function
 #' @return [\code{\link[ParamHelpers]{ParamSet}}]
 #' @export
 getParamSet = function(fn) {

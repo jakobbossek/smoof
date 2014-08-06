@@ -20,7 +20,9 @@ soo functions for examples. Probably the most important one is 'dimensions'.}
 Generates non-noisy test function from soo function.
 }
 \examples{
-branin.fn = makeSingleObjectiveFunctionFromSOOFunction("branin")
+\dontrun{
+  branin.fn = makeSingleObjectiveFunctionFromSOOFunction("branin")
   print(branin.fn)
+}
 }
 

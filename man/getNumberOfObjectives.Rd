@@ -7,7 +7,7 @@ getNumberOfObjectives(fn)
 }
 \arguments{
 \item{fn}{[\code{otf_function}]\cr
-Objective function.}
+Target function.}
 }
 \value{
 [\code{integer(1)}]

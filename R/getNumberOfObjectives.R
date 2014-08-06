@@ -1,7 +1,6 @@
 #' Determine the number of objectives.
 #'
-#' @param fn [\code{otf_function}]\cr
-#'   Objective function.
+#' @template arg_otf_function
 #' @return [\code{integer(1)}]
 #' @export
 getNumberOfObjectives = function(fn) {
