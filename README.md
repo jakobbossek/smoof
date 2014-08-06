@@ -31,7 +31,13 @@ obj.fn = makeSingleObjectiveFunction(
 autoplot(obj.fn)
 
 set.seed(123)
-res = cma_es(fn = obj.fn, lower = 0, upper = 2 * pi, par = 3, control = list(lambda = 100))
+res = cma_es(
+	fn = obj.fn,
+	lower = 0,
+	upper = 2 * pi,
+	par = 3,
+	control = list(lambda = 100)
+)
 ```
 print(res)
 
