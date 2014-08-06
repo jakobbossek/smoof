@@ -57,7 +57,8 @@ makeSingleObjectiveFunction = function(
 		n.objectives = 1L,
 		global.opt.params = global.opt.params,
 		global.opt.value = global.opt.value,
-		class = c("otf_function", "otf_single_objective_function"))
+		class = c("otf_function", "otf_single_objective_function")
+	)
 }
 
 #' @export
@@ -105,6 +106,7 @@ autoplot.otf_function = function(x, ...) {
 		pl = pl + geom_point()
 	} else {		
 		pl = pl + geom_line()
+		#FIXME: add hasKnownGlobalOptimum function and make this prettier
 		if (!is.null(attr(x, "global.opt.params"))) {
 			pl = pl + geom_vline(xintercept = as.numeric(attr(x, "global.opt.params")), linetype = "dashed", colour = "grey")
 			point.data = data.frame(x = unlist(attr(x, "global.opt.params")), y = attr(x, "global.opt.value"))
@@ -115,7 +117,3 @@ autoplot.otf_function = function(x, ...) {
 	pl = pl + xlab(param.id)
 	return(pl)
 }
-
-# @param n.objectives [\code{integer(1)}]\cr
-#   Number of objectives of the target function. Default is single-objective, i. e., \code{n-objectives}
-#   equals \code{1}.
