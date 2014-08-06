@@ -1,5 +1,7 @@
 # otf: Optimization target functions
 
+Travis CI build status: [![Build Status](https://travis-ci.org/jakobbossek/otf.svg)](https://travis-ci.org/jakobbossek/otf)
+
 This package offers an interface for target functions in the context of function optimization. It conveniently builds up on the S3 objects, i. e., a target function is a S3 object composed of a descriptive name, the function itself, a parameter set, eventually box constraints or other constraints, number of targets and so on. Wrapping your target functions inside these S3 methods seems to bloat the code, and in fact it does in some way, but it is reasonable and using it makes things more definitely more readable.
 
 ## Installation instructions
