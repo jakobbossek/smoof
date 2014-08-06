@@ -16,6 +16,9 @@
 #'   Global optimum value if known. Default is \code{NULL}.
 #' @return [\code{function}] Target function with additional stuff attached as attributes.
 #' @export
+#FIXME: we should force the user to provide a (named) list of parameter values to the target function
+#       In simple cases (all parameters numeric) the constructor should have the option params.as.vector
+#       with default FALSE.
 makeSingleObjectiveFunction = function(
 	name,
 	fn,
@@ -38,8 +41,12 @@ makeSingleObjectiveFunction = function(
 			stopf("Names of values and parameter names do not match.")
 		}
 	}
-	if (!is.null(global.opt.value)) {
+	if (is.null(global.opt.value) && !is.null(global.opt.params)) {
+		messagef("Parameter values for global optimum provided, but not the optimal value. Commputing.")
 		#FIXME: later enable discrete functions and stuff like that too.
+		#FIXME: the 'unlisting' works only for numeric functions. For mixed
+		#       parameter functions we need to to pass a list!
+		global.opt.value = fn(unlist(global.opt.params))
 		assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
 	}
 
