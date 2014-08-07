@@ -1,7 +1,7 @@
 #' Checks whether constraints are violated.
 #'
 #' @template arg_otf_function
-#' @param values [\code{numeric}]
+#' @param values [\code{numeric}]\cr
 #'   List of values.
 #' @return [\code{logical(1)}]
 #FIXME: untested and thus not exported
@@ -9,7 +9,7 @@
 #       and not a (numeric) vector.
 violatesConstraints = function(fn, values) {
 	assertClass(fn, "otf_function")
-	assertNumber(values, any.missing = FALSE)
+	assertNumeric(values, any.missing = FALSE)
 	constraint.fn = attr(fn, "constraint.fn")
 	!all(constraint.fn(values))
 }
