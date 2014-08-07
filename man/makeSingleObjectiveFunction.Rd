@@ -4,7 +4,7 @@
 \title{Generator for function of otf type.}
 \usage{
 makeSingleObjectiveFunction(name, fn, par.set, noisy = FALSE,
-  global.opt.params = NULL, global.opt.value = NULL)
+  constraint.fn = NULL, global.opt.params = NULL, global.opt.value = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
@@ -20,6 +20,11 @@ for further information.}
 
 \item{noisy}{[\code{logical(1)}]\cr
 Is the function noisy? Defaults to \code{FALSE}.}
+
+\item{constraint.fn}{[\code{function | NULL}]\cr
+Function which returns a logical vector indicating which indicates whether certain conditions
+are met or not. Default is \code{NULL}, which means, that there are no constraints (beside possible)
+box constraints.}
 
 \item{global.opt.params}{[\code{list}]\cr
 List of named parameter values of the global optimum. Default is \code{NULL} which means unknown.}

@@ -9,6 +9,10 @@
 #'   for further information.
 #' @param noisy [\code{logical(1)}]\cr
 #'   Is the function noisy? Defaults to \code{FALSE}.
+#' @param constraint.fn [\code{function | NULL}]\cr
+#'   Function which returns a logical vector indicating which indicates whether certain conditions 
+#'   are met or not. Default is \code{NULL}, which means, that there are no constraints (beside possible)
+#'   box constraints.
 #' @param global.opt.params [\code{list}]\cr
 #'   List of named parameter values of the global optimum. Default is \code{NULL} which means unknown.
 #' @param global.opt.value [\code{numeric(1)}]\cr
@@ -23,6 +27,7 @@ makeSingleObjectiveFunction = function(
 	fn,
 	par.set,
 	noisy = FALSE,
+	constraint.fn = NULL,
 	global.opt.params = NULL,
 	global.opt.value = NULL) {
 
@@ -31,6 +36,9 @@ makeSingleObjectiveFunction = function(
 	assertFunction(fn)
 	assertClass(par.set, "ParamSet")
 	assertFlag(noisy, na.ok = FALSE)
+	if (!is.null(constraint.fn)) {
+		assertFunction(constraint.fn)
+	}
 	if (!is.null(global.opt.params)) {
 		assertList(global.opt.params)
 		if (!inBounds(par.set, global.opt.params)) {
@@ -54,6 +62,7 @@ makeSingleObjectiveFunction = function(
 		name = name,
 		par.set = par.set,
 		noisy = noisy,
+		constraint.fn = constraint.fn,
 		n.objectives = 1L,
 		global.opt.params = global.opt.params,
 		global.opt.value = global.opt.value,
@@ -69,6 +78,7 @@ print.otf_function = function(x, ...) {
 		catf("Number of objectives: %i", getNumberOfObjectives(x))
 	}
 	catf("Noisy: %s", as.character(isNoisy(x)))
+	catf("Constraints: %s", as.character(hasConstraints(x)))
 	catf("Number of parameters: %i", getNumberOfParameters(x))
 	print(getParamSet(x))
 }

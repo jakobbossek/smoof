@@ -13,6 +13,7 @@ test_that("makeSingleObjectiveFunction", {
 	expect_equal(getNumberOfParameters(fn), 2L)
 	expect_is(getParamSet(fn), "ParamSet")
 	expect_equal(getNumberOfObjectives(fn), 1L)
+	expect_false(hasConstraints(fn))
 
 	library(ggplot2)
 	expect_error(autoplot(fn))
