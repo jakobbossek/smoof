@@ -68,8 +68,6 @@ makeSingleObjectiveFunction = function(
 	if (is.null(global.opt.value) && !is.null(global.opt.params)) {
 		messagef("Computing optimal value, because just the parameters of the global optimum provided.")
 		#FIXME: later enable discrete functions and stuff like that too.
-		#FIXME: the 'unlisting' works only for numeric functions. For mixed
-		#       parameter functions we need to to pass a list!
 		global.opt.value = fn(global.opt.params)
 		assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
 	}
