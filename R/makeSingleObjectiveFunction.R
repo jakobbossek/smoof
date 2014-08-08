@@ -135,9 +135,10 @@ autoplot.otf_function = function(x, ...) {
 	} else {		
 		pl = pl + geom_line()
 		#FIXME: add hasKnownGlobalOptimum function and make this prettier
-		if (!is.null(attr(x, "global.opt.params"))) {
-			pl = pl + geom_vline(xintercept = as.numeric(attr(x, "global.opt.params")), linetype = "dashed", colour = "grey")
-			point.data = data.frame(x = unlist(attr(x, "global.opt.params")), y = attr(x, "global.opt.value"))
+		if (hasGlobalOptimum(x)) {
+			global.optimum = getGlobalOptimum(x)
+			pl = pl + geom_vline(xintercept = as.numeric(global.optimum$param), linetype = "dashed", colour = "grey")
+			point.data = data.frame(x = unlist(global.optimum$param), y = global.optimum$value)
 			pl = pl + geom_point(data = point.data, colour = "tomato")
 		}
 	}
