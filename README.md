@@ -38,8 +38,8 @@ res = cma_es(
 	par = 3,
 	control = list(lambda = 100)
 )
-```
 print(res)
+```
 
 Packages like ecr, mlrMBO and noir make heavy use of otf functions automatically extracting the parameter set and asking the functions different things.
 
