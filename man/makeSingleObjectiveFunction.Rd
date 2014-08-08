@@ -3,8 +3,9 @@
 \alias{makeSingleObjectiveFunction}
 \title{Generator for function of otf type.}
 \usage{
-makeSingleObjectiveFunction(name, fn, par.set, noisy = FALSE,
-  constraint.fn = NULL, global.opt.params = NULL, global.opt.value = NULL)
+makeSingleObjectiveFunction(name, fn, has.simple.signature = TRUE, par.set,
+  noisy = FALSE, constraint.fn = NULL, global.opt.params = NULL,
+  global.opt.value = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
@@ -12,6 +13,11 @@ Function name.}
 
 \item{fn}{[\code{function}]\cr
 Target function.}
+
+\item{has.simple.signature}{[\code{logical(1)}]\cr
+Set this to \code{TRUE} if the target function expects a vector as input and \code{FALSE}
+if it expects a named list of values. The latter is needed if the function depends on mixed
+parameters. Default is \code{TRUE}.}
 
 \item{par.set}{[\code{\link[ParamHelpers]{ParamSet}}]\cr
 Parameter set describing different ascpects of the target function parameters, i. e.,

@@ -3,6 +3,10 @@
 #' @param name [\code{character(1)}]\cr
 #'   Function name.
 #' @template arg_fn
+#' @param has.simple.signature [\code{logical(1)}]\cr
+#'   Set this to \code{TRUE} if the target function expects a vector as input and \code{FALSE}
+#'   if it expects a named list of values. The latter is needed if the function depends on mixed
+#'   parameters. Default is \code{TRUE}.
 #' @param par.set [\code{\link[ParamHelpers]{ParamSet}}]\cr
 #'   Parameter set describing different ascpects of the target function parameters, i. e.,
 #'   names, lower and/or upper bounds, types and so on. See \code{\link[ParamHelpers]{makeParamSet}}
@@ -19,12 +23,10 @@
 #'   Global optimum value if known. Default is \code{NULL}.
 #' @return [\code{function}] Target function with additional stuff attached as attributes.
 #' @export
-#FIXME: we should force the user to provide a (named) list of parameter values to the target function
-#       In simple cases (all parameters numeric) the constructor should have the option params.as.vector
-#       with default FALSE.
 makeSingleObjectiveFunction = function(
 	name,
 	fn,
+	has.simple.signature = TRUE,
 	par.set,
 	noisy = FALSE,
 	constraint.fn = NULL,
@@ -34,6 +36,21 @@ makeSingleObjectiveFunction = function(
 	# sanity checks
 	assertCharacter(name, len = 1L, any.missing = FALSE)
 	assertFunction(fn)
+	assertFlag(has.simple.signature, na.ok = FALSE)
+
+	# Makes a function which expects a list out of a function which
+	# expects a vector.
+	makeInternalObjectiveFunction = function(fn) {
+		force(fn)
+		function(x, ...) {
+			fn(unlist(x), ...)
+		}
+	}
+
+	if (has.simple.signature) {
+		fn = makeInternalObjectiveFunction(fn)
+	}
+
 	assertClass(par.set, "ParamSet")
 	assertFlag(noisy, na.ok = FALSE)
 	if (!is.null(constraint.fn)) {
@@ -49,11 +66,11 @@ makeSingleObjectiveFunction = function(
 		}
 	}
 	if (is.null(global.opt.value) && !is.null(global.opt.params)) {
-		messagef("Parameter values for global optimum provided, but not the optimal value. Commputing.")
+		messagef("Computing optimal value, because just the parameters of the global optimum provided.")
 		#FIXME: later enable discrete functions and stuff like that too.
 		#FIXME: the 'unlisting' works only for numeric functions. For mixed
 		#       parameter functions we need to to pass a list!
-		global.opt.value = fn(unlist(global.opt.params))
+		global.opt.value = fn(global.opt.params)
 		assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
 	}
 
@@ -105,7 +122,10 @@ autoplot.otf_function = function(x, ...) {
 
 	getPlotData = function(fn, lower, upper, stepsize = ifelse(isNoisy(fn), 0.08, 0.01)) {
 		x.grid = seq(lower, upper, by = stepsize)
-		data.frame(x = x.grid, y = sapply(x.grid, fn))
+		data.frame(x = x.grid, y = sapply(x.grid, function(x) {
+				fn(namedList(init = x, names = getParamIds(par.set)))
+			})
+		)
 	}
 
 	data = getPlotData(x, lower, upper)
