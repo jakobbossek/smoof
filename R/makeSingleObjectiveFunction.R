@@ -58,9 +58,11 @@ makeSingleObjectiveFunction = function(
 	}
 	if (!is.null(global.opt.params)) {
 		assertList(global.opt.params)
-		if (!inBounds(par.set, global.opt.params)) {
+		if (!isFeasible(par.set, global.opt.params)) {
 			stopf("Global optimum out of bounds.")
 		}
+
+		#FIXME: should we allow unnamed lists?
 		if (!setequal(getParamIds(par.set), names(global.opt.params))) {
 			stopf("Names of values and parameter names do not match.")
 		}
@@ -134,7 +136,6 @@ autoplot.otf_function = function(x, ...) {
 		pl = pl + geom_point()
 	} else {		
 		pl = pl + geom_line()
-		#FIXME: add hasKnownGlobalOptimum function and make this prettier
 		if (hasGlobalOptimum(x)) {
 			global.optimum = getGlobalOptimum(x)
 			pl = pl + geom_vline(xintercept = as.numeric(global.optimum$param), linetype = "dashed", colour = "grey")
