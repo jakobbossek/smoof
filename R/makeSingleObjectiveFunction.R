@@ -83,7 +83,7 @@ makeSingleObjectiveFunction = function(
 		n.objectives = 1L,
 		global.opt.params = global.opt.params,
 		global.opt.value = global.opt.value,
-		class = c("otf_function", "otf_single_objective_function")
+		class = c("function", "otf_function", "otf_single_objective_function")
 	)
 }
 
