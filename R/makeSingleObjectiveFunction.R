@@ -204,6 +204,10 @@ autoplot1DNumeric = function(x, ...) {
 	return(pl)
 }
 
+autoplot2DNumeric = function(x, ...) {
+	stopf("Not implemented yet.")
+}
+
 autoplot2DMixed = function(x, use.facets = FALSE, ...) {
 	assertFlag(use.facets)
 
