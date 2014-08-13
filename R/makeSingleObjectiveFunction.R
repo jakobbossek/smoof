@@ -131,9 +131,20 @@ autoplot.otf_function = function(x, ...) {
 }
 
 
-autoplot1DNumeric = function(x, ...) {
-	par.set = getParamSet(x)
+generateDataframeForGGPlot = function(fn, sequences, par.set) {
+	data = do.call(expand.grid, sequences)
+	colnames(data) = getParamIds(par.set)
+	data.as.list = dfRowsToList(par.set = par.set, df = data)
+	data[["y"]] = sapply(data.as.list, function(data.row) fn(data.row))
+	return(data)
+}
 
+autoplot1DNumeric = function(x, ...) {
+	# extract data
+	par.set = getParamSet(x)
+	par.name = getParamIds(par.set)
+
+	# get lower and upper bounds
 	lower = getLower(par.set)
 	upper = getUpper(par.set)
 	if (is.infinite(lower)) {
@@ -143,18 +154,10 @@ autoplot1DNumeric = function(x, ...) {
 		upper = 10L
 	}
 
-	getPlotData = function(fn, lower, upper, stepsize = ifelse(isNoisy(fn), 0.08, 0.01)) {
-		x.grid = seq(lower, upper, by = stepsize)
-		data.frame(x = x.grid, y = sapply(x.grid, function(x) {
-				fn(namedList(init = x, names = getParamIds(par.set)))
-			})
-		)
-	}
+	data = generateDataframeForGGPlot(fn = x, sequences = list(seq(lower, upper, by = 0.01)), par.set = par.set)
 
-	data = getPlotData(x, lower, upper)
-	param.id = getParamIds(par.set)
-	#FIXME: make the stepsize customizable?
-	pl = ggplot(data = data, mapping = aes_string(x = "x", y = "y"))
+	# finally draw data
+	pl = ggplot(data = data, mapping = aes_string(x = par.name, y = "y"))
 	if (isNoisy(x)) {
 		pl = pl + geom_point()
 	} else {		
@@ -163,11 +166,12 @@ autoplot1DNumeric = function(x, ...) {
 			global.optimum = getGlobalOptimum(x)
 			pl = pl + geom_vline(xintercept = as.numeric(global.optimum$param), linetype = "dashed", colour = "grey")
 			point.data = data.frame(x = unlist(global.optimum$param), y = global.optimum$value)
+			colnames(point.data) = c(par.name, "y")
 			pl = pl + geom_point(data = point.data, colour = "tomato")
 		}
 	}
 	pl = pl + ggtitle(paste("Function:", getName(x)))
-	pl = pl + xlab(param.id)
+	pl = pl + xlab(par.name)
 	return(pl)
 }
 
@@ -200,15 +204,13 @@ autoplot2DMixed = function(x, use.facets = FALSE, ...) {
 	numeric.seq = seq(lower, upper, by = 0.01)
 	#FIXME: 'getValues' for Params?
 	factor.seq = unlist(par.set$pars[[idx.factor]]$values)
+	sequences = list(numeric.seq, factor.seq)
+	if (idx.factor == 1L) {
+		sequences = list(factor.seq, numeric.seq)
+	}
 
 	# build up data frame
-	#FIXME: this is tedious and cumbersome. Export to nice functions which is 
-	#       used by all autoplot subroutines
-	data = expand.grid(numeric.seq, factor.seq, stringsAsFactors = TRUE)
-	names(data) = par.names
-
-	pars.as.list = dfRowsToList(par.set = par.set, df = data)
-	data[["y"]] = sapply(pars.as.list, function(par) x(par))
+	data = generateDataframeForGGPlot(fn = x, sequences = sequences, par.set = par.set)
 
 	pl = ggplot(data = data, mapping = aes_string(x = name.numeric, y = "y"))
 	if (use.facets) {
