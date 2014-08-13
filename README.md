@@ -41,7 +41,7 @@ res = cma_es(
 print(res)
 ```
 
-Packages like ecr, mlrMBO and noir make heavy use of otf functions automatically extracting the parameter set and asking the functions different things.
+Packages like [ecr](https://github.com/jakobbossek/ecr), [mlrMBO](https://github.com/berndbischl/mlrMBO) and [noir](https://github.com/jakobbossek/noir) require the passed objective function to be of otf type.
 
 ## Contact
 
