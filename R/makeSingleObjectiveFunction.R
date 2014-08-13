@@ -16,12 +16,23 @@
 #' @param constraint.fn [\code{function | NULL}]\cr
 #'   Function which returns a logical vector indicating which indicates whether certain conditions 
 #'   are met or not. Default is \code{NULL}, which means, that there are no constraints (beside possible)
-#'   box constraints.
+#'   box constraints defined via the \code{par.set} argument.
 #' @param global.opt.params [\code{list}]\cr
 #'   List of named parameter values of the global optimum. Default is \code{NULL} which means unknown.
 #' @param global.opt.value [\code{numeric(1)}]\cr
 #'   Global optimum value if known. Default is \code{NULL}.
 #' @return [\code{function}] Target function with additional stuff attached as attributes.
+#' @examples
+#'   library(ggplot2)
+#'
+#'   fn = makeSingleObjectiveFunction(
+#'     name = "Sphere Function",
+#'     fn = function(x) sum(x^2),
+#'     par.set = makeNumericParamSet("x", len = 1L, lower = -5L, upper = 5L),
+#'     global.opt.params = list(x = 0)
+#'   )
+#'   print(fn)
+#'   print(autoplot(fn))
 #' @export
 makeSingleObjectiveFunction = function(
 	name,
