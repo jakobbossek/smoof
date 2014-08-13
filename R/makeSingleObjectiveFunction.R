@@ -130,7 +130,17 @@ autoplot.otf_function = function(x, ...) {
 	autoplotFun(x, ...)
 }
 
-
+# Utility functions.
+#
+# Generates 'gg-plotable' data.frame.
+# @param fn [\code{otf_function}]\cr
+#   Target function.
+# @param sequences [\code{list}]\cr
+#   List of sequences. One sequence for each parameter.
+#   Unified with expand.grid.
+# @param par.set [\code{ParamSet}]\cr
+#   Parameter set.
+# @return [\code{data.frame}]
 generateDataframeForGGPlot = function(fn, sequences, par.set) {
 	data = do.call(expand.grid, sequences)
 	colnames(data) = getParamIds(par.set)
@@ -139,20 +149,28 @@ generateDataframeForGGPlot = function(fn, sequences, par.set) {
 	return(data)
 }
 
+# Utility function.
+#
+# Get actual bound if finite or default value for plotting.
+# @param bound [\code{numeric(1)}]\cr
+#   Numeric bound.
+# @param default [\code{numeric(1)}]\cr
+#   Default value. Used if bound is infinite.
+# @return [\code{numeric(1)}]
+getBound = function(bound, default) {
+	if (is.infinite(bound))
+		return(default)
+	return(bound)
+}
+
 autoplot1DNumeric = function(x, ...) {
 	# extract data
 	par.set = getParamSet(x)
 	par.name = getParamIds(par.set)
 
 	# get lower and upper bounds
-	lower = getLower(par.set)
-	upper = getUpper(par.set)
-	if (is.infinite(lower)) {
-		lower = -10L
-	}
-	if (is.infinite(upper)) {
-		upper = 10L
-	}
+	lower = getBound(bound = getLower(par.set), default = -10L)
+	upper = getBound(bound = getUpper(par.set), default = 10L)
 
 	data = generateDataframeForGGPlot(fn = x, sequences = list(seq(lower, upper, by = 0.01)), par.set = par.set)
 
@@ -191,15 +209,9 @@ autoplot2DMixed = function(x, use.facets = FALSE, ...) {
 	name.factor = par.names[idx.factor]
 	name.numeric = par.names[idx.numeric]
 
-	#FIXME: copy & paste. Maybe offer method getLower(par.set)
-	lower = getLower(par.set)
-	upper = getUpper(par.set)
-	if (is.infinite(lower)) {
-		lower = -10L
-	}
-	if (is.infinite(upper)) {
-		upper = 10L
-	}
+	# get bounds
+	lower = getBound(bound = getLower(par.set), default = -10L)
+	upper = getBound(bound = getUpper(par.set), default = 10L)
 
 	numeric.seq = seq(lower, upper, by = 0.01)
 	#FIXME: 'getValues' for Params?
