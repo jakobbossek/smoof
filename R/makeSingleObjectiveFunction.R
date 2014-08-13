@@ -83,7 +83,7 @@ makeSingleObjectiveFunction = function(
 		n.objectives = 1L,
 		global.opt.params = global.opt.params,
 		global.opt.value = global.opt.value,
-		class = c("function", "otf_function", "otf_single_objective_function")
+		class = c("otf_function", "otf_single_objective_function", "function")
 	)
 }
 
@@ -102,14 +102,37 @@ print.otf_function = function(x, ...) {
 
 #' @export
 autoplot.otf_function = function(x, ...) {
-	par.set = getParamSet(x)
 	n.params = getNumberOfParameters(x)
-	if (!isNumeric(par.set, include.int = FALSE) | n.params > 1L) {
-		stopf("Currently only 1D numeric functions can be plotted.")
+	par.set = getParamSet(x)
+
+	if (n.params > 2L) {
+		stopf("Only function with up to 2 parameters can be plotted, but your function has %i", n.params)
 	}
+
 	if (isMultiobjective(x)) {
 		stopf("Plotting of multiobjective functions not possible.")
 	}
+
+	autoplotFun = NULL
+	if (isNumeric(par.set, include.int = FALSE)) {
+		if (n.params == 1L) {
+			autoplotFun = autoplot1DNumeric
+		} else {
+			autoplotFun = autoplot2DNumeric
+			stop("2D numeric plot not finished yet.")
+		}
+	} else if (hasDiscrete(par.set) & hasNumeric(par.set, include.int = FALSE)) {
+		autoplotFun = autoplot2DMixed
+	} else {
+		stopf("This type of function cannot be plotted.")
+	}
+
+	autoplotFun(x, ...)
+}
+
+
+autoplot1DNumeric = function(x, ...) {
+	par.set = getParamSet(x)
 
 	lower = getLower(par.set)
 	upper = getUpper(par.set)
@@ -145,5 +168,57 @@ autoplot.otf_function = function(x, ...) {
 	}
 	pl = pl + ggtitle(paste("Function:", getName(x)))
 	pl = pl + xlab(param.id)
+	return(pl)
+}
+
+autoplot2DMixed = function(x, use.facets = FALSE, ...) {
+	assertFlag(use.facets)
+
+	# extract data
+	par.set = getParamSet(x)
+	par.types = getParamTypes(par.set)
+	par.names = getParamIds(par.set)
+
+	# which parameter is discrete/logical?
+	idx.factor = which(par.types %in% c("discrete", "logical"))
+	idx.numeric = setdiff(1:2, idx.factor)
+
+	# get names of factors respectively numeric parameters
+	name.factor = par.names[idx.factor]
+	name.numeric = par.names[idx.numeric]
+
+	#FIXME: copy & paste. Maybe offer method getLower(par.set)
+	lower = getLower(par.set)
+	upper = getUpper(par.set)
+	if (is.infinite(lower)) {
+		lower = -10L
+	}
+	if (is.infinite(upper)) {
+		upper = 10L
+	}
+
+	numeric.seq = seq(lower, upper, by = 0.01)
+	#FIXME: 'getValues' for Params?
+	factor.seq = unlist(par.set$pars[[idx.factor]]$values)
+
+	# build up data frame
+	#FIXME: this is tedious and cumbersome. Export to nice functions which is 
+	#       used by all autoplot subroutines
+	data = expand.grid(numeric.seq, factor.seq, stringsAsFactors = TRUE)
+	names(data) = par.names
+
+	pars.as.list = dfRowsToList(par.set = par.set, df = data)
+	data[["y"]] = sapply(pars.as.list, function(par) x(par))
+
+	pl = ggplot(data = data, mapping = aes_string(x = name.numeric, y = "y"))
+	if (use.facets) {
+		pl = pl + geom_line()
+		pl = pl + facet_grid(reformulate(".", name.factor))
+	} else {
+		pl = pl + geom_line(aes_string(linetype = name.factor))
+	}
+	pl = pl + ggtitle(paste("Function:", getName(x)))
+	pl = pl + theme(legend.position = "top")
+
 	return(pl)
 }
