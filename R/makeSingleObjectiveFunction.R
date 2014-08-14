@@ -130,7 +130,6 @@ autoplot.otf_function = function(x, ...) {
 			autoplotFun = autoplot1DNumeric
 		} else {
 			autoplotFun = autoplot2DNumeric
-			stop("2D numeric plot not finished yet.")
 		}
 	} else if (hasDiscrete(par.set) & hasNumeric(par.set, include.int = FALSE)) {
 		autoplotFun = autoplot2DMixed
@@ -168,9 +167,9 @@ generateDataframeForGGPlot = function(fn, sequences, par.set) {
 # @param default [\code{numeric(1)}]\cr
 #   Default value. Used if bound is infinite.
 # @return [\code{numeric(1)}]
-getBound = function(bound, default) {
-	if (is.infinite(bound))
-		return(default)
+getBounds = function(bound, default) {
+	if (any(is.infinite(bound)))
+		return(rep(default, length(bound)))
 	return(bound)
 }
 
@@ -180,8 +179,8 @@ autoplot1DNumeric = function(x, ...) {
 	par.name = getParamIds(par.set)
 
 	# get lower and upper bounds
-	lower = getBound(bound = getLower(par.set), default = -10L)
-	upper = getBound(bound = getUpper(par.set), default = 10L)
+	lower = getBounds(bound = getLower(par.set), default = -10L)
+	upper = getBounds(bound = getUpper(par.set), default = 10L)
 
 	data = generateDataframeForGGPlot(fn = x, sequences = list(seq(lower, upper, by = 0.01)), par.set = par.set)
 
@@ -204,8 +203,40 @@ autoplot1DNumeric = function(x, ...) {
 	return(pl)
 }
 
-autoplot2DNumeric = function(x, ...) {
-	stopf("Not implemented yet.")
+autoplot2DNumeric = function(x, heatmap = FALSE, contours = TRUE, ...) {
+	assertFlag(heatmap, na.ok = FALSE)
+	assertFlag(contours, na.ok = FALSE)
+
+	if (!heatmap & !contours)
+		stopf("At learst contours or heatmap needs to be TRUE. Otherwise we have no data to plot.")
+
+	# extract data
+	par.set = getParamSet(x)
+	par.names = getParamIds(par.set)
+
+	# get bounds
+	lower = getBounds(getLower(par.set), default = -10L)
+	upper = getBounds(getUpper(par.set), default = 10L)
+
+	# build up data frame
+	sequence.x1 = seq(lower[1], upper[1], by = 0.05)
+	sequence.x2 = seq(lower[2], upper[2], by = 0.05)
+	sequences = list(sequence.x1, sequence.x2)
+	data = generateDataframeForGGPlot(x, sequences, par.set)
+
+	# plot
+	pl = ggplot(data = data, mapping = aes_string(x = par.names[1], y = par.names[2]))
+	if (heatmap) {
+		pl = pl + geom_tile(aes_string(fill = "y"))
+		pl = pl + scale_fill_gradient(low = "white", high = "black")
+	}
+	if (contours) {
+		pl = pl + stat_contour(aes_string(z = "y", fill = NULL), binwidth = 2)	
+	}
+	# pl = pl + scale_x_continuous(expand = c(0,0))
+	# pl = pl + scale_y_continuous(expand = c(0,0))
+
+    return(pl)
 }
 
 autoplot2DMixed = function(x, use.facets = FALSE, ...) {
@@ -225,8 +256,8 @@ autoplot2DMixed = function(x, use.facets = FALSE, ...) {
 	name.numeric = par.names[idx.numeric]
 
 	# get bounds
-	lower = getBound(bound = getLower(par.set), default = -10L)
-	upper = getBound(bound = getUpper(par.set), default = 10L)
+	lower = getBounds(bound = getLower(par.set), default = -10L)
+	upper = getBounds(bound = getUpper(par.set), default = 10L)
 
 	numeric.seq = seq(lower, upper, by = 0.01)
 	#FIXME: 'getValues' for Params?
