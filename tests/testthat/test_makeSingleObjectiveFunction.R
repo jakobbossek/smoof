@@ -24,9 +24,6 @@ test_that("makeSingleObjectiveFunction", {
 	expect_equal(global.optimum[["param"]][["x1"]], 0)
 	expect_equal(global.optimum[["param"]][["x1"]], 0)
 	expect_equal(global.optimum[["value"]], 0)
-	
-	library(ggplot2)
-	expect_error(autoplot(fn))
 })
 
 test_that("global optimum is provided properly", {
