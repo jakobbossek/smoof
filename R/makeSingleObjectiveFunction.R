@@ -229,10 +229,12 @@ autoplot2DNumeric = function(x, heatmap = FALSE, contours = TRUE, ...) {
 	if (heatmap) {
 		pl = pl + geom_tile(aes_string(fill = "y"))
 		pl = pl + scale_fill_gradient(low = "white", high = "black")
+		pl = pl + theme(legend.position = "top")
 	}
 	if (contours) {
 		pl = pl + stat_contour(aes_string(z = "y", fill = NULL), binwidth = 2)	
 	}
+	pl = pl + ggtitle(paste("Function:", getName(x)))
 	# pl = pl + scale_x_continuous(expand = c(0,0))
 	# pl = pl + scale_y_continuous(expand = c(0,0))
 
