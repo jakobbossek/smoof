@@ -1,22 +1,12 @@
 #' Generator for function of otf type.
 #'
 #' @param name [\code{character(1)}]\cr
-#'   Function name.
+#'   Function name. Used for the title of plots for example.
 #' @template arg_fn
-#' @param has.simple.signature [\code{logical(1)}]\cr
-#'   Set this to \code{TRUE} if the target function expects a vector as input and \code{FALSE}
-#'   if it expects a named list of values. The latter is needed if the function depends on mixed
-#'   parameters. Default is \code{TRUE}.
-#' @param par.set [\code{\link[ParamHelpers]{ParamSet}}]\cr
-#'   Parameter set describing different ascpects of the target function parameters, i. e.,
-#'   names, lower and/or upper bounds, types and so on. See \code{\link[ParamHelpers]{makeParamSet}}
-#'   for further information.
-#' @param noisy [\code{logical(1)}]\cr
-#'   Is the function noisy? Defaults to \code{FALSE}.
-#' @param constraint.fn [\code{function | NULL}]\cr
-#'   Function which returns a logical vector indicating which indicates whether certain conditions 
-#'   are met or not. Default is \code{NULL}, which means, that there are no constraints (beside possible)
-#'   box constraints defined via the \code{par.set} argument.
+#' @template arg_has_simple_signature
+#' @template arg_par_set
+#' @template arg_noisy
+#' @template arg_constraint_fn
 #' @param global.opt.params [\code{list}]\cr
 #'   List of named parameter values of the global optimum. Default is \code{NULL} which means unknown.
 #' @param global.opt.value [\code{numeric(1)}]\cr
@@ -48,15 +38,6 @@ makeSingleObjectiveFunction = function(
 	assertCharacter(name, len = 1L, any.missing = FALSE)
 	assertFunction(fn)
 	assertFlag(has.simple.signature, na.ok = FALSE)
-
-	# Makes a function which expects a list out of a function which
-	# expects a vector.
-	makeInternalObjectiveFunction = function(fn) {
-		force(fn)
-		function(x, ...) {
-			fn(unlist(x), ...)
-		}
-	}
 
 	if (has.simple.signature) {
 		fn = makeInternalObjectiveFunction(fn)

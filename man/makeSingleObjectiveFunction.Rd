@@ -9,7 +9,7 @@ makeSingleObjectiveFunction(name, fn, has.simple.signature = TRUE, par.set,
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
-Function name.}
+Function name. Used for the title of plots for example.}
 
 \item{fn}{[\code{function}]\cr
 Target function.}
