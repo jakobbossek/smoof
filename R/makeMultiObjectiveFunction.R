@@ -1,7 +1,6 @@
-#' Generator for function of otf type.
+#' Generator for multi-objective target functions.
 #'
-#' @param name [\code{character(1)}]\cr
-#'   Function name.
+#' @template arg_name
 #' @template arg_fn
 #' @template arg_has_simple_signature
 #' @template arg_par_set
@@ -15,6 +14,7 @@
 #'   fn = makeMultiObjectiveFunction(
 #'     name = "Sphere Function",
 #'     fn = function(x) c(sum(x^2), exp(x)),
+#'     n.objectives = 2L,
 #'     par.set = makeNumericParamSet("x", len = 1L, lower = -5L, upper = 5L)
 #'   )
 #'   print(fn)

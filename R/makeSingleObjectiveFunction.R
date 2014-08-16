@@ -1,7 +1,6 @@
-#' Generator for function of otf type.
+#' Generator for single-objective target functions.
 #'
-#' @param name [\code{character(1)}]\cr
-#'   Function name. Used for the title of plots for example.
+#' @template arg_name
 #' @template arg_fn
 #' @template arg_has_simple_signature
 #' @template arg_par_set
