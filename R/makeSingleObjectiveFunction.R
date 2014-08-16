@@ -34,20 +34,8 @@ makeSingleObjectiveFunction = function(
 	global.opt.params = NULL,
 	global.opt.value = NULL) {
 
-	# sanity checks
-	assertCharacter(name, len = 1L, any.missing = FALSE)
-	assertFunction(fn)
-	assertFlag(has.simple.signature, na.ok = FALSE)
+	otf.fn = makeObjectiveFunction(name, fn, has.simple.signature, par.set, 1L, noisy, constraint.fn)
 
-	if (has.simple.signature) {
-		fn = makeInternalObjectiveFunction(fn)
-	}
-
-	assertClass(par.set, "ParamSet")
-	assertFlag(noisy, na.ok = FALSE)
-	if (!is.null(constraint.fn)) {
-		assertFunction(constraint.fn)
-	}
 	if (!is.null(global.opt.params)) {
 		assertList(global.opt.params)
 		if (!isFeasible(par.set, global.opt.params)) {
@@ -62,21 +50,16 @@ makeSingleObjectiveFunction = function(
 	if (is.null(global.opt.value) && !is.null(global.opt.params)) {
 		messagef("Computing optimal value, because just the parameters of the global optimum provided.")
 		#FIXME: later enable discrete functions and stuff like that too.
-		global.opt.value = fn(global.opt.params)
+		global.opt.value = otf.fn(global.opt.params)
 		assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
 	}
 
-	structure(
-		fn, 
-		name = name,
-		par.set = par.set,
-		noisy = noisy,
-		constraint.fn = constraint.fn,
-		n.objectives = 1L,
-		global.opt.params = global.opt.params,
-		global.opt.value = global.opt.value,
-		class = c("otf_function", "otf_single_objective_function", "function")
-	)
+	otf.fn = setAttribute(otf.fn, "global.opt.params", global.opt.params)
+	otf.fn = setAttribute(otf.fn, "global.opt.value", global.opt.value)
+
+	class(otf.fn) = c("otf_single_objective_function", class(otf.fn))
+
+	return(otf.fn)
 }
 
 #' @export
