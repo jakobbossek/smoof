@@ -195,7 +195,7 @@ autoplot2DNumeric = function(x, heatmap = FALSE, contours = TRUE, ...) {
 		pl = pl + theme(legend.position = "top")
 	}
 	if (contours) {
-		pl = pl + stat_contour(aes_string(z = "y", fill = NULL), binwidth = 2)	
+		pl = pl + stat_contour(aes_string(z = "y", fill = NULL))	
 	}
 	pl = pl + ggtitle(paste("Function:", getName(x)))
 	# pl = pl + scale_x_continuous(expand = c(0,0))
