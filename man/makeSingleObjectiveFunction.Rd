@@ -55,5 +55,29 @@ library(ggplot2)
   )
   print(fn)
   print(autoplot(fn))
+
+  fn.num2 = makeSingleObjectiveFunction(
+  	name = "Numeric 2D",
+ 	fn = function(x) sum(x^2),
+ 	par.set = makeParamSet(
+ 		makeNumericParam("x1", lower = -5, upper = 5),
+ 		makeNumericParam("x2", lower = -5, upper = 5)
+ 	)
+  )
+  print(fn)
+  print(autoplot(fn))
+
+  fn.mixed = makeSingleObjectiveFunction(
+ 	name = "Mixed 2D",
+ 	fn = function(x) x$num1^2 + as.integer(as.character(x$disc1) == "a"),
+ 	has.simple.signature = FALSE,
+ 	par.set = makeParamSet(
+ 		makeNumericParam("num1", lower = -5, upper = 5),
+ 		makeDiscreteParam("disc1", values = c("a", "b"))
+ 	),
+ 	global.opt.params = list(num1 = 0, disc1 = "b")
+  )
+  print(fn)
+  print(autoplot(fn))
 }
 
