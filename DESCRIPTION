@@ -16,4 +16,5 @@ Depends:
     checkmate (>= 1.1),
     soobench
 Imports:
-    ggplot2
+    ggplot2,
+    RColorBrewer

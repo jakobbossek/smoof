@@ -190,6 +190,7 @@ autoplot1DNumeric = function(x, ...) {
 	return(pl)
 }
 
+#FIXME: rename heatmap to levelplot or similar? A heatmap is something different.
 autoplot2DNumeric = function(x, heatmap = FALSE, contours = TRUE, ...) {
 	assertFlag(heatmap, na.ok = FALSE)
 	assertFlag(contours, na.ok = FALSE)
@@ -211,17 +212,22 @@ autoplot2DNumeric = function(x, heatmap = FALSE, contours = TRUE, ...) {
 	sequences = list(sequence.x1, sequence.x2)
 	data = generateDataframeForGGPlot(x, sequences, par.set)
 
+	# nice color palette for heatmap
+	# see http://learnr.wordpress.com/2009/07/20/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-part-6/
+	brewer.div <- colorRampPalette(brewer.pal(11, "Spectral"), interpolate = "spline")
+
 	# plot
 	pl = ggplot(data = data, mapping = aes_string(x = par.names[1], y = par.names[2]))
 	if (heatmap) {
 		pl = pl + geom_tile(aes_string(fill = "y"))
-		pl = pl + scale_fill_gradient(low = "white", high = "black")
+		pl = pl + scale_fill_gradientn(colours = brewer.div(200))
 		pl = pl + theme(legend.position = "top")
 	}
 	if (contours) {
 		pl = pl + stat_contour(aes_string(z = "y", fill = NULL))	
 	}
-	pl = pl + ggtitle(paste("Function:", getName(x)))
+	pl = pl + xlab(expression(x[1])) + ylab(expression(x[2]))
+	pl = pl + ggtitle(getName(x))
 	# pl = pl + scale_x_continuous(expand = c(0,0))
 	# pl = pl + scale_y_continuous(expand = c(0,0))
 
