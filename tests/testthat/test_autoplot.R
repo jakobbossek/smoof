@@ -11,7 +11,7 @@ test_that("autoplot functions for 1D numeric functions works as expected", {
 	pl = autoplot(fn)
 	expect_is(pl, "gg")
 	expect_is(pl, "ggplot")
-	expect_equal(pl$labels$title, "Function: Test function")
+	expect_equal(pl$labels$title, "Test function")
 	expect_equal(pl$labels$x, "x")
 	expect_equal(pl$labels$y, "y")
 })
@@ -30,21 +30,20 @@ test_that("autoplot function for 2D numeric functions works as expected", {
 		expect_is(pl, "gg")
 		expect_is(pl, "ggplot")
 		expect_equal(pl$labels$title, title)
-		expect_equal(pl$labels$x, xlab)
-		expect_equal(pl$labels$y, ylab)
+		expect_equal(as.character(pl$labels$x), xlab)
+		expect_equal(as.character(pl$labels$y), ylab)
 	}
 
 	library(ggplot2)
-	# at least one of {heatmap, contours} must be TRUE
-	expect_error(autoplot(fn, heatmap = FALSE, contours = FALSE))
-	pl = autoplot(fn, heatmap = TRUE, contours = TRUE)
+	# at least one of {levels, contours} must be TRUE
+	expect_error(autoplot(fn, render.levels = FALSE, render.contours = FALSE))
+	pl = autoplot(fn, render.levels = TRUE, render.contours = TRUE)
 
-	title = paste("Function:", getName(fn))
-	for (heatmap in c(TRUE, FALSE)) {
-		for (contours in c(TRUE, FALSE)) {
-			if (heatmap || contours) {
-				pl = autoplot(fn, heatmap = heatmap, contours = contours)
-				checkPlot(pl, title, "x1", "x2")
+	for (render.levels in c(TRUE, FALSE)) {
+		for (render.contours in c(TRUE, FALSE)) {
+			if (render.levels || render.contours) {
+				pl = autoplot(fn, render.levels = render.levels, render.contours = render.contours)
+				checkPlot(pl, title = getName(fn), "x[1]", "x[2]")
 			}
 		}
 	}
@@ -88,12 +87,12 @@ test_that("autoplot functions for 2D mixed functions (one discrete/logical and o
 	pl = autoplot(fn)
 	expect_is(pl, "gg")
 	expect_is(pl, "ggplot")
-	expect_equal(pl$labels$title, paste("Function:", fn.name))
+	expect_equal(pl$labels$title, fn.name)
 	expect_null(pl$facet$rows)
 
 	pl = autoplot(fn, use.facets = TRUE)
 	expect_is(pl, "gg")
 	expect_is(pl, "ggplot")
-	expect_equal(pl$labels$title, paste("Function:", fn.name))
+	expect_equal(pl$labels$title, fn.name)
 	expect_true(!is.null(pl$facet$rows))
 })
