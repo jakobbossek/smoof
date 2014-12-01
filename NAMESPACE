@@ -3,6 +3,7 @@
 S3method(autoplot,otf_function)
 S3method(isMultiobjective,otf_function)
 S3method(isSingleobjective,otf_function)
+S3method(plot,otf_function)
 S3method(print,otf_function)
 export(getGlobalOptimum)
 export(getName)

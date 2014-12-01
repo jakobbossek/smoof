@@ -98,8 +98,7 @@ print.otf_function = function(x, ...) {
 	print(getParamSet(x))
 }
 
-#' @export
-autoplot.otf_function = function(x, ...) {
+checkPlotFunParams = function(x) {
 	n.params = getNumberOfParameters(x)
 	par.set = getParamSet(x)
 
@@ -110,19 +109,40 @@ autoplot.otf_function = function(x, ...) {
 	if (isMultiobjective(x)) {
 		stopf("Plotting of multiobjective functions not possible.")
 	}
+}
 
-	autoplotFun = NULL
+getInternalPlotFunction = function(x, mapping) {
+	n.params = getNumberOfParameters(x)
+	par.set = getParamSet(x)
+
 	if (isNumeric(par.set, include.int = FALSE)) {
 		if (n.params == 1L) {
-			autoplotFun = autoplot1DNumeric
+			return(mapping[["1Dnumeric"]])
 		} else {
-			autoplotFun = autoplot2DNumeric
+			return(mapping[["2Dnumeric"]])
 		}
 	} else if (hasDiscrete(par.set) & hasNumeric(par.set, include.int = FALSE)) {
-		autoplotFun = autoplot2DMixed
-	} else {
-		stopf("This type of function cannot be plotted.")
+		return(mapping[["2DMixed"]])
 	}
+	stopf("This type of function cannot be plotted.")
+}
+
+#' @export
+plot.otf_function = function(x, ...) {
+	checkPlotFunParams(x)
+
+	mapping = list("1Dnumeric" = plot1DNumeric, "2Dnumeric" = plot2DNumeric, "2DMixed" = plot2DMixed)
+	plotFun = getInternalPlotFunction(x, mapping = mapping)
+
+	plotFun(x, ...)
+}
+
+#' @export
+autoplot.otf_function = function(x, ...) {
+	checkPlotFunParams(x)
+
+	mapping = list("1Dnumeric" = autoplot1DNumeric, "2Dnumeric" = autoplot2DNumeric, "2DMixed" = autoplot2DMixed)
+	autoplotFun = getInternalPlotFunction(x, mapping = mapping)
 
 	autoplotFun(x, ...)
 }
