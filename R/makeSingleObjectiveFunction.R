@@ -180,6 +180,29 @@ getBounds = function(bound, default) {
 	return(bound)
 }
 
+plot1DNumeric = function(x, ...) {
+	#FIXME: this is copy and paste crap!
+	#FIXME: There should be one internal plot function, which generates the data?
+	# extract data
+	par.set = getParamSet(x)
+	par.name = getParamIds(par.set)
+
+	# get lower and upper bounds
+	lower = getBounds(bound = getLower(par.set), default = -10L)
+	upper = getBounds(bound = getUpper(par.set), default = 10L)
+
+	#FIXME: by = 0.01 is evil!
+	data = generateDataframeForGGPlot(fn = x, sequences = list(seq(lower, upper, by = 0.01)), par.set = par.set)
+
+	plot(x = data[[par.name]], y = data[["y"]], type = "l",
+		xlab = par.name, ylab = "y")
+}
+
+plot2DNumeric = function(x, ...) {}
+
+plot2DMixed = function(x, ...) {}
+
+
 autoplot1DNumeric = function(x, ...) {
 	# extract data
 	par.set = getParamSet(x)
