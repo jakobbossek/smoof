@@ -185,18 +185,17 @@ autoplot1DNumeric = function(x, ...) {
 			pl = pl + geom_point(data = point.data, colour = "tomato")
 		}
 	}
-	pl = pl + ggtitle(paste("Function:", getName(x)))
+	pl = pl + ggtitle(getName(x))
 	pl = pl + xlab(par.name)
 	return(pl)
 }
 
-#FIXME: rename heatmap to levelplot or similar? A heatmap is something different.
-autoplot2DNumeric = function(x, heatmap = FALSE, contours = TRUE, ...) {
-	assertFlag(heatmap, na.ok = FALSE)
-	assertFlag(contours, na.ok = FALSE)
+autoplot2DNumeric = function(x, render.levels = FALSE, render.contours = TRUE, ...) {
+	assertFlag(render.levels, na.ok = FALSE)
+	assertFlag(render.contours, na.ok = FALSE)
 
-	if (!heatmap & !contours)
-		stopf("At learst contours or heatmap needs to be TRUE. Otherwise we have no data to plot.")
+	if (!render.levels & !render.contours)
+		stopf("At learst render.contours or render.levels needs to be TRUE. Otherwise we have no data to plot.")
 
 	# extract data
 	par.set = getParamSet(x)
@@ -207,24 +206,26 @@ autoplot2DNumeric = function(x, heatmap = FALSE, contours = TRUE, ...) {
 	upper = getBounds(getUpper(par.set), default = 10L)
 
 	# build up data frame
-	sequence.x1 = seq(lower[1], upper[1], by = 0.05)
-	sequence.x2 = seq(lower[2], upper[2], by = 0.05)
+	#FIXME: setting the stepsize (for example b = 0.05) is very evil!
+	#For example double_sum with x_i in [-65.5, 65.5] takes about 20 minutes to produce the plot
+	sequence.x1 = seq(lower[1], upper[1], length.out = 150)
+	sequence.x2 = seq(lower[2], upper[2], length.out = 150)
 	sequences = list(sequence.x1, sequence.x2)
 	data = generateDataframeForGGPlot(x, sequences, par.set)
 
-	# nice color palette for heatmap
+	# nice color palette for render.levels
 	# see http://learnr.wordpress.com/2009/07/20/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-part-6/
 	brewer.div <- colorRampPalette(brewer.pal(11, "Spectral"), interpolate = "spline")
 
 	# plot
 	pl = ggplot(data = data, mapping = aes_string(x = par.names[1], y = par.names[2]))
-	if (heatmap) {
+	if (render.levels) {
 		pl = pl + geom_tile(aes_string(fill = "y"))
 		pl = pl + scale_fill_gradientn(colours = brewer.div(200))
 		pl = pl + theme(legend.position = "top")
 	}
-	if (contours) {
-		pl = pl + stat_contour(aes_string(z = "y", fill = NULL))	
+	if (render.contours) {
+		pl = pl + stat_contour(aes_string(z = "y", fill = NULL), colour = "gray", alpha = 0.8)	
 	}
 	pl = pl + xlab(expression(x[1])) + ylab(expression(x[2]))
 	pl = pl + ggtitle(getName(x))
@@ -272,7 +273,7 @@ autoplot2DMixed = function(x, use.facets = FALSE, ...) {
 	} else {
 		pl = pl + geom_line(aes_string(linetype = name.factor))
 	}
-	pl = pl + ggtitle(paste("Function:", getName(x)))
+	pl = pl + ggtitle(getName(x))
 	pl = pl + theme(legend.position = "top")
 
 	return(pl)
