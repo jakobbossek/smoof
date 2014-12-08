@@ -198,7 +198,27 @@ plot1DNumeric = function(x, ...) {
 		xlab = par.name, ylab = "y")
 }
 
-plot2DNumeric = function(x, ...) {}
+plot2DNumeric = function(x, ...) {
+	par.set = getParamSet(x)
+	par.names = getParamIds(par.set)
+
+	lower = getBounds(bound = getLower(par.set), default = -10L)
+	upper = getBounds(bound = getUpper(par.set), default = 10L)
+
+	sequence.x1 = seq(lower[1], upper[1], length.out = 150)
+	sequence.x2 = seq(lower[2], upper[2], length.out = 150)
+	sequences = list(sequence.x1, sequence.x2)
+	data = generateDataframeForGGPlot(x, sequences, par.set)
+
+	# ugly! make matrix out of z values. Required for 'image'
+	z = data[["y"]]
+ 	dim(z) <- c(150, 150)
+
+	image(x = sequence.x1, y = sequence.x2, z = z,
+		xlab = par.names[1], ylab = par.names[2],
+		col = terrain.colors(100)
+	)
+}
 
 plot2DMixed = function(x, ...) {}
 
