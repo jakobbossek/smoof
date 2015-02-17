@@ -9,7 +9,7 @@ This package offers an interface for target functions in the context of function
 The package is currently under developmenent and has not yet been released on CRAN. If you want to take a glance at it and play around install the github developement version by executing the following command:
 
 ```splus
-devtools::install_github("otf", username = "jakobbossek")
+devtools::install_github("jakobbossek/otf")
 ```
 
 ## Example
@@ -41,7 +41,7 @@ res = cma_es(
 print(res)
 ```
 
-Packages like [ecr](https://github.com/jakobbossek/ecr), [mlrMBO](https://github.com/berndbischl/mlrMBO) and [noir](https://github.com/jakobbossek/noir) require the passed objective function to be of otf type.
+The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing in R needs builds upon otf functions.
 
 ## Contact
 
