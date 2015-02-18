@@ -1,6 +1,7 @@
 # otf: Optimization target functions
 
-Travis CI build status: [![Build Status](https://travis-ci.org/jakobbossek/otf.svg)](https://travis-ci.org/jakobbossek/otf)
+[![Build Status](https://travis-ci.org/jakobbossek/otf.svg)](https://travis-ci.org/jakobbossek/otf)
+[![Coverage Status](https://coveralls.io/repos/jakobbossek/otf/badge.svg)](https://coveralls.io/r/jakobbossek/otf)
 
 This package offers an interface for target functions in the context of function optimization. It conveniently builds up on the S3 objects, i. e., a target function is a S3 object composed of a descriptive name, the function itself, a parameter set, eventually box constraints or other constraints, number of targets and so on. Wrapping your target functions inside these S3 methods seems to bloat the code, and in fact it does in some way, but it is reasonable and using it makes things more definitely more readable.
 
@@ -45,4 +46,4 @@ The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing
 
 ## Contact
 
-Please address questions and missing features about the **otf package** to the author Jakob Bossek <j.bossek@gmail.com>. Found some nasty bugs? Please use the [issue tracker](https://github.com/jbossek/otf/issues) for this. Pay attention to explain the problem as good as possible. At its best you provide an example, so I can reproduce your problem.
+Please address questions and missing features about the **otf package** to the author Jakob Bossek <j.bossek@gmail.com>. Found some nasty bugs? Please use the [issue tracker](https://github.com/jakobbossek/otf/issues) for this. Pay attention to explain the problem as good as possible. At its best you provide an example, so I can reproduce your problem.
