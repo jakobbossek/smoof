@@ -2,13 +2,15 @@ context("makeSingleObjectiveFunction")
 
 test_that("makeSingleObjectiveFunction", {
 	name = "Test function"
+	par.set = makeParamSet(
+		makeNumericParam("x1", lower = -5, upper = 5),
+		makeNumericParam("x2", lower = -5, upper = 5)
+	)
+	fn = function(x) sum(x^2)
 	fn = makeSingleObjectiveFunction(
 		name = name,
-		fn = function(x) sum(x^2),
-		par.set = makeParamSet(
-			makeNumericParam("x1", lower = -5, upper = 5),
-			makeNumericParam("x2", lower = -5, upper = 5)
-		),
+		fn = fn,
+		par.set = par.set,
 		global.opt.params = list(x1 = 0, x2 = 0)
 	)
 	expect_true(isOTFFunction(fn))
@@ -24,6 +26,12 @@ test_that("makeSingleObjectiveFunction", {
 	expect_equal(global.optimum[["param"]][["x1"]], 0)
 	expect_equal(global.optimum[["param"]][["x1"]], 0)
 	expect_equal(global.optimum[["value"]], 0)
+
+	# global opt params out of bounds
+	expect_error(makeSingleObjectiveFunction(name, fn, par.set = par.set, global.opt.params = list(x1 = -10, x2 = 100)))
+	# params not named properly
+	expect_error(makeSingleObjectiveFunction(name, fn, par.set = par.set, global.opt.params = list(alice = 0, bob = 0)))
+
 })
 
 test_that("global optimum is provided properly", {
@@ -38,7 +46,7 @@ test_that("global optimum is provided properly", {
 			global.opt.params = global.opt.params
 		)
 	}
-	
+
 	expect_error(generateTestFunction(list(num1 = 100)))
 	expect_is(generateTestFunction(list(num1 = 0)), "otf_function")
 })
