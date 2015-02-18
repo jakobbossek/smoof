@@ -4,7 +4,7 @@
 #' @param values [\code{numeric}]\cr
 #'   List of values.
 #' @return [\code{logical(1)}]
-#FIXME: untested and thus not exported
+#' @export
 #FIXME: if the function expects not only numeric values, we need to pass a _list_ of values
 #       and not a (numeric) vector.
 violatesConstraints = function(fn, values) {
