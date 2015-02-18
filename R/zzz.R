@@ -4,4 +4,6 @@
 #' @import ggplot2
 #' @import RColorBrewer
 #' @import soobench
+#' @import Rcpp
+#' @useDynLib otf
 NULL
