@@ -11,7 +11,10 @@ test_that("makeSingleObjectiveFunction", {
 		name = name,
 		fn = fn,
 		par.set = par.set,
-		global.opt.params = list(x1 = 0, x2 = 0)
+		global.opt.params = list(x1 = 0, x2 = 0),
+		constraint.fn = function(x) {
+			sum(x) < 1
+		}
 	)
 	expect_true(isOTFFunction(fn))
 	expect_false(isNoisy(fn))
@@ -20,8 +23,11 @@ test_that("makeSingleObjectiveFunction", {
 	expect_is(getParamSet(fn), "ParamSet")
 	expect_equal(getNumberOfObjectives(fn), 1L)
 	expect_true(hasConstraints(fn))
+	expect_true(hasOtherConstraints(fn))
+	expect_true(hasBoxConstraints(fn))
 	expect_true(hasGlobalOptimum(fn))
 	global.optimum = getGlobalOptimum(fn)
+	expect_true(!is.null(global.optimum))
 	expect_is(global.optimum, "list")
 	expect_equal(global.optimum[["param"]][["x1"]], 0)
 	expect_equal(global.optimum[["param"]][["x1"]], 0)

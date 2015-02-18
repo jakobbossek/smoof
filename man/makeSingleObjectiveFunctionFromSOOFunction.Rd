@@ -2,13 +2,13 @@
 % Please edit documentation in R/makeSingleObjectiveFunctionFromSOOFunction.R
 \name{makeSingleObjectiveFunctionFromSOOFunction}
 \alias{makeSingleObjectiveFunctionFromSOOFunction}
-\title{Generates non-noisy test function from soo function.}
+\title{Generates non-noisy test function from single objective benchmarking function.}
 \usage{
 makeSingleObjectiveFunctionFromSOOFunction(id, ...)
 }
 \arguments{
 \item{id}{[\code{character(1)}]\cr
-Function id of SOO function from package soobench.}
+Function id of single objective benchmarking function from package \pkg{soobench}.}
 
 \item{...}{[\code{list}]\cr
 Further parameters passed to soo function generator. See the different
@@ -18,12 +18,13 @@ soo functions for examples. Probably the most important one is 'dimensions'.}
 [\code{otf_function}]
 }
 \description{
-Generates non-noisy test function from soo function.
+Generates non-noisy test function from single objective benchmarking function.
 }
 \examples{
 \dontrun{
   branin.fn = makeSingleObjectiveFunctionFromSOOFunction("branin")
   print(branin.fn)
+  ackley.fn.5d = makeSingleObjectiveFunctionFromSOOFunction("ackley", dimensions = 5L)
 }
 }
 
