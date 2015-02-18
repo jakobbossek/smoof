@@ -33,7 +33,7 @@
 #'   )
 #'   print(fn)
 #'   print(autoplot(fn))
-#'  
+#'
 #'   fn.mixed = makeSingleObjectiveFunction(
 #'  	name = "Mixed 2D",
 #'  	fn = function(x) x$num1^2 + as.integer(as.character(x$disc1) == "a"),
@@ -43,7 +43,7 @@
 #'  		makeDiscreteParam("disc1", values = c("a", "b"))
 #'  	),
 #'  	global.opt.params = list(num1 = 0, disc1 = "b")
-#'   ) 
+#'   )
 #'   print(fn)
 #'   print(autoplot(fn))
 #' @export
@@ -65,14 +65,12 @@ makeSingleObjectiveFunction = function(
 			stopf("Global optimum out of bounds.")
 		}
 
-		#FIXME: should we allow unnamed lists?
 		if (!setequal(getParamIds(par.set), names(global.opt.params))) {
 			stopf("Names of values and parameter names do not match.")
 		}
 	}
 	if (is.null(global.opt.value) && !is.null(global.opt.params)) {
 		messagef("Computing optimal value, because just the parameters of the global optimum provided.")
-		#FIXME: later enable discrete functions and stuff like that too.
 		global.opt.value = otf.fn(global.opt.params)
 		assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
 	}
@@ -238,7 +236,7 @@ autoplot1DNumeric = function(x, ...) {
 	pl = ggplot(data = data, mapping = aes_string(x = par.name, y = "y"))
 	if (isNoisy(x)) {
 		pl = pl + geom_point()
-	} else {		
+	} else {
 		pl = pl + geom_line()
 		if (hasGlobalOptimum(x)) {
 			global.optimum = getGlobalOptimum(x)
@@ -288,7 +286,7 @@ autoplot2DNumeric = function(x, render.levels = FALSE, render.contours = TRUE, .
 		pl = pl + theme(legend.position = "top")
 	}
 	if (render.contours) {
-		pl = pl + stat_contour(aes_string(z = "y", fill = NULL), colour = "gray", alpha = 0.8)	
+		pl = pl + stat_contour(aes_string(z = "y", fill = NULL), colour = "gray", alpha = 0.8)
 	}
 	pl = pl + xlab(expression(x[1])) + ylab(expression(x[2]))
 	pl = pl + ggtitle(getName(x))
