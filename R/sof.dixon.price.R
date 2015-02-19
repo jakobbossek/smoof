@@ -1,20 +1,18 @@
-#' Levy function
+#' Dixon-Price function
 #'
 #' @export
-makeLevyFunction = function(dimensions) {
+makeDixonPriceFunction = function(dimensions) {
     assertCount(dimensions)
-    global.opt.params = as.list(rep(1, dimensions))
+    i = 1:dimensions
+    global.opt.params = as.list(2^((-1) * (2^i - 2) / 2^i))
     names(global.opt.params) = paste("x", seq(dimensions), sep = "")
     makeSingleObjectiveFunction(
-        name = paste(dimensions, "-d Levy function", sep = ""),
+        name = paste(dimensions, "-d Dixon-Price function", sep = ""),
         fn = function(x) {
-            n = length(x)
-            w = 1 + (x - 1) / 4
-            ww = w[-n]
-            a = sin(3.1415 * w[1])
-            b = sum((ww - 1)^2 * (1 + 10 * sin(3.1415 * ww + 1)^2))
-            c = (w[n] - 1)^2 * (1 + sin(2 * 3.1415 * w[n])^2)
-            return(a + b + c)
+            a = (x[1] - 1)^2
+            i = 2:length(x)
+            b = sum(i * (2 * x[i]^2 - x[i - 1])^2)
+            return(a + b)
         },
         par.set = makeNumericParamSet(
             len = dimensions,

@@ -1,20 +1,19 @@
-#' Himmelblau function
+#' Himmelblau Function
 #'
 #' @export
 makeHimmelblauFunction = function() {
     makeSingleObjectiveFunction(
-        name = "Himmelblau function",
-        fn = himmelblauCPP,
+        name = "Himmelblau Function",
+        fn = function(x) {
+            (x[1]^2 + x[2] - 11)^2 + (x[1] + x[2]^2 - 7)^2
+        },
         par.set = makeNumericParamSet(
             len = 2L,
             id = "x",
-            lower = c(-5, -5),
-            upper = c(5, 5),
+            lower = c(-5.12, -5.12),
+            upper = c(5.12, 5.12),
             vector = FALSE
-        )#,
-        #FIXME: multiple global optimums
-        # c(-pi, 12.275), c(pi, 2.275), c(3*pi, 2.475)
-        #global.opt.params = list("x1" = -3.1415, "x2" = 12.275),
-        #global.opt.value = 0
+        )
+        #FIXME: multiple global opt
     )
 }

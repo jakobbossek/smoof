@@ -1,4 +1,4 @@
-#' Drop-Wave function
+#' Holder Table function
 #'
 #' @export
 makeHolderTableFunction = function() {
