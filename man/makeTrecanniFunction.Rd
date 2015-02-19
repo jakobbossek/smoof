@@ -6,6 +6,9 @@
 \usage{
 makeTrecanniFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Trecanni Function
 }

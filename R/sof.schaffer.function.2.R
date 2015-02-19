@@ -1,5 +1,6 @@
 #' Schaffer Function N. 2
 #'
+#' @template ret_otf_single
 #' @export
 makeSchafferN2Function = function() {
     makeSingleObjectiveFunction(

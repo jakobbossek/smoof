@@ -1,5 +1,6 @@
 #' Booth Function
 #'
+#' @template ret_otf_single
 #' @export
 makeBoothFunction = function() {
     makeSingleObjectiveFunction(

@@ -1,5 +1,6 @@
 #' Trecanni Function
 #'
+#' @template ret_otf_single
 #' @export
 makeTrecanniFunction = function() {
     makeSingleObjectiveFunction(

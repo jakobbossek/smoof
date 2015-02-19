@@ -1,5 +1,6 @@
 #' Bird Function
 #'
+#' @template ret_otf_single
 #' @export
 makeBirdFunction = function() {
     makeSingleObjectiveFunction(

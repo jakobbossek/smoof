@@ -1,5 +1,6 @@
 #' Freudenstein Roth Function
 #'
+#' @template ret_otf_single
 #' @export
 makeFreudensteinRothFunction = function() {
     makeSingleObjectiveFunction(

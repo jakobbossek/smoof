@@ -1,6 +1,7 @@
 #' MultiMod function.
 #'
-#'
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeMultiModFunction = function(dimensions) {
     assertCount(dimensions)

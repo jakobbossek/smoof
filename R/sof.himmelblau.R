@@ -1,5 +1,6 @@
 #' Himmelblau Function
 #'
+#' @template ret_otf_single
 #' @export
 makeHimmelblauFunction = function() {
     makeSingleObjectiveFunction(

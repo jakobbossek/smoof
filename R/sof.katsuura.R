@@ -1,5 +1,10 @@
 #' Katsuura function
 #'
+#' @template arg_dimensions
+#FIXME: parameter meaning
+#' @param d [\code{integer(1)}]\cr
+#'   Parameter.
+#' @template ret_otf_single
 # @export
 #FIXME: do not export for now. There seems to be a problem
 makeKatsuuraFunction = function(dimensions, d = 32) {

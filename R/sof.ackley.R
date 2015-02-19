@@ -1,7 +1,7 @@
 #' Ackley function.
 #'
-#' @param dimensions [\code{dimension}]\cr
-#'   Number of parameters.
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeAckleyFunction = function(dimensions) {
     #FIXME: multimodal

@@ -1,5 +1,6 @@
 #' McCormick Function
 #'
+#' @template ret_otf_single
 #' @export
 makeMcCormickFunction = function() {
     makeSingleObjectiveFunction(

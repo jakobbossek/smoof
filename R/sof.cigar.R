@@ -1,5 +1,7 @@
 #' Cigar function
 #'
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeCigarFunction = function(dimensions) {
     #FIXME: type is convex, unimodal

@@ -6,6 +6,9 @@
 \usage{
 makeMatyasFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Matyas Function
 }

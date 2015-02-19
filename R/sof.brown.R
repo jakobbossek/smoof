@@ -1,5 +1,7 @@
 #' Brown Function
 #'
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeBrownFunction = function(dimensions) {
     assertCount(dimensions)

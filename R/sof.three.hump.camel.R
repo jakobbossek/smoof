@@ -1,5 +1,6 @@
 #' Three-Hump Camel Function
 #'
+#' @template ret_otf_single
 #' @export
 makeThreeHumpCamelFunction = function() {
     makeSingleObjectiveFunction(

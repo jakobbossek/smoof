@@ -1,5 +1,7 @@
 #' Schwefel function
 #'
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeSchwefelFunction = function(dimensions) {
     assertCount(dimensions)

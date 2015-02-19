@@ -1,5 +1,7 @@
 #' MaxMod function.
 #'
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeMaxModFunction = function(dimensions) {
     assertCount(dimensions)

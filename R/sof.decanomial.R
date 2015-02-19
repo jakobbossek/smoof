@@ -1,5 +1,6 @@
 #' Decanomial function
 #'
+#' @template ret_otf_single
 #' @export
 makeDecanomialFunction = function() {
     makeSingleObjectiveFunction(

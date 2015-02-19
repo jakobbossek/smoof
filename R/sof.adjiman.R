@@ -1,5 +1,6 @@
 #' Adjiman function
 #'
+#' @template ret_otf_single
 #' @export
 makeAdjimanFunction = function() {
     #FIXME: type is multimodal

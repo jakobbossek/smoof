@@ -1,5 +1,6 @@
 #' CrossInTray Function
 #'
+#' @template ret_otf_single
 #' @export
 makeCrossInTrayFunction = function() {
     makeSingleObjectiveFunction(

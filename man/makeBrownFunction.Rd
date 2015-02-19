@@ -6,6 +6,13 @@
 \usage{
 makeBrownFunction(dimensions)
 }
+\arguments{
+\item{dimensions}{[\code{integer(1)}]\cr
+Size of corresponding parameter space.}
+}
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Brown Function
 }

@@ -1,5 +1,6 @@
 #' Leon function
 #'
+#' @template ret_otf_single
 #' @export
 makeLeonFunction = function() {
     makeSingleObjectiveFunction(

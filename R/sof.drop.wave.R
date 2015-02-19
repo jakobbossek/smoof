@@ -1,5 +1,6 @@
 #' Drop-Wave function
 #'
+#' @template ret_otf_single
 #' @export
 makeDropWaveFunction = function() {
     makeSingleObjectiveFunction(

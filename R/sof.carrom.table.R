@@ -1,5 +1,6 @@
 #' Carrom table function.
 #'
+#' @template ret_otf_single
 #' @export
 makeCarromTableFunction = function() {
     makeSingleObjectiveFunction(

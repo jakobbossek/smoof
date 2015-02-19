@@ -6,6 +6,13 @@
 \usage{
 makeMichalewiczFunction(m = 5)
 }
+\arguments{
+\item{m}{[\code{integer(1)}]\cr
+Parameter.}
+}
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Michalewicz function
 }

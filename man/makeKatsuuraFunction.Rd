@@ -6,6 +6,16 @@
 \usage{
 makeKatsuuraFunction(dimensions, d = 32)
 }
+\arguments{
+\item{dimensions}{[\code{integer(1)}]\cr
+Size of corresponding parameter space.}
+
+\item{d}{[\code{integer(1)}]\cr
+Parameter.}
+}
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Katsuura function
 }

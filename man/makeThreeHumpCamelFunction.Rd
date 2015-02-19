@@ -8,6 +8,11 @@ makeThreeHumpCamelFunction()
 
 makeThreeHumpCamelFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+
+[\code{otf_single_objective_function}]
+}
 \description{
 Three-Hump Camel Function
 

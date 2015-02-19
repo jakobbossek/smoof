@@ -6,6 +6,9 @@
 \usage{
 makeEasomFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Easom Function
 }

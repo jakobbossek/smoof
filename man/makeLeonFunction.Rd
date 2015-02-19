@@ -6,6 +6,9 @@
 \usage{
 makeLeonFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Leon function
 }

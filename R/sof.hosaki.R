@@ -1,5 +1,6 @@
 #' Hosaki function
 #'
+#' @template ret_otf_single
 #' @export
 makeHosakiFunction = function() {
     makeSingleObjectiveFunction(

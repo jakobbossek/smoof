@@ -1,5 +1,6 @@
 #' Egg Holder function
 #'
+#' @template ret_otf_single
 #' @export
 makeEggholderFunction = function() {
     makeSingleObjectiveFunction(

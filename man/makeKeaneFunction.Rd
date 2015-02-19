@@ -6,6 +6,9 @@
 \usage{
 makeKeaneFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Keane function
 }

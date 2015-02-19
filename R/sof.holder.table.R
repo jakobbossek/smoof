@@ -1,5 +1,6 @@
 #' Holder Table function
 #'
+#' @template ret_otf_single
 #' @export
 makeHolderTableFunction = function() {
     makeSingleObjectiveFunction(

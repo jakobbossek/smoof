@@ -6,6 +6,9 @@
 \usage{
 makeBukinN4Function()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Bukin function N. 4
 }

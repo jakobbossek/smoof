@@ -1,5 +1,7 @@
 #' Griewank function
 #'
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeGriewankFunction = function(dimensions) {
     #FIMXE: (highly) multimodal

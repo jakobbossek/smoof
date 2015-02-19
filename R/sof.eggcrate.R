@@ -1,5 +1,6 @@
 #' Egg crate function
 #'
+#' @template ret_otf_single
 #' @export
 makeEggCrateFunction = function() {
     makeSingleObjectiveFunction(

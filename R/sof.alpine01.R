@@ -1,5 +1,7 @@
 #' Alpine01 function
 #'
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeAlpine01Function = function(dimensions) {
     #FIXME: type is convex, unimodal

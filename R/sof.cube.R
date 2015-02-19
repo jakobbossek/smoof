@@ -1,5 +1,6 @@
 #' Cube Function
 #'
+#' @template ret_otf_single
 #' @export
 makeCubeFunction = function() {
     makeSingleObjectiveFunction(

@@ -6,6 +6,9 @@
 \usage{
 makeBealeFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Beale Function
 }

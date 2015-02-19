@@ -1,5 +1,6 @@
 #' Goldstein-Price function
 #'
+#' @template ret_otf_single
 #' @export
 makeGoldsteinPriceFunction = function() {
     makeSingleObjectiveFunction(

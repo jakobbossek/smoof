@@ -1,5 +1,7 @@
 #' Styblinksk-Tang function
 #'
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeStyblinkskTangFunction = function(dimensions) {
     assertCount(dimensions, na.ok = FALSE)

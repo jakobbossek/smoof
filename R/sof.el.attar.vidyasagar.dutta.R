@@ -1,5 +1,6 @@
 #' ElAttarVidyasagarDutta function
 #'
+#' @template ret_otf_single
 #' @export
 makeElAttarVidyasagarDuttaFunction = function() {
     makeSingleObjectiveFunction(

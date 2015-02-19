@@ -1,5 +1,6 @@
 #' Matyas Function
 #'
+#' @template ret_otf_single
 #' @export
 makeMatyasFunction = function() {
     makeSingleObjectiveFunction(

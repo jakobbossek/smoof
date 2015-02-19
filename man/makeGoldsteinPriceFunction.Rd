@@ -6,6 +6,9 @@
 \usage{
 makeGoldsteinPriceFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Goldstein-Price function
 }

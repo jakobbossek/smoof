@@ -1,5 +1,12 @@
 #' Deflected Corrugated Spring function
 #'
+#' @template arg_dimensions
+#FIXME: what do these parameters do?
+#' @param K [\code{numeric(1)}]\cr
+#'   Parameter.
+#' @param alpha [\code{numeric(1)}]\cr
+#'   Parameter.
+#' @template ret_otf_single
 #' @export
 makeDeflectedCorrugatedSpringFunction = function(dimensions, K = 5, alpha = 5) {
     #FIXME: type is convex, unimodal

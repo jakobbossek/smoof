@@ -1,5 +1,6 @@
 #' Beale Function
 #'
+#' @template ret_otf_single
 #' @export
 makeBealeFunction = function() {
     makeSingleObjectiveFunction(

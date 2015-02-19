@@ -6,6 +6,9 @@
 \usage{
 makeZettlFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Zettl Function
 }

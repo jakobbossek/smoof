@@ -1,5 +1,6 @@
 #' Brent Function
 #'
+#' @template ret_otf_single
 #' @export
 makeBrentFunction = function() {
     makeSingleObjectiveFunction(

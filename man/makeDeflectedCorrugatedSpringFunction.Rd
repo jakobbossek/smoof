@@ -6,6 +6,19 @@
 \usage{
 makeDeflectedCorrugatedSpringFunction(dimensions, K = 5, alpha = 5)
 }
+\arguments{
+\item{dimensions}{[\code{integer(1)}]\cr
+Size of corresponding parameter space.}
+
+\item{K}{[\code{numeric(1)}]\cr
+Parameter.}
+
+\item{alpha}{[\code{numeric(1)}]\cr
+Parameter.}
+}
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Deflected Corrugated Spring function
 }

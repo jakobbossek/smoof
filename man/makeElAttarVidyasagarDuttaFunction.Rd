@@ -6,6 +6,9 @@
 \usage{
 makeElAttarVidyasagarDuttaFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 ElAttarVidyasagarDutta function
 }

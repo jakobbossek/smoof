@@ -1,5 +1,6 @@
 #' Branin function
 #'
+#' @template ret_otf_single
 #' @export
 makeBraninFunction = function() {
     makeSingleObjectiveFunction(

@@ -6,6 +6,9 @@
 \usage{
 makeEggholderFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Egg Holder function
 }

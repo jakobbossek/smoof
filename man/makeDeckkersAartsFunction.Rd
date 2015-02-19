@@ -6,6 +6,9 @@
 \usage{
 makeDeckkersAartsFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 DeckkersAarts function
 }

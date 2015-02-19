@@ -6,6 +6,9 @@
 \usage{
 makeEggCrateFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Egg crate function
 }

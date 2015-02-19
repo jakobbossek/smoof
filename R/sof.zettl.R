@@ -1,5 +1,6 @@
 #' Zettl Function
 #'
+#' @template ret_otf_single
 #' @export
 makeZettlFunction = function() {
     makeSingleObjectiveFunction(

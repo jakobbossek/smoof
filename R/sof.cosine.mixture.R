@@ -1,5 +1,7 @@
 #' CosineMixture Function
 #'
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeCosineMixtureFunction = function(dimensions) {
     assertCount(dimensions)

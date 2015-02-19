@@ -1,5 +1,7 @@
 #' Bochachevsky Function
 #'
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeBochachevskyFunction = function(dimensions) {
     assertCount(dimensions)

@@ -1,5 +1,6 @@
 #' Shubert Function
 #'
+#' @template ret_otf_single
 #' @export
 makeShubertFunction = function() {
     makeSingleObjectiveFunction(

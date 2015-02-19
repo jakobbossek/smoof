@@ -6,6 +6,9 @@
 \usage{
 makeSchafferN4Function()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Schaffer Function N. 4
 }

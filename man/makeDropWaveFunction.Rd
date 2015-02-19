@@ -6,6 +6,9 @@
 \usage{
 makeDropWaveFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Drop-Wave function
 }

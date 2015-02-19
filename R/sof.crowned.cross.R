@@ -1,6 +1,8 @@
 #' CrownedCross Function
 #'
 #' See also CrossInTray function.
+#'
+#' @template ret_otf_single
 #' @export
 makeCrownedCrossFunction = function() {
     makeSingleObjectiveFunction(

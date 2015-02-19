@@ -6,6 +6,9 @@
 \usage{
 makeCarromTableFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Carrom table function.
 }

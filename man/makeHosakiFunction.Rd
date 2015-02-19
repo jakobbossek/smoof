@@ -6,6 +6,9 @@
 \usage{
 makeHosakiFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Hosaki function
 }

@@ -6,6 +6,9 @@
 \usage{
 makeDecanomialFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Decanomial function
 }

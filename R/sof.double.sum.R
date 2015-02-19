@@ -2,6 +2,8 @@
 #'
 #' Also known as the rotated hyper-ellipsoid function.
 #'
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeDoubleSumFunction = function(dimensions) {
     #FIXME: convex, unimodal

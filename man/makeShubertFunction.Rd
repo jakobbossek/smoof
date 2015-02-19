@@ -6,6 +6,9 @@
 \usage{
 makeShubertFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Shubert Function
 }

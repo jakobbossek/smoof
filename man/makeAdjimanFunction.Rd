@@ -6,6 +6,9 @@
 \usage{
 makeAdjimanFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Adjiman function
 }

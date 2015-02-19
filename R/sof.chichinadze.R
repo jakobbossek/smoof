@@ -1,5 +1,6 @@
 #' Chichinadze Function
 #'
+#' @template ret_otf_single
 #' @export
 makeChichinadzeFunction = function() {
     makeSingleObjectiveFunction(

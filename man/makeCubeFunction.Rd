@@ -6,6 +6,9 @@
 \usage{
 makeCubeFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Cube Function
 }

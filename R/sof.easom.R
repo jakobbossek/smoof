@@ -1,5 +1,6 @@
 #' Easom Function
 #'
+#' @template ret_otf_single
 #' @export
 makeEasomFunction = function() {
     #FIXME: unimodal

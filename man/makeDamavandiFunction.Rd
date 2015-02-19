@@ -6,6 +6,9 @@
 \usage{
 makeDamavandiFunction()
 }
+\value{
+[\code{otf_single_objective_function}]
+}
 \description{
 Damavandi function
 }

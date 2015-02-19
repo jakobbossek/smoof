@@ -1,5 +1,7 @@
 #' Step function.
 #'
+#' @template arg_dimensions
+#' @template ret_otf_single
 #' @export
 makeStepFunction = function(dimensions) {
     assertCount(dimensions)

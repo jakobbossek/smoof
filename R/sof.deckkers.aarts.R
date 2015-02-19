@@ -1,5 +1,6 @@
 #' DeckkersAarts function
 #'
+#' @template ret_otf_single
 #' @export
 makeDeckkersAartsFunction = function() {
     makeSingleObjectiveFunction(

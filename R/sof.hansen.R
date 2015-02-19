@@ -1,5 +1,6 @@
 #' Hansen function
 #'
+#' @template ret_otf_single
 #' @export
 makeHansenFunction = function() {
     makeSingleObjectiveFunction(
