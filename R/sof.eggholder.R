@@ -5,6 +5,7 @@ makeEggholderFunction = function() {
     makeSingleObjectiveFunction(
         name = "Eggholder function",
         fn = function(x) {
+            #FIXME: this can be extended to arbitrary dimensions
             -(x[2] + 47) * sin(sqrt(abs(x[2] + x[1] * 0.5 + 47))) - x[1] * sin(sqrt(abs(x[1] - (x[2] - 47))))
         },
         par.set = makeNumericParamSet(

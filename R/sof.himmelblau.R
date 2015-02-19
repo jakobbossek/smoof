@@ -13,7 +13,8 @@ makeHimmelblauFunction = function() {
             lower = c(-5.12, -5.12),
             upper = c(5.12, 5.12),
             vector = FALSE
-        )
-        #FIXME: multiple global opt
+        ),
+        global.opt.params = list("x1" = 3, "x2" = 2),
+        global.opt.value = 0
     )
 }

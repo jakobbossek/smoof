@@ -9,6 +9,7 @@ makeMichalewiczFunction = function(m = 5) {
     makeSingleObjectiveFunction(
         name = "Michalewicz function",
         fn = function(x) {
+            #FIXME: arbitrary dimensions http://www.geocities.ws/eadorio/mvf.pdf
             e = 2 * m
             (-1) * (sin(x[1]) * sin(x[1]^2 / pi)^e + sin(x[2]) * sin(2 * x[2]^2 / pi)^e)
         },
