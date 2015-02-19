@@ -1,24 +1,21 @@
-#' Double-Sum function.
-#'
-#' Also known as the rotated hyper-ellipsoid function.
+#' Bochachevsky Function
 #'
 #' @export
-makeDoubleSumFunction = function(dimensions) {
-    #FIXME: convex, unimodal
+makeBochachevskyFunction = function(dimensions) {
     assertCount(dimensions)
     global.opt.params = as.list(rep(0, dimensions))
     names(global.opt.params) = paste("x", seq(dimensions), sep = "")
     makeSingleObjectiveFunction(
-        name = paste(dimensions, "-d Double-Sum function", sep = ""),
+        name = "Bochachevsky Function",
         fn = function(x) {
-            # this is faster than the soobench C implementation
-            sum(cumsum(x)^2)
+            i = 1:(length(x) - 1)
+            sum(x[i] + 2 * x[i + 1]^2 - 0.3 * cos(3 * pi * x[i]) - 0.4 * cos(4 * pi * x[i + 1]) + 0.7)
         },
         par.set = makeNumericParamSet(
             len = dimensions,
             id = "x",
-            lower = rep(-65.536, dimensions),
-            upper = rep(65.536, dimensions),
+            lower = rep(-15, dimensions),
+            upper = rep(15, dimensions),
             vector = FALSE
         ),
         global.opt.params = global.opt.params,

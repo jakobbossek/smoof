@@ -1,14 +1,11 @@
-#' Beale Function
+#' Cube Function
 #'
 #' @export
-makeBealeFunction = function() {
+makeCubeFunction = function() {
     makeSingleObjectiveFunction(
-        name = "Beale Function",
+        name = "Cube Function",
         fn = function(x) {
-            a = x[1] * x[2]
-            b = a * x[2]
-            c = b * x[2]
-            (1.5 - x[1] + a)^2 + (2.25 - x[1] + b)^2 + (2.625 - x[1] + c)^2
+            100 * (x[2] - x[1]^3)^2 + (1 - x[1])^2
         },
         par.set = makeNumericParamSet(
             len = 2L,
@@ -17,7 +14,7 @@ makeBealeFunction = function() {
             upper = c(10, 10),
             vector = FALSE
         ),
-        global.opt.params = list("x1" = 3, "x2" = 0.5),
+        global.opt.params = list("x1" = 1, "x2" = 1),
         global.opt.value = 0
     )
 }

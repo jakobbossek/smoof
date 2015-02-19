@@ -1,17 +1,26 @@
 #' Ackley function.
 #'
-#' @param dimension [\code{dimension}]\cr
+#' @param dimensions [\code{dimension}]\cr
 #'   Number of parameters.
 #' @export
-makeAckleyFunction = function(dimension) {
-    assertCount(dimension, na.ok = FALSE)
-    global.opt.params = as.list(rep(0, dimension))
-    names(global.opt.params) = paste("x", seq(dimension), sep = "")
+makeAckleyFunction = function(dimensions) {
+    #FIXME: multimodal
+    assertCount(dimensions, na.ok = FALSE)
+    global.opt.params = as.list(rep(0, dimensions))
+    names(global.opt.params) = paste("x", seq(dimensions), sep = "")
     makeSingleObjectiveFunction(
-        name = paste(dimension, "-d Ackley function", sep = ""),
-        fn = ackleyCPP,
+        name = paste(dimensions, "-d Ackley function", sep = ""),
+        fn = function(x) {
+            n = length(x)
+            a = 20
+            b = 0.2
+            c = 2 * pi
+            d = mean(x^2)
+            e = mean(cos(c * x))
+            -a * exp(-b * sqrt((1 / n) * d)) - exp((1 / n) * e) + a + exp(1)
+        },
         par.set = makeNumericParamSet(
-            len = dimension,
+            len = dimensions,
             id = "x",
             lower = -32.768,
             upper = 32.768,

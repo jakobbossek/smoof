@@ -8,7 +8,7 @@ makeSchwefelFunction = function(dimensions) {
     makeSingleObjectiveFunction(
         name = paste(dimensions, "-d Schwefel function", sep = ""),
         fn = function(x) {
-            418.9829 * length(x) - sum(x * sin(sqrt(abs(x))))
+            sum(x * sin(sqrt(abs(x))))
         },
         par.set = makeNumericParamSet(
             len = dimensions,
@@ -18,6 +18,6 @@ makeSchwefelFunction = function(dimensions) {
             vector = FALSE
         ),
         global.opt.params = global.opt.params,
-        global.opt.value = 0
+        global.opt.value = -418.9829 * dimensions
     )
 }

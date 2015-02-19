@@ -1,24 +1,22 @@
-#' Double-Sum function.
-#'
-#' Also known as the rotated hyper-ellipsoid function.
+#' Cigar function
 #'
 #' @export
-makeDoubleSumFunction = function(dimensions) {
-    #FIXME: convex, unimodal
+makeCigarFunction = function(dimensions) {
+    #FIXME: type is convex, unimodal
     assertCount(dimensions)
     global.opt.params = as.list(rep(0, dimensions))
     names(global.opt.params) = paste("x", seq(dimensions), sep = "")
     makeSingleObjectiveFunction(
-        name = paste(dimensions, "-d Double-Sum function", sep = ""),
+        name = paste(dimensions, "-d Cigar function", sep = ""),
         fn = function(x) {
-            # this is faster than the soobench C implementation
-            sum(cumsum(x)^2)
+            w = c(1, rep(1e06, length(x) - 1L))
+            sum(w * x^2)
         },
         par.set = makeNumericParamSet(
             len = dimensions,
             id = "x",
-            lower = rep(-65.536, dimensions),
-            upper = rep(65.536, dimensions),
+            lower = rep(-100, dimensions),
+            upper = rep(100, dimensions),
             vector = FALSE
         ),
         global.opt.params = global.opt.params,

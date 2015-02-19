@@ -1,7 +1,9 @@
 #' Rosenbrock function
 #'
+#' Also known as the second function of De Jong or the (Rosenbrock) banana function.
 #' @export
 makeRosenbrockFunction = function(dimensions) {
+    #FIXME: unimodal
     assertCount(dimensions, na.ok = FALSE)
     global.opt.params = as.list(rep(1, dimensions))
     names(global.opt.params) = paste("x", seq(dimensions), sep = "")
@@ -14,8 +16,8 @@ makeRosenbrockFunction = function(dimensions) {
         par.set = makeNumericParamSet(
             len = dimensions,
             id = "x",
-            lower = rep(-5, dimensions),
-            upper = rep(10, dimensions),
+            lower = rep(-2.048, dimensions),
+            upper = rep(2.048, dimensions),
             vector = FALSE
         ),
         global.opt.params = global.opt.params,

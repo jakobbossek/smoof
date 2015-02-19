@@ -1,24 +1,20 @@
-#' Double-Sum function.
-#'
-#' Also known as the rotated hyper-ellipsoid function.
+#' Csendes Function
 #'
 #' @export
-makeDoubleSumFunction = function(dimensions) {
-    #FIXME: convex, unimodal
+makeCsendesFunction = function(dimensions) {
     assertCount(dimensions)
     global.opt.params = as.list(rep(0, dimensions))
     names(global.opt.params) = paste("x", seq(dimensions), sep = "")
     makeSingleObjectiveFunction(
-        name = paste(dimensions, "-d Double-Sum function", sep = ""),
+        name = "Csendes Function",
         fn = function(x) {
-            # this is faster than the soobench C implementation
-            sum(cumsum(x)^2)
+            sum(x^6 * (2 + sin(1 / x)))
         },
         par.set = makeNumericParamSet(
             len = dimensions,
             id = "x",
-            lower = rep(-65.536, dimensions),
-            upper = rep(65.536, dimensions),
+            lower = c(-1, -1),
+            upper = c(1, 1),
             vector = FALSE
         ),
         global.opt.params = global.opt.params,

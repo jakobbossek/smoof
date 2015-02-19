@@ -2,6 +2,7 @@
 #'
 #' @export
 makeRastriginFunction = function(dimensions) {
+    #FIXME: highly multimodal
     assertCount(dimensions)
     global.opt.params = as.list(rep(0, dimensions))
     names(global.opt.params) = paste("x", seq(dimensions), sep = "")

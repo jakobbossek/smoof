@@ -1,26 +1,26 @@
-#' Griewank function
+#' AMGM function
+#'
+#' Aritmetic Mean - Geometric Mean Equality problem.
 #'
 #' @export
-makeGriewankFunction = function(dimensions) {
-    #FIMXE: (highly) multimodal
+makeAMGMFunction = function(dimensions) {
+    #FIXME: type is convex, unimodal
     assertCount(dimensions)
     global.opt.params = as.list(rep(0, dimensions))
     names(global.opt.params) = paste("x", seq(dimensions), sep = "")
     makeSingleObjectiveFunction(
-        name = paste(dimensions, "-d Griewank function", sep = ""),
+        name = paste(dimensions, "-d AMGM function", sep = ""),
         fn = function(x) {
-            a = sum(x^2) / 4000
-            b = prod(cos(x / sqrt(1:length(x))))
-            return(a - b + 1)
+            (mean(x) - prod(x)^(1 / length(x))^2)
         },
         par.set = makeNumericParamSet(
             len = dimensions,
             id = "x",
-            lower = rep(-600, dimensions),
-            upper = rep(600, dimensions),
+            lower = rep(0, dimensions),
+            upper = rep(10, dimensions),
             vector = FALSE
         ),
         global.opt.params = global.opt.params,
-        global.opt.value = 0
+        global.opt.value = -6.1295
     )
 }

@@ -1,11 +1,11 @@
-#' Bukin function N. 6
+#' Bukin function N. 4
 #'
 #' @export
-makeBukinN6Function = function() {
+makeBukinN4Function = function() {
     makeSingleObjectiveFunction(
-        name = "Bukin function N.6",
+        name = "Bukin function N. 4",
         fn = function(x) {
-            100 * sqrt(abs(x[2] - 0.01 * x[1]^2)) + 0.01 * abs(x[1] + 10)
+            100 * x[2]^2 + 0.01 * abs(x[1] + 10)
         },
         par.set = makeNumericParamSet(
             len = 2L,
@@ -14,7 +14,7 @@ makeBukinN6Function = function() {
             upper = c(-5, 3),
             vector = FALSE
         ),
-        global.opt.params = list("x1" = -10, "x2" = 1),
+        global.opt.params = list("x1" = -10, "x2" = 0),
         global.opt.value = 0
     )
 }
