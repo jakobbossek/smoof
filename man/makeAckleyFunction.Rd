@@ -4,10 +4,10 @@
 \alias{makeAckleyFunction}
 \title{Ackley function.}
 \usage{
-makeAckleyFunction(dimension)
+makeAckleyFunction(dimensions)
 }
 \arguments{
-\item{dimension}{[\code{dimension}]\cr
+\item{dimensions}{[\code{dimension}]\cr
 Number of parameters.}
 }
 \description{
