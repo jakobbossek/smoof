@@ -1,6 +1,6 @@
 #' Leon function
 #'
-#' @template ret_otf_single
+#' @template ret_smoof_single
 #' @export
 makeLeonFunction = function() {
     makeSingleObjectiveFunction(

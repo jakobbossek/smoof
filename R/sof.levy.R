@@ -1,7 +1,7 @@
 #' Levy function
 #'
 #' @template arg_dimensions
-#' @template ret_otf_single
+#' @template ret_smoof_single
 #' @export
 makeLevyFunction = function(dimensions) {
     assertCount(dimensions)

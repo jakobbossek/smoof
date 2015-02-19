@@ -1,6 +1,6 @@
 #' Keane function
 #'
-#' @template ret_otf_single
+#' @template ret_smoof_single
 # @export
 #FIMXE: http://infinity77.net/global_optimization/test_functions_nd_K.html#go_benchmark.Kowalik
 # Somethings incorrect here. The function is defined with additional constrains in the original version

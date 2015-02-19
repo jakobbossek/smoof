@@ -1,3 +1,3 @@
 library(testthat)
-test_check("otf")
+test_check("smoof")
 

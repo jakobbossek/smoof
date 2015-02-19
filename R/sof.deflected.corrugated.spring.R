@@ -6,7 +6,7 @@
 #'   Parameter.
 #' @param alpha [\code{numeric(1)}]\cr
 #'   Parameter.
-#' @template ret_otf_single
+#' @template ret_smoof_single
 #' @export
 makeDeflectedCorrugatedSpringFunction = function(dimensions, K = 5, alpha = 5) {
     #FIXME: type is convex, unimodal

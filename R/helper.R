@@ -2,7 +2,7 @@
 # expects a vector.
 #
 # @param fn [\code{function}]\cr
-#   R Function or \code{otf_function} which expects a vector of parameters.
+#   R Function or \code{smoof_function} which expects a vector of parameters.
 # @return [\code{function}]
 makeInternalObjectiveFunction = function(fn) {
 	force(fn)

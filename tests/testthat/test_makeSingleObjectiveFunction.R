@@ -16,7 +16,7 @@ test_that("makeSingleObjectiveFunction", {
 			sum(x) < 1
 		}
 	)
-	expect_true(isOTFFunction(fn))
+	expect_true(issmoofFunction(fn))
 	expect_false(isNoisy(fn))
 	expect_equal(name, getName(fn))
 	expect_equal(getNumberOfParameters(fn), 2L)
@@ -54,5 +54,5 @@ test_that("global optimum is provided properly", {
 	}
 
 	expect_error(generateTestFunction(list(num1 = 100)))
-	expect_is(generateTestFunction(list(num1 = 0)), "otf_function")
+	expect_is(generateTestFunction(list(num1 = 0)), "smoof_function")
 })

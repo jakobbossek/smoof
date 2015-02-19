@@ -57,7 +57,7 @@ makeSingleObjectiveFunction = function(
 	global.opt.params = NULL,
 	global.opt.value = NULL) {
 
-	otf.fn = makeObjectiveFunction(name, fn, has.simple.signature, par.set, 1L, noisy, constraint.fn)
+	smoof.fn = makeObjectiveFunction(name, fn, has.simple.signature, par.set, 1L, noisy, constraint.fn)
 
 	if (!is.null(global.opt.params)) {
 		assertList(global.opt.params)
@@ -71,20 +71,20 @@ makeSingleObjectiveFunction = function(
 	}
 	if (is.null(global.opt.value) && !is.null(global.opt.params)) {
 		messagef("Computing optimal value, because just the parameters of the global optimum provided.")
-		global.opt.value = otf.fn(global.opt.params)
+		global.opt.value = smoof.fn(global.opt.params)
 		assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
 	}
 
-	otf.fn = setAttribute(otf.fn, "global.opt.params", global.opt.params)
-	otf.fn = setAttribute(otf.fn, "global.opt.value", global.opt.value)
+	smoof.fn = setAttribute(smoof.fn, "global.opt.params", global.opt.params)
+	smoof.fn = setAttribute(smoof.fn, "global.opt.value", global.opt.value)
 
-	class(otf.fn) = c("otf_single_objective_function", class(otf.fn))
+	class(smoof.fn) = c("smoof_single_objective_function", class(smoof.fn))
 
-	return(otf.fn)
+	return(smoof.fn)
 }
 
 #' @export
-print.otf_function = function(x, ...) {
+print.smoof_function = function(x, ...) {
 	n.objectives.text = ifelse(isSingleobjective(x), "Single", "Multi")
 	catf("%s-objective function.", n.objectives.text)
 	if (isMultiobjective(x)) {
@@ -96,7 +96,7 @@ print.otf_function = function(x, ...) {
 	print(getParamSet(x))
 }
 
-checkPlotFunParams = function(x) {
+checkPlsmoofunParams = function(x) {
 	n.params = getNumberOfParameters(x)
 	par.set = getParamSet(x)
 
@@ -109,7 +109,7 @@ checkPlotFunParams = function(x) {
 	}
 }
 
-getInternalPlotFunction = function(x, mapping) {
+getInternalPlsmoofunction = function(x, mapping) {
 	n.params = getNumberOfParameters(x)
 	par.set = getParamSet(x)
 
@@ -126,29 +126,29 @@ getInternalPlotFunction = function(x, mapping) {
 }
 
 #' @export
-plot.otf_function = function(x, ...) {
-	checkPlotFunParams(x)
+plot.smoof_function = function(x, ...) {
+	checkPlsmoofunParams(x)
 
 	mapping = list("1Dnumeric" = plot1DNumeric, "2Dnumeric" = plot2DNumeric, "2DMixed" = plot2DMixed)
-	plotFun = getInternalPlotFunction(x, mapping = mapping)
+	plsmoofun = getInternalPlsmoofunction(x, mapping = mapping)
 
-	plotFun(x, ...)
+	plsmoofun(x, ...)
 }
 
 #' @export
-autoplot.otf_function = function(x, ...) {
-	checkPlotFunParams(x)
+autoplot.smoof_function = function(x, ...) {
+	checkPlsmoofunParams(x)
 
 	mapping = list("1Dnumeric" = autoplot1DNumeric, "2Dnumeric" = autoplot2DNumeric, "2DMixed" = autoplot2DMixed)
-	autoplotFun = getInternalPlotFunction(x, mapping = mapping)
+	autoplsmoofun = getInternalPlsmoofunction(x, mapping = mapping)
 
-	autoplotFun(x, ...)
+	autoplsmoofun(x, ...)
 }
 
 # Utility functions.
 #
 # Generates 'gg-plotable' data.frame.
-# @param fn [\code{otf_function}]\cr
+# @param fn [\code{smoof_function}]\cr
 #   Target function.
 # @param sequences [\code{list}]\cr
 #   List of sequences. One sequence for each parameter.

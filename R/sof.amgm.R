@@ -3,7 +3,7 @@
 #' Aritmetic Mean - Geometric Mean Equality problem.
 #'
 #' @template arg_dimensions
-#' @template ret_otf_single
+#' @template ret_smoof_single
 #' @export
 makeAMGMFunction = function(dimensions) {
     #FIXME: type is convex, unimodal

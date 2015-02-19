@@ -1,6 +1,6 @@
 #' Bukin function N. 6
 #'
-#' @template ret_otf_single
+#' @template ret_smoof_single
 #' @export
 makeBukinN6Function = function() {
     makeSingleObjectiveFunction(

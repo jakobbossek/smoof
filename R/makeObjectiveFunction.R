@@ -1,4 +1,4 @@
-#' Internal generator for function of otf type.
+#' Internal generator for function of smoof type.
 #'
 #' @param name [\code{character(1)}]\cr
 #'   Function name.
@@ -17,7 +17,7 @@
 #' @param noisy [\code{logical(1)}]\cr
 #'   Is the function noisy? Defaults to \code{FALSE}.
 #' @param constraint.fn [\code{function | NULL}]\cr
-#'   Function which returns a logical vector indicating which indicates whether certain conditions 
+#'   Function which returns a logical vector indicating which indicates whether certain conditions
 #'   are met or not. Default is \code{NULL}, which means, that there are no constraints (beside possible)
 #'   box constraints defined via the \code{par.set} argument.
 #' @return [\code{function}] Target function with additional stuff attached as attributes.
@@ -47,12 +47,12 @@ makeObjectiveFunction = function(
 	}
 
 	structure(
-		fn, 
+		fn,
 		name = name,
 		par.set = par.set,
 		noisy = noisy,
 		constraint.fn = constraint.fn,
 		n.objectives = n.objectives,
-		class = c("otf_function", "function")
+		class = c("smoof_function", "function")
 	)
 }

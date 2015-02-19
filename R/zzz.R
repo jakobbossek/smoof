@@ -5,5 +5,5 @@
 #' @import RColorBrewer
 #' @import soobench
 #' @import Rcpp
-#' @useDynLib otf
+#' @useDynLib smoof
 NULL

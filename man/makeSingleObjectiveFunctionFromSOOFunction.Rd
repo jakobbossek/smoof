@@ -15,7 +15,7 @@ Further parameters passed to soo function generator. See the different
 soo functions for examples. Probably the most important one is 'dimensions'.}
 }
 \value{
-[\code{otf_function}]
+[\code{smoof_function}]
 }
 \description{
 Generates non-noisy test function from single objective benchmarking function.

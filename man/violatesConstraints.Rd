@@ -7,7 +7,7 @@
 violatesConstraints(fn, values)
 }
 \arguments{
-\item{fn}{[\code{otf_function}]\cr
+\item{fn}{[\code{smoof_function}]\cr
 Target function.}
 
 \item{values}{[\code{numeric}]\cr

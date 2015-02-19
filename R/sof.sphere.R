@@ -1,7 +1,7 @@
 #' Sphere function
 #'
 #' @template arg_dimensions
-#' @template ret_otf_single
+#' @template ret_smoof_single
 #' @export
 makeSphereFunction = function(dimensions) {
     #FIXME: type is convex, unimodal

@@ -7,7 +7,7 @@
 hasBoxConstraints(fn)
 }
 \arguments{
-\item{fn}{[\code{otf_function}]\cr
+\item{fn}{[\code{smoof_function}]\cr
 Target function.}
 }
 \value{

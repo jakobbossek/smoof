@@ -7,7 +7,7 @@
 makeChichinadzeFunction()
 }
 \value{
-[\code{otf_single_objective_function}]
+[\code{smoof_single_objective_function}]
 }
 \description{
 Chichinadze Function

@@ -3,7 +3,7 @@
 #' Also known as the second function of De Jong or the (Rosenbrock) banana function.
 #'
 #' @template arg_dimensions
-#' @template ret_otf_single
+#' @template ret_smoof_single
 #' @export
 makeRosenbrockFunction = function(dimensions) {
     #FIXME: unimodal

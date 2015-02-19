@@ -28,9 +28,9 @@ makeMultiObjectiveFunction = function(
 	noisy = FALSE,
 	constraint.fn = NULL) {
 
-	otf.fn = makeObjectiveFunction(name, fn, has.simple.signature, par.set, n.objectives, noisy, constraint.fn)
+	smoof.fn = makeObjectiveFunction(name, fn, has.simple.signature, par.set, n.objectives, noisy, constraint.fn)
 
-	class(otf.fn) = c("otf_single_objective_function", class(otf.fn))
+	class(smoof.fn) = c("smoof_single_objective_function", class(smoof.fn))
 
-	return(otf.fn)
+	return(smoof.fn)
 }

@@ -5,7 +5,7 @@
 #' @param ... [\code{list}]\cr
 #'   Further parameters passed to soo function generator. See the different
 #'   soo functions for examples. Probably the most important one is 'dimensions'.
-#' @return [\code{otf_function}]
+#' @return [\code{smoof_function}]
 #' @examples \dontrun{
 #'   branin.fn = makeSingleObjectiveFunctionFromSOOFunction("branin")
 #'   print(branin.fn)

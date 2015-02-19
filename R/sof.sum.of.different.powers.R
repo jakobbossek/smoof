@@ -1,7 +1,7 @@
 #' Sum of different squares function
 #'
 #' @template arg_dimensions
-#' @template ret_otf_single
+#' @template ret_smoof_single
 #' @export
 makeSumOfDifferentSquaresFunction = function(dimensions) {
     assertCount(dimensions)

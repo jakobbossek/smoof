@@ -1,13 +1,13 @@
-Package: otf
+Package: smoof
 Type: Package
-Title: Single- and Multi-Objective Test Function Generators and Functions for Numerical Optimization.
+Title: Single and Multi-Objective Optimization Functions for Numerical Optimization.
 Description: Provides generators for a high number of both single- and multi-objective test functions which are frequently used for the benchmarking of numerical optimization algorithms.
 Version: 1.0
 Date: 2014-07-31
 Authors@R: c(person("Jakob", "Bossek", email = "j.bossek@gmail.com", role =
     c("aut", "cre")))
-URL: https://github.com/jakobbossek/otf
-BugReports: https://github.com/jakobbossek/otf/issues
+URL: https://github.com/jakobbossek/smoof
+BugReports: https://github.com/jakobbossek/smoof/issues
 License: BSD_2_clause + file LICENSE
 Depends:
     ParamHelpers (>= 1.3),

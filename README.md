@@ -1,7 +1,7 @@
-# otf: Optimization target functions
+# smoof: Optimization target functions
 
-[![Build Status](https://travis-ci.org/jakobbossek/otf.svg)](https://travis-ci.org/jakobbossek/otf)
-[![Coverage Status](https://coveralls.io/repos/jakobbossek/otf/badge.svg)](https://coveralls.io/r/jakobbossek/otf)
+[![Build Status](https://travis-ci.org/jakobbossek/smoof.svg)](https://travis-ci.org/jakobbossek/smoof)
+[![Coverage Status](https://coveralls.io/repos/jakobbossek/smoof/badge.svg)](https://coveralls.io/r/jakobbossek/smoof)
 
 This package offers an interface for target functions in the context of function optimization. It conveniently builds up on the S3 objects, i. e., a target function is a S3 object composed of a descriptive name, the function itself, a parameter set, eventually box constraints or other constraints, number of targets and so on. Wrapping your target functions inside these S3 methods seems to bloat the code, and in fact it does in some way, but it is reasonable and using it makes things more definitely more readable.
 
@@ -10,7 +10,7 @@ This package offers an interface for target functions in the context of function
 The package is currently under developmenent and has not yet been released on CRAN. If you want to take a glance at it and play around install the github developement version by executing the following command:
 
 ```splus
-devtools::install_github("jakobbossek/otf")
+devtools::install_github("jakobbossek/smoof")
 ```
 
 ## Example
@@ -42,8 +42,8 @@ res = cma_es(
 print(res)
 ```
 
-The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing in R needs builds upon otf functions.
+The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing in R needs builds upon smoof functions.
 
 ## Contact
 
-Please address questions and missing features about the **otf package** to the author Jakob Bossek <j.bossek@gmail.com>. Found some nasty bugs? Please use the [issue tracker](https://github.com/jakobbossek/otf/issues) for this. Pay attention to explain the problem as good as possible. At its best you provide an example, so I can reproduce your problem.
+Please address questions and missing features about the **smoof package** to the author Jakob Bossek <j.bossek@gmail.com>. Found some nasty bugs? Please use the [issue tracker](https://github.com/jakobbossek/smoof/issues) for this. Pay attention to explain the problem as good as possible. At its best you provide an example, so I can reproduce your problem.

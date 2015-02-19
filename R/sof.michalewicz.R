@@ -3,7 +3,7 @@
 #FIXME: parameter meaning
 #' @param m [\code{integer(1)}]\cr
 #'   Parameter.
-#' @template ret_otf_single
+#' @template ret_smoof_single
 #' @export
 makeMichalewiczFunction = function(m = 5) {
     assertNumber(m, na.ok = FALSE)

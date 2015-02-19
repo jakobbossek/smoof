@@ -1,7 +1,7 @@
 #' Csendes Function
 #'
 #' @template arg_dimensions
-#' @template ret_otf_single
+#' @template ret_smoof_single
 #' @export
 makeCsendesFunction = function(dimensions) {
     assertCount(dimensions)
