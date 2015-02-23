@@ -2,6 +2,7 @@ context("makeSingleObjectiveFunction")
 
 test_that("makeSingleObjectiveFunction", {
 	name = "Test function"
+	description = "Test function description"
 	par.set = makeParamSet(
 		makeNumericParam("x1", lower = -5, upper = 5),
 		makeNumericParam("x2", lower = -5, upper = 5)
@@ -9,6 +10,7 @@ test_that("makeSingleObjectiveFunction", {
 	fn = function(x) sum(x^2)
 	fn = makeSingleObjectiveFunction(
 		name = name,
+		description = description,
 		fn = fn,
 		par.set = par.set,
 		global.opt.params = list(x1 = 0, x2 = 0),
@@ -19,6 +21,8 @@ test_that("makeSingleObjectiveFunction", {
 	expect_true(issmoofFunction(fn))
 	expect_false(isNoisy(fn))
 	expect_equal(name, getName(fn))
+	expect_equal(description, getDescription(fn))
+	expect_output(print(fn), ".*Single.*")
 	expect_equal(getNumberOfParameters(fn), 2L)
 	expect_is(getParamSet(fn), "ParamSet")
 	expect_equal(getNumberOfObjectives(fn), 1L)
