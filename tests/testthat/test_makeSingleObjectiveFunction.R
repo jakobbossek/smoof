@@ -54,5 +54,6 @@ test_that("global optimum is provided properly", {
 	}
 
 	expect_error(generateTestFunction(list(num1 = 100)))
-	expect_is(generateTestFunction(list(num1 = 0)), "smoof_function")
+	expect_is(generateTestFunction(c(num1 = 0)), "smoof_function")
+	expect_is(generateTestFunction(0), "smoof_function")
 })

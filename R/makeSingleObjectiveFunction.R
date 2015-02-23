@@ -60,8 +60,19 @@ makeSingleObjectiveFunction = function(
 	global.opt.value = NULL) {
 
 	smoof.fn = makeObjectiveFunction(name, description, fn, has.simple.signature, par.set, 1L, noisy, constraint.fn)
+	n.params = getNumberOfParameters(smoof.fn)
 
 	if (!is.null(global.opt.params)) {
+		# we allow this parameter to be a list or a numeric vector.
+		# Anyway, the vector is casted to a named list internally.
+		if (!testList(global.opt.params)) {
+			assertNumeric(global.opt.params, len = n.params, any.missing = FALSE)
+			# extract names from parameter set
+			if (is.null(names(global.opt.params))) {
+				names(global.opt.params) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+			}
+			global.opt.params = as.list(global.opt.params)
+		}
 		assertList(global.opt.params)
 		if (!isFeasible(par.set, global.opt.params)) {
 			stopf("Global optimum out of bounds.")
