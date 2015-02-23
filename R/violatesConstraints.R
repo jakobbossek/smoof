@@ -5,11 +5,11 @@
 #'   List of values.
 #' @return [\code{logical(1)}]
 #' @export
-#FIXME: if the function expects not only numeric values, we need to pass a _list_ of values
-#       and not a (numeric) vector.
 violatesConstraints = function(fn, values) {
 	assertClass(fn, "smoof_function")
-	assertNumeric(values, any.missing = FALSE)
-	constraint.fn = attr(fn, "constraint.fn")
-	!all(constraint.fn(values))
+    if (hasOtherConstraints(fn)) {
+        constraint.fn = attr(fn, "constraint.fn")
+        return(!all(constraint.fn(values)))
+    }
+    return(FALSE)
 }

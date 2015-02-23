@@ -163,7 +163,12 @@ generateDataframeForGGPlot = function(fn, sequences, par.set) {
 	data = do.call(expand.grid, sequences)
 	colnames(data) = getParamIds(par.set)
 	data.as.list = dfRowsToList(par.set = par.set, df = data)
-	data[["y"]] = sapply(data.as.list, function(data.row) fn(data.row))
+	data[["y"]] = sapply(data.as.list, function(data.row) {
+		if (violatesConstraints(fn, unlist(data.row))) {
+			return(NA)
+		}
+		return(fn(data.row))
+	})
 	return(data)
 }
 
