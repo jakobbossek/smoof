@@ -20,6 +20,7 @@ makeSphereFunction = function(dimensions) {
             upper = rep(5.12, dimensions),
             vector = FALSE
         ),
+        tags = c("unimodal", "separable", "convex", "continous"),
         global.opt.params = global.opt.params,
         global.opt.value = 0
     )

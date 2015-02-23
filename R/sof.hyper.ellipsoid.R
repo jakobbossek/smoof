@@ -22,6 +22,7 @@ makeHyperEllipsoidFunction = function(dimensions) {
             upper = rep(5.12, dimensions),
             vector = FALSE
         ),
+        tags = c("unimodal", "convex", "continous"),
         global.opt.params = global.opt.params,
         global.opt.value = 0
     )

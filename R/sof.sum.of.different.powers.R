@@ -20,6 +20,7 @@ makeSumOfDifferentSquaresFunction = function(dimensions) {
             upper = rep(1, dimensions),
             vector = FALSE
         ),
+        tags = c("unimodal", "continous"),
         global.opt.params = global.opt.params,
         global.opt.value = 0
     )

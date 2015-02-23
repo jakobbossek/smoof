@@ -6,7 +6,8 @@
 \usage{
 makeSingleObjectiveFunction(name, description = NULL, fn,
   has.simple.signature = TRUE, par.set, noisy = FALSE,
-  constraint.fn = NULL, global.opt.params = NULL, global.opt.value = NULL)
+  constraint.fn = NULL, tags = character(0), global.opt.params = NULL,
+  global.opt.value = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
@@ -35,6 +36,11 @@ Is the function noisy? Defaults to \code{FALSE}.}
 Function which returns a logical vector indicating which indicates whether certain conditions
 are met or not. Default is \code{NULL}, which means, that there are no constraints (beside possible)
 box constraints defined via the \code{par.set} argument.}
+
+\item{tags}{[\code{character}]\cr
+Optional character vector of tags or keywords which characterize the function.
+E.g. \dQuote{unimodal}, \dQuote{separable}. See \code{\link{getAvailableTags}} for
+a list of useful tags.}
 
 \item{global.opt.params}{[\code{list}]\cr
 List of named parameter values of the global optimum. Default is \code{NULL} which means unknown.}

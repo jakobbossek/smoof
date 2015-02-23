@@ -7,6 +7,10 @@
 #' @template arg_par_set
 #' @template arg_noisy
 #' @template arg_constraint_fn
+#' @param tags [\code{character}]\cr
+#'   Optional character vector of tags or keywords which characterize the function.
+#'   E.g. \dQuote{unimodal}, \dQuote{separable}. See \code{\link{getAvailableTags}} for
+#'   a list of useful tags.
 #' @param global.opt.params [\code{list}]\cr
 #'   List of named parameter values of the global optimum. Default is \code{NULL} which means unknown.
 #' @param global.opt.value [\code{numeric(1)}]\cr
@@ -56,11 +60,15 @@ makeSingleObjectiveFunction = function(
 	par.set,
 	noisy = FALSE,
 	constraint.fn = NULL,
+	tags = character(0),
 	global.opt.params = NULL,
 	global.opt.value = NULL) {
 
 	smoof.fn = makeObjectiveFunction(name, description, fn, has.simple.signature, par.set, 1L, noisy, constraint.fn)
 	n.params = getNumberOfParameters(smoof.fn)
+
+	#FIXME: currently we offer this only for single objective functions
+	assertSubset(tags, choices = getAvailableTags(), empty.ok = TRUE)
 
 	if (!is.null(global.opt.params)) {
 		# we allow this parameter to be a list or a numeric vector.
@@ -90,6 +98,7 @@ makeSingleObjectiveFunction = function(
 
 	smoof.fn = setAttribute(smoof.fn, "global.opt.params", global.opt.params)
 	smoof.fn = setAttribute(smoof.fn, "global.opt.value", global.opt.value)
+	smoof.fn = setAttribute(smoof.fn, "tags", tags)
 
 	class(smoof.fn) = c("smoof_single_objective_function", class(smoof.fn))
 
@@ -104,6 +113,7 @@ print.smoof_function = function(x, ...) {
 		catf("Number of objectives: %i", getNumberOfObjectives(x))
 	}
 	catf("Description: %s", getDescription(x))
+	catf("Tags: %s", collapse(getTags(x), sep = ", "))
 	catf("Noisy: %s", as.character(isNoisy(x)))
 	catf("Constraints: %s", as.character(hasConstraints(x)))
 	catf("Number of parameters: %i", getNumberOfParameters(x))

@@ -3,6 +3,7 @@ context("makeSingleObjectiveFunction")
 test_that("makeSingleObjectiveFunction", {
 	name = "Test function"
 	description = "Test function description"
+	tags = c("unimodal", "separable")
 	par.set = makeParamSet(
 		makeNumericParam("x1", lower = -5, upper = 5),
 		makeNumericParam("x2", lower = -5, upper = 5)
@@ -11,6 +12,7 @@ test_that("makeSingleObjectiveFunction", {
 	fn = makeSingleObjectiveFunction(
 		name = name,
 		description = description,
+		tags = tags,
 		fn = fn,
 		par.set = par.set,
 		global.opt.params = list(x1 = 0, x2 = 0),
@@ -22,6 +24,8 @@ test_that("makeSingleObjectiveFunction", {
 	expect_false(isNoisy(fn))
 	expect_equal(name, getName(fn))
 	expect_equal(description, getDescription(fn))
+	expect_equal(length(getTags(fn)), 2L)
+	expect_equal(length(setdiff(getTags(fn), getAvailableTags())), 0L)
 	expect_output(print(fn), ".*Single.*")
 	expect_equal(getNumberOfParameters(fn), 2L)
 	expect_is(getParamSet(fn), "ParamSet")
