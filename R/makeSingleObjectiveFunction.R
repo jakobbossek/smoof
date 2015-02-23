@@ -1,6 +1,7 @@
 #' Generator for single-objective target functions.
 #'
 #' @template arg_name
+#' @template arg_description
 #' @template arg_fn
 #' @template arg_has_simple_signature
 #' @template arg_par_set
@@ -49,6 +50,7 @@
 #' @export
 makeSingleObjectiveFunction = function(
 	name,
+	description = NULL,
 	fn,
 	has.simple.signature = TRUE,
 	par.set,
@@ -57,7 +59,7 @@ makeSingleObjectiveFunction = function(
 	global.opt.params = NULL,
 	global.opt.value = NULL) {
 
-	smoof.fn = makeObjectiveFunction(name, fn, has.simple.signature, par.set, 1L, noisy, constraint.fn)
+	smoof.fn = makeObjectiveFunction(name, description, fn, has.simple.signature, par.set, 1L, noisy, constraint.fn)
 
 	if (!is.null(global.opt.params)) {
 		assertList(global.opt.params)
@@ -90,6 +92,7 @@ print.smoof_function = function(x, ...) {
 	if (isMultiobjective(x)) {
 		catf("Number of objectives: %i", getNumberOfObjectives(x))
 	}
+	catf("Description: %s", getDescription(x))
 	catf("Noisy: %s", as.character(isNoisy(x)))
 	catf("Constraints: %s", as.character(hasConstraints(x)))
 	catf("Number of parameters: %i", getNumberOfParameters(x))

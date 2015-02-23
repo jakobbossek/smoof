@@ -2,6 +2,8 @@
 #'
 #' @param name [\code{character(1)}]\cr
 #'   Function name.
+#' @param description [\code{character(1)} | \code{NULL}]\cr
+#'   Optional function description.
 #' @param fn [\code{function}]\cr
 #'   Target function.
 #' @param has.simple.signature [\code{logical(1)}]\cr
@@ -23,6 +25,7 @@
 #' @return [\code{function}] Target function with additional stuff attached as attributes.
 makeObjectiveFunction = function(
 	name,
+	description = NULL,
 	fn,
 	has.simple.signature = TRUE,
 	par.set,
@@ -32,6 +35,8 @@ makeObjectiveFunction = function(
 
 	# sanity checks
 	assertCharacter(name, len = 1L, any.missing = FALSE)
+
+	is.null(description) || assertCharacter(description, len = 1L, any.missing = FALSE)
 	assertFunction(fn)
 	assertFlag(has.simple.signature, na.ok = FALSE)
 
@@ -49,6 +54,7 @@ makeObjectiveFunction = function(
 	structure(
 		fn,
 		name = name,
+		description = if (!is.null(description)) description else "",
 		par.set = par.set,
 		noisy = noisy,
 		constraint.fn = constraint.fn,

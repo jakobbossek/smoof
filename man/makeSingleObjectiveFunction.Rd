@@ -4,13 +4,16 @@
 \alias{makeSingleObjectiveFunction}
 \title{Generator for single-objective target functions.}
 \usage{
-makeSingleObjectiveFunction(name, fn, has.simple.signature = TRUE, par.set,
-  noisy = FALSE, constraint.fn = NULL, global.opt.params = NULL,
-  global.opt.value = NULL)
+makeSingleObjectiveFunction(name, description = NULL, fn,
+  has.simple.signature = TRUE, par.set, noisy = FALSE,
+  constraint.fn = NULL, global.opt.params = NULL, global.opt.value = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
 Function name. Used for the title of plots for example.}
+
+\item{description}{[\code{character(1)} | \code{NULL}]\cr
+Optional function description.}
 
 \item{fn}{[\code{function}]\cr
 Target function.}

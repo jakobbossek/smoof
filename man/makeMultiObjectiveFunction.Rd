@@ -4,12 +4,16 @@
 \alias{makeMultiObjectiveFunction}
 \title{Generator for multi-objective target functions.}
 \usage{
-makeMultiObjectiveFunction(name, fn, has.simple.signature = TRUE, par.set,
-  n.objectives, noisy = FALSE, constraint.fn = NULL)
+makeMultiObjectiveFunction(name, description = NULL, fn,
+  has.simple.signature = TRUE, par.set, n.objectives, noisy = FALSE,
+  constraint.fn = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
 Function name. Used for the title of plots for example.}
+
+\item{description}{[\code{character(1)} | \code{NULL}]\cr
+Optional function description.}
 
 \item{fn}{[\code{function}]\cr
 Target function.}

@@ -4,12 +4,16 @@
 \alias{makeObjectiveFunction}
 \title{Internal generator for function of smoof type.}
 \usage{
-makeObjectiveFunction(name, fn, has.simple.signature = TRUE, par.set,
-  n.objectives, noisy = FALSE, constraint.fn = NULL)
+makeObjectiveFunction(name, description = NULL, fn,
+  has.simple.signature = TRUE, par.set, n.objectives, noisy = FALSE,
+  constraint.fn = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
 Function name.}
+
+\item{description}{[\code{character(1)} | \code{NULL}]\cr
+Optional function description.}
 
 \item{fn}{[\code{function}]\cr
 Target function.}
