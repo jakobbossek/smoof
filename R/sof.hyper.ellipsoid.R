@@ -4,7 +4,6 @@
 #' @template ret_smoof_single
 #' @export
 makeHyperEllipsoidFunction = function(dimensions) {
-    #FIXME: type is convex, unimodal
     assertCount(dimensions)
     global.opt.params = as.list(rep(0, dimensions))
     names(global.opt.params) = paste("x", seq(dimensions), sep = "")

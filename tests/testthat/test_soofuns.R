@@ -31,4 +31,6 @@ test_that("single-objective test function generators work", {
         test.val = fun(test.param)
         expect_true(is.numeric(test.val))
     }
+
+    expect_true(length(filterFunctionsByTags("continous")) > 0L)
 })
