@@ -27,5 +27,8 @@ test_that("single-objective test function generators work", {
             fun = do.call(fun.generator, list(dimensions = 2L))
         }
         expectIsSnoofFunction(fun, fun.generator)
+        test.param = ParamHelpers::sampleValues(getParamSet(fun), 1L)
+        test.val = fun(test.param)
+        expect_true(is.numeric(test.val))
     }
 })
