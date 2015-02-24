@@ -4,16 +4,21 @@
 \alias{makeMichalewiczFunction}
 \title{Michalewicz function}
 \usage{
-makeMichalewiczFunction(m = 5)
+makeMichalewiczFunction(dimensions, m = 5)
 }
 \arguments{
+\item{dimensions}{[\code{integer(1)}]\cr
+Size of corresponding parameter space.}
+
 \item{m}{[\code{integer(1)}]\cr
-Parameter.}
+\dQuote{Steepness} parameter.}
 }
 \value{
 [\code{smoof_single_objective_function}]
 }
 \description{
-Michalewicz function
+Highly multimodal single-objective test function with \eqn{n!} local minima
+with the formula:
+\deqn{f(\mathbf{x}) = -\sum_{i=1}^{n} \sin(\mathbf{x}_i) \cdot \left(\sin\left(\frac{i \cdot \mathbf{x}_i}{\pi}\right)\right)^{2m}.}
 }
 

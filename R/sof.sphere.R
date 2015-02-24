@@ -1,13 +1,14 @@
 #' Sphere function
 #'
+#' Also known as the the \dQuote{De Jong function 1}. Convex, continous function
+#' calculated via the formula \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} \mathbf{x}_i.}
+#'
 #' @template arg_dimensions
 #' @template ret_smoof_single
 #' @export
 makeSphereFunction = function(dimensions) {
-    #FIXME: type is convex, unimodal
     assertCount(dimensions)
-    global.opt.params = as.list(rep(0, dimensions))
-    names(global.opt.params) = paste("x", seq(dimensions), sep = "")
+    global.opt.params = rep(0, dimensions)
     makeSingleObjectiveFunction(
         name = paste(dimensions, "-d Sphere function", sep = ""),
         fn = function(x) {
@@ -20,7 +21,7 @@ makeSphereFunction = function(dimensions) {
             upper = rep(5.12, dimensions),
             vector = FALSE
         ),
-        tags = c("unimodal", "separable", "convex", "continous"),
+        tags = c("unimodal", "separable", "convex", "continuous"),
         global.opt.params = global.opt.params,
         global.opt.value = 0
     )

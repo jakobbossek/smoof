@@ -14,6 +14,10 @@ Size of corresponding parameter space.}
 [\code{smoof_single_objective_function}]
 }
 \description{
-Also known as the second function of De Jong or the (Rosenbrock) banana function.
+Also known as the \dQuote{De Jong's function 2} or the \dQuote{(Rosenbrock)
+banana/valley function} due to its shape. The global optimum is located within
+a large flat valley and thus it is hard for optimization algorithms to find it.
+The following formula underlies the implementation:
+\deqn{f(\mathbf{x}) = \sum_{i=1}^{n-1} 100 \cdot (\mathbf{x}_{i+1} - \mathbf{x}_i^2)^2 + (1 - \mathbf{x}_i)^2.}
 }
 

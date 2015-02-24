@@ -14,6 +14,7 @@ Size of corresponding parameter space.}
 [\code{smoof_single_objective_function}]
 }
 \description{
-Sphere function
+Also known as the the \dQuote{De Jong function 1}. Convex, continous function
+calculated via the formula \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} \mathbf{x}_i.}
 }
 

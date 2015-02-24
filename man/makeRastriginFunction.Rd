@@ -14,6 +14,9 @@ Size of corresponding parameter space.}
 [\code{smoof_single_objective_function}]
 }
 \description{
-Rastrigin function
+One of the most popular single-objective test functions consists of many
+local optima and is thus highly multimodal with a global structure.
+The implementation follows the formula
+\deqn{f(\mathbf{x}) = 10n + \sum_{i=1}^{n} \left(\mathbf{x}_i^2 - 10 \cos(2\pi \mathbf{x}_i)\right).}
 }
 

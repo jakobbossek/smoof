@@ -14,6 +14,8 @@ Size of corresponding parameter space.}
 [\code{smoof_single_objective_function}]
 }
 \description{
-Griewank function
+Highly multimodal function with a lot of regularly distributed local minima.
+The corresponding formula is:
+\deqn{f(\mathbf{x}) = \sum_{i=1}^{n} \frac{\mathbf{x}_i^2}{4000} - \prod_{i=1}^{n} \cos\left(\frac{\mathbf{x}_i}{\sqrt{i}}\right) + 1.}
 }
 

@@ -1,13 +1,14 @@
 #' Griewank function
 #'
+#' Highly multimodal function with a lot of regularly distributed local minima.
+#' The corresponding formula is:
+#' \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} \frac{\mathbf{x}_i^2}{4000} - \prod_{i=1}^{n} \cos\left(\frac{\mathbf{x}_i}{\sqrt{i}}\right) + 1.}
+#'
 #' @template arg_dimensions
 #' @template ret_smoof_single
 #' @export
 makeGriewankFunction = function(dimensions) {
-    #FIMXE: (highly) multimodal
     assertCount(dimensions)
-    global.opt.params = as.list(rep(0, dimensions))
-    names(global.opt.params) = paste("x", seq(dimensions), sep = "")
     makeSingleObjectiveFunction(
         name = paste(dimensions, "-d Griewank function", sep = ""),
         fn = function(x) {
@@ -22,7 +23,8 @@ makeGriewankFunction = function(dimensions) {
             upper = rep(600, dimensions),
             vector = FALSE
         ),
-        global.opt.params = global.opt.params,
+        tags = c("continuous", "multimodal"),
+        global.opt.params = rep(0, dimensions),
         global.opt.value = 0
     )
 }

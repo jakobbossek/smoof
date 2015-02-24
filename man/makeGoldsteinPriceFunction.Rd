@@ -10,6 +10,8 @@ makeGoldsteinPriceFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Goldstein-Price function
+Two-dimensional test function for global optimization. The implementation
+follows the formula:
+\deqn{f(\mathbf{x}) = \left(1 + (\mathbf{x}_1 + \mathbf{x}_2 + 1)^2 \cdot (19 - 14\mathbf{x}_1 + 3\mathbf{x}_1^2 - 14\mathbf{x}_2 + 6\mathbf{x}_1\mathbf{x}_2 + 3\mathbf{x}_2^2)\right)\\ \qquad \cdot \left(30 + (2\mathbf{x}_1 - 3\mathbf{x}_2)^2 \cdot (18 - 32\mathbf{x}_1 + 12\mathbf{x}_1^2 + 48\mathbf{x}_2 - 36\mathbf{x}_1\mathbf{x}_2 + 27\mathbf{x}_2^2)\right)}.
 }
 

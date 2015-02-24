@@ -1,13 +1,16 @@
-#' Ackley function.
+#' Ackley function
+#'
+#' Also known as \dQuote{Ackley's path function}.
+#' Multimodal test function with its global optimum in the center of the defintion
+#' space. The implementation is based on the formula
+#' \deqn{f(\mathbf{x}) = -a \cdot \exp\left(-b \cdot \sqrt{\left(\frac{1}{n} \sum_{i=1}^{n} \mathbf{x}_i\right)}\right) - \exp\left(\frac{1}{n} \sum_{i=1}^{n} \cos(c \cdot \mathbf{x}_i)\right),}
+#' with \eqn{a = 20}, \eqn{b = 0.2} and \eqn{c = 2\pi}.
 #'
 #' @template arg_dimensions
 #' @template ret_smoof_single
 #' @export
 makeAckleyFunction = function(dimensions) {
-    #FIXME: multimodal
     assertCount(dimensions, na.ok = FALSE)
-    global.opt.params = as.list(rep(0, dimensions))
-    names(global.opt.params) = paste("x", seq(dimensions), sep = "")
     makeSingleObjectiveFunction(
         name = paste(dimensions, "-d Ackley function", sep = ""),
         fn = function(x) {
@@ -26,7 +29,8 @@ makeAckleyFunction = function(dimensions) {
             upper = 32.768,
             vector = FALSE
         ),
-        global.opt.params = global.opt.params,
+        tags = c("continuous", "multimodal"),
+        global.opt.params = rep(0, dimensions),
         global.opt.value = 0L
     )
 }

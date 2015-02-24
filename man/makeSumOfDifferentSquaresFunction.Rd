@@ -14,6 +14,8 @@ Size of corresponding parameter space.}
 [\code{smoof_single_objective_function}]
 }
 \description{
-Sum of different squares function
+Simple unimodal test function similar to the Sphere and Hyper-Ellipsoidal functions.
+Formula:
+\deqn{f(\mathbf{x}) = \sum_{i=1}^{n} |\mathbf{x}_i|^{i+1}.}
 }
 

@@ -10,6 +10,9 @@ makeEasomFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Easom Function
+Unimodal function with its global optimum in the center of the search space.
+The attraction area of the global optimum is very small in relation to the
+search space:
+\deqn{f(\mathbf{x}) = -\cos(\mathbf{x}_1)\cos(\mathbf{x}_2)\exp\left(-\left((\mathbf{x}_1 - \pi)^2 + (\mathbf{x}_2 - pi)^2\right)\right).}
 }
 

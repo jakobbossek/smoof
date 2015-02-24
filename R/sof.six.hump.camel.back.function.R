@@ -1,15 +1,19 @@
 #' Three-Hump Camel Function
 #'
+#' Two dimensional single-objective test function with six local minima oh which
+#' two are global. The surface is similar to the back of a camel. That is why it
+#' is called Camel function. The implementation is based on the formula:
+#' \deqn{f(\mathbf{x}) = \left(4 - 2.1\mathbf{x}_1^2 + \mathbf{x}_1^{0.75}\right)\mathbf{x}_1^2 + \mathbf{x}_1 \mathbf{x}_2 + \left(-4 + 4\mathbf{x}_2^2\right)\mathbf{x}_2^2}.
+#'
 #' @template ret_smoof_single
 #' @export
-makeThreeHumpCamelFunction = function() {
-    #FIXME: multimodal, two global optima
+makeSixHumpCamelFunction = function() {
     makeSingleObjectiveFunction(
-        name = "Three-Hump Camel Function",
+        name = "Six-Hump Camel Back Function",
         fn = function(x) {
             xx1 = x[1]^2
             xx2 = x[2]^2
-            (4 + 2.1 * xx1 + xx1^2 / 3) * xx1 + x[1] * x[2] + (-4 + 4 * xx2) * xx2
+            (4 - 2.1 * xx1 + x[1]^(0.75)) * xx1 + x[1] * x[2] + (-4 + 4 * xx2) * xx2
         },
         par.set = makeNumericParamSet(
             len = 2L,
@@ -17,7 +21,8 @@ makeThreeHumpCamelFunction = function() {
             lower = c(-3, -2),
             upper = c(3, 2),
             vector = FALSE
-        )
+        ),
+        tags = c("multimodal", "continuous")
         #FIXME: global opt param(−0.0898, 0.7126) and (0.0898, −0.7126)
         # global opt value -1.0316
     )

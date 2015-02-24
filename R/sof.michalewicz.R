@@ -1,21 +1,23 @@
 #' Michalewicz function
 #'
-#FIXME: parameter meaning
+#' Highly multimodal single-objective test function with \eqn{n!} local minima
+#' with the formula:
+#' \deqn{f(\mathbf{x}) = -\sum_{i=1}^{n} \sin(\mathbf{x}_i) \cdot \left(\sin\left(\frac{i \cdot \mathbf{x}_i}{\pi}\right)\right)^{2m}.}
+#'
+#' @template arg_dimensions
 #' @param m [\code{integer(1)}]\cr
-#'   Parameter.
+#'   \dQuote{Steepness} parameter.
 #' @template ret_smoof_single
 #' @export
-makeMichalewiczFunction = function(m = 5) {
+makeMichalewiczFunction = function(dimensions, m = 5) {
+    assertCount(dimensions, na.ok = FALSE)
     assertNumber(m, na.ok = FALSE)
-
-    force(5)
-
+    force(m)
     makeSingleObjectiveFunction(
         name = "Michalewicz function",
         fn = function(x) {
-            #FIXME: arbitrary dimensions http://www.geocities.ws/eadorio/mvf.pdf
-            e = 2 * m
-            (-1) * (sin(x[1]) * sin(x[1]^2 / pi)^e + sin(x[2]) * sin(2 * x[2]^2 / pi)^e)
+            i = 1:length(x)
+            (-1) * sum(sin(x) * (sin((i * x^2) / pi)^(2 * m)))
         },
         par.set = makeNumericParamSet(
             len = 2L,
@@ -24,7 +26,9 @@ makeMichalewiczFunction = function(m = 5) {
             upper = c(pi, pi),
             vector = FALSE
         ),
-        global.opt.params = list("x1" = 0, "x2" = 0),
-        global.opt.value = -1.8013
+        tags = c("continuous", "multimodal")
+        #FIXME: multiple global optima
+        #global.opt.params = rep(0, dimensions),
+        #global.opt.value = -1.8013
     )
 }
