@@ -22,7 +22,7 @@ test_that("autoplot function for 2D numeric functions works as expected", {
 		fn = function(x) x[[1]]^2 + sin(2 * x[[2]]),
 		par.set = makeParamSet(
 			makeNumericParam("x1", lower = -4, upper = 4),
-			makeNumericParam("x2", lower = -4, upper = 4)	
+			makeNumericParam("x2", lower = -4, upper = 4)
 		)
 	)
 
@@ -95,4 +95,12 @@ test_that("autoplot functions for 2D mixed functions (one discrete/logical and o
 	expect_is(pl, "ggplot")
 	expect_equal(pl$labels$title, fn.name)
 	expect_true(!is.null(pl$facet$rows))
+})
+
+test_that("3D plots work for two-dimensional funs", {
+	fn = makeRastriginFunction(dimensions = 3L)
+	expect_error(plot3D(fn, length.out = 10L))
+	fn = makeRastriginFunction(dimensions = 2L)
+	#FIXME: how to check for plot output of regular plots?
+	expect_true(!is.null(plot3D(fn, length.out = 10L)))
 })

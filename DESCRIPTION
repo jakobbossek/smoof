@@ -16,4 +16,5 @@ Depends:
     soobench
 Imports:
     ggplot2,
-    RColorBrewer
+    RColorBrewer,
+    plot3D
