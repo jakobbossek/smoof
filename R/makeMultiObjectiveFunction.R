@@ -11,14 +11,13 @@
 #' @template arg_constraint_fn
 #' @return [\code{function}] Target function with additional stuff attached as attributes.
 #' @examples
-#'
-#'   fn = makeMultiObjectiveFunction(
-#'     name = "Sphere Function",
-#'     fn = function(x) c(sum(x^2), exp(x)),
-#'     n.objectives = 2L,
-#'     par.set = makeNumericParamSet("x", len = 1L, lower = -5L, upper = 5L)
-#'   )
-#'   print(fn)
+#' fn = makeMultiObjectiveFunction(
+#'   name = "Sphere Function",
+#'   fn = function(x) c(sum(x^2), exp(x)),
+#'   n.objectives = 2L,
+#'   par.set = makeNumericParamSet("x", len = 1L, lower = -5L, upper = 5L)
+#' )
+#' print(fn)
 #' @export
 makeMultiObjectiveFunction = function(
 	name,
@@ -32,7 +31,7 @@ makeMultiObjectiveFunction = function(
 
 	smoof.fn = makeObjectiveFunction(name, description, fn, has.simple.signature, par.set, n.objectives, noisy, constraint.fn)
 
-	class(smoof.fn) = c("smoof_single_objective_function", class(smoof.fn))
+	class(smoof.fn) = c("smoof_multi_objective_function", class(smoof.fn))
 
 	return(smoof.fn)
 }
