@@ -104,3 +104,21 @@ test_that("3D plots work for two-dimensional funs", {
 	#FIXME: how to check for plot output of regular plots?
 	expect_true(!is.null(plot3D(fn, length.out = 10L)))
 })
+
+test_that("Pareto-optimal front can be approximately visualized in 2D", {
+	moo.fn = makeZDT1Function(dimensions = 3L)
+	expect_error(visualizeParetoOptimalFront(moo.fn))
+	moo.fn = makeZDT1Function(dimensions = 2L)
+	for (show.only.front in c(TRUE, FALSE)) {
+		for (limits.by.front in c(TRUE, FALSE)) {
+			pl = visualizeParetoOptimalFront(
+				moo.fn,
+				show.only.front = show.only.front,
+				limits.by.front = limits.by.front
+			)
+			expect_is(pl, c("gg", "ggplot"))
+			expect_true(grepl("ZDT1", pl$labels$title))
+		}
+	}
+
+})
