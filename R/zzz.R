@@ -5,4 +5,5 @@
 #' @import RColorBrewer
 #' @import plot3D
 #' @import soobench
+#' @import emoa
 NULL

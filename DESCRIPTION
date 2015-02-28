@@ -17,4 +17,7 @@ Depends:
 Imports:
     ggplot2,
     RColorBrewer,
-    plot3D
+    plot3D,
+    emoa
+Suggests:
+    testthat
