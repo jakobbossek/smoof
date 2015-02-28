@@ -15,9 +15,13 @@ filterFunctionsByTags = function(tags) {
 
     # generate 2D version of the function (tags associated to fun and not its generator)
     funs = sapply(fun.generators, function(fun.generator) {
+        #FIXME: this is not very elegant
         fun = try(do.call(fun.generator, list()), silent = TRUE)
         if (inherits(fun, "try-error")) {
-            fun = do.call(fun.generator, list(dimensions = 2L))
+            fun = try(do.call(fun.generator, list(dimensions = 2L)), silent = TRUE)
+        }
+        if (inherits(fun, "try-error")) {
+            fun = do.call(fun.generator, list(dimensions = 2L, n.objectives = 2L))
         }
         return(fun)
     })

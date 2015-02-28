@@ -13,8 +13,9 @@ test_that("single-objective test function generators work", {
     fun.generators = setdiff(fun.generators,
         c("makeSingleObjectiveFunctionFromSOOFunction",
             "makeSingleObjectiveFunction",
-            "makeMultiObjectiveFunction", "makeInternalObjectiveFunction",
-            "makeObjectiveFunction"
+            "makeultiObjectiveFunction", "makeInternalObjectiveFunction",
+            "makeObjectiveFunction",
+            "makeMultiObjectiveFunction"
         )
     )
 
@@ -23,8 +24,11 @@ test_that("single-objective test function generators work", {
 
     for (fun.generator in fun.generators) {
         fun = try(do.call(fun.generator, list()), silent = TRUE)
+        if (inherits(fun, "try-error"   )) {
+            fun = try(do.call(fun.generator, list(dimensions = 2L)), silent = TRUE)
+        }
         if (inherits(fun, "try-error")) {
-            fun = do.call(fun.generator, list(dimensions = 2L))
+            fun = do.call(fun.generator, list(dimensions = 3L, n.objectives = 2L))
         }
         expectIsSnoofFunction(fun, fun.generator)
         test.param = ParamHelpers::sampleValues(getParamSet(fun), 1L)
