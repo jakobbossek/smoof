@@ -1,6 +1,10 @@
-#' DTLZ1 function (family) generator.
+#' DTLZ6 function (family) generator.
 #'
-#' Builds and returns the multi-objective DTLZ1 test problem.
+#' Builds and returns the multi-objective DTLZ6 test problem. This problem
+#' can be characterized by a disconnected Pareto-optimal front in the search
+#' space. This introduces a new challenge to evolutionary multi-objective
+#' optimizers, i.e., to maintain different subpopulations within the search
+#' space to cover the entire Pareto-optimal front.
 #FIXME: add formula
 #'
 #' @references K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
@@ -13,7 +17,10 @@
 #'   Number of objectives.
 #' @return [\code{smoof_multi_objective_function}]
 #' @export
-makeDTLZ1Function = function(dimensions, n.objectives) {
+makeDTLZ6Function = function(dimensions, n.objectives) {
+    assertInt(dimensions, na.ok = FALSE, lower = 2L)
+    assertInt(dimensions, na.ok = FALSE, lower = 2L)
+
     # Renaming vars here to stick to the notation in the paper
     # number of decision variables in the last group (see x_m in the paper)
     k = dimensions - n.objectives + 1
@@ -28,26 +35,22 @@ makeDTLZ1Function = function(dimensions, n.objectives) {
         # mono-objective test function were not that good, but maybe
         f = numeric(M)
         n = length(x)
+        f[1:(M - 1)] = x[1:(M - 1)]
         xm = x[(n - k):n]
-        g = 100 * (k + sum((xm - 0.5)^2 - cos(20 * pi * (xm - 0.5))))
-        a = 0.5 * (1 + g)
-        prod.xi = 1
-        for(i in M:2) {
-            f[i] = a * prod.xi * (1 - x[M - i + 1])
-            prod.xi = prod.xi * x[M - i + 1]
-        }
-        f[1] = a * prod.xi
+        g = 1 + 9 * sum(xm) / k
+        fi = f[1:(M - 1)]
+        h = M - sum(fi  * (1 + sin(3 * pi * fi)) / (1 + g))
+        f[M] = (1 + g) * h
         return(f)
     }
 
     makeMultiObjectiveFunction(
-        name = "DTLZ1 function",
+        name = "DTLZ6 function",
         description = "Deb et al.",
         fn = fn,
         par.set =  makeNumericParamSet(
             len = dimensions,
             id = "x",
-            #FIXME: any box constraints?
             lower = rep(0, dimensions),
             upper = rep(1, dimensions),
             vector = FALSE
