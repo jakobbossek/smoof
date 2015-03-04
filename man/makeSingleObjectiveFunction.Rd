@@ -42,11 +42,17 @@ Optional character vector of tags or keywords which characterize the function.
 E.g. \dQuote{unimodal}, \dQuote{separable}. See \code{\link{getAvailableTags}} for
 a list of useful tags.}
 
-\item{global.opt.params}{[\code{list}]\cr
-List of named parameter values of the global optimum. Default is \code{NULL} which means unknown.}
+\item{global.opt.params}{[\code{list} | \code{numeric} | \code{data.frame} | \code{matrix} | \code{NULL}]\cr
+Default is \code{NULL} which means unknown. Passing a \code{numeric} vector will
+be the most frequent case (numeric only functions). In this case there is only a
+single global optimum. If there are multiple global optima, passing a numeric
+\code{matrix} is the best choice. Passing a \code{list} or a \code{data.frame}
+is necessary if your function is mixed, e.g., it expects both numeric and discrete
+parameters. Internally, however, this is casted to a \code{data.frame} for
+reasons of consistency.}
 
-\item{global.opt.value}{[\code{numeric(1)}]\cr
-Global optimum value if known. Default is \code{NULL}.}
+\item{global.opt.value}{[\code{numeric(1)} | \code{NULL}]\cr
+Global optimum value if known. Default is \code{NULL}, which means unknown.}
 }
 \value{
 [\code{function}] Target function with additional stuff attached as attributes.

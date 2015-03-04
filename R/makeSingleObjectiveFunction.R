@@ -11,10 +11,16 @@
 #'   Optional character vector of tags or keywords which characterize the function.
 #'   E.g. \dQuote{unimodal}, \dQuote{separable}. See \code{\link{getAvailableTags}} for
 #'   a list of useful tags.
-#' @param global.opt.params [\code{list}]\cr
-#'   List of named parameter values of the global optimum. Default is \code{NULL} which means unknown.
-#' @param global.opt.value [\code{numeric(1)}]\cr
-#'   Global optimum value if known. Default is \code{NULL}.
+#' @param global.opt.params [\code{list} | \code{numeric} | \code{data.frame} | \code{matrix} | \code{NULL}]\cr
+#'   Default is \code{NULL} which means unknown. Passing a \code{numeric} vector will
+#'   be the most frequent case (numeric only functions). In this case there is only a
+#'   single global optimum. If there are multiple global optima, passing a numeric
+#'   \code{matrix} is the best choice. Passing a \code{list} or a \code{data.frame}
+#'   is necessary if your function is mixed, e.g., it expects both numeric and discrete
+#'   parameters. Internally, however, this is casted to a \code{data.frame} for
+#'   reasons of consistency.
+#' @param global.opt.value [\code{numeric(1)} | \code{NULL}]\cr
+#'   Global optimum value if known. Default is \code{NULL}, which means unknown.
 #' @return [\code{function}] Target function with additional stuff attached as attributes.
 #' @examples
 #'   library(ggplot2)
@@ -71,28 +77,34 @@ makeSingleObjectiveFunction = function(
 	assertSubset(tags, choices = getAvailableTags(), empty.ok = TRUE)
 
 	if (!is.null(global.opt.params)) {
+		if (!testDataFrame(global.opt.params)) {
+			# single numeric only value passed
+			if (testNumeric(global.opt.params, len = n.params, any.missing = FALSE)) {
+				global.opt.params = as.data.frame(t(global.opt.params))
+			} else if (testList(global.opt.params, len = n.params, any.missing = FALSE)) {
+				global.opt.params = as.data.frame(global.opt.params)
+			} else if (testMatrix(global.opt.params)) {
+				global.opt.params = as.data.frame(global.opt.params)
+			} else {
+				stopf("Parameter(s) for knwon global optima must be passed as vector, list, matrix or data.frame.")
+			}
+			colnames(global.opt.params) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+		}
+		assertDataFrame(global.opt.params, ncols = n.params, col.names = "unique")
 		# we allow this parameter to be a list or a numeric vector.
 		# Anyway, the vector is casted to a named list internally.
-		if (!testList(global.opt.params)) {
-			assertNumeric(global.opt.params, len = n.params, any.missing = FALSE)
-			# extract names from parameter set
-			if (is.null(names(global.opt.params))) {
-				names(global.opt.params) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+		lapply(1:nrow(global.opt.params), function(i) {
+			if (!isFeasible(par.set, ParamHelpers::dfRowToList(global.opt.params, par.set, i))) {
+				stopf("Global optimum out of bounds.")
 			}
-			global.opt.params = as.list(global.opt.params)
-		}
-		assertList(global.opt.params)
-		if (!isFeasible(par.set, global.opt.params)) {
-			stopf("Global optimum out of bounds.")
-		}
-
-		if (!setequal(getParamIds(par.set), names(global.opt.params))) {
+		})
+		if (!setequal(getParamIds(par.set), colnames(global.opt.params))) {
 			stopf("Names of values and parameter names do not match.")
 		}
 	}
 	if (is.null(global.opt.value) && !is.null(global.opt.params)) {
 		messagef("Computing optimal value, because just the parameters of the global optimum provided.")
-		global.opt.value = smoof.fn(global.opt.params)
+		global.opt.value = smoof.fn(global.opt.params[1, ])
 		assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
 	}
 

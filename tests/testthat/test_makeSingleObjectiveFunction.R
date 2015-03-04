@@ -65,3 +65,35 @@ test_that("global optimum is provided properly", {
 	expect_is(generateTestFunction(c(num1 = 0)), "smoof_function")
 	expect_is(generateTestFunction(0), "smoof_function")
 })
+
+test_that("variants of global.opt.params work well", {
+
+	generateTestFunction = function(global.opt.params) {
+		fn = makeSingleObjectiveFunction(
+			name = "My test function",
+			fn = function(x) sum(x^2),
+			par.set = makeParamSet(
+				makeNumericParam("x1", lower = -10, upper = 10),
+				makeNumericParam("x2", lower = -10, upper = 10)
+			),
+			global.opt.params = global.opt.params
+		)
+	}
+
+	expectIsCorrect = function(fn, n.opts = 1L) {
+		expect_is(fn, "smoof_function")
+		go = getGlobalOptimum(fn)
+		expect_equal(go$value, 2)
+		expect_is(go$param, "data.frame")
+		expect_equal(nrow(go$param), n.opts)
+	}
+
+	fn = generateTestFunction(c(x1 = 1, x2 = 1))
+	expectIsCorrect(fn)
+	fn = generateTestFunction(list(x1 = 1, x2 = 1))
+	expectIsCorrect(fn)
+	fn = generateTestFunction(matrix(c(1, 1, -1, -1), ncol = 2, byrow = TRUE))
+	expectIsCorrect(fn, n.opts = 2L)
+	fn = generateTestFunction(data.frame(x1 = c(1, 1, -1), x2 = c(1, -1, -1)))
+	expectIsCorrect(fn, n.opts = 3L)
+})
