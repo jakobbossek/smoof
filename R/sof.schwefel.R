@@ -3,7 +3,11 @@
 #' Highly multimodal test function. The cursial thing about this function is, that
 #' the global optimum is far away from the next best local optimum.
 #' The function is computed via:
-#' \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} -\mathbf{x}_i \sin\left(\sqrt(|\mathbf{x}_i|)\right).}
+#' \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} -\mathbf{x}_i \sin\left(\sqrt(|\mathbf{x}_i|)\right)}
+#' with \eqn{\mathbf{x}_i \in [-500, 500], i = 1, \ldots, n.}
+#'
+#' @references Schwefel, H.-P.: Numerical optimization of computer models.
+#' Chichester: Wiley & Sons, 1981.
 #'
 #' @template arg_dimensions
 #' @template ret_smoof_single

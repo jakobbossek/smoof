@@ -13,6 +13,11 @@ makeSixHumpCamelFunction()
 Two dimensional single-objective test function with six local minima oh which
 two are global. The surface is similar to the back of a camel. That is why it
 is called Camel function. The implementation is based on the formula:
-\deqn{f(\mathbf{x}) = \left(4 - 2.1\mathbf{x}_1^2 + \mathbf{x}_1^{0.75}\right)\mathbf{x}_1^2 + \mathbf{x}_1 \mathbf{x}_2 + \left(-4 + 4\mathbf{x}_2^2\right)\mathbf{x}_2^2}.
+\deqn{f(\mathbf{x}) = \left(4 - 2.1\mathbf{x}_1^2 + \mathbf{x}_1^{0.75}\right)\mathbf{x}_1^2 + \mathbf{x}_1 \mathbf{x}_2 + \left(-4 + 4\mathbf{x}_2^2\right)\mathbf{x}_2^2}
+with box constraints \eqn{\mathbf{x}_1 \in [-3, 3]} and \eqn{\mathbf{x}_2 \in [-2, 2]}.
+}
+\references{
+Dixon, L. C. W. and Szego, G. P.: The optimization problem: An introduction.
+In: Towards Global Optimization II, New York: North Holland, 1978.
 }
 

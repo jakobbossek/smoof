@@ -7,6 +7,9 @@
 #' with \eqn{a = 20}, \eqn{b = 0.2} and \eqn{c = 2\pi}. The feasible region is
 #' given by the box constraints \eqn{\mathbf{x}_i \in [-32.768, 32.768]}.
 #'
+#' @references Ackley, D. H.: A connectionist machine for genetic hillclimbing.
+#' Boston: Kluwer Academic Publishers, 1987.
+#'
 #' @template arg_dimensions
 #' @template ret_smoof_single
 #' @export
