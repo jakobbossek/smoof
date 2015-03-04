@@ -197,7 +197,9 @@ getBounds = function(bound, default) {
 	return(bound)
 }
 
-autoplot1DNumeric = function(x, ...) {
+autoplot1DNumeric = function(x, show.optimum = FALSE, ...) {
+	assertFlag(show.optimum, na.ok = FALSE)
+
 	# extract data
 	par.set = getParamSet(x)
 	par.name = getParamIds(par.set)
@@ -214,7 +216,7 @@ autoplot1DNumeric = function(x, ...) {
 		pl = pl + geom_point()
 	} else {
 		pl = pl + geom_line()
-		if (hasGlobalOptimum(x)) {
+		if (show.optimum && hasGlobalOptimum(x)) {
 			global.optimum = getGlobalOptimum(x)
 			pl = pl + geom_vline(xintercept = as.numeric(global.optimum$param), linetype = "dashed", colour = "grey")
 			point.data = data.frame(x = unlist(global.optimum$param), y = global.optimum$value)
