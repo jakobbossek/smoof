@@ -14,6 +14,12 @@ Size of corresponding parameter space.}
 [\code{smoof_single_objective_function}]
 }
 \description{
-Alpine01 function
+Highly multimodal single-objective optimization test function. It is defined
+as \deqn{f(\mathbf{x}) = \sum_{i = 1}^{n} |\mathbf{x}_i \sin(\mathbf{x}_i) + 0.1\mathbf{x}_i|}
+with box constraints \eqn{\mathbf{x}_i \in [-10, 10]} for \eqn{i = 1, \ldots, n}.
+}
+\references{
+Clerc M., The Swarm and the Queen: Towards a Deterministic and Adaptive
+Particle Swarm Optimization", Congress on Evolutionary Computation, Washington DC, 1999.
 }
 

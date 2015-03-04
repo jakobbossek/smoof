@@ -13,6 +13,12 @@ makeBraninFunction()
 Popular 2-dimensional single-objective test function based on the formula:
 \deqn{f(\mathbf{x}) = a \left(\mathbf{x}_2 - b \mathbf{x}_1^2 + c \mathbf{x_1} - d\right)^2 + e\left(1 - f\right)\cos(\mathbf{x}_1) + e,}
 where \eqn{a = 1, b = \frac{5.1}{4\pi^2}, c = \frac{5}{\pi}, d = 6, e = 10} and
-\eqn{f = \frac{1}{8\pi}}.
+\eqn{f = \frac{1}{8\pi}}. The box constraints are given by \eqn{\mathbf{x}_1 \in [-5, 10]}
+and \eqn{\mathbf{x}_2 \in [0, 15]}. The function has three global minima.
+}
+\references{
+F. H. Branin. Widely convergent method for finding
+multiple solutions of simultaneous nonlinear equations.
+IBM J. Res. Dev. 16, 504-522, 1972.
 }
 
