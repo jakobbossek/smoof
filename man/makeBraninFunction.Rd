@@ -16,6 +16,12 @@ where \eqn{a = 1, b = \frac{5.1}{4\pi^2}, c = \frac{5}{\pi}, d = 6, e = 10} and
 \eqn{f = \frac{1}{8\pi}}. The box constraints are given by \eqn{\mathbf{x}_1 \in [-5, 10]}
 and \eqn{\mathbf{x}_2 \in [0, 15]}. The function has three global minima.
 }
+\examples{
+library(ggplot2)
+fn = makeBraninFunction()
+print(fn)
+print(autoplot(fn, show.optimum = TRUE))
+}
 \references{
 F. H. Branin. Widely convergent method for finding
 multiple solutions of simultaneous nonlinear equations.

@@ -120,19 +120,27 @@ makeSingleObjectiveFunction = function(
 #' @export
 print.smoof_function = function(x, ...) {
 	n.objectives.text = ifelse(isSingleobjective(x), "Single", "Multi")
-	catf("%s-objective function.", n.objectives.text)
+	catf("%s-objective function", n.objectives.text)
 	if (isMultiobjective(x)) {
 		catf("Number of objectives: %i", getNumberOfObjectives(x))
 	}
-	catf("Description: %s", getDescription(x))
+	catf("Name: %s", getName(x))
+	description = getDescription(x)
+	catf("Description: %s", if (description == "") "no description" else description)
+
 	catf("Tags: %s", collapse(getTags(x), sep = ", "))
 	catf("Noisy: %s", as.character(isNoisy(x)))
 	catf("Constraints: %s", as.character(hasConstraints(x)))
 	catf("Number of parameters: %i", getNumberOfParameters(x))
 	print(getParamSet(x))
+	if (hasGlobalOptimum(x)) {
+		opt = getGlobalOptimum(x)
+		catf("Global optimum objective value of %.4f at", opt$value)
+		print(opt$param)
+	}
 }
 
-checkPlsmoofunParams = function(x) {
+checkPlotFunParams = function(x) {
 	n.params = getNumberOfParameters(x)
 	par.set = getParamSet(x)
 
@@ -145,7 +153,7 @@ checkPlsmoofunParams = function(x) {
 	}
 }
 
-getInternalPlsmoofunction = function(x, mapping) {
+getInternalPlotFunction = function(x, mapping) {
 	n.params = getNumberOfParameters(x)
 	par.set = getParamSet(x)
 
@@ -161,14 +169,46 @@ getInternalPlsmoofunction = function(x, mapping) {
 	stopf("This type of function cannot be plotted.")
 }
 
+#' Generate \code{\link[ggplot2]{ggplot}} object.
+#'
+#' @param x [\code{smoof_function}]\cr
+#'   Function.
+#' @param show.optimum [\code{logical(1)}]\cr
+#'   If the function has a known global optimum, should its location be
+#'   plotted by a points or multiple points in case of multiple global optima?
+#'   Default is \code{FALSE}.
+#' @param render.levels [\code{logical(1)}]\cr
+#'   For 2D numeric functions only: Should an image map be plotted? Default is
+#'   \code{FALSE}.
+#' @param render.contours [\code{logical(1)}]\cr
+#'   For 2D numeric functions only: Should contour lines be plotted? Default is
+#'   \code{TRUE}.
+#' @param use.facets [\code{logical(1)}]\cr
+#'   For mixed functions only: Should the plot be splitted by the discrete values
+#'   or should the different values be distinguished by colour in a single plot?
+#'   Default is \code{FALSE}.
+#' @param ... [any]
+#'   Not used.
+#' @return [\code{\link[ggplot2]{ggplot}}]
 #' @export
-autoplot.smoof_function = function(x, ...) {
-	checkPlsmoofunParams(x)
+autoplot.smoof_function = function(x, show.optimum = FALSE, render.levels = FALSE, render.contours = TRUE, use.facets = FALSE, ...) {
+	checkPlotFunParams(x)
+
+	assertFlag(show.optimum, na.ok = FALSE)
+	assertFlag(render.levels, na.ok = FALSE)
+	assertFlag(render.contours, na.ok = FALSE)
+	assertFlag(use.facets, na.ok = FALSE)
 
 	mapping = list("1Dnumeric" = autoplot1DNumeric, "2Dnumeric" = autoplot2DNumeric, "2DMixed" = autoplot2DMixed)
-	autoplsmoofun = getInternalPlsmoofunction(x, mapping = mapping)
+	autoPlotFun = getInternalPlotFunction(x, mapping = mapping)
 
-	autoplsmoofun(x, ...)
+	autoPlotFun(x,
+		show.optimum = show.optimum,
+		render.levels = render.levels,
+		render.contours = render.contours,
+		use.facets = use.facets,
+	 	...
+	)
 }
 
 # Utility functions.
@@ -209,9 +249,7 @@ getBounds = function(bound, default) {
 	return(bound)
 }
 
-autoplot1DNumeric = function(x, show.optimum = FALSE, ...) {
-	assertFlag(show.optimum, na.ok = FALSE)
-
+autoplot1DNumeric = function(x, show.optimum, render.contours, render.levels, use.facets, ...) {
 	# extract data
 	par.set = getParamSet(x)
 	par.name = getParamIds(par.set)
@@ -241,10 +279,7 @@ autoplot1DNumeric = function(x, show.optimum = FALSE, ...) {
 	return(pl)
 }
 
-autoplot2DNumeric = function(x, show.optimum = FALSE, render.levels = FALSE, render.contours = TRUE, ...) {
-	assertFlag(render.levels, na.ok = FALSE)
-	assertFlag(render.contours, na.ok = FALSE)
-
+autoplot2DNumeric = function(x, show.optimum, render.contours, render.levels, use.facets, ...) {
 	if (!render.levels & !render.contours) {
 		stopf("At learst render.contours or render.levels needs to be TRUE. Otherwise we have no data to plot.")
 	}
@@ -296,9 +331,7 @@ autoplot2DNumeric = function(x, show.optimum = FALSE, render.levels = FALSE, ren
     return(pl)
 }
 
-autoplot2DMixed = function(x, use.facets = FALSE, ...) {
-	assertFlag(use.facets)
-
+autoplot2DMixed = function(x, show.optimum, render.contours, render.levels, use.facets, ...) {
 	# extract data
 	par.set = getParamSet(x)
 	par.types = getParamTypes(par.set)

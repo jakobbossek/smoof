@@ -10,6 +10,11 @@
 #' multiple solutions of simultaneous nonlinear equations.
 #' IBM J. Res. Dev. 16, 504-522, 1972.
 #'
+#' @examples
+#' library(ggplot2)
+#' fn = makeBraninFunction()
+#' print(fn)
+#' print(autoplot(fn, show.optimum = TRUE))
 #' @template ret_smoof_single
 #' @export
 makeBraninFunction = function() {
