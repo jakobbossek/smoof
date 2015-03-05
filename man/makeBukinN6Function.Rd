@@ -10,6 +10,16 @@ makeBukinN6Function()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Bukin function N. 6
+Beside Bukin N. 2 and N. 4 this is the last \dQuote{Bukin family} function.
+It is given by the formula
+\deqn{f(\mathbf{x}) = 100 \sqrt{||\mathbf{x}_2 - 0.01 \mathbf{x}_1^2||} + 0.01 ||\mathbf{x}_1 + 10||}
+and the box constraints \eqn{mathbf{x}_1 \in [-15, 5], \mathbf{x}_2 \in [-3, 3]}.
+}
+\references{
+Z. K. Silagadze, Finding Two-Dimesnional Peaks, Physics of Particles
+and Nuclei Letters, vol. 4, no. 1, pp. 73-80, 2007.
+}
+\seealso{
+\code{\link{makeBukinN2Function}}, \code{\link{makeBukinN4Function}}
 }
 
