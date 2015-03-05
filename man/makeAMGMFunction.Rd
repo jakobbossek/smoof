@@ -14,6 +14,9 @@ Size of corresponding parameter space.}
 [\code{smoof_single_objective_function}]
 }
 \description{
-Aritmetic Mean - Geometric Mean Equality problem.
+Aritmetic Mean - Geometric Mean Equality problem. Multimodal problem defined
+by the formula
+\deqn{f(\mathbf{x}) = \left(\frac{1}{n} \sum_{i = 1}^{n} \mathbf{x}_i - \sqrt[n]{\prod_{i = 1}^n \mathbf{x}_i}\right)^2}
+within the constraints \eqn{\mathbf{x}_i \in [0, 10]} for \eqn{i = 1, \ldots, n}.
 }
 

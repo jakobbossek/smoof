@@ -10,6 +10,11 @@ makeBealeFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Beale Function
+Multimodal single-objective test function for optimization. It is based on
+the mathematic formula
+\deqn{f(\mathbf{x}) = (1.5 - \mathbf{x}_1 + \mathbf{x}_1\mathbf{x}_2)^2 + (2.25 - \mathbf{x}_1 + \mathbf{x}_1\mathbf{x}_2^2)^2 + (2.625 - \mathbf{x}_1 + \mathbf{x}_1\mathbf{x}_2^3)^2}
+usually evaluated within the bounds \eqn{\mathbf{x}_i \in [-4.5, 4.5], i = 1, 2}.
+The function has a flat but multimodal region aroung the single global optimum
+and large peaks in the edges of its definition space.
 }
 

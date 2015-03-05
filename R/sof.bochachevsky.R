@@ -1,12 +1,16 @@
 #' Bochachevsky Function
 #'
+#' Highly multimodal single-objective test function. The mathematical formula is
+#' given by
+#' \deqn{f(\mathbf{x}) = \sum_{i = 1}^{n - 1} (\mathbf{x}_i^2 + 2 \mathbf{x}_{i + 1}^2 - 0.3\cos(3\pi\mathbf{x}_i) - 0.4\cos(4\pi\mathbf{x}_{i + 1}) + 0.7)}
+#' with box-constraints \eqn{\mathbf{x}_i  \in [-100, 100]} for \eqn{i = 1, \ldots, n}.
+#' The multimodality will be visible by \dQuote{zooming in} in the plot.
+#'
 #' @template arg_dimensions
 #' @template ret_smoof_single
 #' @export
 makeBochachevskyFunction = function(dimensions) {
   assertCount(dimensions)
-  global.opt.params = as.list(rep(0, dimensions))
-  names(global.opt.params) = paste("x", seq(dimensions), sep = "")
   makeSingleObjectiveFunction(
     name = "Bochachevsky Function",
     fn = function(x) {
@@ -19,8 +23,9 @@ makeBochachevskyFunction = function(dimensions) {
       lower = rep(-15, dimensions),
       upper = rep(15, dimensions),
       vector = FALSE
-      ),
-    global.opt.params = global.opt.params,
+    ),
+    tags = c("multimodal"),
+    global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }

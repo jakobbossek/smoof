@@ -10,6 +10,9 @@ makeBirdFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Bird Function
+Multimodal single-objective test function. The implementation is based on the
+mathematical formulation
+\deqn{f(\mathbf{x}) = (\mathbf{x}_1 - \mathbf{x}_2)^2 + \exp((1 - \sin(\mathbf{x}_1))^2)\cos(\mathbf{x}_2) + \exp((1 - \cos(\mathbf{x}_2))^2)\sin(\mathbf{x}_1).}
+The function is restricted to two dimensions with \eqn{\mathbf{x}_i \in [-2\pi, 2\pi], i = 1, 2.}
 }
 
