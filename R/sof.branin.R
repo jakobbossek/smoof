@@ -1,4 +1,4 @@
-#' Branin function
+#' Branin RCOS function
 #'
 #' Popular 2-dimensional single-objective test function based on the formula:
 #' \deqn{f(\mathbf{x}) = a \left(\mathbf{x}_2 - b \mathbf{x}_1^2 + c \mathbf{x_1} - d\right)^2 + e\left(1 - f\right)\cos(\mathbf{x}_1) + e,}
@@ -35,8 +35,8 @@ makeBraninFunction = function() {
       lower = c(-5, 0),
       upper = c(10, 15),
       vector = FALSE
-      ),
-    tags = c("continuous", "multimodal"),
+    ),
+    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
     global.opt.params = matrix(
       c(-pi, 12.275, pi, 2.275, 3 * pi, 2.475),
       ncol = 2L, byrow = TRUE),

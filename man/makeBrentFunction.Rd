@@ -10,6 +10,13 @@ makeBrentFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Brent Function
+Single-objective two-dimensional test function. The formula is given as
+\deqn{f(\mathbf{x}) = (\mathbf{x}_1 + 10)^2 + (\mathbf{x}_2 + 10)^2 + exp(-\mathbf{x}_1^2 - \mathbf{x}_2^2)}
+subject to the constraints \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2.}
+}
+\references{
+F. H. Branin Jr., Widely Convergent Method of Finding Multiple
+Solutions of Simul- taneous Nonlinear Equations, IBM Journal of Research and
+Development, vol. 16, no. 5, pp. 504-522, 1972.
 }
 

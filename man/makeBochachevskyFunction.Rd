@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.bochachevsky.R
 \name{makeBochachevskyFunction}
 \alias{makeBochachevskyFunction}
-\title{Bochachevsky Function}
+\title{Bochachevsky Function 1}
 \usage{
 makeBochachevskyFunction(dimensions)
 }
@@ -19,5 +19,9 @@ given by
 \deqn{f(\mathbf{x}) = \sum_{i = 1}^{n - 1} (\mathbf{x}_i^2 + 2 \mathbf{x}_{i + 1}^2 - 0.3\cos(3\pi\mathbf{x}_i) - 0.4\cos(4\pi\mathbf{x}_{i + 1}) + 0.7)}
 with box-constraints \eqn{\mathbf{x}_i  \in [-100, 100]} for \eqn{i = 1, \ldots, n}.
 The multimodality will be visible by \dQuote{zooming in} in the plot.
+}
+\references{
+I. O. Bohachevsky, M. E. Johnson, M. L. Stein, General Simulated
+Annealing for Function Optimization, Technometrics, vol. 28, no. 3, pp. 209-217, 1986.
 }
 

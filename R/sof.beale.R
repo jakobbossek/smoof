@@ -25,7 +25,7 @@ makeBealeFunction = function() {
       upper = c(4.5, 4.5),
       vector = FALSE
     ),
-    tags = c("multimodal"),
+    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
     global.opt.params = c(x1 = 3, x2 = 0.5),
     global.opt.value = 0
   )

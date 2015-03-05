@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.branin.R
 \name{makeBraninFunction}
 \alias{makeBraninFunction}
-\title{Branin function}
+\title{Branin RCOS function}
 \usage{
 makeBraninFunction()
 }

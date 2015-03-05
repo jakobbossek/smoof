@@ -1,5 +1,9 @@
 #' Booth Function
 #'
+#' This function is based on the formula
+#' \deqn{f(\mathbf{x}) = (\mathbf{x}_1 + 2\mathbf{x}_2 - 7)^2 + (2\mathbf{x}_1 + \mathbf{x}_2 - 5)^2}
+#' subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
+#'
 #' @template ret_smoof_single
 #' @export
 makeBoothFunction = function() {
@@ -14,8 +18,9 @@ makeBoothFunction = function() {
       lower = c(-10, -10),
       upper = c(10, 10),
       vector = FALSE
-      ),
-    global.opt.params = list("x1" = 1, "x2" = 3),
+    ),
+    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
+    global.opt.params = c(x1 = 1, x2 = 3),
     global.opt.value = 0
   )
 }

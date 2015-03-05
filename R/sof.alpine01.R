@@ -4,8 +4,9 @@
 #' as \deqn{f(\mathbf{x}) = \sum_{i = 1}^{n} |\mathbf{x}_i \sin(\mathbf{x}_i) + 0.1\mathbf{x}_i|}
 #' with box constraints \eqn{\mathbf{x}_i \in [-10, 10]} for \eqn{i = 1, \ldots, n}.
 #'
-#' @references Clerc M., The Swarm and the Queen: Towards a Deterministic and Adaptive
-#' Particle Swarm Optimization", Congress on Evolutionary Computation, Washington DC, 1999.
+#' @references S. Rahnamyan, H. R. Tizhoosh, N. M. M. Salama, A Novel Population
+#' Initialization Method for Accelerating Evolutionary Algorithms, Computers and
+#' Mathematics with Applications, vol. 53, no. 10, pp. 1605-1614, 2007.
 #'
 #' @template arg_dimensions
 #' @template ret_smoof_single
@@ -23,8 +24,8 @@ makeAlpine01Function = function(dimensions) {
       lower = rep(-10, dimensions),
       upper = rep(10, dimensions),
       vector = FALSE
-      ),
-    tags = c("multimodal"),
+    ),
+    tags = c("continuous", "non-differentiable", "separable", "non-scalable", "multimodal"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )

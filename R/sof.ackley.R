@@ -33,7 +33,7 @@ makeAckleyFunction = function(dimensions) {
       upper = 32.768,
       vector = FALSE
       ),
-    tags = c("continuous", "multimodal"),
+    tags = c("continuous", "multimodal", "differentiable", "non-separable", "scalable"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0L
   )
