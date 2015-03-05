@@ -1,6 +1,10 @@
 .Rproj.user
 .Rhistory
 .RData
-smoof.Rcheck
-smoof.Rproj
+*.Rcheck
+*.Rproj
 playground.R
+benchmark.R
+lit
+tests/testthat/Rplots.pdf
+test_specific.R
