@@ -4,12 +4,12 @@
 #' @return [\code{logical(1)}] \code{TRUE} if function is multi-objective.
 #' @export
 isMultiobjective = function(fn) {
-	UseMethod("isMultiobjective")
+  UseMethod("isMultiobjective")
 }
 
 #' @export
 isMultiobjective.smoof_function = function(fn) {
-	return(attr(fn, "n.objectives") >= 2L)
+  return(attr(fn, "n.objectives") >= 2L)
 }
 
 #' Checks whether the given function is single-objective.
@@ -18,10 +18,10 @@ isMultiobjective.smoof_function = function(fn) {
 #' @return [\code{logical(1)}] \code{TRUE} if function is single-objective.
 #' @export
 isSingleobjective = function(fn) {
-	UseMethod("isSingleobjective")
+  UseMethod("isSingleobjective")
 }
 
 #' @export
 isSingleobjective.smoof_function = function(fn) {
-	return(attr(fn, "n.objectives") == 1L)
+  return(attr(fn, "n.objectives") == 1L)
 }

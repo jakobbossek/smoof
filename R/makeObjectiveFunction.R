@@ -24,41 +24,41 @@
 #'   box constraints defined via the \code{par.set} argument.
 #' @return [\code{function}] Target function with additional stuff attached as attributes.
 makeObjectiveFunction = function(
-	name,
-	description = NULL,
-	fn,
-	has.simple.signature = TRUE,
-	par.set,
-	n.objectives,
-	noisy = FALSE,
-	constraint.fn = NULL) {
+  name,
+  description = NULL,
+  fn,
+  has.simple.signature = TRUE,
+  par.set,
+  n.objectives,
+  noisy = FALSE,
+  constraint.fn = NULL) {
 
-	# sanity checks
-	assertCharacter(name, len = 1L, any.missing = FALSE)
+  # sanity checks
+  assertCharacter(name, len = 1L, any.missing = FALSE)
 
-	is.null(description) || assertCharacter(description, len = 1L, any.missing = FALSE)
-	assertFunction(fn)
-	assertFlag(has.simple.signature, na.ok = FALSE)
+  is.null(description) || assertCharacter(description, len = 1L, any.missing = FALSE)
+  assertFunction(fn)
+  assertFlag(has.simple.signature, na.ok = FALSE)
 
-	if (has.simple.signature) {
-		fn = makeInternalObjectiveFunction(fn)
-	}
+  if (has.simple.signature) {
+    fn = makeInternalObjectiveFunction(fn)
+  }
 
-	assertClass(par.set, "ParamSet")
-	assertInt(n.objectives, na.ok = FALSE, lower = 0L)
-	assertFlag(noisy, na.ok = FALSE)
-	if (!is.null(constraint.fn)) {
-		assertFunction(constraint.fn)
-	}
+  assertClass(par.set, "ParamSet")
+  assertInt(n.objectives, na.ok = FALSE, lower = 0L)
+  assertFlag(noisy, na.ok = FALSE)
+  if (!is.null(constraint.fn)) {
+    assertFunction(constraint.fn)
+  }
 
-	structure(
-		fn,
-		name = name,
-		description = if (!is.null(description)) description else "",
-		par.set = par.set,
-		noisy = noisy,
-		constraint.fn = constraint.fn,
-		n.objectives = n.objectives,
-		class = c("smoof_function", "function")
-	)
+  structure(
+    fn,
+    name = name,
+    description = if (!is.null(description)) description else "",
+    par.set = par.set,
+    noisy = noisy,
+    constraint.fn = constraint.fn,
+    n.objectives = n.objectives,
+    class = c("smoof_function", "function")
+  )
 }

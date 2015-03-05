@@ -10,22 +10,22 @@
 #' @template ret_smoof_single
 #' @export
 makeRosenbrockFunction = function(dimensions) {
-    assertCount(dimensions, na.ok = FALSE)
-    makeSingleObjectiveFunction(
-        name = paste(dimensions, "-d Rosenbrock function", sep = ""),
-        fn = function(x) {
-            i = 1:(length(x) - 1L)
-            sum(100 * (x[i + 1] - x[i]^2)^2 + (x[i] - 1)^2)
-        },
-        par.set = makeNumericParamSet(
-            len = dimensions,
-            id = "x",
-            lower = rep(-2.048, dimensions),
-            upper = rep(2.048, dimensions),
-            vector = FALSE
-        ),
-        tags = c("unimodal", "convex", "continuous"),
-        global.opt.params = rep(1, dimensions),
-        global.opt.value = 0
-    )
+  assertCount(dimensions, na.ok = FALSE)
+  makeSingleObjectiveFunction(
+    name = paste(dimensions, "-d Rosenbrock function", sep = ""),
+    fn = function(x) {
+      i = 1:(length(x) - 1L)
+      sum(100 * (x[i + 1] - x[i]^2)^2 + (x[i] - 1)^2)
+    },
+    par.set = makeNumericParamSet(
+      len = dimensions,
+      id = "x",
+      lower = rep(-2.048, dimensions),
+      upper = rep(2.048, dimensions),
+      vector = FALSE
+    ),
+    tags = c("unimodal", "convex", "continuous"),
+    global.opt.params = rep(1, dimensions),
+    global.opt.value = 0
+  )
 }

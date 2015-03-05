@@ -5,5 +5,5 @@
 #' @return [\code{logical(1)}]
 #' @export
 isSmoofFunction = function(object) {
-	inherits(object, what = "smoof_function")
+  inherits(object, what = "smoof_function")
 }

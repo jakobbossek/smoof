@@ -59,7 +59,7 @@ visualizeParetoOptimalFront = function(fn, length.out = 100, show.only.front = F
 
   pl = ggplot(mapping = aes_string(x = "f1", y = "f2"))
   if (!show.only.front) {
-      pl = pl + geom_point(data = points)
+    pl = pl + geom_point(data = points)
   }
   pl = pl + geom_point(data = eff.points, colour = "tomato")
   if (limits.by.front) {

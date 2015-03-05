@@ -4,6 +4,6 @@
 #' @return [\code{integer(1)}]
 #' @export
 getNumberOfParameters = function(fn) {
-	assertClass(fn, "smoof_function")
-	return(sum(getParamLengths(getParamSet(fn))))
+  assertClass(fn, "smoof_function")
+  return(sum(getParamLengths(getParamSet(fn))))
 }

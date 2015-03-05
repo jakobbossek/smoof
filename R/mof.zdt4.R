@@ -19,31 +19,31 @@
 #' @return [\code{smoof_multi_objective_function}]
 #' @export
 makeZDT4Function = function(dimensions) {
-    assertNumber(dimensions, lower = 2L, na.ok = FALSE)
-    force(dimensions)
+  assertNumber(dimensions, lower = 2L, na.ok = FALSE)
+  force(dimensions)
 
-    # define the two-objective ZDT1 function
-    fn = function(x) {
-        stopifnot(length(x) == dimensions)
-        n = length(x)
-        f1 = x[1]
-        g = 1 + 10 * (n - 1) + sum(x[2:n]^2 - 10 * cos(4 * pi * x[2:n]))
-        h = 1 - sqrt(f1 / g)
-        f2 = g * h
-        return(c(f1, f2))
-    }
+  # define the two-objective ZDT1 function
+  fn = function(x) {
+    stopifnot(length(x) == dimensions)
+    n = length(x)
+    f1 = x[1]
+    g = 1 + 10 * (n - 1) + sum(x[2:n]^2 - 10 * cos(4 * pi * x[2:n]))
+    h = 1 - sqrt(f1 / g)
+    f2 = g * h
+    return(c(f1, f2))
+  }
 
-    makeMultiObjectiveFunction(
-        name = "ZDT4 function",
-        description = "Zitzler et al. function 4",
-        fn = fn,
-        par.set =  makeNumericParamSet(
-            len = dimensions,
-            id = "x",
-            lower = rep(0, dimensions),
-            upper = rep(1, dimensions),
-            vector = FALSE
-        ),
-        n.objectives = 2L
-    )
+  makeMultiObjectiveFunction(
+    name = "ZDT4 function",
+    description = "Zitzler et al. function 4",
+    fn = fn,
+    par.set =  makeNumericParamSet(
+      len = dimensions,
+      id = "x",
+      lower = rep(0, dimensions),
+      upper = rep(1, dimensions),
+      vector = FALSE
+      ),
+    n.objectives = 2L
+  )
 }

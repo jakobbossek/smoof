@@ -59,113 +59,113 @@
 #' print(autoplot(fn))
 #' @export
 makeSingleObjectiveFunction = function(
-	name,
-	description = NULL,
-	fn,
-	has.simple.signature = TRUE,
-	par.set,
-	noisy = FALSE,
-	constraint.fn = NULL,
-	tags = character(0),
-	global.opt.params = NULL,
-	global.opt.value = NULL) {
+  name,
+  description = NULL,
+  fn,
+  has.simple.signature = TRUE,
+  par.set,
+  noisy = FALSE,
+  constraint.fn = NULL,
+  tags = character(0),
+  global.opt.params = NULL,
+  global.opt.value = NULL) {
 
-	smoof.fn = makeObjectiveFunction(name, description, fn, has.simple.signature, par.set, 1L, noisy, constraint.fn)
-	n.params = getNumberOfParameters(smoof.fn)
+  smoof.fn = makeObjectiveFunction(name, description, fn, has.simple.signature, par.set, 1L, noisy, constraint.fn)
+  n.params = getNumberOfParameters(smoof.fn)
 
-	#FIXME: currently we offer this only for single objective functions
-	assertSubset(tags, choices = getAvailableTags(), empty.ok = TRUE)
+  #FIXME: currently we offer this only for single objective functions
+  assertSubset(tags, choices = getAvailableTags(), empty.ok = TRUE)
 
-	if (!is.null(global.opt.params)) {
-		if (!testDataFrame(global.opt.params)) {
-			# single numeric only value passed
-			if (testNumeric(global.opt.params, len = n.params, any.missing = FALSE)) {
-				global.opt.params = as.data.frame(t(global.opt.params))
-			} else if (testList(global.opt.params, len = n.params, any.missing = FALSE)) {
-				global.opt.params = as.data.frame(global.opt.params)
-			} else if (testMatrix(global.opt.params)) {
-				global.opt.params = as.data.frame(global.opt.params)
-			} else {
-				stopf("Parameter(s) for knwon global optima must be passed as vector, list, matrix or data.frame.")
-			}
-			colnames(global.opt.params) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
-		}
-		assertDataFrame(global.opt.params, ncols = n.params, col.names = "unique")
+  if (!is.null(global.opt.params)) {
+    if (!testDataFrame(global.opt.params)) {
+      # single numeric only value passed
+      if (testNumeric(global.opt.params, len = n.params, any.missing = FALSE)) {
+        global.opt.params = as.data.frame(t(global.opt.params))
+      } else if (testList(global.opt.params, len = n.params, any.missing = FALSE)) {
+        global.opt.params = as.data.frame(global.opt.params)
+      } else if (testMatrix(global.opt.params)) {
+        global.opt.params = as.data.frame(global.opt.params)
+      } else {
+        stopf("Parameter(s) for knwon global optima must be passed as vector, list, matrix or data.frame.")
+      }
+      colnames(global.opt.params) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+    }
+    assertDataFrame(global.opt.params, ncols = n.params, col.names = "unique")
 
-		# check if the passed parameters are indeed within the feasible region
-		lapply(1:nrow(global.opt.params), function(i) {
-			if (!isFeasible(par.set, ParamHelpers::dfRowToList(global.opt.params, par.set, i))) {
-				stopf("Global optimum out of bounds.")
-			}
-		})
-		if (!setequal(getParamIds(par.set), colnames(global.opt.params))) {
-			stopf("Names of values and parameter names do not match.")
-		}
-	}
-	if (is.null(global.opt.value) && !is.null(global.opt.params)) {
-		global.opt.value = smoof.fn(global.opt.params[1, ])
-		assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
-	}
+    # check if the passed parameters are indeed within the feasible region
+    lapply(1:nrow(global.opt.params), function(i) {
+      if (!isFeasible(par.set, ParamHelpers::dfRowToList(global.opt.params, par.set, i))) {
+        stopf("Global optimum out of bounds.")
+      }
+    })
+    if (!setequal(getParamIds(par.set), colnames(global.opt.params))) {
+      stopf("Names of values and parameter names do not match.")
+    }
+  }
+  if (is.null(global.opt.value) && !is.null(global.opt.params)) {
+    global.opt.value = smoof.fn(global.opt.params[1, ])
+    assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
+  }
 
-	smoof.fn = setAttribute(smoof.fn, "global.opt.params", global.opt.params)
-	smoof.fn = setAttribute(smoof.fn, "global.opt.value", global.opt.value)
-	smoof.fn = setAttribute(smoof.fn, "tags", tags)
+  smoof.fn = setAttribute(smoof.fn, "global.opt.params", global.opt.params)
+  smoof.fn = setAttribute(smoof.fn, "global.opt.value", global.opt.value)
+  smoof.fn = setAttribute(smoof.fn, "tags", tags)
 
-	class(smoof.fn) = c("smoof_single_objective_function", class(smoof.fn))
+  class(smoof.fn) = c("smoof_single_objective_function", class(smoof.fn))
 
-	return(smoof.fn)
+  return(smoof.fn)
 }
 
 #' @export
 print.smoof_function = function(x, ...) {
-	n.objectives.text = ifelse(isSingleobjective(x), "Single", "Multi")
-	catf("%s-objective function", n.objectives.text)
-	if (isMultiobjective(x)) {
-		catf("Number of objectives: %i", getNumberOfObjectives(x))
-	}
-	catf("Name: %s", getName(x))
-	description = getDescription(x)
-	catf("Description: %s", if (description == "") "no description" else description)
+  n.objectives.text = ifelse(isSingleobjective(x), "Single", "Multi")
+  catf("%s-objective function", n.objectives.text)
+  if (isMultiobjective(x)) {
+    catf("Number of objectives: %i", getNumberOfObjectives(x))
+  }
+  catf("Name: %s", getName(x))
+  description = getDescription(x)
+  catf("Description: %s", if (description == "") "no description" else description)
 
-	catf("Tags: %s", collapse(getTags(x), sep = ", "))
-	catf("Noisy: %s", as.character(isNoisy(x)))
-	catf("Constraints: %s", as.character(hasConstraints(x)))
-	catf("Number of parameters: %i", getNumberOfParameters(x))
-	print(getParamSet(x))
-	if (hasGlobalOptimum(x)) {
-		opt = getGlobalOptimum(x)
-		catf("Global optimum objective value of %.4f at", opt$value)
-		print(opt$param)
-	}
+  catf("Tags: %s", collapse(getTags(x), sep = ", "))
+  catf("Noisy: %s", as.character(isNoisy(x)))
+  catf("Constraints: %s", as.character(hasConstraints(x)))
+  catf("Number of parameters: %i", getNumberOfParameters(x))
+  print(getParamSet(x))
+  if (hasGlobalOptimum(x)) {
+    opt = getGlobalOptimum(x)
+    catf("Global optimum objective value of %.4f at", opt$value)
+    print(opt$param)
+  }
 }
 
 checkPlotFunParams = function(x) {
-	n.params = getNumberOfParameters(x)
-	par.set = getParamSet(x)
+  n.params = getNumberOfParameters(x)
+  par.set = getParamSet(x)
 
-	if (n.params > 2L) {
-		stopf("Only function with up to 2 parameters can be plotted, but your function has %i", n.params)
-	}
+  if (n.params > 2L) {
+    stopf("Only function with up to 2 parameters can be plotted, but your function has %i", n.params)
+  }
 
-	if (isMultiobjective(x)) {
-		stopf("Plotting of multiobjective functions not possible.")
-	}
+  if (isMultiobjective(x)) {
+    stopf("Plotting of multiobjective functions not possible.")
+  }
 }
 
 getInternalPlotFunction = function(x, mapping) {
-	n.params = getNumberOfParameters(x)
-	par.set = getParamSet(x)
+  n.params = getNumberOfParameters(x)
+  par.set = getParamSet(x)
 
-	if (isNumeric(par.set, include.int = FALSE)) {
-		if (n.params == 1L) {
-			return(mapping[["1Dnumeric"]])
-		} else {
-			return(mapping[["2Dnumeric"]])
-		}
-	} else if (hasDiscrete(par.set) & hasNumeric(par.set, include.int = FALSE)) {
-		return(mapping[["2DMixed"]])
-	}
-	stopf("This type of function cannot be plotted.")
+  if (isNumeric(par.set, include.int = FALSE)) {
+    if (n.params == 1L) {
+      return(mapping[["1Dnumeric"]])
+    } else {
+      return(mapping[["2Dnumeric"]])
+    }
+  } else if (hasDiscrete(par.set) & hasNumeric(par.set, include.int = FALSE)) {
+    return(mapping[["2DMixed"]])
+  }
+  stopf("This type of function cannot be plotted.")
 }
 
 #' Generate \code{\link[ggplot2]{ggplot}} object.
@@ -197,27 +197,27 @@ getInternalPlotFunction = function(x, mapping) {
 #' print(autoplot(fn, show.optimum = TRUE))
 #' @export
 autoplot.smoof_function = function(x,
-	show.optimum = FALSE,
-	render.levels = FALSE, render.contours = TRUE,
-	use.facets = FALSE,
-	...) {
-	checkPlotFunParams(x)
+  show.optimum = FALSE,
+  render.levels = FALSE, render.contours = TRUE,
+  use.facets = FALSE,
+  ...) {
+  checkPlotFunParams(x)
 
-	assertFlag(show.optimum, na.ok = FALSE)
-	assertFlag(render.levels, na.ok = FALSE)
-	assertFlag(render.contours, na.ok = FALSE)
-	assertFlag(use.facets, na.ok = FALSE)
+  assertFlag(show.optimum, na.ok = FALSE)
+  assertFlag(render.levels, na.ok = FALSE)
+  assertFlag(render.contours, na.ok = FALSE)
+  assertFlag(use.facets, na.ok = FALSE)
 
-	mapping = list("1Dnumeric" = autoplot1DNumeric, "2Dnumeric" = autoplot2DNumeric, "2DMixed" = autoplot2DMixed)
-	autoPlotFun = getInternalPlotFunction(x, mapping = mapping)
+  mapping = list("1Dnumeric" = autoplot1DNumeric, "2Dnumeric" = autoplot2DNumeric, "2DMixed" = autoplot2DMixed)
+  autoPlotFun = getInternalPlotFunction(x, mapping = mapping)
 
-	autoPlotFun(x,
-		show.optimum = show.optimum,
-		render.levels = render.levels,
-		render.contours = render.contours,
-		use.facets = use.facets,
-	 	...
-	)
+  autoPlotFun(x,
+    show.optimum = show.optimum,
+    render.levels = render.levels,
+    render.contours = render.contours,
+    use.facets = use.facets,
+   ...
+   )
 }
 
 # Utility functions.
@@ -232,16 +232,16 @@ autoplot.smoof_function = function(x,
 #   Parameter set.
 # @return [\code{data.frame}]
 generateDataframeForGGPlot = function(fn, sequences, par.set) {
-	data = do.call(expand.grid, sequences)
-	colnames(data) = getParamIds(par.set)
-	data.as.list = dfRowsToList(par.set = par.set, df = data)
-	data[["y"]] = sapply(data.as.list, function(data.row) {
-		if (violatesConstraints(fn, unlist(data.row))) {
-			return(NA)
-		}
-		return(fn(data.row))
-	})
-	return(data)
+  data = do.call(expand.grid, sequences)
+  colnames(data) = getParamIds(par.set)
+  data.as.list = dfRowsToList(par.set = par.set, df = data)
+  data[["y"]] = sapply(data.as.list, function(data.row) {
+    if (violatesConstraints(fn, unlist(data.row))) {
+      return(NA)
+    }
+    return(fn(data.row))
+  })
+  return(data)
 }
 
 # Utility function.
@@ -253,131 +253,131 @@ generateDataframeForGGPlot = function(fn, sequences, par.set) {
 #   Default value. Used if bound is infinite.
 # @return [\code{numeric(1)}]
 getBounds = function(bound, default) {
-	if (any(is.infinite(bound)))
-		return(rep(default, length(bound)))
-	return(bound)
+  if (any(is.infinite(bound)))
+    return(rep(default, length(bound)))
+  return(bound)
 }
 
 autoplot1DNumeric = function(x, show.optimum, render.contours, render.levels, use.facets, ...) {
-	# extract data
-	par.set = getParamSet(x)
-	par.name = getParamIds(par.set)
+  # extract data
+  par.set = getParamSet(x)
+  par.name = getParamIds(par.set)
 
-	# get lower and upper bounds
-	lower = getBounds(bound = getLower(par.set), default = -10L)
-	upper = getBounds(bound = getUpper(par.set), default = 10L)
+  # get lower and upper bounds
+  lower = getBounds(bound = getLower(par.set), default = -10L)
+  upper = getBounds(bound = getUpper(par.set), default = 10L)
 
-	data = generateDataframeForGGPlot(fn = x, sequences = list(seq(lower, upper, by = 0.01)), par.set = par.set)
+  data = generateDataframeForGGPlot(fn = x, sequences = list(seq(lower, upper, by = 0.01)), par.set = par.set)
 
-	# finally draw data
-	pl = ggplot(data = data, mapping = aes_string(x = par.name, y = "y"))
-	if (isNoisy(x)) {
-		pl = pl + geom_point()
-	} else {
-		pl = pl + geom_line()
-		if (show.optimum && hasGlobalOptimum(x)) {
-			global.optimum = getGlobalOptimum(x)
-			pl = pl + geom_vline(xintercept = as.numeric(global.optimum$param), linetype = "dashed", colour = "grey")
-			point.data = data.frame(x = unlist(global.optimum$param), y = global.optimum$value)
-			colnames(point.data) = c(par.name, "y")
-			pl = pl + geom_point(data = point.data, colour = "tomato")
-		}
-	}
-	pl = pl + ggtitle(getName(x))
-	pl = pl + xlab(par.name)
-	return(pl)
+  # finally draw data
+  pl = ggplot(data = data, mapping = aes_string(x = par.name, y = "y"))
+  if (isNoisy(x)) {
+    pl = pl + geom_point()
+  } else {
+    pl = pl + geom_line()
+    if (show.optimum && hasGlobalOptimum(x)) {
+      global.optimum = getGlobalOptimum(x)
+      pl = pl + geom_vline(xintercept = as.numeric(global.optimum$param), linetype = "dashed", colour = "grey")
+      point.data = data.frame(x = unlist(global.optimum$param), y = global.optimum$value)
+      colnames(point.data) = c(par.name, "y")
+      pl = pl + geom_point(data = point.data, colour = "tomato")
+    }
+  }
+  pl = pl + ggtitle(getName(x))
+  pl = pl + xlab(par.name)
+  return(pl)
 }
 
 autoplot2DNumeric = function(x, show.optimum, render.contours, render.levels, use.facets, ...) {
-	if (!render.levels & !render.contours) {
-		stopf("At learst render.contours or render.levels needs to be TRUE. Otherwise we have no data to plot.")
-	}
+  if (!render.levels & !render.contours) {
+    stopf("At learst render.contours or render.levels needs to be TRUE. Otherwise we have no data to plot.")
+  }
 
-	# extract data
-	par.set = getParamSet(x)
-	par.names = getParamIds(par.set)
+  # extract data
+  par.set = getParamSet(x)
+  par.names = getParamIds(par.set)
 
-	# get bounds
-	lower = getBounds(getLower(par.set), default = -10L)
-	upper = getBounds(getUpper(par.set), default = 10L)
+  # get bounds
+  lower = getBounds(getLower(par.set), default = -10L)
+  upper = getBounds(getUpper(par.set), default = 10L)
 
-	# build up data frame
-	#FIXME: setting the stepsize (for example b = 0.05) is very evil!
-	#For example double_sum with x_i in [-65.5, 65.5] takes about 20 minutes to produce the plot
-	sequence.x1 = seq(lower[1], upper[1], length.out = 150)
-	sequence.x2 = seq(lower[2], upper[2], length.out = 150)
-	sequences = list(sequence.x1, sequence.x2)
-	data = generateDataframeForGGPlot(x, sequences, par.set)
+  # build up data frame
+  #FIXME: setting the stepsize (for example b = 0.05) is very evil!
+  #For example double_sum with x_i in [-65.5, 65.5] takes about 20 minutes to produce the plot
+  sequence.x1 = seq(lower[1], upper[1], length.out = 150)
+  sequence.x2 = seq(lower[2], upper[2], length.out = 150)
+  sequences = list(sequence.x1, sequence.x2)
+  data = generateDataframeForGGPlot(x, sequences, par.set)
 
-	# nice color palette for render.levels
-	# see http://learnr.wordpress.com/2009/07/20/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-part-6/
-	brewer.div = colorRampPalette(brewer.pal(11, "Spectral"), interpolate = "spline")
+  # nice color palette for render.levels
+  # see http://learnr.wordpress.com/2009/07/20/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-part-6/
+  brewer.div = colorRampPalette(brewer.pal(11, "Spectral"), interpolate = "spline")
 
-	# plot
-	pl = ggplot(data = data, mapping = aes_string(x = par.names[1], y = par.names[2]))
-	if (render.levels) {
-		pl = pl + geom_tile(aes_string(fill = "y"))
-		pl = pl + scale_fill_gradientn(colours = brewer.div(200))
-		pl = pl + theme(legend.position = "top")
-	}
-	if (render.contours) {
-		pl = pl + stat_contour(aes_string(z = "y", fill = NULL), colour = "gray", alpha = 0.8)
-	}
+  # plot
+  pl = ggplot(data = data, mapping = aes_string(x = par.names[1], y = par.names[2]))
+  if (render.levels) {
+    pl = pl + geom_tile(aes_string(fill = "y"))
+    pl = pl + scale_fill_gradientn(colours = brewer.div(200))
+    pl = pl + theme(legend.position = "top")
+  }
+  if (render.contours) {
+    pl = pl + stat_contour(aes_string(z = "y", fill = NULL), colour = "gray", alpha = 0.8)
+  }
 
-	# show global optimum points
-	if (show.optimum && hasGlobalOptimum(x)) {
-		df.opt = getGlobalOptimum(x)$param
-		df.colnames = colnames(df.opt)
-		pl = pl + geom_point(data = df.opt, mapping = aes_string(x = df.colnames[1], y = df.colnames[2]), colour = "tomato")
-	}
+  # show global optimum points
+  if (show.optimum && hasGlobalOptimum(x)) {
+    df.opt = getGlobalOptimum(x)$param
+    df.colnames = colnames(df.opt)
+    pl = pl + geom_point(data = df.opt, mapping = aes_string(x = df.colnames[1], y = df.colnames[2]), colour = "tomato")
+  }
 
-	# prettify
-	pl = pl + xlab(expression(x[1])) + ylab(expression(x[2]))
-	pl = pl + ggtitle(getName(x))
-	# pl = pl + scale_x_continuous(expand = c(0,0))
-	# pl = pl + scale_y_continuous(expand = c(0,0))
+  # prettify
+  pl = pl + xlab(expression(x[1])) + ylab(expression(x[2]))
+  pl = pl + ggtitle(getName(x))
+  # pl = pl + scale_x_continuous(expand = c(0,0))
+  # pl = pl + scale_y_continuous(expand = c(0,0))
 
-    return(pl)
+  return(pl)
 }
 
 autoplot2DMixed = function(x, show.optimum, render.contours, render.levels, use.facets, ...) {
-	# extract data
-	par.set = getParamSet(x)
-	par.types = getParamTypes(par.set)
-	par.names = getParamIds(par.set)
+  # extract data
+  par.set = getParamSet(x)
+  par.types = getParamTypes(par.set)
+  par.names = getParamIds(par.set)
 
-	# which parameter is discrete/logical?
-	idx.factor = which(par.types %in% c("discrete", "logical"))
-	idx.numeric = setdiff(1:2, idx.factor)
+  # which parameter is discrete/logical?
+  idx.factor = which(par.types %in% c("discrete", "logical"))
+  idx.numeric = setdiff(1:2, idx.factor)
 
-	# get names of factors respectively numeric parameters
-	name.factor = par.names[idx.factor]
-	name.numeric = par.names[idx.numeric]
+  # get names of factors respectively numeric parameters
+  name.factor = par.names[idx.factor]
+  name.numeric = par.names[idx.numeric]
 
-	# get bounds
-	lower = getBounds(bound = getLower(par.set), default = -10L)
-	upper = getBounds(bound = getUpper(par.set), default = 10L)
+  # get bounds
+  lower = getBounds(bound = getLower(par.set), default = -10L)
+  upper = getBounds(bound = getUpper(par.set), default = 10L)
 
-	numeric.seq = seq(lower, upper, by = 0.01)
-	#FIXME: 'getValues' for Params?
-	factor.seq = unlist(par.set$pars[[idx.factor]]$values)
-	sequences = list(numeric.seq, factor.seq)
-	if (idx.factor == 1L) {
-		sequences = list(factor.seq, numeric.seq)
-	}
+  numeric.seq = seq(lower, upper, by = 0.01)
+  #FIXME: 'getValues' for Params?
+  factor.seq = unlist(par.set$pars[[idx.factor]]$values)
+  sequences = list(numeric.seq, factor.seq)
+  if (idx.factor == 1L) {
+    sequences = list(factor.seq, numeric.seq)
+  }
 
-	# build up data frame
-	data = generateDataframeForGGPlot(fn = x, sequences = sequences, par.set = par.set)
+  # build up data frame
+  data = generateDataframeForGGPlot(fn = x, sequences = sequences, par.set = par.set)
 
-	pl = ggplot(data = data, mapping = aes_string(x = name.numeric, y = "y"))
-	if (use.facets) {
-		pl = pl + geom_line()
-		pl = pl + facet_grid(reformulate(".", name.factor))
-	} else {
-		pl = pl + geom_line(aes_string(linetype = name.factor))
-	}
-	pl = pl + ggtitle(getName(x))
-	pl = pl + theme(legend.position = "top")
+  pl = ggplot(data = data, mapping = aes_string(x = name.numeric, y = "y"))
+  if (use.facets) {
+    pl = pl + geom_line()
+    pl = pl + facet_grid(reformulate(".", name.factor))
+  } else {
+    pl = pl + geom_line(aes_string(linetype = name.factor))
+  }
+  pl = pl + ggtitle(getName(x))
+  pl = pl + theme(legend.position = "top")
 
-	return(pl)
+  return(pl)
 }

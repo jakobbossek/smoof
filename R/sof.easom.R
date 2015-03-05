@@ -11,20 +11,20 @@
 #' @template ret_smoof_single
 #' @export
 makeEasomFunction = function() {
-    makeSingleObjectiveFunction(
-        name = "Easom Function",
-        fn = function(x) {
-            -cos(x[1]) * cos(x[2]) * exp(-((x[1] - pi)^2 + (x[2] - pi)^2))
-        },
-        par.set = makeNumericParamSet(
-            len = 2L,
-            id = "x",
-            lower = c(-100, -100),
-            upper = c(100, 100),
-            vector = FALSE
-        ),
-        tags = c("continuous", "unimodal"),
-        global.opt.params = c(pi, pi),
-        global.opt.value = -1
-    )
+  makeSingleObjectiveFunction(
+    name = "Easom Function",
+    fn = function(x) {
+      -cos(x[1]) * cos(x[2]) * exp(-((x[1] - pi)^2 + (x[2] - pi)^2))
+    },
+    par.set = makeNumericParamSet(
+      len = 2L,
+      id = "x",
+      lower = c(-100, -100),
+      upper = c(100, 100),
+      vector = FALSE
+    ),
+    tags = c("continuous", "unimodal"),
+    global.opt.params = c(pi, pi),
+    global.opt.value = -1
+  )
 }

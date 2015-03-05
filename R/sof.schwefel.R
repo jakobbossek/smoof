@@ -13,21 +13,21 @@
 #' @template ret_smoof_single
 #' @export
 makeSchwefelFunction = function(dimensions) {
-    assertCount(dimensions)
-    makeSingleObjectiveFunction(
-        name = paste(dimensions, "-d Schwefel function", sep = ""),
-        fn = function(x) {
-            sum(-x * sin(sqrt(abs(x))))
-        },
-        par.set = makeNumericParamSet(
-            len = dimensions,
-            id = "x",
-            lower = rep(-500, dimensions),
-            upper = rep(500, dimensions),
-            vector = FALSE
-        ),
-        tags = c("continuous", "multimodal"),
-        global.opt.params = rep(420.9687, dimensions),
-        global.opt.value = -418.9829 * dimensions
-    )
+  assertCount(dimensions)
+  makeSingleObjectiveFunction(
+    name = paste(dimensions, "-d Schwefel function", sep = ""),
+    fn = function(x) {
+      sum(-x * sin(sqrt(abs(x))))
+    },
+    par.set = makeNumericParamSet(
+      len = dimensions,
+      id = "x",
+      lower = rep(-500, dimensions),
+      upper = rep(500, dimensions),
+      vector = FALSE
+    ),
+    tags = c("continuous", "multimodal"),
+    global.opt.params = rep(420.9687, dimensions),
+    global.opt.value = -418.9829 * dimensions
+  )
 }

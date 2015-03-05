@@ -7,20 +7,20 @@
 #' @template ret_smoof_single
 #' @export
 makeAdjimanFunction = function() {
-    makeSingleObjectiveFunction(
-        name = "Adjiman function",
-        fn = function(x) {
-            cos(x[1]) * sin(x[2]) - x[1] / (x[2]^2 + 1)
-        },
-        par.set = makeNumericParamSet(
-            len = 2L,
-            id = "x",
-            lower = c(-1, -1),
-            upper = c(2, 1),
-            vector = FALSE
-        ),
-        tags = c("multimodal"),
-        global.opt.params = c(x1 = 2, x2 = 0.10578),
-        global.opt.value = -2.02181
-    )
+  makeSingleObjectiveFunction(
+    name = "Adjiman function",
+    fn = function(x) {
+      cos(x[1]) * sin(x[2]) - x[1] / (x[2]^2 + 1)
+    },
+    par.set = makeNumericParamSet(
+      len = 2L,
+      id = "x",
+      lower = c(-1, -1),
+      upper = c(2, 1),
+      vector = FALSE
+      ),
+    tags = c("multimodal"),
+    global.opt.params = c(x1 = 2, x2 = 0.10578),
+    global.opt.value = -2.02181
+  )
 }

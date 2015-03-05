@@ -18,43 +18,43 @@
 #' @return [\code{smoof_multi_objective_function}]
 #' @export
 makeDTLZ6Function = function(dimensions, n.objectives) {
-    assertInt(dimensions, na.ok = FALSE, lower = 2L)
-    assertInt(dimensions, na.ok = FALSE, lower = 2L)
+  assertInt(dimensions, na.ok = FALSE, lower = 2L)
+  assertInt(dimensions, na.ok = FALSE, lower = 2L)
 
     # Renaming vars here to stick to the notation in the paper
     # number of decision variables in the last group (see x_m in the paper)
-    k = dimensions - n.objectives + 1
-    M = n.objectives
+  k = dimensions - n.objectives + 1
+  M = n.objectives
 
-    force(M)
-    force(k)
+  force(M)
+  force(k)
 
-    fn = function(x) {
-        #FIXME: check that implementation
-        #FIXME: maybe implement this stuff in C++. Yes, the benchmarks for the
-        # mono-objective test function were not that good, but maybe
-        f = numeric(M)
-        n = length(x)
-        f[1:(M - 1)] = x[1:(M - 1)]
-        xm = x[(n - k):n]
-        g = 1 + 9 * sum(xm) / k
-        fi = f[1:(M - 1)]
-        h = M - sum(fi  * (1 + sin(3 * pi * fi)) / (1 + g))
-        f[M] = (1 + g) * h
-        return(f)
-    }
+  fn = function(x) {
+    #FIXME: check that implementation
+    #FIXME: maybe implement this stuff in C++. Yes, the benchmarks for the
+    # mono-objective test function were not that good, but maybe
+    f = numeric(M)
+    n = length(x)
+    f[1:(M - 1)] = x[1:(M - 1)]
+    xm = x[(n - k):n]
+    g = 1 + 9 * sum(xm) / k
+    fi = f[1:(M - 1)]
+    h = M - sum(fi  * (1 + sin(3 * pi * fi)) / (1 + g))
+    f[M] = (1 + g) * h
+    return(f)
+  }
 
-    makeMultiObjectiveFunction(
-        name = "DTLZ6 function",
-        description = "Deb et al.",
-        fn = fn,
-        par.set =  makeNumericParamSet(
-            len = dimensions,
-            id = "x",
-            lower = rep(0, dimensions),
-            upper = rep(1, dimensions),
-            vector = FALSE
-        ),
-        n.objectives = n.objectives
-    )
+  makeMultiObjectiveFunction(
+    name = "DTLZ6 function",
+    description = "Deb et al.",
+    fn = fn,
+    par.set =  makeNumericParamSet(
+      len = dimensions,
+      id = "x",
+      lower = rep(0, dimensions),
+      upper = rep(1, dimensions),
+      vector = FALSE
+      ),
+    n.objectives = n.objectives
+  )
 }

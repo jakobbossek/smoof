@@ -4,8 +4,8 @@
 #' @return [\code{logical(1)}]
 #' @export
 hasConstraints = function(fn) {
-	assertClass(fn, "smoof_function")
-	(hasBoxConstraints(fn) || hasOtherConstraints(fn))
+  assertClass(fn, "smoof_function")
+  (hasBoxConstraints(fn) || hasOtherConstraints(fn))
 }
 
 #' Checks whether the objective function has box constraints.
@@ -14,7 +14,7 @@ hasConstraints = function(fn) {
 #' @return [\code{logical(1)}]
 #' @export
 hasBoxConstraints = function(fn) {
-	hasFiniteBoxConstraints(getParamSet(fn))
+  hasFiniteBoxConstraints(getParamSet(fn))
 }
 
 #' Checks whether the objective function has other constraints.
@@ -23,5 +23,5 @@ hasBoxConstraints = function(fn) {
 #' @return [\code{logical(1)}]
 #' @export
 hasOtherConstraints = function(fn) {
-	!is.null(attr(fn, "constraint.fn"))
+  !is.null(attr(fn, "constraint.fn"))
 }

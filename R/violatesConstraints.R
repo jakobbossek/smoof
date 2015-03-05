@@ -6,7 +6,7 @@
 #' @return [\code{logical(1)}]
 #' @export
 violatesConstraints = function(fn, values) {
-	assertClass(fn, "smoof_function")
+  assertClass(fn, "smoof_function")
   if (hasOtherConstraints(fn)) {
     constraint.fn = attr(fn, "constraint.fn")
     return(!all(constraint.fn(values)))

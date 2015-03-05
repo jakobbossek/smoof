@@ -9,22 +9,22 @@
 #' @template ret_smoof_single
 #' @export
 makeRastriginFunction = function(dimensions) {
-    assertCount(dimensions)
-    makeSingleObjectiveFunction(
-        name = paste(dimensions, "-d Rastrigin function", sep = ""),
-        fn = function(x) {
-            n = length(x)
-            10 * n + sum(x^2 - 10 * cos(2 * pi * x))
-        },
-        par.set = makeNumericParamSet(
-            len = dimensions,
-            id = "x",
-            lower = rep(-5.12, dimensions),
-            upper = rep(5.12, dimensions),
-            vector = FALSE
-        ),
-        tags = c("multimodal", "continuous", "separable"),
-        global.opt.params = rep(0, dimensions),
-        global.opt.value = 0
-    )
+  assertCount(dimensions)
+  makeSingleObjectiveFunction(
+    name = paste(dimensions, "-d Rastrigin function", sep = ""),
+    fn = function(x) {
+      n = length(x)
+      10 * n + sum(x^2 - 10 * cos(2 * pi * x))
+    },
+    par.set = makeNumericParamSet(
+      len = dimensions,
+      id = "x",
+      lower = rep(-5.12, dimensions),
+      upper = rep(5.12, dimensions),
+      vector = FALSE
+    ),
+    tags = c("multimodal", "continuous", "separable"),
+    global.opt.params = rep(0, dimensions),
+    global.opt.value = 0
+  )
 }

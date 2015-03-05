@@ -12,24 +12,24 @@
 #' @template ret_smoof_single
 #' @export
 makeSixHumpCamelFunction = function() {
-    makeSingleObjectiveFunction(
-        name = "Six-Hump Camel Back Function",
-        fn = function(x) {
-            xx1 = x[1]^2
-            xx2 = x[2]^2
-            (4 - 2.1 * xx1 + x[1]^(0.75)) * xx1 + x[1] * x[2] + (-4 + 4 * xx2) * xx2
-        },
-        par.set = makeNumericParamSet(
-            len = 2L,
-            id = "x",
-            lower = c(-3, -2),
-            upper = c(3, 2),
-            vector = FALSE
-        ),
-        tags = c("multimodal", "continuous"),
-        global.opt.params = matrix(
-            c(-0.0898, 0.7126, 0.0898, -0.7126),
-            ncol = 2L, byrow = TRUE),
-        global.opt.value = -1.0316
-    )
+  makeSingleObjectiveFunction(
+    name = "Six-Hump Camel Back Function",
+    fn = function(x) {
+      xx1 = x[1]^2
+      xx2 = x[2]^2
+      (4 - 2.1 * xx1 + x[1]^(0.75)) * xx1 + x[1] * x[2] + (-4 + 4 * xx2) * xx2
+    },
+    par.set = makeNumericParamSet(
+      len = 2L,
+      id = "x",
+      lower = c(-3, -2),
+      upper = c(3, 2),
+      vector = FALSE
+    ),
+    tags = c("multimodal", "continuous"),
+    global.opt.params = matrix(
+      c(-0.0898, 0.7126, 0.0898, -0.7126),
+      ncol = 2L, byrow = TRUE),
+    global.opt.value = -1.0316
+  )
 }

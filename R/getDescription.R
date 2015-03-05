@@ -4,6 +4,6 @@
 #' @return [\code{character(1)}]
 #' @export
 getDescription = function(fn) {
-	assertClass(fn, "smoof_function")
-	return(attr(fn, "description"))
+  assertClass(fn, "smoof_function")
+  return(attr(fn, "description"))
 }

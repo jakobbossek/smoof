@@ -18,28 +18,28 @@
 #' @template ret_smoof_single
 #' @export
 makeBraninFunction = function() {
-    makeSingleObjectiveFunction(
-        name = "Branin function",
-        fn = function(x) {
-            a = 1
-            b = 5.1 / (4 * pi^2)
-            c = 5 / pi
-            d = 6
-            e = 10
-            f = 1 / ( 8 * pi)
-            return (a * (x[2] - b * x[1]^2 + c * x[1] - d)^2 + e * (1 - f) * cos(x[1]) + e)
-        },
-        par.set = makeNumericParamSet(
-            len = 2L,
-            id = "x",
-            lower = c(-5, 0),
-            upper = c(10, 15),
-            vector = FALSE
-        ),
-        tags = c("continuous", "multimodal"),
-        global.opt.params = matrix(
-            c(-pi, 12.275, pi, 2.275, 3 * pi, 2.475),
-            ncol = 2L, byrow = TRUE),
-        global.opt.value = 0.397887
-    )
+  makeSingleObjectiveFunction(
+    name = "Branin function",
+    fn = function(x) {
+      a = 1
+      b = 5.1 / (4 * pi^2)
+      c = 5 / pi
+      d = 6
+      e = 10
+      f = 1 / ( 8 * pi)
+      return (a * (x[2] - b * x[1]^2 + c * x[1] - d)^2 + e * (1 - f) * cos(x[1]) + e)
+    },
+    par.set = makeNumericParamSet(
+      len = 2L,
+      id = "x",
+      lower = c(-5, 0),
+      upper = c(10, 15),
+      vector = FALSE
+      ),
+    tags = c("continuous", "multimodal"),
+    global.opt.params = matrix(
+      c(-pi, 12.275, pi, 2.275, 3 * pi, 2.475),
+      ncol = 2L, byrow = TRUE),
+    global.opt.value = 0.397887
+  )
 }

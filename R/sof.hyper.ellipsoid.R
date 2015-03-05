@@ -7,23 +7,23 @@
 #' @template ret_smoof_single
 #' @export
 makeHyperEllipsoidFunction = function(dimensions) {
-    assertCount(dimensions)
-    makeSingleObjectiveFunction(
-        name = paste(dimensions, "-d Hyper-Ellipsoid function", sep = ""),
-        fn = function(x) {
-            #FIXME: check if this is correct. http://www.geocities.ws/eadorio/mvf.pdf has another definiton
-            n = length(x)
-            sum(1:n * x^2)
-        },
-        par.set = makeNumericParamSet(
-            len = dimensions,
-            id = "x",
-            lower = rep(-5.12, dimensions),
-            upper = rep(5.12, dimensions),
-            vector = FALSE
-        ),
-        tags = c("unimodal", "convex", "continuous"),
-        global.opt.params = rep(0, dimensions),
-        global.opt.value = 0
-    )
+  assertCount(dimensions)
+  makeSingleObjectiveFunction(
+    name = paste(dimensions, "-d Hyper-Ellipsoid function", sep = ""),
+    fn = function(x) {
+      #FIXME: check if this is correct. http://www.geocities.ws/eadorio/mvf.pdf has another definiton
+      n = length(x)
+      sum(1:n * x^2)
+    },
+    par.set = makeNumericParamSet(
+      len = dimensions,
+      id = "x",
+      lower = rep(-5.12, dimensions),
+      upper = rep(5.12, dimensions),
+      vector = FALSE
+    ),
+    tags = c("unimodal", "convex", "continuous"),
+    global.opt.params = rep(0, dimensions),
+    global.opt.value = 0
+  )
 }

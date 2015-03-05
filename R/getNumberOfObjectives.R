@@ -4,6 +4,6 @@
 #' @return [\code{integer(1)}]
 #' @export
 getNumberOfObjectives = function(fn) {
-	assertClass(fn, "smoof_function")
-	return(attr(fn, "n.objectives"))
+  assertClass(fn, "smoof_function")
+  return(attr(fn, "n.objectives"))
 }

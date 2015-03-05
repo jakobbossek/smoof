@@ -17,22 +17,22 @@
 #' @template ret_smoof_single
 #' @export
 makeMichalewiczFunction = function(dimensions, m = 10) {
-    assertCount(dimensions, na.ok = FALSE)
-    assertNumber(m, na.ok = FALSE)
-    force(m)
-    makeSingleObjectiveFunction(
-        name = "Michalewicz function",
-        fn = function(x) {
-            i = 1:length(x)
-            (-1) * sum(sin(x) * (sin((i * x^2) / pi)^(2 * m)))
-        },
-        par.set = makeNumericParamSet(
-            len = 2L,
-            id = "x",
-            lower = c(0, 0),
-            upper = c(pi, pi),
-            vector = FALSE
-        ),
-        tags = c("continuous", "multimodal")
-    )
+  assertCount(dimensions, na.ok = FALSE)
+  assertNumber(m, na.ok = FALSE)
+  force(m)
+  makeSingleObjectiveFunction(
+    name = "Michalewicz function",
+    fn = function(x) {
+      i = 1:length(x)
+      (-1) * sum(sin(x) * (sin((i * x^2) / pi)^(2 * m)))
+    },
+    par.set = makeNumericParamSet(
+      len = 2L,
+      id = "x",
+      lower = c(0, 0),
+      upper = c(pi, pi),
+      vector = FALSE
+    ),
+    tags = c("continuous", "multimodal")
+  )
 }

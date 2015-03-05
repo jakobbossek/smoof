@@ -20,18 +20,18 @@
 #' print(fn)
 #' @export
 makeMultiObjectiveFunction = function(
-	name,
-	description = NULL,
-	fn,
-	has.simple.signature = TRUE,
-	par.set,
-	n.objectives,
-	noisy = FALSE,
-	constraint.fn = NULL) {
+  name,
+  description = NULL,
+  fn,
+  has.simple.signature = TRUE,
+  par.set,
+  n.objectives,
+  noisy = FALSE,
+  constraint.fn = NULL) {
 
-	smoof.fn = makeObjectiveFunction(name, description, fn, has.simple.signature, par.set, n.objectives, noisy, constraint.fn)
+  smoof.fn = makeObjectiveFunction(name, description, fn, has.simple.signature, par.set, n.objectives, noisy, constraint.fn)
 
-	class(smoof.fn) = c("smoof_multi_objective_function", class(smoof.fn))
+  class(smoof.fn) = c("smoof_multi_objective_function", class(smoof.fn))
 
-	return(smoof.fn)
+  return(smoof.fn)
 }

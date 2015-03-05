@@ -11,21 +11,21 @@
 #' @template ret_smoof_single
 #' @export
 makeAlpine01Function = function(dimensions) {
-    assertCount(dimensions)
-    makeSingleObjectiveFunction(
-        name = paste(dimensions, "-d Alpine01 function", sep = ""),
-        fn = function(x) {
-            sum(abs(x * sin(x) + 0.1 * x))
-        },
-        par.set = makeNumericParamSet(
-            len = dimensions,
-            id = "x",
-            lower = rep(-10, dimensions),
-            upper = rep(10, dimensions),
-            vector = FALSE
-        ),
-        tags = c("multimodal"),
-        global.opt.params = rep(0, dimensions),
-        global.opt.value = 0
-    )
+  assertCount(dimensions)
+  makeSingleObjectiveFunction(
+    name = paste(dimensions, "-d Alpine01 function", sep = ""),
+    fn = function(x) {
+      sum(abs(x * sin(x) + 0.1 * x))
+    },
+    par.set = makeNumericParamSet(
+      len = dimensions,
+      id = "x",
+      lower = rep(-10, dimensions),
+      upper = rep(10, dimensions),
+      vector = FALSE
+      ),
+    tags = c("multimodal"),
+    global.opt.params = rep(0, dimensions),
+    global.opt.value = 0
+  )
 }
