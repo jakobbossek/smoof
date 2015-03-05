@@ -3,5 +3,5 @@
 #' @return [\code{character}]
 #' @export
 getAvailableTags = function() {
-    c("unimodal", "multimodal", "separable", "convex", "continuous", "discrete")
+  c("unimodal", "multimodal", "separable", "convex", "continuous", "discrete")
 }

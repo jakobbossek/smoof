@@ -23,40 +23,40 @@
 #'   Global optimum value if known. Default is \code{NULL}, which means unknown.
 #' @return [\code{function}] Target function with additional stuff attached as attributes.
 #' @examples
-#'   library(ggplot2)
+#' library(ggplot2)
 #'
-#'   fn = makeSingleObjectiveFunction(
-#'     name = "Sphere Function",
-#'     fn = function(x) sum(x^2),
-#'     par.set = makeNumericParamSet("x", len = 1L, lower = -5L, upper = 5L),
-#'     global.opt.params = list(x = 0)
-#'   )
-#'   print(fn)
-#'   print(autoplot(fn))
+#' fn = makeSingleObjectiveFunction(
+#'   name = "Sphere Function",
+#'   fn = function(x) sum(x^2),
+#'   par.set = makeNumericParamSet("x", len = 1L, lower = -5L, upper = 5L),
+#'   global.opt.params = list(x = 0)
+#' )
+#' print(fn)
+#' print(autoplot(fn))
 #'
-#'   fn.num2 = makeSingleObjectiveFunction(
-#'   	name = "Numeric 2D",
-#'  	fn = function(x) sum(x^2),
-#'  	par.set = makeParamSet(
-#'  		makeNumericParam("x1", lower = -5, upper = 5),
-#'  		makeNumericParam("x2", lower = -5, upper = 5)
-#'  	)
+#' fn.num2 = makeSingleObjectiveFunction(
+#'   name = "Numeric 2D",
+#'   fn = function(x) sum(x^2),
+#'   par.set = makeParamSet(
+#'     makeNumericParam("x1", lower = -5, upper = 5),
+#'     makeNumericParam("x2", lower = -5, upper = 5)
 #'   )
-#'   print(fn)
-#'   print(autoplot(fn))
+#' )
+#' print(fn)
+#' print(autoplot(fn))
 #'
-#'   fn.mixed = makeSingleObjectiveFunction(
-#'  	name = "Mixed 2D",
-#'  	fn = function(x) x$num1^2 + as.integer(as.character(x$disc1) == "a"),
-#'  	has.simple.signature = FALSE,
-#'  	par.set = makeParamSet(
-#'  		makeNumericParam("num1", lower = -5, upper = 5),
-#'  		makeDiscreteParam("disc1", values = c("a", "b"))
-#'  	),
-#'  	global.opt.params = list(num1 = 0, disc1 = "b")
-#'   )
-#'   print(fn)
-#'   print(autoplot(fn))
+#' fn.mixed = makeSingleObjectiveFunction(
+#'   name = "Mixed 2D",
+#'   fn = function(x) x$num1^2 + as.integer(as.character(x$disc1) == "a"),
+#'   has.simple.signature = FALSE,
+#'   par.set = makeParamSet(
+#'     makeNumericParam("num1", lower = -5, upper = 5),
+#'     makeDiscreteParam("disc1", values = c("a", "b"))
+#'   ),
+#'   global.opt.params = list(num1 = 0, disc1 = "b")
+#' )
+#' print(fn)
+#' print(autoplot(fn))
 #' @export
 makeSingleObjectiveFunction = function(
 	name,
@@ -91,8 +91,8 @@ makeSingleObjectiveFunction = function(
 			colnames(global.opt.params) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
 		}
 		assertDataFrame(global.opt.params, ncols = n.params, col.names = "unique")
-		# we allow this parameter to be a list or a numeric vector.
-		# Anyway, the vector is casted to a named list internally.
+
+		# check if the passed parameters are indeed within the feasible region
 		lapply(1:nrow(global.opt.params), function(i) {
 			if (!isFeasible(par.set, ParamHelpers::dfRowToList(global.opt.params, par.set, i))) {
 				stopf("Global optimum out of bounds.")
@@ -103,7 +103,6 @@ makeSingleObjectiveFunction = function(
 		}
 	}
 	if (is.null(global.opt.value) && !is.null(global.opt.params)) {
-		messagef("Computing optimal value, because just the parameters of the global optimum provided.")
 		global.opt.value = smoof.fn(global.opt.params[1, ])
 		assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
 	}
@@ -187,11 +186,21 @@ getInternalPlotFunction = function(x, mapping) {
 #'   For mixed functions only: Should the plot be splitted by the discrete values
 #'   or should the different values be distinguished by colour in a single plot?
 #'   Default is \code{FALSE}.
-#' @param ... [any]
+#' @param ... [any]\cr
 #'   Not used.
 #' @return [\code{\link[ggplot2]{ggplot}}]
+#' @examples
+#' library(ggplot2)
+#' fn = makeHimmelblauFunction()
+#' print(autoplot(fn))
+#' print(autoplot(fn, render.levels = TRUE, render.contours = FALSE))
+#' print(autoplot(fn, show.optimum = TRUE))
 #' @export
-autoplot.smoof_function = function(x, show.optimum = FALSE, render.levels = FALSE, render.contours = TRUE, use.facets = FALSE, ...) {
+autoplot.smoof_function = function(x,
+	show.optimum = FALSE,
+	render.levels = FALSE, render.contours = TRUE,
+	use.facets = FALSE,
+	...) {
 	checkPlotFunParams(x)
 
 	assertFlag(show.optimum, na.ok = FALSE)

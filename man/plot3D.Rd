@@ -22,4 +22,13 @@ Furhter parameters passed to \code{\link[plot3D]{persp3D}}.}
 \description{
 Surface plot of two-dimensional test function.
 }
+\examples{
+library(plot3D)
+fn = makeRastriginFunction(dimensions = 2L)
+\dontrun{
+plot3D(fn)
+plot3D(fn, contour = TRUE)
+plot3D(fn, image = TRUE, phi = 30)
+}
+}
 

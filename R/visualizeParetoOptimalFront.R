@@ -31,41 +31,43 @@
 #' @return [\code{\link[ggplot2]{ggplot}}]
 #' @export
 visualizeParetoOptimalFront = function(fn, length.out = 100, show.only.front = FALSE, limits.by.front = TRUE) {
-    n.objectives = getNumberOfObjectives(fn)
-    if (n.objectives != 2L) {
-        stopf("Visualization only availale for bi-objective function, but the provided function has %i", n.objectives)
-    }
-    requirePackages("emoa", why = "smoof::visualizeParetoOptimalFront")
+  n.objectives = getNumberOfObjectives(fn)
+  if (n.objectives != 2L) {
+    stopf("Visualization only availale for bi-objective function, but the provided function has %i", n.objectives)
+  }
+  requirePackages("emoa", why = "smoof::visualizeParetoOptimalFront")
 
-    par.set = getParamSet(fn)
-    lower = getLower(par.set)
-    upper = getUpper(par.set)
-    x.seq = seq(lower[1], upper[1], length.out = length.out)
-    y.seq = seq(lower[2], upper[2], length.out = length.out)
-    # make factorial design in the decision space
-    gr = expand.grid(x.seq, y.seq)
+  par.set = getParamSet(fn)
+  lower = getLower(par.set)
+  upper = getUpper(par.set)
+  x.seq = seq(lower[1], upper[1], length.out = length.out)
+  y.seq = seq(lower[2], upper[2], length.out = length.out)
 
-    # get the objective points
-    points = apply(gr, 1, fn)
+  # make factorial design in the decision space
+  gr = expand.grid(x.seq, y.seq)
 
-    # filter nondominated points
-    eff.points = emoa::nondominated_points(points)
+  # get the objective points
+  points = apply(gr, 1, fn)
 
-    # transform to ggplot-friendly format
-    points = as.data.frame(t(points))
-    eff.points = as.data.frame(t(eff.points))
-    colnames(points) = colnames(eff.points) = c("f1", "f2")
+  # filter nondominated points
+  eff.points = emoa::nondominated_points(points)
 
-    pl = ggplot(mapping = aes_string(x = "f1", y = "f2"))
-    if (!show.only.front) {
-        pl = pl + geom_point(data = points)
-    }
-    pl = pl + geom_point(data = eff.points, colour = "tomato")
-    if (limits.by.front) {
-        limits = apply(eff.points, 2, range)
-        pl = pl + xlim(limits[, 1]) + ylim(limits[, 2])
-    }
-    pl = pl + xlab(expression(f[1])) + ylab(expression(f[2]))
-    pl = pl + ggtitle(sprintf("Objective space with approximative Pareto-optimal\n front for the bi-criteria %s function", getName(fn)))
-    return(pl)
+  # transform to ggplot-friendly format
+  points = as.data.frame(t(points))
+  eff.points = as.data.frame(t(eff.points))
+  colnames(points) = colnames(eff.points) = c("f1", "f2")
+
+  pl = ggplot(mapping = aes_string(x = "f1", y = "f2"))
+  if (!show.only.front) {
+      pl = pl + geom_point(data = points)
+  }
+  pl = pl + geom_point(data = eff.points, colour = "tomato")
+  if (limits.by.front) {
+    limits = apply(eff.points, 2, range)
+    pl = pl + xlim(limits[, 1]) + ylim(limits[, 2])
+  }
+  pl = pl + xlab(expression(f[1])) + ylab(expression(f[2]))
+  pl = pl + ggtitle(sprintf("Objective space with approximative Pareto-optimal\n
+    front for the bi-criteria %s function", getName(fn)))
+  return(pl)
 }

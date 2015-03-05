@@ -20,7 +20,7 @@ test_that("makeSingleObjectiveFunction", {
 			sum(x) < 1
 		}
 	)
-	expect_true(issmoofFunction(fn))
+	expect_true(isSmoofFunction(fn))
 	expect_false(isNoisy(fn))
 	expect_equal(name, getName(fn))
 	expect_equal(description, getDescription(fn))

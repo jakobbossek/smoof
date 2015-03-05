@@ -4,6 +4,6 @@
 #' @return [\code{character}]
 #' @export
 getTags = function(fn) {
-    assertClass(fn, "smoof_function")
-    attr(fn, "tags")
+  assertClass(fn, "smoof_function")
+  attr(fn, "tags")
 }

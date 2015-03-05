@@ -29,7 +29,7 @@ For mixed functions only: Should the plot be splitted by the discrete values
 or should the different values be distinguished by colour in a single plot?
 Default is \code{FALSE}.}
 
-\item{...}{[any]
+\item{...}{[any]\cr
 Not used.}
 }
 \value{
@@ -37,5 +37,12 @@ Not used.}
 }
 \description{
 Generate \code{\link[ggplot2]{ggplot}} object.
+}
+\examples{
+library(ggplot2)
+fn = makeHimmelblauFunction()
+print(autoplot(fn))
+print(autoplot(fn, render.levels = TRUE, render.contours = FALSE))
+print(autoplot(fn, show.optimum = TRUE))
 }
 
