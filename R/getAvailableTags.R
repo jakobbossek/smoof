@@ -6,7 +6,7 @@ getAvailableTags = function() {
   c("unimodal", "multimodal",
     "separable", "non-separable",
     "convex", "non-convex",
-    "continuous", "discrete",
+    "continuous", "discontinuous",
     "scalable", "non-scalable",
     "differentiable", "non-differentiable")
 }

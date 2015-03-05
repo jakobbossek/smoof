@@ -1,12 +1,18 @@
 #' CosineMixture Function
 #'
+#' Single-objective test function based on the formula
+#' \deqn{f(\mathbf{x}) = -0.1 \sum_{i = 1}^{n} \cos(5\pi\mathbf{x}_i) - \sum_{i = 1}^{n} \mathbf{x}_i^2}
+#' subject to \eqn{\mathbf{x}_i \in [-1, 1]} for \eqn{i = 1, \ldots, n}.
+#'
+#' @references M. M. Ali, C. Khompatraporn, Z. B. Zabinsky, A Numerical Evaluation
+#' of Several Stochastic Algorithms on Selected Continuous Global Optimization
+#' Test Problems, Journal of Global Optimization, vol. 31, pp. 635-672, 2005.
+#'
 #' @template arg_dimensions
 #' @template ret_smoof_single
 #' @export
 makeCosineMixtureFunction = function(dimensions) {
   assertCount(dimensions)
-  global.opt.params = as.list(rep(0, dimensions))
-  names(global.opt.params) = paste("x", seq(dimensions), sep = "")
   makeSingleObjectiveFunction(
     name = "CosineMixture Function",
     fn = function(x) {
@@ -17,11 +23,12 @@ makeCosineMixtureFunction = function(dimensions) {
     par.set = makeNumericParamSet(
       len = dimensions,
       id = "x",
-      lower = c(-1, -1),
-      upper = c(1, 1),
+      lower = rep(-1, dimensions),
+      upper = rep(1, dimensions),
       vector = FALSE
     ),
-    global.opt.params = global.opt.params,
+    tags = c("discontinuous", "non-differentiable", "separable", "scalable", "multimodal"),
+    global.opt.params = rep(0, dimensions),
     global.opt.value = -0.1 * dimensions
   )
 }

@@ -14,6 +14,13 @@ Size of corresponding parameter space.}
 [\code{smoof_single_objective_function}]
 }
 \description{
-CosineMixture Function
+Single-objective test function based on the formula
+\deqn{f(\mathbf{x}) = -0.1 \sum_{i = 1}^{n} \cos(5\pi\mathbf{x}_i) - \sum_{i = 1}^{n} \mathbf{x}_i^2}
+subject to \eqn{\mathbf{x}_i \in [-1, 1]} for \eqn{i = 1, \ldots, n}.
+}
+\references{
+M. M. Ali, C. Khompatraporn, Z. B. Zabinsky, A Numerical Evaluation
+of Several Stochastic Algorithms on Selected Continuous Global Optimization
+Test Problems, Journal of Global Optimization, vol. 31, pp. 635-672, 2005.
 }
 

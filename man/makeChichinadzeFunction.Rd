@@ -10,6 +10,8 @@ makeChichinadzeFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Chichinadze Function
+Continuous single-objective test function \eqn{f} with
+\deqn{f(\mathbf{x}) = \mathbf{x}_1^2 - 12 \mathbf{x}_1 + 11 + 10\cos(0.5\pi\mathbf{x}_1) + 8\sin(2.5\pi\mathbf{x}_1) - (0.25)^{0.5}\exp(-0.5(\mathbf{x}_2 - 0.5)^2)}
+with \eqn{-30 \leq \mathbf{x}_i \leq 30}.
 }
 

@@ -1,12 +1,19 @@
 #' Csendes Function
 #'
+#' Scalable, multimodal single-objective optimization function based on the
+#' formula
+#' \deqn{f(\mathbf{x}) = \sum_{i = 1}^{n} \mathbf{x}_i^6 \left(2 + \sin\left(\frac{1}{\mathbf{x}_i}\right)\right)}
+#' subject to \eqn{-1 \leq \mathbf{x}_i \leq 1}.
+#'
+#' @references T. Csendes, D. Ratz, Subdivision Direction Selection in Interval
+#' Methods for Global Optimization, SIAM Journal on Numerical Analysis, vol. 34,
+#' no. 3, pp. 922-938.
+#'
 #' @template arg_dimensions
 #' @template ret_smoof_single
 #' @export
 makeCsendesFunction = function(dimensions) {
   assertCount(dimensions)
-  global.opt.params = as.list(rep(0, dimensions))
-  names(global.opt.params) = paste("x", seq(dimensions), sep = "")
   makeSingleObjectiveFunction(
     name = "Csendes Function",
     fn = function(x) {
@@ -19,7 +26,8 @@ makeCsendesFunction = function(dimensions) {
       upper = c(1, 1),
       vector = FALSE
     ),
-    global.opt.params = global.opt.params,
+    tags = c("continuous", "differentiable", "separable", "scalable", "multimodal"),
+    global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }

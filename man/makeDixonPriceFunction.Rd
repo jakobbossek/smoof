@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.dixon.price.R
 \name{makeDixonPriceFunction}
 \alias{makeDixonPriceFunction}
-\title{Dixon-Price function}
+\title{Dixon-Price Function}
 \usage{
 makeDixonPriceFunction(dimensions)
 }
@@ -14,6 +14,13 @@ Size of corresponding parameter space.}
 [\code{smoof_single_objective_function}]
 }
 \description{
-Dixon-Price function
+Dixon and Price defined the function
+\deqn{f(\mathbf{x}) = (\mathbf{x}_1 - 1)^2 + \sum_{i = 1}^{n} i (2\mathbf{x}_i^2 - \mathbf{x}_{i - 1})}
+subject to \eqn{\mathbf{x}_i \in [-10, 10]} for \eqn{i = 1, \ldots, n}.
+}
+\references{
+L. C. W. Dixon, R. C. Price, The Truncated Newton Method for
+Sparse Unconstrained Optimisation Using Automatic Differentiation, Journal of
+Optimization Theory and Applications, vol. 60, no. 2, pp. 261-275, 1989.
 }
 

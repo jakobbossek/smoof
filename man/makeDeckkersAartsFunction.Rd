@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.deckkers.aarts.R
 \name{makeDeckkersAartsFunction}
 \alias{makeDeckkersAartsFunction}
-\title{DeckkersAarts function}
+\title{Deckkers-Aarts function}
 \usage{
 makeDeckkersAartsFunction()
 }
@@ -10,6 +10,13 @@ makeDeckkersAartsFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-DeckkersAarts function
+This continuous single-objective test function is defined by the formula
+\deqn{f(\mathbf{x}) = 10^5\mathbf{x}_1^2 + \mathbf{x}_2^2 - (\mathbf{x}_1^2 + \mathbf{x}_2^2)^2 + 10^{-5} (\mathbf{x}_1^2 + \mathbf{x}_2^2)^4}
+with the bounding box \eqn{-20 \leq \mathbf{x}_i \leq 20} for \eqn{i = 1, 2}.
+}
+\references{
+M. M. Ali, C. Khompatraporn, Z. B. Zabinsky, A Numerical Evaluation
+of Several Stochastic Algorithms on Selected Continuous Global Optimization
+Test Problems, Journal of Global Optimization, vol. 31, pp. 635-672, 2005.
 }
 

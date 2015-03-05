@@ -10,6 +10,13 @@ makeCrossInTrayFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-CrossInTray Function
+Non-scalable, two-dimensional test function for numerical optimization with
+\deqn{f(\mathbf{x}) = -0.0001\left(|\sin(\mathbf{x}_1\mathbf{x}_2\exp(|100 - [(\mathbf{x}_1^2 + \mathbf{x}_2^2)]^{0.5} / \pi|)| + 1\right)^{0.1}}
+subject to \eqn{\mathbf{x}_i \in [-15, 15]} for \eqn{i = 1, 2}.
+}
+\references{
+S. K. Mishra, Global Optimization By Differential Evolution and
+Particle Swarm Methods: Evaluation On Some Benchmark Functions, Munich
+Research Papers in Economics.
 }
 

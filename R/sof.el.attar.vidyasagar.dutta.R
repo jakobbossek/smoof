@@ -1,4 +1,12 @@
-#' ElAttarVidyasagarDutta function
+#' El-Attar-Vidyasagar-Dutta function
+#'
+#' This function is based on the formula
+#' \deqn{f(\mathbf{x}) = (\mathbf{x}_1^2 + \mathbf{x}_2 - 10)^2 + (\mathbf{x}_1 + \mathbf{x}_2^2 - 7)^2 + (\mathbf{x}_1^2 + \mathbf{x}_2^3 - 1)^2}
+#' subject to \eqn{\mathbf{x}_i \in [-500, 500], i = 1, 2}.
+#'
+#' @references R. A. El-Attar, M. Vidyasagar, S. R. K. Dutta, An Algorithm for
+#' II-norm Minimiza- tion With Application to Nonlinear II-approximation, SIAM
+#' Journal on Numverical Analysis, vol. 16, no. 1, pp. 70-86, 1979.
 #'
 #' @template ret_smoof_single
 #' @export
@@ -15,7 +23,8 @@ makeElAttarVidyasagarDuttaFunction = function() {
       upper = c(100, 100),
       vector = FALSE
     ),
-    global.opt.params = list("x1" = 3.40918683, "x2" = -2.17143304),
+    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
+    global.opt.params = c(x1 = 3.40918683, x2 = -2.17143304),
     global.opt.value = 1.712780354
   )
 }

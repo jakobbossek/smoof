@@ -1,5 +1,13 @@
 #' Damavandi function
 #'
+#' The Damavandi Function is the two-dimensional single-objective test function
+#' \deqn{\left[1 - \left|\frac{\sin(\pi(\mathbf{x}_1 - 2))\sin(\pi(\mathbf{x}_2 - 2))}{\pi^2(\mathbf{x}_1 - 2)(\mathbf{x}_2 - 2)}\right|^5\right]\left(2 + (\mathbf{x}_1 - 7)^2 + 2(\mathbf{x}_2 - 7)^2\right)}
+#' subject to \eqn{\mathbf{x}_i \in [0, 14]} for \eqn{i = 1, 2}.
+#'
+#' @references N. Damavandi, S. Safavi-Naeini, A Hybrid Evolutionary Programming
+#' Method for Circuit Optimization, IEEE Transaction on Circuit and Systems I,
+#' vol. 52, no. 5, pp. 902-910, 2005.
+#'
 #' @template ret_smoof_single
 #' @export
 makeDamavandiFunction = function() {
@@ -20,7 +28,8 @@ makeDamavandiFunction = function() {
       upper = c(14, 14),
       vector = FALSE
     ),
-    global.opt.params = list("x1" = 2, "x2" = 2),
+    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    global.opt.params = c(x1 = 2, x2 = 2),
     global.opt.value = 0
   )
 }

@@ -14,6 +14,14 @@ Size of corresponding parameter space.}
 [\code{smoof_single_objective_function}]
 }
 \description{
-Csendes Function
+Scalable, multimodal single-objective optimization function based on the
+formula
+\deqn{f(\mathbf{x}) = \sum_{i = 1}^{n} \mathbf{x}_i^6 \left(2 + \sin\left(\frac{1}{\mathbf{x}_i}\right)\right)}
+subject to \eqn{-1 \leq \mathbf{x}_i \leq 1}.
+}
+\references{
+T. Csendes, D. Ratz, Subdivision Direction Selection in Interval
+Methods for Global Optimization, SIAM Journal on Numerical Analysis, vol. 34,
+no. 3, pp. 922-938.
 }
 

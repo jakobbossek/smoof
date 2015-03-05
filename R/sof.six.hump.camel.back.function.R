@@ -26,9 +26,10 @@ makeSixHumpCamelFunction = function() {
       upper = c(3, 2),
       vector = FALSE
     ),
-    tags = c("multimodal", "continuous"),
+    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
     global.opt.params = matrix(
-      c(-0.0898, 0.7126, 0.0898, -0.7126),
+      c(-0.0898, 0.7126,
+        0.0898, -0.7126),
       ncol = 2L, byrow = TRUE),
     global.opt.value = -1.0316
   )

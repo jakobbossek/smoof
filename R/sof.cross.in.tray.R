@@ -1,12 +1,20 @@
 #' CrossInTray Function
 #'
+#' Non-scalable, two-dimensional test function for numerical optimization with
+#' \deqn{f(\mathbf{x}) = -0.0001\left(|\sin(\mathbf{x}_1\mathbf{x}_2\exp(|100 - [(\mathbf{x}_1^2 + \mathbf{x}_2^2)]^{0.5} / \pi|)| + 1\right)^{0.1}}
+#' subject to \eqn{\mathbf{x}_i \in [-15, 15]} for \eqn{i = 1, 2}.
+#'
+#' @references S. K. Mishra, Global Optimization By Differential Evolution and
+#' Particle Swarm Methods: Evaluation On Some Benchmark Functions, Munich
+#' Research Papers in Economics.
+#'
 #' @template ret_smoof_single
 #' @export
 makeCrossInTrayFunction = function() {
   makeSingleObjectiveFunction(
     name = "CrossInTray Function",
     fn = function(x) {
-      a = exp(abs(100 - (sqrt(x[1]^2 + x[2]^2)) / pi))
+      a = exp(abs(100 - (sqrt(x[1]^2 + x[2]^2) / pi)))
       -0.0001 * (abs(a * sin(x[1]) * sin(x[2])) + 1)^(0.1)
     },
     par.set = makeNumericParamSet(
@@ -15,7 +23,14 @@ makeCrossInTrayFunction = function() {
       lower = c(-15, -15),
       upper = c(15, 15),
       vector = FALSE
-    )
+    ),
+    tags = c("continuous", "non-separable", "non-scalable", "multimodal"),
+    global.opt.params = matrix(
+      c(1.349406685353340, 1.349406608602084,
+        1.349406685353340, -1.349406608602084,
+        -1.349406685353340, 1.349406608602084,
+        -1.349406685353340, -1.349406608602084),
+      ncol = 2L, byrow = TRUE),
+    global.opt.value = -2.06261218
   )
-  #FIXME: for global opt see http://infinity77.net/global_optimization/test_functions_nd_C.html#go_benchmark.CarromTable
 }

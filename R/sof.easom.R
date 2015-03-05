@@ -8,6 +8,7 @@
 #'
 #' @references Easom, E. E.: A survey of global optimization techniques. M. Eng.
 #' thesis, University of Louisville, Louisville, KY, 1990.
+#'
 #' @template ret_smoof_single
 #' @export
 makeEasomFunction = function() {
@@ -23,7 +24,7 @@ makeEasomFunction = function() {
       upper = c(100, 100),
       vector = FALSE
     ),
-    tags = c("continuous", "unimodal"),
+    tags = c("continuous", "differentiable", "separable", "non-scalable", "multimodal"),
     global.opt.params = c(pi, pi),
     global.opt.value = -1
   )
