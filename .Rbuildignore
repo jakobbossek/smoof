@@ -12,3 +12,4 @@ test_specific.R
 playground.R
 .travis.yml
 todo-files
+lit

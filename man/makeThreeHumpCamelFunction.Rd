@@ -10,6 +10,13 @@ makeThreeHumpCamelFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Three-Hump Camel Function
+This two-dimensional function is based on the defintion
+\deqn{f(\mathbf{x}) = 2 \mathbf{x}_1^2 - 1.05 \mathbf{x}_1^4 + \frac{\mathbf{x}_1^6}{6} + \mathbf{x}_1\mathbf{x}_2 + \mathbf{x}_2^2}
+subject to \eqn{-5 \leq \mathbf{x}_i \leq 5}.
+}
+\references{
+F. H. Branin Jr., Widely Convergent Method of Finding Multiple
+Solutions of Simul- taneous Nonlinear Equations, IBM Journal of Research
+and Development, vol. 16, no. 5, pp. 504-522, 1972.
 }
 

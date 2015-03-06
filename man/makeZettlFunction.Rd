@@ -10,6 +10,11 @@ makeZettlFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Zettl Function
+The unimodal Zettl Function is based on the defintion
+\deqn{f(\mathbf{x}) = (\mathbf{x}_1^2 + \mathbf{x}_2^2 - 2\mathbf{x}_1)^2 + 0.25 \mathbf{x}_1}
+with box-constraints \eqn{\mathbf{x}_i \in [-5, 10], i = 1, 2}.
+}
+\references{
+H. P. Schwefel, Evolution and Optimum Seeking, John Wiley Sons, 1995.
 }
 

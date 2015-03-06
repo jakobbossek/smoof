@@ -1,5 +1,14 @@
 #' Trecanni Function
 #'
+#' The Trecanni function belongs to the unimodal test functions. It is based
+#' on the formula
+#' \deqn{f(\mathbf(x)) = \mathbf(x)_1^4 - 4 \mathbf(x)_1^3 + 4 \mathbf(x)_1 + \mathbf(x)_2^2.}
+#' The box-constraints \eqn{\mathbf{x}_i \in [-5, 5], i = 1, 2} define the
+#' domain of defintion.
+#'
+#' @references L. C. W. Dixon, G. P. Szego (eds.), Towards Global Optimization 2,
+#' Elsevier, 1978.
+#'
 #' @template ret_smoof_single
 #' @export
 makeTrecanniFunction = function() {
@@ -15,7 +24,7 @@ makeTrecanniFunction = function() {
       upper = c(5, 5),
       vector = FALSE
     ),
-    #FIXME: global opts at (0,0) and (-2,0)
+    tags = c("continuous", "differentiable", "separable", "non-scalable", "unimodal"),
     global.opt.params = list("x1" = 0, "x2" = 0),
     global.opt.value = -1.9133
   )

@@ -1,5 +1,11 @@
 #' Zettl Function
 #'
+#' The unimodal Zettl Function is based on the defintion
+#' \deqn{f(\mathbf{x}) = (\mathbf{x}_1^2 + \mathbf{x}_2^2 - 2\mathbf{x}_1)^2 + 0.25 \mathbf{x}_1}
+#' with box-constraints \eqn{\mathbf{x}_i \in [-5, 10], i = 1, 2}.
+#'
+#' @references H. P. Schwefel, Evolution and Optimum Seeking, John Wiley Sons, 1995.
+#'
 #' @template ret_smoof_single
 #' @export
 makeZettlFunction = function() {
@@ -11,11 +17,12 @@ makeZettlFunction = function() {
     par.set = makeNumericParamSet(
       len = 2L,
       id = "x",
-      lower = c(-10, -10),
+      lower = c(-5, -5),
       upper = c(10, 10),
       vector = FALSE
     ),
-    global.opt.params = list("x1" = 0.0299, "x2" = 0),
+    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
+    global.opt.params = c(-0.0299, 0),
     global.opt.value = -0.003791
   )
 }
