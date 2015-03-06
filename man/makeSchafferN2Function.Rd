@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.schaffer.function.2.R
 \name{makeSchafferN2Function}
 \alias{makeSchafferN2Function}
-\title{Schaffer Function N. 2}
+\title{Modified Schaffer Function N. 2}
 \usage{
 makeSchafferN2Function()
 }
@@ -10,6 +10,12 @@ makeSchafferN2Function()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Schaffer Function N. 2
+Second function by Schaffer. The defintion is given by the formula
+\deqn{f(\mathbf{x}) = 0.5 + \frac{\sin^2(\mathbf{x}_1^2 - \mathbf{x}_2^2) - 0.5}{(1 + 0.001(\mathbf{x}_1^2 + \mathbf{x}_2^2))^2}}
+subject to \eqn{\mathbf{x}_i \in [-100, 100], i = 1, 2}.
+}
+\references{
+S. K. Mishra, Some New Test Functions For Global Optimization
+And Performance of Repulsive Particle Swarm Method.
 }
 

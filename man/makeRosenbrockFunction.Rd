@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.rosenbrock.R
 \name{makeRosenbrockFunction}
 \alias{makeRosenbrockFunction}
-\title{Rosenbrock function}
+\title{Rosenbrock Function}
 \usage{
 makeRosenbrockFunction(dimensions)
 }
@@ -19,5 +19,10 @@ banana/valley function} due to its shape. The global optimum is located within
 a large flat valley and thus it is hard for optimization algorithms to find it.
 The following formula underlies the implementation:
 \deqn{f(\mathbf{x}) = \sum_{i=1}^{n-1} 100 \cdot (\mathbf{x}_{i+1} - \mathbf{x}_i^2)^2 + (1 - \mathbf{x}_i)^2.}
+The domain is given by the constraints \eqn{\mathbf{x}_i \in [-30, 30], i = 1, \ldots, n}.
+}
+\references{
+H. H. Rosenbrock, An Automatic Method for Finding the Greatest or
+least Value of a Function, Computer Journal, vol. 3, no. 3, pp. 175-184, 1960.
 }
 
