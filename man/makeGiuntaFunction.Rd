@@ -2,18 +2,21 @@
 % Please edit documentation in R/sof.giunta.R
 \name{makeGiuntaFunction}
 \alias{makeGiuntaFunction}
-\title{Giunta function}
+\title{Giunta Function}
 \usage{
-makeGiuntaFunction(dimensions)
-}
-\arguments{
-\item{dimensions}{[\code{integer(1)}]\cr
-Size of corresponding parameter space.}
+makeGiuntaFunction()
 }
 \value{
 [\code{smoof_single_objective_function}]
 }
 \description{
-Giunta function
+Multimodal test function based on the definition
+\deqn{f(\mathbf{x}) = 0.6 + \sum_{i = 1}^{n} \left[\sin(\frac{16}{15} \mathbf{x}_i - 1) + \sin^2(\frac{16}{15}\mathbf{x}_i - 1) + \frac{1}{50} \sin(4(\frac{16}{15}\mathbf{x}_i - 1))\right]}
+with box-constraints \eqn{\mathbf{x}_i \in [-1, 1]} for \eqn{i = 1, \ldots, n}.
+}
+\references{
+S. K. Mishra, Global Optimization By Differential Evolution and
+Particle Swarm Methods: Evaluation On Some Benchmark Functions, Munich
+Research Papers in Economics.
 }
 

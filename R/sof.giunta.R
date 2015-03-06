@@ -1,26 +1,33 @@
-#' Giunta function
+#' Giunta Function
 #'
-#' @template arg_dimensions
+#' Multimodal test function based on the definition
+#' \deqn{f(\mathbf{x}) = 0.6 + \sum_{i = 1}^{n} \left[\sin(\frac{16}{15} \mathbf{x}_i - 1) + \sin^2(\frac{16}{15}\mathbf{x}_i - 1) + \frac{1}{50} \sin(4(\frac{16}{15}\mathbf{x}_i - 1))\right]}
+#' with box-constraints \eqn{\mathbf{x}_i \in [-1, 1]} for \eqn{i = 1, \ldots, n}.
+#'
+#' @references S. K. Mishra, Global Optimization By Differential Evolution and
+#' Particle Swarm Methods: Evaluation On Some Benchmark Functions, Munich
+#' Research Papers in Economics.
+#'
 #' @template ret_smoof_single
 #' @export
-makeGiuntaFunction = function(dimensions) {
-  #FIXME: type is convex, unimodal
-  assertCount(dimensions)
-  global.opt.params = as.list(rep(0, dimensions))
-  names(global.opt.params) = paste("x", seq(dimensions), sep = "")
+#FIXME: this function is scalable, but global opt only known for 2D?
+makeGiuntaFunction = function() {
   makeSingleObjectiveFunction(
-    name = paste(dimensions, "-d Giunta function", sep = ""),
+    name = "2d Giunta function",
     fn = function(x) {
-      sum(x^2)
+      a = 1.067 * x - 1
+      b = sin(a)
+      0.6 + sum(b + b^2 + 0.02 * sin(4 * a))
     },
     par.set = makeNumericParamSet(
-      len = dimensions,
+      len = 2L,
       id = "x",
-      lower = rep(-5.12, dimensions),
-      upper = rep(5.12, dimensions),
+      lower = rep(-1, 2),
+      upper = rep(1, 2),
       vector = FALSE
     ),
-    global.opt.params = global.opt.params,
-    global.opt.value = 0.06447042053690566
+    tags = c("continuous", "differentiable", "separable", "multimodal"),
+    global.opt.params = rep(0.45834282, 2L),
+    global.opt.value = 0.06463
   )
 }

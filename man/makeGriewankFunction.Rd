@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.griewank.R
 \name{makeGriewankFunction}
 \alias{makeGriewankFunction}
-\title{Griewank function}
+\title{Griewank Function}
 \usage{
 makeGriewankFunction(dimensions)
 }
@@ -16,6 +16,12 @@ Size of corresponding parameter space.}
 \description{
 Highly multimodal function with a lot of regularly distributed local minima.
 The corresponding formula is:
-\deqn{f(\mathbf{x}) = \sum_{i=1}^{n} \frac{\mathbf{x}_i^2}{4000} - \prod_{i=1}^{n} \cos\left(\frac{\mathbf{x}_i}{\sqrt{i}}\right) + 1.}
+\deqn{f(\mathbf{x}) = \sum_{i=1}^{n} \frac{\mathbf{x}_i^2}{4000} - \prod_{i=1}^{n} \cos\left(\frac{\mathbf{x}_i}{\sqrt{i}}\right) + 1}
+subject to \eqn{\mathbf{x}_i \in [-100, 100], i = 1, \ldots, n}.
+}
+\references{
+A. O. Griewank, Generalized Descent for Global Optimization,
+Journal of Optimization Theory and Applications, vol. 34, no. 1,
+pp. 11-39, 1981.
 }
 

@@ -1,5 +1,12 @@
 #' Freudenstein Roth Function
 #'
+#' This test function is based on the formula
+#' \deqn{f(\mathbf{x}) = (\mathbf{x}_1 - 13 + ((5 - \mathbf{x}_2)\mathbf{x}_2 - 2)\mathbf{x}_2)^2 + (\mathbf{x}_1 - 29 + ((\mathbf{x}_2 + 1)\mathbf{x}_2 - 14)\mathbf{x}_2)^2}
+#' subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
+#'
+#' @references S. S. Rao, Engineering Optimization: Theory and Practice,
+#' John Wiley & Sons, 2009.
+#'
 #' @template ret_smoof_single
 #' @export
 makeFreudensteinRothFunction = function() {
@@ -15,6 +22,7 @@ makeFreudensteinRothFunction = function() {
       upper = c(10, 10),
       vector = FALSE
     ),
+    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
     global.opt.params = list("x1" = 5, "x2" = 4),
     global.opt.value = 0
   )
