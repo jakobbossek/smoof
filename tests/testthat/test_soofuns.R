@@ -39,7 +39,5 @@ test_that("single-objective test function generators work", {
         test.val = fun(test.param)
         expect_true(is.numeric(test.val))
     }
-
-    #FIXME: this breaks if done automatically (autolpot.smoof_function not found. WTF?!?)
-    #expect_true(length(filterFunctionsByTags("continuous")) > 0L)
+    expect_true(length(filterFunctionsByTags("continuous")) > 0L)
 })
