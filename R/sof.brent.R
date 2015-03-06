@@ -24,7 +24,7 @@ makeBrentFunction = function() {
       vector = FALSE
     ),
     tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
-    global.opt.params = list("x1" = -10, "x2" = -10),
+    global.opt.params = c(-10, -10),
     global.opt.value = 0
   )
 }

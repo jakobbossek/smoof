@@ -1,4 +1,4 @@
-#' Hansen function
+#' Hansen Function
 #'
 #' Test function with multiple global optima based on the definition
 #' \deqn{f(\mathbf{x}) = \sum_{i = 1}^{4} (i + 1)\cos(i\mathbf{x}_1 + i - 1) \sum_{j = 1}^{4} (j + 1)\cos((j + 2) \mathbf{x}_2 + j + 1)}
@@ -11,7 +11,7 @@
 #' @export
 makeHansenFunction = function() {
   makeSingleObjectiveFunction(
-    name = "Hansen function",
+    name = "Hansen Function",
     fn = function(x) {
       i = j = 0:4
       a = sum((i + 1) * cos(i * x[1] + i + 1))

@@ -20,7 +20,7 @@ makeBoothFunction = function() {
       vector = FALSE
     ),
     tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
-    global.opt.params = c(x1 = 1, x2 = 3),
+    global.opt.params = c(1, 3),
     global.opt.value = 0
   )
 }

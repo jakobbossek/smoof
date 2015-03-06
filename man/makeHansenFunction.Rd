@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.hansen.R
 \name{makeHansenFunction}
 \alias{makeHansenFunction}
-\title{Hansen function}
+\title{Hansen Function}
 \usage{
 makeHansenFunction()
 }

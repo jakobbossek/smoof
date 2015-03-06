@@ -19,7 +19,7 @@
 #' @export
 makeBraninFunction = function() {
   makeSingleObjectiveFunction(
-    name = "Branin function",
+    name = "Branin RCOS Function",
     fn = function(x) {
       a = 1
       b = 5.1 / (4 * pi^2)

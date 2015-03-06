@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.damavandi.R
 \name{makeDamavandiFunction}
 \alias{makeDamavandiFunction}
-\title{Damavandi function}
+\title{Damavandi Function}
 \usage{
 makeDamavandiFunction()
 }

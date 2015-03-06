@@ -23,7 +23,7 @@ makeMcCormickFunction = function() {
       vector = FALSE
     ),
     tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
-    global.opt.params = c(x1 = -0.54719, x2 = -1.54719),
+    global.opt.params = c(-0.54719, -1.54719),
     global.opt.value = -1.9133
   )
 }

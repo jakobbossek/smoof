@@ -25,7 +25,7 @@ makeSchafferN2Function = function() {
       vector = FALSE
     ),
     tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
-    global.opt.params = c(x1 = 0, x2 = 0),
+    global.opt.params = c(0, 0),
     global.opt.value = 0
   )
 }

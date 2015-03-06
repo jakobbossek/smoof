@@ -14,8 +14,7 @@
 makeDixonPriceFunction = function(dimensions) {
   assertCount(dimensions)
   i = 1:dimensions
-  global.opt.params = as.list(2^((-1) * (2^i - 2) / 2^i))
-  names(global.opt.params) = paste("x", seq(dimensions), sep = "")
+  global.opt.params = 2^((-1) * (2^i - 2) / 2^i)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Dixon-Price function", sep = ""),
     fn = function(x) {

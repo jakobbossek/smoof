@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.michalewicz.R
 \name{makeMichalewiczFunction}
 \alias{makeMichalewiczFunction}
-\title{Michalewicz function}
+\title{Michalewicz Function}
 \usage{
 makeMichalewiczFunction(dimensions, m = 10)
 }
@@ -21,7 +21,10 @@ Highly multimodal single-objective test function with \eqn{n!} local minima
 with the formula:
 \deqn{f(\mathbf{x}) = -\sum_{i=1}^{n} \sin(\mathbf{x}_i) \cdot \left(\sin\left(\frac{i \cdot \mathbf{x}_i}{\pi}\right)\right)^{2m}.}
 The recommended value \eqn{m = 10}, which is used as a default in the
-implementation. The location of the global optimum s varying based on both
+implementation.
+}
+\note{
+The location of the global optimum s varying based on both
 the dimension and \eqn{m} parameter and is thus not provided in the
 implementation.
 }

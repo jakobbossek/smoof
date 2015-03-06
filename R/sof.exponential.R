@@ -1,4 +1,4 @@
-#' Exponential function
+#' Exponential Function
 #'
 #' This scalable test function is based on the definition
 #' \deqn{f(\mathbf{x}) = -\exp\left(-0.5 \sum_{i = 1}^{n} \mathbf{x}_i^2\right)}
@@ -14,7 +14,7 @@
 makeExponentialFunction = function(dimensions) {
   assertCount(dimensions)
   makeSingleObjectiveFunction(
-    name = paste(dimensions, "-d Exponential function", sep = ""),
+    name = paste(dimensions, "-d Exponential Function", sep = ""),
     fn = function(x) {
       -exp(-0.5 * sum(x^2))
     },

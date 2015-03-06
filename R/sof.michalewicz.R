@@ -1,10 +1,12 @@
-#' Michalewicz function
+#' Michalewicz Function
 #'
 #' Highly multimodal single-objective test function with \eqn{n!} local minima
 #' with the formula:
 #' \deqn{f(\mathbf{x}) = -\sum_{i=1}^{n} \sin(\mathbf{x}_i) \cdot \left(\sin\left(\frac{i \cdot \mathbf{x}_i}{\pi}\right)\right)^{2m}.}
 #' The recommended value \eqn{m = 10}, which is used as a default in the
-#' implementation. The location of the global optimum s varying based on both
+#' implementation.
+#'
+#' @note The location of the global optimum s varying based on both
 #' the dimension and \eqn{m} parameter and is thus not provided in the
 #' implementation.
 #'
@@ -21,7 +23,7 @@ makeMichalewiczFunction = function(dimensions, m = 10) {
   assertNumber(m, na.ok = FALSE)
   force(m)
   makeSingleObjectiveFunction(
-    name = "Michalewicz function",
+    name = paste("Michalewicz Function (m = ", m, ")", sep = ""),
     fn = function(x) {
       i = 1:length(x)
       (-1) * sum(sin(x) * (sin((i * x^2) / pi)^(2 * m)))

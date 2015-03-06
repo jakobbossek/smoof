@@ -4,12 +4,11 @@
 #' \deqn{f(\mathbf{x}) = \mathbf{x}_1^2 + \mathbf{x}_2^2 + 25(\sin^2(\mathbf{x}_1) + \sin^2(\mathbf{x}_2))}
 #' with \eqn{\mathbf{x}_i \in [-5, 5]} for \eqn{i = 1, 2}.
 #'
-#'
 #' @template ret_smoof_single
 #' @export
 makeEggCrateFunction = function() {
   makeSingleObjectiveFunction(
-    name = "Egg Crate function",
+    name = "Egg Crate Function",
     fn = function(x) {
       x[1]^2 + x[2]^2 + 25 * (sin(x[1])^2 + sin(x[2])^2)
     },
@@ -21,7 +20,7 @@ makeEggCrateFunction = function() {
       vector = FALSE
     ),
     tags = c("continuous", "separable", "non-scalable"),
-    global.opt.params = c(x1 = 0, x2 = 0),
+    global.opt.params = c(0, 0),
     global.opt.value = 0
   )
 }

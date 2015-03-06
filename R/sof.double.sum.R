@@ -1,4 +1,4 @@
-#' Double-Sum function.
+#' Double-Sum Function
 #'
 #' Also known as the rotated hyper-ellipsoid function. The formula is given by
 #' \deqn{f(\mathbf{x}) = \sum_{i=1}^n \left( \sum_{j=1}^{i} \mathbf{x}_j \right)^2}
@@ -13,7 +13,7 @@
 makeDoubleSumFunction = function(dimensions) {
   assertCount(dimensions)
   makeSingleObjectiveFunction(
-    name = paste(dimensions, "-d Double-Sum function", sep = ""),
+    name = paste(dimensions, "-d Double-Sum Function", sep = ""),
     fn = function(x) {
       # this is faster than the soobench C implementation
       sum(cumsum(x)^2)

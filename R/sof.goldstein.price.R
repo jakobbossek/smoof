@@ -1,4 +1,4 @@
-#' Goldstein-Price function
+#' Goldstein-Price Function
 #'
 #' Two-dimensional test function for global optimization. The implementation
 #' follows the formula:
@@ -12,7 +12,7 @@
 #' @export
 makeGoldsteinPriceFunction = function() {
   makeSingleObjectiveFunction(
-    name = "Goldstein-Price function",
+    name = "Goldstein-Price Function",
     fn = function(x) {
       xx1 = x[1]^2
       xx2 = x[2]^2
@@ -28,7 +28,7 @@ makeGoldsteinPriceFunction = function() {
       upper = c(2, 2),
       vector = FALSE
     ),
-    tags = c("continuous"),
+    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
     global.opt.params = c(0, -1),
     global.opt.value = 3
   )

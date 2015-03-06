@@ -23,7 +23,7 @@ makeFreudensteinRothFunction = function() {
       vector = FALSE
     ),
     tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
-    global.opt.params = list("x1" = 5, "x2" = 4),
+    global.opt.params = c(5, 4),
     global.opt.value = 0
   )
 }

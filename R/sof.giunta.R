@@ -13,7 +13,7 @@
 #FIXME: this function is scalable, but global opt only known for 2D?
 makeGiuntaFunction = function() {
   makeSingleObjectiveFunction(
-    name = "Giunta function",
+    name = "Giunta Function",
     fn = function(x) {
       a = 1.067 * x - 1
       b = sin(a)

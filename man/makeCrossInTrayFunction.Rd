@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.cross.in.tray.R
 \name{makeCrossInTrayFunction}
 \alias{makeCrossInTrayFunction}
-\title{CrossInTray Function}
+\title{Cross-In-Tray Function}
 \usage{
 makeCrossInTrayFunction()
 }

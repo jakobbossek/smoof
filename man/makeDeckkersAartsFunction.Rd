@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.deckkers.aarts.R
 \name{makeDeckkersAartsFunction}
 \alias{makeDeckkersAartsFunction}
-\title{Deckkers-Aarts function}
+\title{Deckkers-Aarts Function}
 \usage{
 makeDeckkersAartsFunction()
 }

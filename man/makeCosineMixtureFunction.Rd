@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.cosine.mixture.R
 \name{makeCosineMixtureFunction}
 \alias{makeCosineMixtureFunction}
-\title{CosineMixture Function}
+\title{Cosine Mixture Function}
 \usage{
 makeCosineMixtureFunction(dimensions)
 }

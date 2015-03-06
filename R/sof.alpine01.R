@@ -14,7 +14,7 @@
 makeAlpine01Function = function(dimensions) {
   assertCount(dimensions)
   makeSingleObjectiveFunction(
-    name = paste(dimensions, "-d Alpine01 function", sep = ""),
+    name = paste(dimensions, "-d Alpine01 Function", sep = ""),
     fn = function(x) {
       sum(abs(x * sin(x) + 0.1 * x))
     },

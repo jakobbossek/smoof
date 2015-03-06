@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.exponential.R
 \name{makeExponentialFunction}
 \alias{makeExponentialFunction}
-\title{Exponential function}
+\title{Exponential Function}
 \usage{
 makeExponentialFunction(dimensions)
 }

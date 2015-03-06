@@ -16,7 +16,7 @@
 makeAckleyFunction = function(dimensions) {
   assertCount(dimensions, na.ok = FALSE)
   makeSingleObjectiveFunction(
-    name = paste(dimensions, "-d Ackley function", sep = ""),
+    name = paste(dimensions, "-d Ackley Function", sep = ""),
     fn = function(x) {
       n = length(x)
       a = 20

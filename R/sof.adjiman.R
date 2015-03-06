@@ -12,7 +12,7 @@
 #' @export
 makeAdjimanFunction = function() {
   makeSingleObjectiveFunction(
-    name = "Adjiman function",
+    name = "Adjiman Function",
     fn = function(x) {
       cos(x[1]) * sin(x[2]) - x[1] / (x[2]^2 + 1)
     },
@@ -24,7 +24,7 @@ makeAdjimanFunction = function() {
       vector = FALSE
       ),
     tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
-    global.opt.params = c(x1 = 2, x2 = 0.10578),
+    global.opt.params = c(2, 0.10578),
     global.opt.value = -2.02181
   )
 }

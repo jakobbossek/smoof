@@ -11,7 +11,7 @@
 # the global optimum params for dimensions > 2
 makeEggholderFunction = function() {
   makeSingleObjectiveFunction(
-    name = "Eggholder function",
+    name = "Egg Holder Function",
     fn = function(x) {
       i = 1L
       #i = 1:(length(x) - 1L)
@@ -26,6 +26,6 @@ makeEggholderFunction = function() {
     ),
     tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal"),
     global.opt.params = c(x1 = 512, x2 = 404.2319),
-    global.opt.value = -959.640662711
+    global.opt.value = -959.64
   )
 }

@@ -14,7 +14,7 @@
 #' @export
 makeBukinN6Function = function() {
   makeSingleObjectiveFunction(
-    name = "Bukin function N.6",
+    name = "Bukin Function N.6",
     fn = function(x) {
       100 * sqrt(abs(x[2] - 0.01 * x[1]^2)) + 0.01 * abs(x[1] + 10)
     },
@@ -26,7 +26,7 @@ makeBukinN6Function = function() {
       vector = FALSE
     ),
     tags = c("continuous", "non-differentiable", "non-separable", "non-scalable", "multimodal"),
-    global.opt.params = c(x1 = -10, x2 = 1),
+    global.opt.params = c(-10, 1),
     global.opt.value = 0
   )
 }

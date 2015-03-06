@@ -1,4 +1,4 @@
-#' Damavandi function
+#' Damavandi Function
 #'
 #' The Damavandi Function is the two-dimensional single-objective test function
 #' \deqn{\left[1 - \left|\frac{\sin(\pi(\mathbf{x}_1 - 2))\sin(\pi(\mathbf{x}_2 - 2))}{\pi^2(\mathbf{x}_1 - 2)(\mathbf{x}_2 - 2)}\right|^5\right]\left(2 + (\mathbf{x}_1 - 7)^2 + 2(\mathbf{x}_2 - 7)^2\right)}
@@ -12,7 +12,7 @@
 #' @export
 makeDamavandiFunction = function() {
   makeSingleObjectiveFunction(
-    name = "Damavandi function",
+    name = "Damavandi Function",
     fn = function(x) {
       t1 = sin(pi * (x[1] - 2)) * sin(pi * (x[2] - 2))
       t2 = pi^2 * (x[1] - 2) * (x[2] - 2)
@@ -29,7 +29,7 @@ makeDamavandiFunction = function() {
       vector = FALSE
     ),
     tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
-    global.opt.params = c(x1 = 2, x2 = 2),
+    global.opt.params = c(2, 2),
     global.opt.value = 0
   )
 }

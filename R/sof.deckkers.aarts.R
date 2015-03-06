@@ -1,4 +1,4 @@
-#' Deckkers-Aarts function
+#' Deckkers-Aarts Function
 #'
 #' This continuous single-objective test function is defined by the formula
 #' \deqn{f(\mathbf{x}) = 10^5\mathbf{x}_1^2 + \mathbf{x}_2^2 - (\mathbf{x}_1^2 + \mathbf{x}_2^2)^2 + 10^{-5} (\mathbf{x}_1^2 + \mathbf{x}_2^2)^4}

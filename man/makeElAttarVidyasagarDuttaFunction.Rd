@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.el.attar.vidyasagar.dutta.R
 \name{makeElAttarVidyasagarDuttaFunction}
 \alias{makeElAttarVidyasagarDuttaFunction}
-\title{El-Attar-Vidyasagar-Dutta function}
+\title{El-Attar-Vidyasagar-Dutta Function}
 \usage{
 makeElAttarVidyasagarDuttaFunction()
 }

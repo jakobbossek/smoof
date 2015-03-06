@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.goldstein.price.R
 \name{makeGoldsteinPriceFunction}
 \alias{makeGoldsteinPriceFunction}
-\title{Goldstein-Price function}
+\title{Goldstein-Price Function}
 \usage{
 makeGoldsteinPriceFunction()
 }

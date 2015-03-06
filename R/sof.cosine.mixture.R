@@ -1,4 +1,4 @@
-#' CosineMixture Function
+#' Cosine Mixture Function
 #'
 #' Single-objective test function based on the formula
 #' \deqn{f(\mathbf{x}) = -0.1 \sum_{i = 1}^{n} \cos(5\pi\mathbf{x}_i) - \sum_{i = 1}^{n} \mathbf{x}_i^2}
@@ -14,7 +14,7 @@
 makeCosineMixtureFunction = function(dimensions) {
   assertCount(dimensions)
   makeSingleObjectiveFunction(
-    name = "CosineMixture Function",
+    name = "Cosine Mixture Function",
     fn = function(x) {
       a = -0.1 * sum(cos(5 * pi * x))
       b = sum(x^2)

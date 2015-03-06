@@ -14,8 +14,6 @@
 #' @export
 makeBrownFunction = function(dimensions) {
   assertCount(dimensions)
-  global.opt.params = as.list(rep(0, dimensions))
-  names(global.opt.params) = paste("x", seq(dimensions), sep = "")
   makeSingleObjectiveFunction(
     name = "Brown Function",
     fn = function(x) {
@@ -32,7 +30,7 @@ makeBrownFunction = function(dimensions) {
       vector = FALSE
     ),
     tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal"),
-    global.opt.params = global.opt.params,
+    global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }

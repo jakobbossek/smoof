@@ -1,4 +1,4 @@
-#' Sphere function
+#' Sphere Function
 #'
 #' Also known as the the \dQuote{De Jong function 1}. Convex, continous function
 #' calculated via the formula
@@ -14,7 +14,7 @@
 makeSphereFunction = function(dimensions) {
   assertCount(dimensions)
   makeSingleObjectiveFunction(
-    name = paste(dimensions, "-d Sphere function", sep = ""),
+    name = paste(dimensions, "-d Sphere Function", sep = ""),
     fn = function(x) {
       sum(x^2)
     },

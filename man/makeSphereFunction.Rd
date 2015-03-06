@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.sphere.R
 \name{makeSphereFunction}
 \alias{makeSphereFunction}
-\title{Sphere function}
+\title{Sphere Function}
 \usage{
 makeSphereFunction(dimensions)
 }

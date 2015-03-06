@@ -1,4 +1,4 @@
-#' El-Attar-Vidyasagar-Dutta function
+#' El-Attar-Vidyasagar-Dutta Function
 #'
 #' This function is based on the formula
 #' \deqn{f(\mathbf{x}) = (\mathbf{x}_1^2 + \mathbf{x}_2 - 10)^2 + (\mathbf{x}_1 + \mathbf{x}_2^2 - 7)^2 + (\mathbf{x}_1^2 + \mathbf{x}_2^3 - 1)^2}
@@ -12,7 +12,7 @@
 #' @export
 makeElAttarVidyasagarDuttaFunction = function() {
   makeSingleObjectiveFunction(
-    name = "El-Attar-Vidyasagar-Dutta function",
+    name = "El-Attar-Vidyasagar-Dutta Function",
     fn = function(x) {
       (x[1]^2 + x[2] - 10)^2 + (x[1] + x[2]^2 - 7)^2 + (x[1]^2 + x[2]^3 - 1)^2
     },
@@ -24,7 +24,7 @@ makeElAttarVidyasagarDuttaFunction = function() {
       vector = FALSE
     ),
     tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
-    global.opt.params = c(x1 = 3.40918683, x2 = -2.17143304),
+    global.opt.params = c(3.40918683, -2.17143304),
     global.opt.value = 1.712780354
   )
 }

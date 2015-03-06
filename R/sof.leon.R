@@ -23,7 +23,7 @@ makeLeonFunction = function() {
       vector = FALSE
     ),
     tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
-    global.opt.params = c(x1 = 1, x2 = 1),
+    global.opt.params = c(1, 1),
     global.opt.value = 0
   )
 }

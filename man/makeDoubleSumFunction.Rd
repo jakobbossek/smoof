@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.double.sum.R
 \name{makeDoubleSumFunction}
 \alias{makeDoubleSumFunction}
-\title{Double-Sum function.}
+\title{Double-Sum Function}
 \usage{
 makeDoubleSumFunction(dimensions)
 }

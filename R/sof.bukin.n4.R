@@ -13,7 +13,7 @@
 #' @export
 makeBukinN4Function = function() {
   makeSingleObjectiveFunction(
-    name = "Bukin function N. 4",
+    name = "Bukin Function N. 4",
     fn = function(x) {
       100 * x[2]^2 + 0.01 * abs(x[1] + 10)
     },
@@ -25,7 +25,7 @@ makeBukinN4Function = function() {
       vector = FALSE
     ),
     tags = c("continuous", "non-differentiable", "separable", "non-scalable", "multimodal"),
-    global.opt.params = list("x1" = -10, "x2" = 0),
+    global.opt.params = c(-10, 0),
     global.opt.value = 0
   )
 }

@@ -15,7 +15,7 @@
 makeAlpine02Function = function(dimensions) {
   assertCount(dimensions)
   makeSingleObjectiveFunction(
-    name = paste(dimensions, "-d Alpine02 function", sep = ""),
+    name = paste(dimensions, "-d Alpine02 Function", sep = ""),
     fn = function(x) {
       prod(sqrt(x) * sin(x))
     },
