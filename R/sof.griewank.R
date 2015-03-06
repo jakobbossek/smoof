@@ -28,8 +28,13 @@ makeGriewankFunction = function(dimensions) {
       upper = rep(100, dimensions),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal"),
+    tags = attr(makeGriewankFunction, "tags"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }
+
+class(makeGriewankFunction) = c("function", "smoof_generator")
+attr(makeGriewankFunction, "name") = c("Griewank Function")
+attr(makeGriewankFunction, "type") = c("single-objective")
+attr(makeGriewankFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")

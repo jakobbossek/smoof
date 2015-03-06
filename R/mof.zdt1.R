@@ -1,4 +1,4 @@
-#' ZDT1 function generator.
+#' ZDT1 Function
 #'
 #' Builds and returns the two-objective ZDT1 test problem. For \eqn{m} objective it
 #' is defined as follows:
@@ -32,8 +32,8 @@ makeZDT1Function = function(dimensions) {
   }
 
   makeMultiObjectiveFunction(
-    name = "ZDT1 function",
-    description = "Zitzler et al. function 1",
+    name = "ZDT1 Function",
+    description = "Zitzler et al. function N. 1",
     fn = fn,
     par.set =  makeNumericParamSet(
       len = dimensions,
@@ -45,3 +45,8 @@ makeZDT1Function = function(dimensions) {
     n.objectives = 2L
   )
 }
+
+class(makeZDT1Function) = c("function", "smoof_generator")
+attr(makeZDT1Function, "name") = c("ZDT1 Function")
+attr(makeZDT1Function, "type") = c("multi-objective")
+attr(makeZDT1Function, "tags") = c()

@@ -25,7 +25,7 @@ makeHansenFunction = function() {
       upper = c(10, 10),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "separable", "non-scalable", "multimodal"),
+    tags = attr(makeHansenFunction, "tags"),
     global.opt.params = matrix(
       c(-7.589893, -7.708314,
         -7.589893, -1.425128,
@@ -39,3 +39,8 @@ makeHansenFunction = function() {
     global.opt.value = -176.5
   )
 }
+
+class(makeHansenFunction) = c("function", "smoof_generator")
+attr(makeHansenFunction, "name") = c("Hansen Function")
+attr(makeHansenFunction, "type") = c("single-objective")
+attr(makeHansenFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")

@@ -19,8 +19,13 @@ makeChichinadzeFunction = function() {
       upper = c(30, 30),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "separable", "non-scalable", "multimodal"),
+    tags = attr(makeChichinadzeFunction, "tags"),
     global.opt.params = c(5.90133, 0.5),
     global.opt.value = -43.3159
   )
 }
+
+class(makeChichinadzeFunction) = c("function", "smoof_generator")
+attr(makeChichinadzeFunction, "name") = c("Chichinadze Function")
+attr(makeChichinadzeFunction, "type") = c("single-objective")
+attr(makeChichinadzeFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")

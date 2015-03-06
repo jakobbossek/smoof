@@ -23,8 +23,13 @@ makeAdjimanFunction = function() {
       upper = c(2, 1),
       vector = FALSE
       ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeAdjimanFunction, "tags"),
     global.opt.params = c(2, 0.10578),
     global.opt.value = -2.02181
   )
 }
+
+class(makeAdjimanFunction) = c("function", "smoof_generator")
+attr(makeAdjimanFunction, "name") = c("Adjiman Function")
+attr(makeAdjimanFunction, "type") = c("single-objective")
+attr(makeAdjimanFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

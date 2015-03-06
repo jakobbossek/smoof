@@ -27,7 +27,7 @@ makeBirdFunction = function() {
       upper = c(2 * pi, 2 * pi),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeBirdFunction, "tags"),
     global.opt.params = matrix(
       c(4.70104, 3.15294,
         -1.58214, -3.13024),
@@ -35,3 +35,8 @@ makeBirdFunction = function() {
     global.opt.value = -106.764537
   )
 }
+
+class(makeBirdFunction) = c("function", "smoof_generator")
+attr(makeBirdFunction, "name") = c("Bird Function")
+attr(makeBirdFunction, "type") = c("single-objective")
+attr(makeBirdFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

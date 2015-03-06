@@ -25,8 +25,13 @@ makeExponentialFunction = function(dimensions) {
       upper = rep(1, dimensions),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal"),
+    tags = attr(makeExponentialFunction, "tags"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = -1
   )
 }
+
+class(makeExponentialFunction) = c("function", "smoof_generator")
+attr(makeExponentialFunction, "name") = c("Exponential Function")
+attr(makeExponentialFunction, "type") = c("single-objective")
+attr(makeExponentialFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")

@@ -24,8 +24,13 @@ makeEggholderFunction = function() {
       upper = c(512, 512),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal"),
+    tags = attr(makeEggholderFunction, "tags"),
     global.opt.params = c(x1 = 512, x2 = 404.2319),
     global.opt.value = -959.64
   )
 }
+
+class(makeEggholderFunction) = c("function", "smoof_generator")
+attr(makeEggholderFunction, "name") = c("Egg Holder Function")
+attr(makeEggholderFunction, "type") = c("single-objective")
+attr(makeEggholderFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")

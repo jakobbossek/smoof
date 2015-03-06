@@ -23,8 +23,13 @@ makeBrentFunction = function() {
       upper = c(10, 10),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
+    tags = attr(makeBrentFunction, "tags"),
     global.opt.params = c(-10, -10),
     global.opt.value = 0
   )
 }
+
+class(makeBrentFunction) = c("function", "smoof_generator")
+attr(makeBrentFunction, "name") = c("Brent Function")
+attr(makeBrentFunction, "type") = c("single-objective")
+attr(makeBrentFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

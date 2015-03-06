@@ -1,4 +1,4 @@
-#' DTLZ2 function (family) generator.
+#' DTLZ2 Function (family)
 #'
 #' Builds and returns the multi-objective DTLZ2 test problem.
 #FIXME: add formula
@@ -41,7 +41,7 @@ makeDTLZ2Function = function(dimensions, n.objectives) {
   }
 
   makeMultiObjectiveFunction(
-    name = "DTLZ2 function",
+    name = "DTLZ2 Function",
     description = "Deb et al.",
     fn = fn,
     par.set =  makeNumericParamSet(
@@ -54,3 +54,8 @@ makeDTLZ2Function = function(dimensions, n.objectives) {
     n.objectives = n.objectives
   )
 }
+
+class(makeDTLZ2Function) = c("function", "smoof_generator")
+attr(makeDTLZ2Function, "name") = c("DTLZ2 Function")
+attr(makeDTLZ2Function, "type") = c("multi-objective")
+attr(makeDTLZ2Function, "tags") = c()

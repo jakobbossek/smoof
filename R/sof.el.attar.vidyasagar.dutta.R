@@ -23,8 +23,13 @@ makeElAttarVidyasagarDuttaFunction = function() {
       upper = c(100, 100),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
+    tags = attr(makeElAttarVidyasagarDuttaFunction, "tags"),
     global.opt.params = c(3.40918683, -2.17143304),
     global.opt.value = 1.712780354
   )
 }
+
+class(makeElAttarVidyasagarDuttaFunction) = c("function", "smoof_generator")
+attr(makeElAttarVidyasagarDuttaFunction, "name") = c("El-Attar-Vidyasagar-Dutta Function")
+attr(makeElAttarVidyasagarDuttaFunction, "type") = c("single-objective")
+attr(makeElAttarVidyasagarDuttaFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

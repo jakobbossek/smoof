@@ -19,8 +19,13 @@ makeEggCrateFunction = function() {
       upper = c(5, 5),
       vector = FALSE
     ),
-    tags = c("continuous", "separable", "non-scalable"),
+    tags = attr(makeEggCrateFunction, "tags"),
     global.opt.params = c(0, 0),
     global.opt.value = 0
   )
 }
+
+class(makeEggCrateFunction) = c("function", "smoof_generator")
+attr(makeEggCrateFunction, "name") = c("Egg Crate Function")
+attr(makeEggCrateFunction, "type") = c("single-objective")
+attr(makeEggCrateFunction, "tags") = c("continuous", "separable", "non-scalable")

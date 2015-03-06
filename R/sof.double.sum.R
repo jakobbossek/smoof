@@ -25,8 +25,13 @@ makeDoubleSumFunction = function(dimensions) {
       upper = rep(65.536, dimensions),
       vector = FALSE
     ),
-    tags = c("convex", "unimodal", "differentiable", "separable", "scalable", "continuous"),
+    tags = attr(makeDoubleSumFunction, "tags"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }
+
+class(makeDoubleSumFunction) = c("function", "smoof_generator")
+attr(makeDoubleSumFunction, "name") = c("Double-Sum Function")
+attr(makeDoubleSumFunction, "type") = c("single-objective")
+attr(makeDoubleSumFunction, "tags") = c("convex", "unimodal", "differentiable", "separable", "scalable", "continuous")

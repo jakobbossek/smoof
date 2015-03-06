@@ -28,8 +28,13 @@ makeGoldsteinPriceFunction = function() {
       upper = c(2, 2),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeGoldsteinPriceFunction, "tags"),
     global.opt.params = c(0, -1),
     global.opt.value = 3
   )
 }
+
+class(makeGoldsteinPriceFunction) = c("function", "smoof_generator")
+attr(makeGoldsteinPriceFunction, "name") = c("Goldstein-Price Function")
+attr(makeGoldsteinPriceFunction, "type") = c("single-objective")
+attr(makeGoldsteinPriceFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

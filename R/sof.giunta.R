@@ -26,8 +26,13 @@ makeGiuntaFunction = function() {
       upper = rep(1, 2),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "separable", "multimodal"),
+    tags = attr(makeGiuntaFunction, "tags"),
     global.opt.params = rep(0.45834282, 2L),
     global.opt.value = 0.06463
   )
 }
+
+class(makeGiuntaFunction) = c("function", "smoof_generator")
+attr(makeGiuntaFunction, "name") = c("Giunta Function")
+attr(makeGiuntaFunction, "type") = c("single-objective")
+attr(makeGiuntaFunction, "tags") = c("continuous", "differentiable", "separable", "multimodal")

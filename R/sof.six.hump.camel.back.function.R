@@ -26,7 +26,7 @@ makeSixHumpCamelFunction = function() {
       upper = c(3, 2),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeSixHumpCamelFunction, "tags"),
     global.opt.params = matrix(
       c(-0.0898, 0.7126,
         0.0898, -0.7126),
@@ -34,3 +34,8 @@ makeSixHumpCamelFunction = function() {
     global.opt.value = -1.0316
   )
 }
+
+class(makeSixHumpCamelFunction) = c("function", "smoof_generator")
+attr(makeSixHumpCamelFunction, "name") = c("Six-Hump Camel Back Function")
+attr(makeSixHumpCamelFunction, "type") = c("single-objective")
+attr(makeSixHumpCamelFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

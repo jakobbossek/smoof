@@ -1,4 +1,4 @@
-#' DTLZ4 function (family) generator.
+#' DTLZ4 Function (family)
 #'
 #' Builds and returns the multi-objective DTLZ4 test problem. It is a slight
 #' modification of the DTLZ2 problems by introducing the parameter \eqn{\alpha}.
@@ -52,7 +52,7 @@ makeDTLZ4Function = function(dimensions, n.objectives, alpha = 100) {
   }
 
   makeMultiObjectiveFunction(
-    name = "DTLZ4 function",
+    name = "DTLZ4 Function",
     description = "Deb et al.",
     fn = fn,
     par.set =  makeNumericParamSet(
@@ -65,3 +65,8 @@ makeDTLZ4Function = function(dimensions, n.objectives, alpha = 100) {
     n.objectives = n.objectives
   )
 }
+
+class(makeDTLZ4Function) = c("function", "smoof_generator")
+attr(makeDTLZ4Function, "name") = c("DTLZ4 Function")
+attr(makeDTLZ4Function, "type") = c("multi-objective")
+attr(makeDTLZ4Function, "tags") = c()

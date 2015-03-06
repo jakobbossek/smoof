@@ -26,3 +26,8 @@ makeZettlFunction = function() {
     global.opt.value = -0.003791
   )
 }
+
+class(makeZettlFunction) = c("function", "smoof_generator")
+attr(makeZettlFunction, "name") = c("Zettl Function")
+attr(makeZettlFunction, "type") = c("single-objective")
+attr(makeZettlFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

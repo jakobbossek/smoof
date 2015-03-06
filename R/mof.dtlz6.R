@@ -1,4 +1,4 @@
-#' DTLZ6 function (family) generator.
+#' DTLZ6 Function (family)
 #'
 #' Builds and returns the multi-objective DTLZ6 test problem. This problem
 #' can be characterized by a disconnected Pareto-optimal front in the search
@@ -45,7 +45,7 @@ makeDTLZ6Function = function(dimensions, n.objectives) {
   }
 
   makeMultiObjectiveFunction(
-    name = "DTLZ6 function",
+    name = "DTLZ6 Function",
     description = "Deb et al.",
     fn = fn,
     par.set =  makeNumericParamSet(
@@ -58,3 +58,8 @@ makeDTLZ6Function = function(dimensions, n.objectives) {
     n.objectives = n.objectives
   )
 }
+
+class(makeDTLZ6Function) = c("function", "smoof_generator")
+attr(makeDTLZ6Function, "name") = c("DTLZ6 Function")
+attr(makeDTLZ6Function, "type") = c("multi-objective")
+attr(makeDTLZ6Function, "tags") = c()

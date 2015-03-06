@@ -21,8 +21,13 @@ makeMatyasFunction = function() {
       upper = c(10, 10),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
+    tags = attr(makeMatyasFunction, "tags"),
     global.opt.params = c(0, 0),
     global.opt.value = 0
   )
 }
+
+class(makeMatyasFunction) = c("function", "smoof_generator")
+attr(makeMatyasFunction, "name") = c("Matyas Function")
+attr(makeMatyasFunction, "type") = c("single-objective")
+attr(makeMatyasFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

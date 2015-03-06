@@ -24,8 +24,13 @@ makeEasomFunction = function() {
       upper = c(100, 100),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "separable", "non-scalable", "multimodal"),
+    tags = attr(makeEasomFunction, "tags"),
     global.opt.params = c(pi, pi),
     global.opt.value = -1
   )
 }
+
+class(makeEasomFunction) = c("function", "smoof_generator")
+attr(makeEasomFunction, "name") = c("Eason Function")
+attr(makeEasomFunction, "type") = c("single-objective")
+attr(makeEasomFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")

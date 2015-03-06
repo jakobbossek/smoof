@@ -25,7 +25,7 @@ makeHolderTableN2Function = function() {
       upper = c(10, 10),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "separable", "non-scalable", "multimodal"),
+    tags = attr(makeHolderTableN2Function, "tags"),
     global.opt.params = matrix(
       c(8.05502, 9.66459,
         -8.05502, 9.66459,
@@ -35,3 +35,8 @@ makeHolderTableN2Function = function() {
     global.opt.value = -19.2085
   )
 }
+
+class(makeHolderTableN2Function) = c("function", "smoof_generator")
+attr(makeHolderTableN2Function, "name") = c("Holder Table Function N. 2")
+attr(makeHolderTableN2Function, "type") = c("single-objective")
+attr(makeHolderTableN2Function, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")

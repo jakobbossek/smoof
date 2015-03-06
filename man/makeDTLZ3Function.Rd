@@ -2,7 +2,7 @@
 % Please edit documentation in R/mof.dtlz3.R
 \name{makeDTLZ3Function}
 \alias{makeDTLZ3Function}
-\title{DTLZ3 function (family) generator.}
+\title{DTLZ3 Function (family)}
 \usage{
 makeDTLZ3Function(dimensions, n.objectives)
 }

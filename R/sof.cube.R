@@ -22,8 +22,13 @@ makeCubeFunction = function() {
       upper = c(10, 10),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
+    tags = attr(makeCubeFunction, "tags"),
     global.opt.params = c(-1, 1),
     global.opt.value = 0
   )
 }
+
+class(makeCubeFunction) = c("function", "smoof_generator")
+attr(makeCubeFunction, "name") = c("Cube Function")
+attr(makeCubeFunction, "type") = c("single-objective")
+attr(makeCubeFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

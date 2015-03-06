@@ -1,4 +1,4 @@
-#' ZDT2 function generator.
+#' ZDT2 Function
 #'
 #' Builds and returns the two-objective ZDT2 test problem. The function is
 #' nonconvex and resembles the ZDT1 function. For \eqn{m} objective it
@@ -33,8 +33,8 @@ makeZDT2Function = function(dimensions) {
   }
 
   makeMultiObjectiveFunction(
-    name = "ZDT2 function",
-    description = "Zitzler et al. function 2",
+    name = "ZDT2 Function",
+    description = "Zitzler et al. function N. 2",
     fn = fn,
     par.set =  makeNumericParamSet(
       len = dimensions,
@@ -46,3 +46,8 @@ makeZDT2Function = function(dimensions) {
     n.objectives = 2L
   )
 }
+
+class(makeZDT2Function) = c("function", "smoof_generator")
+attr(makeZDT2Function, "name") = c("ZDT2 Function")
+attr(makeZDT2Function, "type") = c("multi-objective")
+attr(makeZDT2Function, "tags") = c()

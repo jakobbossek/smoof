@@ -24,8 +24,13 @@ makeStepN2Function = function(dimensions) {
       upper = rep(100, dimensions),
       vector = FALSE
     ),
-    tags = c("discontinuous", "non-differentiable", "separable", "scalable", "unimodal"),
+    tags = attr(makeStepN2Function, "tags"),
     global.opt.params = rep(0.5, dimensions),
     global.opt.value = 0
   )
 }
+
+class(makeStepN2Function) = c("function", "smoof_generator")
+attr(makeStepN2Function, "name") = c("Step Function N. 2")
+attr(makeStepN2Function, "type") = c("single-objective")
+attr(makeStepN2Function, "tags") = c("discontinuous", "non-differentiable", "separable", "scalable", "unimodal")

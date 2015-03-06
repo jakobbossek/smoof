@@ -21,8 +21,13 @@ makeHimmelblauFunction = function() {
       upper = c(5, 5),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeHimmelblauFunction, "tags"),
     global.opt.params = c(x1 = 3, x2 = 2),
     global.opt.value = 0
   )
 }
+
+class(makeHimmelblauFunction) = c("function", "smoof_generator")
+attr(makeHimmelblauFunction, "name") = c("Himmelblau Function")
+attr(makeHimmelblauFunction, "type") = c("single-objective")
+attr(makeHimmelblauFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

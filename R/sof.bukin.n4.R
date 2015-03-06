@@ -24,8 +24,13 @@ makeBukinN4Function = function() {
       upper = c(-5, 3),
       vector = FALSE
     ),
-    tags = c("continuous", "non-differentiable", "separable", "non-scalable", "multimodal"),
+    tags = attr(makeBukinN4Function, "tags"),
     global.opt.params = c(-10, 0),
     global.opt.value = 0
   )
 }
+
+class(makeBukinN4Function) = c("function", "smoof_generator")
+attr(makeBukinN4Function, "name") = c("Bukin Function N. 4")
+attr(makeBukinN4Function, "type") = c("single-objective")
+attr(makeBukinN4Function, "tags") = c("continuous", "non-differentiable", "separable", "non-scalable", "multimodal")

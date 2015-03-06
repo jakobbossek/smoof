@@ -1,4 +1,4 @@
-#' DTLZ3 function (family) generator.
+#' DTLZ3 Function (family)
 #'
 #' Builds and returns the multi-objective DTLZ3 test problem. The formula
 #' is very similar to the formula of DTLZ2, but it uses the \eqn{g} function
@@ -46,7 +46,7 @@ makeDTLZ3Function = function(dimensions, n.objectives) {
   }
 
   makeMultiObjectiveFunction(
-    name = "DTLZ3 function",
+    name = "DTLZ3 Function",
     description = "Deb et al.",
     fn = fn,
     par.set =  makeNumericParamSet(
@@ -59,3 +59,8 @@ makeDTLZ3Function = function(dimensions, n.objectives) {
     n.objectives = n.objectives
   )
 }
+
+class(makeDTLZ3Function) = c("function", "smoof_generator")
+attr(makeDTLZ3Function, "name") = c("DTLZ3 Function")
+attr(makeDTLZ3Function, "type") = c("multi-objective")
+attr(makeDTLZ3Function, "tags") = c()

@@ -25,8 +25,13 @@ makeSphereFunction = function(dimensions) {
       upper = rep(5.12, dimensions),
       vector = FALSE
     ),
-    tags = c("unimodal", "separable", "convex", "continuous", "differentiable", "scalable"),
+    tags = attr(makeSphereFunction, "tags"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }
+
+class(makeSphereFunction) = c("function", "smoof_generator")
+attr(makeSphereFunction, "name") = c("Sphere Function")
+attr(makeSphereFunction, "type") = c("single-objective")
+attr(makeSphereFunction, "tags") = c("unimodal", "separable", "convex", "continuous", "differentiable", "scalable")

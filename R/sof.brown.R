@@ -29,8 +29,13 @@ makeBrownFunction = function(dimensions) {
       upper = rep(4, dimensions),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal"),
+    tags = attr(makeBrownFunction, "tags"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }
+
+class(makeBrownFunction) = c("function", "smoof_generator")
+attr(makeBrownFunction, "name") = c("Brown Function")
+attr(makeBrownFunction, "type") = c("single-objective")
+attr(makeBrownFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "unimodal")

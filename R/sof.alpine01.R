@@ -25,8 +25,13 @@ makeAlpine01Function = function(dimensions) {
       upper = rep(10, dimensions),
       vector = FALSE
     ),
-    tags = c("continuous", "non-differentiable", "separable", "non-scalable", "multimodal"),
+    tags = attr(makeAlpine01Function, "tags"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }
+
+class(makeAlpine01Function) = c("function", "smoof_generator")
+attr(makeAlpine01Function, "name") = c("Alpine01 Function")
+attr(makeAlpine01Function, "type") = c("single-objective")
+attr(makeAlpine01Function, "tags") = c("continuous", "non-differentiable", "separable", "non-scalable", "multimodal")

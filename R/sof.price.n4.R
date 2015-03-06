@@ -25,7 +25,7 @@ makePriceN4Function = function() {
       upper = c(500, 500),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makePriceN4Function, "tags"),
     global.opt.params = matrix(
       c(0, 0,
         2, 4,
@@ -34,3 +34,8 @@ makePriceN4Function = function() {
     global.opt.value = 0
   )
 }
+
+class(makePriceN4Function) = c("function", "smoof_generator")
+attr(makePriceN4Function, "name") = c("Price Function N. 4")
+attr(makePriceN4Function, "type") = c("single-objective")
+attr(makePriceN4Function, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

@@ -28,8 +28,13 @@ makeRosenbrockFunction = function(dimensions) {
       upper = rep(30, dimensions),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeRosenbrockFunction, "tags"),
     global.opt.params = rep(1, dimensions),
     global.opt.value = 0
   )
 }
+
+class(makeRosenbrockFunction) = c("function", "smoof_generator")
+attr(makeRosenbrockFunction, "name") = c("Rosenbrock Function")
+attr(makeRosenbrockFunction, "type") = c("single-objective")
+attr(makeRosenbrockFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

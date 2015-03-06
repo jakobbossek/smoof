@@ -36,10 +36,15 @@ makeBraninFunction = function() {
       upper = c(10, 15),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeBraninFunction, "tags"),
     global.opt.params = matrix(
       c(-pi, 12.275, pi, 2.275, 3 * pi, 2.475),
       ncol = 2L, byrow = TRUE),
     global.opt.value = 0.397887
   )
 }
+
+class(makeBraninFunction) = c("function", "smoof_generator")
+attr(makeBraninFunction, "name") = c("Branin Function")
+attr(makeBraninFunction, "type") = c("single-objective")
+attr(makeBraninFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

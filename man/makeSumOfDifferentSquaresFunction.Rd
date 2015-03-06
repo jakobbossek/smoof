@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.sum.of.different.powers.R
 \name{makeSumOfDifferentSquaresFunction}
 \alias{makeSumOfDifferentSquaresFunction}
-\title{Sum of different squares function}
+\title{Sum of Different Squares Function}
 \usage{
 makeSumOfDifferentSquaresFunction(dimensions)
 }

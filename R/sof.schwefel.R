@@ -31,3 +31,8 @@ makeSchwefelFunction = function(dimensions) {
     global.opt.value = -418.9829 * dimensions
   )
 }
+
+class(makeSchwefelFunction) = c("function", "smoof_generator")
+attr(makeSchwefelFunction, "name") = c("Schwefel function")
+attr(makeSchwefelFunction, "type") = c("single-objective")
+attr(makeSchwefelFunction, "tags") = c("continuous", "multimodal")

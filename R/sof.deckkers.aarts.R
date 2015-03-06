@@ -25,7 +25,7 @@ makeDeckkersAartsFunction = function() {
       upper = c(20, 20),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeDeckkersAartsFunction, "tags"),
     global.opt.params = matrix(
       c(0, 15,
         0, -15),
@@ -33,3 +33,8 @@ makeDeckkersAartsFunction = function() {
     global.opt.value = -24777
   )
 }
+
+class(makeDeckkersAartsFunction) = c("function", "smoof_generator")
+attr(makeDeckkersAartsFunction, "name") = c("Deckkers-Aarts Function")
+attr(makeDeckkersAartsFunction, "type") = c("single-objective")
+attr(makeDeckkersAartsFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

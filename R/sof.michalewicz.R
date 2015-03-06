@@ -35,6 +35,11 @@ makeMichalewiczFunction = function(dimensions, m = 10) {
       upper = c(pi, pi),
       vector = FALSE
     ),
-    tags = c("continuous", "multimodal")
+    tags = attr(makeMichalewiczFunction, "tags")
   )
 }
+
+class(makeMichalewiczFunction) = c("function", "smoof_generator")
+attr(makeMichalewiczFunction, "name") = c("Michalewicz Function")
+attr(makeMichalewiczFunction, "type") = c("single-objective")
+attr(makeMichalewiczFunction, "tags") = c("continuous", "multimodal")

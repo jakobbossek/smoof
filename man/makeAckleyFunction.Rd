@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.ackley.R
 \name{makeAckleyFunction}
 \alias{makeAckleyFunction}
-\title{Ackley function}
+\title{Ackley Function}
 \usage{
 makeAckleyFunction(dimensions)
 }
@@ -14,7 +14,7 @@ Size of corresponding parameter space.}
 [\code{smoof_single_objective_function}]
 }
 \description{
-Also known as \dQuote{Ackley's path function}.
+Also known as \dQuote{Ackley's Path Function}.
 Multimodal test function with its global optimum in the center of the defintion
 space. The implementation is based on the formula
 \deqn{f(\mathbf{x}) = -a \cdot \exp\left(-b \cdot \sqrt{\left(\frac{1}{n} \sum_{i=1}^{n} \mathbf{x}_i\right)}\right) - \exp\left(\frac{1}{n} \sum_{i=1}^{n} \cos(c \cdot \mathbf{x}_i)\right),}

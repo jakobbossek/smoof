@@ -2,7 +2,7 @@
 % Please edit documentation in R/mof.zdt4.R
 \name{makeZDT4Function}
 \alias{makeZDT4Function}
-\title{ZDT4 function generator.}
+\title{ZDT4 Function}
 \usage{
 makeZDT4Function(dimensions)
 }

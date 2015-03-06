@@ -24,8 +24,13 @@ makeSchafferN4Function = function() {
       upper = c(100, 100),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
+    tags = attr(makeSchafferN4Function, "tags"),
     global.opt.params = c(0, 1.253115),
     global.opt.value = 0.292579
   )
 }
+
+class(makeSchafferN4Function) = c("function", "smoof_generator")
+attr(makeSchafferN4Function, "name") = c("Schaffer Function N. 4")
+attr(makeSchafferN4Function, "type") = c("single-objective")
+attr(makeSchafferN4Function, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

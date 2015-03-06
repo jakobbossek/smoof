@@ -1,4 +1,4 @@
-#' ZDT6 function generator.
+#' ZDT6 Function
 #'
 #' Builds and returns the two-objective ZDT6 test problem. For \eqn{m} objective it
 #' is defined as follows
@@ -35,8 +35,8 @@ makeZDT6Function = function(dimensions) {
   }
 
   makeMultiObjectiveFunction(
-    name = "ZDT6 function",
-    description = "Zitzler et al. function 6",
+    name = "ZDT6 Function",
+    description = "Zitzler et al. Function N. 6",
     fn = fn,
     par.set =  makeNumericParamSet(
       len = dimensions,
@@ -48,3 +48,8 @@ makeZDT6Function = function(dimensions) {
     n.objectives = 2L
     )
 }
+
+class(makeZDT6Function) = c("function", "smoof_generator")
+attr(makeZDT6Function, "name") = c("ZDT6 Function")
+attr(makeZDT6Function, "type") = c("multi-objective")
+attr(makeZDT6Function, "tags") = c()

@@ -25,7 +25,7 @@ makeShubertFunction = function() {
       upper = c(10, 10),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-scalable", "multimodal"),
+    tags = attr(makeShubertFunction, "tags"),
     global.opt.params = matrix(
       c(-7.0835, 4.8580,
         -7.0835, -7.7083,
@@ -48,3 +48,8 @@ makeShubertFunction = function() {
     global.opt.value = -186.7309
   )
 }
+
+class(makeShubertFunction) = c("function", "smoof_generator")
+attr(makeShubertFunction, "name") = c("Shubert function")
+attr(makeShubertFunction, "type") = c("single-objective")
+attr(makeShubertFunction, "tags") = c("continuous", "differentiable", "non-scalable", "multimodal")

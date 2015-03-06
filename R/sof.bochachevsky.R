@@ -27,8 +27,13 @@ makeBochachevskyFunction = function(dimensions) {
       upper = rep(15, dimensions),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "separable", "non-scalable", "multimodal"),
+    tags = attr(makeBochachevskyFunction, "tags"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }
+
+class(makeBochachevskyFunction) = c("function", "smoof_generator")
+attr(makeBochachevskyFunction, "name") = c("Bochachevsky Function")
+attr(makeBochachevskyFunction, "type") = c("single-objective")
+attr(makeBochachevskyFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")

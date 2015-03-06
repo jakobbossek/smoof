@@ -1,4 +1,4 @@
-#' Sum of different squares function
+#' Sum of Different Squares Function
 #'
 #' Simple unimodal test function similar to the Sphere and Hyper-Ellipsoidal functions.
 #' Formula:
@@ -10,7 +10,7 @@
 makeSumOfDifferentSquaresFunction = function(dimensions) {
   assertCount(dimensions)
   makeSingleObjectiveFunction(
-    name = paste(dimensions, "-d Sum of different squares function", sep = ""),
+    name = paste(dimensions, "-d Sum of Different Squares Function", sep = ""),
     fn = function(x) {
       n = length(x)
       sum(abs(x)^(1:n + 1))
@@ -22,8 +22,13 @@ makeSumOfDifferentSquaresFunction = function(dimensions) {
       upper = rep(1, dimensions),
       vector = FALSE
     ),
-    tags = c("unimodal", "continuous"),
+    tags = attr(makeSumOfDifferentSquaresFunction, "tags"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }
+
+class(makeSumOfDifferentSquaresFunction) = c("function", "smoof_generator")
+attr(makeSumOfDifferentSquaresFunction, "name") = c("Sum of Different Squares Function")
+attr(makeSumOfDifferentSquaresFunction, "type") = c("single-objective")
+attr(makeSumOfDifferentSquaresFunction, "tags") = c("unimodal", "continuous")

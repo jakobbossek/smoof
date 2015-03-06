@@ -22,7 +22,7 @@ makeKeaneFunction = function() {
       upper = c(10, 10),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeKeaneFunction, "tags"),
     global.opt.params = matrix(
       c(0, 1.39325,
         1.39325, 0),
@@ -30,3 +30,8 @@ makeKeaneFunction = function() {
     global.opt.value = -0.673668
   )
 }
+
+class(makeKeaneFunction) = c("function", "smoof_generator")
+attr(makeKeaneFunction, "name") = c("Keane Function")
+attr(makeKeaneFunction, "type") = c("single-objective")
+attr(makeKeaneFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

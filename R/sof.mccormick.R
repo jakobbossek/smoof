@@ -22,8 +22,13 @@ makeMcCormickFunction = function() {
       upper = c(4, 3),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeMcCormickFunction, "tags"),
     global.opt.params = c(-0.54719, -1.54719),
     global.opt.value = -1.9133
   )
 }
+
+class(makeMcCormickFunction) = c("function", "smoof_generator")
+attr(makeMcCormickFunction, "name") = c("McCormick Function")
+attr(makeMcCormickFunction, "type") = c("single-objective")
+attr(makeMcCormickFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

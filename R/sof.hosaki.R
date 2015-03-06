@@ -23,8 +23,13 @@ makeHosakiFunction = function() {
       upper = c(5, 6),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeHosakiFunction, "tags"),
     global.opt.params = c(4, 2),
     global.opt.value = -2.3458
   )
 }
+
+class(makeHosakiFunction) = c("function", "smoof_generator")
+attr(makeHosakiFunction, "name") = c("Hosaki Function")
+attr(makeHosakiFunction, "type") = c("single-objective")
+attr(makeHosakiFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

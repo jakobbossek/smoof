@@ -25,8 +25,13 @@ makeStyblinkskiTangFunction = function() {
       upper = rep(5, 2L),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeStyblinkskiTangFunction, "tags"),
     global.opt.params = c(-2.903534, -2.903534),
     global.opt.value = -78.332
   )
 }
+
+class(makeStyblinkskiTangFunction) = c("function", "smoof_generator")
+attr(makeStyblinkskiTangFunction, "name") = c("Styblinkski-Tang Function")
+attr(makeStyblinkskiTangFunction, "type") = c("single-objective")
+attr(makeStyblinkskiTangFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

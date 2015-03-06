@@ -28,8 +28,13 @@ makeRastriginFunction = function(dimensions) {
       upper = rep(5.12, dimensions),
       vector = FALSE
     ),
-    tags = c("multimodal", "continuous", "separable"),
+    tags = attr(makeRastriginFunction, "tags"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }
+
+class(makeRastriginFunction) = c("function", "smoof_generator")
+attr(makeRastriginFunction, "name") = c("Rastrigin Function")
+attr(makeRastriginFunction, "type") = c("single-objective")
+attr(makeRastriginFunction, "tags") = c("multimodal", "continuous", "separable")

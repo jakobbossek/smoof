@@ -25,8 +25,13 @@ makeBealeFunction = function() {
       upper = c(4.5, 4.5),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
+    tags = attr(makeBealeFunction, "tags"),
     global.opt.params = c(3, 0.5),
     global.opt.value = 0
   )
 }
+
+class(makeBealeFunction) = c("function", "smoof_generator")
+attr(makeBealeFunction, "name") = c("Beale Function")
+attr(makeBealeFunction, "type") = c("single-objective")
+attr(makeBealeFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

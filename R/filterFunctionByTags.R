@@ -10,30 +10,19 @@ filterFunctionsByTags = function(tags) {
 
   # get all generator methods
   all.methods = unclass(lsf.str(envir = asNamespace("smoof"), all = TRUE))
-  fun.generators = all.methods[grep("^make.*Function$", all.methods)]
-  fun.generators = setdiff(fun.generators, c("makeSingleObjectiveFunctionFromSOOFunction", "makeSingleObjectiveFunction", "makeMultiObjectiveFunction", "makeInternalObjectiveFunction", "makeObjectiveFunction"))
-
-  # generate 2D version of the function (tags associated to fun and not its generator)
-  funs = sapply(fun.generators, function(fun.generator) {
-    #FIXME: this is not very elegant
-    fun = try(do.call(fun.generator, list()), silent = TRUE)
-    if (inherits(fun, "try-error")) {
-      fun = try(do.call(fun.generator, list(dimensions = 2L)), silent = TRUE)
-    }
-    if (inherits(fun, "try-error")) {
-      fun = do.call(fun.generator, list(dimensions = 2L, n.objectives = 2L))
-    }
-    return(fun)
-  })
+  # get the function and not the names only
+  all.methods = sapply(all.methods, get)
+  # filter generators
+  fun.generators = Filter(function(fun) inherits(fun, "smoof_generator"), all.methods)
 
   # filter by tags
-  filtered.funs = Filter(function(fun) {
-    fun.tags = getTags(fun)
+  filtered.generators = Filter(function(fun) {
+    fun.tags = attr(fun, "tags")
     return(BBmisc::isSubset(tags, fun.tags))
-  }, funs)
+  }, fun.generators)
 
   # cleanup
-  names = sapply(filtered.funs, getName)
+  names = sapply(filtered.generators, function(fun) attr(fun, "name"))
   names(names) = NULL
   return(names)
 }

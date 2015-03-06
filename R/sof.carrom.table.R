@@ -23,7 +23,7 @@ makeCarromTableFunction = function() {
       upper = c(10, 10),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeCarromTableFunction, "tags"),
     global.opt.params = matrix(
       c(9.646157266348881, 9.646134286497169,
         -9.646157266348881, 9.646134286497169,
@@ -33,3 +33,8 @@ makeCarromTableFunction = function() {
     global.opt.value = -24.1568155
   )
 }
+
+class(makeCarromTableFunction) = c("function", "smoof_generator")
+attr(makeCarromTableFunction, "name") = c("Carrom Table Function")
+attr(makeCarromTableFunction, "type") = c("single-objective")
+attr(makeCarromTableFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

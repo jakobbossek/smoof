@@ -23,8 +23,13 @@ makeThreeHumpCamelFunction = function() {
       upper = c(5, 5),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeThreeHumpCamelFunction, "tags"),
     global.opt.params = c(0, 0),
     global.opt.value = 0
   )
 }
+
+class(makeThreeHumpCamelFunction) = c("function", "smoof_generator")
+attr(makeThreeHumpCamelFunction, "name") = c("Three-Hump Camel Function")
+attr(makeThreeHumpCamelFunction, "type") = c("single-objective")
+attr(makeThreeHumpCamelFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

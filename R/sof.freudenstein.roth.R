@@ -22,8 +22,13 @@ makeFreudensteinRothFunction = function() {
       upper = c(10, 10),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeFreudensteinRothFunction, "tags"),
     global.opt.params = c(5, 4),
     global.opt.value = 0
   )
 }
+
+class(makeFreudensteinRothFunction) = c("function", "smoof_generator")
+attr(makeFreudensteinRothFunction, "name") = c("Freudenstein Roth Function")
+attr(makeFreudensteinRothFunction, "type") = c("single-objective")
+attr(makeFreudensteinRothFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

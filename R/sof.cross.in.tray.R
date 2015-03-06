@@ -24,7 +24,7 @@ makeCrossInTrayFunction = function() {
       upper = c(15, 15),
       vector = FALSE
     ),
-    tags = c("continuous", "non-separable", "non-scalable", "multimodal"),
+    tags = attr(makeCrossInTrayFunction, "tags"),
     global.opt.params = matrix(
       c(1.349406685353340, 1.349406608602084,
         1.349406685353340, -1.349406608602084,
@@ -34,3 +34,8 @@ makeCrossInTrayFunction = function() {
     global.opt.value = -2.06261218
   )
 }
+
+class(makeCrossInTrayFunction) = c("function", "smoof_generator")
+attr(makeCrossInTrayFunction, "name") = c("Cross-In-Tray Function")
+attr(makeCrossInTrayFunction, "type") = c("single-objective")
+attr(makeCrossInTrayFunction, "tags") = c("continuous", "non-separable", "non-scalable", "multimodal")

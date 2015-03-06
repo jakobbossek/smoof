@@ -19,8 +19,13 @@ makeBoothFunction = function() {
       upper = c(10, 10),
       vector = FALSE
     ),
-    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
+    tags = attr(makeBoothFunction, "tags"),
     global.opt.params = c(1, 3),
     global.opt.value = 0
   )
 }
+
+class(makeBoothFunction) = c("function", "smoof_generator")
+attr(makeBoothFunction, "name") = c("Booth Function")
+attr(makeBoothFunction, "type") = c("single-objective")
+attr(makeBoothFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
