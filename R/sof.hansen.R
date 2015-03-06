@@ -36,7 +36,7 @@ makeHansenFunction = function() {
         4.976478, -1.425128,
         4.976478, -7.708314),
       ncol = 2L, byrow = TRUE),
-    global.opt.value = -176.5
+    global.opt.value = -176.5418
   )
 }
 

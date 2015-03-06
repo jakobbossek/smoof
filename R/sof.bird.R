@@ -16,9 +16,9 @@ makeBirdFunction = function() {
     name = "Bird Function",
     fn = function(x) {
       a = (x[1] - x[2])^2
-      b = exp((1 - sin(x[1])^2)) * cos(x[2])
-      c = exp((1 - cos(x[2])^2)) * sin(x[1])
-      return(a * b * c)
+      b = exp((1 - sin(x[1]))^2) * cos(x[2])
+      c = exp((1 - cos(x[2]))^2) * sin(x[1])
+      return(a + b + c)
     },
     par.set = makeNumericParamSet(
       len = 2L,

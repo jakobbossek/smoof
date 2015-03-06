@@ -15,7 +15,7 @@ makeEggholderFunction = function() {
     fn = function(x) {
       i = 1L
       #i = 1:(length(x) - 1L)
-      sum(-(x[i + 1] + 47) * sin(sqrt(abs(x[i + 1] + 0.5 * x[i] + 47))) - x[i] * sin(sqrt(abs(x[i] - (x[i + 1] - 47)))))
+      sum(-(x[i + 1] + 47) * sin(sqrt(abs(x[i + 1] + 0.5 * x[i] + 47))) - x[i] * sin(sqrt(abs(x[i] - (x[i + 1] + 47)))))
     },
     par.set = makeNumericParamSet(
       len = 2L,

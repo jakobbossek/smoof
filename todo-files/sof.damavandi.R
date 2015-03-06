@@ -10,6 +10,7 @@
 #'
 #' @template ret_smoof_single
 #' @export
+#FIXME: global opt is in (2, 2), but function is not defined for this params!
 makeDamavandiFunction = function() {
   makeSingleObjectiveFunction(
     name = "Damavandi Function",

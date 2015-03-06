@@ -14,8 +14,8 @@ makeShubertFunction = function() {
     name = "Shubert Function",
     fn = function(x) {
       j = 1:5
-      a = sum(cos((j + 1) * x[1] + j))
-      b = sum(cos((j + 1) * x[2] + j))
+      a = sum(j * cos((j + 1) * x[1] + j))
+      b = sum(j * cos((j + 1) * x[2] + j))
       return (a * b)
     },
     par.set = makeNumericParamSet(

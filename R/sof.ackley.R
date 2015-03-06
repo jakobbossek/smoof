@@ -20,11 +20,11 @@ makeAckleyFunction = function(dimensions) {
     fn = function(x) {
       n = length(x)
       a = 20
-      b = 0.2
+      b = 0.02
       c = 2 * pi
       d = mean(x^2)
       e = mean(cos(c * x))
-      -a * exp(-b * sqrt((1 / n) * d)) - exp((1 / n) * e) + a + exp(1)
+      -a * exp(-b * sqrt(d)) - exp(e) + a + exp(1)
     },
     par.set = makeNumericParamSet(
       len = dimensions,

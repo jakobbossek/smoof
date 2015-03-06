@@ -12,6 +12,7 @@
 #' @template arg_dimensions
 #' @template ret_smoof_single
 #' @export
+#FIXME: global opt is in (0, ..., 0), but function is not defined for this params!
 makeCsendesFunction = function(dimensions) {
   assertCount(dimensions)
   makeSingleObjectiveFunction(

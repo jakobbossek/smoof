@@ -25,8 +25,11 @@ makeTrecanniFunction = function() {
       vector = FALSE
     ),
     tags = c("continuous", "differentiable", "separable", "non-scalable", "unimodal"),
-    global.opt.params = c(0, 0),
-    global.opt.value = -1.9133
+    global.opt.params = matrix(
+      c(0, 0,
+        -2, 0),
+      ncol = 2L, byrow = TRUE),
+    global.opt.value = 0
   )
 }
 

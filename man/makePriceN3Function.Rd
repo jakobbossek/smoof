@@ -11,7 +11,7 @@ makePriceN3Function()
 }
 \description{
 Third function by Price. The implementation is based on the defintion
-\deqn{f(\mathbf{x}) = 100 (\mathbf{x}_2 - \mathbf{x}_1^2)^2 + 6 \left[6.4 (\mathbf{x}_2 - 0.5)^2 - \mathbf{x}_1 - 0.6\right]^2}
+\deqn{f(\mathbf{x}) = 100 (\mathbf{x}_2 - \mathbf{x}_1^2)^2 + \left[6.4 (\mathbf{x}_2 - 0.5)^2 - \mathbf{x}_1 - 0.6\right]^2}
 subject to \eqn{\mathbf{x}_i \in [-500, 500]}.
 }
 \references{

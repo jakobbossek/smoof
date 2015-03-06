@@ -14,7 +14,7 @@ makeHosakiFunction = function() {
   makeSingleObjectiveFunction(
     name = "Hosaki Function",
     fn = function(x) {
-      (1 + 8 * x[1] + 7 * x[1]^2 - 7 * x[1]^3 / 3 + 0.25 * x[1]^4) * x[2]^2 * exp(-x[1])
+      (1 - 8 * x[1] + 7 * x[1]^2 - 7 * x[1]^3 / 3 + 0.25 * x[1]^4) * x[2]^2 * exp(-x[2])
     },
     par.set = makeNumericParamSet(
       len = 2L,

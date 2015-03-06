@@ -7,8 +7,7 @@
 #' @references W. L. Price, A Controlled Random Search Procedure for Global
 #' Optimisation, Computer journal, vol. 20, no. 4, pp. 367-370, 1977.
 #'
-#' @seealso \code{\link{makePriceN1Function}}, \code{\link{makePriceN2Function}},
-#' \code{\link{makePriceN3Function}}
+#' @seealso \code{\link{makePriceN1Function}}, \code{\link{makePriceN2Function}}
 #'
 #' @template ret_smoof_single
 #' @export

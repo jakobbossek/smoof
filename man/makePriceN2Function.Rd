@@ -19,7 +19,6 @@ W. L. Price, A Controlled Random Search Procedure for Global
 Optimisation, Computer journal, vol. 20, no. 4, pp. 367-370, 1977.
 }
 \seealso{
-\code{\link{makePriceN1Function}}, \code{\link{makePriceN3Function}},
-\code{\link{makePriceN4Function}}
+\code{\link{makePriceN1Function}}, \code{\link{makePriceN4Function}}
 }
 

@@ -23,7 +23,7 @@ makeCubeFunction = function() {
       vector = FALSE
     ),
     tags = attr(makeCubeFunction, "tags"),
-    global.opt.params = c(-1, 1),
+    global.opt.params = c(1, 1),
     global.opt.value = 0
   )
 }

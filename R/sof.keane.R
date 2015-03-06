@@ -27,7 +27,7 @@ makeKeaneFunction = function() {
       c(0, 1.39325,
         1.39325, 0),
       ncol = 2L, byrow = TRUE),
-    global.opt.value = -0.673668
+    global.opt.value = 0.673668
   )
 }
 

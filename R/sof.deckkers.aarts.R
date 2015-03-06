@@ -30,7 +30,7 @@ makeDeckkersAartsFunction = function() {
       c(0, 15,
         0, -15),
       ncol = 2L, byrow = TRUE),
-    global.opt.value = -24777
+    global.opt.value = -24771.0937
   )
 }
 

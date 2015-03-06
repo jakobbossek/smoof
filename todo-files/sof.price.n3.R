@@ -1,7 +1,7 @@
 #' Price Function N. 3
 #'
 #' Third function by Price. The implementation is based on the defintion
-#' \deqn{f(\mathbf{x}) = 100 (\mathbf{x}_2 - \mathbf{x}_1^2)^2 + 6 \left[6.4 (\mathbf{x}_2 - 0.5)^2 - \mathbf{x}_1 - 0.6\right]^2}
+#' \deqn{f(\mathbf{x}) = 100 (\mathbf{x}_2 - \mathbf{x}_1^2)^2 + \left[6.4 (\mathbf{x}_2 - 0.5)^2 - \mathbf{x}_1 - 0.6\right]^2}
 #' subject to \eqn{\mathbf{x}_i \in [-500, 500]}.
 #'
 #' @references W. L. Price, A Controlled Random Search Procedure for Global
@@ -16,7 +16,7 @@ makePriceN3Function = function() {
   makeSingleObjectiveFunction(
     name = "Price Function N. 3",
     fn = function(x) {
-      100 * (x[2] - x[1]^2)^2 + 6 * (6.4 * (x[2] - 0.5)^2 - x[1] - 0.6)^2
+      100 * (x[2] - x[1]^2)^2 + (6.4 * (x[2] - 0.5)^2 - x[1] - 0.6)^2
     },
     par.set = makeNumericParamSet(
       len = 2L,

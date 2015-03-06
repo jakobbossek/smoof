@@ -7,8 +7,7 @@
 #' @references W. L. Price, A Controlled Random Search Procedure for Global
 #' Optimisation, Computer journal, vol. 20, no. 4, pp. 367-370, 1977.
 #'
-#' @seealso \code{\link{makePriceN1Function}}, \code{\link{makePriceN3Function}},
-#' \code{\link{makePriceN4Function}}
+#' @seealso \code{\link{makePriceN1Function}}, \code{\link{makePriceN4Function}}
 #'
 #' @template ret_smoof_single
 #' @export
@@ -27,7 +26,7 @@ makePriceN2Function = function() {
     ),
     tags = attr(makePriceN2Function, "tags"),
     global.opt.params = c(0, 0),
-    global.opt.value = 0
+    global.opt.value = 0.9
   )
 }
 
