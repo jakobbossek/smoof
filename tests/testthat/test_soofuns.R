@@ -24,12 +24,12 @@ test_that("single-objective test function generators work", {
     fun.generators = Filter(function(fun) inherits(fun, "smoof_generator"), all.methods)
 
     for (fun.generator in fun.generators) {
-        fun = try(fun.generator(), silent = TRUE)
+        fun = try(do.call(fun.generator, list()), silent = TRUE)
         if (inherits(fun, "try-error")) {
-            fun = try(fun.generator(dimensions = 2L), silent = TRUE)
+            fun = try(do.call(fun.generator, list(dimensions = 2L)), silent = TRUE)
         }
         if (inherits(fun, "try-error")) {
-            fun = fun.generator(dimensions = 3L, n.objectives = 2L)
+            fun = do.call(fun.generator, list(dimensions = 3L, n.objectives = 2L))
         }
         expectIsSnoofFunction(fun, attr(fun.generator, "name"))
         if (hasGlobalOptimum(fun)) {
