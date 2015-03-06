@@ -10,6 +10,12 @@ makeHansenFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Hansen function
+Test function with multiple global optima based on the definition
+\deqn{f(\mathbf{x}) = \sum_{i = 1}^{4} (i + 1)\cos(i\mathbf{x}_1 + i - 1) \sum_{j = 1}^{4} (j + 1)\cos((j + 2) \mathbf{x}_2 + j + 1)}
+subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
+}
+\references{
+C. Fraley, Software Performances on Nonlinear lems, Technical
+Report no. STAN-CS-89-1244, Computer Science, Stanford University, 1989.
 }
 

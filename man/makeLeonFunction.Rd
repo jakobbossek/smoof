@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.leon.R
 \name{makeLeonFunction}
 \alias{makeLeonFunction}
-\title{Leon function}
+\title{Leon Function}
 \usage{
 makeLeonFunction()
 }
@@ -10,6 +10,12 @@ makeLeonFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Leon function
+The function is based on the defintion
+\deqn{f(\mathbf{x}) = 100 (\mathbf{x}_2 - \mathbf{x}_1^2)^2 + (1 - \mathbf{x}_1)^2}.
+Box-constraints: \eqn{\mathbf{x}_i \in [-1.2, 1.2]} for \eqn{i = 1, 2}.
+}
+\references{
+A. Lavi, T. P. Vogel (eds), Recent Advances in Optimization
+Techniques, John Wliley & Sons, 1966.
 }
 

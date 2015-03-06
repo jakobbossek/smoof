@@ -10,6 +10,12 @@ makeMcCormickFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-McCormick Function
+Two-dimensional, multimodal test function. The defintion is given by
+\deqn{f(\mathbf{x}) = \sin(\mathbf{x}_1 + \mathbf{x}_2) + (\mathbf{x}_1 - \mathbf{x}_2)^2 - 1.5 \mathbf{x}_1 + 2.5 \mathbf{x}_2 + 1}
+subject to \eqn{\mathbf{x}_1 \in [-1.5, 4], \mathbf{x}_2 \in [-3, 3]}.
+}
+\references{
+F. A. Lootsma (ed.), Numerical Methods for Non-Linear
+Optimization, Academic Press, 1972.
 }
 

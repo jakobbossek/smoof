@@ -1,5 +1,11 @@
 #' Matyas Function
 #'
+#' Two-dimensiona, unimodal test function
+#' \deqn{f(\mathbf{x}) = 0.26 (\mathbf{x}_1^2 + \mathbf{x}_2^2) - 0.48\mathbf{x}_1\mathbf{x}_2}
+#' subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
+#'
+#' @references A.-R. Hedar, Global Optimization Test Problems.
+#'
 #' @template ret_smoof_single
 #' @export
 makeMatyasFunction = function() {
@@ -15,7 +21,8 @@ makeMatyasFunction = function() {
       upper = c(10, 10),
       vector = FALSE
     ),
-    global.opt.params = list("x1" = 0, "x2" = 0),
+    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
+    global.opt.params = c(x1 = 0, x2 = 0),
     global.opt.value = 0
   )
 }

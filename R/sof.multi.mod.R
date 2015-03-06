@@ -5,8 +5,6 @@
 #' @export
 makeMultiModFunction = function(dimensions) {
   assertCount(dimensions)
-  global.opt.params = as.list(rep(0, dimensions))
-  names(global.opt.params) = paste("x", seq(dimensions), sep = "")
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d MultiMod function", sep = ""),
     fn = function(x) {
@@ -20,7 +18,7 @@ makeMultiModFunction = function(dimensions) {
       upper = rep(10, dimensions),
       vector = FALSE
     ),
-    global.opt.params = global.opt.params,
+    global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }

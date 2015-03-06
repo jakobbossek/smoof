@@ -2,7 +2,7 @@
 % Please edit documentation in R/sof.keane.R
 \name{makeKeaneFunction}
 \alias{makeKeaneFunction}
-\title{Keane function}
+\title{Keane Function}
 \usage{
 makeKeaneFunction()
 }
@@ -10,6 +10,9 @@ makeKeaneFunction()
 [\code{smoof_single_objective_function}]
 }
 \description{
-Keane function
+Two-dimensional test function based on the defintion
+\deqn{f(\mathbf{x}) = \frac{\sin^2(\mathbf{x}_1 - \mathbf{x}_2)\sin^2(\mathbf{x}_1 + \mathbf{x}_2)}{\sqrt{\mathbf{x}_1^2 + \mathbf{x}_2^2}}.}
+The domain of definition is bounded by the box constraints
+\eqn{\mathbf{x}_i \in [0, 10], i = 1, 2}.
 }
 

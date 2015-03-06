@@ -1,0 +1,37 @@
+#' Price Function N. 1
+#'
+#' Second function by Price. The implementation is based on the defintion
+#' \deqn{f(\mathbf{x}) = (|\mathbf{x}_1| - 5)^2 + (|\mathbf{x}_2 - 5)^2}
+#' subject to \eqn{\mathbf{x}_i \in [-500, 500], i = 1, 2}.
+#'
+#' @references W. L. Price, A Controlled Random Search Procedure for Global
+#' Optimisation, Computer journal, vol. 20, no. 4, pp. 367-370, 1977.
+#'
+#' @seealso \code{\link{makePriceN2Function}}, \code{\link{makePriceN3Function}},
+#' \code{\link{makePriceN4Function}}
+#'
+#' @template ret_smoof_single
+#' @export
+makePriceN1Function = function() {
+  makeSingleObjectiveFunction(
+    name = "Price Function N. 1",
+    fn = function(x) {
+      sum((abs(x) - 5)^2)
+    },
+    par.set = makeNumericParamSet(
+      len = 2L,
+      id = "x",
+      lower = c(-500, -500),
+      upper = c(500, 500),
+      vector = FALSE
+    ),
+    tags = c("continuous", "non-differentiable", "separable", "non-scalable", "multimodal"),
+    global.opt.params = matrix(
+      c(5, 5,
+        -5, 5,
+        5, -5,
+        -5, 5),
+      ncol = 2L, byrow = TRUE),
+    global.opt.value = 0
+  )
+}

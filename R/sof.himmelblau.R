@@ -1,5 +1,11 @@
 #' Himmelblau Function
 #'
+#' Two-dimensional test function based on the function defintion
+#' \deqn{f(\mathbf{x}) = (\mathbf{x}_1^2 + \mathbf{x}_2 - 11)^2 + (\mathbf{x}_1 + \mathbf{x}_2^2 - 7)^2}
+#' with box-constraings \eqn{\mathbf{x}_i \in [-5, 5], i = 1, 2}.
+#'
+#' @references D. M. Himmelblau, Applied Nonlinear Programming, McGraw-Hill, 1972.
+#'
 #' @template ret_smoof_single
 #' @export
 makeHimmelblauFunction = function() {
@@ -11,11 +17,12 @@ makeHimmelblauFunction = function() {
     par.set = makeNumericParamSet(
       len = 2L,
       id = "x",
-      lower = c(-5.12, -5.12),
-      upper = c(5.12, 5.12),
+      lower = c(-5, -5),
+      upper = c(5, 5),
       vector = FALSE
     ),
-    global.opt.params = list("x1" = 3, "x2" = 2),
+    tags = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal"),
+    global.opt.params = c(x1 = 3, x2 = 2),
     global.opt.value = 0
   )
 }
