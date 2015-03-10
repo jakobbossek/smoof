@@ -1,5 +1,6 @@
 #include <Rcpp.h>
 
+// FIMXE: add more comments
 // FIXME: better rename the functions in the BBOB code
 // these are later redefined
 #ifdef ERROR
@@ -58,6 +59,7 @@ double evaluateBBOBFunctionCPP(const unsigned int dimension, const unsigned int 
   }
   switch(last_fid) {
     case 1: return f1(param).Fval;
+    case 2: return f2(param).Fval;
     default: return 0.000001;
   }
 }

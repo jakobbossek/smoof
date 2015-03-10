@@ -1,5 +1,6 @@
 #' @export
 makeBBOB2009Function = function(dimension, fid, iid) {
+  # do some sanity checks
   assertInt(dimension, lower = 2L, upper = 40L, na.ok = FALSE)
   assertInt(fid, lower = 1L, upper = 24L, na.ok = FALSE)
   assertInt(iid, lower = 1L, upper = 24L, na.ok = FALSE)
@@ -9,25 +10,67 @@ makeBBOB2009Function = function(dimension, fid, iid) {
   force(fid)
   force(iid)
 
+  # build parameter set (bounds are [-5, 5] for all BBOB funs)
+  par.set = makeNumericParamSet("x", len = dimension, lower = -5, upper = 5)
+
   # get optimal values
   optimals = getOptimumForBBOBFunction(dimension, fid, iid)
-  par.set = makeNumericParamSet("x", len = 2L, lower = -5, upper = 5)
+  #FIXME: do we really need named vectors for global.opt.params?
   names(optimals$param) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+
+  # debug
   ooo <<- optimals
 
+  # get metadata, i. e., tags and name
+  meta = mapBBOBFidToMetaData(fid)
+
   makeSingleObjectiveFunction(
-    name = sprintf("BBOB_%i_%i_%i", 2L, fid, iid),
+    name = sprintf("BBOB_%i_%i_%i", dimension, fid, iid),
+    description = sprintf("%i-th noiseless BBOB function\n(FID: %i, IID: %i, DIMENSION: %i)",
+      fid, fid, iid, dimension),
     fn = function(x) {
       evaluateBBOBFunctionCPP(dimension, fid, iid, x)
     },
-    # bounds are [-5, 5] for all BBOB funs
     par.set = par.set,
-    #FIXME: add optimal params and global minimum function value
-    global.opt.params = optimals$param,
-    global.opt.value = optimals$value
+    tags = meta$tags,
+    global.opt.params = as.numeric(optimals$param),
+    global.opt.value = as.numeric(optimals$value)
   )
 }
 
+mapBBOBFidToMetaData = function(fid) {
+  mapping = list(
+    "1" = list(name = "Sphere", tags = c("unimodal", "separable", "differentiable", "continuous", "convex")),
+    "2" = list(name = "Ellipsoidal", tags = c("unimodal", "separable", "differentiable", "continuous", "convex")),
+    "3" = list(name = "Rastrigin", tags = c("multimodal", "separable", "differentiable", "continuous")),
+    "4" = list(name = "Büche-Rastrigin", tags = c("multimodal", "separable", "differentiable", "continuous")),
+    "5" = list(name = "Linear Slope", tags = c("unimodal", "separable", "differentiable", "continuous")),
+    "6" = list(name = "Attractive Sector", tags = c("unimodal", "continuous", "moderate-conditioned", "non-separable")),
+    "7" = list(name = "Step Ellipsoidal", tags = c("unimodal", "moderate-conditioning", "non-separable", "non-differentiable")),
+    "8" = list(name = "Rosenbrock (original)", tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")),
+    "9" = list(name = "Rosenbrock (rotated)", tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")),
+    "10" = list(name = "Ellipsoidal", tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
+    "11" = list(name = "Discus", tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
+    "12" = list(name = "Bent Cigar", tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
+    "13" = list(name = "Sharp Ridge", tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
+    "14" = list(name = "Different Powers", tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
+    "15" = list(name = "Rastrigin", tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
+    "16" = list(name = "Weierstrass", tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
+    "17" = list(name = "Schaffers F7", tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
+    "18" = list(name = "Schaffers F7 (moderately ill-conditioned)", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure", "moderate-conditioned")),
+    "19" = list(name = "Composite Griewank-Rosenbrock F8F2", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
+    "20" = list(name = "Schwefel", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
+    "21" = list(name = "Gallagher's Gaussian 101-me Peaks", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
+    "22" = list(name = "Gallagher's Gaussian 21-hi Peaks", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
+    "23" = list(name = "Katsuura", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
+    "24" = list(name = "Lunacek bi-Rastrigin", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure"))
+  )
+  mapping[[fid]]
+}
+
+# Get the optimal parameter values and the optimal function value for a BBOB
+# function.
+#
 getOptimumForBBOBFunction = function(dimension, fid, iid) {
   getOptimumForBBOBFunctionCPP(dimension, fid, iid)
 }

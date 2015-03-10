@@ -8,5 +8,7 @@ getAvailableTags = function() {
     "convex", "non-convex",
     "continuous", "discontinuous",
     "scalable", "non-scalable",
-    "differentiable", "non-differentiable")
+    "differentiable", "non-differentiable",
+    "low-conditioned", "moderate-conditioned", "highly-conditioned",
+    "adequate-global-structure", "weak-global-structure")
 }
