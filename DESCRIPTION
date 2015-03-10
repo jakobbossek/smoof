@@ -20,3 +20,5 @@ Imports:
     emoa
 Suggests:
     testthat
+LazyData: yes
+ByteCompile: yes
