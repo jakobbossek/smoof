@@ -98,7 +98,7 @@ makeSingleObjectiveFunction = function(
         stopf("Global optimum out of bounds.")
       }
     })
-    if (!setequal(getParamIds(par.set), colnames(global.opt.params))) {
+    if (!setequal(getParamIds(par.set, repeated = TRUE, with.nr = TRUE), colnames(global.opt.params))) {
       stopf("Names of values and parameter names do not match.")
     }
   }
