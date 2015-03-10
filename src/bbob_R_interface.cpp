@@ -72,6 +72,9 @@ List getOptimumForBBOBFunctionCPP(const unsigned int dimension, const unsigned i
   // every function has its minimum in the origin (0, ..., 0)
   // We hence initialize a numeric vector of size 'dimension'
   NumericVector x(dimension);
+  for (int i = 0; i < x.size(); ++i) {
+    x[i] = 0.0;
+  }
 
   // evaluate the function at that point ...
   evaluateBBOBFunctionCPP(fid, iid, dimension, x);
