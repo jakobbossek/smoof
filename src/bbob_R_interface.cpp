@@ -1,8 +1,12 @@
 #include <Rcpp.h>
 
+// The BBOB header file use function with names ERROR
+// and WARNING, but these are macros defined in Rcpp
+// seemingly. We this 'undefine' this Rcpp stuff here.
+// Probably it is not the best idea. We should rather
+// rename the BBOB functions.
 // FIMXE: add more comments
 // FIXME: better rename the functions in the BBOB code
-// these are later redefined
 #ifdef ERROR
   #undef ERROR
 #endif
@@ -27,6 +31,13 @@ static unsigned int last_dimension;
 
 using namespace Rcpp;
 
+// This function is responsable for the init process of BBOB functions.
+//
+// @param dimension [unsigned int] Dimension of the problem.
+// @param fid [unsigned int] Function id. Integer in {1, ..., 24}.
+// @param iid [unsigned int] Instance id.
+//
+// @return Nothing. Just do some side-effects.
 static void initializeBBOBFunction(const unsigned int dimension, const unsigned int fid, const unsigned int iid) {
   if (init == 0 || last_fid != fid || last_iid != iid || last_dimension != dimension) {
     if (init != 0) {
@@ -40,14 +51,25 @@ static void initializeBBOBFunction(const unsigned int dimension, const unsigned 
   DIM = dimension;
   last_dimension = dimension;
 
+  // call BBOB initilizer functions
   initbenchmarkshelper();
   initbenchmarks();
   trialid = last_iid = iid;
   last_fid = fid;
-  // inititialization done
+
+  // inititialization finished
   init = 1;
+  Fopt = computeFopt(fid, iid);
 }
 
+// Evaluate a BBOB function call.
+//
+// @param dimension [unsigned int] Dimension of the problem.
+// @param fid [unsigned int] Function id. Integer in {1, ..., 24}.
+// @param iid [unsigned int] Instance id.
+// @param x [Rcpp::NumericVector] Numeric parameter vector of size 'dimension'.
+//
+// @return [double] Function value of the corresponding BBOB function.
 // [[Rcpp::export]]
 double evaluateBBOBFunctionCPP(const unsigned int dimension, const unsigned int fid, const unsigned int iid, NumericVector x) {
   initializeBBOBFunction(dimension, fid, iid);
@@ -64,20 +86,30 @@ double evaluateBBOBFunctionCPP(const unsigned int dimension, const unsigned int 
   }
 }
 
+// Get global optimum and global optimum value of a function.
+//
+// @param dimension [unsigned int] Dimension of the problem.
+// @param fid [unsigned int] Function id. Integer in {1, ..., 24}.
+// @param iid [unsigned int] Instance id.
+// @param x [Rcpp::NumericVector] Numeric parameter vector of size 'dimension'.
+//
+// @return [Rcpp::List]
 // [[Rcpp::export]]
 List getOptimumForBBOBFunctionCPP(const unsigned int dimension, const unsigned int fid, const unsigned int iid) {
   initializeBBOBFunction(dimension, fid, iid);
 
+  // get the optimal value
   double value = computeFopt(fid, iid);
-  // every function has its minimum in the origin (0, ..., 0)
-  // We hence initialize a numeric vector of size 'dimension'
+
+  //initializeBBOBFunction(dimension, fid, iid);
+
   NumericVector x(dimension);
   for (int i = 0; i < x.size(); ++i) {
     x[i] = 0.0;
   }
 
   // evaluate the function at that point ...
-  evaluateBBOBFunctionCPP(fid, iid, dimension, x);
+  evaluateBBOBFunctionCPP(dimension, fid, iid, x);
 
   // and store the result in a numeric vector for output
   NumericVector param(dimension);

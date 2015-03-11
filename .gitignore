@@ -8,3 +8,5 @@ benchmark.R
 lit
 tests/testthat/Rplots.pdf
 test_specific.R
+*.so
+*.o
