@@ -484,15 +484,18 @@ TwoDoubles f9(double* x) {
             for (j = 0; j < DIM; j++)
                 linearTF[i][j] = scales * rotation[i][j];
         }
-/*         for (i = 0; i < DIM; i++)
-           {
-               Xopt[i] = 0.;
-               for (j = 0; j < DIM; j++)
-               {
-                   Xopt[i] += linearTF[j][i] * 0.5/scales/scales;
-                   //computed only if Xopt is returned which is not the case at this point.
-               }
-            }*/
+        // Jakob Bossek
+        // This section is hidden by comments in the original implementation,
+        // but it is reactivated here for smoof.
+        for (i = 0; i < DIM; i++)
+        {
+              Xopt[i] = 0.;
+              for (j = 0; j < DIM; j++)
+              {
+                Xopt[i] += linearTF[j][i] * 0.5/scales/scales;
+                //computed only if Xopt is returned which is not the case at this point.
+              }
+        }
         isInitDone = 1;
     }
     Fadd = Fopt;
