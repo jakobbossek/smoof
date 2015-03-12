@@ -43,44 +43,6 @@ static void initializeBBOBFunction(const unsigned int dimension, const unsigned 
       finibenchmarkshelper();
       init = 0;
     }
-  }
-  // init BBOB function
-  isInitDone = 0;
-  DIM = dimension;
-  last_dimension = dimension;
-
-  // call BBOB initilizer functions
-  initbenchmarkshelper();
-  initbenchmarks();
-  trialid = last_iid = iid;
-  last_fid = fid;
-
-  // inititialization finished
-  init = 1;
-  Fopt = computeFopt(fid, iid);
-}
-
-// Evaluate a BBOB function call.
-//
-// @param dimension [unsigned int] Dimension of the problem.
-// @param fid [unsigned int] Function id. Integer in {1, ..., 24}.
-// @param iid [unsigned int] Instance id.
-// @param x [Rcpp::NumericVector] Numeric parameter vector of size 'dimension'.
-//
-// @return [double] Function value of the corresponding BBOB function.
-// [[Rcpp::export]]
-SEXP evaluateBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid, SEXP r_x) {
-  unsigned int fid = asInteger(r_fid);
-  unsigned int iid = asInteger(r_iid);
-  unsigned int dimension = asInteger(r_dimension);
-
-  //initializeBBOBFunction(dimension, fid, iid);
-  if (init == 0 || last_fid != fid || last_iid != iid || last_dimension != dimension) {
-    if (init != 0) {
-      finibenchmarks();
-      finibenchmarkshelper();
-      init = 0;
-    }
     // init BBOB function
     isInitDone = 0;
     DIM = dimension;
@@ -96,6 +58,22 @@ SEXP evaluateBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid, SEXP r_x)
     init = 1;
     Fopt = computeFopt(fid, iid);
   }
+}
+
+// Evaluate a BBOB function call.
+//
+// @param dimension [unsigned int] Dimension of the problem.
+// @param fid [unsigned int] Function id. Integer in {1, ..., 24}.
+// @param iid [unsigned int] Instance id.
+// @param x [R::numeric] Numeric parameter vector of size 'dimension'.
+//
+// @return [numeric(1)] Function value of the corresponding BBOB function.
+SEXP evaluateBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid, SEXP r_x) {
+  unsigned int fid = asInteger(r_fid);
+  unsigned int iid = asInteger(r_iid);
+  unsigned int dimension = asInteger(r_dimension);
+
+  initializeBBOBFunction(dimension, fid, iid);
 
   // generate object for output
   SEXP r_value = PROTECT(allocVector(REALSXP, 1));
@@ -104,14 +82,12 @@ SEXP evaluateBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid, SEXP r_x)
   bbobFunction bbob_fun = *bbob_funs[last_fid - 1];
 
   // unwrap integer
-  if (!isReal(r_x)) {
-    error("r_x must be numeric!");
-  }
   double *param = REAL(r_x);
-
   double *value = REAL(r_value);
+
   value[0] = bbob_fun(param).Fval;
   UNPROTECT(1);
+
   return (r_value);
 }
 
@@ -120,10 +96,9 @@ SEXP evaluateBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid, SEXP r_x)
 // @param dimension [unsigned int] Dimension of the problem.
 // @param fid [unsigned int] Function id. Integer in {1, ..., 24}.
 // @param iid [unsigned int] Instance id.
-// @param x [Rcpp::NumericVector] Numeric parameter vector of size 'dimension'.
+// @param x [R::numeric] Numeric parameter vector of size 'dimension'.
 //
-// @return [Rcpp::List]
-// [[Rcpp::export]]
+// @return [List]
 SEXP getOptimumForBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid) {
   // unwrap SEXPs
   unsigned int dimension = INTEGER(r_dimension)[0];
