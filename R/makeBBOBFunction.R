@@ -19,6 +19,9 @@
 #' @export
 makeBBOBFunction = function(dimension, fid, iid) {
   # do some sanity checks
+  dimension = convertInteger(dimension)
+  fid = convertInteger(fid)
+  iid = convertInteger(iid)
   assertInt(dimension, lower = 2L, upper = 40L, na.ok = FALSE)
   assertInt(fid, lower = 1L, upper = 24L, na.ok = FALSE)
   assertInt(iid, lower = 1L, upper = 24L, na.ok = FALSE)
@@ -34,7 +37,8 @@ makeBBOBFunction = function(dimension, fid, iid) {
   # get optimal values
   optimals = getOptimumForBBOBFunction(dimension, fid, iid)
   #FIXME: do we really need named vectors for global.opt.params?
-  names(optimals$param) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+  names(optimals[[1]]) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+
 
   # get metadata, i. e., tags and name
   meta = mapBBOBFidToMetaData(fid)
@@ -44,12 +48,12 @@ makeBBOBFunction = function(dimension, fid, iid) {
     description = sprintf("%i-th noiseless BBOB function\n(FID: %i, IID: %i, DIMENSION: %i)",
       fid, fid, iid, dimension),
     fn = function(x) {
-      evaluateBBOBFunctionCPP(dimension, fid, iid, x)
+      .Call("evaluateBBOBFunctionCPP", dimension, fid, iid, x)
     },
     par.set = par.set,
     tags = meta$tags,
-    global.opt.params = as.numeric(optimals$param),
-    global.opt.value = as.numeric(optimals$value)
+    global.opt.params = as.numeric(optimals[[1]]),
+    global.opt.value = as.numeric(optimals[[2]])
   )
 }
 
@@ -87,5 +91,5 @@ mapBBOBFidToMetaData = function(fid) {
 # function.
 #
 getOptimumForBBOBFunction = function(dimension, fid, iid) {
-  getOptimumForBBOBFunctionCPP(dimension, fid, iid)
+  .Call("getOptimumForBBOBFunctionCPP", dimension, fid, iid)
 }

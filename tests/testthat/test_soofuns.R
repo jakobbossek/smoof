@@ -38,6 +38,7 @@ test_that("BBOB functions work", {
     for (iid in iids) {
       for (dimension in dimensions) {
         generator = sprintf("(FID: %i, IID : %i, DIM: %i)", fid, iid, dimension)
+        print(generator)
         bbob.fn = makeBBOBFunction(dimension = dimension, fid = fid, iid = iid)
         expectIsSnoofFunction(bbob.fn, generator)
         expectGlobalOptimum(bbob.fn, generator)

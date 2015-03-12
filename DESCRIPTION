@@ -17,10 +17,8 @@ Imports:
     ggplot2,
     RColorBrewer,
     plot3D,
-    emoa,
-    Rcpp (>= 0.11.3)
+    emoa
 Suggests:
     testthat
 LazyData: yes
 ByteCompile: yes
-LinkingTo: Rcpp
