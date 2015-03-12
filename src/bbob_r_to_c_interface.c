@@ -2,6 +2,12 @@
 #include <R.h>
 #include <Rinternals.h>
 
+// define some macros
+#define ALLOC_VECTOR(type, size) (PROTECT(allocVector(type, size)))
+#define ALLOC_REAL_VECTOR(size) (ALLOC_VECTOR(REALSXP, size))
+#define ALLOC_INTEGER_VECTOR(size) (ALLOC_VECTOR(INTSXP, size))
+#define ALLOC_LIST(size) (ALLOC_VECTOR(VECSXP, size))
+
 // The BBOB header file use function with names ERROR
 // and WARNING, but these are macros defined in Rcpp
 // seemingly. We this 'undefine' this Rcpp stuff here.
@@ -23,9 +29,14 @@
 
 // some variables for bookkeeping
 static int init = 0;
+
+// all the BBOB functions have to be instantiated.
+// These varaibles serve to keep track of the lastly initiated function
 static unsigned int last_fid;
 static unsigned int last_iid;
 static unsigned int last_dimension;
+
+// this array of references to the BBOB functions makes if statements needless later
 static bbobFunction bbob_funs[24] = {&f1, &f2, &f3, &f4, &f5, &f6, &f7, &f8, &f9, &f10, &f11, &f12, &f13, &f14, &f15, &f16, &f17, &f18, &f19, &f20, &f21, &f22, &f23, &f24};
 
 
@@ -75,8 +86,8 @@ SEXP evaluateBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid, SEXP r_x)
 
   initializeBBOBFunction(dimension, fid, iid);
 
-  // generate object for output
-  SEXP r_value = PROTECT(allocVector(REALSXP, 1));
+  // setup R result object and protect R object in C
+  SEXP r_value = ALLOC_REAL_VECTOR(1);
 
   // get the bbob function
   bbobFunction bbob_fun = *bbob_funs[last_fid - 1];
@@ -86,6 +97,8 @@ SEXP evaluateBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid, SEXP r_x)
   double *value = REAL(r_value);
 
   value[0] = bbob_fun(param).Fval;
+
+  // unprotect for R
   UNPROTECT(1);
 
   return (r_value);
@@ -101,16 +114,16 @@ SEXP evaluateBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid, SEXP r_x)
 // @return [List]
 SEXP getOptimumForBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid) {
   // unwrap SEXPs
-  unsigned int dimension = INTEGER(r_dimension)[0];
-  unsigned int fid = INTEGER(r_fid)[0];
-  unsigned int iid = INTEGER(r_iid)[0];
+  unsigned int dimension = asInteger(r_dimension);
+  unsigned int fid = asInteger(r_fid);
+  unsigned int iid = asInteger(r_iid);
 
   initializeBBOBFunction(dimension, fid, iid);
 
-  // setup result vars and protect from gc
-  SEXP r_param = PROTECT(allocVector(REALSXP, dimension)); // numeric vector
-  SEXP r_value = PROTECT(allocVector(REALSXP, 1)); // single numeric value
-  SEXP r_result = PROTECT(allocVector(VECSXP, 2)); // list with param and value
+  // setup R result vars and protect R objects in C
+  SEXP r_param  = ALLOC_REAL_VECTOR(dimension); // numeric vector
+  SEXP r_value  = ALLOC_REAL_VECTOR(1); // single numeric value
+  SEXP r_result = ALLOC_LIST(2); // list with param and value
 
   // get the C representation of these
   double *param = REAL(r_param);
@@ -132,6 +145,7 @@ SEXP getOptimumForBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid) {
   SET_VECTOR_ELT(r_result, 0, r_param);
   SET_VECTOR_ELT(r_result, 1, r_value);
 
+  // unprotect for R
   UNPROTECT(3);
   return (r_result);
 }
