@@ -1,21 +1,6 @@
 context("single-objective test functions")
 
 test_that("single-objective test function generators work", {
-    expectIsSnoofFunction = function(obj, generator) {
-        expect_is(obj, c("smoof_function", "function"), info = "No snoof function generated '%s'.", generator)
-    }
-
-    expectGlobalOptimum = function(fun, generator) {
-      op = getGlobalOptimum(fun)
-      op.df = op$param
-      for (i in 1:nrow(op.df)) {
-        param = op.df[i, ]
-        comp.op = fun(param)
-        expect_true(abs(comp.op - op$value) < 0.01, info = sprintf("%i-th Global optimum does not correspond to given value
-          for function '%s'! IS: %.4f, SHOULD BE: %.4f", i, generator, comp.op, op$value), label = generator)
-      }
-    }
-
     # get all relevant methods
     all.methods = unclass(lsf.str(envir = asNamespace("smoof"), all = TRUE))
     all.methods = all.methods[grepl("^make", all.methods)]
@@ -43,4 +28,20 @@ test_that("single-objective test function generators work", {
         expect_true(is.numeric(test.val))
     }
     expect_true(length(filterFunctionsByTags("continuous")) > 0L)
+})
+
+test_that("BBOB functions work", {
+  fids = 1:24
+  iids = c(1, 5, 10, 15, 20)
+  dimensions = c(2, 3, 5, 10, 20, 40)
+  for (fid in fids) {
+    for (iid in iids) {
+      for (dimension in dimensions) {
+        generator = paste("(FID: %i, IID : %i, DIM: %i", fid, iid, dimension)
+        bbob.fn = makeBBOBFunction(dimension = dimension, fid = fid, iid = iid)
+        expectIsSnoofFunction(bbob.fn, generator)
+        expectGlobalOptimum(bbob.fn, generator)
+      }
+    }
+  }
 })
