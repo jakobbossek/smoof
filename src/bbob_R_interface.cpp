@@ -5,7 +5,6 @@
 // seemingly. We this 'undefine' this Rcpp stuff here.
 // Probably it is not the best idea. We should rather
 // rename the BBOB functions.
-// FIMXE: add more comments
 // FIXME: better rename the functions in the BBOB code
 #ifdef ERROR
   #undef ERROR
@@ -28,6 +27,8 @@ static int init = 0;
 static unsigned int last_fid;
 static unsigned int last_iid;
 static unsigned int last_dimension;
+static bbobFunction bbob_funs[24] = {&f1, &f2, &f3, &f4, &f5, &f6, &f7, &f8, &f9, &f10, &f11, &f12, &f13, &f14, &f15, &f16, &f17, &f18, &f19, &f20, &f21, &f22, &f23, &f24};
+
 
 using namespace Rcpp;
 
@@ -79,11 +80,12 @@ double evaluateBBOBFunctionCPP(const unsigned int dimension, const unsigned int 
   for (int i = 0; i < dimension; ++i) {
     param[i] = x[i];
   }
-  switch(last_fid) {
-    case 1: return f1(param).Fval;
-    case 2: return f2(param).Fval;
-    default: return 0.000001;
+  if (last_fid > 24) {
+    return 0.000001;
   }
+
+  bbobFunction bbob_fun = *bbob_funs[last_fid - 1];
+  return(bbob_fun(param).Fval);
 }
 
 // Get global optimum and global optimum value of a function.
@@ -107,6 +109,7 @@ List getOptimumForBBOBFunctionCPP(const unsigned int dimension, const unsigned i
   for (int i = 0; i < x.size(); ++i) {
     x[i] = 0.0;
   }
+  initializeBBOBFunction(dimension, fid, iid);
 
   // evaluate the function at that point ...
   evaluateBBOBFunctionCPP(dimension, fid, iid, x);

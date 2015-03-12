@@ -61,7 +61,7 @@ mapBBOBFidToMetaData = function(fid) {
     "4" = list(name = "Bueche-Rastrigin", tags = c("multimodal", "separable", "differentiable", "continuous")),
     "5" = list(name = "Linear Slope", tags = c("unimodal", "separable", "differentiable", "continuous")),
     "6" = list(name = "Attractive Sector", tags = c("unimodal", "continuous", "moderate-conditioned", "non-separable")),
-    "7" = list(name = "Step Ellipsoidal", tags = c("unimodal", "moderate-conditioning", "non-separable", "non-differentiable")),
+    "7" = list(name = "Step Ellipsoidal", tags = c("unimodal", "moderate-conditioned", "non-separable", "non-differentiable")),
     "8" = list(name = "Rosenbrock (original)", tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")),
     "9" = list(name = "Rosenbrock (rotated)", tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")),
     "10" = list(name = "Ellipsoidal", tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),

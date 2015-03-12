@@ -33,11 +33,11 @@ test_that("single-objective test function generators work", {
 test_that("BBOB functions work", {
   fids = 1:24
   iids = c(1, 5, 10, 15, 20)
-  dimensions = c(2, 3, 5, 10, 20, 40)
+  dimensions = c(2, 3)
   for (fid in fids) {
     for (iid in iids) {
       for (dimension in dimensions) {
-        generator = paste("(FID: %i, IID : %i, DIM: %i", fid, iid, dimension)
+        generator = sprintf("(FID: %i, IID : %i, DIM: %i)", fid, iid, dimension)
         bbob.fn = makeBBOBFunction(dimension = dimension, fid = fid, iid = iid)
         expectIsSnoofFunction(bbob.fn, generator)
         expectGlobalOptimum(bbob.fn, generator)
