@@ -31,6 +31,81 @@ print(autoplot(obj.fn))
 plot3D(obj.fn, length.out = 50L, contour = TRUE)
 ```
 
+At the moment the following optimization test functions are implemented:
+* Ackley Function
+* Adjiman Function
+* Alpine01 Function
+* Alpine02 Function
+* Bartels Conn Function
+* Set of noiseless BOBB Function(s)
+* Beale Function
+* Bird Function
+* Bochachevsky Function
+* Booth Function
+* Branin Function
+* Brent Function
+* Brown Function
+* Bukin Function N. 2
+* Bukin Function N. 4
+* Bukin Function N. 6
+* Carrom Table Function
+* Chichinadze Function
+* Chung Reynolds Function
+* Cosine Mixture Function
+* Cross-In-Tray Function
+* Cube Function
+* Deckkers-Aarts Function
+* Dixon-Price Function
+* Double-Sum Function
+* DTLZ1 Function
+* DTLZ2 Function
+* DTLZ3 Function
+* DTLZ4 Function
+* DTLZ6 Function
+* Eason Function
+* Egg Crate Function
+* Egg Holder Function
+* El-Attar-Vidyasagar-Dutta Function
+* Exponential Function
+* Freudenstein Roth Function
+* Giunta Function
+* Goldstein-Price Function
+* Griewank Function
+* Hansen Function
+* Himmelblau Function
+* Holder Table Function N. 1
+* Holder Table Function N. 2
+* Hosaki Function
+* Hyper-Ellipsoid Function
+* Keane Function
+* Leon Function
+* Matyas Function
+* McCormick Function
+* Michalewicz Function
+* Periodic Function
+* Double-Sum Function
+* Price Function N. 1
+* Price Function N. 2
+* Price Function N. 4
+* Rastrigin Function
+* Rosenbrock Function
+* Schaffer Function N. 2
+* Schaffer Function N. 4
+* Schwefel function
+* Shubert function
+* Six-Hump Camel Back Function
+* Sphere Function
+* Styblinkski-Tang Function
+* Sum of Different Squares Function
+* Three-Hump Camel Function
+* Trecanni Function
+* ZDT1 Function
+* ZDT2 Function
+* ZDT3 Function
+* ZDT4 Function
+* ZDT6 Function
+* Zettl Function
+
 ### Set up an objective function by hand
 Let us consider the problem of finding the (global) minimum of the multimodal target function f(x) = x sin(3x) on the closed intervall [0, 2PI]. We define our target function via the ```makeSingleObjectiveFunction()``` method providing a name, the function itself and a parameter set. We can display the function within the box constraints with ggplot.
 
@@ -38,11 +113,11 @@ Let us consider the problem of finding the (global) minimum of the multimodal ta
 library(ggplot2)
 
 obj.fn = makeSingleObjectiveFunction(
-	name = "My fancy function name",
-	fn = function(x) x * sin(3*x),
-	par.set = makeParamSet(
-		makeNumericParam("x", lower = 0, upper = 2*pi)
-	)
+    name = "My fancy function name",
+    fn = function(x) x * sin(3*x),
+    par.set = makeParamSet(
+        makeNumericParam("x", lower = 0, upper = 2*pi)
+    )
 )
 print(obj.fun)
 print(getParamSet(obj.fun))
