@@ -108,7 +108,6 @@ plot2DNumeric = function(x,
     col = jet.colors(100L), ...)
   }
   if (render.contours) {
-    catf("printing contours")
     contour(x = sequence.x1, y = sequence.x2, z = z,
     xlab = par.names[1], ylab = par.names[2], add = render.levels, ...)
   }
