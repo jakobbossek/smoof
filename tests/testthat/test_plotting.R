@@ -9,11 +9,10 @@ test_that("autoplot functions for 1D numeric functions works as expected", {
 
 	library(ggplot2)
 	pl = autoplot(fn)
-	expect_is(pl, "gg")
-	expect_is(pl, "ggplot")
-	expect_equal(pl$labels$title, "Test function")
-	expect_equal(pl$labels$x, "x")
-	expect_equal(pl$labels$y, "y")
+  plot(fn, show.optimum = TRUE, n.samples = 50L)
+  checkGGPlot(pl, title = "Test function", "x", "y")
+  pl = autoplot(fn, show.optimum = TRUE, n.samples = 50L)
+  checkGGPlot(pl, title = "Test function", "x", "y")
 })
 
 test_that("autoplot function for 2D numeric functions works as expected", {
@@ -26,14 +25,6 @@ test_that("autoplot function for 2D numeric functions works as expected", {
 		)
 	)
 
-	checkPlot = function(pl, title, xlab, ylab) {
-		expect_is(pl, "gg")
-		expect_is(pl, "ggplot")
-		expect_equal(pl$labels$title, title)
-		expect_equal(as.character(pl$labels$x), xlab)
-		expect_equal(as.character(pl$labels$y), ylab)
-	}
-
 	library(ggplot2)
 	# at least one of {levels, contours} must be TRUE
 	expect_error(autoplot(fn, render.levels = FALSE, render.contours = FALSE))
@@ -41,9 +32,12 @@ test_that("autoplot function for 2D numeric functions works as expected", {
 
 	for (render.levels in c(TRUE, FALSE)) {
 		for (render.contours in c(TRUE, FALSE)) {
+      # one of these parameter must be TRUE
 			if (render.levels || render.contours) {
 				pl = autoplot(fn, render.levels = render.levels, render.contours = render.contours)
-				checkPlot(pl, title = getName(fn), "x[1]", "x[2]")
+        plot(fn, render.levels = render.levels, render.contours = render.contours,
+          show.optimum = TRUE, n.samples = 50L)
+				checkGGPlot(pl, title = getName(fn), "x[1]", "x[2]")
 			}
 		}
 	}

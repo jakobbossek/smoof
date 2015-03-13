@@ -12,3 +12,11 @@ expectGlobalOptimum = function(fun, generator) {
       for function '%s'! IS: %.4f, SHOULD BE: %.4f", i, generator, comp.op, op$value), label = generator)
   }
 }
+
+checkGGPlot = function(pl, title, xlab, ylab) {
+  expect_is(pl, "gg")
+  expect_is(pl, "ggplot")
+  expect_equal(pl$labels$title, title)
+  expect_equal(as.character(pl$labels$x), xlab)
+  expect_equal(as.character(pl$labels$y), ylab)
+}
