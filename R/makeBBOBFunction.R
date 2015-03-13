@@ -36,9 +36,6 @@ makeBBOBFunction = function(dimension, fid, iid) {
 
   # get optimal values
   optimals = getOptimumForBBOBFunction(dimension, fid, iid)
-  #FIXME: do we really need named vectors for global.opt.params?
-  names(optimals[[1]]) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
-
 
   # get metadata, i. e., tags and name
   meta = mapBBOBFidToMetaData(fid)
