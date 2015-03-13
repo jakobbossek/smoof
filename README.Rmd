@@ -10,83 +10,19 @@ The bi-objective ZDT function family by Zitzler, Deb and Thiele is included as w
 
 At the moment the following optimization test functions respectively function sets/families are implemented:
 
+```{r, echo = FALSE, results = "asis", message = FALSE}
+library(devtools)
+library(BBmisc)
+library(knitr)
 
-|Function                           |
-|:----------------------------------|
-|Ackley Function                    |
-|Adjiman Function                   |
-|Alpine01 Function                  |
-|Alpine02 Function                  |
-|Bartels Conn Function              |
-|Set of noiseless BOBB Function(s)  |
-|Beale Function                     |
-|Bird Function                      |
-|Bochachevsky Function              |
-|Booth Function                     |
-|Branin Function                    |
-|Brent Function                     |
-|Brown Function                     |
-|Bukin Function N. 2                |
-|Bukin Function N. 4                |
-|Bukin Function N. 6                |
-|Carrom Table Function              |
-|Chichinadze Function               |
-|Chung Reynolds Function            |
-|Cosine Mixture Function            |
-|Cross-In-Tray Function             |
-|Cube Function                      |
-|Deckkers-Aarts Function            |
-|Dixon-Price Function               |
-|Double-Sum Function                |
-|DTLZ1 Function                     |
-|DTLZ2 Function                     |
-|DTLZ3 Function                     |
-|DTLZ4 Function                     |
-|DTLZ6 Function                     |
-|Eason Function                     |
-|Egg Crate Function                 |
-|Egg Holder Function                |
-|El-Attar-Vidyasagar-Dutta Function |
-|Exponential Function               |
-|Freudenstein Roth Function         |
-|Generelized Drop-Wave Function     |
-|Giunta Function                    |
-|Goldstein-Price Function           |
-|Griewank Function                  |
-|Hansen Function                    |
-|Himmelblau Function                |
-|Holder Table Function N. 1         |
-|Holder Table Function N. 2         |
-|Hosaki Function                    |
-|Hyper-Ellipsoid Function           |
-|Keane Function                     |
-|Leon Function                      |
-|Matyas Function                    |
-|McCormick Function                 |
-|Michalewicz Function               |
-|Periodic Function                  |
-|Double-Sum Function                |
-|Price Function N. 1                |
-|Price Function N. 2                |
-|Price Function N. 4                |
-|Rastrigin Function                 |
-|Rosenbrock Function                |
-|Schaffer Function N. 2             |
-|Schaffer Function N. 4             |
-|Schwefel function                  |
-|Shubert function                   |
-|Six-Hump Camel Back Function       |
-|Sphere Function                    |
-|Styblinkski-Tang Function          |
-|Sum of Different Squares Function  |
-|Three-Hump Camel Function          |
-|Trecanni Function                  |
-|ZDT1 Function                      |
-|ZDT2 Function                      |
-|ZDT3 Function                      |
-|ZDT4 Function                      |
-|ZDT6 Function                      |
-|Zettl Function                     |
+load_all(".")
+
+generators = getGeneratorFunctions()
+fun.names = sapply(generators, function(x) attr(x, "name"))
+names(fun.names) = NULL
+fun.names = data.frame("Function" = fun.names)
+kable(fun.names, format = "markdown")
+```
 
 ## Installation instructions
 
