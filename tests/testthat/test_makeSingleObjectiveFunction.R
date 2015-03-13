@@ -22,6 +22,7 @@ test_that("makeSingleObjectiveFunction", {
 	)
 	expect_true(isSmoofFunction(fn))
 	expect_false(isNoisy(fn))
+  expect_false(isVectorized(fn))
 	expect_equal(name, getName(fn))
 	expect_equal(description, getDescription(fn))
 	expect_equal(length(getTags(fn)), 2L)

@@ -6,7 +6,7 @@
 \usage{
 makeObjectiveFunction(name, description = NULL, fn,
   has.simple.signature = TRUE, par.set, n.objectives, noisy = FALSE,
-  constraint.fn = NULL)
+  vectorized = FALSE, constraint.fn = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr

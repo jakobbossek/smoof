@@ -6,7 +6,7 @@
 \usage{
 makeMultiObjectiveFunction(name, description = NULL, fn,
   has.simple.signature = TRUE, par.set, n.objectives, noisy = FALSE,
-  constraint.fn = NULL)
+  vectorized = FALSE, constraint.fn = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
@@ -33,6 +33,10 @@ Number of objectives of the multi-objective function.}
 
 \item{noisy}{[\code{logical(1)}]\cr
 Is the function noisy? Defaults to \code{FALSE}.}
+
+\item{vectorized}{[\code{logical(1)}]\cr
+Can the handle \dQuote{vector} input, i. e., does it accept matrix of
+parameters? Default is \code{FALSE}.}
 
 \item{constraint.fn}{[\code{function | NULL}]\cr
 Function which returns a logical vector indicating which indicates whether certain conditions

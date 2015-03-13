@@ -31,6 +31,7 @@ makeObjectiveFunction = function(
   par.set,
   n.objectives,
   noisy = FALSE,
+  vectorized = FALSE,
   constraint.fn = NULL) {
 
   # sanity checks
@@ -47,6 +48,12 @@ makeObjectiveFunction = function(
   assertClass(par.set, "ParamSet")
   assertInt(n.objectives, na.ok = FALSE, lower = 0L)
   assertFlag(noisy, na.ok = FALSE)
+  assertFlag(vectorized, na.ok = FALSE)
+
+  if (!has.simple.signature && vectorized) {
+    stopf("At the moment we allow 'vectorized' functions only for functions with simple signature.")
+  }
+
   if (!is.null(constraint.fn)) {
     assertFunction(constraint.fn)
   }
@@ -57,6 +64,7 @@ makeObjectiveFunction = function(
     description = if (!is.null(description)) description else "",
     par.set = par.set,
     noisy = noisy,
+    vectorized = vectorized,
     constraint.fn = constraint.fn,
     n.objectives = n.objectives,
     class = c("smoof_function", "function")

@@ -6,6 +6,7 @@
 #' @template arg_has_simple_signature
 #' @template arg_par_set
 #' @template arg_noisy
+#' @template arg_vectorized
 #' @template arg_constraint_fn
 #' @param tags [\code{character}]\cr
 #'   Optional character vector of tags or keywords which characterize the function.
@@ -63,6 +64,7 @@ makeSingleObjectiveFunction = function(
   description = NULL,
   fn,
   has.simple.signature = TRUE,
+  vectorized = FALSE,
   par.set,
   noisy = FALSE,
   constraint.fn = NULL,
@@ -70,7 +72,10 @@ makeSingleObjectiveFunction = function(
   global.opt.params = NULL,
   global.opt.value = NULL) {
 
-  smoof.fn = makeObjectiveFunction(name, description, fn, has.simple.signature, par.set, 1L, noisy, constraint.fn)
+  smoof.fn = makeObjectiveFunction(
+    name, description, fn,
+    has.simple.signature, par.set, 1L,
+    noisy, vectorized, constraint.fn)
   n.params = getNumberOfParameters(smoof.fn)
 
   #FIXME: currently we offer this only for single objective functions

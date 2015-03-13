@@ -5,7 +5,7 @@
 \title{Generator for single-objective target functions.}
 \usage{
 makeSingleObjectiveFunction(name, description = NULL, fn,
-  has.simple.signature = TRUE, par.set, noisy = FALSE,
+  has.simple.signature = TRUE, vectorized = FALSE, par.set, noisy = FALSE,
   constraint.fn = NULL, tags = character(0), global.opt.params = NULL,
   global.opt.value = NULL)
 }
@@ -23,6 +23,10 @@ Target function.}
 Set this to \code{TRUE} if the target function expects a vector as input and \code{FALSE}
 if it expects a named list of values. The latter is needed if the function depends on mixed
 parameters. Default is \code{TRUE}.}
+
+\item{vectorized}{[\code{logical(1)}]\cr
+Can the handle \dQuote{vector} input, i. e., does it accept matrix of
+parameters? Default is \code{FALSE}.}
 
 \item{par.set}{[\code{\link[ParamHelpers]{ParamSet}}]\cr
 Parameter set describing different ascpects of the target function parameters, i. e.,
