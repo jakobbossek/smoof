@@ -57,6 +57,10 @@ makeBBOBFunction = function(dimension, fid, iid) {
   )
 }
 
+class(makeBBOBFunction) = c("function", "smoof_generator")
+attr(makeBBOBFunction, "name") = c("Set of noiseless BOBB Function(s)")
+attr(makeBBOBFunction, "type") = c("single-objective")
+
 mapBBOBFidToMetaData = function(fid) {
   mapping = list(
     "1" = list(name = "Sphere", tags = c("unimodal", "separable", "differentiable", "continuous", "convex")),
