@@ -39,6 +39,14 @@ test_that("BBOB functions work", {
       for (dimension in dimensions) {
         generator = sprintf("(FID: %i, IID : %i, DIM: %i)", fid, iid, dimension)
         bbob.fn = makeBBOBFunction(dimension = dimension, fid = fid, iid = iid)
+        # check vectorized input and output
+        if (isVectorized(bbob.fn)) {
+          par1 = rep(1, dimension)
+          par2 = rep(2, dimension)
+          res.seq = c(bbob.fn(par1), bbob.fn(par2))
+          res.vec = bbob.fn(cbind(par1, par2))
+          expect_true(all(res.seq == res.vec), info = sprintf("Sequential and vectorized input not equal for %s", generator))
+        }
         expectIsSnoofFunction(bbob.fn, generator)
         expectGlobalOptimum(bbob.fn, generator)
       }

@@ -24,6 +24,10 @@ Instance identifier. Integer value greater than or equal 1.}
 Generator for the noiseless function set of the real-parameter Black-Box
 Optimization Benchmarking (BBOB).
 }
+\note{
+It is possible to pass a matrix of parameters to the functions, where
+each column consists of one parameter setting.
+}
 \examples{
 # get the first instance of the 2D Sphere function
 fn = makeBBOBFunction(dimension = 2L, fid = 1L, iid = 1L)

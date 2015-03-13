@@ -1,6 +1,9 @@
 #' Generator for the noiseless function set of the real-parameter Black-Box
 #' Optimization Benchmarking (BBOB).
 #'
+#' @note It is possible to pass a matrix of parameters to the functions, where
+#' each column consists of one parameter setting.
+#'
 #' @param dimension [\code{integer(1)}]\cr
 #'   Problem dimension. Integer value between 2 and 40.
 #' @param fid [\code{integer(1)}]\cr
@@ -49,6 +52,7 @@ makeBBOBFunction = function(dimension, fid, iid) {
     },
     par.set = par.set,
     tags = meta$tags,
+    vectorized = TRUE,
     global.opt.params = as.numeric(optimals[[1]]),
     global.opt.value = as.numeric(optimals[[2]])
   )

@@ -73,10 +73,10 @@ static void initializeBBOBFunction(const unsigned int dimension, const unsigned 
 
 // Evaluate a BBOB function call.
 //
-// @param dimension [unsigned int] Dimension of the problem.
-// @param fid [unsigned int] Function id. Integer in {1, ..., 24}.
-// @param iid [unsigned int] Instance id.
-// @param x [R::numeric] Numeric parameter vector of size 'dimension'.
+// @param r_dimension [unsigned int] Dimension of the problem.
+// @param r_fid [unsigned int] Function id. Integer in {1, ..., 24}.
+// @param r_iid [unsigned int] Instance id.
+// @param r_x [R::numeric] Numeric parameter vector of size 'dimension'.
 //
 // @return [numeric(1)] Function value of the corresponding BBOB function.
 SEXP evaluateBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid, SEXP r_x) {
@@ -86,17 +86,28 @@ SEXP evaluateBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid, SEXP r_x)
 
   initializeBBOBFunction(dimension, fid, iid);
 
-  // setup R result object and protect R object in C
-  SEXP r_value = ALLOC_REAL_VECTOR(1);
-
   // get the bbob function
   bbobFunction bbob_fun = *bbob_funs[last_fid - 1];
 
   // unwrap integer
   double *param = REAL(r_x);
+
+  // we allow 'vectorized' input here
+  // Note: since C stores 2D arrays as a 1D array with the consecutive rows one after
+  // another, there is no straight-forward way to access the columns. We thus
+  // require the user to pass the parameters col-wise!
+  unsigned int n_values = 1;
+  if (isMatrix(r_x)) {
+    n_values = ncols(r_x);
+  }
+
+  // setup R result object and protect R object in C
+  SEXP r_value = ALLOC_REAL_VECTOR(n_values);
   double *value = REAL(r_value);
 
-  value[0] = bbob_fun(param).Fval;
+  for (int i = 0; i < n_values; ++i) {
+    value[i] = bbob_fun(param + i * dimension).Fval;
+  }
 
   // unprotect for R
   UNPROTECT(1);
@@ -106,10 +117,9 @@ SEXP evaluateBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid, SEXP r_x)
 
 // Get global optimum and global optimum value of a function.
 //
-// @param dimension [unsigned int] Dimension of the problem.
-// @param fid [unsigned int] Function id. Integer in {1, ..., 24}.
-// @param iid [unsigned int] Instance id.
-// @param x [R::numeric] Numeric parameter vector of size 'dimension'.
+// @param r_dimension [unsigned int] Dimension of the problem.
+// @param r_fid [unsigned int] Function id. Integer in {1, ..., 24}.
+// @param r_iid [unsigned int] Instance id.
 //
 // @return [List]
 SEXP getOptimumForBBOBFunctionCPP(SEXP r_dimension, SEXP r_fid, SEXP r_iid) {
