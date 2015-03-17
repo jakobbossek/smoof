@@ -8,7 +8,7 @@ test_that("single-objective test function generators work", {
     all.methods = setdiff(all.methods, c("makeInternalObjectiveFunction",
       "makeMultiObjectiveFunction", "makeObjectiveFunction",
       "makeSingleObjectiveFunction", "makeBBOBFunction",
-      "makeUFFunction"))
+      "makeUFFunction", "makeUFParamSet"))
     all.methods = sapply(all.methods, get)
     fun.generators = Filter(function(fun) inherits(fun, "smoof_generator"), all.methods)
 
