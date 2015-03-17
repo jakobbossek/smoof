@@ -7,7 +7,8 @@ test_that("single-objective test function generators work", {
     all.methods = Filter(function(fun) exists(fun), all.methods)
     all.methods = setdiff(all.methods, c("makeInternalObjectiveFunction",
       "makeMultiObjectiveFunction", "makeObjectiveFunction",
-      "makeSingleObjectiveFunction", "makeBBOBFunction"))
+      "makeSingleObjectiveFunction", "makeBBOBFunction",
+      "makeUFFunction"))
     all.methods = sapply(all.methods, get)
     fun.generators = Filter(function(fun) inherits(fun, "smoof_generator"), all.methods)
 
@@ -50,6 +51,23 @@ test_that("BBOB functions work", {
         expectIsSnoofFunction(bbob.fn, generator)
         expectGlobalOptimum(bbob.fn, generator)
       }
+    }
+  }
+})
+
+test_that("CEC 2009 functions work", {
+  ids = 1:10
+  dimensions = c(3, 5, 10)
+  for (id in ids) {
+    for (dimension in dimensions) {
+      fn = makeUFFunction(dimension = dimension, id = id)
+      param = sampleValue(getParamSet(fn))
+      value = fn(param)
+      expect_true(is.numeric(value))
+      expect_equal(length(value), getNumberOfObjectives(fn),
+        info = "Length of objective vector is wrong!\nExpected %i, but got %i for
+        dimension %i and UF%i", length(value), getNumberOfObjectives(fn),
+        dimension, id)
     }
   }
 })

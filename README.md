@@ -81,6 +81,7 @@ At the moment the following optimization test functions respectively function se
 |Sum of Different Squares Function  |
 |Three-Hump Camel Function          |
 |Trecanni Function                  |
+|UF1, ..., UF10 of the CEC 2009     |
 |ZDT1 Function                      |
 |ZDT2 Function                      |
 |ZDT3 Function                      |
