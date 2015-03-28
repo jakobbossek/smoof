@@ -26,14 +26,14 @@ makeBraninFunction = function() {
       c = 5 / pi
       d = 6
       e = 10
-      f = 1 / ( 8 * pi)
+      f = 1 / (8 * pi)
       return (a * (x[2] - b * x[1]^2 + c * x[1] - d)^2 + e * (1 - f) * cos(x[1]) + e)
     },
     par.set = makeNumericParamSet(
       len = 2L,
       id = "x",
-      lower = c(-5, 0),
-      upper = c(10, 15),
+      lower = c(-5, 10),
+      upper = c(0, 15),
       vector = FALSE
     ),
     tags = attr(makeBraninFunction, "tags"),
