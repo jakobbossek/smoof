@@ -32,8 +32,8 @@ makeBraninFunction = function() {
     par.set = makeNumericParamSet(
       len = 2L,
       id = "x",
-      lower = c(-5, 10),
-      upper = c(0, 15),
+      lower = c(-5, 0),
+      upper = c(10, 15),
       vector = FALSE
     ),
     tags = attr(makeBraninFunction, "tags"),
