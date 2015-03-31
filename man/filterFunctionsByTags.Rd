@@ -8,7 +8,8 @@ filterFunctionsByTags(tags)
 }
 \arguments{
 \item{tags}{[\code{character}]\cr
-Character vector of tags.}
+Character vector of tags. All available tags can be determined with a call
+to \code{\link{getAvailableTags}}.}
 }
 \value{
 [\code{character}]
@@ -16,5 +17,11 @@ Character vector of tags.}
 }
 \description{
 Get a list of implemented test functions with specific tags.
+}
+\examples{
+# show all functions which are unimodal
+filterFunctionsByTags("unimodal")
+# show all functions which are both unimodal and separable
+filterFunctionsByTags(c("unimodal", "separable"))
 }
 

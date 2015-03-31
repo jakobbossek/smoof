@@ -8,7 +8,7 @@ getName(fn)
 }
 \arguments{
 \item{fn}{[\code{smoof_function}]\cr
-Target function.}
+Objective function.}
 }
 \value{
 [\code{character(1)}]

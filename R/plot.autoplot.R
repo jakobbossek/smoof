@@ -1,10 +1,10 @@
 #' Generate \code{\link[ggplot2]{ggplot}} object.
 #'
 #' @param x [\code{smoof_function}]\cr
-#'   Function.
+#'   Objective function.
 #' @param show.optimum [\code{logical(1)}]\cr
 #'   If the function has a known global optimum, should its location be
-#'   plotted by a points or multiple points in case of multiple global optima?
+#'   plotted by a point or multiple points in case of multiple global optima?
 #'   Default is \code{FALSE}.
 #' @param render.levels [\code{logical(1)}]\cr
 #'   For 2D numeric functions only: Should an image map be plotted? Default is
@@ -46,8 +46,8 @@ autoplot.smoof_function = function(x,
     render.levels = render.levels,
     render.contours = render.contours,
     use.facets = use.facets,
-   ...
-   )
+    ...
+  )
 }
 
 autoplot1DNumeric = function(x, show.optimum, render.contours, render.levels, use.facets, ...) {

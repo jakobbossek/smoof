@@ -23,5 +23,5 @@ hasBoxConstraints = function(fn) {
 #' @return [\code{logical(1)}]
 #' @export
 hasOtherConstraints = function(fn) {
-  !is.null(attr(fn, "constraint.fn"))
+  return(!is.null(attr(fn, "constraint.fn")))
 }

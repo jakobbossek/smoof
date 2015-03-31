@@ -4,16 +4,16 @@
 \alias{autoplot.smoof_function}
 \title{Generate \code{\link[ggplot2]{ggplot}} object.}
 \usage{
-\method{autoplot}{smoof_function}(x, show.optimum = FALSE,
-  render.levels = FALSE, render.contours = TRUE, use.facets = FALSE, ...)
+autoplot.smoof_function(x, show.optimum = FALSE, render.levels = FALSE,
+  render.contours = TRUE, use.facets = FALSE, ...)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr
-Function.}
+Objective function.}
 
 \item{show.optimum}{[\code{logical(1)}]\cr
 If the function has a known global optimum, should its location be
-plotted by a points or multiple points in case of multiple global optima?
+plotted by a point or multiple points in case of multiple global optima?
 Default is \code{FALSE}.}
 
 \item{render.levels}{[\code{logical(1)}]\cr

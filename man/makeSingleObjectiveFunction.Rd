@@ -17,19 +17,19 @@ Function name. Used for the title of plots for example.}
 Optional function description.}
 
 \item{fn}{[\code{function}]\cr
-Target function.}
+Objective function.}
 
 \item{has.simple.signature}{[\code{logical(1)}]\cr
-Set this to \code{TRUE} if the target function expects a vector as input and \code{FALSE}
+Set this to \code{TRUE} if the objective function expects a vector as input and \code{FALSE}
 if it expects a named list of values. The latter is needed if the function depends on mixed
 parameters. Default is \code{TRUE}.}
 
 \item{vectorized}{[\code{logical(1)}]\cr
-Can the handle \dQuote{vector} input, i. e., does it accept matrix of
-parameters? Default is \code{FALSE}.}
+Can the objective function handle \dQuote{vector} input, i.~e., does it
+accept matrix of parameters? Default is \code{FALSE}.}
 
 \item{par.set}{[\code{\link[ParamHelpers]{ParamSet}}]\cr
-Parameter set describing different ascpects of the target function parameters, i. e.,
+Parameter set describing different aspects of the objective function parameters, i.~e.,
 names, lower and/or upper bounds, types and so on. See \code{\link[ParamHelpers]{makeParamSet}}
 for further information.}
 
@@ -37,14 +37,14 @@ for further information.}
 Is the function noisy? Defaults to \code{FALSE}.}
 
 \item{constraint.fn}{[\code{function | NULL}]\cr
-Function which returns a logical vector indicating which indicates whether certain conditions
-are met or not. Default is \code{NULL}, which means, that there are no constraints (beside possible)
-box constraints defined via the \code{par.set} argument.}
+Function which returns a logical vector indicating whether certain conditions
+are met or not. Default is \code{NULL}, which means, that there are no constraints
+beside possible box constraints defined via the \code{par.set} argument.}
 
 \item{tags}{[\code{character}]\cr
-Optional character vector of tags or keywords which characterize the function.
-E.g. \dQuote{unimodal}, \dQuote{separable}. See \code{\link{getAvailableTags}} for
-a list of useful tags.}
+Optional character vector of tags or keywords which characterize the function,
+e.~g. \dQuote{unimodal}, \dQuote{separable}. See \code{\link{getAvailableTags}} for
+a list of allowed tags.}
 
 \item{global.opt.params}{[\code{list} | \code{numeric} | \code{data.frame} | \code{matrix} | \code{NULL}]\cr
 Default is \code{NULL} which means unknown. Passing a \code{numeric} vector will
@@ -52,14 +52,15 @@ be the most frequent case (numeric only functions). In this case there is only a
 single global optimum. If there are multiple global optima, passing a numeric
 \code{matrix} is the best choice. Passing a \code{list} or a \code{data.frame}
 is necessary if your function is mixed, e.g., it expects both numeric and discrete
-parameters. Internally, however, this is casted to a \code{data.frame} for
-reasons of consistency.}
+parameters. Internally, however, each representation is casted to a \code{data.frame}
+for reasons of consistency.}
 
 \item{global.opt.value}{[\code{numeric(1)} | \code{NULL}]\cr
-Global optimum value if known. Default is \code{NULL}, which means unknown.}
+Global optimum value if known. Default is \code{NULL}, which means unknown. If
+only the \code{global.opt.params} are passed, the value is computed automatically.}
 }
 \value{
-[\code{function}] Target function with additional stuff attached as attributes.
+[\code{function}] Objective function with additional stuff attached as attributes.
 }
 \description{
 Generator for single-objective target functions.
@@ -81,7 +82,7 @@ fn.num2 = makeSingleObjectiveFunction(
   fn = function(x) sum(x^2),
   par.set = makeParamSet(
     makeNumericParam("x1", lower = -5, upper = 5),
-    makeNumericParam("x2", lower = -5, upper = 5)
+    makeNumericParam("x2", lower = -10, upper = 20)
   )
 )
 print(fn)

@@ -52,6 +52,7 @@ makeBBOBFunction = function(dimension, fid, iid) {
     },
     par.set = par.set,
     tags = meta$tags,
+    # all BBOB functions are vectorized
     vectorized = TRUE,
     global.opt.params = as.numeric(optimals[[1]]),
     global.opt.value = as.numeric(optimals[[2]])
@@ -94,7 +95,6 @@ mapBBOBFidToMetaData = function(fid) {
 
 # Get the optimal parameter values and the optimal function value for a BBOB
 # function.
-#
 getOptimumForBBOBFunction = function(dimension, fid, iid) {
   .Call("getOptimumForBBOBFunctionCPP", dimension, fid, iid)
 }

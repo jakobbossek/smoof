@@ -9,20 +9,21 @@
 #' @template arg_vectorized
 #' @template arg_constraint_fn
 #' @param tags [\code{character}]\cr
-#'   Optional character vector of tags or keywords which characterize the function.
-#'   E.g. \dQuote{unimodal}, \dQuote{separable}. See \code{\link{getAvailableTags}} for
-#'   a list of useful tags.
+#'   Optional character vector of tags or keywords which characterize the function,
+#'   e.~g. \dQuote{unimodal}, \dQuote{separable}. See \code{\link{getAvailableTags}} for
+#'   a list of allowed tags.
 #' @param global.opt.params [\code{list} | \code{numeric} | \code{data.frame} | \code{matrix} | \code{NULL}]\cr
 #'   Default is \code{NULL} which means unknown. Passing a \code{numeric} vector will
 #'   be the most frequent case (numeric only functions). In this case there is only a
 #'   single global optimum. If there are multiple global optima, passing a numeric
 #'   \code{matrix} is the best choice. Passing a \code{list} or a \code{data.frame}
 #'   is necessary if your function is mixed, e.g., it expects both numeric and discrete
-#'   parameters. Internally, however, this is casted to a \code{data.frame} for
-#'   reasons of consistency.
+#'   parameters. Internally, however, each representation is casted to a \code{data.frame}
+#'   for reasons of consistency.
 #' @param global.opt.value [\code{numeric(1)} | \code{NULL}]\cr
-#'   Global optimum value if known. Default is \code{NULL}, which means unknown.
-#' @return [\code{function}] Target function with additional stuff attached as attributes.
+#'   Global optimum value if known. Default is \code{NULL}, which means unknown. If
+#'   only the \code{global.opt.params} are passed, the value is computed automatically.
+#' @return [\code{function}] Objective function with additional stuff attached as attributes.
 #' @examples
 #' library(ggplot2)
 #'
@@ -40,7 +41,7 @@
 #'   fn = function(x) sum(x^2),
 #'   par.set = makeParamSet(
 #'     makeNumericParam("x1", lower = -5, upper = 5),
-#'     makeNumericParam("x2", lower = -5, upper = 5)
+#'     makeNumericParam("x2", lower = -10, upper = 20)
 #'   )
 #' )
 #' print(fn)

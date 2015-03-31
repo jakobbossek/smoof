@@ -1,9 +1,15 @@
 #' Get a list of implemented test functions with specific tags.
 #'
 #' @param tags [\code{character}]\cr
-#'   Character vector of tags.
+#'   Character vector of tags. All available tags can be determined with a call
+#'   to \code{\link{getAvailableTags}}.
 #' @return [\code{character}]
 #'   Named vector of function names with the given tags.
+#' @examples
+#' # show all functions which are unimodal
+#' filterFunctionsByTags("unimodal")
+#' # show all functions which are both unimodal and separable
+#' filterFunctionsByTags(c("unimodal", "separable"))
 #' @export
 filterFunctionsByTags = function(tags) {
   assertSubset(tags, choices = getAvailableTags(), empty.ok = FALSE)

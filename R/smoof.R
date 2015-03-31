@@ -31,5 +31,5 @@
 #' Modelling and Numerical Optimisation, Vol. 4, No. 2, pp. 150-194 (2013).
 #'
 #' @docType package
-#' @name smoof
+#' @name smoof-package
 NULL

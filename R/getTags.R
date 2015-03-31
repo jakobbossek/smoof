@@ -5,5 +5,5 @@
 #' @export
 getTags = function(fn) {
   assertClass(fn, "smoof_function")
-  attr(fn, "tags")
+  return(attr(fn, "tags"))
 }

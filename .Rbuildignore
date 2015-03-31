@@ -13,3 +13,9 @@ playground.R
 .travis.yml
 todo-files
 lit
+README.Rmd
+benchmark.R
+errors.txt
+checkMOOFunctions.R
+man-roxygen
+bbob_generate_images.R

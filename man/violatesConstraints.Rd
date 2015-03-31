@@ -8,7 +8,7 @@ violatesConstraints(fn, values)
 }
 \arguments{
 \item{fn}{[\code{smoof_function}]\cr
-Target function.}
+Objective function.}
 
 \item{values}{[\code{numeric}]\cr
 List of values.}
