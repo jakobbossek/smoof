@@ -21,8 +21,8 @@
 #' @param fun.evals [\code{numeric}]\cr
 #'   Vector containing the number of function evaluations.
 #' @param fun.success.runs [\code{logical}]\cr
-#'   Boolean vector indicating if the corresponding run was successfull,
-#'   i. e., if the run reached the desired target value. Default is \code{NULL}.
+#'   Boolean vector indicating which algorithm runs were successful,
+#'   i. e., which runs reached the desired target value. Default is \code{NULL}.
 #' @param fun.reached.target.values [\code{numeric} | \code{NULL}]\cr
 #'   Numeric vector with the objective values reached in the runs. Default is
 #'   \code{NULL}.
@@ -33,7 +33,7 @@
 #'   was successful. Default is \code{Inf}.
 #' @return [\code{numeric(1)}]
 #'   Estimated Expected Running Time.
-# @export
+#' @export
 computeExpectedRunningTime = function(fun.evals,
   fun.success.runs = NULL,
   fun.reached.target.values = NULL,
@@ -45,7 +45,7 @@ computeExpectedRunningTime = function(fun.evals,
   n = length(fun.evals)
 
   # sanity check that one of the options is used (see docs).
-  if (xor(is.null(fun.success.runs), (is.null(fun.reached.target.values) || is.null(fun.target.value)))) {
+  if (!xor(!is.null(fun.success.runs), (!is.null(fun.reached.target.values) || !is.null(fun.target.value)))) {
     stopf("Either 'fun.success.runs' or 'fun.reached.target.values' and 'fun.target.value' need to be specified,
       but not both or none.")
   }
