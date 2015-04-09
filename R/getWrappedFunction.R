@@ -3,7 +3,7 @@
 #'
 #' @param fn [\code{smoof_wrapped_function}]\cr
 #'   Wrapping function.
-#' @param return [\code{function}]
+#' @return [\code{function}]
 #' @export
 getWrappedFunction = function(fn) {
   assertClass(fn, "smoof_wrapped_function")

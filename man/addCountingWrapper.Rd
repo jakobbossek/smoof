@@ -11,7 +11,7 @@ addCountingWrapper(fn)
 Smoof function.}
 }
 \value{
-[\code{smoof_function}]
+[\code{smoof_counting_function}]
 }
 \description{
 Return a function which counts how often it has been evaluated.
