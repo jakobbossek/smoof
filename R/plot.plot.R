@@ -79,14 +79,14 @@ plot1DNumeric = function(x,
 #' @export
 plot2DNumeric = function(x,
   show.optimum = FALSE, render.levels = FALSE, render.contours = TRUE,
-  n.samples = 500L, ...) {
+  n.samples = 100L, ...) {
 
   assertFlag(show.optimum, na.ok = FALSE)
   assertFlag(render.levels, na.ok = FALSE)
   assertFlag(render.contours, na.ok = FALSE)
 
   par.set = getParamSet(x)
-  par.names = getParamIds(par.set)
+  par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
 
   lower = getBounds(bound = getLower(par.set), default = -10L)
   upper = getBounds(bound = getUpper(par.set), default = 10L)

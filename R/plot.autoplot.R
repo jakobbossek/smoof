@@ -87,7 +87,7 @@ autoplot2DNumeric = function(x, show.optimum, render.contours, render.levels, us
 
   # extract data
   par.set = getParamSet(x)
-  par.names = getParamIds(par.set)
+  par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
 
   # get bounds
   lower = getBounds(getLower(par.set), default = -10L)
@@ -106,6 +106,7 @@ autoplot2DNumeric = function(x, show.optimum, render.contours, render.levels, us
   brewer.div = colorRampPalette(brewer.pal(11, "Spectral"), interpolate = "spline")
 
   # plot
+  print(head(data))
   pl = ggplot(data = data, mapping = aes_string(x = par.names[1], y = par.names[2]))
   if (render.levels) {
     pl = pl + geom_tile(aes_string(fill = "y"))
