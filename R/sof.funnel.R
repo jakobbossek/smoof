@@ -10,6 +10,7 @@
 #'   Seed for the random numbers generator. Default is \code{NULL}.
 #' @return [\code{smoof_single_objective_function}]
 #' @examples
+#' # Unfortunately
 #' fn = makeFunnelFunction(n.peaks = 10L, dimension = 2L, topology = "funnel", seed = 123)
 #' if (require(plot3D)) {
 #'   plot3D(fn, contour = TRUE)
@@ -42,15 +43,14 @@ makeFunnelFunction = function(n.peaks, dimension, topology, seed = NULL) {
   # import rPython
   BBmisc::requirePackages("rPython", why = "smoof::makeFunnelFunction")
 
-  force(path.to.python)
+  # load funnel generator to global environemt
+  eval(rPython::python.load(system.file("mpm2.py", package = "smoof")), envir = .GlobalEnv)
 
   makeSingleObjectiveFunction(
     name = sprintf("Funnel_%i_%i_%i_%s", n.peaks, dimension, seed, topology),
     description = sprintf("Funnel-like function\n(n.peaks: %i, dimension: %i, topology: %s, seed: %i)",
       n.peaks, dimension, topology, seed),
     fn = function(x) {
-      #FIXME: ugly that we always have to call this first. Maybe add checks to python
-      # code similar to the BBOB and UF stuff
       rPython::python.call("evaluateProblem", as.numeric(x), n.peaks, dimension, topology, seed)
     },
     par.set = par.set,
