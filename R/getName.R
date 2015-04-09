@@ -4,6 +4,15 @@
 #' @return [\code{character(1)}]
 #' @export
 getName = function(fn) {
-  assertClass(fn, "smoof_function")
+  UseMethod("getName")
+}
+
+#' @export
+getName.smoof_function = function(fn) {
   return(attr(fn, "name"))
+}
+
+#' @export
+getName.smoof_wrapped_function = function(fn) {
+  return(getName(getWrappedFunction(fn)))
 }

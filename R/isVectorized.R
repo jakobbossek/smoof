@@ -4,6 +4,15 @@
 #' @return [\code{logical(1)}]
 #' @export
 isVectorized = function(fn) {
-  assertClass(fn, "smoof_function")
+  UseMethod("isVectorized")
+}
+
+#' @export
+isVectorized.smoof_function = function(fn) {
   return(attr(fn, "vectorized"))
+}
+
+#' @export
+isVectorized.smoof_wrapped_function = function(fn) {
+  return(isVectorized(getWrappedFunction(fn)))
 }

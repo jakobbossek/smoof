@@ -12,6 +12,11 @@ isMultiobjective.smoof_function = function(fn) {
   return(attr(fn, "n.objectives") >= 2L)
 }
 
+#' @export
+isMultiobjective.smoof_wrapped_function = function(fn) {
+  return(isMultiobjective(getWrappedFunction(fn)))
+}
+
 #' Checks whether the given function is single-objective.
 #'
 #' @template arg_smoof_function
@@ -25,3 +30,10 @@ isSingleobjective = function(fn) {
 isSingleobjective.smoof_function = function(fn) {
   return(attr(fn, "n.objectives") == 1L)
 }
+
+#' @export
+isSingleobjective.smoof_wrapped_function = function(fn) {
+  return(isSingleobjective(getWrappedFunction(fn)))
+}
+
+

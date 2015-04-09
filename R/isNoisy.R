@@ -4,6 +4,15 @@
 #' @return [\code{logical(1)}]
 #' @export
 isNoisy = function(fn) {
-  assertClass(fn, "smoof_function")
+  UseMethod("isNoisy")
+}
+
+#' @export
+isNoisy.smoof_function = function(fn) {
   return(attr(fn, "noisy"))
+}
+
+#' @export
+isNoisy.smoof_wrapped_function = function(fn) {
+  return(isNoisy(getWrappedFunction(fn)))
 }
