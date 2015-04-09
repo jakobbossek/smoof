@@ -2,7 +2,9 @@ context("counting evaluations")
 
 test_that("countingWrapper counts correctly", {
   fn = makeBBOBFunction(fid = 1L, iid = 1L, dimension = 8L)
+  expect_false(doesCountEvaluations(fn))
   fn = addCountingWrapper(fn)
+  expect_true(doesCountEvaluations(fn))
 
   # no evaluations yet
   expect_equal(getNumberOfEvaluations(fn), 0L)

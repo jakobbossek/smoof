@@ -4,8 +4,18 @@
 #' @return [\code{logical(1)}]
 #' @export
 hasConstraints = function(fn) {
-  assertClass(fn, "smoof_function")
+  UseMethod("hasConstraints")
+}
+
+#' @export
+hasConstraints.smoof_function = function(fn) {
   (hasBoxConstraints(fn) || hasOtherConstraints(fn))
+}
+
+#' @export
+hasConstraints.smoof_wrapped_function = function(fn) {
+  fn = getWrappedFunction(fn)
+  return(hasBoxConstraints(fn) || hasOtherConstraints(fn))
 }
 
 #' Checks whether the objective function has box constraints.
@@ -14,7 +24,17 @@ hasConstraints = function(fn) {
 #' @return [\code{logical(1)}]
 #' @export
 hasBoxConstraints = function(fn) {
-  hasFiniteBoxConstraints(getParamSet(fn))
+  UseMethod("hasBoxConstraints")
+}
+
+#' @export
+hasBoxConstraints.smoof_function = function(fn) {
+  return(hasFiniteBoxConstraints(getParamSet(fn)))
+}
+
+#' @export
+hasBoxConstraints.smoof_wrapped_function = function(fn) {
+  return(hasFiniteBoxConstraints(getWrappedFunction(fn)))
 }
 
 #' Checks whether the objective function has other constraints.
@@ -23,5 +43,15 @@ hasBoxConstraints = function(fn) {
 #' @return [\code{logical(1)}]
 #' @export
 hasOtherConstraints = function(fn) {
+  UseMethod("hasOtherConstraints")
+}
+
+#' @export
+hasOtherConstraints.smoof_function = function(fn) {
   return(!is.null(attr(fn, "constraint.fn")))
+}
+
+#' @export
+hasOtherConstraints.smoof_wrapped_function = function(fn) {
+  return(hasOtherConstraints(getWrappedFunction(fn)))
 }
