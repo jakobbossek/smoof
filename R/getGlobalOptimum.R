@@ -9,22 +9,28 @@
 #' @note Keep in mind, that this method makes sense only for single-objective target function.
 #' @export
 getGlobalOptimum = function(fn) {
+  UseMethod("getGlobalOptimum")
   assertClass(fn, c("smoof_function", "smoof_single_objective_function"))
+
+}
+
+#' @export
+getGlobalOptimum.smoof_single_objective_function = function(fn) {
   if (hasGlobalOptimum(fn)) {
     return(list(
       param = attr(fn, "global.opt.params"),
       value = attr(fn, "global.opt.value")
     ))
   }
-  NULL
+  return(NULL)
 }
 
-#' Checks whether global optimum is known.
-#'
-#' @template arg_smoof_function
-#' @return [\code{logical(1)}]
 #' @export
-hasGlobalOptimum = function(fn) {
-  assertClass(fn, "smoof_function")
-  return(!is.null(attr(fn, "global.opt.params")))
+getGlobalOptimum.smoof_multi_objective_function = function(fn) {
+  stopf("No global optimum available for multi-objective function.")
+}
+
+#' @export
+getGlobalOptimum.smoof_wrapped_function = function(fn) {
+  return(getGlobalOptimum(getWrappedFunction(fn)))
 }
