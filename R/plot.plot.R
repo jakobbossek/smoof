@@ -72,7 +72,7 @@ plot1DNumeric = function(x,
 #' @param render.contours [\code{logical(1)}]\cr
 #'   Render contours? Default is \code{TRUE}.
 #' @param n.samples [\code{integer(1)}]\cr
-#'   Number of locations per dimension to be sampled. Default is 500.
+#'   Number of locations per dimension to be sampled. Default is 100.
 #' @param ... [any]\cr
 #'   Further paramerters passed to \code{image} respectively \code{contour} function.
 #' @return Nothing

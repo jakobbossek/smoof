@@ -5,7 +5,7 @@
 \title{Plot a two-dimensional numeric function.}
 \usage{
 plot2DNumeric(x, show.optimum = FALSE, render.levels = FALSE,
-  render.contours = TRUE, n.samples = 500L, ...)
+  render.contours = TRUE, n.samples = 100L, ...)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr
@@ -23,7 +23,7 @@ Show a level-plot? Default is \code{FALSE}.}
 Render contours? Default is \code{TRUE}.}
 
 \item{n.samples}{[\code{integer(1)}]\cr
-Number of locations per dimension to be sampled. Default is 500.}
+Number of locations per dimension to be sampled. Default is 100.}
 
 \item{...}{[any]\cr
 Further paramerters passed to \code{image} respectively \code{contour} function.}

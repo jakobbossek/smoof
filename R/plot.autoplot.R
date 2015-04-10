@@ -106,7 +106,6 @@ autoplot2DNumeric = function(x, show.optimum, render.contours, render.levels, us
   brewer.div = colorRampPalette(brewer.pal(11, "Spectral"), interpolate = "spline")
 
   # plot
-  print(head(data))
   pl = ggplot(data = data, mapping = aes_string(x = par.names[1], y = par.names[2]))
   if (render.levels) {
     pl = pl + geom_tile(aes_string(fill = "y"))
