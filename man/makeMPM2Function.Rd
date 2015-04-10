@@ -42,8 +42,7 @@ plot(fn, render.levels = TRUE)
 provided by the Simon Wessing.
 }
 \references{
-[1] Kerschke P., Preuss M., Wessing S., Trautmann, H. (2015). Detecting
-Funnel Structures by Means of Exploratory Landscape Analysis. In Proceedings of
-the Genetic and Evolutionary Computation Conference, Madrid, Spain.
+See the \href{https://ls11-www.cs.uni-dortmund.de/_media/techreports/tr15-01.pdf}{technical report}
+of multiple peaks model 2 for an in-depth description of the underlying algorithm.
 }
 
