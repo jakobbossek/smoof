@@ -7,10 +7,12 @@ getNumberOfParameters = function(fn) {
   UseMethod("getNumberOfParameters")
 }
 
+#' @export
 getNumberOfParameters.smoof_function = function(fn) {
   return(sum(getParamLengths(getParamSet(fn))))
 }
 
+#' @export
 getNumberOfParameters.smoof_wrapped_function = function(fn) {
   return(getNumberOfParameters(getWrappedFunction(fn)))
 }
