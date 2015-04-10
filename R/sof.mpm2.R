@@ -1,33 +1,41 @@
-#' Generator for funnel-like functions.
+#' Generator for function with multiple peaks following the multiple peaks model 2.
 #'
 #' @param n.peaks [\code{integer(1)}]\cr
-#'   Desired number of peaks, i.e., number of optima.
+#'   Desired number of peaks, i. e., number of (local) optima.
 #' @param dimension [\code{integer(1)}]\cr
-#'   Problem dimension. Integer value between 2 and 40.
+#'   Problem dimension.
 #' @param topology [\code{integer(1)}]\cr
-#'   Function identifier. Integer value between 1 and 24.
+#'   Type of topology. Possible values are \dQuote{random} and \dQuote{funnel}.
 #' @param seed [\code{integer(1)}]\cr
-#'   Seed for the random numbers generator. Default is \code{NULL}.
+#'   Seed for the random numbers generator.
 #' @return [\code{smoof_single_objective_function}]
 #' @examples
-#' # Unfortunately
-#' fn = makeFunnelFunction(n.peaks = 10L, dimension = 2L, topology = "funnel", seed = 123)
+#' fn = makeMPM2Function(n.peaks = 10L, dimension = 2L, topology = "funnel", seed = 123)
+#' \dontrun{
 #' if (require(plot3D)) {
-#'   plot3D(fn, contour = TRUE)
+#'   plot3D(fn)
 #' }
-#' @references Bla
+#' }
+#' fn = makeMPM2Function(n.peaks = 5L, dimension = 2L, topology = "random", seed = 134)
+#' \dontrun{
+#' plot(fn, render.levels = TRUE)
+#' }
+#'
+#' @references [1] Kerschke P., Preuss M., Wessing S., Trautmann, H. (2015). Detecting
+#' Funnel Structures by Means of Exploratory Landscape Analysis. In Proceedings of
+#' the Genetic and Evolutionary Computation Conference, Madrid, Spain.
 #'
 #' @author \R interface by Jakob Bossek. Original python code
-#' provided by the Simon Wessing and Mike Preuss.
+#' provided by the Simon Wessing.
 #'
-# @export
-makeFunnelFunction = function(n.peaks, dimension, topology, seed = NULL) {
+#' @export
+makeMPM2Function = function(n.peaks, dimension, topology, seed) {
   # do some sanity checks
   n.peaks = convertInteger(n.peaks)
   dimension = convertInteger(dimension)
   seed = convertInteger(seed)
   assertInt(n.peaks, lower = 1L, na.ok = FALSE)
-  assertInt(dimension, lower = 2L, na.ok = FALSE)
+  assertInt(dimension, lower = 1L, na.ok = FALSE)
   assertChoice(topology, choices = c("random", "funnel"))
   assertInt(seed, lower = 1L, na.ok = FALSE)
 
@@ -41,7 +49,7 @@ makeFunnelFunction = function(n.peaks, dimension, topology, seed = NULL) {
   par.set = makeNumericParamSet("x", len = dimension, lower = 0, upper = 1)
 
   # import rPython
-  BBmisc::requirePackages("rPython", why = "smoof::makeFunnelFunction")
+  BBmisc::requirePackages("rPython", why = "smoof::makeMultiplePeaksModel2Function")
 
   # load funnel generator to global environemt
   eval(rPython::python.load(system.file("mpm2.py", package = "smoof")), envir = .GlobalEnv)
@@ -54,10 +62,10 @@ makeFunnelFunction = function(n.peaks, dimension, topology, seed = NULL) {
       rPython::python.call("evaluateProblem", as.numeric(x), n.peaks, dimension, topology, seed)
     },
     par.set = par.set,
-    tags = character(0)
+    tags = c("non-separable", "scalable", "continuous", "multimodal")
   )
 }
 
-class(makeBBOBFunction) = c("function", "smoof_generator")
-attr(makeBBOBFunction, "name") = c("Funnel function generator")
-attr(makeBBOBFunction, "type") = c("single-objective")
+class(makeMPM2Function) = c("function", "smoof_generator")
+attr(makeMPM2Function, "name") = c("Funnel function generator")
+attr(makeMPM2Function, "type") = c("single-objective")

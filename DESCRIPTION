@@ -17,7 +17,8 @@ Imports:
     ggplot2,
     RColorBrewer,
     plot3D,
-    emoa
+    emoa,
+    rPython (>= 0.0-5)
 Suggests:
     testthat
 LazyData: yes
