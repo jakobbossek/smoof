@@ -7,7 +7,18 @@ expect_logging_result_structure = function(x) {
   expect_true(is.numeric(x$obj.vals))
 }
 
-test_that("logging of simple functions works well", {
+test_that("logging for functions with matrix input works well", {
+  fn = makeBBOBFunction(fid = 1L, iid = 1L, dimension = 10L)
+  fn = addLoggingWrapper(fn, logg.x = TRUE)
+  fn(matrix(runif(10L * 10L), ncol = 10L))
+
+  res = getLoggedValues(fn, compact = TRUE)
+  expect_true(is.data.frame(res))
+  expect_equal(nrow(res), 10L)
+  expect_equal(ncol(res), 10L + 1L) # dim plus y
+})
+
+test_that("logging for simple functions works well", {
   # generate Sphere function
   for (dimension in c(1L, 2L, 5L, 10L)) {
     fn = makeSphereFunction(dimension = dimension)
@@ -43,7 +54,7 @@ test_that("logging of simple functions works well", {
   }
 })
 
-test_that("logging of mixed function works well", {
+test_that("logging for mixed function works well", {
   # define a mixed function with three parameters
   fn = makeSingleObjectiveFunction(
     name = "Test",

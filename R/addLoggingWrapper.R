@@ -31,6 +31,8 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
   }
 
   force(fn)
+  force(logg.x)
+  force(logg.y)
   par.set = smoof::getParamSet(fn)
   par.ids = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
   n.obj = getNumberOfObjectives(fn)
@@ -42,19 +44,31 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
   pars = data.frame(stringsAsFactors = FALSE)
 
   wrapped.fn = function(x, ...) {
-    #FIXME: handle matrix input
-    # call wrapped function
-    y = fn(x, ...)
-    if (logg.y) {
-      obj.vals <<- cbind(obj.vals, y)
+    # convert everything to a list
+    if (is.matrix(x)) {
+      x = apply(x, 2, function(el) {
+        el = as.list(el)
+        names(el) = par.ids
+        return(el)
+      })
+    } else if (is.numeric(x)) {
+      x = as.list(x)
+      names(x) = par.ids
+      x = list(x)
+    } else {
+      x = list(x)
     }
-    if (logg.x) {
-      if (!is.list(x)) {
-        x = as.list(x)
-        names(x) = par.ids
+
+    y = sapply(x, function(par) {
+      y.curr = fn(par, ...)
+      if (logg.y) {
+        obj.vals <<- cbind(obj.vals, y.curr)
       }
-      pars <<- rbind(pars, as.data.frame(x))
-    }
+      if (logg.x) {
+        pars <<- rbind(pars, as.data.frame(par))
+      }
+      return(y.curr)
+    })
     return(y)
   }
   class(wrapped.fn) = c("smoof_logging_function", "smoof_wrapped_function")
