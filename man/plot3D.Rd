@@ -7,7 +7,7 @@
 plot3D(x, length.out = 100L, ...)
 }
 \arguments{
-\item{x}{[\code{snoof_function}]\cr
+\item{x}{[\code{smoof_function}]\cr
 Two-dimensional snoof function.}
 
 \item{length.out}{[\code{integer(1)}]\cr

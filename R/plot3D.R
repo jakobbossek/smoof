@@ -1,6 +1,6 @@
 #' Surface plot of two-dimensional test function.
 #'
-#' @param x [\code{snoof_function}]\cr
+#' @param x [\code{smoof_function}]\cr
 #'   Two-dimensional snoof function.
 #' @param length.out [\code{integer(1)}]\cr
 #'   Determines the \dQuote{smoothness} of the grid. The higher the value, the
