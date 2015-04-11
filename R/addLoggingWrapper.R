@@ -7,6 +7,17 @@
 #' @param logg.y [\code{logical(1)}]\cr
 #'   Should objective values be logged? Default is \code{TRUE}.
 #' @return [\code{smoof_logging_function}]
+#' @examples
+#' fn = makeSphereFunction(dimension = 2L)
+#' fn = addLoggingWrapper(fn, logg.x = TRUE)
+#' res = optim(fn, par = c(1, 1), method = "Nelder-Mead")
+#' log.res = getLoggedValues(fn)
+#' print(fn$pars)
+#' print(fn$obj.vals)
+#'
+#' @note Logging values, in particular logging x-values, will substantially slow
+#' down the evaluation of the function.
+#'
 #' @export
 addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
   assertClass(fn, "smoof_function")
