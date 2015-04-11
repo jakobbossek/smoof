@@ -9,31 +9,32 @@ expect_logging_result_structure = function(x) {
 
 test_that("logging of simple functions works well", {
   # generate Sphere function
-  fn = makeSphereFunction(dimension = 3L)
-  par.ids = getParamIds(smoof::getParamSet(fn), with.nr = TRUE, repeated = TRUE)
+  for (dimension in c(1L, 2L, 5L, 10L)) {
+    fn = makeSphereFunction(dimension = dimension)
+    par.ids = getParamIds(smoof::getParamSet(fn), with.nr = TRUE, repeated = TRUE)
 
-  # add logger for both x and y values
-  fn = addLoggingWrapper(fn, logg.x = TRUE)
+    # add logger for both x and y values
+    fn = addLoggingWrapper(fn, logg.x = TRUE)
 
-  # now apply some evaluations
-  fn(c(1, 1, 1))
+    # now apply some evaluations
+    fn(runif(dimension))
 
-  # check for logged vals
-  res = getLoggedValues(fn)
+    # check for logged vals
+    res = getLoggedValues(fn)
 
-  expect_logging_result_structure(res)
-  expect_equal(as.numeric(res$obj.vals), 3L)
-  expect_equal(nrow(res$pars), 1L)
+    expect_logging_result_structure(res)
+    expect_equal(nrow(res$pars), 1L)
+    expect_equal(length(res$obj.vals), 1L)
 
-  for (i in seq(10L)) {
-    fn(runif(3L))
+    for (i in seq(10L)) {
+      fn(runif(dimension))
+    }
+    res = getLoggedValues(fn)
+
+    expect_logging_result_structure(res)
+    expect_equal(nrow(res$pars), 11L)
+    expect_equal(length(res$obj.vals), 11L)
   }
-  res = getLoggedValues(fn)
-
-  expect_logging_result_structure(res)
-  expect_equal(nrow(res$pars), 11L)
-  expect_true(is.numeric(res$obj.vals))
-  expect_equal(length(res$obj.vals), 11L)
 })
 
 test_that("logging of mixed function works well", {
