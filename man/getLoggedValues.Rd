@@ -4,15 +4,19 @@
 \alias{getLoggedValues}
 \title{Extract logged values of a function wrapped by a logging wrapper.}
 \usage{
-getLoggedValues(fn)
+getLoggedValues(fn, compact = FALSE)
 }
 \arguments{
-\item{fn}{[\code{smoog_function}]\cr
+\item{fn}{[\code{smoof_function}]\cr
 Smoof function.}
+
+\item{compact}{[\code{logical(1)}]\cr
+Wrap all logged values in a single data frame? Default is \code{FALSE}.}
 }
 \value{
-[\code{list}]
-  List containing the following values
+[\code{list} || \code{data.frame}]
+  If \code{compact} is \code{TRUE}, a single data frame. Otherwise the function
+  returns a list containing the following values.
   \describe{
     \item{pars}{Data frame of parameter values, i.e., x-values or the empty
     data frame if x-values were not logged.}

@@ -34,6 +34,12 @@ test_that("logging of simple functions works well", {
     expect_logging_result_structure(res)
     expect_equal(nrow(res$pars), 11L)
     expect_equal(length(res$obj.vals), 11L)
+
+    # check "compact" logging result
+    res = getLoggedValues(fn, compact = TRUE)
+    expect_true(is.data.frame(res))
+    expect_equal(nrow(res), 11L)
+    expect_equal(ncol(res), dimension + 1L) # dim plus the single objective value
   }
 })
 

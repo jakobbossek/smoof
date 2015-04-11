@@ -12,8 +12,10 @@
 #' fn = addLoggingWrapper(fn, logg.x = TRUE)
 #' res = optim(fn, par = c(1, 1), method = "Nelder-Mead")
 #' log.res = getLoggedValues(fn)
-#' print(fn$pars)
-#' print(fn$obj.vals)
+#' print(log.res$pars)
+#' print(log.res$obj.vals)
+#' log.res = getLoggedValues(fn, compact = TRUE)
+#' print(log.res)
 #'
 #' @note Logging values, in particular logging x-values, will substantially slow
 #' down the evaluation of the function.

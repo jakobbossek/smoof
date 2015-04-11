@@ -22,4 +22,18 @@ Should objective values be logged? Default is \code{TRUE}.}
 \description{
 Return a function which internally stores x or y values.
 }
+\note{
+Logging values, in particular logging x-values, will substantially slow
+down the evaluation of the function.
+}
+\examples{
+fn = makeSphereFunction(dimension = 2L)
+fn = addLoggingWrapper(fn, logg.x = TRUE)
+res = optim(fn, par = c(1, 1), method = "Nelder-Mead")
+log.res = getLoggedValues(fn)
+print(log.res$pars)
+print(log.res$obj.vals)
+log.res = getLoggedValues(fn, compact = TRUE)
+print(log.res)
+}
 
