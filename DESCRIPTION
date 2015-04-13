@@ -17,9 +17,9 @@ Imports:
     ggplot2,
     RColorBrewer,
     plot3D,
-    emoa,
-    rPython (>= 0.0-5)
+    emoa
 Suggests:
-    testthat
+    testthat,
+    rPython (>= 0.0-5)
 LazyData: yes
 ByteCompile: yes

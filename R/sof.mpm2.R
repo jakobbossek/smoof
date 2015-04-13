@@ -10,14 +10,14 @@
 #'   Seed for the random numbers generator.
 #' @return [\code{smoof_single_objective_function}]
 #' @examples
-#' fn = makeMPM2Function(n.peaks = 10L, dimension = 2L, topology = "funnel", seed = 123)
 #' \dontrun{
+#' fn = makeMPM2Function(n.peaks = 10L, dimension = 2L, topology = "funnel", seed = 123)
 #' if (require(plot3D)) {
 #'   plot3D(fn)
 #' }
 #' }
-#' fn = makeMPM2Function(n.peaks = 5L, dimension = 2L, topology = "random", seed = 134)
 #' \dontrun{
+#' fn = makeMPM2Function(n.peaks = 5L, dimension = 2L, topology = "random", seed = 134)
 #' plot(fn, render.levels = TRUE)
 #' }
 #'
@@ -29,6 +29,10 @@
 #'
 #' @export
 makeMPM2Function = function(n.peaks, dimension, topology, seed) {
+  if (isWindows()) {
+    stopf("No support for the multiple peaks model 2 generator at the moment.")
+  }
+
   # do some sanity checks
   n.peaks = convertInteger(n.peaks)
   dimension = convertInteger(dimension)

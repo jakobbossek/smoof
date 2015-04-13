@@ -26,14 +26,14 @@ Seed for the random numbers generator.}
 Generator for function with multiple peaks following the multiple peaks model 2.
 }
 \examples{
-fn = makeMPM2Function(n.peaks = 10L, dimension = 2L, topology = "funnel", seed = 123)
 \dontrun{
+fn = makeMPM2Function(n.peaks = 10L, dimension = 2L, topology = "funnel", seed = 123)
 if (require(plot3D)) {
   plot3D(fn)
 }
 }
-fn = makeMPM2Function(n.peaks = 5L, dimension = 2L, topology = "random", seed = 134)
 \dontrun{
+fn = makeMPM2Function(n.peaks = 5L, dimension = 2L, topology = "random", seed = 134)
 plot(fn, render.levels = TRUE)
 }
 }
