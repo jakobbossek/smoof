@@ -8,6 +8,7 @@ before_install:
   - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
+  - sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 install:
   - ./travis-tool.sh github_package hadley/testthat
   - ./travis-tool.sh github_package hadley/assertthat
@@ -27,5 +28,7 @@ after_failure:
 
 notifications:
   email:
+    recipients:
+      - j.bossek@gmail.com
     on_success: change
-    on_failure: change
+    on_failure: always
