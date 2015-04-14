@@ -1,6 +1,7 @@
 # smoof: Single- and Multi-Objective Optimization test Functions
 
 [![Build Status](https://travis-ci.org/jakobbossek/smoof.svg)](https://travis-ci.org/jakobbossek/smoof)
+[![Build status](https://ci.appveyor.com/api/projects/status/4b468f5phkb4lmeq/branch/master?svg=true)](https://ci.appveyor.com/project/jakobbossek/smoof/branch/master)
 [![Coverage Status](https://coveralls.io/repos/jakobbossek/smoof/badge.svg)](https://coveralls.io/r/jakobbossek/smoof)
 
 This package offers an interface for objective functions in the context of (multi-objective) global optimization. It conveniently builds up on the S3 objects, i. e., an objective function is a S3 object composed of a descriptive name, the function itself, a parameter set, box constraints or other constraints, number of objectives and so on. Moreover, the package contains generators for a load of both single- and multi-objective optimization test functions which are frequently being used in the literature of (benchmarking) optimization algorithms.
@@ -38,11 +39,6 @@ At the moment the following optimization test functions respectively function se
 |Deckkers-Aarts Function            |
 |Dixon-Price Function               |
 |Double-Sum Function                |
-|DTLZ1 Function                     |
-|DTLZ2 Function                     |
-|DTLZ3 Function                     |
-|DTLZ4 Function                     |
-|DTLZ6 Function                     |
 |Eason Function                     |
 |Egg Crate Function                 |
 |Egg Holder Function                |
@@ -64,6 +60,7 @@ At the moment the following optimization test functions respectively function se
 |Matyas Function                    |
 |McCormick Function                 |
 |Michalewicz Function               |
+|Multiple peals model 2 Function    |
 |Periodic Function                  |
 |Double-Sum Function                |
 |Price Function N. 1                |
