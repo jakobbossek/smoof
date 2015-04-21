@@ -51,8 +51,8 @@ makeMPM2Function = function(n.peaks, dimension, topology, seed) {
   # build parameter set (bounds are [0, 1]^d)
   par.set = makeNumericParamSet("x", len = dimension, lower = 0, upper = 1)
 
-  # import rPython
-  BBmisc::requirePackages("rPython", why = "smoof::makeMultiplePeaksModel2Function")
+  # import rPython namespace
+  BBmisc::requirePackages("_rPython", why = "smoof::makeMultiplePeaksModel2Function")
 
   # load funnel generator to global environemt
   eval(rPython::python.load(system.file("mpm2.py", package = "smoof")), envir = .GlobalEnv)

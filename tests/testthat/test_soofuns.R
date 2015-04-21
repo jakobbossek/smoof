@@ -56,13 +56,16 @@ test_that("BBOB functions work", {
 })
 
 test_that("Multiple peaks model 2 (MPM2) functions work", {
-  for (dimension in c(1, 2, 5, 10)) {
-    for (n.peaks in c(2, 5, 10)) {
-      for (topology in c("funnel", "random")) {
-        fn = makeMPM2Function(n.peaks = n.peaks, dimension = dimension, topology = topology, seed = 123)
-        expect_is(fn, "smoof_single_objective_function")
-        y = fn(rep(0.1, dimension))
-        expect_true(is.numeric(y))
+  # mpm2 only available for unix systems
+  if (BBmisc::isUnix()) {
+    for (dimension in c(1, 2, 5, 10)) {
+      for (n.peaks in c(2, 5, 10)) {
+        for (topology in c("funnel", "random")) {
+          fn = makeMPM2Function(n.peaks = n.peaks, dimension = dimension, topology = topology, seed = 123)
+          expect_is(fn, "smoof_single_objective_function")
+          y = fn(rep(0.1, dimension))
+          expect_true(is.numeric(y))
+        }
       }
     }
   }
