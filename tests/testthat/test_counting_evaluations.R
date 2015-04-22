@@ -11,10 +11,10 @@ test_that("countingWrapper counts correctly", {
 
   # now perform 10 function evaluations
   par.set = getParamSet(fn)
-  par.mat = matrix(NA, nrow = 10L, ncol = 8L)
+  par.mat = matrix(NA, nrow = 8L, ncol = 10L)
   for (i in 1:10) {
     par = unlist(sampleValue(par.set))
-    par.mat[i, ] = par
+    par.mat[, i] = par
     fn(par)
   }
 
