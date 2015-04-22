@@ -14,6 +14,13 @@ Objective function.}
 [\code{\link[ParamHelpers]{ParamSet}}]
 }
 \description{
-Get parameter set.
+Each smoof function contains a parameter set of type \code{\link[ParamHelpers]{ParamSet}}
+assigned to it, which describes types and bounds of the function parameters.
+This function returns the parameter set.
+}
+\examples{
+fn = makeSphereFunction(3L)
+ps = smoof::getParamSet(fn)
+print(ps)
 }
 

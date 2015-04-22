@@ -2,8 +2,7 @@
 % Please edit documentation in R/getWrappedFunction.R
 \name{getWrappedFunction}
 \alias{getWrappedFunction}
-\title{Get the wrapped function. Useful to get the smoof function, if it is wrapped
-with e.g. a counting wrapper.}
+\title{Extract wrapped function.}
 \usage{
 getWrappedFunction(fn)
 }
@@ -15,7 +14,12 @@ Wrapping function.}
 [\code{function}]
 }
 \description{
-Get the wrapped function. Useful to get the smoof function, if it is wrapped
-with e.g. a counting wrapper.
+The \pkg{smoof} package offers means to let a function log its evaluations or
+even store to points and function values it has been evaluated on. This is done
+by wrapping the function with other functions. This helper function extract
+the wrapped function.
+}
+\seealso{
+\code{\link{addCountingWrapper}}, \code{\link{addLoggingWrapper}}
 }
 

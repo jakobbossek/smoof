@@ -7,6 +7,7 @@
 #' @param object [any]\cr
 #'   Arbitrary R object.
 #' @return \code{logical(1)}
+#' @seealso \code{\link{addCountingWrapper}}
 #' @export
 doesCountEvaluations = function(object) {
   res = inherits(object, what = "smoof_counting_function")

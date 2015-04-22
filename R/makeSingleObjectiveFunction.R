@@ -11,7 +11,7 @@
 #' @param tags [\code{character}]\cr
 #'   Optional character vector of tags or keywords which characterize the function,
 #'   e.~g. \dQuote{unimodal}, \dQuote{separable}. See \code{\link{getAvailableTags}} for
-#'   a list of allowed tags.
+#'   a character vector of allowed tags.
 #' @param global.opt.params [\code{list} | \code{numeric} | \code{data.frame} | \code{matrix} | \code{NULL}]\cr
 #'   Default is \code{NULL} which means unknown. Passing a \code{numeric} vector will
 #'   be the most frequent case (numeric only functions). In this case there is only a
@@ -76,7 +76,8 @@ makeSingleObjectiveFunction = function(
   smoof.fn = makeObjectiveFunction(
     name, description, fn,
     has.simple.signature, par.set, 1L,
-    noisy, vectorized, constraint.fn)
+    noisy, vectorized, constraint.fn
+  )
   n.params = getNumberOfParameters(smoof.fn)
 
   #FIXME: currently we offer this only for single objective functions

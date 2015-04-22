@@ -1,4 +1,4 @@
-#' Return name of the function.
+#' Return the name of the function.
 #'
 #' @template arg_smoof_function
 #' @return [\code{character(1)}]

@@ -27,4 +27,7 @@ Wrap all logged values in a single data frame? Default is \code{FALSE}.}
 \description{
 Extract logged values of a function wrapped by a logging wrapper.
 }
+\seealso{
+\code{\link{addLoggingWrapper}}
+}
 

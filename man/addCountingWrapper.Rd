@@ -2,7 +2,7 @@
 % Please edit documentation in R/addCountingWrapper.R
 \name{addCountingWrapper}
 \alias{addCountingWrapper}
-\title{Return a function which counts how often it has been evaluated.}
+\title{Return a function which counts its evaluations.}
 \usage{
 addCountingWrapper(fn)
 }
@@ -14,6 +14,31 @@ Smoof function.}
 [\code{smoof_counting_function}]
 }
 \description{
-Return a function which counts how often it has been evaluated.
+This is a counting wrapper for a \code{smoof_function}, i.e., the returned function
+first checks whether the given argument is a vector or matrix, saves the
+number of function evaluations of the wrapped function to compute the function
+values and finally passes down the argument to the wrapped \code{smoof_function}.
+}
+\examples{
+fn = makeBBOBFunction(dimension = 2L, fid = 1L, iid = 1L)
+fn = addCountingWrapper(fn)
+
+# we get a value of 0 since the function has not been called yet
+print(getNumberOfEvaluations(fn))
+
+# now call the function 10 times consecutively
+for (i in seq(10L)) {
+  fn(runif(2))
+}
+print(getNumberOfEvaluations(fn))
+
+# Here we pass a (2x5) matrix to the function with each column representing
+# one input vector
+x = matrix(runif(10), ncol = 5L)
+fn(x)
+print(getNumberOfEvaluations(fn))
+}
+\seealso{
+\code{\link{getNumberOfEvaluations}}, \code{\link{resetEvaluationCounter}}
 }
 

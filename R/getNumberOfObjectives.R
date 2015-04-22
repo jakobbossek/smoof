@@ -7,7 +7,6 @@ getNumberOfObjectives = function(fn) {
   UseMethod("getNumberOfObjectives")
 }
 
-
 #' @export
 getNumberOfObjectives.smoof_function = function(fn) {
   return(attr(fn, "n.objectives"))

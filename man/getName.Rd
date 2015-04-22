@@ -2,7 +2,7 @@
 % Please edit documentation in R/getName.R
 \name{getName}
 \alias{getName}
-\title{Return name of the function.}
+\title{Return the name of the function.}
 \usage{
 getName(fn)
 }
@@ -14,6 +14,6 @@ Objective function.}
 [\code{character(1)}]
 }
 \description{
-Return name of the function.
+Return the name of the function.
 }
 

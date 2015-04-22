@@ -27,9 +27,15 @@ Logging values, in particular logging x-values, will substantially slow
 down the evaluation of the function.
 }
 \examples{
+# We first build the smoof function and apply the logging wrapper to it
 fn = makeSphereFunction(dimension = 2L)
 fn = addLoggingWrapper(fn, logg.x = TRUE)
+
+# We now apply an optimization algorithm to it and the logging wrapper keeps
+# track of the evaluated points.
 res = optim(fn, par = c(1, 1), method = "Nelder-Mead")
+
+# Extract the logged values
 log.res = getLoggedValues(fn)
 print(log.res$pars)
 print(log.res$obj.vals)

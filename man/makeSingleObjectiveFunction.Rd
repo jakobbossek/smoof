@@ -44,7 +44,7 @@ beside possible box constraints defined via the \code{par.set} argument.}
 \item{tags}{[\code{character}]\cr
 Optional character vector of tags or keywords which characterize the function,
 e.~g. \dQuote{unimodal}, \dQuote{separable}. See \code{\link{getAvailableTags}} for
-a list of allowed tags.}
+a character vector of allowed tags.}
 
 \item{global.opt.params}{[\code{list} | \code{numeric} | \code{data.frame} | \code{matrix} | \code{NULL}]\cr
 Default is \code{NULL} which means unknown. Passing a \code{numeric} vector will

@@ -13,6 +13,7 @@
 #'     \item{obj.vals}{Numeric vector of objective vals in the single-objective
 #'     case respectively a matrix of objective vals for multi-objective functions.}
 #'   }
+#' @seealso \code{\link{addLoggingWrapper}}
 #' @export
 getLoggedValues = function(fn, compact = FALSE) {
   UseMethod("getLoggedValues")
