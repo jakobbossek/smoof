@@ -26,9 +26,17 @@ getLoggedValues.smoof_logging_function = function(fn, compact = FALSE) {
   obj.vals = env$obj.vals
   # wrap everything up in a single data frame
   if (compact) {
-    obj.vals = as.data.frame(t(obj.vals))
-    names(obj.vals) = paste0("y", ncol(obj.vals))
-    return(cbind(pars, obj.vals))
+    # if only the x-values are stored just return the data frame
+    if (is.null(obj.vals)) {
+      return(pars)
+    }
+    df = as.data.frame(t(obj.vals))
+    names(df) = paste0("y", ncol(df))
+    if (!is.null(pars)) {
+      # append x-values if stored
+      df = cbind(pars, df)
+    }
+    return(df)
   }
   if (nrow(obj.vals) == 1L) {
     obj.vals = as.numeric(obj.vals)
