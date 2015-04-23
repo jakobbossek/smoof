@@ -29,7 +29,9 @@
 #' @seealso \code{\link{getNumberOfEvaluations}}, \code{\link{resetEvaluationCounter}}
 #' @export
 addCountingWrapper = function(fn) {
-  assertClass(fn, "smoof_function")
+  if (!testClass(fn, "smoof_function") && !testClass(fn, "smoof_wrapped_function")) {
+    stopf("The passed function needs to be a (wrapped) smoof function.")
+  }
   force(fn)
   n.evals = 0L
   wrapped.fn = function(x, ...) {

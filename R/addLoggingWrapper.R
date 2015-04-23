@@ -28,7 +28,9 @@
 #'
 #' @export
 addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
-  assertClass(fn, "smoof_function")
+  if (!testClass(fn, "smoof_function") && !testClass(fn, "smoof_wrapped_function")) {
+    stopf("The passed function needs to be a (wrapped) smoof function.")
+  }
   assertFlag(logg.x, na.ok = FALSE)
   assertFlag(logg.y, na.ok = FALSE)
 
