@@ -2,7 +2,8 @@
 % Please edit documentation in R/isSmoofFunction.R
 \name{isSmoofFunction}
 \alias{isSmoofFunction}
-\title{Checks whether the given object is a \code{smoof_function}.}
+\title{Checks whether the given object is a \code{smoof_function} or a
+\code{smoof_wrapped_function}.}
 \usage{
 isSmoofFunction(object)
 }
@@ -14,6 +15,10 @@ Arbitrary R object.}
 [\code{logical(1)}]
 }
 \description{
-Checks whether the given object is a \code{smoof_function}.
+Checks whether the given object is a \code{smoof_function} or a
+\code{smoof_wrapped_function}.
+}
+\seealso{
+\code{\link{addCountingWrapper}}, \code{\link{addLoggingWrapper}}
 }
 

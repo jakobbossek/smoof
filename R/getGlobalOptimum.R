@@ -10,8 +10,6 @@
 #' @export
 getGlobalOptimum = function(fn) {
   UseMethod("getGlobalOptimum")
-  assertClass(fn, c("smoof_function", "smoof_single_objective_function"))
-
 }
 
 #' @export
