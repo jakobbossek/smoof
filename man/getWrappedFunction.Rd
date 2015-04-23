@@ -4,11 +4,16 @@
 \alias{getWrappedFunction}
 \title{Extract wrapped function.}
 \usage{
-getWrappedFunction(fn)
+getWrappedFunction(fn, deepest = FALSE)
 }
 \arguments{
 \item{fn}{[\code{smoof_wrapped_function}]\cr
 Wrapping function.}
+
+\item{deepest}{[\code{logical(1)}]\cr
+Function may be wrapped with multiple wrappers. If \code{deepest} is set to
+\code{TRUE} the function unwraps recursively until the \dQuote{deepest} wrapped
+\code{smoof_function} is reached. Default is \code{FALSE}.}
 }
 \value{
 [\code{function}]
@@ -18,6 +23,10 @@ The \pkg{smoof} package offers means to let a function log its evaluations or
 even store to points and function values it has been evaluated on. This is done
 by wrapping the function with other functions. This helper function extract
 the wrapped function.
+}
+\note{
+If this function is applied to a simple \code{smoof_function}, the
+\code{smoof_function} itself is returned.
 }
 \seealso{
 \code{\link{addCountingWrapper}}, \code{\link{addLoggingWrapper}}
