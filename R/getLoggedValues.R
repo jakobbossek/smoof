@@ -31,14 +31,14 @@ getLoggedValues.smoof_logging_function = function(fn, compact = FALSE) {
       return(pars)
     }
     df = as.data.frame(t(obj.vals))
-    names(df) = paste0("y", ncol(df))
+    names(df) = paste0("y", seq(ncol(df)))
     if (!is.null(pars)) {
       # append x-values if stored
       df = cbind(pars, df)
     }
     return(df)
   }
-  if (nrow(obj.vals) == 1L) {
+  if (!is.null(obj.vals) && nrow(obj.vals) == 1L) {
     obj.vals = as.numeric(obj.vals)
   }
   return(list(pars = pars, obj.vals = obj.vals))

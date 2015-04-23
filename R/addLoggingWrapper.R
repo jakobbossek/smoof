@@ -48,8 +48,13 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
 
   # since we need to consider both single and multi-objective functions,
   # we store everything in a (n.obj x evals) matrix.
-  obj.vals = matrix(0, nrow = n.obj, ncol = 0L)
-  pars = data.frame(stringsAsFactors = FALSE)
+  obj.vals = pars = NULL
+  if (logg.x) {
+    pars = data.frame(stringsAsFactors = FALSE)
+  }
+  if (logg.y) {
+    obj.vals = matrix(0, nrow = n.obj, ncol = 0L)
+  }
 
   wrapped.fn = function(x, ...) {
     # convert everything to a list
@@ -70,7 +75,7 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
     y = sapply(x, function(par) {
       y.curr = fn(par, ...)
       if (logg.y) {
-        obj.vals <<- cbind(obj.vals, y.curr)
+        obj.vals <<- cbind(obj.vals, y.curr, deparse.level = 0)
       }
       if (logg.x) {
         pars <<- rbind(pars, as.data.frame(par))
