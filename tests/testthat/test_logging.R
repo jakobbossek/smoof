@@ -91,3 +91,33 @@ test_that("logging for mixed function works well", {
   expect_equal(test.df, res$pars)
   expect_true(all(obj.vals == res$obj.vals))
 })
+
+test_that("nesting of wrappers works well", {
+  fn = makeSphereFunction(2L)
+  fn = addCountingWrapper(fn)
+  fn = addLoggingWrapper(fn, logg.x = TRUE)
+
+  # evaluate 10 times
+  n.evals = 10L
+  for (i in seq(n.evals)) {
+    fn(runif(2))
+  }
+
+  # should be a wrapped function now
+  expect_true(isWrappedSmoofFunction(fn))
+  expect_equal(getNumberOfEvaluations(fn), n.evals)
+  expect_logging_result_structure(getLoggedValues(fn))
+
+  # now unwrap step by step
+  fn2 = getWrappedFunction(fn)
+  expect_true(isWrappedSmoofFunction(fn2))
+  expect_equal(getNumberOfEvaluations(fn), n.evals)
+  fn2 = getWrappedFunction(fn2)
+  expect_false(isWrappedSmoofFunction(fn2))
+  expect_true(isSmoofFunction(fn2))
+
+  # now unwrap completely
+  fn2 = getWrappedFunction(fn, deepest = TRUE)
+  expect_false(isWrappedSmoofFunction(fn2))
+  expect_true(isSmoofFunction(fn2))
+})
