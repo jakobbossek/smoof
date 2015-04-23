@@ -14,13 +14,10 @@ getGlobalOptimum = function(fn) {
 
 #' @export
 getGlobalOptimum.smoof_single_objective_function = function(fn) {
-  if (hasGlobalOptimum(fn)) {
-    return(list(
-      param = attr(fn, "global.opt.params"),
-      value = attr(fn, "global.opt.value")
-    ))
-  }
-  return(NULL)
+  return(list(
+    param = attr(fn, "global.opt.params"),
+    value = attr(fn, "global.opt.value")
+  ))
 }
 
 #' @export
