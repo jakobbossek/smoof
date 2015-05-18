@@ -6,7 +6,7 @@
 #' values and finally passes down the argument to the wrapped \code{smoof_function}.
 #'
 #' @param fn [\code{smoof_function}]\cr
-#'   Smoof function.
+#'   Smoof function which should be wrapped.
 #' @return [\code{smoof_counting_function}]
 #' @examples
 #' fn = makeBBOBFunction(dimension = 2L, fid = 1L, iid = 1L)

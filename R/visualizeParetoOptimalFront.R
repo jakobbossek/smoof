@@ -1,7 +1,7 @@
 #' Pareto-optimal front visualization.
 #'
 #' Quickly visualize the Pareto-optimal front of a bi-criteria objective
-#' function by generating a factorial desing in the decision space, computing the
+#' function by generating a factorial design in the decision space, computing the
 #' objective values and filtering out the dominated points. Helpful to get a
 #' notion of how the front is shaped and how the distribution of the points
 #' on the shape looks like.

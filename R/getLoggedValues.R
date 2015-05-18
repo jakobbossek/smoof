@@ -1,12 +1,12 @@
 #' Extract logged values of a function wrapped by a logging wrapper.
 #'
-#' @param fn [\code{smoof_function}]\cr
-#'   Smoof function.
+#' @param fn [\code{wrapped_smoof_function}]\cr
+#'   Wrapped smoof function.
 #' @param compact [\code{logical(1)}]\cr
 #'   Wrap all logged values in a single data frame? Default is \code{FALSE}.
 #' @return [\code{list} || \code{data.frame}]
 #'   If \code{compact} is \code{TRUE}, a single data frame. Otherwise the function
-#'   returns a list containing the following values.
+#'   returns a list containing the following values:
 #'   \describe{
 #'     \item{pars}{Data frame of parameter values, i.e., x-values or the empty
 #'     data frame if x-values were not logged.}

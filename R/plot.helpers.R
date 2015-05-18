@@ -38,8 +38,8 @@ getBounds = function(bound, default) {
 
 # Check if plotting is possible.
 #
-# @param x [\code{snoof_function}]\cr
-#  Function
+# @param x [\code{smoof_function}]\cr
+#  Smoof function.
 # @return Nothing
 checkPlotFunParams = function(x) {
   n.params = getNumberOfParameters(x)
@@ -56,8 +56,8 @@ checkPlotFunParams = function(x) {
 
 # Map number of params to the corresponding plot function.
 #
-# @param x [\code{snoof_function}]\cr
-#   Function.
+# @param x [\code{smoof_function}]\cr
+#   Smoof Function.
 # @param mapping [\code{list}]\cr
 #   Mapping from string to function.
 # @return [\code{function}]
