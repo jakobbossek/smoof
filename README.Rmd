@@ -1,5 +1,6 @@
 # smoof: Single- and Multi-Objective Optimization test Functions
 
+[![CRAN](https://img.shields.io/badge/cran-1.0-green.svg)](http://cran.r-project.org/web/packages/smoof/index.html)
 [![Build Status](https://travis-ci.org/jakobbossek/smoof.svg)](https://travis-ci.org/jakobbossek/smoof)
 [![Build status](https://ci.appveyor.com/api/projects/status/4b468f5phkb4lmeq/branch/master?svg=true)](https://ci.appveyor.com/project/jakobbossek/smoof/branch/master)
 [![Coverage Status](https://coveralls.io/repos/jakobbossek/smoof/badge.svg)](https://coveralls.io/r/jakobbossek/smoof)
@@ -27,7 +28,7 @@ kable(fun.names, format = "markdown")
 
 ## Installation instructions
 
-The package is currently **under heavy developmenent** and has not yet been released on CRAN. If you want to take a glance at it and play around install the github developement version by executing the following command:
+Visit the [package repository on CRAN](http://cran.r-project.org/web/packages/smoof/index.html). If you want to take a glance at the developement version install the github developement version by executing the following command:
 
 ```splus
 devtools::install_github("jakobbossek/smoof")
