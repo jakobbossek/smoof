@@ -34,7 +34,7 @@ makeBraninFunction = function() {
       id = "x",
       lower = c(-5, 0),
       upper = c(10, 15),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeBraninFunction, "tags"),
     global.opt.params = matrix(

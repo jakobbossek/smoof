@@ -24,7 +24,7 @@ makeSchwefelFunction = function(dimensions) {
       id = "x",
       lower = rep(-500, dimensions),
       upper = rep(500, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = c("continuous", "multimodal"),
     global.opt.params = rep(420.9687, dimensions),

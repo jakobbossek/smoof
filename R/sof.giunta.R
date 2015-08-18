@@ -24,7 +24,7 @@ makeGiuntaFunction = function() {
       id = "x",
       lower = rep(-1, 2),
       upper = rep(1, 2),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeGiuntaFunction, "tags"),
     global.opt.params = rep(0.45834282, 2L),

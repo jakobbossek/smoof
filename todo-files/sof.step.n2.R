@@ -22,7 +22,7 @@ makeStepN2Function = function(dimensions) {
       id = "x",
       lower = rep(-100, dimensions),
       upper = rep(100, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeStepN2Function, "tags"),
     global.opt.params = rep(0.5, dimensions),

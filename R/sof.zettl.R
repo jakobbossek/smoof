@@ -19,7 +19,7 @@ makeZettlFunction = function() {
       id = "x",
       lower = c(-5, -5),
       upper = c(10, 10),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal"),
     global.opt.params = c(-0.0299, 0),

@@ -26,7 +26,7 @@ makeGoldsteinPriceFunction = function() {
       id = "x",
       lower = c(-2, -2),
       upper = c(2, 2),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeGoldsteinPriceFunction, "tags"),
     global.opt.params = c(0, -1),

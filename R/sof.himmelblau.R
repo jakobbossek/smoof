@@ -19,7 +19,7 @@ makeHimmelblauFunction = function() {
       id = "x",
       lower = c(-5, -5),
       upper = c(5, 5),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeHimmelblauFunction, "tags"),
     global.opt.params = c(x1 = 3, x2 = 2),

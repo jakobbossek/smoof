@@ -17,7 +17,7 @@ makeEggCrateFunction = function() {
       id = "x",
       lower = c(-5, -5),
       upper = c(5, 5),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeEggCrateFunction, "tags"),
     global.opt.params = c(0, 0),

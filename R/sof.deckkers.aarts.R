@@ -23,7 +23,7 @@ makeDeckkersAartsFunction = function() {
       id = "x",
       lower = c(-20, -20),
       upper = c(20, 20),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeDeckkersAartsFunction, "tags"),
     global.opt.params = matrix(

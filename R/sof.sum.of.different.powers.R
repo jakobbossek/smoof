@@ -20,7 +20,7 @@ makeSumOfDifferentSquaresFunction = function(dimensions) {
       id = "x",
       lower = rep(-1, dimensions),
       upper = rep(1, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeSumOfDifferentSquaresFunction, "tags"),
     global.opt.params = rep(0, dimensions),

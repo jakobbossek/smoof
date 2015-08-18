@@ -24,7 +24,7 @@ makePenHolderFunction = function() {
       id = "x",
       lower = c(-11, -11),
       upper = c(11, 11),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makePenHolderFunction, "tags"),
     global.opt.params = matrix(

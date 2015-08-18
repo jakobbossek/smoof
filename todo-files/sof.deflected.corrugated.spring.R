@@ -31,7 +31,7 @@ makeDeflectedCorrugatedSpringFunction = function(dimensions, K = 5, alpha = 5) {
       id = "x",
       lower = rep(0, dimensions),
       upper = rep(2 * alpha, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     global.opt.params = global.opt.params,
     global.opt.value = 0

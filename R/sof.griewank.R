@@ -26,7 +26,7 @@ makeGriewankFunction = function(dimensions) {
       id = "x",
       lower = rep(-100, dimensions),
       upper = rep(100, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeGriewankFunction, "tags"),
     global.opt.params = rep(0, dimensions),

@@ -23,7 +23,7 @@ makeDoubleSumFunction = function(dimensions) {
       id = "x",
       lower = rep(-65.536, dimensions),
       upper = rep(65.536, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeDoubleSumFunction, "tags"),
     global.opt.params = rep(0, dimensions),

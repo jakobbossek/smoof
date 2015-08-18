@@ -24,7 +24,7 @@ makeSixHumpCamelFunction = function() {
       id = "x",
       lower = c(-3, -2),
       upper = c(3, 2),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeSixHumpCamelFunction, "tags"),
     global.opt.params = matrix(

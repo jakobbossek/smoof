@@ -22,7 +22,7 @@ makeEasomFunction = function() {
       id = "x",
       lower = c(-100, -100),
       upper = c(100, 100),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeEasomFunction, "tags"),
     global.opt.params = c(pi, pi),

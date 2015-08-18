@@ -22,7 +22,7 @@ makeCrossInTrayFunction = function() {
       id = "x",
       lower = c(-15, -15),
       upper = c(15, 15),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeCrossInTrayFunction, "tags"),
     global.opt.params = matrix(

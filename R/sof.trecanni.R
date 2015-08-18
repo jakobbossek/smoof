@@ -22,7 +22,7 @@ makeTrecanniFunction = function() {
       id = "x",
       lower = c(-5, -5),
       upper = c(5, 5),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = c("continuous", "differentiable", "separable", "non-scalable", "unimodal"),
     global.opt.params = matrix(

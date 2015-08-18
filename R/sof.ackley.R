@@ -31,8 +31,8 @@ makeAckleyFunction = function(dimensions) {
       id = "x",
       lower = -32.768,
       upper = 32.768,
-      vector = FALSE
-      ),
+      vector = TRUE
+    ),
     tags = attr(makeAckleyFunction, "tags"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0L

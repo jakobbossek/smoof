@@ -25,7 +25,7 @@ makeCsendesFunction = function(dimensions) {
       id = "x",
       lower = c(-1, -1),
       upper = c(1, 1),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeCsendesFunction, "tags"),
     global.opt.params = rep(0, dimensions),

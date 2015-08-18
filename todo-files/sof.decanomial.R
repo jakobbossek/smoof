@@ -13,7 +13,7 @@ makeDecanomialFunction = function() {
       id = "x",
       lower = c(-10, -10),
       upper = c(10, 10),
-      vector = FALSE
+      vector = TRUE
     ),
     global.opt.params = list("x1" = 2, "x2" = -3),
     global.opt.value = 0

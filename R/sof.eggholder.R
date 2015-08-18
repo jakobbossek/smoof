@@ -22,7 +22,7 @@ makeEggholderFunction = function() {
       id = "x",
       lower = c(-512, -512),
       upper = c(512, 512),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeEggholderFunction, "tags"),
     global.opt.params = c(x1 = 512, x2 = 404.2319),

@@ -17,7 +17,7 @@ makeChichinadzeFunction = function() {
       id = "x",
       lower = c(-30, -30),
       upper = c(30, 30),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeChichinadzeFunction, "tags"),
     global.opt.params = c(5.90133, 0.5),

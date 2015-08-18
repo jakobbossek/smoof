@@ -17,7 +17,7 @@ makeBoothFunction = function() {
       id = "x",
       lower = c(-10, -10),
       upper = c(10, 10),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeBoothFunction, "tags"),
     global.opt.params = c(1, 3),

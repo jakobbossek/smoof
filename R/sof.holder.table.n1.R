@@ -23,7 +23,7 @@ makeHolderTableN1Function = function() {
       id = "x",
       lower = c(-10, -10),
       upper = c(10, 10),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeHolderTableN1Function, "tags"),
     global.opt.params = matrix(

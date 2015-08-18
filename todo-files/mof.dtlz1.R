@@ -50,7 +50,7 @@ makeDTLZ1Function = function(dimensions, n.objectives) {
             #FIXME: any box constraints?
       lower = rep(0, dimensions),
       upper = rep(1, dimensions),
-      vector = FALSE
+      vector = TRUE
       ),
     n.objectives = n.objectives
   )

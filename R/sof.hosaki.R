@@ -21,7 +21,7 @@ makeHosakiFunction = function() {
       id = "x",
       lower = c(0, 0),
       upper = c(5, 6),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeHosakiFunction, "tags"),
     global.opt.params = c(4, 2),

@@ -20,7 +20,7 @@ makeMcCormickFunction = function() {
       id = "x",
       lower = c(-1.5, -3),
       upper = c(4, 3),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeMcCormickFunction, "tags"),
     global.opt.params = c(-0.54719, -1.54719),

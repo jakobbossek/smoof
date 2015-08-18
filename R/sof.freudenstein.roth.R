@@ -20,7 +20,7 @@ makeFreudensteinRothFunction = function() {
       id = "x",
       lower = c(-10, -10),
       upper = c(10, 10),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeFreudensteinRothFunction, "tags"),
     global.opt.params = c(5, 4),

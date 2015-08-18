@@ -60,7 +60,7 @@ makeDTLZ4Function = function(dimensions, n.objectives, alpha = 100) {
       id = "x",
       lower = rep(0, dimensions),
       upper = rep(1, dimensions),
-      vector = FALSE
+      vector = TRUE
       ),
     n.objectives = n.objectives
   )

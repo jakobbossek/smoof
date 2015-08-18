@@ -22,7 +22,7 @@ makeBukinN2Function = function() {
       id = "x",
       lower = c(-15, -3),
       upper = c(-5, 3),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeBukinN2Function, "tags"),
     global.opt.params = c(-10, 0),

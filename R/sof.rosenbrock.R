@@ -26,7 +26,7 @@ makeRosenbrockFunction = function(dimensions) {
       id = "x",
       lower = rep(-30, dimensions),
       upper = rep(30, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeRosenbrockFunction, "tags"),
     global.opt.params = rep(1, dimensions),

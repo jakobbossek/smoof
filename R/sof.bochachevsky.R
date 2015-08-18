@@ -25,7 +25,7 @@ makeBochachevskyFunction = function(dimensions) {
       id = "x",
       lower = rep(-15, dimensions),
       upper = rep(15, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeBochachevskyFunction, "tags"),
     global.opt.params = rep(0, dimensions),

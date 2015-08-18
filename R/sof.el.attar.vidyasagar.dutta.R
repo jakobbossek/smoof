@@ -21,7 +21,7 @@ makeElAttarVidyasagarDuttaFunction = function() {
       id = "x",
       lower = c(-100, -100),
       upper = c(100, 100),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeElAttarVidyasagarDuttaFunction, "tags"),
     global.opt.params = c(3.40918683, -2.17143304),

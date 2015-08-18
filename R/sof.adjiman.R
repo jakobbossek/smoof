@@ -21,8 +21,8 @@ makeAdjimanFunction = function() {
       id = "x",
       lower = c(-1, -1),
       upper = c(2, 1),
-      vector = FALSE
-      ),
+      vector = TRUE
+    ),
     tags = attr(makeAdjimanFunction, "tags"),
     global.opt.params = c(2, 0.10578),
     global.opt.value = -2.02181

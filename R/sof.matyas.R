@@ -19,7 +19,7 @@ makeMatyasFunction = function() {
       id = "x",
       lower = c(-10, -10),
       upper = c(10, 10),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeMatyasFunction, "tags"),
     global.opt.params = c(0, 0),

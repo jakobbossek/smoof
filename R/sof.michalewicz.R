@@ -33,7 +33,7 @@ makeMichalewiczFunction = function(dimensions, m = 10) {
       id = "x",
       lower = c(0, 0),
       upper = c(pi, pi),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeMichalewiczFunction, "tags")
   )

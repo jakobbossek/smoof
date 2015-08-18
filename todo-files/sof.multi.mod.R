@@ -16,7 +16,7 @@ makeMultiModFunction = function(dimensions) {
       id = "x",
       lower = rep(-10, dimensions),
       upper = rep(10, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0

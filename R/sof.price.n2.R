@@ -22,7 +22,7 @@ makePriceN2Function = function() {
       id = "x",
       lower = c(-10, -10),
       upper = c(10, 10),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makePriceN2Function, "tags"),
     global.opt.params = c(0, 0),

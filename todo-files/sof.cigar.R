@@ -19,7 +19,7 @@ makeCigarFunction = function(dimensions) {
       id = "x",
       lower = rep(-100, dimensions),
       upper = rep(100, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     global.opt.params = global.opt.params,
     global.opt.value = 0

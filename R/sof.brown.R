@@ -27,7 +27,7 @@ makeBrownFunction = function(dimensions) {
       id = "x",
       lower = rep(-1, dimensions),
       upper = rep(4, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeBrownFunction, "tags"),
     global.opt.params = rep(0, dimensions),

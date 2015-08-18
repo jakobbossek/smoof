@@ -25,7 +25,7 @@ makeBirdFunction = function() {
       id = "x",
       lower = c(-2 * pi, -2 * pi),
       upper = c(2 * pi, 2 * pi),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeBirdFunction, "tags"),
     global.opt.params = matrix(

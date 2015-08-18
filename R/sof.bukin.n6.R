@@ -23,7 +23,7 @@ makeBukinN6Function = function() {
       id = "x",
       lower = c(-15, -3),
       upper = c(-5, 3),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeBukinN6Function, "tags"),
     global.opt.params = c(-10, 1),

@@ -20,7 +20,7 @@ makeGeneralizedDropWaveFunction = function(dimensions = 2L) {
       id = "x",
       lower = rep(-5.12, dimensions),
       upper = rep(5.12, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeGeneralizedDropWaveFunction, "tags"),
     global.opt.params = rep(0, dimensions),

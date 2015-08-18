@@ -16,7 +16,7 @@ makeCrownedCrossFunction = function() {
       id = "x",
       lower = c(-15, -15),
       upper = c(15, 15),
-      vector = FALSE
+      vector = TRUE
     )
   )
   #FIXME: for global opt see http://infinity77.net/global_optimization/test_functions_nd_C.html#go_benchmark.CarromTable

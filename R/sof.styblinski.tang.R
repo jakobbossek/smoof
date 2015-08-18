@@ -23,7 +23,7 @@ makeStyblinkskiTangFunction = function() {
       id = "x",
       lower = rep(-5, 2L),
       upper = rep(5, 2L),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeStyblinkskiTangFunction, "tags"),
     global.opt.params = c(-2.903534, -2.903534),

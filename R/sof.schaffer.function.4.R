@@ -22,7 +22,7 @@ makeSchafferN4Function = function() {
       id = "x",
       lower = c(-100, -100),
       upper = c(100, 100),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeSchafferN4Function, "tags"),
     global.opt.params = c(0, 1.253115),

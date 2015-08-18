@@ -20,7 +20,7 @@ makeCubeFunction = function() {
       id = "x",
       lower = c(-10, -10),
       upper = c(10, 10),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeCubeFunction, "tags"),
     global.opt.params = c(1, 1),

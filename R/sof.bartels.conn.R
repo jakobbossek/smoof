@@ -17,7 +17,7 @@ makeBartelsConnFunction = function() {
       id = "x",
       lower = c(-500, -500),
       upper = c(500, 500),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeBartelsConnFunction, "tags"),
     global.opt.params = c(0, 0),

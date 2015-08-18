@@ -41,7 +41,7 @@ makeZDT2Function = function(dimensions) {
       id = "x",
       lower = rep(0, dimensions),
       upper = rep(1, dimensions),
-      vector = FALSE
+      vector = TRUE
       ),
     n.objectives = 2L
   )

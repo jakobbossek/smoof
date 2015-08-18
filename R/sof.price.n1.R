@@ -22,7 +22,7 @@ makePriceN1Function = function() {
       id = "x",
       lower = c(-500, -500),
       upper = c(500, 500),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makePriceN1Function, "tags"),
     global.opt.params = matrix(

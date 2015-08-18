@@ -36,7 +36,7 @@ makeKatsuuraFunction = function(dimensions, d = 32) {
       id = "x",
       lower = rep(0, dimensions),
       upper = rep(1, dimensions),
-      vector = FALSE
+      vector = TRUE
     ),
     global.opt.params = global.opt.params,
     global.opt.value = 1

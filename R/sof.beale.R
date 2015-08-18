@@ -23,7 +23,7 @@ makeBealeFunction = function() {
       id = "x",
       lower = c(-4.5, -4.5),
       upper = c(4.5, 4.5),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeBealeFunction, "tags"),
     global.opt.params = c(3, 0.5),

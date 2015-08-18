@@ -27,7 +27,7 @@ makeDamavandiFunction = function() {
       id = "x",
       lower = c(0, 0),
       upper = c(14, 14),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeDamavandiFunction, "tags"),
     global.opt.params = c(2, 2),

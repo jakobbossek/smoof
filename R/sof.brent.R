@@ -21,7 +21,7 @@ makeBrentFunction = function() {
       id = "x",
       lower = c(-10, -10),
       upper = c(10, 10),
-      vector = FALSE
+      vector = TRUE
     ),
     tags = attr(makeBrentFunction, "tags"),
     global.opt.params = c(-10, -10),
