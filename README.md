@@ -117,14 +117,12 @@ Let us consider the problem of finding the (global) minimum of the multimodal ta
 library(ggplot2)
 
 obj.fn = makeSingleObjectiveFunction(
-    name = "My fancy function name",
-    fn = function(x) x * sin(3*x),
-    par.set = makeParamSet(
-        makeNumericParam("x", lower = 0, upper = 2*pi)
-    )
+  name = "My fancy function name",
+  fn = function(x) x * sin(3*x),
+  par.set = makeNumericParamSet("x", len = 1L, lower = 0, upper = 2*pi))
 )
-print(obj.fun)
-print(getParamSet(obj.fun))
+print(obj.fn)
+print(getParamSet(obj.fn))
 print(autoplot(obj.fn))
 ```
 
