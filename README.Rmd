@@ -59,7 +59,7 @@ library(ggplot2)
 obj.fn = makeSingleObjectiveFunction(
   name = "My fancy function name",
   fn = function(x) x * sin(3*x),
-  par.set = makeNumericParamSet("x", len = 1L, lower = 0, upper = 2*pi))
+  par.set = makeNumericParamSet("x", len = 1L, lower = 0, upper = 2 * pi)
 )
 print(obj.fn)
 print(getParamSet(obj.fn))
