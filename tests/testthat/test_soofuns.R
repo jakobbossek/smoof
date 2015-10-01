@@ -27,6 +27,8 @@ test_that("single-objective test function generators work", {
         test.param = ParamHelpers::sampleValues(getParamSet(fun), 1L)
         test.val = fun(test.param)
         expect_true(is.numeric(test.val))
+        expect_true(all(is.numeric(getUpperBoxConstraints(fun))))
+        expect_true(all(is.numeric(getLowerBoxConstraints(fun))))
     }
     expect_true(length(filterFunctionsByTags("continuous")) > 0L)
 })
