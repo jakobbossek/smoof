@@ -38,7 +38,7 @@ devtools::install_github("jakobbossek/smoof")
 ## Example
 
 ### Use a build-in generator
-Assume the simplifying case where we want to benchmark a set of optimization algorithms on a single objective instance. We decide outself for the popular 10-dimensional Rosenbrock banana function. Instead of looking up the function defintion, the box constraints and where the global optimum is located, we simply generate the function with **smoof** and get all the stuff:
+Assume the simplifying case where we want to benchmark a set of optimization algorithms on a single objective instance. We decide ourselves for the popular 10-dimensional Rosenbrock banana function. Instead of looking up the function definition, the box constraints and where the global optimum is located, we simply generate the function with **smoof** and get all the stuff:
 
 ```splus
 library(ggplot2)
