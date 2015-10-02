@@ -2,7 +2,9 @@ smoof v1.0.9 (Release date: ...):
 ============
 
 * Parameter set of predefined smoof function now contains a single vector parameter
-  instead of multiple single numeric parameters.
+  instead of multiple single numeric parameters. This is consistent with function
+  calls now, since these always expect a single vector or list.
+* added helper function get{Lower,Upper}BoxConstraints
 
 smoof v1.0 (Release date: 2015-05-19):
 ==========
