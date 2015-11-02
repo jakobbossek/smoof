@@ -10,7 +10,6 @@
 #' @references K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
 #' Multi-Objective Optimization Test Problems.
 #'
-#FIXME: must this be greater than n.objectives?
 #' @param dimensions [\code{integer(1)}]\cr
 #'   Number of decision variables.
 #' @param n.objectives [\code{integer(1)}]\cr
@@ -18,6 +17,8 @@
 #' @return [\code{smoof_multi_objective_function}]
 #' @export
 makeDTLZ3Function = function(dimensions, n.objectives) {
+  stopifnot(dimensions >= n.objectives)
+  
   # Renaming vars here to stick to the notation in the paper
   # number of decision variables in the last group (see x_m in the paper)
   k = dimensions - n.objectives + 1
@@ -25,25 +26,29 @@ makeDTLZ3Function = function(dimensions, n.objectives) {
 
   force(M)
   force(k)
-
+  
+  # C++ implementation
   fn = function(x) {
-    #FIXME: check that implementation
-    #FIXME: maybe implement this stuff in C++. Yes, the benchmarks for the
-    # mono-objective test function were not that good, but maybe
-    f = numeric(M)
-    n = length(x)
-    xm = x[(n - k):n]
-    # the only differenc between DTLZ2 and DTLZ3
-    g = 100 * (k + sum((xm - 0.5)^2 - cos(20 * pi * (xm - 0.5))))
-    a = (1 + g)
-    prod.xi = 1
-    for(i in M:2) {
-      f[i] = a * prod.xi * sin(x[M - i + 1] * pi * 0.5)
-      prod.xi = prod.xi * cos(x[M - i + 1] * pi * 0.5)
-    }
-    f[1] = a * prod.xi
-    return(f)
+    stopifnot(length(x) == dimensions)
+    dtlz_3(x, M)
   }
+
+  # fn = function(x) {
+  #   stopifnot(length(x) == dimensions)
+  #   f = numeric(M)
+  #   n = length(x)
+  #   xm = x[M:n]
+  #   # the only difference between DTLZ2 and DTLZ3
+  #   g = 100 * (k + sum((xm - 0.5)^2 - cos(20 * pi * (xm - 0.5))))
+  #   a = (1 + g)
+  #   prod.xi = 1
+  #   for(i in M:2) {
+  #     f[i] = a * prod.xi * sin(x[M - i + 1] * pi * 0.5)
+  #     prod.xi = prod.xi * cos(x[M - i + 1] * pi * 0.5)
+  #   }
+  #   f[1] = a * prod.xi
+  #   return(f)
+  # }
 
   makeMultiObjectiveFunction(
     name = "DTLZ3 Function",

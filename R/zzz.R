@@ -6,4 +6,5 @@
 #' @import plot3D
 #' @useDynLib smoof
 #' @importFrom emoa nondominated_points
+#' @importFrom Rcpp sourceCpp
 NULL
