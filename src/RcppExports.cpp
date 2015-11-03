@@ -79,3 +79,15 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// dtlz_7
+SEXP dtlz_7(arma::vec x, int M);
+RcppExport SEXP smoof_dtlz_7(SEXP xSEXP, SEXP MSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    __result = Rcpp::wrap(dtlz_7(x, M));
+    return __result;
+END_RCPP
+}

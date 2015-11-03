@@ -101,6 +101,34 @@ SEXP dtlz_5(arma::vec x, int M) {
   arma::vec f(M), theta(M-1);
   
   int n = x.size();
+  arma::vec xm = x.subvec(M-1, n-1);
+  
+  double g = sum(arma::pow((xm - 0.5), 2));
+  
+  double t = M_PI / (4 * (1 + g));
+  
+  theta(0) = x(0) * M_PI / 2;
+  if(M-2 > 0)
+    theta.subvec(1, M-2) = t * (1 + 2 * g * x.subvec(1, M-2));
+  
+  f.fill(1+g);
+  
+  double prod_xi = 1.0;
+  
+  for(i=M-1; i > 0; i--) {
+    f(i) *= prod_xi * sin(theta(M - (i + 1)));
+    prod_xi = prod_xi * cos(theta(M - (i + 1)));
+  }
+  f(0) *= prod_xi;
+  return NumericVector(f.begin(), f.end());
+}
+
+// [[Rcpp::export]]
+SEXP dtlz_6(arma::vec x, int M) {
+  int i;
+  arma::vec f(M), theta(M-1);
+  
+  int n = x.size();
   int k = n - M + 1;
   
   arma::vec g_vec = arma::pow(x.subvec(n - k, n - 1), 0.1);
@@ -126,7 +154,7 @@ SEXP dtlz_5(arma::vec x, int M) {
 }
 
 // [[Rcpp::export]]
-SEXP dtlz_6(arma::vec x, int M) {
+SEXP dtlz_7(arma::vec x, int M) {
   arma::vec f(M), theta(M-1);
   
   int n = x.size();

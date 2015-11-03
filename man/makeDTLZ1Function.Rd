@@ -18,9 +18,18 @@ Number of objectives.}
 }
 \description{
 Builds and returns the multi-objective DTLZ1 test problem.
+\deqn{
+\text{Minimize } &\; f_1(\textbf{x}) = \frac{1}{2} x_1 x_2 \cdots x_{M-1} (1+g(\textbf{x}_M)),\\
+\text{Minimize } &\; f_2(\textbf{x}) = \frac{1}{2} x_1 x_2 \cdots (1-x_{M-1}) (1+g(\textbf{x}_M)),\\
+\vdots &\; \vdots\\
+\text{Minimize } &\; f_{M-1}(\textbf{x}) = \frac{1}{2} x_1 (1-x_2) (1+g(\textbf{x}_M)),\\
+\text{Minimize } &\; f_{M}(\textbf{x}) = \frac{1}{2} x_1 (1-x_1) (1+g(\textbf{x}_M)),\\
+&\; 0 \leq x_i \leq 1, \text{ for } i=1,2,\dots,n,\\
+\text{where} &\; g(\textbf{x}_M) = 100 \left[|\textbf{x}_M| + \sum\limits_{x_i \in \textbf{x}_M} (x_i - 0.5)^2 - \cos(20\pi(x_i - 0.5))\right]}
 }
 \references{
 K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
-Multi-Objective Optimization Test Problems.
+Multi-Objective Optimization Test Problems. Computer Engineering and Networks
+Laboratory (TIK), Swiss Federal Institute of Technology (ETH) Zurich, 112, 2001
 }
 

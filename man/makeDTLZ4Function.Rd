@@ -23,9 +23,18 @@ Optional parameter. Default is 100, which is recommended by Deb et al.}
 Builds and returns the multi-objective DTLZ4 test problem. It is a slight
 modification of the DTLZ2 problems by introducing the parameter \eqn{\alpha}.
 The parameter is used to map \eqn{\mathbf{x}_i \rightarrow \mathbf{x}_i^{\alpha}}.
+\deqn{\text{Minimize } &\; f_1(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(x_1^\alpha\pi/2) \cos(x_2^\alpha\pi/2) \cdots \cos(x_{M-2}^\alpha\pi/2) \cos(x_{M-1}^\alpha\pi/2),\\
+\text{Minimize } &\; f_2(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(x_1^\alpha\pi/2) \cos(x_2^\alpha\pi/2) \cdots \cos(x_{M-2}^\alpha\pi/2) \sin(x_{M-1}^\alpha\pi/2),\\
+\text{Minimize } &\; f_3(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(x_1^\alpha\pi/2) \cos(x_2^\alpha\pi/2) \cdots \sin(x_{M-2}^\alpha\pi/2),\\
+\vdots &\; \vdots\\
+\text{Minimize } &\; f_{M-1}(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(x_1^\alpha\pi/2) \sin(x_2^\alpha\pi/2),\\
+\text{Minimize } &\; f_{M}(\textbf{x}) = (1+g(\textbf{x}_M)) \sin(x_1^\alpha\pi/2),\\
+&\; 0 \leq x_i \leq 1, \text{ for } i=1,2,\dots,n,\\
+\text{where} &\; g(\textbf{x}_M) = \sum\limits_{x_i\in\textbf{x}_M}(x_i-0.5)^2.}
 }
 \references{
 K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
-Multi-Objective Optimization Test Problems.
+Multi-Objective Optimization Test Problems. Computer Engineering and Networks
+Laboratory (TIK), Swiss Federal Institute of Technology (ETH) Zurich, 112, 2001
 }
 

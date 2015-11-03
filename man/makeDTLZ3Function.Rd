@@ -22,9 +22,18 @@ is very similar to the formula of DTLZ2, but it uses the \eqn{g} function
 of DTLZ1, which introduces a lot of local Pareto-optimal fronts. Thus, this
 problems is well suited to check the ability of an optimizer to converge
 to the global Pareto-optimal front.
+\deqn{\text{Minimize } &\; f_1(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(x_1\pi/2) \cos(x_2\pi/2) \cdots \cos(x_{M-2}\pi/2) \cos(x_{M-1}\pi/2),\\
+\text{Minimize } &\; f_2(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(x_1\pi/2) \cos(x_2\pi/2) \cdots \cos(x_{M-2}\pi/2) \sin(x_{M-1}\pi/2),\\
+\text{Minimize } &\; f_3(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(x_1\pi/2) \cos(x_2\pi/2) \cdots \sin(x_{M-2}\pi/2),\\
+\vdots &\; \vdots\\
+\text{Minimize } &\; f_{M-1}(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(x_1\pi/2) \sin(x_2\pi/2),\\
+\text{Minimize } &\; f_{M}(\textbf{x}) = (1+g(\textbf{x}_M)) \sin(x_1\pi/2),\\
+&\; 0 \leq x_i \leq 1, \text{ for } i=1,2,\dots,n,\\
+\text{where} &\; g(\textbf{x}_M) = 100 \left[|\textbf{x}_M| + \sum\limits_{x_i \in \textbf{x}_M} (x_i - 0.5)^2 - \cos(20\pi(x_i - 0.5))\right].}
 }
 \references{
 K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
-Multi-Objective Optimization Test Problems.
+Multi-Objective Optimization Test Problems. Computer Engineering and Networks
+Laboratory (TIK), Swiss Federal Institute of Technology (ETH) Zurich, 112, 2001
 }
 

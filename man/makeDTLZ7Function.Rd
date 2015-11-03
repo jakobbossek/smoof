@@ -22,9 +22,18 @@ can be characterized by a disconnected Pareto-optimal front in the search
 space. This introduces a new challenge to evolutionary multi-objective
 optimizers, i.e., to maintain different subpopulations within the search
 space to cover the entire Pareto-optimal front.
+\deqn{\text{Minimize } &\; f_1(\textbf{x}) = x_1,\\
+\text{Minimize } &\; f_2(\textbf{x}) = x_2,\\
+\vdots &\; \vdots\\
+\text{Minimize } &\; f_{M-1}(\textbf{x}) = x_{M-1},\\
+\text{Minimize } &\; f_{M}(\textbf{x}) = (1+g(\textbf{x}_M)) h(f_1,f_2,\cdots,f_{M-1}, g),\\
+&\; 0 \leq x_i \leq 1, \text{ for } i=1,2,\dots,n,\\
+\text{where} &\; g(\textbf{x}_M) = 1 + \frac{9}{|\textbf{x}_M|} \sum_{x_i\in\textbf{x}_M} x_i\\
+&\; h(f_1,f_2,\cdots,f_{M-1}, g) = M - \sum_{i=1}^{M-1}\left[\frac{f_i}{1+g}(1 + sin(3\pi f_i))\right]\\.}
 }
 \references{
 K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
-Multi-Objective Optimization Test Problems.
+Multi-Objective Optimization Test Problems. Computer Engineering and Networks
+Laboratory (TIK), Swiss Federal Institute of Technology (ETH) Zurich, 112, 2001
 }
 

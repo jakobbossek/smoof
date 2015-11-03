@@ -25,3 +25,7 @@ dtlz_6 <- function(x, M) {
     .Call('smoof_dtlz_6', PACKAGE = 'smoof', x, M)
 }
 
+dtlz_7 <- function(x, M) {
+    .Call('smoof_dtlz_7', PACKAGE = 'smoof', x, M)
+}
+
