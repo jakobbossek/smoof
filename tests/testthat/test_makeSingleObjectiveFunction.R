@@ -22,6 +22,7 @@ test_that("makeSingleObjectiveFunction", {
 	)
 	expect_true(isSmoofFunction(fn))
 	expect_false(isNoisy(fn))
+  expect_true(attr(fn, "minimize"))
   expect_false(isVectorized(fn))
 	expect_equal(name, getName(fn))
 	expect_equal(description, getDescription(fn))
@@ -41,6 +42,7 @@ test_that("makeSingleObjectiveFunction", {
 	expect_equal(global.optimum[["param"]][["x1"]], 0)
 	expect_equal(global.optimum[["param"]][["x1"]], 0)
 	expect_equal(global.optimum[["value"]], 0)
+  expect_equal(global.optimum[["is.minimum"]], TRUE)
 
 	# global opt params out of bounds
 	expect_error(makeSingleObjectiveFunction(name, fn, par.set = par.set, global.opt.params = list(x1 = -10, x2 = 100)))

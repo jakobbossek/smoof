@@ -16,7 +16,8 @@ getGlobalOptimum = function(fn) {
 getGlobalOptimum.smoof_single_objective_function = function(fn) {
   return(list(
     param = attr(fn, "global.opt.params"),
-    value = attr(fn, "global.opt.value")
+    value = attr(fn, "global.opt.value"),
+    is.minimum = attr(fn, "minimize")
   ))
 }
 

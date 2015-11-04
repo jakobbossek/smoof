@@ -6,8 +6,8 @@
 \usage{
 makeSingleObjectiveFunction(name, description = NULL, fn,
   has.simple.signature = TRUE, vectorized = FALSE, par.set, noisy = FALSE,
-  constraint.fn = NULL, tags = character(0), global.opt.params = NULL,
-  global.opt.value = NULL)
+  minimize = TRUE, constraint.fn = NULL, tags = character(0),
+  global.opt.params = NULL, global.opt.value = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
@@ -35,6 +35,11 @@ for further information.}
 
 \item{noisy}{[\code{logical(1)}]\cr
 Is the function noisy? Defaults to \code{FALSE}.}
+
+\item{minimize}{[\code{logical(1)}]\cr
+Set this to \code{TRUE} if the function should be minimized and to
+\code{FALSE} otherwise.
+The default is \code{TRUE}.}
 
 \item{constraint.fn}{[\code{function | NULL}]\cr
 Function which returns a logical vector indicating whether certain conditions
