@@ -15,6 +15,7 @@ Objective function.}
 \itemize{
   \item{param [\code{list}]}{Named list of parameter value(s).}
   \item{value [\code{numeric(1)}]}{Optimal value.}
+  \item{is.minimum [\code{logical(1)}]}{Is the global optimum a minimum or maximum?}
 }
 }
 \description{
