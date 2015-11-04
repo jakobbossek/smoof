@@ -26,6 +26,7 @@ makeAlpine02Function = function(dimensions) {
       upper = rep(10, dimensions),
       vector = TRUE
     ),
+    minimize = FALSE,
     tags = attr(makeAlpine02Function, "tags"),
     global.opt.params = rep(7.917, dimensions),
     global.opt.value = 2.808^dimensions
