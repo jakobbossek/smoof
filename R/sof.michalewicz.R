@@ -42,4 +42,4 @@ makeMichalewiczFunction = function(dimensions, m = 10) {
 class(makeMichalewiczFunction) = c("function", "smoof_generator")
 attr(makeMichalewiczFunction, "name") = c("Michalewicz Function")
 attr(makeMichalewiczFunction, "type") = c("single-objective")
-attr(makeMichalewiczFunction, "tags") = c("continuous", "multimodal")
+attr(makeMichalewiczFunction, "tags") = c("continuous", "multimodal", "scalable")
