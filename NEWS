@@ -9,6 +9,9 @@ smoof v1.0.9 (Release date: ...):
   objectives should be minimized or maximized respectively
 * Fixed some wrong tag assigments
 * Fixed global optimum of Giunta function
+* Added function makeFunctionByName, which expects a function name. The corresponding
+  generator is then called. Useful if you want, e.g., filter functions by tags and
+  generate them directly afterwards.
 
 smoof v1.0 (Release date: 2015-05-19):
 ==========
