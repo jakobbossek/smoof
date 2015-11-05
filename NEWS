@@ -7,6 +7,8 @@ smoof v1.0.9 (Release date: ...):
 * Added helper function get{Lower,Upper}BoxConstraints
 * smoof functions now expect an optional 'minimize' argument which indicates which
   objectives should be minimized or maximized respectively
+* Fixed some wrong tag assigments
+* Fixed global optimum of Giunta function
 
 smoof v1.0 (Release date: 2015-05-19):
 ==========
