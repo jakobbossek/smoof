@@ -27,8 +27,8 @@ makeGiuntaFunction = function() {
       vector = TRUE
     ),
     tags = attr(makeGiuntaFunction, "tags"),
-    global.opt.params = rep(0.45834282, 2L),
-    global.opt.value = 0.06463
+    global.opt.params = c(0.4673200277395354, 0.4673200169591304),
+    global.opt.value = 0.06447042053690566
   )
 }
 
