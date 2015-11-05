@@ -23,4 +23,13 @@ test_that("makeFunctionByName helper should work as expected", {
     }
   )
   expect_list(funs, types = "smoof_function")
+
+  # check if all single objective functions can be generated for 2D
+  all.tags = getAvailableTags()
+  all.funs.names = unique(unlist(lapply(as.list(all.tags), filterFunctionsByTags)))
+  for (fun.name in all.funs.names) {
+    sof.fn = makeFunctionByName(fun.name = fun.name, dimensions = 2L)
+    expect_is(sof.fn, "smoof_function", info = sprintf("Error generating function '%s'
+      with dimensions = 2L.", fun.name))
+  }
 })
