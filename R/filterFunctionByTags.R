@@ -42,3 +42,13 @@ getGeneratorFunctions = function() {
 
   return(fun.generators)
 }
+
+getGeneratorByName = function(fun.name) {
+  # get all methods of the package
+  all.methods = sapply(ls("package:smoof"), get)
+  fun.generator = Filter(function(fun) (fun.name %in% attr(fun, "name")), all.methods)
+  if (length(fun.generator) == 0L) {
+    return(NULL)
+  }
+  return(fun.generator[[1L]])
+}
