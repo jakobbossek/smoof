@@ -19,13 +19,13 @@ makeRosenbrockFunction = function(dimensions) {
     name = paste(dimensions, "-d Rosenbrock Function", sep = ""),
     fn = function(x) {
       i = 1:(length(x) - 1L)
-      sum(100 * (x[i + 1] - x[i]^2)^2 + (1 - x[i])^2)
+      sum(100 * (x[i]^2 - x[i + 1])^2 + (x[i] - 1)^2)
     },
     par.set = makeNumericParamSet(
       len = dimensions,
       id = "x",
-      lower = rep(-30, dimensions),
-      upper = rep(30, dimensions),
+      lower = rep(-5, dimensions),
+      upper = rep(10, dimensions),
       vector = TRUE
     ),
     tags = attr(makeRosenbrockFunction, "tags"),
