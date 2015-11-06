@@ -16,3 +16,8 @@ getTags.smoof_function = function(fn) {
 getTags.smoof_wrapped_function = function(fn) {
   return(getTags(getWrappedFunction(fn)))
 }
+
+#' @export
+getTags.smoof_generator = function(fn) {
+  return(attr(fn, "tags"))
+}
