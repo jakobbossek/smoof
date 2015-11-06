@@ -2,12 +2,17 @@
 #' as a string.
 #'
 #' @param fun.name [\code{character(1)}]\cr
-#'   Name of the generator function as a string.
+#'   Name of the generator function as a string or a list of generator function names.
 #' @param ... [any]\cr
 #'   Further arguments passed to generator.
 #' @return [\code{smoof_function}]
 #' @export
 makeFunctionByName = function(fun.name, ...) {
+  UseMethod("makeFunctionByName")
+}
+
+#' @export
+makeFunctionByName.character = function(fun.name, ...) {
   assertString(fun.name, na.ok = FALSE)
   fun.generators = getGeneratorFunctions()
   valid.fun.names = sapply(fun.generators, function(generator) attr(generator, "name"))
@@ -42,4 +47,10 @@ makeFunctionByName = function(fun.name, ...) {
       stopf("Dimension > 3 passed, but '%s' is a non-scalable 2D function.", fun.name)
     }
   }
+}
+
+#' @export
+makeFunctionByName.list = function(fun.name, ...) {
+  assertList(fun.name, types = "character", any.missing = FALSE, all.missing = FALSE, min.len = 1L)
+  return(lapply(fun.name, function(x) makeFunctionByName(x, ...)))
 }

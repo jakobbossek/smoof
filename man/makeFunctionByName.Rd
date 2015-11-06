@@ -9,7 +9,7 @@ makeFunctionByName(fun.name, ...)
 }
 \arguments{
 \item{fun.name}{[\code{character(1)}]\cr
-Name of the generator function as a string.}
+Name of the generator function as a string or a list of generator function names.}
 
 \item{...}{[any]\cr
 Further arguments passed to generator.}

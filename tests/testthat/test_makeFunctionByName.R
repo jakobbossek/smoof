@@ -33,3 +33,10 @@ test_that("makeFunctionByName helper should work as expected", {
       with dimensions = 2L.", fun.name))
   }
 })
+
+test_that("makeFunctionByName works for list of generator names", {
+  fun.names = filterFunctionsByTags(c("multimodal", "scalable"))
+  funs = makeFunctionByName(as.list(fun.names), dimensions = 2L)
+  is.smoof = sapply(funs, isSmoofFunction)
+  expect_true(all(is.smoof))
+})
