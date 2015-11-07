@@ -1,7 +1,10 @@
 Package: smoof
 Type: Package
 Title: Single and Multi-Objective Optimization Test Functions
-Description: Provides generators for a high number of both single- and multi-objective test functions which are frequently used for the benchmarking of (numerical) optimization algorithms. Moreover, it offers a set of convenient functions to generate, plot and work with objective functions.
+Description: Provides generators for a high number of both single- and multi-
+    objective test functions which are frequently used for the benchmarking of
+    (numerical) optimization algorithms. Moreover, it offers a set of convenient
+    functions to generate, plot and work with objective functions.
 Version: 1.0.9000
 Date: 2015-05-18
 Authors@R: c(person("Jakob", "Bossek", email = "j.bossek@gmail.com", role =
@@ -23,3 +26,4 @@ Suggests:
     rPython (>= 0.0-5)
 LazyData: yes
 ByteCompile: yes
+RoxygenNote: 5.0.0
