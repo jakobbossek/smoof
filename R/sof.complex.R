@@ -6,8 +6,6 @@
 #'
 #' @references See \url{http://al-roomi.org/benchmarks/unconstrained/2-dimensions/43-complex-function}.
 #'
-#' @note This functions is also know as the Zirilli function.
-#'
 #' @template ret_smoof_single
 #' @export
 makeComplexFunction = function() {
