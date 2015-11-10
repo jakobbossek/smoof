@@ -5,15 +5,34 @@
 #' space. This introduces a new challenge to evolutionary multi-objective
 #' optimizers, i.e., to maintain different subpopulations within the search
 #' space to cover the entire Pareto-optimal front.
-#' \deqn{\text{Minimize } &\; f_1(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(\theta_1\pi/2) \cos(\theta_2\pi/2) \cdots \cos(\theta_{M-2}\pi/2) \cos(\theta_{M-1}\pi/2),\\
-#' \text{Minimize } &\; f_2(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(\theta_1\pi/2) \cos(\theta_2\pi/2) \cdots \cos(\theta_{M-2}\pi/2) \sin(\theta_{M-1}\pi/2),\\
-#' \text{Minimize } &\; f_3(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(\theta_1\pi/2) \cos(\theta_2\pi/2) \cdots \sin(\theta_{M-2}\pi/2),\\
-#' \vdots &\; \vdots\\
-#' \text{Minimize } &\; f_{M-1}(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(\theta_1\pi/2) \sin(\theta_2\pi/2),\\
-#' \text{Minimize } &\; f_{M}(\textbf{x}) = (1+g(\textbf{x}_M)) \sin(\theta_1\pi/2),\\
-#' &\; 0 \leq x_i \leq 1, \text{ for } i=1,2,\dots,n,\\
-#' \text{where} &\; \theta_i = \frac{\pi}{4(1+ g(\textbf{x}_M))} (1+2g(\textbf{x}_M)x_i), \text{ for } i = 2,3,\dots,(M-1)\\
-#' &\; g(\textbf{x}_M) = \sum\limits_{x_i\in\textbf{x}_M}(x_i-0.5)^2.}
+#' 
+#' The DTLZ5 test problem is defined as follows:
+#' 
+#' Minimize \eqn{f_1(\mathbf{x}) = (1+g(\mathbf{x}_M)) \cos(\theta_1\pi/2) \cos(\theta_2\pi/2) \cdots \cos(\theta_{M-2}\pi/2) \cos(\theta_{M-1}\pi/2),}{
+#' f[1](X) = (1 + g(XM)) * cos(theta[1] * pi/2) * cos(theta[2] * pi/2) * ... * cos(theta[M-2] * pi/2) * cos(theta[M-1] * pi/2)}
+#' 
+#' Minimize \eqn{f_2(\mathbf{x}) = (1+g(\mathbf{x}_M)) \cos(\theta_1\pi/2) \cos(\theta_2\pi/2) \cdots \cos(\theta_{M-2}\pi/2) \sin(\theta_{M-1}\pi/2),}{
+#' f[2](X) = (1 + g(XM)) * cos(theta[1] * pi/2) * cos(theta[2] * pi/2) * ... * cos(theta[M-2] * pi/2) * sin(theta[M-1] * pi/2)}
+#' 
+#' Minimize \eqn{f_3(\mathbf{x}) = (1+g(\mathbf{x}_M)) \cos(\theta_1\pi/2) \cos(\theta_2\pi/2) \cdots \sin(\theta_{M-2}\pi/2),}{
+#' f[3](X) = (1 + g(XM)) * cos(theta[1] * pi/2) * cos(theta[2] * pi/2) * ... * sin(theta[M-2] * pi/2)}
+#' 
+#' \eqn{\vdots\\}{...}
+#' 
+#' Minimize \eqn{f_{M-1}(\mathbf{x}) = (1+g(\mathbf{x}_M)) \cos(\theta_1\pi/2) \sin(\theta_2\pi/2),}{
+#' f[M-1](X) = (1 + g(XM)) * cos(theta[1] * pi/2) * sin(theta[2] * pi/2)}
+#' 
+#' Minimize \eqn{f_{M}((1+g(\mathbf{x}_M)) \sin(\theta_1\pi/2),}{
+#' f[M](X) = (1 + g(XM)) * sin(theta[1] * pi/2)}
+#' 
+#' with \eqn{0 \leq x_i \leq 1}{0 <= x[i] <= 1}, for \eqn{i=1,2,\dots,n,}{i=1,2,...,n}
+#' 
+#' where \eqn{\theta_i = \frac{\pi}{4(1+ g(\mathbf{x}_M))} (1+2g(\mathbf{x}_M)x_i),}{
+#' theta[i] = pi / (4 * (1 + g(XM))) * (1 + 2 * g(XM) * x[i]),} 
+#' for \eqn{i = 2,3,\dots,(M-1)}{i = 2,3,...,(M-1)}
+#' 
+#' and \eqn{g(\mathbf{x}_M) = \sum\limits_{x_i\in\mathbf{x}_M}(x_i-0.5)^2}{
+#' g(XM) = sum{x[i] in XM} {(x[i] - 0.5)^2}}
 #'
 #' @references K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
 #' Multi-Objective Optimization Test Problems. Computer Engineering and Networks 

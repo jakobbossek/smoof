@@ -22,14 +22,31 @@ is very similar to the formula of DTLZ2, but it uses the \eqn{g} function
 of DTLZ1, which introduces a lot of local Pareto-optimal fronts. Thus, this
 problems is well suited to check the ability of an optimizer to converge
 to the global Pareto-optimal front.
-\deqn{\text{Minimize } &\; f_1(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(x_1\pi/2) \cos(x_2\pi/2) \cdots \cos(x_{M-2}\pi/2) \cos(x_{M-1}\pi/2),\\
-\text{Minimize } &\; f_2(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(x_1\pi/2) \cos(x_2\pi/2) \cdots \cos(x_{M-2}\pi/2) \sin(x_{M-1}\pi/2),\\
-\text{Minimize } &\; f_3(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(x_1\pi/2) \cos(x_2\pi/2) \cdots \sin(x_{M-2}\pi/2),\\
-\vdots &\; \vdots\\
-\text{Minimize } &\; f_{M-1}(\textbf{x}) = (1+g(\textbf{x}_M)) \cos(x_1\pi/2) \sin(x_2\pi/2),\\
-\text{Minimize } &\; f_{M}(\textbf{x}) = (1+g(\textbf{x}_M)) \sin(x_1\pi/2),\\
-&\; 0 \leq x_i \leq 1, \text{ for } i=1,2,\dots,n,\\
-\text{where} &\; g(\textbf{x}_M) = 100 \left[|\textbf{x}_M| + \sum\limits_{x_i \in \textbf{x}_M} (x_i - 0.5)^2 - \cos(20\pi(x_i - 0.5))\right].}
+}
+\details{
+The DTLZ3 test problem is defined as follows:
+
+Minimize \eqn{f_1(\mathbf{x}) = (1+g(\mathbf{x}_M)) \cos(x_1\pi/2) \cos(x_2\pi/2) \cdots \cos(x_{M-2}\pi/2) \cos(x_{M-1}\pi/2),}{
+f[1](X) = (1 + g(XM)) * cos(x[1] * pi/2) * cos(x[2] * pi/2) * ... * cos(x[M-2] * pi/2) * cos(x[M-1] * pi/2)}
+
+Minimize \eqn{f_2(\mathbf{x}) = (1+g(\mathbf{x}_M)) \cos(x_1\pi/2) \cos(x_2\pi/2) \cdots \cos(x_{M-2}\pi/2) \sin(x_{M-1}\pi/2),}{
+f[2](X) = (1 + g(XM)) * cos(x[1] * pi/2) * cos(x[2] * pi/2) * ... * cos(x[M-2] * pi/2) * sin(x[M-1] * pi/2)}
+
+Minimize \eqn{f_3(\mathbf{x}) = (1+g(\mathbf{x}_M)) \cos(x_1\pi/2) \cos(x_2\pi/2) \cdots \sin(x_{M-2}\pi/2),}{
+f[3](X) = (1 + g(XM)) * cos(x[1] * pi/2) * cos(x[2] * pi/2) * ... * sin(x[M-2] * pi/2)}
+
+\eqn{\vdots\\}{...}
+
+Minimize \eqn{f_{M-1}(\mathbf{x}) = (1+g(\mathbf{x}_M)) \cos(x_1\pi/2) \sin(x_2\pi/2),}{
+f[M-1](X) = (1 + g(XM)) * cos(x[1] * pi/2) * sin(x[2] * pi/2)}
+
+Minimize \eqn{f_{M}(\mathbf{x}) = (1+g(\mathbf{x}_M)) \sin(x_1\pi/2),}{
+f[M](X) = (1 + g(XM)) * sin(x[1] * pi/2)}
+
+with \eqn{0 \leq x_i \leq 1}{0 <= x[i] <= 1}, for \eqn{i=1,2,\dots,n,}{i=1,2,...,n}
+
+where \eqn{g(\mathbf{x}_M) = 100 \left[|\mathbf{x}_M| + \sum\limits_{x_i \in \mathbf{x}_M} (x_i - 0.5)^2 - \cos(20\pi(x_i - 0.5))\right]}{
+g(XM) = 100 * (|XM| + sum{x[i] in XM} {(x[i] - 0.5)^2 - cos(20 * pi * (x[i] - 0.5))})}
 }
 \references{
 K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
