@@ -16,7 +16,10 @@ smoof v1.0.9 (Release date: ...):
 * Added hasTags helper function.
 * filterFunctionByTags now has an additional logical argument 'or'. If this is set
   to TRUE, a subset of the passed tags is sufficient to select a function.
-* makeFunctio
+* Added multi-objective DTLZ function family
+* Added 2D single objective functions: Aluffi-Pentini-(Zirilli), Complex, Engvall,
+  Jennrich-Sampsam, Judge, Kearfott
+* Renamed bochachevsky function to bohachevsky.n1
 
 smoof v1.0 (Release date: 2015-05-19):
 ==========
