@@ -8,6 +8,10 @@
 #' @param n.objectives [\code{integer(1)}]\cr
 #'   Number of objectives of the multi-objective function.
 #' @template arg_noisy
+#' @param minimize [\code{logical}]\cr
+#'   Logical cector of length \code{n.objectives} indicating if the corresponding
+#'   objectives shall be minimized or maximized.
+#'   Default is the vector with all components set to \code{TRUE}.
 #' @template arg_vectorized
 #' @template arg_constraint_fn
 #' @return [\code{function}] Target function with additional stuff attached as attributes.
@@ -28,13 +32,14 @@ makeMultiObjectiveFunction = function(
   par.set,
   n.objectives,
   noisy = FALSE,
+  minimize = rep(TRUE, n.objectives),
   vectorized = FALSE,
   constraint.fn = NULL) {
 
   smoof.fn = makeObjectiveFunction(
     name, description, fn,
     has.simple.signature, par.set, n.objectives,
-    noisy, vectorized, constraint.fn
+    noisy, minimize, vectorized, constraint.fn
   )
 
   class(smoof.fn) = c("smoof_multi_objective_function", class(smoof.fn))

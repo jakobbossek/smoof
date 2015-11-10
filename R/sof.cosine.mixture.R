@@ -27,6 +27,7 @@ makeCosineMixtureFunction = function(dimensions) {
       upper = rep(1, dimensions),
       vector = TRUE
     ),
+    minimize = FALSE,
     tags = attr(makeCosineMixtureFunction, "tags"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = -0.1 * dimensions

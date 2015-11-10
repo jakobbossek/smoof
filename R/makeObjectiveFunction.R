@@ -18,6 +18,10 @@
 #   Number of objectives of the multi-objective function.
 # @param noisy [\code{logical(1)}]\cr
 #   Is the function noisy? Defaults to \code{FALSE}.
+# @param minimize [\code{logical}]\cr
+#   Logical vector of length \code{n.objectives} indicating which objectives shall
+#   be minimzed/maximized.
+#   The default is \code{TRUE} \code{n.objectives} times.
 # @param vectorized [\code{logical(1)}]\cr
 #   Can the handle \dQuote{vector} input, i. e., does it accept matrix of
 #   parameters? Default is \code{FALSE}.
@@ -34,6 +38,7 @@ makeObjectiveFunction = function(
   par.set,
   n.objectives,
   noisy = FALSE,
+  minimize = rep(TRUE, n.objectives),
   vectorized = FALSE,
   constraint.fn = NULL) {
 
@@ -49,8 +54,9 @@ makeObjectiveFunction = function(
   }
 
   assertClass(par.set, "ParamSet")
-  assertInt(n.objectives, na.ok = FALSE, lower = 0L)
+  assertInt(n.objectives, na.ok = FALSE, lower = 1L)
   assertFlag(noisy, na.ok = FALSE)
+  assertLogical(minimize, len = n.objectives, any.missing = FALSE, all.missing = FALSE)
   assertFlag(vectorized, na.ok = FALSE)
 
   if (!has.simple.signature && vectorized) {
@@ -67,6 +73,7 @@ makeObjectiveFunction = function(
     description = if (!is.null(description)) description else "",
     par.set = par.set,
     noisy = noisy,
+    minimize = minimize,
     vectorized = vectorized,
     constraint.fn = constraint.fn,
     n.objectives = n.objectives,

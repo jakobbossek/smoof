@@ -6,6 +6,7 @@
 #' @template arg_has_simple_signature
 #' @template arg_par_set
 #' @template arg_noisy
+#' @template arg_minimize
 #' @template arg_vectorized
 #' @template arg_constraint_fn
 #' @param tags [\code{character}]\cr
@@ -68,6 +69,7 @@ makeSingleObjectiveFunction = function(
   vectorized = FALSE,
   par.set,
   noisy = FALSE,
+  minimize = TRUE,
   constraint.fn = NULL,
   tags = character(0),
   global.opt.params = NULL,
@@ -76,7 +78,7 @@ makeSingleObjectiveFunction = function(
   smoof.fn = makeObjectiveFunction(
     name, description, fn,
     has.simple.signature, par.set, 1L,
-    noisy, vectorized, constraint.fn
+    noisy, minimize, vectorized, constraint.fn
   )
   n.params = getNumberOfParameters(smoof.fn)
 
@@ -93,7 +95,7 @@ makeSingleObjectiveFunction = function(
       } else if (testMatrix(global.opt.params)) {
         global.opt.params = as.data.frame(global.opt.params)
       } else {
-        stopf("Parameter(s) for knwon global optima must be passed as vector, list, matrix or data.frame.")
+        stopf("Parameter(s) for known global optima must be passed as vector, list, matrix or data.frame.")
       }
       colnames(global.opt.params) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
     }
@@ -136,6 +138,7 @@ print.smoof_function = function(x, ...) {
 
   catf("Tags: %s", collapse(getTags(x), sep = ", "))
   catf("Noisy: %s", as.character(isNoisy(x)))
+  catf("Minimize: %s", as.character(attr(x, "minimize")))
   catf("Constraints: %s", as.character(hasConstraints(x)))
   catf("Number of parameters: %i", getNumberOfParameters(x))
   print(getParamSet(x))

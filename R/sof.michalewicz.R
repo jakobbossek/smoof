@@ -35,11 +35,25 @@ makeMichalewiczFunction = function(dimensions, m = 10) {
       upper = c(pi, pi),
       vector = TRUE
     ),
-    tags = attr(makeMichalewiczFunction, "tags")
+    tags = attr(makeMichalewiczFunction, "tags"),
+    global.opt.params = getMichalewiczGlobalOptimum(dimensions, m)$global.opt.params,
+    global.opt.value = getMichalewiczGlobalOptimum(dimensions, m)$global.opt.value
   )
 }
 
 class(makeMichalewiczFunction) = c("function", "smoof_generator")
 attr(makeMichalewiczFunction, "name") = c("Michalewicz Function")
 attr(makeMichalewiczFunction, "type") = c("single-objective")
-attr(makeMichalewiczFunction, "tags") = c("continuous", "multimodal")
+attr(makeMichalewiczFunction, "tags") = c("continuous", "multimodal", "scalable")
+
+# Helper to determine global optimum based on dimension and m parameter.
+getMichalewiczGlobalOptimum = function(dimensions = 2L, m = 10) {
+  #FIXME: we know optimum only for m = 10
+  if (m != 10) {
+    return(NULL)
+  }
+  if (dimensions == 2L) {
+    return(list(global.opt.params = c(2.20290552014618, 1.57079632677565), global.opt.value = -1.80130341009855321))
+  }
+  return(list())
+}

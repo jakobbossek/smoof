@@ -4,7 +4,19 @@ smoof v1.0.9 (Release date: ...):
 * Parameter set of predefined smoof function now contains a single vector parameter
   instead of multiple single numeric parameters. This is consistent with function
   calls now, since these always expect a single vector or list.
-* added helper function get{Lower,Upper}BoxConstraints
+* Added helper function get{Lower,Upper}BoxConstraints
+* smoof functions now expect an optional 'minimize' argument which indicates which
+  objectives should be minimized or maximized respectively
+* Fixed some wrong tag assigments
+* Added shouldBeMinimized function
+* Fixed global optimum of Giunta function
+* Added function makeFunctionByName, which expects a function name or a list of
+  functions names. The corresponding generator(s) is/are  called. Useful if you want,
+  e.g., filter functions by tags and generate them directly afterwards.
+* Added hasTags helper function.
+* filterFunctionByTags now has an additional logical argument 'or'. If this is set
+  to TRUE, a subset of the passed tags is sufficient to select a function.
+* makeFunctio
 
 smoof v1.0 (Release date: 2015-05-19):
 ==========

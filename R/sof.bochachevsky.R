@@ -18,7 +18,7 @@ makeBochachevskyFunction = function(dimensions) {
     name = "Bochachevsky Function 1",
     fn = function(x) {
       i = 1:(length(x) - 1)
-      sum(x[i] + 2 * x[i + 1]^2 - 0.3 * cos(3 * pi * x[i]) - 0.4 * cos(4 * pi * x[i + 1]) + 0.7)
+      sum(x[i]^2 + 2 * x[i + 1]^2 - 0.3 * cos(3 * pi * x[i]) - 0.4 * cos(4 * pi * x[i + 1]) + 0.7)
     },
     par.set = makeNumericParamSet(
       len = dimensions,
@@ -36,4 +36,4 @@ makeBochachevskyFunction = function(dimensions) {
 class(makeBochachevskyFunction) = c("function", "smoof_generator")
 attr(makeBochachevskyFunction, "name") = c("Bochachevsky Function")
 attr(makeBochachevskyFunction, "type") = c("single-objective")
-attr(makeBochachevskyFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")
+attr(makeBochachevskyFunction, "tags") = c("continuous", "differentiable", "separable", "scalable", "multimodal")
