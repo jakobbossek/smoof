@@ -12,18 +12,20 @@ Authors@R: c(person("Jakob", "Bossek", email = "j.bossek@gmail.com", role =
 URL: https://github.com/jakobbossek/smoof
 BugReports: https://github.com/jakobbossek/smoof/issues
 License: BSD_2_clause + file LICENSE
-Depends:
+Depends: 
     ParamHelpers (>= 1.3),
     BBmisc (>= 1.6),
     checkmate (>= 1.1)
-Imports:
+Imports: 
     ggplot2,
     RColorBrewer,
     plot3D,
-    emoa
-Suggests:
+    emoa,
+    Rcpp (>= 0.11.0)
+Suggests: 
     testthat,
     rPython (>= 0.0-5)
 LazyData: yes
 ByteCompile: yes
+LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 5.0.0
