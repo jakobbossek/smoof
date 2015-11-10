@@ -20,7 +20,7 @@ test_that("single-objective test function generators work", {
         if (inherits(fun, "try-error")) {
             fun = do.call(fun.generator, list(dimensions = 3L, n.objectives = 2L))
         }
-        expectIsSnoofFunction(fun, attr(fun.generator, "name"))
+        expectIsSmoofFunction(fun, attr(fun.generator, "name"))
         if (hasGlobalOptimum(fun)) {
           expectGlobalOptimum(fun, attr(fun.generator, "name"))
         }
@@ -51,7 +51,7 @@ test_that("BBOB functions work", {
           res.vec = bbob.fn(cbind(par1, par2))
           expect_true(all(res.seq == res.vec), info = sprintf("Sequential and vectorized input not equal for %s", generator))
         }
-        expectIsSnoofFunction(bbob.fn, generator)
+        expectIsSmoofFunction(bbob.fn, generator)
         expectGlobalOptimum(bbob.fn, generator)
       }
     }

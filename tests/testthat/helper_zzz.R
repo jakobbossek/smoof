@@ -1,4 +1,4 @@
-expectIsSnoofFunction = function(obj, generator) {
+expectIsSmoofFunction = function(obj, generator) {
   expect_is(obj, c("smoof_function", "function"), info = "No snoof function generated '%s'.", generator)
 }
 
