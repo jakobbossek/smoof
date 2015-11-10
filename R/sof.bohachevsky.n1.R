@@ -1,4 +1,4 @@
-#' Bochachevsky Function 1
+#' Bohachevsky function N. 1
 #'
 #' Highly multimodal single-objective test function. The mathematical formula is
 #' given by
@@ -12,10 +12,10 @@
 #' @template arg_dimensions
 #' @template ret_smoof_single
 #' @export
-makeBochachevskyFunction = function(dimensions) {
+makeBohachevskyN1Function = function(dimensions) {
   assertCount(dimensions)
   makeSingleObjectiveFunction(
-    name = "Bochachevsky Function 1",
+    name = paste(dimensions, "-d Bohachevsky Function N. 1", sep = ""),
     fn = function(x) {
       i = 1:(length(x) - 1)
       sum(x[i]^2 + 2 * x[i + 1]^2 - 0.3 * cos(3 * pi * x[i]) - 0.4 * cos(4 * pi * x[i + 1]) + 0.7)
@@ -27,13 +27,13 @@ makeBochachevskyFunction = function(dimensions) {
       upper = rep(15, dimensions),
       vector = TRUE
     ),
-    tags = attr(makeBochachevskyFunction, "tags"),
+    tags = attr(makeBohachevskyN1Function, "tags"),
     global.opt.params = rep(0, dimensions),
     global.opt.value = 0
   )
 }
 
-class(makeBochachevskyFunction) = c("function", "smoof_generator")
-attr(makeBochachevskyFunction, "name") = c("Bochachevsky Function")
-attr(makeBochachevskyFunction, "type") = c("single-objective")
-attr(makeBochachevskyFunction, "tags") = c("continuous", "differentiable", "separable", "scalable", "multimodal")
+class(makeBohachevskyN1Function) = c("function", "smoof_generator")
+attr(makeBohachevskyN1Function, "name") = c("Bohachevsky Function")
+attr(makeBohachevskyN1Function, "type") = c("single-objective")
+attr(makeBohachevskyN1Function, "tags") = c("continuous", "differentiable", "separable", "scalable", "multimodal")
