@@ -27,8 +27,4 @@ and Santosh Tiwar.
 \author{
 Jakob Bossek \email{j.bossek@gmail.com}
 }
-\references{
-See the \href{http://web.mysites.ntu.edu.sg/epnsugan/PublicSite/Shared\%20Documents/CEC2009-MOEA/}{CEC2009-MOEA}
-for a detailed description of the functions.
-}
 

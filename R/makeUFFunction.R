@@ -5,9 +5,6 @@
 #'   Instance identifier. Integer value between 1 and 10.
 #' @return [\code{smoof_single_objective_function}]
 #'
-#' @references See the \href{http://web.mysites.ntu.edu.sg/epnsugan/PublicSite/Shared\%20Documents/CEC2009-MOEA/}{CEC2009-MOEA}
-#' for a detailed description of the functions.
-#'
 #' @author Jakob Bossek \email{j.bossek@@gmail.com}
 #' @note The implementation is based on the original CPP implemenation by Qingfu
 #' Zhang, Aimin Zhou, Shizheng Zhaoy, Ponnuthurai Nagaratnam Suganthany, Wudong Liu
