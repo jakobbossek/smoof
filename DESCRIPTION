@@ -5,7 +5,7 @@ Description: Provides generators for a high number of both single- and multi-
     objective test functions which are frequently used for the benchmarking of
     (numerical) optimization algorithms. Moreover, it offers a set of convenient
     functions to generate, plot and work with objective functions.
-Version: 1.1
+Version: 1.1.9000
 Date: 2015-11-24
 Authors@R: c(person("Jakob", "Bossek", email = "j.bossek@gmail.com", role =
     c("aut", "cre")))
