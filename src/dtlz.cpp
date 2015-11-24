@@ -1,4 +1,3 @@
-// [[Rcpp::depends(RcppArmadillo)]]
 # include <RcppArmadillo.h>
 
 using namespace Rcpp;
@@ -168,7 +167,7 @@ SEXP dtlz_7(arma::vec x, int M) {
 
   arma::vec fi = f.subvec(0, M - 2);
 
-  double h = M - sum(fi * (1 + arma::sin(3 * M_PI * fi)) / (1 + g));
+  double h = M - sum(fi % (1 + arma::sin(3 * M_PI * fi)) / (1 + g));
   f(M-1) = (1 + g) * h;
 
   return NumericVector(f.begin(), f.end());
