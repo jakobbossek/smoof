@@ -1,4 +1,15 @@
 smoof v1.1.9000 (Release data: xxxx-xx-xx)
+============
+
+* Renamed makeFunctionByName to makeFunctionsByName
+* Added tags 'single-objective' and 'multi-objective'
+* filterFunctionByTags now stops if both 'single-objective' and 'multi-objective'
+  tags are passed
+* All functions now check the passed paramter to be of the right dimension and
+  type
+* makeFunctionsByName now expects a character vector generator names (the list
+  methods was removed)
+* Generator names now do not contain the 'Function' suffix
 
 smoof v1.1 (Release date: 2015-11-24):
 ============
