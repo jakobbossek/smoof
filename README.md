@@ -16,77 +16,92 @@ At the moment the following optimization test functions respectively function se
 
 |Function                                  |
 |:-----------------------------------------|
-|Ackley Function                           |
-|Adjiman Function                          |
-|Alpine01 Function                         |
-|Alpine02 Function                         |
+|Ackley                                    |
+|Adjiman                                   |
+|Alpine N. 1                               |
+|Alpine N. 2                               |
+|Aluffi-Pentini                            |
 |Set of noiseless BOBB Function(s)         |
-|Bartels Conn Function                     |
-|Beale Function                            |
-|Bird Function                             |
-|Bochachevsky Function                     |
-|Booth Function                            |
-|Branin Function                           |
-|Brent Function                            |
-|Brown Function                            |
-|Bukin Function N. 2                       |
-|Bukin Function N. 4                       |
-|Bukin Function N. 6                       |
-|Carrom Table Function                     |
-|Chichinadze Function                      |
-|Chung Reynolds Function                   |
-|Cosine Mixture Function                   |
-|Cross-In-Tray Function                    |
-|Cube Function                             |
-|Deckkers-Aarts Function                   |
-|Dixon-Price Function                      |
-|Double-Sum Function                       |
-|Eason Function                            |
-|Egg Crate Function                        |
-|Egg Holder Function                       |
-|El-Attar-Vidyasagar-Dutta Function        |
-|Exponential Function                      |
-|Freudenstein Roth Function                |
-|Generelized Drop-Wave Function            |
-|Giunta Function                           |
-|Goldstein-Price Function                  |
-|Griewank Function                         |
-|Hansen Function                           |
-|Himmelblau Function                       |
-|Holder Table Function N. 1                |
-|Holder Table Function N. 2                |
-|Hosaki Function                           |
-|Hyper-Ellipsoid Function                  |
-|Keane Function                            |
-|Leon Function                             |
+|Bartels Conn                              |
+|Beale                                     |
+|Bent-Cigar                                |
+|Bird                                      |
+|Bohachevsky N. 1                          |
+|Booth                                     |
+|BraninRCOS                                |
+|Brent                                     |
+|Brown                                     |
+|Bukin N. 2                                |
+|Bukin N. 4                                |
+|Bukin N. 6                                |
+|Carrom Table                              |
+|Chichinadze                               |
+|Chung Reynolds                            |
+|Complex                                   |
+|Cosine Mixture                            |
+|Cross-In-Tray                             |
+|Cube                                      |
+|DTLZ1                                     |
+|DTLZ2                                     |
+|DTLZ3                                     |
+|DTLZ4                                     |
+|DTLZ5                                     |
+|DTLZ6                                     |
+|DTLZ7                                     |
+|Deckkers-Aarts                            |
+|Deflected Corrugated Spring               |
+|Dixon-Price                               |
+|Double-Sum                                |
+|Eason                                     |
+|Egg Crate                                 |
+|Egg Holder                                |
+|El-Attar-Vidyasagar-Dutta                 |
+|Engvall                                   |
+|Exponential                               |
+|Freudenstein Roth                         |
+|Generelized Drop-Wave                     |
+|Giunta                                    |
+|Goldstein-Price                           |
+|Griewank                                  |
+|Hansen                                    |
+|Himmelblau                                |
+|Holder Table N. 1                         |
+|Holder Table N. 2                         |
+|Hosaki                                    |
+|Hyper-Ellipsoid                           |
+|Jennrich-Sampson                          |
+|Judge                                     |
+|Keane                                     |
+|Kearfott                                  |
+|Leon                                      |
 |Multiple peals model 2 function generator |
-|Matyas Function                           |
-|McCormick Function                        |
-|Michalewicz Function                      |
-|Periodic Function                         |
-|Double-Sum Function                       |
-|Price Function N. 1                       |
-|Price Function N. 2                       |
+|Matyas                                    |
+|McCormick                                 |
+|Michalewicz                               |
+|Periodic                                  |
+|Double-Sum                                |
+|Price N. 1                                |
+|Price N. 2                                |
 |Price Function N. 4                       |
-|Rastrigin Function                        |
-|Rosenbrock Function                       |
-|Schaffer Function N. 2                    |
-|Schaffer Function N. 4                    |
-|Schwefel function                         |
-|Shubert function                          |
-|Six-Hump Camel Back Function              |
-|Sphere Function                           |
-|Styblinkski-Tang Function                 |
-|Sum of Different Squares Function         |
-|Three-Hump Camel Function                 |
-|Trecanni Function                         |
+|Rastrigin                                 |
+|Rosenbrock                                |
+|Schaffer N. 2                             |
+|Schaffer N. 4                             |
+|Schwefel                                  |
+|Shubert                                   |
+|Six-Hump Camel Back                       |
+|Sphere                                    |
+|Styblinkski-Tang                          |
+|Sum of Different Squares                  |
+|Three-Hump Camel                          |
+|Trecanni                                  |
 |UF1, ..., UF10 of the CEC 2009            |
-|ZDT1 Function                             |
-|ZDT2 Function                             |
-|ZDT3 Function                             |
-|ZDT4 Function                             |
-|ZDT6 Function                             |
-|Zettl Function                            |
+|ZDT1                                      |
+|ZDT2                                      |
+|ZDT3                                      |
+|ZDT4                                      |
+|ZDT6                                      |
+|Zettl                                     |
 
 ## Installation instructions
 
@@ -128,6 +143,36 @@ print(autoplot(obj.fn))
 ```
 
 The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing in R needs builds upon smoof functions.
+
+## News
+
+smoof v1.1 (Release date: 2015-11-24):
+============
+
+* Parameter set of predefined smoof function now contains a single vector parameter
+  instead of multiple single numeric parameters. This is consistent with function
+  calls now, since these always expect a single vector or list.
+* Added helper function get{Lower,Upper}BoxConstraints
+* smoof functions now expect an optional 'minimize' argument which indicates which
+  objectives should be minimized or maximized respectively
+* Fixed some wrong tag assigments
+* Added shouldBeMinimized function
+* Fixed global optimum of Giunta function
+* Added function makeFunctionByName, which expects a function name or a list of
+  functions names. The corresponding generator(s) is/are  called. Useful if you want,
+  e.g., filter functions by tags and generate them directly afterwards.
+* Added hasTags helper function.
+* filterFunctionByTags now has an additional logical argument 'or'. If this is set
+  to TRUE, a subset of the passed tags is sufficient to select a function.
+* Added multi-objective DTLZ function family
+* Added 2D single objective functions: Aluffi-Pentini-(Zirilli), Complex, Engvall,
+  Jennrich-Sampsam, Judge, Kearfott
+* Renamed bochachevsky function to bohachevsky.n1
+
+smoof v1.0 (Release date: 2015-05-19):
+==========
+
+* First submission to CRAN.
 
 ## Contact
 
