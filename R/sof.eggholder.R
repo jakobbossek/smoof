@@ -34,4 +34,4 @@ class(makeEggholderFunction) = c("function", "smoof_generator")
 attr(makeEggholderFunction, "name") = c("Egg Holder")
 attr(makeEggholderFunction, "type") = c("single-objective")
 #FIXME: if dimension is added (see FIXME above), add 'scalable' tag
-attr(makeEggholderFunction, "tags") = c("continuous", "differentiable", "non-separable", "multimodal")
+attr(makeEggholderFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "multimodal")

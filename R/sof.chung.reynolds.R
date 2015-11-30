@@ -36,4 +36,4 @@ makeChungReynoldsFunction = function(dimensions) {
 class(makeChungReynoldsFunction) = c("function", "smoof_generator")
 attr(makeChungReynoldsFunction, "name") = c("Chung Reynolds")
 attr(makeChungReynoldsFunction, "type") = c("single-objective")
-attr(makeChungReynoldsFunction, "tags") = c("unimodal", "continuous", "differentiable", "scalable")
+attr(makeChungReynoldsFunction, "tags") = c("single-objective", "unimodal", "continuous", "differentiable", "scalable")

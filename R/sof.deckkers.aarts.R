@@ -38,4 +38,4 @@ makeDeckkersAartsFunction = function() {
 class(makeDeckkersAartsFunction) = c("function", "smoof_generator")
 attr(makeDeckkersAartsFunction, "name") = c("Deckkers-Aarts")
 attr(makeDeckkersAartsFunction, "type") = c("single-objective")
-attr(makeDeckkersAartsFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeDeckkersAartsFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

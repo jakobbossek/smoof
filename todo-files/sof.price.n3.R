@@ -39,4 +39,4 @@ makePriceN3Function = function() {
 class(makePriceN3Function) = c("function", "smoof_generator")
 attr(makePriceN3Function, "name") = c("Price Function N. 3")
 attr(makePriceN3Function, "type") = c("single-objective")
-attr(makePriceN3Function, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makePriceN3Function, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

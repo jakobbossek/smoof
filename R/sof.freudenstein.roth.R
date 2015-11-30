@@ -32,4 +32,4 @@ makeFreudensteinRothFunction = function() {
 class(makeFreudensteinRothFunction) = c("function", "smoof_generator")
 attr(makeFreudensteinRothFunction, "name") = c("Freudenstein Roth")
 attr(makeFreudensteinRothFunction, "type") = c("single-objective")
-attr(makeFreudensteinRothFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeFreudensteinRothFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

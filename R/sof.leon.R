@@ -32,4 +32,4 @@ makeLeonFunction = function() {
 class(makeLeonFunction) = c("function", "smoof_generator")
 attr(makeLeonFunction, "name") = c("Leon")
 attr(makeLeonFunction, "type") = c("single-objective")
-attr(makeLeonFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeLeonFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

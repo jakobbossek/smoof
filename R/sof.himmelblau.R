@@ -31,4 +31,4 @@ makeHimmelblauFunction = function() {
 class(makeHimmelblauFunction) = c("function", "smoof_generator")
 attr(makeHimmelblauFunction, "name") = c("Himmelblau")
 attr(makeHimmelblauFunction, "type") = c("single-objective")
-attr(makeHimmelblauFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeHimmelblauFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

@@ -40,4 +40,4 @@ makeBirdFunction = function() {
 class(makeBirdFunction) = c("function", "smoof_generator")
 attr(makeBirdFunction, "name") = c("Bird")
 attr(makeBirdFunction, "type") = c("single-objective")
-attr(makeBirdFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeBirdFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

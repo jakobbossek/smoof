@@ -33,4 +33,4 @@ makeAluffiPentiniFunction = function() {
 class(makeAluffiPentiniFunction) = c("function", "smoof_generator")
 attr(makeAluffiPentiniFunction, "name") = c("Aluffi-Pentini")
 attr(makeAluffiPentiniFunction, "type") = c("single-objective")
-attr(makeAluffiPentiniFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeAluffiPentiniFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

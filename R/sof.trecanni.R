@@ -37,4 +37,4 @@ makeTrecanniFunction = function() {
 class(makeTrecanniFunction) = c("function", "smoof_generator")
 attr(makeTrecanniFunction, "name") = c("Trecanni")
 attr(makeTrecanniFunction, "type") = c("single-objective")
-attr(makeTrecanniFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "unimodal")
+attr(makeTrecanniFunction, "tags") = c("single-objective", "continuous", "differentiable", "separable", "non-scalable", "unimodal")

@@ -32,4 +32,4 @@ makeJennrichSampsonFunction = function() {
 class(makeJennrichSampsonFunction) = c("function", "smoof_generator")
 attr(makeJennrichSampsonFunction, "name") = c("Jennrich-Sampson")
 attr(makeJennrichSampsonFunction, "type") = c("single-objective")
-attr(makeJennrichSampsonFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
+attr(makeJennrichSampsonFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

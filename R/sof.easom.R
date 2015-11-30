@@ -34,4 +34,4 @@ makeEasomFunction = function() {
 class(makeEasomFunction) = c("function", "smoof_generator")
 attr(makeEasomFunction, "name") = c("Eason")
 attr(makeEasomFunction, "type") = c("single-objective")
-attr(makeEasomFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")
+attr(makeEasomFunction, "tags") = c("single-objective", "continuous", "differentiable", "separable", "non-scalable", "multimodal")

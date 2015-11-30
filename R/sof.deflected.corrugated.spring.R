@@ -49,4 +49,4 @@ makeDeflectedCorrugatedSpringFunction = function(dimensions, K = 5, alpha = 5) {
 class(makeDeflectedCorrugatedSpringFunction) = c("function", "smoof_generator")
 attr(makeDeflectedCorrugatedSpringFunction, "name") = c("Deflected Corrugated Spring")
 attr(makeDeflectedCorrugatedSpringFunction, "type") = c("single-objective")
-attr(makeDeflectedCorrugatedSpringFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")
+attr(makeDeflectedCorrugatedSpringFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal")

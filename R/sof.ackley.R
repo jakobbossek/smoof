@@ -44,4 +44,4 @@ makeAckleyFunction = function(dimensions) {
 class(makeAckleyFunction) = c("function", "smoof_generator")
 attr(makeAckleyFunction, "name") = c("Ackley")
 attr(makeAckleyFunction, "type") = c("single-objective")
-attr(makeAckleyFunction, "tags") = c("continuous", "multimodal", "differentiable", "non-separable", "scalable")
+attr(makeAckleyFunction, "tags") = c("single-objective", "continuous", "multimodal", "differentiable", "non-separable", "scalable")

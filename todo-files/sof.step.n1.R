@@ -30,4 +30,4 @@ makeStepN1Function = function(dimensions) {
 class(makeStepN1Function) = c("function", "smoof_generator")
 attr(makeStepN1Function, "name") = c("Step Function N. 1")
 attr(makeStepN1Function, "type") = c("single-objective")
-attr(makeStepN1Function, "tags") = c("discontinuous", "non-differentiable", "separable", "scalable", "unimodal")
+attr(makeStepN1Function, "tags") = c("single-objective", "discontinuous", "non-differentiable", "separable", "scalable", "unimodal")

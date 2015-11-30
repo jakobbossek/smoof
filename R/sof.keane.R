@@ -36,4 +36,4 @@ makeKeaneFunction = function() {
 class(makeKeaneFunction) = c("function", "smoof_generator")
 attr(makeKeaneFunction, "name") = c("Keane")
 attr(makeKeaneFunction, "type") = c("single-objective")
-attr(makeKeaneFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeKeaneFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

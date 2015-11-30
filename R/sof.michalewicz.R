@@ -45,7 +45,7 @@ makeMichalewiczFunction = function(dimensions, m = 10) {
 class(makeMichalewiczFunction) = c("function", "smoof_generator")
 attr(makeMichalewiczFunction, "name") = c("Michalewicz")
 attr(makeMichalewiczFunction, "type") = c("single-objective")
-attr(makeMichalewiczFunction, "tags") = c("continuous", "multimodal", "scalable")
+attr(makeMichalewiczFunction, "tags") = c("single-objective", "continuous", "multimodal", "scalable")
 
 # Helper to determine global optimum based on dimension and m parameter.
 getMichalewiczGlobalOptimum = function(dimensions = 2L, m = 10) {

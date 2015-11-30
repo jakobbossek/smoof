@@ -38,4 +38,4 @@ makeBohachevskyN1Function = function(dimensions) {
 class(makeBohachevskyN1Function) = c("function", "smoof_generator")
 attr(makeBohachevskyN1Function, "name") = c("Bohachevsky N. 1")
 attr(makeBohachevskyN1Function, "type") = c("single-objective")
-attr(makeBohachevskyN1Function, "tags") = c("continuous", "differentiable", "separable", "scalable", "multimodal")
+attr(makeBohachevskyN1Function, "tags") = c("single-objective", "continuous", "differentiable", "separable", "scalable", "multimodal")

@@ -29,4 +29,4 @@ makeBartelsConnFunction = function() {
 class(makeBartelsConnFunction) = c("function", "smoof_generator")
 attr(makeBartelsConnFunction, "name") = c("Bartels Conn")
 attr(makeBartelsConnFunction, "type") = c("single-objective")
-attr(makeBartelsConnFunction, "tags") = c("continuous", "non-differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeBartelsConnFunction, "tags") = c("single-objective", "continuous", "non-differentiable", "non-separable", "non-scalable", "multimodal")

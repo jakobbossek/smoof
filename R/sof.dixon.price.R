@@ -41,4 +41,4 @@ makeDixonPriceFunction = function(dimensions) {
 class(makeDixonPriceFunction) = c("function", "smoof_generator")
 attr(makeDixonPriceFunction, "name") = c("Dixon-Price")
 attr(makeDixonPriceFunction, "type") = c("single-objective")
-attr(makeDixonPriceFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "unimodal")
+attr(makeDixonPriceFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "unimodal")

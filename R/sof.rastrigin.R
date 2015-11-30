@@ -39,4 +39,4 @@ makeRastriginFunction = function(dimensions) {
 class(makeRastriginFunction) = c("function", "smoof_generator")
 attr(makeRastriginFunction, "name") = c("Rastrigin")
 attr(makeRastriginFunction, "type") = c("single-objective")
-attr(makeRastriginFunction, "tags") = c("multimodal", "continuous", "separable", "scalable")
+attr(makeRastriginFunction, "tags") = c("single-objective", "multimodal", "continuous", "separable", "scalable")

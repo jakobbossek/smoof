@@ -35,4 +35,4 @@ makeStyblinkskiTangFunction = function() {
 class(makeStyblinkskiTangFunction) = c("function", "smoof_generator")
 attr(makeStyblinkskiTangFunction, "name") = c("Styblinkski-Tang")
 attr(makeStyblinkskiTangFunction, "type") = c("single-objective")
-attr(makeStyblinkskiTangFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeStyblinkskiTangFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

@@ -36,4 +36,4 @@ makeKearfottFunction = function() {
 class(makeKearfottFunction) = c("function", "smoof_generator")
 attr(makeKearfottFunction, "name") = c("Kearfott")
 attr(makeKearfottFunction, "type") = c("single-objective")
-attr(makeKearfottFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeKearfottFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

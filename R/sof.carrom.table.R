@@ -38,4 +38,4 @@ makeCarromTableFunction = function() {
 class(makeCarromTableFunction) = c("function", "smoof_generator")
 attr(makeCarromTableFunction, "name") = c("Carrom Table")
 attr(makeCarromTableFunction, "type") = c("single-objective")
-attr(makeCarromTableFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeCarromTableFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

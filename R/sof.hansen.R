@@ -44,4 +44,4 @@ makeHansenFunction = function() {
 class(makeHansenFunction) = c("function", "smoof_generator")
 attr(makeHansenFunction, "name") = c("Hansen")
 attr(makeHansenFunction, "type") = c("single-objective")
-attr(makeHansenFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")
+attr(makeHansenFunction, "tags") = c("single-objective", "continuous", "differentiable", "separable", "non-scalable", "multimodal")

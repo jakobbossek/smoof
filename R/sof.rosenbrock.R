@@ -39,4 +39,4 @@ makeRosenbrockFunction = function(dimensions) {
 class(makeRosenbrockFunction) = c("function", "smoof_generator")
 attr(makeRosenbrockFunction, "name") = c("Rosenbrock")
 attr(makeRosenbrockFunction, "type") = c("single-objective")
-attr(makeRosenbrockFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")
+attr(makeRosenbrockFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal")

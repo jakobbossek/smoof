@@ -29,4 +29,4 @@ makeChichinadzeFunction = function() {
 class(makeChichinadzeFunction) = c("function", "smoof_generator")
 attr(makeChichinadzeFunction, "name") = c("Chichinadze")
 attr(makeChichinadzeFunction, "type") = c("single-objective")
-attr(makeChichinadzeFunction, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")
+attr(makeChichinadzeFunction, "tags") = c("single-objective", "continuous", "differentiable", "separable", "non-scalable", "multimodal")

@@ -33,4 +33,4 @@ makeHyperEllipsoidFunction = function(dimensions) {
 class(makeHyperEllipsoidFunction) = c("function", "smoof_generator")
 attr(makeHyperEllipsoidFunction, "name") = c("Hyper-Ellipsoid")
 attr(makeHyperEllipsoidFunction, "type") = c("single-objective")
-attr(makeHyperEllipsoidFunction, "tags") = c("unimodal", "convex", "continuous", "scalable")
+attr(makeHyperEllipsoidFunction, "tags") = c("single-objective", "unimodal", "convex", "continuous", "scalable")

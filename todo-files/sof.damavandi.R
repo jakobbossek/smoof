@@ -38,4 +38,4 @@ makeDamavandiFunction = function() {
 class(makeDamavandiFunction) = c("function", "smoof_generator")
 attr(makeDamavandiFunction, "name") = c("Damavandi Function")
 attr(makeDamavandiFunction, "type") = c("single-objective")
-attr(makeDamavandiFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makeDamavandiFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

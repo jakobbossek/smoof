@@ -40,4 +40,4 @@ makePenHolderFunction = function() {
 class(makePenHolderFunction) = c("function", "smoof_generator")
 attr(makePenHolderFunction, "name") = c("Pen Holder Function")
 attr(makePenHolderFunction, "type") = c("single-objective")
-attr(makePenHolderFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")
+attr(makePenHolderFunction, "tags") = c("single-objective", "continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

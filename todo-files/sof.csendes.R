@@ -36,4 +36,4 @@ makeCsendesFunction = function(dimensions) {
 class(makeCsendesFunction) = c("function", "smoof_generator")
 attr(makeCsendesFunction, "name") = c("Csendes Function")
 attr(makeCsendesFunction, "type") = c("single-objective")
-attr(makeCsendesFunction, "tags") = c("continuous", "differentiable", "separable", "scalable", "multimodal")
+attr(makeCsendesFunction, "tags") = c("single-objective", "continuous", "differentiable", "separable", "scalable", "multimodal")
