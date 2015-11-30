@@ -16,6 +16,7 @@ makeBukinN6Function = function() {
   makeSingleObjectiveFunction(
     name = "Bukin Function N.6",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       100 * sqrt(abs(x[2] - 0.01 * x[1]^2)) + 0.01 * abs(x[1] + 10)
     },
     par.set = makeNumericParamSet(

@@ -12,6 +12,7 @@ makeEngvallFunction = function() {
   makeSingleObjectiveFunction(
     name = "Engvall Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       x[1]^4 + x[2]^4 + 2 * x[1]^2 * x[2]^2 - 4 * x[1] + 3
     },
     par.set = makeNumericParamSet(

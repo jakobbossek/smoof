@@ -14,6 +14,7 @@ makeStyblinkskiTangFunction = function() {
   makeSingleObjectiveFunction(
     name = "Styblinkski-Tang Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = x^2
       b = a^2
       return(0.5 * sum(b - 16 * a + 5 * x))

@@ -13,6 +13,7 @@ makeMcCormickFunction = function() {
   makeSingleObjectiveFunction(
     name = "McCormick Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       sin(x[1] + x[2]) + (x[1] - x[2])^2 - 1.5 * x[1] + 2.5 * x[2] + 1
     },
     par.set = makeNumericParamSet(

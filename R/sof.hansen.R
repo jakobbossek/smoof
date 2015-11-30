@@ -13,6 +13,7 @@ makeHansenFunction = function() {
   makeSingleObjectiveFunction(
     name = "Hansen Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       i = j = 0:4
       a = sum((i + 1) * cos(i * x[1] + i + 1))
       b = sum((j + 1) * cos((j + 2) * x[2] + j + 1))

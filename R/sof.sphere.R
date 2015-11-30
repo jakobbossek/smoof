@@ -13,9 +13,11 @@
 #' @export
 makeSphereFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Sphere Function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       sum(x^2)
     },
     par.set = makeNumericParamSet(

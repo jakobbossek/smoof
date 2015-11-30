@@ -13,6 +13,7 @@ makeCubeFunction = function() {
   makeSingleObjectiveFunction(
     name = "Cube Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       100 * (x[2] - x[1]^3)^2 + (1 - x[1])^2
     },
     par.set = makeNumericParamSet(

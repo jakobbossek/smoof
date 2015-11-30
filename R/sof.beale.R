@@ -13,6 +13,7 @@ makeBealeFunction = function() {
   makeSingleObjectiveFunction(
     name = "Beale Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = x[1] * x[2]
       b = a * x[2]
       c = b * x[2]

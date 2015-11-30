@@ -14,9 +14,11 @@
 #' @export
 makeBrownFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = "Brown Function",
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       i = 1:(length(x) - 1)
       a = x[i]^2
       b = x[i + 1]^2

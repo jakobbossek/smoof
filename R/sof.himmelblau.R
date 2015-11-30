@@ -12,6 +12,7 @@ makeHimmelblauFunction = function() {
   makeSingleObjectiveFunction(
     name = "Himmelblau Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (x[1]^2 + x[2] - 11)^2 + (x[1] + x[2]^2 - 7)^2
     },
     par.set = makeNumericParamSet(

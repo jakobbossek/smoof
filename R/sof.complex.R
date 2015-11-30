@@ -12,6 +12,7 @@ makeComplexFunction = function() {
   makeSingleObjectiveFunction(
     name = "Complex Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (x[1]^3 - 3 * x[1] * x[2]^2 - 1)^2 + (3 * x[2] * x[1]^2 - x[2]^3)^2
     },
     par.set = makeNumericParamSet(

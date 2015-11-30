@@ -13,9 +13,11 @@
 #' @export
 makePowellSumFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Powell-Sum Function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = (1:length(x)) + 1L
       sum(abs(x)^a)
     },

@@ -14,9 +14,11 @@
 #' @export
 makeSchwefelFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Schwefel function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       sum(-x * sin(sqrt(abs(x))))
     },
     par.set = makeNumericParamSet(

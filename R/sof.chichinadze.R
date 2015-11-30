@@ -10,6 +10,7 @@ makeChichinadzeFunction = function() {
   makeSingleObjectiveFunction(
     name = "Chichinadze Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       x[1]^2 - 12 * x[1] + 11 + 10 * cos(pi * 0.5 * x[1]) + 8 * sin(5 * pi * x[1]) - exp(-0.5 * (x[2] - 0.5)^2) / sqrt(5)
     },
     par.set = makeNumericParamSet(

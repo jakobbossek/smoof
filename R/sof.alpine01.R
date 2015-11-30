@@ -13,9 +13,11 @@
 #' @export
 makeAlpine01Function = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Alpine01 Function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       sum(abs(x * sin(x) + 0.1 * x))
     },
     par.set = makeNumericParamSet(

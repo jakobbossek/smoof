@@ -10,6 +10,7 @@ makeEggCrateFunction = function() {
   makeSingleObjectiveFunction(
     name = "Egg Crate Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       x[1]^2 + x[2]^2 + 25 * (sin(x[1])^2 + sin(x[2])^2)
     },
     par.set = makeNumericParamSet(

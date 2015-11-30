@@ -15,6 +15,7 @@ makeGiuntaFunction = function() {
   makeSingleObjectiveFunction(
     name = "Giunta Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = 1.067 * x - 1
       b = sin(a)
       0.6 + sum(b + b^2 + 0.02 * sin(4 * a))

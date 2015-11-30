@@ -23,10 +23,12 @@ makeDeflectedCorrugatedSpringFunction = function(dimensions, K = 5, alpha = 5) {
 
   force(K)
   force(alpha)
+  force(dimensions)
 
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Deflected Corrugated Spring function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = (x - alpha)^2
       sa = sum(a)
       0.1 * sa - cos(K * sqrt(sa))

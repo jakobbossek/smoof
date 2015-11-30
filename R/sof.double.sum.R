@@ -12,9 +12,11 @@
 #' @export
 makeDoubleSumFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Double-Sum Function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       # this is faster than the soobench C implementation
       sum(cumsum(x)^2)
     },

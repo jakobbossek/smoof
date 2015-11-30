@@ -9,9 +9,11 @@
 #' @export
 makeSumOfDifferentSquaresFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Sum of Different Squares Function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       n = length(x)
       sum(abs(x)^(1:n + 1))
     },

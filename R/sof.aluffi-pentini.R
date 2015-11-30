@@ -14,6 +14,7 @@ makeAluffiPentiniFunction = function() {
   makeSingleObjectiveFunction(
     name = "Aluffi-Pentini Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       0.25 * x[1]^4 - 0.5 * x[1]^2 + 0.1 * x[1] + 0.5 * x[2]^2
     },
     par.set = makeNumericParamSet(

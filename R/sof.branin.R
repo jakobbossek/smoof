@@ -21,6 +21,7 @@ makeBraninFunction = function() {
   makeSingleObjectiveFunction(
     name = "Branin RCOS Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = 1
       b = 5.1 / (4 * pi^2)
       c = 5 / pi

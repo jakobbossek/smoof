@@ -13,9 +13,11 @@
 #' @export
 makeExponentialFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Exponential Function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       -exp(-0.5 * sum(x^2))
     },
     par.set = makeNumericParamSet(

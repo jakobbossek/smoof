@@ -16,6 +16,7 @@ makeHolderTableN1Function = function() {
   makeSingleObjectiveFunction(
     name = "Holder Table Function N. 1",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       -abs(cos(x[1]) * cos(x[2]) * exp(abs(1 - sqrt(x[1]^2 + x[2]^2) / 3.1415)))
     },
     par.set = makeNumericParamSet(

@@ -53,12 +53,12 @@ makeDTLZ4Function = function(dimensions, n.objectives, alpha = 100) {
 
   # C++ implementation
   fn = function(x) {
-    stopifnot(length(x) == dimensions)
+    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
     dtlz_4(x, M, alpha)
   }
 
   # fn = function(x, alpha=100) {
-  #   stopifnot(length(x) == dimensions)
+  #   assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
   #   f = numeric(M)
   #   n = length(x)
   #   xm = x[M:n]

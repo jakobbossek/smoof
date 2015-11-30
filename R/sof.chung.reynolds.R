@@ -13,9 +13,11 @@
 #' @export
 makeChungReynoldsFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Chung Reynolds Function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       sum(x^2)^2
     },
     par.set = makeNumericParamSet(

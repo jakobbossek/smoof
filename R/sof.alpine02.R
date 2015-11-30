@@ -14,9 +14,11 @@
 #' @export
 makeAlpine02Function = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Alpine N. 2 Function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       prod(sqrt(x) * sin(x))
     },
     par.set = makeNumericParamSet(

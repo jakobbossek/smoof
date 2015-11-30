@@ -15,6 +15,7 @@ makeEasomFunction = function() {
   makeSingleObjectiveFunction(
     name = "Easom Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       -cos(x[1]) * cos(x[2]) * exp(-((x[1] - pi)^2 + (x[2] - pi)^2))
     },
     par.set = makeNumericParamSet(

@@ -15,9 +15,11 @@
 #' @export
 makeRosenbrockFunction = function(dimensions) {
   assertCount(dimensions, na.ok = FALSE)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Rosenbrock Function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       i = 1:(length(x) - 1L)
       sum(100 * (x[i]^2 - x[i + 1])^2 + (x[i] - 1)^2)
     },

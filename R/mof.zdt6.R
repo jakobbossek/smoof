@@ -25,7 +25,7 @@ makeZDT6Function = function(dimensions) {
 
     # define the two-objective ZDT1 function
   fn = function(x) {
-    stopifnot(length(x) == dimensions)
+    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
     n = length(x)
     f1 = 1 - exp(-4 * x[1]) * (sin(6 * pi * x[1]))^6
     g = 1 + 9 * (sum(x[2:n]) / (n - 1))^(0.25)

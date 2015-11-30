@@ -15,6 +15,7 @@ makeBirdFunction = function() {
   makeSingleObjectiveFunction(
     name = "Bird Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = (x[1] - x[2])^2
       b = exp((1 - sin(x[1]))^2) * cos(x[2])
       c = exp((1 - cos(x[2]))^2) * sin(x[1])

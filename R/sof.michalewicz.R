@@ -25,6 +25,7 @@ makeMichalewiczFunction = function(dimensions, m = 10) {
   makeSingleObjectiveFunction(
     name = paste("Michalewicz Function (m = ", m, ")", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       i = 1:length(x)
       (-1) * sum(sin(x) * (sin((i * x^2) / pi)^(2 * m)))
     },

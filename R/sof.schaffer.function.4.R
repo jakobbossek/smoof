@@ -13,6 +13,7 @@ makeSchafferN4Function = function() {
   makeSingleObjectiveFunction(
     name = "Schaffer Function N. 4",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = x[1]^2
       b = x[2]^2
       0.5 + (cos(sin(abs(a - b)))^2 - 0.5) / (1 + 0.001 * (a + b))^2

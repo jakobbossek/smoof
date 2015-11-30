@@ -55,13 +55,13 @@ makeDTLZ6Function = function(dimensions, n.objectives) {
 
   # C++ implementation
   fn = function(x) {
-    stopifnot(length(x) == dimensions)
+    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
     dtlz_6(x, M)
   }
 
   # Reference R implementation
   # fn = function(x) {
-  #   stopifnot(length(x) == dimensions)
+  #   assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
   #   f = numeric(M)
   #   n = length(x)
   #   theta = numeric(M-1)

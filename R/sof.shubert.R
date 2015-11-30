@@ -13,6 +13,7 @@ makeShubertFunction = function() {
   makeSingleObjectiveFunction(
     name = "Shubert Function",
     fn = function(x) {
+      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       j = 1:5
       a = sum(j * cos((j + 1) * x[1] + j))
       b = sum(j * cos((j + 1) * x[2] + j))

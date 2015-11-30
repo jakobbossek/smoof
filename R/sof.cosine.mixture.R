@@ -13,9 +13,11 @@
 #' @export
 makeCosineMixtureFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = "Cosine Mixture Function",
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = -0.1 * sum(cos(5 * pi * x))
       b = sum(x^2)
       return (a - b)

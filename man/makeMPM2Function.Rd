@@ -4,14 +4,14 @@
 \alias{makeMPM2Function}
 \title{Generator for function with multiple peaks following the multiple peaks model 2.}
 \usage{
-makeMPM2Function(n.peaks, dimension, topology, seed)
+makeMPM2Function(n.peaks, dimensions, topology, seed)
 }
 \arguments{
 \item{n.peaks}{[\code{integer(1)}]\cr
 Desired number of peaks, i. e., number of (local) optima.}
 
-\item{dimension}{[\code{integer(1)}]\cr
-Problem dimension.}
+\item{dimensions}{[\code{integer(1)}]\cr
+Size of corresponding parameter space.}
 
 \item{topology}{[\code{integer(1)}]\cr
 Type of topology. Possible values are \dQuote{random} and \dQuote{funnel}.}
@@ -27,13 +27,13 @@ Generator for function with multiple peaks following the multiple peaks model 2.
 }
 \examples{
 \dontrun{
-fn = makeMPM2Function(n.peaks = 10L, dimension = 2L, topology = "funnel", seed = 123)
+fn = makeMPM2Function(n.peaks = 10L, dimensions = 2L, topology = "funnel", seed = 123)
 if (require(plot3D)) {
   plot3D(fn)
 }
 }
 \dontrun{
-fn = makeMPM2Function(n.peaks = 5L, dimension = 2L, topology = "random", seed = 134)
+fn = makeMPM2Function(n.peaks = 5L, dimensions = 2L, topology = "random", seed = 134)
 plot(fn, render.levels = TRUE)
 }
 

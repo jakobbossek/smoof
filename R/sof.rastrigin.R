@@ -15,9 +15,11 @@
 #' @export
 makeRastriginFunction = function(dimensions) {
   assertCount(dimensions)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Rastrigin Function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       n = length(x)
       10 * n + sum(x^2 - 10 * cos(2 * pi * x))
     },

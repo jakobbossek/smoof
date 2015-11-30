@@ -15,9 +15,11 @@
 #' @export
 makeAckleyFunction = function(dimensions) {
   assertCount(dimensions, na.ok = FALSE)
+  force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Ackley Function", sep = ""),
     fn = function(x) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       n = length(x)
       a = 20
       b = 0.2
