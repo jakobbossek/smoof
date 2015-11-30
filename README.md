@@ -146,8 +146,7 @@ The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing
 
 ## News
 
-smoof v1.1 (Release date: 2015-11-24):
-============
+### smoof v1.1 (Release date: 2015-11-24):
 
 * Parameter set of predefined smoof function now contains a single vector parameter
   instead of multiple single numeric parameters. This is consistent with function
@@ -169,8 +168,7 @@ smoof v1.1 (Release date: 2015-11-24):
   Jennrich-Sampsam, Judge, Kearfott
 * Renamed bochachevsky function to bohachevsky.n1
 
-smoof v1.0 (Release date: 2015-05-19):
-==========
+###smoof v1.0 (Release date: 2015-05-19):
 
 * First submission to CRAN.
 
