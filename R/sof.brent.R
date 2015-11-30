@@ -30,6 +30,6 @@ makeBrentFunction = function() {
 }
 
 class(makeBrentFunction) = c("function", "smoof_generator")
-attr(makeBrentFunction, "name") = c("Brent Function")
+attr(makeBrentFunction, "name") = c("Brent")
 attr(makeBrentFunction, "type") = c("single-objective")
 attr(makeBrentFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

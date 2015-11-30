@@ -36,6 +36,6 @@ makeCrossInTrayFunction = function() {
 }
 
 class(makeCrossInTrayFunction) = c("function", "smoof_generator")
-attr(makeCrossInTrayFunction, "name") = c("Cross-In-Tray Function")
+attr(makeCrossInTrayFunction, "name") = c("Cross-In-Tray")
 attr(makeCrossInTrayFunction, "type") = c("single-objective")
 attr(makeCrossInTrayFunction, "tags") = c("continuous", "non-separable", "non-scalable", "multimodal")

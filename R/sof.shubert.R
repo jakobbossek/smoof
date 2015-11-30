@@ -50,6 +50,6 @@ makeShubertFunction = function() {
 }
 
 class(makeShubertFunction) = c("function", "smoof_generator")
-attr(makeShubertFunction, "name") = c("Shubert function")
+attr(makeShubertFunction, "name") = c("Shubert")
 attr(makeShubertFunction, "type") = c("single-objective")
 attr(makeShubertFunction, "tags") = c("continuous", "differentiable", "non-scalable", "multimodal")

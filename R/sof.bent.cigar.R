@@ -31,6 +31,6 @@ makeBentCigarFunction = function(dimensions) {
 }
 
 class(makeBentCigarFunction) = c("function", "smoof_generator")
-attr(makeBentCigarFunction, "name") = c("Bent-Cigar Function")
+attr(makeBentCigarFunction, "name") = c("Bent-Cigar")
 attr(makeBentCigarFunction, "type") = c("single-objective")
 attr(makeBentCigarFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "unimodal")

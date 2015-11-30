@@ -84,6 +84,6 @@ makeDTLZ2Function = function(dimensions, n.objectives) {
 }
 
 class(makeDTLZ2Function) = c("function", "smoof_generator")
-attr(makeDTLZ2Function, "name") = c("DTLZ2 Function")
+attr(makeDTLZ2Function, "name") = c("DTLZ2")
 attr(makeDTLZ2Function, "type") = c("multi-objective")
 attr(makeDTLZ2Function, "tags") = c()

@@ -33,6 +33,6 @@ makeJudgeFunction = function() {
 }
 
 class(makeJudgeFunction) = c("function", "smoof_generator")
-attr(makeJudgeFunction, "name") = c("Judge Function")
+attr(makeJudgeFunction, "name") = c("Judge")
 attr(makeJudgeFunction, "type") = c("single-objective")
 attr(makeJudgeFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

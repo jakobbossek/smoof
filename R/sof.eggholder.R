@@ -31,7 +31,7 @@ makeEggholderFunction = function() {
 }
 
 class(makeEggholderFunction) = c("function", "smoof_generator")
-attr(makeEggholderFunction, "name") = c("Egg Holder Function")
+attr(makeEggholderFunction, "name") = c("Egg Holder")
 attr(makeEggholderFunction, "type") = c("single-objective")
 #FIXME: if dimension is added (see FIXME above), add 'scalable' tag
 attr(makeEggholderFunction, "tags") = c("continuous", "differentiable", "non-separable", "multimodal")

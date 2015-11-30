@@ -29,6 +29,6 @@ makeGeneralizedDropWaveFunction = function(dimensions = 2L) {
 }
 
 class(makeGeneralizedDropWaveFunction) = c("function", "smoof_generator")
-attr(makeGeneralizedDropWaveFunction, "name") = c("Generelized Drop-Wave Function")
+attr(makeGeneralizedDropWaveFunction, "name") = c("Generelized Drop-Wave")
 attr(makeGeneralizedDropWaveFunction, "type") = c("single-objective")
 attr(makeGeneralizedDropWaveFunction, "tags") = c("multimodal", "non-separable", "continuous", "differentiable", "scalable")

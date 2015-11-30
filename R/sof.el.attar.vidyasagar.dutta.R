@@ -30,6 +30,6 @@ makeElAttarVidyasagarDuttaFunction = function() {
 }
 
 class(makeElAttarVidyasagarDuttaFunction) = c("function", "smoof_generator")
-attr(makeElAttarVidyasagarDuttaFunction, "name") = c("El-Attar-Vidyasagar-Dutta Function")
+attr(makeElAttarVidyasagarDuttaFunction, "name") = c("El-Attar-Vidyasagar-Dutta")
 attr(makeElAttarVidyasagarDuttaFunction, "type") = c("single-objective")
 attr(makeElAttarVidyasagarDuttaFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

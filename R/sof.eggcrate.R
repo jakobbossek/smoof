@@ -26,6 +26,6 @@ makeEggCrateFunction = function() {
 }
 
 class(makeEggCrateFunction) = c("function", "smoof_generator")
-attr(makeEggCrateFunction, "name") = c("Egg Crate Function")
+attr(makeEggCrateFunction, "name") = c("Egg Crate")
 attr(makeEggCrateFunction, "type") = c("single-objective")
 attr(makeEggCrateFunction, "tags") = c("continuous", "separable", "non-scalable")

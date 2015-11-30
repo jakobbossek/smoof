@@ -17,6 +17,6 @@ test_that("hasTags works as expected", {
   expect_false(hasTags(makeSphereFunction, "multimodal"))
 
   # check that hasTags works for strings
-  expect_true(hasTags("Ackley Function", "multimodal"))
-  expect_false(hasTags("Sphere Function", "multimodal"))
+  expect_true(hasTags("Ackley", "multimodal"))
+  expect_false(hasTags("Sphere", "multimodal"))
 })

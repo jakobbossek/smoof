@@ -29,6 +29,6 @@ makeSumOfDifferentSquaresFunction = function(dimensions) {
 }
 
 class(makeSumOfDifferentSquaresFunction) = c("function", "smoof_generator")
-attr(makeSumOfDifferentSquaresFunction, "name") = c("Sum of Different Squares Function")
+attr(makeSumOfDifferentSquaresFunction, "name") = c("Sum of Different Squares")
 attr(makeSumOfDifferentSquaresFunction, "type") = c("single-objective")
 attr(makeSumOfDifferentSquaresFunction, "tags") = c("unimodal", "continuous", "scalable")

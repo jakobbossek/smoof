@@ -30,6 +30,6 @@ makeAdjimanFunction = function() {
 }
 
 class(makeAdjimanFunction) = c("function", "smoof_generator")
-attr(makeAdjimanFunction, "name") = c("Adjiman Function")
+attr(makeAdjimanFunction, "name") = c("Adjiman")
 attr(makeAdjimanFunction, "type") = c("single-objective")
 attr(makeAdjimanFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

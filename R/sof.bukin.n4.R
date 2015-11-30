@@ -31,6 +31,6 @@ makeBukinN4Function = function() {
 }
 
 class(makeBukinN4Function) = c("function", "smoof_generator")
-attr(makeBukinN4Function, "name") = c("Bukin Function N. 4")
+attr(makeBukinN4Function, "name") = c("Bukin N. 4")
 attr(makeBukinN4Function, "type") = c("single-objective")
 attr(makeBukinN4Function, "tags") = c("continuous", "non-differentiable", "separable", "non-scalable", "multimodal")

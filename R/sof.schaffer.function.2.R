@@ -31,6 +31,6 @@ makeSchafferN2Function = function() {
 }
 
 class(makeSchafferN2Function) = c("function", "smoof_generator")
-attr(makeSchafferN2Function, "name") = c("Schaffer Function N. 2")
+attr(makeSchafferN2Function, "name") = c("Schaffer N. 2")
 attr(makeSchafferN2Function, "type") = c("single-objective")
 attr(makeSchafferN2Function, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

@@ -35,6 +35,6 @@ makeGriewankFunction = function(dimensions) {
 }
 
 class(makeGriewankFunction) = c("function", "smoof_generator")
-attr(makeGriewankFunction, "name") = c("Griewank Function")
+attr(makeGriewankFunction, "name") = c("Griewank")
 attr(makeGriewankFunction, "type") = c("single-objective")
 attr(makeGriewankFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")

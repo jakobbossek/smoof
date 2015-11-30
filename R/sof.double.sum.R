@@ -32,6 +32,6 @@ makeDoubleSumFunction = function(dimensions) {
 }
 
 class(makeDoubleSumFunction) = c("function", "smoof_generator")
-attr(makeDoubleSumFunction, "name") = c("Double-Sum Function")
+attr(makeDoubleSumFunction, "name") = c("Double-Sum")
 attr(makeDoubleSumFunction, "type") = c("single-objective")
 attr(makeDoubleSumFunction, "tags") = c("convex", "unimodal", "differentiable", "separable", "scalable", "continuous")

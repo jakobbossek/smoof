@@ -29,6 +29,6 @@ makeCubeFunction = function() {
 }
 
 class(makeCubeFunction) = c("function", "smoof_generator")
-attr(makeCubeFunction, "name") = c("Cube Function")
+attr(makeCubeFunction, "name") = c("Cube")
 attr(makeCubeFunction, "type") = c("single-objective")
 attr(makeCubeFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

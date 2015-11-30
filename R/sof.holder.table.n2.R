@@ -37,6 +37,6 @@ makeHolderTableN2Function = function() {
 }
 
 class(makeHolderTableN2Function) = c("function", "smoof_generator")
-attr(makeHolderTableN2Function, "name") = c("Holder Table Function N. 2")
+attr(makeHolderTableN2Function, "name") = c("Holder Table N. 2")
 attr(makeHolderTableN2Function, "type") = c("single-objective")
 attr(makeHolderTableN2Function, "tags") = c("continuous", "differentiable", "separable", "non-scalable", "multimodal")

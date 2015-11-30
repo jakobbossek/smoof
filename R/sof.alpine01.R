@@ -32,6 +32,6 @@ makeAlpine01Function = function(dimensions) {
 }
 
 class(makeAlpine01Function) = c("function", "smoof_generator")
-attr(makeAlpine01Function, "name") = c("Alpine01 Function")
+attr(makeAlpine01Function, "name") = c("Alpine N. 1")
 attr(makeAlpine01Function, "type") = c("single-objective")
 attr(makeAlpine01Function, "tags") = c("continuous", "non-differentiable", "separable", "scalable", "multimodal")

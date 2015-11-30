@@ -36,6 +36,6 @@ makeBrownFunction = function(dimensions) {
 }
 
 class(makeBrownFunction) = c("function", "smoof_generator")
-attr(makeBrownFunction, "name") = c("Brown Function")
+attr(makeBrownFunction, "name") = c("Brown")
 attr(makeBrownFunction, "type") = c("single-objective")
 attr(makeBrownFunction, "tags") = c("continuous", "differentiable", "non-separable", "scalable", "unimodal")

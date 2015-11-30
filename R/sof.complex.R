@@ -28,6 +28,6 @@ makeComplexFunction = function() {
 }
 
 class(makeComplexFunction) = c("function", "smoof_generator")
-attr(makeComplexFunction, "name") = c("Complex Function")
+attr(makeComplexFunction, "name") = c("Complex")
 attr(makeComplexFunction, "type") = c("single-objective")
 attr(makeComplexFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

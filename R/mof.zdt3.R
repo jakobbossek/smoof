@@ -50,6 +50,6 @@ makeZDT3Function = function(dimensions) {
 }
 
 class(makeZDT3Function) = c("function", "smoof_generator")
-attr(makeZDT3Function, "name") = c("ZDT3 Function")
+attr(makeZDT3Function, "name") = c("ZDT3")
 attr(makeZDT3Function, "type") = c("multi-objective")
 attr(makeZDT3Function, "tags") = c()

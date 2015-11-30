@@ -33,6 +33,6 @@ makePowellSumFunction = function(dimensions) {
 }
 
 class(makePowellSumFunction) = c("function", "smoof_generator")
-attr(makePowellSumFunction, "name") = c("Double-Sum Function")
+attr(makePowellSumFunction, "name") = c("Double-Sum")
 attr(makePowellSumFunction, "type") = c("single-objective")
 attr(makePowellSumFunction, "tags") = c("continuous", "differentiable", "separable", "scalable", "unimodal")

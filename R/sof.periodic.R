@@ -31,6 +31,6 @@ makePeriodicFunction = function() {
 }
 
 class(makePeriodicFunction) = c("function", "smoof_generator")
-attr(makePeriodicFunction, "name") = c("Periodic Function")
+attr(makePeriodicFunction, "name") = c("Periodic")
 attr(makePeriodicFunction, "type") = c("single-objective")
 attr(makePeriodicFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

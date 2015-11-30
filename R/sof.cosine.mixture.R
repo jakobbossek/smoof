@@ -35,6 +35,6 @@ makeCosineMixtureFunction = function(dimensions) {
 }
 
 class(makeCosineMixtureFunction) = c("function", "smoof_generator")
-attr(makeCosineMixtureFunction, "name") = c("Cosine Mixture Function")
+attr(makeCosineMixtureFunction, "name") = c("Cosine Mixture")
 attr(makeCosineMixtureFunction, "type") = c("single-objective")
 attr(makeCosineMixtureFunction, "tags") = c("discontinuous", "non-differentiable", "separable", "scalable", "multimodal")

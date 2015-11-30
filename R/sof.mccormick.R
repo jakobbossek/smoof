@@ -29,6 +29,6 @@ makeMcCormickFunction = function() {
 }
 
 class(makeMcCormickFunction) = c("function", "smoof_generator")
-attr(makeMcCormickFunction, "name") = c("McCormick Function")
+attr(makeMcCormickFunction, "name") = c("McCormick")
 attr(makeMcCormickFunction, "type") = c("single-objective")
 attr(makeMcCormickFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

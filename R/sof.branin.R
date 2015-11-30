@@ -45,6 +45,6 @@ makeBraninFunction = function() {
 }
 
 class(makeBraninFunction) = c("function", "smoof_generator")
-attr(makeBraninFunction, "name") = c("Branin Function")
+attr(makeBraninFunction, "name") = c("BraninRCOS")
 attr(makeBraninFunction, "type") = c("single-objective")
 attr(makeBraninFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

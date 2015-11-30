@@ -28,6 +28,6 @@ makeEngvallFunction = function() {
 }
 
 class(makeEngvallFunction) = c("function", "smoof_generator")
-attr(makeEngvallFunction, "name") = c("Engvall Function")
+attr(makeEngvallFunction, "name") = c("Engvall")
 attr(makeEngvallFunction, "type") = c("single-objective")
 attr(makeEngvallFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

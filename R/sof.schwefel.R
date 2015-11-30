@@ -33,6 +33,6 @@ makeSchwefelFunction = function(dimensions) {
 }
 
 class(makeSchwefelFunction) = c("function", "smoof_generator")
-attr(makeSchwefelFunction, "name") = c("Schwefel function")
+attr(makeSchwefelFunction, "name") = c("Schwefel")
 attr(makeSchwefelFunction, "type") = c("single-objective")
 attr(makeSchwefelFunction, "tags") = c("continuous", "multimodal", "scalable")

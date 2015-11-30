@@ -32,6 +32,6 @@ makeBealeFunction = function() {
 }
 
 class(makeBealeFunction) = c("function", "smoof_generator")
-attr(makeBealeFunction, "name") = c("Beale Function")
+attr(makeBealeFunction, "name") = c("Beale")
 attr(makeBealeFunction, "type") = c("single-objective")
 attr(makeBealeFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

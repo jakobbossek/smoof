@@ -28,6 +28,6 @@ makeMatyasFunction = function() {
 }
 
 class(makeMatyasFunction) = c("function", "smoof_generator")
-attr(makeMatyasFunction, "name") = c("Matyas Function")
+attr(makeMatyasFunction, "name") = c("Matyas")
 attr(makeMatyasFunction, "type") = c("single-objective")
 attr(makeMatyasFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")

@@ -36,6 +36,6 @@ makeSixHumpCamelFunction = function() {
 }
 
 class(makeSixHumpCamelFunction) = c("function", "smoof_generator")
-attr(makeSixHumpCamelFunction, "name") = c("Six-Hump Camel Back Function")
+attr(makeSixHumpCamelFunction, "name") = c("Six-Hump Camel Back")
 attr(makeSixHumpCamelFunction, "type") = c("single-objective")
 attr(makeSixHumpCamelFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

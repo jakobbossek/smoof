@@ -30,6 +30,6 @@ makeHosakiFunction = function() {
 }
 
 class(makeHosakiFunction) = c("function", "smoof_generator")
-attr(makeHosakiFunction, "name") = c("Hosaki Function")
+attr(makeHosakiFunction, "name") = c("Hosaki")
 attr(makeHosakiFunction, "type") = c("single-objective")
 attr(makeHosakiFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "multimodal")

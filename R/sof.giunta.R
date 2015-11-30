@@ -33,6 +33,6 @@ makeGiuntaFunction = function() {
 }
 
 class(makeGiuntaFunction) = c("function", "smoof_generator")
-attr(makeGiuntaFunction, "name") = c("Giunta Function")
+attr(makeGiuntaFunction, "name") = c("Giunta")
 attr(makeGiuntaFunction, "type") = c("single-objective")
 attr(makeGiuntaFunction, "tags") = c("continuous", "differentiable", "separable", "multimodal")

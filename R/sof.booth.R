@@ -26,6 +26,6 @@ makeBoothFunction = function() {
 }
 
 class(makeBoothFunction) = c("function", "smoof_generator")
-attr(makeBoothFunction, "name") = c("Booth Function")
+attr(makeBoothFunction, "name") = c("Booth")
 attr(makeBoothFunction, "type") = c("single-objective")
 attr(makeBoothFunction, "tags") = c("continuous", "differentiable", "non-separable", "non-scalable", "unimodal")
