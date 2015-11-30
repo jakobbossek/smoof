@@ -1,25 +1,25 @@
-context("makeFunctionByName helper")
+context("makeFunctionsByName helper")
 
-test_that("makeFunctionByName helper should work as expected", {
+test_that("makeFunctionsByName helper should work as expected", {
   # basic checks
-  fn = makeFunctionByName("Ackley", dimensions = 2L)
+  fn = makeFunctionsByName("Ackley", dimensions = 2L)
   expect_is(fn, "smoof_function")
   expect_true(grepl("ackley", getName(fn), ignore.case = TRUE))
 
   # check if 2D function is created with dimensions = 2 and no dimensions
   # attribute at all
-  fn = makeFunctionByName("BraninRCOS", dimensions = 2L)
+  fn = makeFunctionsByName("BraninRCOS", dimensions = 2L)
   expect_is(fn, "smoof_function")
   expect_true(grepl("branin", getName(fn), ignore.case = TRUE))
-  fn = makeFunctionByName("BraninRCOS")
+  fn = makeFunctionsByName("BraninRCOS")
   expect_is(fn, "smoof_function")
   expect_true(grepl("branin", getName(fn), ignore.case = TRUE))
-  expect_error(makeFunctionByName("Branin", dimensions = 3L))
+  expect_error(makeFunctionsByName("Branin", dimensions = 3L))
 
   # test in combination with filtering
-  funs = lapply(as.list(filterFunctionsByTags(c("multimodal", "scalable"))),
+  funs = lapply(filterFunctionsByTags(c("multimodal", "scalable")),
     function(fun.name) {
-      makeFunctionByName(fun.name, dimensions = 2L)
+      makeFunctionsByName(fun.name, dimensions = 2L)
     }
   )
   expect_list(funs, types = "smoof_function")
@@ -28,15 +28,15 @@ test_that("makeFunctionByName helper should work as expected", {
   all.tags = getAvailableTags()
   all.funs.names = unique(unlist(lapply(as.list(all.tags), filterFunctionsByTags)))
   for (fun.name in all.funs.names) {
-    sof.fn = makeFunctionByName(fun.name = fun.name, dimensions = 2L)
+    sof.fn = makeFunctionsByName(fun.name = fun.name, dimensions = 2L)
     expect_is(sof.fn, "smoof_function", info = sprintf("Error generating function '%s'
       with dimensions = 2L.", fun.name))
   }
 })
 
-test_that("makeFunctionByName works for list of generator names", {
+test_that("makeFunctionsByName works for list of generator names", {
   fun.names = filterFunctionsByTags(c("multimodal", "scalable"))
-  funs = makeFunctionByName(as.list(fun.names), dimensions = 2L)
+  funs = makeFunctionsByName(as.list(fun.names), dimensions = 2L)
   is.smoof = sapply(funs, isSmoofFunction)
   expect_true(all(is.smoof))
 })
