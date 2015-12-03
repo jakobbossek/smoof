@@ -106,12 +106,15 @@ test_that("nesting of wrappers works well", {
   # should be a wrapped function now
   expect_true(isWrappedSmoofFunction(fn))
   expect_equal(getNumberOfEvaluations(fn), n.evals)
+  fn2 = fn
+  resetEvaluationCounter(fn2)
+  expect_equal(getNumberOfEvaluations(fn2), 0L)
   expect_logging_result_structure(getLoggedValues(fn))
 
   # now unwrap step by step
   fn2 = getWrappedFunction(fn)
   expect_true(isWrappedSmoofFunction(fn2))
-  expect_equal(getNumberOfEvaluations(fn), n.evals)
+  expect_equal(getNumberOfEvaluations(fn), 0L)
   fn2 = getWrappedFunction(fn2)
   expect_false(isWrappedSmoofFunction(fn2))
   expect_true(isSmoofFunction(fn2))
@@ -129,14 +132,20 @@ test_that("getters work for wrapped smoof functions", {
 
   # getter functions work on wrappers
   expect_true(hasTags(fn, "unimodal"))
+  expect_true(doesCountEvaluations(fn))
+  expect_true(all(is.character(getTags(fn))))
+  expect_true(is.character(getName(fn)))
   expect_false(isMultiobjective(fn))
   expect_true(isSingleobjective(fn))
   expect_false(isVectorized(fn))
   expect_false(isNoisy(fn))
+  expect_true(shouldBeMinimized(fn))
   expect_is(getParamSet(fn), "ParamSet")
   expect_true(all(is.numeric(getLowerBoxConstraints(fn))))
   expect_true(all(is.numeric(getUpperBoxConstraints(fn))))
   expect_true(hasGlobalOptimum(fn))
   expect_true(hasConstraints(fn))
+  expect_false(hasOtherConstraints(fn))
+  expect_true(hasBoxConstraints(fn))
   expect_true(is.list(getGlobalOptimum(fn)))
 })

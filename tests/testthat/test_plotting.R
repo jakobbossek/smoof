@@ -4,7 +4,9 @@ test_that("autoplot functions for 1D numeric functions works as expected", {
 	fn = makeSingleObjectiveFunction(
 		name = "Test function",
 		fn = function(x) sum(x^2),
-		par.set = makeNumericParamSet("x", len = 1L, lower = -2, upper = 2)
+		par.set = makeNumericParamSet("x", len = 1L, lower = -2, upper = 2),
+    global.opt.value = 0,
+    global.opt.param = 0
 	)
 
 	library(ggplot2)
