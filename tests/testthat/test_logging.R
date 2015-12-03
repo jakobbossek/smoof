@@ -121,3 +121,22 @@ test_that("nesting of wrappers works well", {
   expect_false(isWrappedSmoofFunction(fn2))
   expect_true(isSmoofFunction(fn2))
 })
+
+test_that("getters work for wrapped smoof functions", {
+  fn = makeSphereFunction(2L)
+  fn = addCountingWrapper(fn)
+  fn = addLoggingWrapper(fn, logg.x = TRUE)
+
+  # getter functions work on wrappers
+  expect_true(hasTags(fn, "unimodal"))
+  expect_false(isMultiobjective(fn))
+  expect_true(isSingleobjective(fn))
+  expect_false(isVectorized(fn))
+  expect_false(isNoisy(fn))
+  expect_is(getParamSet(fn), "ParamSet")
+  expect_true(all(is.numeric(getLowerBoxConstraints(fn))))
+  expect_true(all(is.numeric(getUpperBoxConstraints(fn))))
+  expect_true(hasGlobalOptimum(fn))
+  expect_true(hasConstraints(fn))
+  expect_true(is.list(getGlobalOptimum(fn)))
+})
