@@ -17,6 +17,6 @@ shouldBeMinimized.smoof_function = function(fn) {
 }
 
 #' @export
-shouldBeMinimized.wrapped_smoof_function = function(fn) {
+shouldBeMinimized.smoof_wrapped_function = function(fn) {
   return(shouldBeMinimized(getWrappedFunction(fn)))
 }
