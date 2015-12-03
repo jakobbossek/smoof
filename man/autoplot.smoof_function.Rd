@@ -4,8 +4,8 @@
 \alias{autoplot.smoof_function}
 \title{Generate \code{\link[ggplot2]{ggplot}} object.}
 \usage{
-\method{autoplot}{smoof_function}(x, show.optimum = FALSE,
-  render.levels = FALSE, render.contours = TRUE, use.facets = FALSE, ...)
+autoplot.smoof_function(x, show.optimum = FALSE, render.levels = FALSE,
+  render.contours = TRUE, use.facets = FALSE, ...)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr
