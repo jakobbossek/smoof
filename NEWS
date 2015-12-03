@@ -10,6 +10,7 @@ smoof v1.1.9000 (Release data: xxxx-xx-xx)
 * makeFunctionsByName now expects a character vector generator names (the list
   methods was removed)
 * Generator names now do not contain the 'Function' suffix
+* Fix bug which occured in hasConstraints for wrapped smoof functions
 
 smoof v1.1 (Release date: 2015-11-24):
 ============
