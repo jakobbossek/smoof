@@ -34,7 +34,7 @@ hasBoxConstraints.smoof_function = function(fn) {
 
 #' @export
 hasBoxConstraints.smoof_wrapped_function = function(fn) {
-  return(hasFiniteBoxConstraints(getWrappedFunction(fn)))
+  return(hasFiniteBoxConstraints(getParamSet(getWrappedFunction(fn))))
 }
 
 #' Checks whether the objective function has other constraints.
