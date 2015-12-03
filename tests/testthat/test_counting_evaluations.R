@@ -26,4 +26,8 @@ test_that("countingWrapper counts correctly", {
 
   # and we should have counted 10 more evaluations
   expect_equal(getNumberOfEvaluations(fn), 20L)
+
+  # reset counter works
+  resetEvaluationCounter(fn)
+  expect_equal(getNumberOfEvaluations(fn), 0L)
 })
