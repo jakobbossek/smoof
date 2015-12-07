@@ -9,7 +9,7 @@
 #'   Number of objectives of the multi-objective function.
 #' @template arg_noisy
 #' @param minimize [\code{logical}]\cr
-#'   Logical cector of length \code{n.objectives} indicating if the corresponding
+#'   Logical vector of length \code{n.objectives} indicating if the corresponding
 #'   objectives shall be minimized or maximized.
 #'   Default is the vector with all components set to \code{TRUE}.
 #' @template arg_vectorized
