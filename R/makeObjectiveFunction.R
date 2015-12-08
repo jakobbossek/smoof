@@ -45,7 +45,8 @@ makeObjectiveFunction = function(
   # sanity checks
   assertCharacter(name, len = 1L, any.missing = FALSE)
 
-  is.null(description) || assertCharacter(description, len = 1L, any.missing = FALSE)
+  if (!is.null(description))
+    assertCharacter(description, len = 1L, any.missing = FALSE)
   assertFunction(fn)
   assertFlag(has.simple.signature, na.ok = FALSE)
 
