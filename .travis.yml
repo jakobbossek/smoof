@@ -4,6 +4,10 @@ warnings_are_errors: true
 
 sudo: required
 
+os:
+  - linux
+  - osx
+
 r_github_packages:
   - jimhester/covr
 
