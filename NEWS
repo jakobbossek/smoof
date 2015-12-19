@@ -11,6 +11,7 @@ smoof v1.1.9000 (Release data: xxxx-xx-xx)
   methods was removed)
 * Generator names now do not contain the 'Function' suffix
 * Fix bug which occured in hasConstraints for wrapped smoof functions
+* Fix bug in getUpperBoxConstraints
 
 smoof v1.1 (Release date: 2015-11-24):
 ============

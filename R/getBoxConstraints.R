@@ -28,7 +28,7 @@ getUpperBoxConstraints = function(fn) {
 
 #' @export
 getUpperBoxConstraints.smoof_function = function(fn) {
-  getLower(getParamSet(fn), with.nr = TRUE)
+  getUpper(getParamSet(fn), with.nr = TRUE)
 }
 
 #' @export
