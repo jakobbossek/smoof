@@ -27,7 +27,7 @@ makeBBOBFunction = function(dimension, fid, iid) {
   iid = convertInteger(iid)
   assertInt(dimension, lower = 2L, upper = 40L, na.ok = FALSE)
   assertInt(fid, lower = 1L, upper = 24L, na.ok = FALSE)
-  assertInt(iid, lower = 1L, upper = 24L, na.ok = FALSE)
+  assertInt(iid, lower = 1L, na.ok = FALSE)
 
   # touch vars
   force(dimension)
@@ -54,8 +54,8 @@ makeBBOBFunction = function(dimension, fid, iid) {
     tags = meta$tags,
     # all BBOB functions are vectorized
     vectorized = TRUE,
-    global.opt.params = as.numeric(optimals[[1]]),
-    global.opt.value = as.numeric(optimals[[2]])
+    global.opt.params = as.numeric(optimals[[1L]]),
+    global.opt.value = as.numeric(optimals[[2L]])
   )
 }
 
