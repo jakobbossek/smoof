@@ -5,7 +5,7 @@
 #' @import RColorBrewer
 #' @import plot3D
 #' @useDynLib smoof
-#' @importFrom emoa nondominated_points
+#' @importFrom mco nsga2
 #' @importFrom Rcpp sourceCpp
 #' @importFrom grDevices colorRampPalette
 #' @importFrom graphics abline contour grid image plot points

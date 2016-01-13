@@ -102,19 +102,10 @@ test_that("3D plots work for two-dimensional funs", {
 })
 
 test_that("Pareto-optimal front can be approximately visualized in 2D", {
-	moo.fn = makeZDT1Function(dimensions = 3L)
-	expect_error(visualizeParetoOptimalFront(moo.fn))
+	soo.fn = makeSphereFunction(dimensions = 3L)
+	expect_error(visualizeParetoOptimalFront(soo.fn))
 	moo.fn = makeZDT1Function(dimensions = 2L)
-	for (show.only.front in c(TRUE, FALSE)) {
-		for (limits.by.front in c(TRUE, FALSE)) {
-			pl = visualizeParetoOptimalFront(
-				moo.fn,
-				show.only.front = show.only.front,
-				limits.by.front = limits.by.front
-			)
-			expect_is(pl, c("gg", "ggplot"))
-			expect_true(grepl("ZDT1", pl$labels$title))
-		}
-	}
-
+  pl = visualizeParetoOptimalFront(moo.fn)
+	expect_is(pl, c("gg", "ggplot"))
+	expect_true(grepl("ZDT1", pl$labels$title))
 })

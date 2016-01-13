@@ -1,6 +1,9 @@
 smoof v1.1.9000 (Release data: xxxx-xx-xx)
 ============
 
+* visualizeParetoOptimalFront now works for bi-objective functions with arbitrary
+  search space dimensions and works by calling the mco::nsga2 algorithm. Due to
+  this, the parameters show.only.front, limits.by.front are dropped.
 * Renamed makeFunctionByName to makeFunctionsByName
 * Added tags 'single-objective' and 'multi-objective'
 * filterFunctionByTags now stops if both 'single-objective' and 'multi-objective'

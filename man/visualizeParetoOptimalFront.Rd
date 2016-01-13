@@ -4,45 +4,29 @@
 \alias{visualizeParetoOptimalFront}
 \title{Pareto-optimal front visualization.}
 \usage{
-visualizeParetoOptimalFront(fn, length.out = 100, show.only.front = FALSE,
-  limits.by.front = TRUE)
+visualizeParetoOptimalFront(fn, ...)
 }
 \arguments{
 \item{fn}{[\code{smoof_multi_objective_function}]\cr
 Multi-objective smoof function.}
 
-\item{length.out}{[\code{integer(1)}]\cr
-A grid is generated in the decision space. This parameter determines how many
-points are chosen for each dimension. Higher values lead to more dense
-decision and objective space. Default is 100.}
-
-\item{show.only.front}{[\code{logical(1)}]\cr
-Should only the approximated front be plotted or all abjective values?
-Default is \code{FALSE}.}
-
-\item{limits.by.front}{[\code{logical(1)}]\cr
-Should the xlim and ylim values for the plot be determined by the minimal
-and maximal value of the front? Default is \code{TRUE}. Usually you will
-get warnings in this case, since a lot of objective values will be \dQuote{
-out of bounds}.}
+\item{...}{[any]\cr
+Arguments passed to \code{\link[mco]{nsga2}}.}
 }
 \value{
 [\code{\link[ggplot2]{ggplot}}]
 }
 \description{
 Quickly visualize the Pareto-optimal front of a bi-criteria objective
-function by generating a factorial design in the decision space, computing the
-objective values and filtering out the dominated points. Helpful to get a
-notion of how the front is shaped and how the distribution of the points
-on the shape looks like.
+function by calling the EMOA \code{\link[mco]{nsga2}} and extracting the
+approximated Pareto-optimal front.
 }
 \examples{
 # Here we visualize the Pareto-optimal front of the bi-objective ZDT3 function
-# without "zooming in" to the nondominated points
-fn = makeZDT3Function(dimensions = 2L)
-vis = visualizeParetoOptimalFront(fn, limits.by.front = FALSE)
+fn = makeZDT3Function(dimensions = 3L)
+vis = visualizeParetoOptimalFront(fn)
 
-# Again, but now with zooming in to get a better notion of the front shape
-vis = visualizeParetoOptimalFront(fn, limits.by.front = TRUE)
+# Alternatively we can pass some more algorithm parameters to the NSGA2 algorithm
+vis = visualizeParetoOptimalFront(fn, popsize = 1000L)
 }
 

@@ -20,7 +20,7 @@ Imports:
     ggplot2,
     RColorBrewer,
     plot3D,
-    emoa,
+    mco,
     Rcpp (>= 0.11.0)
 Suggests:
     testthat,
