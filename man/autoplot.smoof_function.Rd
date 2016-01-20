@@ -5,7 +5,8 @@
 \title{Generate \code{\link[ggplot2]{ggplot}} object.}
 \usage{
 \method{autoplot}{smoof_function}(x, show.optimum = FALSE,
-  render.levels = FALSE, render.contours = TRUE, use.facets = FALSE, ...)
+  main = getName(x), render.levels = FALSE, render.contours = TRUE,
+  use.facets = FALSE, ...)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr
@@ -15,6 +16,10 @@ Objective function.}
 If the function has a known global optimum, should its location be
 plotted by a point or multiple points in case of multiple global optima?
 Default is \code{FALSE}.}
+
+\item{main}{[\code{character(1L)}]\cr
+Plot title.
+Default is the name of the smoof function.}
 
 \item{render.levels}{[\code{logical(1)}]\cr
 For 2D numeric functions only: Should an image map be plotted? Default is

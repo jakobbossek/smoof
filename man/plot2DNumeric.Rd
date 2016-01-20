@@ -4,8 +4,8 @@
 \alias{plot2DNumeric}
 \title{Plot a two-dimensional numeric function.}
 \usage{
-plot2DNumeric(x, show.optimum = FALSE, render.levels = FALSE,
-  render.contours = TRUE, n.samples = 100L, ...)
+plot2DNumeric(x, show.optimum = FALSE, main = getName(x),
+  render.levels = FALSE, render.contours = TRUE, n.samples = 100L, ...)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr
@@ -15,6 +15,10 @@ Function.}
 If the function has a known global optimum, should its location be
 plotted by a point or multiple points in case of multiple global optima?
 Default is \code{FALSE}.}
+
+\item{main}{[\code{character(1L)}]\cr
+Plot title.
+Default is the name of the smoof function.}
 
 \item{render.levels}{[\code{logical(1)}]\cr
 Show a level-plot? Default is \code{FALSE}.}

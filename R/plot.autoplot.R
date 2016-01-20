@@ -6,6 +6,9 @@
 #'   If the function has a known global optimum, should its location be
 #'   plotted by a point or multiple points in case of multiple global optima?
 #'   Default is \code{FALSE}.
+#' @param main [\code{character(1L)}]\cr
+#'   Plot title.
+#'   Default is the name of the smoof function.
 #' @param render.levels [\code{logical(1)}]\cr
 #'   For 2D numeric functions only: Should an image map be plotted? Default is
 #'   \code{FALSE}.
@@ -28,12 +31,14 @@
 #' @export
 autoplot.smoof_function = function(x,
   show.optimum = FALSE,
+  main = getName(x),
   render.levels = FALSE, render.contours = TRUE,
   use.facets = FALSE,
   ...) {
   checkPlotFunParams(x)
 
   assertFlag(show.optimum, na.ok = FALSE)
+  assertString(main, na.ok = TRUE)
   assertFlag(render.levels, na.ok = FALSE)
   assertFlag(render.contours, na.ok = FALSE)
   assertFlag(use.facets, na.ok = FALSE)
@@ -43,6 +48,7 @@ autoplot.smoof_function = function(x,
 
   autoPlotFun(x,
     show.optimum = show.optimum,
+    main = main,
     render.levels = render.levels,
     render.contours = render.contours,
     use.facets = use.facets,
@@ -53,17 +59,18 @@ autoplot.smoof_function = function(x,
 #' @export
 autoplot.smoof_wrapped_function = function(x,
   show.optimum = FALSE,
+  main = getName(x),
   render.levels = FALSE, render.contours = TRUE,
   use.facets = FALSE,
   ...) {
-  autoplot(getWrappedFunction(x), show.optimum,
+  autoplot(getWrappedFunction(x), show.optimum, main,
     render.levels, render.contours,
     use.facets,
     ...
   )
 }
 
-autoplot1DNumeric = function(x, show.optimum, render.contours, render.levels, use.facets, ...) {
+autoplot1DNumeric = function(x, show.optimum, main, render.contours, render.levels, use.facets, ...) {
   # extract data
   par.set = getParamSet(x)
   par.name = getParamIds(par.set)
@@ -88,12 +95,14 @@ autoplot1DNumeric = function(x, show.optimum, render.contours, render.levels, us
       pl = pl + geom_point(data = point.data, colour = "tomato")
     }
   }
-  pl = pl + ggtitle(getName(x))
+  if (!is.na(main)) {
+    pl = pl + ggtitle(main)
+  }
   pl = pl + xlab(par.name)
   return(pl)
 }
 
-autoplot2DNumeric = function(x, show.optimum, render.contours, render.levels, use.facets, ...) {
+autoplot2DNumeric = function(x, show.optimum, main, render.contours, render.levels, use.facets, ...) {
   if (!render.levels & !render.contours) {
     stopf("At learst render.contours or render.levels needs to be TRUE. Otherwise we have no data to plot.")
   }
@@ -107,7 +116,6 @@ autoplot2DNumeric = function(x, show.optimum, render.contours, render.levels, us
   upper = getBounds(getUpper(par.set), default = 10L)
 
   # build up data frame
-  #FIXME: setting the stepsize (for example b = 0.05) is very evil!
   #For example double_sum with x_i in [-65.5, 65.5] takes about 20 minutes to produce the plot
   sequence.x1 = seq(lower[1], upper[1], length.out = 150)
   sequence.x2 = seq(lower[2], upper[2], length.out = 150)
@@ -138,14 +146,17 @@ autoplot2DNumeric = function(x, show.optimum, render.contours, render.levels, us
 
   # prettify
   pl = pl + xlab(expression(x[1])) + ylab(expression(x[2]))
-  pl = pl + ggtitle(getName(x))
+
+  if (!is.na(main)) {
+    pl = pl + ggtitle(main)
+  }
   # pl = pl + scale_x_continuous(expand = c(0,0))
   # pl = pl + scale_y_continuous(expand = c(0,0))
 
   return(pl)
 }
 
-autoplot2DMixed = function(x, show.optimum, render.contours, render.levels, use.facets, ...) {
+autoplot2DMixed = function(x, show.optimum, main, render.contours, render.levels, use.facets, ...) {
   # extract data
   par.set = getParamSet(x)
   par.types = getParamTypes(par.set)
@@ -181,7 +192,10 @@ autoplot2DMixed = function(x, show.optimum, render.contours, render.levels, use.
   } else {
     pl = pl + geom_line(aes_string(linetype = name.factor))
   }
-  pl = pl + ggtitle(getName(x))
+
+  if (!is.na(main)) {
+    pl = pl + ggtitle(main)
+  }
   pl = pl + theme(legend.position = "top")
 
   return(pl)
