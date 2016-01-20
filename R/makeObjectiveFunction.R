@@ -43,10 +43,10 @@ makeObjectiveFunction = function(
   constraint.fn = NULL) {
 
   # sanity checks
-  assertCharacter(name, len = 1L, any.missing = FALSE)
+  assertString(name, na.ok = FALSE)
 
   if (!is.null(description))
-    assertCharacter(description, len = 1L, any.missing = FALSE)
+    assertString(description, na.ok = FALSE)
   assertFunction(fn)
   assertFlag(has.simple.signature, na.ok = FALSE)
 
