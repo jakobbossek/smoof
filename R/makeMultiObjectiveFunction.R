@@ -1,6 +1,7 @@
 #' Generator for multi-objective target functions.
 #'
 #' @template arg_name
+#' @template arg_id
 #' @template arg_description
 #' @template arg_fn
 #' @template arg_has_simple_signature
@@ -26,6 +27,7 @@
 #' @export
 makeMultiObjectiveFunction = function(
   name,
+  id = NULL,
   description = NULL,
   fn,
   has.simple.signature = TRUE,
@@ -37,7 +39,7 @@ makeMultiObjectiveFunction = function(
   constraint.fn = NULL) {
 
   smoof.fn = makeObjectiveFunction(
-    name, description, fn,
+    name, id, description, fn,
     has.simple.signature, par.set, n.objectives,
     noisy, minimize, vectorized, constraint.fn
   )

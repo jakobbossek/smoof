@@ -14,6 +14,7 @@
 makePriceN1Function = function() {
   makeSingleObjectiveFunction(
     name = "Price Function N. 1",
+    id = "price01_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       sum((abs(x) - 5)^2)

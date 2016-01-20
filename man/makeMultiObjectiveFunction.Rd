@@ -4,7 +4,7 @@
 \alias{makeMultiObjectiveFunction}
 \title{Generator for multi-objective target functions.}
 \usage{
-makeMultiObjectiveFunction(name, description = NULL, fn,
+makeMultiObjectiveFunction(name, id = NULL, description = NULL, fn,
   has.simple.signature = TRUE, par.set, n.objectives, noisy = FALSE,
   minimize = rep(TRUE, n.objectives), vectorized = FALSE,
   constraint.fn = NULL)
@@ -12,6 +12,11 @@ makeMultiObjectiveFunction(name, description = NULL, fn,
 \arguments{
 \item{name}{[\code{character(1)}]\cr
 Function name. Used for the title of plots for example.}
+
+\item{id}{[\code{character(1)} | \code{NULL}]\cr
+Optional short function identifier. If provided, this should be a short
+name without whitespaces and now special characters beside the underscore.
+Default is \code{NULL}, which means no ID at all.}
 
 \item{description}{[\code{character(1)} | \code{NULL}]\cr
 Optional function description.}

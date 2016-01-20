@@ -11,6 +11,7 @@ makeHyperEllipsoidFunction = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Hyper-Ellipsoid function", sep = ""),
+    id = paste0("hyperEllipsoid_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       #FIXME: check if this is correct. http://www.geocities.ws/eadorio/mvf.pdf has another definiton

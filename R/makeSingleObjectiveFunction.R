@@ -1,6 +1,7 @@
 #' Generator for single-objective target functions.
 #'
 #' @template arg_name
+#' @template arg_id
 #' @template arg_description
 #' @template arg_fn
 #' @template arg_has_simple_signature
@@ -63,6 +64,7 @@
 #' @export
 makeSingleObjectiveFunction = function(
   name,
+  id = NULL,
   description = NULL,
   fn,
   has.simple.signature = TRUE,
@@ -76,7 +78,7 @@ makeSingleObjectiveFunction = function(
   global.opt.value = NULL) {
 
   smoof.fn = makeObjectiveFunction(
-    name, description, fn,
+    name, id, description, fn,
     has.simple.signature, par.set, 1L,
     noisy, minimize, vectorized, constraint.fn
   )

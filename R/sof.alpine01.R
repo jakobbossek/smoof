@@ -16,6 +16,7 @@ makeAlpine01Function = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Alpine01 Function", sep = ""),
+    id = paste0("alpine01_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       sum(abs(x * sin(x) + 0.1 * x))

@@ -17,6 +17,7 @@ makeAlpine02Function = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Alpine N. 2 Function", sep = ""),
+    id = paste0("alpine02_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       prod(sqrt(x) * sin(x))

@@ -12,6 +12,7 @@
 makeJudgeFunction = function() {
   makeSingleObjectiveFunction(
     name = "Judge Function",
+    id = "judge_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       A = c(4.284, 4.149, 3.877, 0.533, 2.211, 2.389, 2.145, 3.231, 1.998, 1.379, 2.106, 1.428, 1.011, 2.179, 2.858, 1.388, 1.651, 1.593, 1.046, 2.152)

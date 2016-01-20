@@ -26,6 +26,7 @@ test_that("single-objective test function generators work", {
         }
         test.param = ParamHelpers::sampleValues(getParamSet(fun), 1L)
         test.val = fun(test.param)
+        expect_true(is.character(getID(fun)))
         expect_true(is.numeric(test.val))
         expect_true(is.logical(shouldBeMinimized(fun)))
         expect_true(all(is.numeric(getUpperBoxConstraints(fun))))

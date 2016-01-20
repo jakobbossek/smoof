@@ -14,6 +14,7 @@
 makeGiuntaFunction = function() {
   makeSingleObjectiveFunction(
     name = "Giunta Function",
+    id = "giunta_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = 1.067 * x - 1

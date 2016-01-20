@@ -17,6 +17,7 @@ makeSchwefelFunction = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Schwefel function", sep = ""),
+    id = paste0("schwefel_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       sum(-x * sin(sqrt(abs(x))))

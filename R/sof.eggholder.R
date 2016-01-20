@@ -12,6 +12,7 @@
 makeEggholderFunction = function() {
   makeSingleObjectiveFunction(
     name = "Egg Holder Function",
+    id = "eggHolder_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       i = 1L

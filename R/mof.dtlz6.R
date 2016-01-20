@@ -82,6 +82,7 @@ makeDTLZ6Function = function(dimensions, n.objectives) {
 
   makeMultiObjectiveFunction(
     name = "DTLZ6 Function",
+    id = paste0("dtlz6_", dimensions, "d_", n.objectives, "o"),
     description = "Deb et al.",
     fn = fn,
     par.set =  makeNumericParamSet(

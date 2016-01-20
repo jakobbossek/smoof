@@ -12,6 +12,7 @@
 makeShubertFunction = function() {
   makeSingleObjectiveFunction(
     name = "Shubert Function",
+    id = "shubert_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       j = 1:5

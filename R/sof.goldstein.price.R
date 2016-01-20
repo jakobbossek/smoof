@@ -13,6 +13,7 @@
 makeGoldsteinPriceFunction = function() {
   makeSingleObjectiveFunction(
     name = "Goldstein-Price Function",
+    id = "goldsteinPrice_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       xx1 = x[1]^2

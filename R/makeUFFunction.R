@@ -31,7 +31,8 @@ makeUFFunction = function(dimensions, id) {
 
   makeMultiObjectiveFunction(
     name = sprintf("UF%i", id),
-    description = sprintf("muuuulti"),
+    id = paste0("UF", id, "_", dimensions, "d"),
+    description = sprintf("One of the CEC 2009 functions."),
     fn = function(x) {
       .Call("evaluateUFFunction", as.integer(id), as.numeric(x), as.integer(dimensions))
     },

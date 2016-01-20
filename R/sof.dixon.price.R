@@ -18,6 +18,7 @@ makeDixonPriceFunction = function(dimensions) {
   global.opt.params = 2^((-1) * (2^i - 2) / 2^i)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Dixon-Price function", sep = ""),
+    id = paste0("dixonPrice_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = (x[1] - 1)^2

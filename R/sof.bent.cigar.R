@@ -14,6 +14,7 @@ makeBentCigarFunction = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = "Bent-Cigar Function",
+    id = "bentCigar_2d",
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       x[1]^2 + 1e+06 * sum(x[2:dimensions]^2)

@@ -16,6 +16,7 @@ makeCosineMixtureFunction = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = "Cosine Mixture Function",
+    id = paste0("cosineMixture", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = -0.1 * sum(cos(5 * pi * x))

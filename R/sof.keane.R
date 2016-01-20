@@ -10,6 +10,7 @@
 makeKeaneFunction = function() {
   makeSingleObjectiveFunction(
     name = "Keane Function",
+    id = "keane_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = sin(x[1] - x[2])^2 * sin(x[1] + x[2])^2

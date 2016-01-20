@@ -14,6 +14,7 @@
 makeBukinN4Function = function() {
   makeSingleObjectiveFunction(
     name = "Bukin Function N. 4",
+    id = "bukin04_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       100 * x[2]^2 + 0.01 * abs(x[1] + 10)

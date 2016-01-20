@@ -18,6 +18,7 @@ makeAckleyFunction = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Ackley Function", sep = ""),
+    id = paste0("ackley_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       n = length(x)

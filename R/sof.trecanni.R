@@ -14,6 +14,7 @@
 makeTrecanniFunction = function() {
   makeSingleObjectiveFunction(
     name = "Trecanni Function",
+    id = "trecanni_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       x[1]^4 + 4 * (x[1]^3 + x[1]^2) + x[2]^2

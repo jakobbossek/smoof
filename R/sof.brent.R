@@ -13,6 +13,7 @@
 makeBrentFunction = function() {
   makeSingleObjectiveFunction(
     name = "Brent Function",
+    id = "brent_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (x[1] + 10)^2 + (x[2] + 10)^2 + exp(-x[1]^2 - x[2]^2)

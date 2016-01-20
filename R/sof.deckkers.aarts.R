@@ -13,6 +13,7 @@
 makeDeckkersAartsFunction = function() {
   makeSingleObjectiveFunction(
     name = "Deckkers-Aarts Function",
+    id = "deckkersAarts_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = x[1]^2

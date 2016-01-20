@@ -15,6 +15,7 @@ makeDoubleSumFunction = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Double-Sum Function", sep = ""),
+    id = paste0("doubleSum_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       # this is faster than the soobench C implementation

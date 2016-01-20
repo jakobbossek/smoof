@@ -12,6 +12,7 @@ makeGeneralizedDropWaveFunction = function(dimensions = 2L) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Generelized Drop-Wave Function", sep = ""),
+    id = paste0("generalizedDropWave_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = sum(x^2)

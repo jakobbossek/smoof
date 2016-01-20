@@ -13,6 +13,7 @@
 makeHosakiFunction = function() {
   makeSingleObjectiveFunction(
     name = "Hosaki Function",
+    id = "hosaki_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (1 - 8 * x[1] + 7 * x[1]^2 - 7 * x[1]^3 / 3 + 0.25 * x[1]^4) * x[2]^2 * exp(-x[2])

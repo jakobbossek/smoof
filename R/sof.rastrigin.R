@@ -18,6 +18,7 @@ makeRastriginFunction = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Rastrigin Function", sep = ""),
+    id = paste0("rastrigin_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       n = length(x)

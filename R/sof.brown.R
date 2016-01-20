@@ -17,6 +17,7 @@ makeBrownFunction = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = "Brown Function",
+    id = "brown_2d",
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       i = 1:(length(x) - 1)

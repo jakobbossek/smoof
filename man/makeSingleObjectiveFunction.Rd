@@ -4,7 +4,7 @@
 \alias{makeSingleObjectiveFunction}
 \title{Generator for single-objective target functions.}
 \usage{
-makeSingleObjectiveFunction(name, description = NULL, fn,
+makeSingleObjectiveFunction(name, id = NULL, description = NULL, fn,
   has.simple.signature = TRUE, vectorized = FALSE, par.set, noisy = FALSE,
   minimize = TRUE, constraint.fn = NULL, tags = character(0),
   global.opt.params = NULL, global.opt.value = NULL)
@@ -12,6 +12,11 @@ makeSingleObjectiveFunction(name, description = NULL, fn,
 \arguments{
 \item{name}{[\code{character(1)}]\cr
 Function name. Used for the title of plots for example.}
+
+\item{id}{[\code{character(1)} | \code{NULL}]\cr
+Optional short function identifier. If provided, this should be a short
+name without whitespaces and now special characters beside the underscore.
+Default is \code{NULL}, which means no ID at all.}
 
 \item{description}{[\code{character(1)} | \code{NULL}]\cr
 Optional function description.}

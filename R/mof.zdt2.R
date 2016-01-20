@@ -34,6 +34,7 @@ makeZDT2Function = function(dimensions) {
 
   makeMultiObjectiveFunction(
     name = "ZDT2 Function",
+    id = paste0("zdt2_", dimensions, "d_2o"),
     description = "Zitzler et al. function N. 2",
     fn = fn,
     par.set =  makeNumericParamSet(

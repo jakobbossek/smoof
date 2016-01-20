@@ -17,6 +17,7 @@ makeBohachevskyN1Function = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Bohachevsky Function N. 1", sep = ""),
+    id = paste0("bohachevsky01_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       i = 1:(length(x) - 1)

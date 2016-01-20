@@ -14,6 +14,7 @@
 makePriceN4Function = function() {
   makeSingleObjectiveFunction(
     name = "Price Function N. 4",
+    id = "price04_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (2 * x[1]^3 * x[2] - x[2]^3)^2 + (6 * x[1] - x[2]^2 + x[2])^2

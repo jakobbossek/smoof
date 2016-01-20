@@ -13,6 +13,7 @@
 makeStyblinkskiTangFunction = function() {
   makeSingleObjectiveFunction(
     name = "Styblinkski-Tang Function",
+    id = "styblinskiTang_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = x^2

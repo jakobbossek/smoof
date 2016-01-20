@@ -14,6 +14,7 @@
 makePriceN2Function = function() {
   makeSingleObjectiveFunction(
     name = "Price Function N. 2",
+    id = "price02_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       1 + sin(x[1])^2 + sin(x[2])^2 - 0.1 * exp(-x[1]^2 - x[2]^2)

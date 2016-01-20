@@ -23,7 +23,8 @@ makeMichalewiczFunction = function(dimensions, m = 10) {
   assertNumber(m, na.ok = FALSE)
   force(m)
   makeSingleObjectiveFunction(
-    name = paste("Michalewicz Function (m = ", m, ")", sep = ""),
+    name = paste(dimensions, "-d Michalewicz Function (m = ", m, ")", sep = ""),
+    id = paste0("michalewicz_", dimensions, "d_m", m),
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       i = 1:length(x)

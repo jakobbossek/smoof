@@ -27,6 +27,8 @@ makeDeflectedCorrugatedSpringFunction = function(dimensions, K = 5, alpha = 5) {
 
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Deflected Corrugated Spring function", sep = ""),
+    #FIXME: eventually encode K and alpha in fun?
+    id = paste0("deflectedCorrugatedSpring_", dimensions, "d_K", K, "alpha", alpha),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = (x - alpha)^2

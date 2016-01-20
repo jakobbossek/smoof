@@ -11,6 +11,7 @@
 makeJennrichSampsonFunction = function() {
   makeSingleObjectiveFunction(
     name = "Jennrich-Sampson Function",
+    id = "jennrichSampson_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       i = 1:10

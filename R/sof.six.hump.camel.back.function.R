@@ -14,6 +14,7 @@
 makeSixHumpCamelFunction = function() {
   makeSingleObjectiveFunction(
     name = "Six-Hump Camel Back Function",
+    id = "sixHumpCamelBack_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       xx1 = x[1]^2

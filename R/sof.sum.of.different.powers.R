@@ -12,6 +12,7 @@ makeSumOfDifferentSquaresFunction = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Sum of Different Squares Function", sep = ""),
+    id = paste0("sumOfDifferentSquares_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       n = length(x)

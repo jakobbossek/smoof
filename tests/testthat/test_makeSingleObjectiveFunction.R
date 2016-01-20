@@ -11,6 +11,7 @@ test_that("makeSingleObjectiveFunction", {
 	fn = function(x) sum(x^2)
 	fn = makeSingleObjectiveFunction(
 		name = name,
+    id = "id",
 		description = description,
 		tags = tags,
 		fn = fn,
@@ -25,6 +26,7 @@ test_that("makeSingleObjectiveFunction", {
   expect_true(attr(fn, "minimize"))
   expect_false(isVectorized(fn))
 	expect_equal(name, getName(fn))
+  expect_equal("id", getID(fn))
 	expect_equal(description, getDescription(fn))
 	expect_equal(length(getTags(fn)), 2L)
 	expect_equal(length(setdiff(getTags(fn), getAvailableTags())), 0L)

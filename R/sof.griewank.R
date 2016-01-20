@@ -17,6 +17,7 @@ makeGriewankFunction = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Griewank Function", sep = ""),
+    id = paste0("griewank_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       a = sum(x^2) / 4000

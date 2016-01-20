@@ -16,6 +16,7 @@ makeSphereFunction = function(dimensions) {
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Sphere Function", sep = ""),
+    id = paste0("sphere_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       sum(x^2)

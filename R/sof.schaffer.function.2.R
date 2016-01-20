@@ -12,6 +12,7 @@
 makeSchafferN2Function = function() {
   makeSingleObjectiveFunction(
     name = "Schaffer Function N. 2",
+    id = "schaffer02_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = x[1]^2

@@ -11,6 +11,7 @@
 makeKearfottFunction = function() {
   makeSingleObjectiveFunction(
     name = "Kearfott Function",
+    id = "kearfott_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       (x[1]^2 + x[2]^2 - 2)^2 + (x[1]^2 - x[2]^2 - 1)^2

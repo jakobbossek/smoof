@@ -20,6 +20,7 @@
 makeBraninFunction = function() {
   makeSingleObjectiveFunction(
     name = "Branin RCOS Function",
+    id = "branin_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       a = 1

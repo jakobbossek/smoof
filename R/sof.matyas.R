@@ -11,6 +11,7 @@
 makeMatyasFunction = function() {
   makeSingleObjectiveFunction(
     name = "Matyas Function",
+    id = "matyas_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
       0.26 * (x[1]^2 + x[2]^2) - 0.48 * x[1] * x[2]
