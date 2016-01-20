@@ -13,7 +13,13 @@ test_that("autoplot functions for 1D numeric functions works as expected", {
 	pl = autoplot(fn)
   plot(fn, show.optimum = TRUE, n.samples = 50L)
   checkGGPlot(pl, title = "Test function", "x", "y")
+
   pl = autoplot(fn, show.optimum = TRUE, n.samples = 50L)
+  checkGGPlot(pl, title = "Test function", "x", "y")
+
+  # Now check for wrapped functions
+  fn = addCountingWrapper(fn)
+  pl = autoplot(fn)
   checkGGPlot(pl, title = "Test function", "x", "y")
 })
 

@@ -50,6 +50,19 @@ autoplot.smoof_function = function(x,
   )
 }
 
+#' @export
+autoplot.smoof_wrapped_function = function(x,
+  show.optimum = FALSE,
+  render.levels = FALSE, render.contours = TRUE,
+  use.facets = FALSE,
+  ...) {
+  autoplot(getWrappedFunction(x), show.optimum,
+    render.levels, render.contours,
+    use.facets,
+    ...
+  )
+}
+
 autoplot1DNumeric = function(x, show.optimum, render.contours, render.levels, use.facets, ...) {
   # extract data
   par.set = getParamSet(x)

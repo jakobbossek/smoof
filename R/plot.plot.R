@@ -15,6 +15,11 @@ plot.smoof_function = function(x, ...) {
   plotFun(x, ...)
 }
 
+#' @export
+plot.smoof_wrapped_function = function(x, ...) {
+  plot(getWrappedFunction(x), ...)
+}
+
 #' Plot an one-dimensional function.
 #'
 #' @param x [\code{smoof_function}]\cr
