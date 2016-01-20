@@ -1,6 +1,11 @@
 smoof v1.1.9000 (Release data: xxxx-xx-xx)
 ============
 
+* Added: main parameter for plot and autoplot. By default the function name is
+  used for the plot title.
+* Fixed: autoplot and plot do not work for wrapped functions.
+* objective functions now can be passed an additional id attribute. All predefined
+  smoof functions have an id now.
 * visualizeParetoOptimalFront now works for bi-objective functions with arbitrary
   search space dimensions and works by calling the mco::nsga2 algorithm. Due to
   this, the parameters show.only.front, limits.by.front are dropped.
@@ -13,8 +18,8 @@ smoof v1.1.9000 (Release data: xxxx-xx-xx)
 * makeFunctionsByName now expects a character vector generator names (the list
   methods was removed)
 * Generator names now do not contain the 'Function' suffix
-* Fix bug which occured in hasConstraints for wrapped smoof functions
-* Fix bug in getUpperBoxConstraints
+* Fixed: hasConstraints for wrapped smoof functions
+* Fixed: getUpperBoxConstraints
 
 smoof v1.1 (Release date: 2015-11-24):
 ============
