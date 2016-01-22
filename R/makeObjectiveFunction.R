@@ -1,7 +1,7 @@
 # Internal generator for function of smoof type.
 #
 # @param name [\code{character(1)}]\cr
-#   Function name.
+#   Optional function name used e.g. in plots.
 # @param description [\code{character(1)} | \code{NULL}]\cr
 #   Optional function description.
 # @param fn [\code{function}]\cr
@@ -31,7 +31,7 @@
 #   box constraints defined via the \code{par.set} argument.
 # @return [\code{function}] Target function with additional stuff attached as attributes.
 makeObjectiveFunction = function(
-  name,
+  name = NULL,
   id = NULL,
   description = NULL,
   fn,
@@ -44,7 +44,8 @@ makeObjectiveFunction = function(
   constraint.fn = NULL) {
 
   # sanity checks
-  assertString(name, na.ok = FALSE)
+  if (!is.null(name))
+    assertString(name, na.ok = FALSE)
   if (!is.null(id))
     assertString(id, na.ok = FALSE)
 
@@ -73,7 +74,7 @@ makeObjectiveFunction = function(
 
   structure(
     fn,
-    name = name,
+    name = coalesce(name, ""),
     id = coalesce(id, NA),
     description = coalesce(description, ""),
     par.set = par.set,

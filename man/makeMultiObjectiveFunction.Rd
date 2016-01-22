@@ -11,7 +11,7 @@ makeMultiObjectiveFunction(name, id = NULL, description = NULL, fn,
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
-Function name. Used for the title of plots for example.}
+Optional function name. Used for the title of plots for example.}
 
 \item{id}{[\code{character(1)} | \code{NULL}]\cr
 Optional short function identifier. If provided, this should be a short

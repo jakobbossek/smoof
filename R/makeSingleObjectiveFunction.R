@@ -63,7 +63,7 @@
 #' print(autoplot(fn))
 #' @export
 makeSingleObjectiveFunction = function(
-  name,
+  name = NULL,
   id = NULL,
   description = NULL,
   fn,
