@@ -26,7 +26,7 @@
 #' print(fn)
 #' @export
 makeMultiObjectiveFunction = function(
-  name,
+  name = NULL,
   id = NULL,
   description = NULL,
   fn,
