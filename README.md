@@ -146,6 +146,29 @@ The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing
 
 ## News
 
+### smoof v1.2 (Release data: 2016-01-21)
+
+* Added: functions convertToMaximization and convertToMinimization
+* Added: main parameter for plot and autoplot. By default the function name is
+  used for the plot title.
+* Fixed: autoplot and plot do not work for wrapped functions.
+* objective functions now can be passed an additional id attribute. All predefined
+  smoof functions have an id now.
+* visualizeParetoOptimalFront now works for bi-objective functions with arbitrary
+  search space dimensions and works by calling the mco::nsga2 algorithm. Due to
+  this, the parameters show.only.front, limits.by.front are dropped.
+* Renamed makeFunctionByName to makeFunctionsByName
+* Added tags 'single-objective' and 'multi-objective'
+* filterFunctionByTags now stops if both 'single-objective' and 'multi-objective'
+  tags are passed
+* All functions now check the passed paramter to be of the right dimension and
+  type
+* makeFunctionsByName now expects a character vector generator names (the list
+  methods was removed)
+* Generator names now do not contain the 'Function' suffix
+* Fixed: hasConstraints for wrapped smoof functions
+* Fixed: getUpperBoxConstraints
+
 ### smoof v1.1 (Release date: 2015-11-24):
 
 * Parameter set of predefined smoof function now contains a single vector parameter
