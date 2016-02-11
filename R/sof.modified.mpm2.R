@@ -69,7 +69,12 @@ makeModifiedMPM2Function = function(n.peaks, dimensions, topology, seed, rotated
   # load funnel generator to global environemt
   eval(rPython::python.load(system.file("modified_mpm2.py", package = "smoof")), envir = .GlobalEnv)
 
-  makeSingleObjectiveFunction(
+  local.opt.params = eval(rPython::python.call("getLocalOptimaParams", n.peaks, dimensions, topology, seed, rotated, peakShape))
+  if (n.peaks == 1)
+    local.opt.params = list(local.opt.params)
+  global.opt.params = eval(rPython::python.call("getGlobalOptimaParams", n.peaks, dimensions, topology, seed, rotated, peakShape))
+
+  smoof.fn = makeSingleObjectiveFunction(
     name = sprintf("Funnel_%i_%i_%i_%s_%s%s", n.peaks, dimensions, seed, topology, peakShape, ifelse(rotated, "_rotated", "")),
     description = sprintf("Funnel-like function\n(n.peaks: %i, dimension: %i, topology: %s, seed: %i, rotated: %s, shape: %s)",
       n.peaks, dimensions, topology, seed, rotated, peakShape),
@@ -80,6 +85,11 @@ makeModifiedMPM2Function = function(n.peaks, dimensions, topology, seed, rotated
     par.set = par.set,
     tags = c("non-separable", "scalable", "continuous", "multimodal")
   )
+  smoof.fn = setAttribute(smoof.fn, "local.opt.params", local.opt.params)
+  smoof.fn = setAttribute(smoof.fn, "local.opt.values", lapply(local.opt.params, smoof.fn))
+  smoof.fn = setAttribute(smoof.fn, "global.opt.params", global.opt.params)
+  smoof.fn = setAttribute(smoof.fn, "global.opt.value", smoof.fn(global.opt.params))
+  return(smoof.fn)
 }
 
 class(makeModifiedMPM2Function) = c("function", "smoof_generator")

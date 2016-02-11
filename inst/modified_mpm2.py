@@ -71,6 +71,10 @@ class MultiplePeaksModel2:
         radiusRange = (0.25 * math.sqrt(numberVariables), 0.5 * math.sqrt(numberVariables))
         heightRange = (0.5, 0.99)
         globalOptimum = cls.randomUniformPeaks(1, numberVariables, numberGlobalOptima=1, heightRange=heightRange, shapeRange=shapeRange, radiusRange=radiusRange, rotated=rotatedPeaks, peakShape=peakShape)[0]
+        if numberOptima == 1:
+            peaks = [globalOptimum]
+            problem = cls.createInstance(peaks, topology, shapeHeightCorrelation)
+            return problem
         if topology == "random":
             peaks = cls.randomUniformPeaks(numberOptima - 1, numberVariables, numberGlobalOptima=0, heightRange=heightRange, shapeRange=shapeRange, radiusRange=radiusRange, rotated=rotatedPeaks, peakShape=peakShape)
         elif topology == "funnel":
@@ -294,6 +298,16 @@ def evaluateProblem(position, npeaks, dimension, topology, randomSeed, rotated, 
     global currentProblem
     initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
     return currentProblem.objectiveFunction(position)
+
+def getLocalOptimaParams(npeaks, dimension, topology, randomSeed, rotated, peakShape):
+    global currentProblem
+    initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
+    return currentProblem.getLocalOptima()
+
+def getGlobalOptimaParams(npeaks, dimension, topology, randomSeed, rotated, peakShape):
+    global currentProblem
+    initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
+    return currentProblem.getOptimalSolutions()
 
 if __name__ == "__main__":
     # nothing to do here
