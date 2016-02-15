@@ -42,8 +42,9 @@ makeZDT1Function = function(dimensions) {
       lower = rep(0, dimensions),
       upper = rep(1, dimensions),
       vector = TRUE
-      ),
-    n.objectives = 2L
+    ),
+    n.objectives = 2L,
+    ref.point = c(11, 11)
   )
 }
 

@@ -86,7 +86,8 @@ makeDTLZ4Function = function(dimensions, n.objectives, alpha = 100) {
       upper = rep(1, dimensions),
       vector = TRUE
       ),
-    n.objectives = n.objectives
+    n.objectives = n.objectives,
+    ref.point = rep(11, n.objectives)
   )
 }
 
