@@ -133,6 +133,10 @@ print.smoof_function = function(x, ...) {
   catf("%s-objective function", n.objectives.text)
   if (isMultiobjective(x)) {
     catf("Number of objectives: %i", getNumberOfObjectives(x))
+    ref.point = getRefPoint(x)
+    if (!is.null(x)) {
+      catf("Reference point:      (%s)", collapse(ref.point, ", "))
+    }
   }
   catf("Name: %s", getName(x))
   description = getDescription(x)
@@ -140,7 +144,7 @@ print.smoof_function = function(x, ...) {
 
   catf("Tags: %s", collapse(getTags(x), sep = ", "))
   catf("Noisy: %s", as.character(isNoisy(x)))
-  catf("Minimize: %s", as.character(attr(x, "minimize")))
+  catf("Minimize: %s", collapse(shouldBeMinimized(x)))
   catf("Constraints: %s", as.character(hasConstraints(x)))
   catf("Number of parameters: %i", getNumberOfParameters(x))
   print(getParamSet(x))

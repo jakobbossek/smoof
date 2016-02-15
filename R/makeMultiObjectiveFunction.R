@@ -15,6 +15,8 @@
 #'   Default is the vector with all components set to \code{TRUE}.
 #' @template arg_vectorized
 #' @template arg_constraint_fn
+#' @param ref.point [\code{numeric}]\cr
+#'   Optional reference point in the objective space, e.g., for hypervolume computation.
 #' @return [\code{function}] Target function with additional stuff attached as attributes.
 #' @examples
 #' fn = makeMultiObjectiveFunction(
@@ -36,7 +38,8 @@ makeMultiObjectiveFunction = function(
   noisy = FALSE,
   minimize = rep(TRUE, n.objectives),
   vectorized = FALSE,
-  constraint.fn = NULL) {
+  constraint.fn = NULL,
+  ref.point = NULL) {
 
   smoof.fn = makeObjectiveFunction(
     name, id, description, fn,
@@ -44,6 +47,11 @@ makeMultiObjectiveFunction = function(
     noisy, minimize, vectorized, constraint.fn
   )
 
+  if (!is.null(ref.point)) {
+    assertNumeric(ref.point, len = n.objectives, any.missing = FALSE, all.missing = FALSE)
+  }
+
+  smoof.fn = setAttribute(smoof.fn, "ref.point", ref.point)
   class(smoof.fn) = c("smoof_multi_objective_function", class(smoof.fn))
 
   return(smoof.fn)

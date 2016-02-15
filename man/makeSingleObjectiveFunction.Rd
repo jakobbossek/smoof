@@ -11,7 +11,7 @@ makeSingleObjectiveFunction(name = NULL, id = NULL, description = NULL,
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
-Optional function name. Used for the title of plots for example.}
+Function name. Used for the title of plots for example.}
 
 \item{id}{[\code{character(1)} | \code{NULL}]\cr
 Optional short function identifier. If provided, this should be a short
