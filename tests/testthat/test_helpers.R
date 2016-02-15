@@ -22,13 +22,13 @@ test_that("hasTags works as expected", {
 })
 
 
-test_that("getLocalOptimum and getGlobalOptimum work as expected (on modified MPM2)", {
+test_that("getLocalOptimum and getGlobalOptimum work as expected on MPM2", {
   # check that hasTags works for smoof_functions
   n.peaks = c(1, 5, 30)
   dims = c(2, 3, 10)
   for (d in dims) {
-    funs = lapply(n.peaks, function(peaks) makeModifiedMPM2Function(n.peaks = peaks,
-      dimensions = d, topology = "funnel", seed = 1, rotated = TRUE, peakShape = "ellipse"))
+    funs = lapply(n.peaks, function(peaks) makeMPM2Function(n.peaks = peaks,
+      dimensions = d, topology = "funnel", seed = 1, rotated = TRUE, peak.shape = "ellipse"))
 
     for (i in seq_along(funs)) {
       fun = funs[[i]]

@@ -8,8 +8,7 @@ test_that("single-objective test function generators work", {
     all.methods = setdiff(all.methods, c("makeInternalObjectiveFunction",
       "makeMultiObjectiveFunction", "makeObjectiveFunction",
       "makeSingleObjectiveFunction", "makeBBOBFunction",
-      "makeUFFunction", "makeUFParamSet",
-      "makeMPM2Function", "makeModifiedMPM2Function"))
+      "makeUFFunction", "makeUFParamSet", "makeMPM2Function"))
     all.methods = sapply(all.methods, get)
     fun.generators = Filter(function(fun) inherits(fun, "smoof_generator"), all.methods)
 
@@ -65,25 +64,9 @@ test_that("Multiple peaks model 2 (MPM2) functions work", {
     for (dimension in c(1, 2, 5, 10)) {
       for (n.peaks in c(2, 5, 10)) {
         for (topology in c("funnel", "random")) {
-          fn = makeMPM2Function(n.peaks = n.peaks, dimension = dimension, topology = topology, seed = 123)
-          expect_is(fn, "smoof_single_objective_function")
-          y = fn(rep(0.1, dimension))
-          expect_true(is.numeric(y))
-        }
-      }
-    }
-  }
-})
-
-test_that("Multiple peaks model 2 (MPM2) functions work", {
-  # mpm2 only available for unix systems
-  if (BBmisc::isUnix()) {
-    for (dimension in c(1, 2, 5, 10)) {
-      for (n.peaks in c(2, 5, 10)) {
-        for (topology in c("funnel", "random")) {
           for (rotated in c(TRUE, FALSE)) {
-            for (peakShape in c("ellipse", "sphere")) {
-              fn = makeModifiedMPM2Function(n.peaks = n.peaks, dimension = dimension, topology = topology, seed = 123, rotated = rotated, peakShape = peakShape)
+            for (peak.shape in c("ellipse", "sphere")) {
+              fn = makeMPM2Function(n.peaks = n.peaks, dimension = dimension, topology = topology, seed = 123, rotated = rotated, peak.shape = peak.shape)
               expect_is(fn, "smoof_single_objective_function")
               y = fn(rep(0.1, dimension))
               expect_true(is.numeric(y))          
