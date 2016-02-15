@@ -2,6 +2,13 @@ smoof v1.2.0.9000 (Release data: xxxx-xx-xx)
 ============
 
 * Modified: function name is optional now
+* Added optional reference point ref.point for multi-objective functions
+  - Reference point for ZDT functions is (11, 11)
+  - Reference point for DTLZ function family is r = (11, ...,  11) with #r = #objectives
+  - Added getter getRefPoint
+* Added possibility to pass the true mean function of a noisy function, i.e., the
+  "unnoisy" via the smoof parameter fn.mean
+  - Added getter getMeanFunction
 
 smoof v1.2 (Release data: 2016-01-21)
 ============
