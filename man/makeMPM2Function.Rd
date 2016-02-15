@@ -4,7 +4,8 @@
 \alias{makeMPM2Function}
 \title{Generator for function with multiple peaks following the multiple peaks model 2.}
 \usage{
-makeMPM2Function(n.peaks, dimensions, topology, seed)
+makeMPM2Function(n.peaks, dimensions, topology, seed, rotated = TRUE,
+  peak.shape = "ellipse")
 }
 \arguments{
 \item{n.peaks}{[\code{integer(1)}]\cr
@@ -13,11 +14,18 @@ Desired number of peaks, i. e., number of (local) optima.}
 \item{dimensions}{[\code{integer(1)}]\cr
 Size of corresponding parameter space.}
 
-\item{topology}{[\code{integer(1)}]\cr
+\item{topology}{[\code{character(1)}]\cr
 Type of topology. Possible values are \dQuote{random} and \dQuote{funnel}.}
 
 \item{seed}{[\code{integer(1)}]\cr
 Seed for the random numbers generator.}
+
+\item{rotated}{[\code{logical(1)}]\cr
+Should the peak shapes be rotated? This parameter is only relevant in case
+of elliptically shaped peaks.}
+
+\item{peak.shape}{[\code{character(1)}]\cr
+Shape of peak(s). Possible values are \dQuote{ellipse} and \dQuote{sphere}.}
 }
 \value{
 [\code{smoof_single_objective_function}]
@@ -27,20 +35,21 @@ Generator for function with multiple peaks following the multiple peaks model 2.
 }
 \examples{
 \dontrun{
-fn = makeMPM2Function(n.peaks = 10L, dimensions = 2L, topology = "funnel", seed = 123)
+fn = makeMPM2Function(n.peaks = 10L, dimensions = 2L,
+  topology = "funnel", seed = 123, rotated = TRUE, peak.shape = "ellipse")
 if (require(plot3D)) {
   plot3D(fn)
 }
 }
 \dontrun{
-fn = makeMPM2Function(n.peaks = 5L, dimensions = 2L, topology = "random", seed = 134)
+fn = makeMPM2Function(n.peaks = 5L, dimensions = 2L,
+  topology = "random", seed = 134, rotated = FALSE)
 plot(fn, render.levels = TRUE)
 }
 
 }
 \author{
-\R interface by Jakob Bossek. Original python code
-provided by the Simon Wessing.
+\R interface by Jakob Bossek. Original python code provided by the Simon Wessing.
 }
 \references{
 See the \href{https://ls11-www.cs.uni-dortmund.de/_media/techreports/tr15-01.pdf}{technical report}
