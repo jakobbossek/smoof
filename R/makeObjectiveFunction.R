@@ -18,6 +18,9 @@
 #   Number of objectives of the multi-objective function.
 # @param noisy [\code{logical(1)}]\cr
 #   Is the function noisy? Defaults to \code{FALSE}.
+# @param fn.mean [\code{function}]\cr
+#   Optional true mean function in case of a noisy objective function. This functions should
+#   have the same mean as \code{fn}.
 # @param minimize [\code{logical}]\cr
 #   Logical vector of length \code{n.objectives} indicating which objectives shall
 #   be minimzed/maximized.
@@ -39,6 +42,7 @@ makeObjectiveFunction = function(
   par.set,
   n.objectives,
   noisy = FALSE,
+  fn.mean = NULL,
   minimize = rep(TRUE, n.objectives),
   vectorized = FALSE,
   constraint.fn = NULL) {
@@ -56,11 +60,20 @@ makeObjectiveFunction = function(
 
   if (has.simple.signature) {
     fn = makeInternalObjectiveFunction(fn)
+    if (!is.null(fn.mean)) {
+      fn.mean = makeInternalObjectiveFunction(fn)
+    }
   }
 
   assertClass(par.set, "ParamSet")
   assertInt(n.objectives, na.ok = FALSE, lower = 1L)
   assertFlag(noisy, na.ok = FALSE)
+  if (!noisy && !is.null(fn.mean)) {
+    stopf("Setting fn.mean only makes sense for noisy functions.")
+  }
+  if (!is.null(fn.mean)) {
+    assertFunction(fn.mean)
+  }
   assertLogical(minimize, len = n.objectives, any.missing = FALSE, all.missing = FALSE)
   assertFlag(vectorized, na.ok = FALSE)
 
@@ -79,6 +92,7 @@ makeObjectiveFunction = function(
     description = coalesce(description, ""),
     par.set = par.set,
     noisy = noisy,
+    fn.mean = fn.mean,
     minimize = minimize,
     vectorized = vectorized,
     constraint.fn = constraint.fn,

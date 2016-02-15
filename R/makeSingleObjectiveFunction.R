@@ -7,6 +7,7 @@
 #' @template arg_has_simple_signature
 #' @template arg_par_set
 #' @template arg_noisy
+#' @template arg_fn_mean
 #' @template arg_minimize
 #' @template arg_vectorized
 #' @template arg_constraint_fn
@@ -71,6 +72,7 @@ makeSingleObjectiveFunction = function(
   vectorized = FALSE,
   par.set,
   noisy = FALSE,
+  fn.mean = NULL,
   minimize = TRUE,
   constraint.fn = NULL,
   tags = character(0),
@@ -80,7 +82,7 @@ makeSingleObjectiveFunction = function(
   smoof.fn = makeObjectiveFunction(
     name, id, description, fn,
     has.simple.signature, par.set, 1L,
-    noisy, minimize, vectorized, constraint.fn
+    noisy, fn.mean, minimize, vectorized, constraint.fn
   )
   n.params = getNumberOfParameters(smoof.fn)
 

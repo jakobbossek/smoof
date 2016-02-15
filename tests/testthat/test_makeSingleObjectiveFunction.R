@@ -102,3 +102,21 @@ test_that("variants of global.opt.params work well", {
 	fn = generateTestFunction(data.frame(x1 = c(1, 1, -1), x2 = c(1, -1, -1)))
 	expectIsCorrect(fn, n.opts = 3L)
 })
+
+test_that("noisy functions work well", {
+  fn = makeSingleObjectiveFunction(
+    fn = function(x) {
+      sum(x^2) + rnorm(1, sd = 0.01)
+    },
+    fn.mean = function(x) {
+      sum(x^2)
+    },
+    noisy = TRUE,
+    par.set = makeNumericParamSet("x", len = 1L, lower = -5, upper = 5)
+  )
+  expect_true(isNoisy(fn))
+  expect_true(is.function(attr(fn, "fn.mean")))
+  expect_true(is.function(attr(fn, "fn")))
+  fn.mean = getMeanFunction(fn)
+  expect_true(is.numeric(sapply(runif(10), fn.mean)))
+})

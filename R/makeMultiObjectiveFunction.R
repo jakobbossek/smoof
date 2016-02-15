@@ -9,6 +9,7 @@
 #' @param n.objectives [\code{integer(1)}]\cr
 #'   Number of objectives of the multi-objective function.
 #' @template arg_noisy
+#' @template arg_fn_mean
 #' @param minimize [\code{logical}]\cr
 #'   Logical vector of length \code{n.objectives} indicating if the corresponding
 #'   objectives shall be minimized or maximized.
@@ -36,6 +37,7 @@ makeMultiObjectiveFunction = function(
   par.set,
   n.objectives,
   noisy = FALSE,
+  fn.mean = NULL,
   minimize = rep(TRUE, n.objectives),
   vectorized = FALSE,
   constraint.fn = NULL,
@@ -44,7 +46,7 @@ makeMultiObjectiveFunction = function(
   smoof.fn = makeObjectiveFunction(
     name, id, description, fn,
     has.simple.signature, par.set, n.objectives,
-    noisy, minimize, vectorized, constraint.fn
+    noisy, fn.mean, minimize, vectorized, constraint.fn
   )
 
   if (!is.null(ref.point)) {
