@@ -9,6 +9,7 @@ smoof v1.2.0.9000 (Release data: xxxx-xx-xx)
 * Added possibility to pass the true mean function of a noisy function, i.e., the
   "unnoisy" via the smoof parameter fn.mean
   - Added getter getMeanFunction
+* makeMPM2Function now has additional parameters rotated and peak.shape
 
 smoof v1.2 (Release data: 2016-01-21)
 ============
