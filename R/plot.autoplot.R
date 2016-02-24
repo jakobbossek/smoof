@@ -43,6 +43,49 @@ autoplot.smoof_function = function(x,
   assertFlag(render.contours, na.ok = FALSE)
   assertFlag(use.facets, na.ok = FALSE)
 
+  par.set = getParamSet(x)
+  par.types = getParamTypes(par.set)
+  par.types.count = getParamTypeCounts(par.set)
+  pars = par.set$pars
+  par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+  n.pars = length(pars)
+
+  if (n.pars > 4L) {
+    stopf("At most 4D funtions with mixed parameter spaces can be visualized.")
+  }
+
+  if (par.types.count$numeric > 2 || (par.types.count$discrete + par.types.count$logical) > 2L) {
+    stopf("Not possible to plot this combination of parameters.")
+  }
+
+  grid = generateDataframeForGGPlot2(x)
+
+  # determine which params to use for facetting and which ones for the axis
+  numeric.idx = which(par.types == "numeric")
+  discrete.idx = which(par.types %in% c("discrete", "logical"))
+  n.numeric = length(numeric.idx)
+  n.discrete = length(discrete.idx)
+
+  if (n.numeric == 1L) {
+    pl = ggplot(grid, aes_string(x = par.names[numeric.idx], y = "y")) + geom_line()
+  }
+  if (n.numeric == 2L) {
+    pl = ggplot(grid, aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]])) + stat_contour(aes_string(z = "y", fill = NULL), colour = "gray", alpha = 0.8)
+  }
+
+  # split with facets if discrete values exist
+  if (n.discrete > 0L) {
+    if (n.discrete == 2L) {
+      formula = as.formula(sprintf("%s ~ %s", par.names[discrete.idx[1L]], par.names[discrete.idx[2L]]))
+    } else {
+      formula = as.formula(sprintf(". ~ %s", par.names[discrete.idx]))
+    }
+    pl = pl + facet_grid(formula)
+  }
+  return(pl)
+
+  stop("autoplot")
+
   mapping = list("1Dnumeric" = autoplot1DNumeric, "2Dnumeric" = autoplot2DNumeric, "2DMixed" = autoplot2DMixed)
   autoPlotFun = getInternalPlotFunction(x, mapping = mapping)
 
@@ -54,6 +97,62 @@ autoplot.smoof_function = function(x,
     use.facets = use.facets,
     ...
   )
+}
+
+generateDataframeForGGPlot2 = function(fun) {
+  par.set = getParamSet(fun)
+  par.types = getParamTypes(par.set)
+  par.types.count = getParamTypeCounts(par.set)
+  pars = par.set$pars
+  par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+  n.pars = length(pars)
+
+  # build data.frame
+  values = lapply(seq(n.pars), function(i) {
+    the.par = pars[[i]]
+    par.name = names(pars)[i]
+    par.type = par.types[i]
+    values = NULL
+    if (par.type == "numeric") {
+      values = seq(the.par$lower, the.par$upper, length.out = 50L)
+    } else if (par.type == "numericvector") {
+      values = lapply(1:the.par$len, function(i) {
+        seq(the.par$lower[i], the.par$upper[i], length.out = 50L)
+      })
+    } else if (par.type == "discrete") {
+      values = unlist(the.par$values, use.names = FALSE)
+    } else if (par.type == "logical") {
+      values = as.character(unlist(the.par$values, use.names = FALSE))
+    }
+    return(values)
+  })
+
+  flatten = function(x) {
+    if (is.list(x)) {
+      Reduce(c, lapply(x, flatten))
+    } else {
+      list(x)
+    }
+  }
+
+  values = flatten(values)
+
+  grid = do.call(expand.grid, values)
+  print("====")
+  print(head(grid))
+  print(colnames(grid))
+  print(getParamIds(par.set, with.nr = TRUE, repeated = TRUE))
+  colnames(grid) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+
+  # now compute the function values and append
+  #FIXME: check if one of the parameters is named "y"
+  #FIXME: apply converts each line to character!
+  grid$y = NA
+  for (i in 1:nrow(grid)) {
+    grid[i, "y"] = fun(x = as.list(grid[i, ]))
+  }
+
+  return(grid)
 }
 
 #' @export
@@ -70,7 +169,7 @@ autoplot.smoof_wrapped_function = function(x,
   )
 }
 
-autoplot1DNumeric = function(x, show.optimum, main, render.contours, render.levels, use.facets, ...) {
+autoplot1DNumeric = function(x, data, show.optimum, main, render.contours, render.levels, use.facets, ...) {
   # extract data
   par.set = getParamSet(x)
   par.name = getParamIds(par.set)

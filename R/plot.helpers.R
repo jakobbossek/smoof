@@ -45,9 +45,9 @@ checkPlotFunParams = function(x) {
   n.params = getNumberOfParameters(x)
   par.set = getParamSet(x)
 
-  if (n.params > 2L) {
-    stopf("Only function with up to 2 parameters can be plotted, but your function has %i", n.params)
-  }
+  # if (n.params > 2L) {
+  #   stopf("Only function with up to 2 parameters can be plotted, but your function has %i", n.params)
+  # }
 
   if (isMultiobjective(x)) {
     stopf("Plotting of multiobjective functions not possible.")
