@@ -17,6 +17,7 @@ test_that("makeSingleObjectiveFunction", {
 		fn = fn,
 		par.set = par.set,
 		global.opt.params = list(x1 = 0, x2 = 0),
+    local.opt.params = data.frame(x1 = c(-2, 1), x2 = c(3, 4)),
 		constraint.fn = function(x) {
 			sum(x) < 1
 		}
@@ -46,8 +47,15 @@ test_that("makeSingleObjectiveFunction", {
 	expect_equal(global.optimum[["value"]], 0)
   expect_equal(global.optimum[["is.minimum"]], TRUE)
 
+  local.optima = getLocalOptimum(fn)
+  expect_is(local.optima, "list")
+  expect_equal(nrow(local.optima$param), 2L)
+  expect_true(setequal(local.optima$value, c(13, 17)))
+  expect_equal(local.optima[["is.minimum"]], TRUE)
+
 	# global opt params out of bounds
 	expect_error(makeSingleObjectiveFunction(name, fn, par.set = par.set, global.opt.params = list(x1 = -10, x2 = 100)))
+
 	# params not named properly
 	expect_error(makeSingleObjectiveFunction(name, fn, par.set = par.set, global.opt.params = list(alice = 0, bob = 0)))
 

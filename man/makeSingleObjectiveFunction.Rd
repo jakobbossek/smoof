@@ -7,7 +7,8 @@
 makeSingleObjectiveFunction(name = NULL, id = NULL, description = NULL,
   fn, has.simple.signature = TRUE, vectorized = FALSE, par.set,
   noisy = FALSE, fn.mean = NULL, minimize = TRUE, constraint.fn = NULL,
-  tags = character(0), global.opt.params = NULL, global.opt.value = NULL)
+  tags = character(0), global.opt.params = NULL, global.opt.value = NULL,
+  local.opt.params = NULL, local.opt.values = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
@@ -72,6 +73,14 @@ for reasons of consistency.}
 \item{global.opt.value}{[\code{numeric(1)} | \code{NULL}]\cr
 Global optimum value if known. Default is \code{NULL}, which means unknown. If
 only the \code{global.opt.params} are passed, the value is computed automatically.}
+
+\item{local.opt.params}{[\code{list} | \code{numeric} | \code{data.frame} | \code{matrix} | \code{NULL}]\cr
+Default is \code{NULL}, which means the function has no local optima or they are
+unknown. For details see the description of \code{global.opt.params}.}
+
+\item{local.opt.values}{[\code{numeric} | \code{NULL}]\cr
+Value(s) of local optima. Default is \code{NULL}, which means unknown. If
+only the \code{local.opt.params} are passed, the values are computed automatically.}
 }
 \value{
 [\code{function}] Objective function with additional stuff attached as attributes.

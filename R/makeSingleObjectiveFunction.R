@@ -26,6 +26,12 @@
 #' @param global.opt.value [\code{numeric(1)} | \code{NULL}]\cr
 #'   Global optimum value if known. Default is \code{NULL}, which means unknown. If
 #'   only the \code{global.opt.params} are passed, the value is computed automatically.
+#' @param local.opt.params [\code{list} | \code{numeric} | \code{data.frame} | \code{matrix} | \code{NULL}]\cr
+#'   Default is \code{NULL}, which means the function has no local optima or they are
+#'   unknown. For details see the description of \code{global.opt.params}.
+#' @param local.opt.values [\code{numeric} | \code{NULL}]\cr
+#'   Value(s) of local optima. Default is \code{NULL}, which means unknown. If
+#'   only the \code{local.opt.params} are passed, the values are computed automatically.
 #' @return [\code{function}] Objective function with additional stuff attached as attributes.
 #' @examples
 #' library(ggplot2)
@@ -77,51 +83,45 @@ makeSingleObjectiveFunction = function(
   constraint.fn = NULL,
   tags = character(0),
   global.opt.params = NULL,
-  global.opt.value = NULL) {
+  global.opt.value = NULL,
+  local.opt.params = NULL,
+  local.opt.values = NULL) {
 
   smoof.fn = makeObjectiveFunction(
     name, id, description, fn,
     has.simple.signature, par.set, 1L,
     noisy, fn.mean, minimize, vectorized, constraint.fn
   )
-  n.params = getNumberOfParameters(smoof.fn)
 
   #FIXME: currently we offer this only for single objective functions
   assertSubset(tags, choices = getAvailableTags(), empty.ok = TRUE)
 
-  if (!is.null(global.opt.params)) {
-    if (!testDataFrame(global.opt.params)) {
-      # single numeric only value passed
-      if (testNumeric(global.opt.params, len = n.params, any.missing = FALSE)) {
-        global.opt.params = as.data.frame(t(global.opt.params))
-      } else if (testList(global.opt.params, len = n.params, any.missing = FALSE)) {
-        global.opt.params = as.data.frame(global.opt.params)
-      } else if (testMatrix(global.opt.params)) {
-        global.opt.params = as.data.frame(global.opt.params)
-      } else {
-        stopf("Parameter(s) for known global optima must be passed as vector, list, matrix or data.frame.")
-      }
-      colnames(global.opt.params) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
-    }
-    assertDataFrame(global.opt.params, ncols = n.params, col.names = "unique")
+  global.opt.params = preprocessOptima(global.opt.params, smoof.fn, par.set, "global")
+  local.opt.params = preprocessOptima(local.opt.params, smoof.fn, par.set, "local")
 
-    # check if the passed parameters are indeed within the feasible region
-    lapply(1:nrow(global.opt.params), function(i) {
-      if (!isFeasible(par.set, ParamHelpers::dfRowToList(global.opt.params, par.set, i))) {
-        stopf("Global optimum out of bounds.")
-      }
-    })
-    if (!setequal(getParamIds(par.set, repeated = TRUE, with.nr = TRUE), colnames(global.opt.params))) {
-      stopf("Names of values and parameter names do not match.")
-    }
-  }
   if (is.null(global.opt.value) && !is.null(global.opt.params)) {
     global.opt.value = smoof.fn(global.opt.params[1, ])
+  }
+
+  if (!is.null(global.opt.params) && !is.null(global.opt.value)) {
     assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
+  }
+
+  if (is.null(local.opt.values) && !is.null(local.opt.params)) {
+    print(local.opt.params)
+    print(par.set)
+    local.opt.params2 = dfRowsToList(df = local.opt.params, par.set = par.set, enforce.col.types = TRUE)
+    local.opt.values = sapply(local.opt.params2, smoof.fn)
+  }
+
+  if (!is.null(local.opt.params) && !is.null(local.opt.values)) {
+    assertNumeric(local.opt.values, len = nrow(local.opt.params), finite = TRUE, any.missing = FALSE, all.missing = FALSE)
   }
 
   smoof.fn = setAttribute(smoof.fn, "global.opt.params", global.opt.params)
   smoof.fn = setAttribute(smoof.fn, "global.opt.value", global.opt.value)
+  smoof.fn = setAttribute(smoof.fn, "local.opt.params", local.opt.params)
+  smoof.fn = setAttribute(smoof.fn, "local.opt.value", local.opt.values)
   smoof.fn = setAttribute(smoof.fn, "tags", tags)
 
   class(smoof.fn) = c("smoof_single_objective_function", class(smoof.fn))
@@ -155,4 +155,36 @@ print.smoof_function = function(x, ...) {
     catf("Global optimum objective value of %.4f at", opt$value)
     print(opt$param)
   }
+}
+
+preprocessOptima = function(opt.params, fn, par.set, type) {
+  n.params = getNumberOfParameters(fn)
+
+  if (!is.null(opt.params)) {
+    if (!testDataFrame(opt.params)) {
+      # single numeric only value passed
+      if (testNumeric(opt.params, len = n.params, any.missing = FALSE)) {
+        opt.params = as.data.frame(t(opt.params))
+      } else if (testList(opt.params, len = n.params, any.missing = FALSE)) {
+        opt.params = as.data.frame(opt.params)
+      } else if (testMatrix(opt.params)) {
+        opt.params = as.data.frame(opt.params)
+      } else {
+        stopf("Parameter(s) for known %s optima must be passed as vector, list, matrix or data.frame.", type)
+      }
+      colnames(opt.params) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+    }
+    assertDataFrame(opt.params, ncols = n.params, col.names = "unique")
+
+    # check if the passed parameters are indeed within the feasible region
+    lapply(1:nrow(opt.params), function(i) {
+      if (!isFeasible(par.set, ParamHelpers::dfRowToList(opt.params, par.set, i))) {
+        stopf("%s optimum out of bounds.", type)
+      }
+    })
+    if (!setequal(getParamIds(par.set, repeated = TRUE, with.nr = TRUE), colnames(opt.params))) {
+      stopf("Names of passed %s optimum parameters do not match names in parameter set.", type)
+    }
+  }
+  return(opt.params)
 }
