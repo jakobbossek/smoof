@@ -50,16 +50,6 @@ autoplot.smoof_function = function(x,
   par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
   n.pars = length(pars)
 
-  if (n.pars > 4L) {
-    stopf("At most 4D funtions with mixed parameter spaces can be visualized.")
-  }
-
-  if (par.types.count$numeric > 2 || (par.types.count$discrete + par.types.count$logical) > 2L) {
-    stopf("Not possible to plot this combination of parameters.")
-  }
-
-  grid = generateDataframeForGGPlot2(x)
-
   # determine IDs of numeric and factor-like parameters
   par.types = getParamTypes(par.set, df.cols = TRUE, with.nr = TRUE)
   numeric.idx = which(par.types == "numeric")
@@ -69,11 +59,38 @@ autoplot.smoof_function = function(x,
   n.numeric = length(numeric.idx)
   n.discrete = length(discrete.idx)
 
+  if (n.pars > 4L) {
+    stopf("At most 4D funtions with mixed parameter spaces can be visualized.")
+  }
+
+  if (par.types.count$numeric > 2 || (par.types.count$discrete + par.types.count$logical) > 2L) {
+    stopf("Not possible to plot this combination of parameters.")
+  }
+
+  if (n.numeric > 1L && !(render.levels || render.contours)) {
+    stopf("For functions with 2 numeric parameters one of render.levels or render.contours needs to be TRUE.")
+  }
+
+  grid = generateDataframeForGGPlot2(x)
+
   if (n.numeric == 1L) {
     pl = ggplot(grid, aes_string(x = par.names[numeric.idx], y = "y")) + geom_line()
   }
   if (n.numeric == 2L) {
-    pl = ggplot(grid, aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]])) + stat_contour(aes_string(z = "y", fill = NULL), colour = "gray", alpha = 0.8)
+
+    pl = ggplot(grid, aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]]))
+    if (render.levels) {
+      # nice color palette for render.levels
+      # see http://learnr.wordpress.com/2009/07/20/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-part-6/
+      brewer.div = colorRampPalette(brewer.pal(11, "Spectral"), interpolate = "spline")
+
+      pl = pl + geom_tile(aes_string(fill = "y"))
+      pl = pl + scale_fill_gradientn(colours = brewer.div(200))
+      pl = pl + theme(legend.position = "top")
+    }
+    if (render.contours) {
+      pl = pl + stat_contour(aes_string(z = "y", fill = NULL), colour = "gray", alpha = 0.8)
+    }
   }
 
   # split with facets if discrete values exist
@@ -85,6 +102,7 @@ autoplot.smoof_function = function(x,
     }
     pl = pl + facet_grid(formula)
   }
+
   return(pl)
 
   stop("autoplot")
