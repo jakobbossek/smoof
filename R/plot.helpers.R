@@ -37,9 +37,7 @@ generateDataframeForGGPlot2 = function(fun, length.out = 50L) {
   # extract a bunch of parameter information
   par.set = getParamSet(fun)
   par.types = getParamTypes(par.set)
-  par.types.count = getParamTypeCounts(par.set)
   pars = par.set$pars
-  par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
   n.pars = length(pars)
 
   # build data.frame
@@ -47,7 +45,7 @@ generateDataframeForGGPlot2 = function(fun, length.out = 50L) {
   # combinations, e.g., {numeric, discrete}, {numeric, discrete, logical},
   # {discretevector, numericvector}, ...
   # Note: values is a list of lists
-  values = lapply(seq(n.pars), function(i) {
+  values = lapply(1:length(pars), function(i) {
     the.par = pars[[i]]
     par.name = names(pars)[i]
     par.type = par.types[i]
@@ -89,37 +87,14 @@ generateDataframeForGGPlot2 = function(fun, length.out = 50L) {
 
   # finally build the grid
   grid = do.call(expand.grid, values)
-  colnames(grid) = par.names
+  colnames(grid) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
 
   # now compute the function values and append
   #FIXME: check if one of the parameters is named "y"
-  #FIXME: apply converts each line to character!
-  grid$y = NA
-  par.names2 = getParamIds(par.set, with.nr = FALSE, repeated = TRUE)
-  par.types2 = getParamTypes(par.set, df.cols = TRUE, with.nr = TRUE)
-  for (i in 1:nrow(grid)) {
-    # transform i-th row to a named list of vectors
-    # as.list is not sufficient since we need to handle vector params
-    x = list()
-    for (j in 1:length(par.names2)) {
-      tmp = grid[i, j]
-      # since there are factors only in the generated grid we need to convert
-      # to the corresponding type by hand here.
-      if (par.types2[j] == "logical") {
-        tmp = as.logical(tmp)
-      }
-      if (par.types2[j] == "factor") {
-        tmp = as.character(tmp)
-      }
-      # either create the correspsonding list element or extend it
-      if (is.null(x[[par.names2[j]]])) {
-        x[[par.names2[j]]] = tmp
-      } else {
-        x[[par.names2[j]]] = c(x[[par.names2[j]]], tmp)
-      }
-    }
-    grid[i, "y"] = fun(x = x)
-  }
+
+  grid2 = dfRowsToList(par.set = par.set, df = grid, enforce.col.types = TRUE)
+  grid[, "y"] = sapply(grid2, fun)
+
   return(grid)
 }
 
