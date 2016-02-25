@@ -1,3 +1,11 @@
+smoof v1.4 (Release data: xxxx-xx-xx)
+============
+
+* overworked and refactored autoplot functions
+  * dropped use.facets parameter (always use facets now if discrete parameters exist)
+  * We now support mixed functions with up to two numeric params (or one numeric vector
+    param of length 2) and up to 2 discrete/logical (or a corresponding vector param)
+
 smoof v1.3 (Release data: 2016-02-23)
 ============
 
