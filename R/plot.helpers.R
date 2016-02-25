@@ -1,3 +1,31 @@
+# Get data.frame of optima.
+#
+# Returns data frame of global / local optima for ggplot.
+# @param fn [\code{smoof_function}]\cr
+#   Smoof function.
+# @return [\code{data.frame}]
+getOptimaDf = function(fn) {
+  df = data.frame()
+  # local optima first since the global opt is a local opt as well and
+  # would thus not be visible in the plot
+  if (hasLocalOptimum(fn)) {
+    loc.opt = getLocalOptimum(fn)
+    loc.opt = cbind(loc.opt$params, data.frame(y = loc.opt$values, optima = rep("local", length(loc.opt$values))))
+    df = rbind(df, loc.opt)
+  }
+  if (hasGlobalOptimum(fn)) {
+    glob.opt = getGlobalOptimum(fn)
+    glob.opt = cbind(glob.opt$param, data.frame(y = rep(glob.opt$value, nrow(glob.opt$param)), optima = rep("global", nrow(glob.opt$param))))
+    df = rbind(df, glob.opt)
+  }
+  if (nrow(df) == 0) {
+    return(NULL)
+  }
+  df$optima = as.factor(df$optima)
+  return(df)
+}
+
+
 # Utility function.
 #
 # Generates 'gg-plotable' data.frame.

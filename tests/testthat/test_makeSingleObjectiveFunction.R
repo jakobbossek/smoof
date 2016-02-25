@@ -39,6 +39,7 @@ test_that("makeSingleObjectiveFunction", {
 	expect_true(hasOtherConstraints(fn))
 	expect_true(hasBoxConstraints(fn))
 	expect_true(hasGlobalOptimum(fn))
+  expect_true(hasLocalOptimum(fn))
 	global.optimum = getGlobalOptimum(fn)
 	expect_true(!is.null(global.optimum))
 	expect_is(global.optimum, "list")

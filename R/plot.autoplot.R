@@ -134,7 +134,6 @@ autoplot.smoof_function = function(x,
 
       pl = pl + geom_tile(aes_string(fill = "y"))
       pl = pl + scale_fill_gradientn(colours = brewer.div(200))
-      pl = pl + theme(legend.position = "top")
     }
     if (render.contours) {
       pl = pl + stat_contour(aes_string(z = "y", fill = NULL), colour = "gray", alpha = 0.8)
@@ -158,21 +157,24 @@ autoplot.smoof_function = function(x,
     pl = pl + facet_grid(formula, labeller = labeller(.rows = label_both, .cols = label_both))
   }
 
-  if (show.optimum && hasGlobalOptimum(x)) {
-    glob.opt = getGlobalOptimum(x)
-    glob.opt.df = glob.opt$param
-    glob.opt.df[, "y"] = as.numeric(glob.opt$value)
+  if (show.optimum && (hasGlobalOptimum(x) || hasLocalOptimum(x))) {
+    # get optima coordinates in a nice data.frame
+    opt.df = getOptimaDf(x)
     if (n.numeric == 1L) {
-      pl = pl + geom_point(glob.opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = "y"), colour = "tomato")
+      pl = pl + geom_point(opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = "y", colour = "optima", shape = "optima"))
     } else {
-      pl = pl + geom_point(glob.opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]]), colour = "tomato")
+      pl = pl + geom_point(opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]], colour = "optima", shape = "optima"))
+      # opt.df$y = round(opt.df$y, digits = 2L)
+      # pl = pl + geom_text(opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]], label = "y"))
     }
   }
-  #FIXME: need to consider local optima if finished
 
   # add title
   title = coalesce(main, getName(x))
   pl = pl + ggtitle(title)
+
+  # cosmetic stuff
+  pl = pl + theme(legend.position = "top")
 
   return(pl)
 }
