@@ -108,11 +108,11 @@ autoplot.smoof_function = function(x,
   n.numeric = length(numeric.idx)
   n.discrete = length(discrete.idx)
 
-  if (n.pars > 4L) {
+  if (n.pars > 6L) {
     stopf("At most 4D funtions with mixed parameter spaces can be visualized.")
   }
 
-  if (par.types.count$numeric > 2 || (par.types.count$discrete + par.types.count$logical) > 2L) {
+  if (par.types.count$numeric > 2L || (par.types.count$discrete + par.types.count$logical) > 4L) {
     stopf("Not possible to plot this combination of parameters.")
   }
 
@@ -143,12 +143,19 @@ autoplot.smoof_function = function(x,
 
   # split with facets if discrete values exist
   if (n.discrete > 0L) {
-    if (n.discrete == 2L) {
-      formula = as.formula(sprintf("%s ~ %s", par.names[discrete.idx[1L]], par.names[discrete.idx[2L]]))
-    } else {
+    if (n.discrete == 1L) {
       formula = as.formula(sprintf(". ~ %s", par.names[discrete.idx]))
+    } else if (n.discrete == 2L) {
+      formula = as.formula(sprintf("%s ~ %s", par.names[discrete.idx[1L]], par.names[discrete.idx[2L]]))
+    } else if (n.discrete == 3L) {
+      formula = as.formula(sprintf("%s ~ %s + %s", par.names[discrete.idx[1L]], par.names[discrete.idx[2L]], par.names[discrete.idx[3L]]))
+    } else if (n.discrete == 4L) {
+      formula = as.formula(sprintf("%s + %s ~ %s + %s", par.names[discrete.idx[1L]], par.names[discrete.idx[2L]], par.names[discrete.idx[3L]], par.names[discrete.idx[4L]]))
     }
-    pl = pl + facet_grid(formula)
+
+    # add labeller (otherwise we only see the values but the user has no clue
+    # about which values belong to which parameter)
+    pl = pl + facet_grid(formula, labeller = labeller(.rows = label_both, .cols = label_both))
   }
 
   if (show.optimum && hasGlobalOptimum(x)) {

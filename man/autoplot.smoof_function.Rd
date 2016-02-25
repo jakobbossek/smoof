@@ -5,7 +5,8 @@
 \title{Generate \code{\link[ggplot2]{ggplot}} object.}
 \usage{
 \method{autoplot}{smoof_function}(x, show.optimum = FALSE,
-  main = getName(x), render.levels = FALSE, render.contours = TRUE, ...)
+  main = getName(x), render.levels = FALSE, render.contours = TRUE,
+  length.out = 50L, ...)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr
@@ -27,6 +28,13 @@ For 2D numeric functions only: Should an image map be plotted? Default is
 \item{render.contours}{[\code{logical(1)}]\cr
 For 2D numeric functions only: Should contour lines be plotted? Default is
 \code{TRUE}.}
+
+\item{length.out}{[\code{integer(1)}]\cr
+Desired length of the sequence of equidistant values generated for numeric parameters.
+Higher values lead to more smooth resolution in particular if \code{render.levels}
+is \code{TRUE}. Avoid using a very high value here especially if the function
+at hand has many parameters.
+Default is 50.}
 
 \item{...}{[any]\cr
 Not used.}
