@@ -77,7 +77,6 @@ autoplot.smoof_function = function(x,
     pl = ggplot(grid, aes_string(x = par.names[numeric.idx], y = "y")) + geom_line()
   }
   if (n.numeric == 2L) {
-
     pl = ggplot(grid, aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]]))
     if (render.levels) {
       # nice color palette for render.levels
@@ -103,6 +102,19 @@ autoplot.smoof_function = function(x,
     pl = pl + facet_grid(formula)
   }
 
+
+  if (show.optimum && hasGlobalOptimum(x)) {
+    glob.opt = getGlobalOptimum(x)
+    glob.opt.df = glob.opt$param
+    glob.opt.df[, "y"] = as.numeric(glob.opt$value)
+    print(head(glob.opt.df))
+    if (n.numeric == 1L) {
+      pl = pl + geom_point(glob.opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = "y"), colour = "tomato")
+    } else {
+      pl = pl + geom_point(glob.opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]]), colour = "tomato")
+    }
+  }
+
   return(pl)
 
   stop("autoplot")
@@ -120,72 +132,6 @@ autoplot.smoof_function = function(x,
   )
 }
 
-generateDataframeForGGPlot2 = function(fun) {
-  par.set = getParamSet(fun)
-  par.types = getParamTypes(par.set)
-  par.types.count = getParamTypeCounts(par.set)
-  pars = par.set$pars
-  par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
-  n.pars = length(pars)
-
-  # build data.frame
-  values = lapply(seq(n.pars), function(i) {
-    the.par = pars[[i]]
-    par.name = names(pars)[i]
-    par.type = par.types[i]
-    values = NULL
-    if (par.type == "numeric") {
-      values = seq(the.par$lower, the.par$upper, length.out = 50L)
-    } else if (par.type == "numericvector") {
-      values = lapply(1:the.par$len, function(i) {
-        seq(the.par$lower[i], the.par$upper[i], length.out = 50L)
-      })
-    } else if (par.type == "discrete") {
-      values = unlist(the.par$values, use.names = FALSE)
-    } else if (par.type == "logical") {
-      values = as.character(unlist(the.par$values, use.names = FALSE))
-    }
-    return(values)
-  })
-
-  flatten = function(x) {
-    if (is.list(x)) {
-      Reduce(c, lapply(x, flatten))
-    } else {
-      list(x)
-    }
-  }
-
-  values = flatten(values)
-
-  grid = do.call(expand.grid, values)
-  print("====")
-  print(head(grid))
-  print(colnames(grid))
-  print(getParamIds(par.set, with.nr = TRUE, repeated = TRUE))
-  colnames(grid) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
-
-  # now compute the function values and append
-  #FIXME: check if one of the parameters is named "y"
-  #FIXME: apply converts each line to character!
-  grid$y = NA
-  par.names2 = getParamIds(par.set, with.nr = FALSE, repeated = TRUE)
-  for (i in 1:nrow(grid)) {
-    # transform i-th row to a named list of vectors
-    # as.list is not sufficient since we need to handle vector params
-    x = list()
-    for (j in 1:length(par.names2)) {
-      if (is.null(x[[par.names2[j]]])) {
-        x[[par.names2[j]]] = grid[i, j]
-      } else {
-        x[[par.names2[j]]] = c(x[[par.names2[j]]], grid[i, j])
-      }
-    }
-    grid[i, "y"] = fun(x = x)
-  }
-  return(grid)
-}
-
 #' @export
 autoplot.smoof_wrapped_function = function(x,
   show.optimum = FALSE,
@@ -198,90 +144,4 @@ autoplot.smoof_wrapped_function = function(x,
     use.facets,
     ...
   )
-}
-
-autoplot1DNumeric = function(x, data, show.optimum, main, render.contours, render.levels, use.facets, ...) {
-  # extract data
-  par.set = getParamSet(x)
-  par.name = getParamIds(par.set)
-
-  # get lower and upper bounds
-  lower = getBounds(bound = getLower(par.set), default = -10L)
-  upper = getBounds(bound = getUpper(par.set), default = 10L)
-
-  data = generateDataframeForGGPlot(fn = x, sequences = list(seq(lower, upper, by = 0.01)), par.set = par.set)
-
-  # finally draw data
-  pl = ggplot(data = data, mapping = aes_string(x = par.name, y = "y"))
-  if (isNoisy(x)) {
-    pl = pl + geom_point()
-  } else {
-    pl = pl + geom_line()
-    if (show.optimum && hasGlobalOptimum(x)) {
-      global.optimum = getGlobalOptimum(x)
-      pl = pl + geom_vline(xintercept = as.numeric(global.optimum$param), linetype = "dashed", colour = "grey")
-      point.data = data.frame(x = unlist(global.optimum$param), y = global.optimum$value)
-      colnames(point.data) = c(par.name, "y")
-      pl = pl + geom_point(data = point.data, colour = "tomato")
-    }
-  }
-  if (!is.na(main)) {
-    pl = pl + ggtitle(main)
-  }
-  pl = pl + xlab(par.name)
-  return(pl)
-}
-
-autoplot2DNumeric = function(x, show.optimum, main, render.contours, render.levels, use.facets, ...) {
-  if (!render.levels & !render.contours) {
-    stopf("At learst render.contours or render.levels needs to be TRUE. Otherwise we have no data to plot.")
-  }
-
-  # extract data
-  par.set = getParamSet(x)
-  par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
-
-  # get bounds
-  lower = getBounds(getLower(par.set), default = -10L)
-  upper = getBounds(getUpper(par.set), default = 10L)
-
-  # build up data frame
-  #For example double_sum with x_i in [-65.5, 65.5] takes about 20 minutes to produce the plot
-  sequence.x1 = seq(lower[1], upper[1], length.out = 150)
-  sequence.x2 = seq(lower[2], upper[2], length.out = 150)
-  sequences = list(sequence.x1, sequence.x2)
-  data = generateDataframeForGGPlot(x, sequences, par.set)
-
-  # nice color palette for render.levels
-  # see http://learnr.wordpress.com/2009/07/20/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-part-6/
-  brewer.div = colorRampPalette(brewer.pal(11, "Spectral"), interpolate = "spline")
-
-  # plot
-  pl = ggplot(data = data, mapping = aes_string(x = par.names[1], y = par.names[2]))
-  if (render.levels) {
-    pl = pl + geom_tile(aes_string(fill = "y"))
-    pl = pl + scale_fill_gradientn(colours = brewer.div(200))
-    pl = pl + theme(legend.position = "top")
-  }
-  if (render.contours) {
-    pl = pl + stat_contour(aes_string(z = "y", fill = NULL), colour = "gray", alpha = 0.8)
-  }
-
-  # show global optimum points
-  if (show.optimum && hasGlobalOptimum(x)) {
-    df.opt = getGlobalOptimum(x)$param
-    df.colnames = colnames(df.opt)
-    pl = pl + geom_point(data = df.opt, mapping = aes_string(x = df.colnames[1], y = df.colnames[2]), colour = "tomato")
-  }
-
-  # prettify
-  pl = pl + xlab(expression(x[1])) + ylab(expression(x[2]))
-
-  if (!is.na(main)) {
-    pl = pl + ggtitle(main)
-  }
-  # pl = pl + scale_x_continuous(expand = c(0,0))
-  # pl = pl + scale_y_continuous(expand = c(0,0))
-
-  return(pl)
 }
