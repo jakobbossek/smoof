@@ -61,8 +61,15 @@ autoplot.smoof_function = function(x,
   grid = generateDataframeForGGPlot2(x)
 
   # determine which params to use for facetting and which ones for the axis
-  numeric.idx = which(par.types == "numeric")
-  discrete.idx = which(par.types %in% c("discrete", "logical"))
+  numeric.par.set = filterParams(par.set, type = c("numeric", "numericvector"))
+  numeric.names = getParamIds(numeric.par.set, with.nr = TRUE, repeated = TRUE)
+
+  discrete.par.set = filterParams(par.set, type = c("logical", "logicalvector", "discrete", "discretevector"))
+  discrete.names = getParamIds(discrete.par.set, with.nr = TRUE, repeated = TRUE)
+
+  numeric.idx = which(par.names %in% numeric.names)
+  discrete.idx = which(par.names %in% discrete.names)
+
   n.numeric = length(numeric.idx)
   n.discrete = length(discrete.idx)
 
@@ -148,10 +155,20 @@ generateDataframeForGGPlot2 = function(fun) {
   #FIXME: check if one of the parameters is named "y"
   #FIXME: apply converts each line to character!
   grid$y = NA
+  par.names2 = getParamIds(par.set, with.nr = FALSE, repeated = TRUE)
   for (i in 1:nrow(grid)) {
-    grid[i, "y"] = fun(x = as.list(grid[i, ]))
+    # transform i-th row to a named list of vectors
+    # as.list is not sufficient since we need to handle vector params
+    x = list()
+    for (j in 1:length(par.names2)) {
+      if (is.null(x[[par.names2[j]]])) {
+        x[[par.names2[j]]] = grid[i, j]
+      } else {
+        x[[par.names2[j]]] = c(x[[par.names2[j]]], grid[i, j])
+      }
+    }
+    grid[i, "y"] = fun(x = x)
   }
-
   return(grid)
 }
 
@@ -251,51 +268,6 @@ autoplot2DNumeric = function(x, show.optimum, main, render.contours, render.leve
   }
   # pl = pl + scale_x_continuous(expand = c(0,0))
   # pl = pl + scale_y_continuous(expand = c(0,0))
-
-  return(pl)
-}
-
-autoplot2DMixed = function(x, show.optimum, main, render.contours, render.levels, use.facets, ...) {
-  # extract data
-  par.set = getParamSet(x)
-  par.types = getParamTypes(par.set)
-  par.names = getParamIds(par.set)
-
-  # which parameter is discrete/logical?
-  idx.factor = which(par.types %in% c("discrete", "logical"))
-  idx.numeric = setdiff(1:2, idx.factor)
-
-  # get names of factors respectively numeric parameters
-  name.factor = par.names[idx.factor]
-  name.numeric = par.names[idx.numeric]
-
-  # get bounds
-  lower = getBounds(bound = getLower(par.set), default = -10L)
-  upper = getBounds(bound = getUpper(par.set), default = 10L)
-
-  numeric.seq = seq(lower, upper, by = 0.01)
-  #FIXME: 'getValues' for Params?
-  factor.seq = unlist(par.set$pars[[idx.factor]]$values)
-  sequences = list(numeric.seq, factor.seq)
-  if (idx.factor == 1L) {
-    sequences = list(factor.seq, numeric.seq)
-  }
-
-  # build up data frame
-  data = generateDataframeForGGPlot(fn = x, sequences = sequences, par.set = par.set)
-
-  pl = ggplot(data = data, mapping = aes_string(x = name.numeric, y = "y"))
-  if (use.facets) {
-    pl = pl + geom_line()
-    pl = pl + facet_grid(reformulate(".", name.factor))
-  } else {
-    pl = pl + geom_line(aes_string(linetype = name.factor))
-  }
-
-  if (!is.na(main)) {
-    pl = pl + ggtitle(main)
-  }
-  pl = pl + theme(legend.position = "top")
 
   return(pl)
 }
