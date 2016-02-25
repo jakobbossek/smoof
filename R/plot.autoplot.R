@@ -77,7 +77,6 @@ autoplot.smoof_function = function(x,
   show.optimum = FALSE,
   main = getName(x),
   render.levels = FALSE, render.contours = TRUE,
-  use.facets = FALSE,
   ...) {
   checkPlotFunParams(x)
 
@@ -87,14 +86,12 @@ autoplot.smoof_function = function(x,
   assertFlag(render.contours, na.ok = FALSE)
 
   par.set = getParamSet(x)
-  par.types = getParamTypes(par.set)
+  par.types = getParamTypes(par.set, df.cols = TRUE, with.nr = TRUE)
   par.types.count = getParamTypeCounts(par.set)
-  pars = par.set$pars
   par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
-  n.pars = length(pars)
+  n.pars = length(par.names)
 
   # determine IDs of numeric and factor-like parameters
-  par.types = getParamTypes(par.set, df.cols = TRUE, with.nr = TRUE)
   numeric.idx = which(par.types == "numeric")
   discrete.idx = which(par.types %in% c("factor", "logical"))
 
@@ -145,19 +142,19 @@ autoplot.smoof_function = function(x,
     pl = pl + facet_grid(formula)
   }
 
-
   if (show.optimum && hasGlobalOptimum(x)) {
     glob.opt = getGlobalOptimum(x)
     glob.opt.df = glob.opt$param
     glob.opt.df[, "y"] = as.numeric(glob.opt$value)
-    print(head(glob.opt.df))
     if (n.numeric == 1L) {
       pl = pl + geom_point(glob.opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = "y"), colour = "tomato")
     } else {
       pl = pl + geom_point(glob.opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]]), colour = "tomato")
     }
   }
+  #FIXME: need to consider local optima if finished
 
+  # add title
   title = coalesce(main, getName(x))
   pl = pl + ggtitle(title)
 
@@ -172,7 +169,6 @@ autoplot.smoof_wrapped_function = function(x,
   ...) {
   autoplot(getWrappedFunction(x), show.optimum, main,
     render.levels, render.contours,
-    use.facets,
     ...
   )
 }

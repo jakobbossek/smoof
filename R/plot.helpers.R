@@ -44,6 +44,7 @@ generateDataframeForGGPlot2 = function(fun) {
   # This is kind of tedious since we want support for a large variety of parameters
   # combinations, e.g., {numeric, discrete}, {numeric, discrete, logical},
   # {discretevector, numericvector}, ...
+  # Note: values is a list of lists
   values = lapply(seq(n.pars), function(i) {
     the.par = pars[[i]]
     par.name = names(pars)[i]
@@ -71,6 +72,8 @@ generateDataframeForGGPlot2 = function(fun) {
     return(values)
   })
 
+  # convert a list of lists of objects into a list of objects, e.g.,
+  # list(a, b, list(c, d), e) |-> list(a, b, c, d, e)
   flatten = function(x) {
     if (is.list(x)) {
       Reduce(c, lapply(x, flatten))
@@ -79,14 +82,12 @@ generateDataframeForGGPlot2 = function(fun) {
     }
   }
 
+  # list of lists -> list of vectors
   values = flatten(values)
 
+  # finally build the grid
   grid = do.call(expand.grid, values)
-  print("====")
-  print(head(grid))
-  print(colnames(grid))
-  print(getParamIds(par.set, with.nr = TRUE, repeated = TRUE))
-  colnames(grid) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+  colnames(grid) = par.names
 
   # now compute the function values and append
   #FIXME: check if one of the parameters is named "y"
