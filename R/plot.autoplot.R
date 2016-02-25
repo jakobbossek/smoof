@@ -35,6 +35,12 @@
 #' @param render.contours [\code{logical(1)}]\cr
 #'   For 2D numeric functions only: Should contour lines be plotted? Default is
 #'   \code{TRUE}.
+#' @param length.out [\code{integer(1)}]\cr
+#'   Desired length of the sequence of equidistant values generated for numeric parameters.
+#'   Higher values lead to more smooth resolution in particular if \code{render.levels}
+#'   is \code{TRUE}. Avoid using a very high value here especially if the function
+#'   at hand has many parameters.
+#'   Default is 50.
 #' @param ... [any]\cr
 #'   Not used.
 #' @return [\code{\link[ggplot2]{ggplot}}]
@@ -77,11 +83,14 @@ autoplot.smoof_function = function(x,
   show.optimum = FALSE,
   main = getName(x),
   render.levels = FALSE, render.contours = TRUE,
+  length.out = 50L,
   ...) {
   checkPlotFunParams(x)
 
   assertFlag(show.optimum, na.ok = FALSE)
   assertString(main, na.ok = TRUE)
+  length.out = convertInteger(length.out)
+  assertInt(length.out, lower = 10L, na.ok = FALSE)
   assertFlag(render.levels, na.ok = FALSE)
   assertFlag(render.contours, na.ok = FALSE)
 
@@ -111,7 +120,7 @@ autoplot.smoof_function = function(x,
     stopf("For functions with 2 numeric parameters one of render.levels or render.contours needs to be TRUE.")
   }
 
-  grid = generateDataframeForGGPlot2(x)
+  grid = generateDataframeForGGPlot2(x, length.out)
 
   if (n.numeric == 1L) {
     pl = ggplot(grid, aes_string(x = par.names[numeric.idx], y = "y")) + geom_line()

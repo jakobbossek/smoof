@@ -105,7 +105,7 @@ test_that("autoplot functions for mixed functions (discrete/logical and numeric 
     ),
     has.simple.signature = FALSE
   )
-  pl = autoplot(fn)
+  pl = autoplot(fn, length.out = 40L)
   checkGGPlot(pl, title = getName(fn), "x1", "x2")
   checkGGFacets(pl, c("disc1", "disc2"))
 

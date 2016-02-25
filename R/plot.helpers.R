@@ -30,8 +30,10 @@ generateDataframeForGGPlot = function(fn, sequences, par.set) {
 #
 # @param fun [\code{smoof_function}]\cr
 #   Smoof function.
+# @param length.out [\code{integer(1)}]\cr
+#   Desired length of sequences for numeric parameters.
 # @return [\code{data.frame}]
-generateDataframeForGGPlot2 = function(fun) {
+generateDataframeForGGPlot2 = function(fun, length.out = 50L) {
   # extract a bunch of parameter information
   par.set = getParamSet(fun)
   par.types = getParamTypes(par.set)
@@ -51,10 +53,10 @@ generateDataframeForGGPlot2 = function(fun) {
     par.type = par.types[i]
     values = NULL
     if (par.type == "numeric") {
-      values = seq(the.par$lower, the.par$upper, length.out = 50L)
+      values = seq(the.par$lower, the.par$upper, length.out = length.out)
     } else if (par.type == "numericvector") {
       values = lapply(1:the.par$len, function(i) {
-        seq(the.par$lower[i], the.par$upper[i], length.out = 50L)
+        seq(the.par$lower[i], the.par$upper[i], length.out = length.out)
       })
     } else if (par.type == "discrete") {
       values = unlist(the.par$values, use.names = FALSE)
