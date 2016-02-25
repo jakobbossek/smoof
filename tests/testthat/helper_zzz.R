@@ -20,3 +20,9 @@ checkGGPlot = function(pl, title, xlab, ylab) {
   expect_equal(as.character(pl$labels$x), xlab)
   expect_equal(as.character(pl$labels$y), ylab)
 }
+
+checkGGFacets = function(pl, rows.cols.expected) {
+  expect_true(!is.null(pl$facet))
+  row.cols = c(names(pl$facet$rows), names(pl$facet$cols))
+  expect_true(setequal(row.cols, rows.cols.expected))
+}

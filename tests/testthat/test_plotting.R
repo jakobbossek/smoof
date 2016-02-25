@@ -45,7 +45,7 @@ test_that("autoplot function for 2D numeric functions works as expected", {
 				pl = autoplot(fn, render.levels = render.levels, render.contours = render.contours)
         plot(fn, render.levels = render.levels, render.contours = render.contours,
           show.optimum = TRUE, n.samples = 50L)
-				checkGGPlot(pl, title = getName(fn), "x[1]", "x[2]")
+				checkGGPlot(pl, title = getName(fn), "x1", "x2")
 			}
 		}
 	}
@@ -73,7 +73,7 @@ test_that("autoplot does not work for certain functions", {
 	expect_error(autoplot(fn2))
 })
 
-test_that("autoplot functions for 2D mixed functions (one discrete/logical and one numeric)", {
+test_that("autoplot functions for mixed functions (discrete/logical and numeric mixup)", {
 	fn.name = "Modified Sphere function"
 	fn = makeSingleObjectiveFunction(
 		name = fn.name,
@@ -87,16 +87,49 @@ test_that("autoplot functions for 2D mixed functions (one discrete/logical and o
 
 	library(ggplot2)
 	pl = autoplot(fn)
-	expect_is(pl, "gg")
-	expect_is(pl, "ggplot")
-	expect_equal(pl$labels$title, fn.name)
-	expect_null(pl$facet$rows)
+  checkGGPlot(pl, title = fn.name, "num1", "y")
+  checkGGFacets(pl, "disc1")
 
-	pl = autoplot(fn, use.facets = TRUE)
-	expect_is(pl, "gg")
-	expect_is(pl, "ggplot")
-	expect_equal(pl$labels$title, fn.name)
-	expect_true(!is.null(pl$facet$rows))
+  fn = makeSingleObjectiveFunction(
+    name = "2d numeric (vec), 2d discrete (vec)",
+    fn = function(x) {
+      if (x$disc[1] == "a") {
+        (x$x[1]^2 + x$x[2]^2) + 10 * as.numeric(x$disc[2] == "a")
+      } else {
+        x$x[1] + x$x[2] - 10 * as.numeric(x$disc[2] == "a")
+      }
+    },
+    par.set = makeParamSet(
+      makeDiscreteVectorParam("disc", len = 2L, values = c("a", "b")),
+      makeNumericVectorParam("x", len = 2L, lower = c(-5, -3), upper = c(5, 3))
+    ),
+    has.simple.signature = FALSE
+  )
+  pl = autoplot(fn)
+  checkGGPlot(pl, title = getName(fn), "x1", "x2")
+  checkGGFacets(pl, c("disc1", "disc2"))
+
+  fn = makeSingleObjectiveFunction(
+    name = "4d SOO function",
+    fn = function(x) {
+      if (x$disc1 == "a") {
+        (x$x1^2 + x$x2^2) + 10 * as.numeric(x$logic)
+      } else {
+        x$x1 + x$x2 - 10 * as.numeric(x$logic)
+      }
+    },
+    has.simple.signature = FALSE,
+    par.set = makeParamSet(
+      makeNumericParam("x1", lower = -5, upper = 5),
+      makeNumericParam("x2", lower = -3, upper = 3),
+      makeDiscreteParam("disc1", values = c("a", "b")),
+      makeLogicalParam("logic")
+    )
+  )
+  pl = autoplot(fn)
+  checkGGPlot(pl, title = getName(fn), "x1", "x2")
+  checkGGFacets(pl, c("disc1", "logic"))
+
 })
 
 test_that("3D plots work for two-dimensional funs", {
