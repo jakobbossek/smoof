@@ -69,6 +69,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
   local.opt.params = eval(rPython::python.call("getLocalOptimaParams", n.peaks, dimensions, topology, seed, rotated, peak.shape))
   if (n.peaks == 1)
     local.opt.params = list(local.opt.params)
+  local.opt.params = do.call(rbind, local.opt.params)
   global.opt.params = eval(rPython::python.call("getGlobalOptimaParams", n.peaks, dimensions, topology, seed, rotated, peak.shape))
 
   smoof.fn = makeSingleObjectiveFunction(
@@ -80,12 +81,10 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
       rPython::python.call("evaluateProblem", as.numeric(x), n.peaks, dimensions, topology, seed, rotated, peak.shape)
     },
     par.set = par.set,
-    tags = c("non-separable", "scalable", "continuous", "multimodal")
+    tags = c("non-separable", "scalable", "continuous", "multimodal"),
+    local.opt.params = local.opt.params,
+    global.opt.params = global.opt.params
   )
-  smoof.fn = setAttribute(smoof.fn, "local.opt.params", local.opt.params)
-  smoof.fn = setAttribute(smoof.fn, "local.opt.values", lapply(local.opt.params, smoof.fn))
-  smoof.fn = setAttribute(smoof.fn, "global.opt.params", global.opt.params)
-  smoof.fn = setAttribute(smoof.fn, "global.opt.value", smoof.fn(global.opt.params))
   return(smoof.fn)
 }
 

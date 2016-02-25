@@ -108,8 +108,8 @@ makeSingleObjectiveFunction = function(
   }
 
   if (is.null(local.opt.values) && !is.null(local.opt.params)) {
-    print(local.opt.params)
-    print(par.set)
+    # print(local.opt.params)
+    # print(par.set)
     local.opt.params2 = dfRowsToList(df = local.opt.params, par.set = par.set, enforce.col.types = TRUE)
     local.opt.values = sapply(local.opt.params2, smoof.fn)
   }
@@ -163,12 +163,12 @@ preprocessOptima = function(opt.params, fn, par.set, type) {
   if (!is.null(opt.params)) {
     if (!testDataFrame(opt.params)) {
       # single numeric only value passed
-      if (testNumeric(opt.params, len = n.params, any.missing = FALSE)) {
-        opt.params = as.data.frame(t(opt.params))
-      } else if (testList(opt.params, len = n.params, any.missing = FALSE)) {
+      if (testList(opt.params, len = n.params, any.missing = FALSE)) {
         opt.params = as.data.frame(opt.params)
       } else if (testMatrix(opt.params)) {
         opt.params = as.data.frame(opt.params)
+      } else if (testNumeric(opt.params, len = n.params, any.missing = FALSE)) {
+        opt.params = as.data.frame(t(opt.params))
       } else {
         stopf("Parameter(s) for known %s optima must be passed as vector, list, matrix or data.frame.", type)
       }

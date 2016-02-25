@@ -35,19 +35,18 @@ test_that("getLocalOptimum and getGlobalOptimum work as expected on MPM2", {
       local.opt = getLocalOptimum(fun)
       global.opt = getGlobalOptimum(fun)
       # check that each peak has a parameter and objective value
-      expect_equal(length(local.opt$params), n.peaks[i])
+      expect_equal(nrow(local.opt$params), n.peaks[i])
       expect_equal(length(local.opt$values), n.peaks[i])
       # length of x-values of local optima should equal the problem dimension
-      expect_equal(unique(vapply(local.opt$params, length, integer(1L))), d)
-      expect_equal(unique(vapply(local.opt$values, length, integer(1L))), 1)
+      expect_equal(ncol(local.opt$params), d)
       # check that global optimum is the best of the local optima
       best = ifelse(global.opt$is.minimum, min, max)
-      indices = which(best(unlist(local.opt$values)) == global.opt$value)
+      indices = which(best(local.opt$values) == global.opt$value)
       for (ind in indices) {
-        expect_equal(unlist(local.opt$values)[ind], global.opt$value)
+        expect_equal(local.opt$values[ind], global.opt$value)
       }
       expect_true(any(vapply(indices, function(ind)
-        all.equal(local.opt$params[[ind]], global.opt$param), logical(1L))))
+        all.equal(local.opt$params[ind, ], global.opt$param), logical(1L))))
     }
   }
 })
