@@ -1,4 +1,24 @@
+#' @title
 #' Generate \code{\link[ggplot2]{ggplot}} object.
+#'
+#' @description
+#' This function expects a smoof function and returns a ggplot object depicting
+#' the function landscape. The output depends highly on the decision space of the
+#' smoof function or more technically on the \code{\link[ParamHelpers]{ParamSet}}
+#' of the function. The following destinctions regarding the parameter types are
+#' made. In case of a single numeric parameter a simple line plot is drawn. For
+#' two numeric parameters or a single numeric vector parameter of length 2 either a
+#' contour plot or a heatmap (or a combination of both depending on the choice
+#' of additional parameters) is depicted. If there are both up to two numeric
+#' and at least one discrete vector parameter, ggplot facetting is used to
+#' generate subplots of the above-mentioned types for all combinations of discrete
+#' parameters.
+#'
+#' @note
+#' Keep in mind, that the plots for mixed parameter spaces may be very large and
+#' computationally expensive if the number of possible discrete parameter values
+#' is large. I.e., if we have d discrete parameter with each n_1, n_2, ..., n_d
+#' possible values we end up with n_1 x n_2 x ... x n_d subplots.
 #'
 #' @param x [\code{smoof_function}]\cr
 #'   Objective function.
@@ -15,19 +35,43 @@
 #' @param render.contours [\code{logical(1)}]\cr
 #'   For 2D numeric functions only: Should contour lines be plotted? Default is
 #'   \code{TRUE}.
-#' @param use.facets [\code{logical(1)}]\cr
-#'   For mixed functions only: Should the plot be splitted by the discrete values
-#'   or should the different values be distinguished by colour in a single plot?
-#'   Default is \code{FALSE}.
 #' @param ... [any]\cr
 #'   Not used.
 #' @return [\code{\link[ggplot2]{ggplot}}]
 #' @examples
 #' library(ggplot2)
+#'
+#' # Simple 2D contour plot with activated heatmap for the Himmelblau function
 #' fn = makeHimmelblauFunction()
 #' print(autoplot(fn))
 #' print(autoplot(fn, render.levels = TRUE, render.contours = FALSE))
 #' print(autoplot(fn, show.optimum = TRUE))
+#'
+#' # Now we create 4D function with a mixed decision space (two numeric, one discrete,
+#' # and one logical parameter)
+#' fn.mixed = makeSingleObjectiveFunction(
+#'   name = "4d SOO function",
+#'   fn = function(x) {
+#'     if (x$disc1 == "a") {
+#'       (x$x1^2 + x$x2^2) + 10 * as.numeric(x$logic)
+#'     } else {
+#'       x$x1 + x$x2 - 10 * as.numeric(x$logic)
+#'     }
+#'   },
+#'   has.simple.signature = FALSE,
+#'   par.set = makeParamSet(
+#'     makeNumericParam("x1", lower = -5, upper = 5),
+#'     makeNumericParam("x2", lower = -3, upper = 3),
+#'     makeDiscreteParam("disc1", values = c("a", "b")),
+#'     makeLogicalParam("logic")
+#'   )
+#' )
+#' pl = autoplot(fn.mixed)
+#' print(pl)
+#'
+#' # Since autoplot returns a ggplot object we can modify it, e.g., add a title
+#' # or hide the legend
+#' pl + ggtitle("My fancy function") + theme(legend.position = "none")
 #' @export
 autoplot.smoof_function = function(x,
   show.optimum = FALSE,
@@ -41,7 +85,6 @@ autoplot.smoof_function = function(x,
   assertString(main, na.ok = TRUE)
   assertFlag(render.levels, na.ok = FALSE)
   assertFlag(render.contours, na.ok = FALSE)
-  assertFlag(use.facets, na.ok = FALSE)
 
   par.set = getParamSet(x)
   par.types = getParamTypes(par.set)
@@ -115,21 +158,10 @@ autoplot.smoof_function = function(x,
     }
   }
 
+  title = coalesce(main, getName(x))
+  pl = pl + ggtitle(title)
+
   return(pl)
-
-  stop("autoplot")
-
-  mapping = list("1Dnumeric" = autoplot1DNumeric, "2Dnumeric" = autoplot2DNumeric, "2DMixed" = autoplot2DMixed)
-  autoPlotFun = getInternalPlotFunction(x, mapping = mapping)
-
-  autoPlotFun(x,
-    show.optimum = show.optimum,
-    main = main,
-    render.levels = render.levels,
-    render.contours = render.contours,
-    use.facets = use.facets,
-    ...
-  )
 }
 
 #' @export
@@ -137,7 +169,6 @@ autoplot.smoof_wrapped_function = function(x,
   show.optimum = FALSE,
   main = getName(x),
   render.levels = FALSE, render.contours = TRUE,
-  use.facets = FALSE,
   ...) {
   autoplot(getWrappedFunction(x), show.optimum, main,
     render.levels, render.contours,
