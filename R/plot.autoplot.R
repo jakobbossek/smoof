@@ -60,16 +60,12 @@ autoplot.smoof_function = function(x,
 
   grid = generateDataframeForGGPlot2(x)
 
-  # determine which params to use for facetting and which ones for the axis
-  numeric.par.set = filterParams(par.set, type = c("numeric", "numericvector"))
-  numeric.names = getParamIds(numeric.par.set, with.nr = TRUE, repeated = TRUE)
+  # determine IDs of numeric and factor-like parameters
+  par.types = getParamTypes(par.set, df.cols = TRUE, with.nr = TRUE)
+  numeric.idx = which(par.types == "numeric")
+  discrete.idx = which(par.types %in% c("factor", "logical"))
 
-  discrete.par.set = filterParams(par.set, type = c("logical", "logicalvector", "discrete", "discretevector"))
-  discrete.names = getParamIds(discrete.par.set, with.nr = TRUE, repeated = TRUE)
-
-  numeric.idx = which(par.names %in% numeric.names)
-  discrete.idx = which(par.names %in% discrete.names)
-
+  # how many numeric/discrete parameters do exist?
   n.numeric = length(numeric.idx)
   n.discrete = length(discrete.idx)
 
