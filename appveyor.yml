@@ -1,5 +1,6 @@
 environment:
   _R_CHECK_FORCE_SUGGESTS_: FALSE
+  GITHUB_PAT: IaoewluRR0axT+S72tEBZG/oi3UMccaaUBv5t41ZWJdabAX7MXxBXDL9iIfrI+M4 # access for appveyor
 
 init:
   ps: |
