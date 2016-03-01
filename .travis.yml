@@ -6,7 +6,7 @@ sudo: required
 
 os:
   - linux
-  - osx
+#  - osx
 
 r_github_packages:
   - jimhester/covr
