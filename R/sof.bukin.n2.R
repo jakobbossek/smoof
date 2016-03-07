@@ -2,9 +2,9 @@
 #'
 #' Muldimodal, non-scalable, continous optimization test function given by:
 #' \deqn{f(\mathbf{x}) = 100 (\mathbf{x}_2 - 0.01 * \mathbf{x}_1^2 + 1) + 0.01 (\mathbf{x}_1 + 10)^2}
-#' subject to \eqn{\mathbf{x}_1 \in [-15, 5]} and \eqn{\mathbf{x}_2 \in [-3, 3]}.
+#' subject to \eqn{\mathbf{x}_1 \in [-15, -5]} and \eqn{\mathbf{x}_2 \in [-3, 3]}.
 #'
-#' @references Z. K. Silagadze, Finding Two-Dimesnional Peaks, Physics of Particles
+#' @references Z. K. Silagadze, Finding Two-Dimensional Peaks, Physics of Particles
 #' and Nuclei Letters, vol. 4, no. 1, pp. 73-80, 2007.
 #'
 #' @seealso \code{\link{makeBukinN4Function}}, \code{\link{makeBukinN6Function}}
@@ -17,7 +17,7 @@ makeBukinN2Function = function() {
     id = "bukin02_2d",
     fn = function(x) {
       assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
-      100 * (x[2] - 0.01 * x[1]^2 + 1) + 0.01 * (x[1] + 10)^2
+      100 * (x[2]^2 - 0.01 * x[1]^2 + 1) + 0.01 * (x[1] + 10)^2
     },
     par.set = makeNumericParamSet(
       len = 2L,
@@ -27,8 +27,8 @@ makeBukinN2Function = function() {
       vector = TRUE
     ),
     tags = attr(makeBukinN2Function, "tags"),
-    global.opt.params = c(-10, 0),
-    global.opt.value = 0
+    global.opt.params = c(-15, 0),
+    global.opt.value = -124.75
   )
 }
 

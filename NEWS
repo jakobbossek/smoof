@@ -1,6 +1,7 @@
 smoof v1.4 (Release data: xxxx-xx-xx)
 ============
 
+* Fixed: issue in formula and global optimum of BukinN2 function
 * overworked and refactored autoplot functions
   * dropped use.facets parameter (always use facets now if discrete parameters exist)
   * We now support mixed functions with up to two numeric params (or one numeric vector
