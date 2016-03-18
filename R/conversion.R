@@ -45,6 +45,8 @@ convertToMinimization = function(fn) {
 }
 
 convertProblemDirection = function(fn, minimize.after = TRUE) {
+  assertFlag(minimize.after)
+
   if (isMultiobjective(fn)) {
     stopf("Conversion to maximization only supported for single-objective problems
       at the moment, but your function '%s' has %i", getName(fn), getNumberOfObjectives(fn))

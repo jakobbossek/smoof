@@ -19,8 +19,8 @@
 #' @template ret_smoof_single
 #' @export
 makeMichalewiczFunction = function(dimensions, m = 10) {
-  assertCount(dimensions, na.ok = FALSE)
-  assertNumber(m, na.ok = FALSE)
+  assertCount(dimensions)
+  assertNumber(m)
   force(m)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Michalewicz Function (m = ", m, ")", sep = ""),

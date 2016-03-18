@@ -11,10 +11,12 @@ addLoggingWrapper(fn, logg.x = FALSE, logg.y = TRUE)
 Smoof function.}
 
 \item{logg.x}{[\code{logical(1)}]\cr
-Should x-values be logged? Default is \code{FALSE}.}
+Should x-values be logged?
+Default is \code{FALSE}.}
 
 \item{logg.y}{[\code{logical(1)}]\cr
-Should objective values be logged? Default is \code{TRUE}.}
+Should objective values be logged?
+Default is \code{TRUE}.}
 }
 \value{
 [\code{smoof_logging_function}]

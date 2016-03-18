@@ -1,5 +1,7 @@
+#' @title
 #' ZDT6 Function
 #'
+#' @description
 #' Builds and returns the two-objective ZDT6 test problem. For \eqn{m} objective it
 #' is defined as follows
 #' \deqn{f(\mathbf{x}) = \left(f_1(\mathbf{x}), f_2(\mathbf{x})\right)}
@@ -20,7 +22,7 @@
 #' @return [\code{smoof_multi_objective_function}]
 #' @export
 makeZDT6Function = function(dimensions) {
-  assertNumber(dimensions, lower = 2L, na.ok = FALSE)
+  assertNumber(dimensions, lower = 2L)
   force(dimensions)
 
     # define the two-objective ZDT1 function

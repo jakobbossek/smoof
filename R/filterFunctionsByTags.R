@@ -19,6 +19,7 @@
 #' @export
 filterFunctionsByTags = function(tags, or = FALSE) {
   assertSubset(tags, choices = getAvailableTags(), empty.ok = FALSE)
+  assertFlag(or)
 
   if (isSubset(c("single-objective", "multi-objective"), tags)) {
     stopf("Trying to search for both single- and multi-objective functions.")

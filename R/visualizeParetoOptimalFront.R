@@ -1,6 +1,8 @@
-#' @title Pareto-optimal front visualization.
+#' @title
+#' Pareto-optimal front visualization.
 #'
-#' @description Quickly visualize the Pareto-optimal front of a bi-criteria objective
+#' @description
+#' Quickly visualize the Pareto-optimal front of a bi-criteria objective
 #' function by calling the EMOA \code{\link[mco]{nsga2}} and extracting the
 #' approximated Pareto-optimal front.
 #'
@@ -19,7 +21,7 @@
 #' @export
 visualizeParetoOptimalFront = function(fn, ...) {
   n.objectives = getNumberOfObjectives(fn)
-  if (n.objectives == 1L) {
+  if (!isMultiobjective(fn)) {
     stopf("Visualization of approximated Pareto-optimal front only possible fo multi-objective functions with two objectives at the moment.")
   }
   requirePackages("mco", why = "smoof::visualizeParetoOptimalFront")

@@ -104,7 +104,7 @@ makeSingleObjectiveFunction = function(
   }
 
   if (!is.null(global.opt.params) && !is.null(global.opt.value)) {
-    assertNumber(global.opt.value, na.ok = FALSE, finite = TRUE)
+    assertNumber(global.opt.value, finite = TRUE)
   }
 
   if (is.null(local.opt.values) && !is.null(local.opt.params)) {

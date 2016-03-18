@@ -10,7 +10,7 @@
 #' @template ret_smoof_single
 #' @export
 makeBentCigarFunction = function(dimensions) {
-  assertCount(dimensions, na.ok = FALSE)
+  assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = "Bent-Cigar Function",

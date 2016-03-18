@@ -14,7 +14,7 @@
 #' @template ret_smoof_single
 #' @export
 makeAckleyFunction = function(dimensions) {
-  assertCount(dimensions, na.ok = FALSE)
+  assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Ackley Function", sep = ""),

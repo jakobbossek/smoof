@@ -1,5 +1,7 @@
+#' @title
 #' Compute the Expected Running Time (ERT) performance measure.
 #'
+#' @description
 #' The functions can be called in two different ways
 #' \itemize{
 #'   \item{1. Pass a vector of function evaluations and a logical vector which
@@ -41,7 +43,7 @@ computeExpectedRunningTime = function(fun.evals,
   penalty.value = Inf) {
   #FIXME: maybe enable missing values and offer inpute mechanism?
   assertInteger(fun.evals, lower = 1L, any.missing = FALSE)
-  assertNumber(penalty.value, na.ok = FALSE)
+  assertNumber(penalty.value)
   n = length(fun.evals)
 
   # sanity check that one of the options is used (see docs).
@@ -56,7 +58,7 @@ computeExpectedRunningTime = function(fun.evals,
       stopf("You need to pass a 'fun.target.value' in case you passed 'fun.reached.target.values'.")
     }
     assertNumeric(fun.reached.target.values, len = n, any.missing = FALSE)
-    assertNumber(fun.target.value, na.ok = FALSE)
+    assertNumber(fun.target.value)
     fun.success.runs = (fun.reached.target.values <= fun.target.value)
   }
 

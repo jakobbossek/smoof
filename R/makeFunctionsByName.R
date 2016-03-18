@@ -1,4 +1,5 @@
-#' @title Generate smoof function by passing a character vector of generator
+#' @title
+#' Generate smoof function by passing a character vector of generator
 #' names.
 #'
 #' @description This function is especially useful in combination with

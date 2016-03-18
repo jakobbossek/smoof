@@ -49,14 +49,14 @@ makeObjectiveFunction = function(
 
   # sanity checks
   if (!is.null(name))
-    assertString(name, na.ok = FALSE)
+    assertString(name)
   if (!is.null(id))
-    assertString(id, na.ok = FALSE)
+    assertString(id)
 
   if (!is.null(description))
-    assertString(description, na.ok = FALSE)
+    assertString(description)
   assertFunction(fn)
-  assertFlag(has.simple.signature, na.ok = FALSE)
+  assertFlag(has.simple.signature)
 
   if (has.simple.signature) {
     fn = makeInternalObjectiveFunction(fn)
@@ -66,8 +66,8 @@ makeObjectiveFunction = function(
   }
 
   assertClass(par.set, "ParamSet")
-  assertInt(n.objectives, na.ok = FALSE, lower = 1L)
-  assertFlag(noisy, na.ok = FALSE)
+  assertInt(n.objectives, lower = 1L)
+  assertFlag(noisy)
   if (!noisy && !is.null(fn.mean)) {
     stopf("Setting fn.mean only makes sense for noisy functions.")
   }
@@ -75,7 +75,7 @@ makeObjectiveFunction = function(
     assertFunction(fn.mean)
   }
   assertLogical(minimize, len = n.objectives, any.missing = FALSE, all.missing = FALSE)
-  assertFlag(vectorized, na.ok = FALSE)
+  assertFlag(vectorized)
 
   if (!has.simple.signature && vectorized) {
     stopf("At the moment we allow 'vectorized' functions only for functions with simple signature.")

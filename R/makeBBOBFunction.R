@@ -22,12 +22,12 @@
 #' @export
 makeBBOBFunction = function(dimension, fid, iid) {
   # do some sanity checks
-  dimension = convertInteger(dimension)
-  fid = convertInteger(fid)
-  iid = convertInteger(iid)
-  assertInt(dimension, lower = 2L, upper = 40L, na.ok = FALSE)
-  assertInt(fid, lower = 1L, upper = 24L, na.ok = FALSE)
-  assertInt(iid, lower = 1L, na.ok = FALSE)
+  dimension = asCount(dimension)
+  fid = asCount(fid)
+  iid = asCount(iid)
+  assertInt(dimension, lower = 2L, upper = 40L)
+  assertInt(fid, lower = 1L, upper = 24L)
+  assertInt(iid, lower = 1L)
 
   # touch vars
   force(dimension)

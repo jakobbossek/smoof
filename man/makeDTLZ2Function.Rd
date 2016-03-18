@@ -18,8 +18,7 @@ Number of objectives.}
 }
 \description{
 Builds and returns the multi-objective DTLZ2 test problem.
-}
-\details{
+
 The DTLZ2 test problem is defined as follows:
 
 Minimize \eqn{f_1(\mathbf{x}) = (1+g(\mathbf{x}_M)) \cos(x_1\pi/2) \cos(x_2\pi/2) \cdots \cos(x_{M-2}\pi/2) \cos(x_{M-1}\pi/2),}{

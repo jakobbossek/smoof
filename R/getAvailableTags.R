@@ -1,5 +1,7 @@
+#' @title
 #' Returns a character vector of possible function tags.
 #'
+#' @description
 #' Test function are frequently distinguished by characteristic high-level properties,
 #' e.g., unimodal or multimodal, continuous or discontinuous, separable or non-separable.
 #' The \pkg{smoof} package offers the possibility to associate a set of properties,

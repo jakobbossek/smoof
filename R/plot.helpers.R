@@ -1,6 +1,9 @@
+# @title
 # Get data.frame of optima.
 #
+# @description
 # Returns data frame of global / local optima for ggplot.
+#
 # @param fn [\code{smoof_function}]\cr
 #   Smoof function.
 # @return [\code{data.frame}]
@@ -26,9 +29,11 @@ getOptimaDf = function(fn) {
 }
 
 
-# Utility function.
+# @title
+# Get data.frame of evaluated grid.
 #
 # Generates 'gg-plotable' data.frame.
+#
 # @param fn [\code{smoof_function}]\cr
 #   Target function.
 # @param sequences [\code{list}]\cr
@@ -50,8 +55,10 @@ generateDataframeForGGPlot = function(fn, sequences, par.set) {
   return(data)
 }
 
+# @title
 # Generate data frame for ggplot2.
 #
+# @description
 # Gets a function and returns a data.frame evaluated on a large grid
 # of data points in order to visualize functions with 2d numeric and
 # up to 4d functions with >= 1 numeric and >=2 discrete parameters.

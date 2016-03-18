@@ -3,9 +3,11 @@
 #' @param fn [\code{smoof_function}]\cr
 #'   Smoof function.
 #' @param logg.x [\code{logical(1)}]\cr
-#'   Should x-values be logged? Default is \code{FALSE}.
+#'   Should x-values be logged?
+#'   Default is \code{FALSE}.
 #' @param logg.y [\code{logical(1)}]\cr
-#'   Should objective values be logged? Default is \code{TRUE}.
+#'   Should objective values be logged?
+#'   Default is \code{TRUE}.
 #' @return [\code{smoof_logging_function}]
 #' @examples
 #' # We first build the smoof function and apply the logging wrapper to it
@@ -31,8 +33,8 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
   if (!testClass(fn, "smoof_function") && !testClass(fn, "smoof_wrapped_function")) {
     stopf("The passed function needs to be a (wrapped) smoof function.")
   }
-  assertFlag(logg.x, na.ok = FALSE)
-  assertFlag(logg.y, na.ok = FALSE)
+  assertFlag(logg.x)
+  assertFlag(logg.y)
 
   if (!logg.x && !logg.y) {
     stopf("At least x or y values must be logged.")
@@ -59,7 +61,7 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
   wrapped.fn = function(x, ...) {
     # convert everything to a list
     if (is.matrix(x)) {
-      x = apply(x, 2, function(el) {
+      x = apply(x, 2L, function(el) {
         el = as.list(el)
         names(el) = par.ids
         return(el)

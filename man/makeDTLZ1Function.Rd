@@ -18,8 +18,7 @@ Number of objectives.}
 }
 \description{
 Builds and returns the multi-objective DTLZ1 test problem.
-}
-\details{
+
 The DTLZ1 test problem is defined as follows:
 
 Minimize \eqn{f_1(\mathbf{x}) = \frac{1}{2} x_1 x_2 \cdots x_{M-1} (1+g(\mathbf{x}_M),}{

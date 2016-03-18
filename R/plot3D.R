@@ -20,7 +20,7 @@
 #' @export
 plot3D = function(x, length.out = 100L, ...) {
   assertClass(x, "smoof_function")
-  assertInt(length.out, lower = 10L, na.ok = FALSE)
+  assertInt(length.out, lower = 10L)
   obj.fn = x
   n = getNumberOfParameters(obj.fn)
   par.set = getParamSet(obj.fn)

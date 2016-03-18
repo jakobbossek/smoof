@@ -42,10 +42,10 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
   n.peaks = convertInteger(n.peaks)
   dimensions = convertInteger(dimensions)
   seed = convertInteger(seed)
-  assertInt(n.peaks, lower = 1L, na.ok = FALSE)
-  assertInt(dimensions, lower = 1L, na.ok = FALSE)
+  assertInt(n.peaks, lower = 1L)
+  assertInt(dimensions, lower = 1L)
   assertChoice(topology, choices = c("random", "funnel"))
-  assertInt(seed, lower = 1L, na.ok = FALSE)
+  assertInt(seed, lower = 1L)
   assertLogical(rotated, any.missing = FALSE)
   assertChoice(peak.shape, choices = c("ellipse", "sphere"))
 

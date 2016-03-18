@@ -1,5 +1,7 @@
+#' @title
 #' DTLZ2 Function (family)
 #'
+#' @description
 #' Builds and returns the multi-objective DTLZ2 test problem.
 #'
 #' The DTLZ2 test problem is defined as follows:
@@ -37,8 +39,8 @@
 #' @return [\code{smoof_multi_objective_function}]
 #' @export
 makeDTLZ2Function = function(dimensions, n.objectives) {
-  assertInt(n.objectives, lower = 2L, na.ok = FALSE)
-  assertInt(dimensions, lower = n.objectives, na.ok = FALSE)
+  assertInt(n.objectives, lower = 2L)
+  assertInt(dimensions, lower = n.objectives)
 
   # Renaming n.objectives here to stick to the notation in the paper
   M = n.objectives

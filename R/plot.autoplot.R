@@ -83,16 +83,15 @@ autoplot.smoof_function = function(x,
   show.optimum = FALSE,
   main = getName(x),
   render.levels = FALSE, render.contours = TRUE,
-  length.out = 50L,
-  ...) {
+  length.out = 50L, ...) {
   checkPlotFunParams(x)
 
-  assertFlag(show.optimum, na.ok = FALSE)
+  assertFlag(show.optimum)
   assertString(main, na.ok = TRUE)
   length.out = convertInteger(length.out)
-  assertInt(length.out, lower = 10L, na.ok = FALSE)
-  assertFlag(render.levels, na.ok = FALSE)
-  assertFlag(render.contours, na.ok = FALSE)
+  assertInt(length.out, lower = 10L)
+  assertFlag(render.levels)
+  assertFlag(render.contours)
 
   par.set = getParamSet(x)
   par.types = getParamTypes(par.set, df.cols = TRUE, with.nr = TRUE)
@@ -183,10 +182,7 @@ autoplot.smoof_function = function(x,
 autoplot.smoof_wrapped_function = function(x,
   show.optimum = FALSE,
   main = getName(x),
-  render.levels = FALSE, render.contours = TRUE,
-  ...) {
+  render.levels = FALSE, render.contours = TRUE, ...) {
   autoplot(getWrappedFunction(x), show.optimum, main,
-    render.levels, render.contours,
-    ...
-  )
+    render.levels, render.contours, ...)
 }
