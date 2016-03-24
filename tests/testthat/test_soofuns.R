@@ -8,7 +8,8 @@ test_that("single-objective test function generators work", {
     all.methods = setdiff(all.methods, c("makeInternalObjectiveFunction",
       "makeMultiObjectiveFunction", "makeObjectiveFunction",
       "makeSingleObjectiveFunction", "makeBBOBFunction",
-      "makeUFFunction", "makeUFParamSet", "makeMPM2Function"))
+      "makeUFFunction", "makeUFParamSet", "makeMPM2Function",
+      "makeGOMOPFunction", paste0("makeMOP", 1:7, "Function")))
     all.methods = sapply(all.methods, get)
     fun.generators = Filter(function(fun) inherits(fun, "smoof_generator"), all.methods)
 
@@ -69,7 +70,7 @@ test_that("Multiple peaks model 2 (MPM2) functions work", {
               fn = makeMPM2Function(n.peaks = n.peaks, dimension = dimension, topology = topology, seed = 123, rotated = rotated, peak.shape = peak.shape)
               expect_is(fn, "smoof_single_objective_function")
               y = fn(rep(0.1, dimension))
-              expect_true(is.numeric(y))          
+              expect_true(is.numeric(y))
             }
           }
         }
