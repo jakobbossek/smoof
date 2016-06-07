@@ -6,9 +6,11 @@ smoof v1.4 (Release data: xxxx-xx-xx)
   * dropped use.facets parameter (always use facets now if discrete parameters exist)
   * We now support mixed functions with up to two numeric params (or one numeric vector
     param of length 2) and up to 2 discrete/logical (or a corresponding vector param)
-* New multi-objective functions: Van Valedhuizen's test suite (MOP1-7), Binh-Korn function,
 * Added makeGOMOPFunction to create multi-objective test function based on a set of
   single objective functions.
+* Added new single-objective functions: Branin (modified version by Forrester et al. (2008))
+* Added new multi-objective functions: Van Valedhuizen's test suite (MOP1-7), Binh-Korn function,
+  BiSphere (bi-objective Sphere) and Dent function.
 
 smoof v1.3 (Release data: 2016-02-23)
 ============
