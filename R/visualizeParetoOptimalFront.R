@@ -45,7 +45,7 @@ visualizeParetoOptimalFront = function(fn, ...) {
   pl = ggplot(eff.points, mapping = aes_string(x = "f1", y = "f2"))
   pl = pl + geom_line(colour = "darkgray")
   pl = pl + xlab(expression(f[1])) + ylab(expression(f[2]))
-  pl = pl + ggtitle(sprintf("Objective space with approximative Pareto-optimal\n
-    front for the bi-criteria %s function", getName(fn)))
+  pl = pl + ggtitle(sprintf("Objective space with shape of Pareto-optimal\n
+    front for the bi-criteria %s", getName(fn)))
   return(pl)
 }
