@@ -1,5 +1,5 @@
 #' @title
-#' Zhou2011 function.
+#' Swiler2014 function.
 #'
 #' @description Mixed parameter space with one discrete parameter \eqn{x_1 \in \{1, 2, 3, 4, 5\}}
 #' and two numerical parameters \eqn{x_1, x_2 \in [0, 1]}. The function is defined
@@ -17,10 +17,10 @@
 #'
 #' @template ret_smoof_single
 #' @export
-makeZhou2011Function = function() {
+makeSwiler2014Function = function() {
   makeSingleObjectiveFunction(
-    name = "Zhou2011 Function",
-    id = paste0("Zhou2011_3d"),
+    name = "Swiler2014 Function",
+    id = paste0("swiler2014_3d"),
     fn = function(x) {
       assertList(x)
       x1 = x$x1
@@ -43,14 +43,14 @@ makeZhou2011Function = function() {
       makeNumericParam("x2", lower = 0, upper = 1),
       makeNumericParam("x3", lower = 0, upper = 1)
     ),
-    tags = attr(makeComplexFunction, "tags"),
+    tags = attr(makeSwiler2014Function, "tags"),
     has.simple.signature = FALSE
     # global.opt.params = c(1, 0),
     # global.opt.value = 0
   )
 }
 
-class(makeComplexFunction) = c("function", "smoof_generator")
-attr(makeComplexFunction, "name") = c("Zhou2014")
-attr(makeComplexFunction, "type") = c("single-objective")
-attr(makeComplexFunction, "tags") = c("single-objective", "discontinuous", "multimodal")
+class(makeSwiler2014Function) = c("function", "smoof_generator")
+attr(makeSwiler2014Function, "name") = c("Swiler2014")
+attr(makeSwiler2014Function, "type") = c("single-objective")
+attr(makeSwiler2014Function, "tags") = c("single-objective", "discontinuous", "multimodal")
