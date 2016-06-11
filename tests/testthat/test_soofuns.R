@@ -25,7 +25,7 @@ test_that("single-objective test function generators work", {
         if (hasGlobalOptimum(fun)) {
           expectGlobalOptimum(fun, attr(fun.generator, "name"))
         }
-        test.param = ParamHelpers::sampleValues(getParamSet(fun), 1L)
+        test.param = ParamHelpers::sampleValue(getParamSet(fun))
         test.val = fun(test.param)
         expect_true(is.numeric(test.val))
         expect_true(is.logical(shouldBeMinimized(fun)))
