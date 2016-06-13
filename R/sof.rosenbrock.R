@@ -21,14 +21,14 @@ makeRosenbrockFunction = function(dimensions) {
     id = paste0("rosenbrock_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
-      i = 1:(length(x) - 1L)
+      i = seq_len(length(x) - 1L)
       sum(100 * (x[i]^2 - x[i + 1])^2 + (x[i] - 1)^2)
     },
     par.set = makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-5, dimensions),
-      upper = rep(10, dimensions),
+      upper = rep(5, dimensions),
       vector = TRUE
     ),
     tags = attr(makeRosenbrockFunction, "tags"),
