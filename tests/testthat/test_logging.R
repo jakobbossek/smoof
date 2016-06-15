@@ -22,7 +22,7 @@ test_that("logging for simple functions works well", {
   # generate Sphere function
   for (dimension in c(1L, 2L, 5L, 10L)) {
     fn = makeSphereFunction(dimension = dimension)
-    par.ids = getParamIds(smoof::getParamSet(fn), with.nr = TRUE, repeated = TRUE)
+    par.ids = getParamIds(getParamSet(fn), with.nr = TRUE, repeated = TRUE)
 
     # add logger for both x and y values
     fn = addLoggingWrapper(fn, logg.x = TRUE)
@@ -83,7 +83,7 @@ test_that("logging for mixed function works well", {
   obj.vals = c(0, 0, 3)
 
   for (i in 1:nrow(test.df)) {
-    fn(dfRowToList(test.df, i, par.set = smoof::getParamSet(fn)))
+    fn(dfRowToList(test.df, i, par.set = getParamSet(fn)))
   }
 
   res = getLoggedValues(fn)
