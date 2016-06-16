@@ -3,9 +3,6 @@
 \name{getParamSet}
 \alias{getParamSet}
 \title{Get parameter set.}
-\usage{
-getParamSet(fn)
-}
 \arguments{
 \item{fn}{[\code{smoof_function}]\cr
 Objective function.}
@@ -20,7 +17,7 @@ This function returns the parameter set.
 }
 \examples{
 fn = makeSphereFunction(3L)
-ps = smoof::getParamSet(fn)
+ps = getParamSet(fn)
 print(ps)
 }
 
