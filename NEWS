@@ -10,10 +10,11 @@ smoof v1.4 (Release data: xxxx-xx-xx)
   single objective functions.
 * Added new single-objective functions: Branin (modified version by Forrester et al. (2008))
 * Added new multi-objective functions: Van Valedhuizen's test suite (MOP1-7), Binh-Korn function,
-  BiSphere (bi-objective Sphere) and Dent function.
+  BiSphere (bi-objective Sphere), Dent function, Viennet function.
 * Added first mixed parameter space funtion: Zhou2011
 * visualizeParetoOptimalFront now draws lines instead of points
 * Added possibility to draw interactive 3D surface plots via smoof::plot3D(fn, package = "plotly")
+* Removed S3 method definition of getParamSet. This function is now contained in ParamHelpers >= 1.8
 
 smoof v1.3 (Release data: 2016-02-23)
 ============
