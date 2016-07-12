@@ -23,7 +23,7 @@
 #'
 #' @template ret_smoof_single
 #' @export
-makeBirdFunction = function() {
+makeHartmannFunction = function() {
   makeSingleObjectiveFunction(
     name = "Hartmann Function",
     id = "hartmann_6d",
@@ -54,7 +54,8 @@ makeBirdFunction = function() {
     par.set = makeNumericParamSet(
       len = 6L,
       id = "x",
-      lower = c(0, 1),
+      lower = 0,
+      upper = 1,
       vector = TRUE
     ),
     tags = attr(makeHartmannFunction, "tags"),
