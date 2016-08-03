@@ -93,7 +93,7 @@ autoplot.smoof_function = function(x,
   assertFlag(render.levels)
   assertFlag(render.contours)
 
-  par.set = getParamSet(x)
+  par.set = ParamHelpers::getParamSet(x)
   par.types = getParamTypes(par.set, df.cols = TRUE, with.nr = TRUE)
   par.types.count = getParamTypeCounts(par.set)
   par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)

@@ -43,7 +43,7 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
   force(fn)
   force(logg.x)
   force(logg.y)
-  par.set = getParamSet(fn)
+  par.set = ParamHelpers::getParamSet(fn)
   par.ids = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
   n.obj = getNumberOfObjectives(fn)
   n.pars = getNumberOfParameters(fn)

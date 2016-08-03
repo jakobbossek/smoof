@@ -14,6 +14,16 @@ The bi-objective ZDT function family by Zitzler, Deb and Thiele is included as w
 At the moment the following optimization test functions respectively function sets/families are implemented:
 
 
+```
+## Warning: package 'ParamHelpers' was built under R version 3.2.5
+```
+
+```
+## Warning: package 'checkmate' was built under R version 3.2.5
+```
+
+
+
 |Function                                  |
 |:-----------------------------------------|
 |Ackley                                    |
@@ -21,11 +31,13 @@ At the moment the following optimization test functions respectively function se
 |Alpine N. 1                               |
 |Alpine N. 2                               |
 |Aluffi-Pentini                            |
-|Set of noiseless BOBB Function(s)         |
 |Bartels Conn                              |
+|Set of noiseless BOBB Function(s)         |
 |Beale                                     |
 |Bent-Cigar                                |
 |Bird                                      |
+|BiSphere                                  |
+|BK1                                       |
 |Bohachevsky N. 1                          |
 |Booth                                     |
 |BraninRCOS                                |
@@ -41,6 +53,11 @@ At the moment the following optimization test functions respectively function se
 |Cosine Mixture                            |
 |Cross-In-Tray                             |
 |Cube                                      |
+|Deckkers-Aarts                            |
+|Deflected Corrugated Spring               |
+|Dent                                      |
+|Dixon-Price                               |
+|Double-Sum                                |
 |DTLZ1                                     |
 |DTLZ2                                     |
 |DTLZ3                                     |
@@ -48,10 +65,6 @@ At the moment the following optimization test functions respectively function se
 |DTLZ5                                     |
 |DTLZ6                                     |
 |DTLZ7                                     |
-|Deckkers-Aarts                            |
-|Deflected Corrugated Spring               |
-|Dixon-Price                               |
-|Double-Sum                                |
 |Eason                                     |
 |Egg Crate                                 |
 |Egg Holder                                |
@@ -62,6 +75,7 @@ At the moment the following optimization test functions respectively function se
 |Generelized Drop-Wave                     |
 |Giunta                                    |
 |Goldstein-Price                           |
+|GOMOP                                     |
 |Griewank                                  |
 |Hansen                                    |
 |Himmelblau                                |
@@ -74,10 +88,17 @@ At the moment the following optimization test functions respectively function se
 |Keane                                     |
 |Kearfott                                  |
 |Leon                                      |
-|Multiple peals model 2 function generator |
 |Matyas                                    |
 |McCormick                                 |
 |Michalewicz                               |
+|MOP1                                      |
+|MOP2                                      |
+|MOP3                                      |
+|MOP4                                      |
+|MOP5                                      |
+|MOP6                                      |
+|MOP7                                      |
+|Multiple peals model 2 function generator |
 |Periodic                                  |
 |Double-Sum                                |
 |Price N. 1                                |
@@ -93,9 +114,11 @@ At the moment the following optimization test functions respectively function se
 |Sphere                                    |
 |Styblinkski-Tang                          |
 |Sum of Different Squares                  |
+|Swiler2014                                |
 |Three-Hump Camel                          |
 |Trecanni                                  |
 |UF1, ..., UF10 of the CEC 2009            |
+|Viennet                                   |
 |ZDT1                                      |
 |ZDT2                                      |
 |ZDT3                                      |
@@ -146,7 +169,39 @@ The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing
 
 ## News
 
-### smoof v1.2 (Release data: 2016-01-21)
+smoof v1.4 (Release data: 2016-08-03)
+============
+
+* Fixed: issue in formula and global optimum of BukinN2 function
+* overworked and refactored autoplot functions
+  * dropped use.facets parameter (always use facets now if discrete parameters exist)
+  * We now support mixed functions with up to two numeric params (or one numeric vector
+    param of length 2) and up to 2 discrete/logical (or a corresponding vector param)
+* Added makeGOMOPFunction to create multi-objective test function based on a set of
+  single objective functions.
+* Added new single-objective functions: Branin (modified version by Forrester et al. (2008))
+* Added new multi-objective functions: Van Valedhuizen's test suite (MOP1-7), Binh-Korn function,
+  BiSphere (bi-objective Sphere), Dent function, Viennet function.
+* Added first mixed parameter space funtion: Zhou2011
+* visualizeParetoOptimalFront now draws lines instead of points
+* Added possibility to draw interactive 3D surface plots via smoof::plot3D(fn, package = "plotly")
+* Removed S3 method definition of getParamSet. This function is now contained in ParamHelpers 1.8
+
+smoof v1.3 (Release data: 2016-02-23)
+============
+
+* Modified: function name is optional now
+* Added optional reference point ref.point for multi-objective functions
+  - Reference point for ZDT functions is (11, 11)
+  - Reference point for DTLZ function family is r = (11, ...,  11) with #r = #objectives
+  - Added getter getRefPoint
+* Added possibility to pass the true mean function of a noisy function, i.e., the
+  "unnoisy" via the smoof parameter fn.mean
+  - Added getter getMeanFunction
+* makeMPM2Function now has additional parameters rotated and peak.shape
+
+smoof v1.2 (Release data: 2016-01-21)
+============
 
 * Added: functions convertToMaximization and convertToMinimization
 * Added: main parameter for plot and autoplot. By default the function name is
@@ -169,7 +224,8 @@ The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing
 * Fixed: hasConstraints for wrapped smoof functions
 * Fixed: getUpperBoxConstraints
 
-### smoof v1.1 (Release date: 2015-11-24):
+smoof v1.1 (Release date: 2015-11-24):
+============
 
 * Parameter set of predefined smoof function now contains a single vector parameter
   instead of multiple single numeric parameters. This is consistent with function
@@ -191,7 +247,8 @@ The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing
   Jennrich-Sampsam, Judge, Kearfott
 * Renamed bochachevsky function to bohachevsky.n1
 
-###smoof v1.0 (Release date: 2015-05-19):
+smoof v1.0 (Release date: 2015-05-19):
+==========
 
 * First submission to CRAN.
 

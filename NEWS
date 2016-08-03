@@ -1,4 +1,4 @@
-smoof v1.4 (Release data: xxxx-xx-xx)
+smoof v1.4 (Release data: 2016-08-03)
 ============
 
 * Fixed: issue in formula and global optimum of BukinN2 function
@@ -14,7 +14,7 @@ smoof v1.4 (Release data: xxxx-xx-xx)
 * Added first mixed parameter space funtion: Zhou2011
 * visualizeParetoOptimalFront now draws lines instead of points
 * Added possibility to draw interactive 3D surface plots via smoof::plot3D(fn, package = "plotly")
-* Removed S3 method definition of getParamSet. This function is now contained in ParamHelpers >= 1.8
+* Removed S3 method definition of getParamSet. This function is now contained in ParamHelpers 1.8
 
 smoof v1.3 (Release data: 2016-02-23)
 ============

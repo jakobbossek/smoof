@@ -37,7 +37,7 @@ plot3D = function(x, length.out = 100L, package = "plot3D", ...) {
 
   obj.fn = x
   n = getNumberOfParameters(obj.fn)
-  par.set = getParamSet(obj.fn)
+  par.set = ParamHelpers::getParamSet(obj.fn)
   if (n != 2L) {
     stopf("Surface plots are possible only for 2D numeric functions, but your function expects %i parameters.", n)
   }
