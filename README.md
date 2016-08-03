@@ -13,17 +13,6 @@ The bi-objective ZDT function family by Zitzler, Deb and Thiele is included as w
 
 At the moment the following optimization test functions respectively function sets/families are implemented:
 
-
-```
-## Warning: package 'ParamHelpers' was built under R version 3.2.5
-```
-
-```
-## Warning: package 'checkmate' was built under R version 3.2.5
-```
-
-
-
 |Function                                  |
 |:-----------------------------------------|
 |Ackley                                    |
