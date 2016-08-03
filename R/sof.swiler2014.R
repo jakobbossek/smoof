@@ -13,8 +13,6 @@
 #' \sin(2\pi x_3 - \pi) + 7 \sin^2(2 \pi x_2 - \pi) + 3.5 \sin(2 \pi x_3 - \pi) \, if \, x_1 = 5.
 #' }
 #'
-#' @references See \url{https://cfwebprod.sandia.gov/cfdocs/CompResearch/docs/MixedSurrSAND2012-0491.pdf}.
-#'
 #' @template ret_smoof_single
 #' @export
 makeSwiler2014Function = function() {
