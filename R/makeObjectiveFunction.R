@@ -61,7 +61,7 @@ makeObjectiveFunction = function(
   if (has.simple.signature) {
     fn = makeInternalObjectiveFunction(fn)
     if (!is.null(fn.mean)) {
-      fn.mean = makeInternalObjectiveFunction(fn)
+      fn.mean = makeInternalObjectiveFunction(fn.mean)
     }
   }
 
