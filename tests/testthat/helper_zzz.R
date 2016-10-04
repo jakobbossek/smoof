@@ -1,5 +1,5 @@
 expectIsSmoofFunction = function(obj, generator) {
-  expect_is(obj, c("smoof_function", "function"), info = "No snoof function generated '%s'.", generator)
+  expect_is(obj, c("smoof_function", "function"), info = "No smoof function generated '%s'.", generator)
 }
 
 expectGlobalOptimum = function(fun, generator) {
