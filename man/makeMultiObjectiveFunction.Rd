@@ -5,8 +5,8 @@
 \title{Generator for multi-objective target functions.}
 \usage{
 makeMultiObjectiveFunction(name = NULL, id = NULL, description = NULL, fn,
-  has.simple.signature = TRUE, par.set, n.objectives, noisy = FALSE,
-  fn.mean = NULL, minimize = rep(TRUE, n.objectives), vectorized = FALSE,
+  has.simple.signature = TRUE, par.set, n.objectives = NULL,
+  noisy = FALSE, fn.mean = NULL, minimize = NULL, vectorized = FALSE,
   constraint.fn = NULL, ref.point = NULL)
 }
 \arguments{

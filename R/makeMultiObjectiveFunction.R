@@ -35,10 +35,10 @@ makeMultiObjectiveFunction = function(
   fn,
   has.simple.signature = TRUE,
   par.set,
-  n.objectives,
+  n.objectives = NULL,
   noisy = FALSE,
   fn.mean = NULL,
-  minimize = rep(TRUE, n.objectives),
+  minimize = NULL,
   vectorized = FALSE,
   constraint.fn = NULL,
   ref.point = NULL) {
