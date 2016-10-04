@@ -1,55 +1,56 @@
 #' @title
-#' Helper function to create numeric single-objective optimization test function.
+#' Helper function to create numeric multi-objective optimization test function.
 #'
 #' @description
-#' This is a simplifying wrapper around \code{\link{makeSingleObjectiveFunction}}.
-#' It can be used if the function to generte is purely numeric to save some lines
+#' This is a simplifying wrapper around \code{\link{makeMultiObjectiveFunction}}.
+#' It can be used if the function to generate is purely numeric to save some lines
 #' of code.
 #'
-#' @inheritParams makeSingleObjectiveFunction
+#' @inheritParams makeMultiObjectiveFunction
 #' @template arg_par.len
 #' @template arg_par.id
 #' @template arg_par.lower
 #' @template arg_par.upper
 #' @examples
 #' # first we generate the 10d sphere function the long way
-#' fn = makeSingleObjectiveFunction(
+#' fn = makeMultiObjectiveFunction(
 #'   name = "Testfun",
-#'   fn = function(x) sum(x^2),
+#'   fn = function(x) c(sum(x^2), exp(sum(x^2))),
 #'   par.set = makeNumericParamSet(
 #'     len = 10L, id = "a",
 #'     lower = rep(-1.5, 10L), upper = rep(1.5, 10L)
-#'   )
+#'   ),
+#'   n.objectives = 2L
 #' )
 #'
 #' # ... and now the short way
-#' fn = snof(
+#' fn = mnof(
 #'  name = "Testfun",
-#'  fn = function(x) sum(x^2),
-#'  par.len = 10L, par.id = "a", par.lower = -1.5, par.upper = 1.5
+#'  fn = function(x) c(sum(x^2), exp(sum(x^2))),
+#'  par.len = 10L, par.id = "a", par.lower = -1.5, par.upper = 1.5,
+#'  n.objectives = 2L
 #' )
 #' @export
-snof = function(name = NULL,
+mnof = function(name = NULL,
   id = NULL,
   par.len = NULL,
   par.id = "x",
   par.lower = NULL,
   par.upper = NULL,
+  n.objectives,
   description = NULL,
   fn,
   vectorized = FALSE,
   noisy = FALSE,
   fn.mean = NULL,
-  minimize = TRUE,
+  minimize = rep(TRUE, n.objectives),
   constraint.fn = NULL,
-  tags = character(0),
-  global.opt.params = NULL,
-  global.opt.value = NULL,
-  local.opt.params = NULL,
-  local.opt.values = NULL) {
+  ref.point = NULL
+  ) {
 
   assertString(par.id, null.ok = TRUE)
   par.len = asCount(par.len)
+  n.objectives = asCount(n.objectives)
 
   # furhter checks are performed by ParamHelpers
   if (is.null(par.lower))
@@ -59,17 +60,13 @@ snof = function(name = NULL,
   assertNumeric(par.lower, min.len = 1L)
   assertNumeric(par.upper, min.len = 1L)
 
-  makeSingleObjectiveFunction(
+  makeMultiObjectiveFunction(
     name = name,
     id = id,
+    n.objectives = n.objectives,
     description = description,
     fn = fn,
     has.simple.signature = TRUE, # numeric funs always have a simple signature
-    vectorized = vectorized,
-    noisy = noisy,
-    fn.mean = fn.mean,
-    minimize = minimize,
-    constraint.fn = constraint.fn,
     par.set = makeNumericParamSet(
       len = par.len,
       id = par.id,
@@ -77,10 +74,11 @@ snof = function(name = NULL,
       upper = par.upper,
       vector = TRUE
     ),
-    tags = tags,
-    global.opt.params = global.opt.params,
-    global.opt.value = global.opt.value,
-    local.opt.params = local.opt.params,
-    local.opt.values = local.opt.values
+    vectorized = vectorized,
+    noisy = noisy,
+    fn.mean = fn.mean,
+    minimize = minimize,
+    constraint.fn = constraint.fn,
+    ref.point = ref.point
   )
 }

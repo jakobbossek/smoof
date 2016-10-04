@@ -6,10 +6,10 @@
 \usage{
 snof(name = NULL, id = NULL, par.len = NULL, par.id = "x",
   par.lower = NULL, par.upper = NULL, description = NULL, fn,
-  vectorized = FALSE, par.set, noisy = FALSE, fn.mean = NULL,
-  minimize = TRUE, constraint.fn = NULL, tags = character(0),
-  global.opt.params = NULL, global.opt.value = NULL,
-  local.opt.params = NULL, local.opt.values = NULL)
+  vectorized = FALSE, noisy = FALSE, fn.mean = NULL, minimize = TRUE,
+  constraint.fn = NULL, tags = character(0), global.opt.params = NULL,
+  global.opt.value = NULL, local.opt.params = NULL,
+  local.opt.values = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
@@ -46,11 +46,6 @@ Objective function.}
 \item{vectorized}{[\code{logical(1)}]\cr
 Can the objective function handle \dQuote{vector} input, i.~e., does it
 accept matrix of parameters? Default is \code{FALSE}.}
-
-\item{par.set}{[\code{\link[ParamHelpers]{ParamSet}}]\cr
-Parameter set describing different aspects of the objective function parameters, i.~e.,
-names, lower and/or upper bounds, types and so on. See \code{\link[ParamHelpers]{makeParamSet}}
-for further information.}
 
 \item{noisy}{[\code{logical(1)}]\cr
 Is the function noisy? Defaults to \code{FALSE}.}
