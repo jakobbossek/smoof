@@ -78,7 +78,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
       n.peaks, dimensions, topology, seed, rotated, peak.shape),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
-      rPython::python.call("evaluateProblem", as.numeric(x), n.peaks, dimensions, topology, seed, rotated, peak.shape)
+      smoof.python.call("evaluateProblem", as.double(x), n.peaks, dimensions, topology, seed, rotated, peak.shape)
     },
     par.set = par.set,
     tags = c("non-separable", "scalable", "continuous", "multimodal"),
@@ -91,3 +91,31 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
 class(makeMPM2Function) = c("function", "smoof_generator")
 attr(makeMPM2Function, "name") = c("Multiple peals model 2 function generator")
 attr(makeMPM2Function, "type") = c("single-objective")
+
+
+smoof.python.call = function (py.foo, ..., simplify = TRUE, as.is = FALSE)
+{
+    foo.args <- list(...)
+    if (is.null(names(foo.args)))
+        which.dict <- rep(FALSE, length(foo.args))
+    else which.dict <- names(foo.args) != ""
+    n.args.vect <- sum(!which.dict)
+    n.args.dict <- sum(which.dict)
+    foo.args.dict <- RJSONIO::toJSON(foo.args[which.dict], digits = 12, collapse = " ",
+        asIs = as.is)
+    foo.args.vect <- RJSONIO::toJSON(foo.args[!which.dict], digits = 12, collapse = " ",
+        asIs = as.is)
+    python.command <- c(paste("_r_args_dict =r'''", foo.args.dict,
+        "'''", sep = ""), paste("_r_args_vect =r'''", foo.args.vect,
+        "'''", sep = ""), "_r_args_dict = json.loads( _r_args_dict )",
+        "_r_args_vect = json.loads( _r_args_vect )", python.command <- paste("_r_call_return = ",
+            py.foo, "(", ifelse(n.args.vect == 1, "_r_args_vect[0]",
+                "*_r_args_vect"), ifelse(n.args.dict == 0, ")",
+                ", **_r_args_dict)"), sep = ""))
+    python.command <- paste(python.command, collapse = "\n")
+    rPython::python.exec(python.command)
+    ret <- rPython::python.get("_r_call_return")
+    if (length(ret) == 1 && simplify)
+        ret <- ret[[1]]
+    ret
+}

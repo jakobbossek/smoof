@@ -23,7 +23,8 @@ Imports:
     plot3D,
     plotly,
     mco,
-    Rcpp (>= 0.11.0)
+    Rcpp (>= 0.11.0),
+    RJSONIO
 Suggests:
     testthat,
     rPython (>= 0.0-5)
