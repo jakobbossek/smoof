@@ -1,4 +1,10 @@
+#' @title
 #' Return a function which internally stores x or y values.
+#'
+#' @description
+#' Often it is desired and useful to store the optimization path, i.e., the evaluated
+#' function values and/or the parameters. Not all optimization algorithms offer
+#' such a trace. This wrapper makes a smoof function handle x/y-values itself.
 #'
 #' @param fn [\code{smoof_function}]\cr
 #'   Smoof function.

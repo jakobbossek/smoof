@@ -1,7 +1,8 @@
 #' Generator for the noiseless function set of the real-parameter Black-Box
 #' Optimization Benchmarking (BBOB).
 #'
-#' @note It is possible to pass a matrix of parameters to the functions, where
+#' @note
+#' It is possible to pass a matrix of parameters to the functions, where
 #' each column consists of one parameter setting.
 #'
 #' @param dimension [\code{integer(1)}]\cr

@@ -2,7 +2,8 @@
 #' Generate smoof function by passing a character vector of generator
 #' names.
 #'
-#' @description This function is especially useful in combination with
+#' @description
+#' This function is especially useful in combination with
 #' \code{\link{filterFunctionsByTags}} to generate a test set of functions
 #' with certain properties, e.~g., multimodality.
 #'

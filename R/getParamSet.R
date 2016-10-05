@@ -1,4 +1,5 @@
-#' @title Get parameter set.
+#' @title
+#' Get parameter set.
 #'
 #' @description
 #' Each smoof function contains a parameter set of type \code{\link[ParamHelpers]{ParamSet}}

@@ -1,4 +1,10 @@
+#' @title
 #' Get a list of implemented test functions with specific tags.
+#'
+#' @description
+#' Single objective functions can be tagged, e.g., as unimodal. Searching for all
+#' functions with a specific tag by hand is tedious. The \code{filterFunctionsByTags}
+#' function helps to filter all single objective smoof function.
 #'
 #' @param tags [\code{character}]\cr
 #'   Character vector of tags. All available tags can be determined with a call
