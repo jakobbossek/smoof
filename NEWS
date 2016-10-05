@@ -1,3 +1,11 @@
+smoof v1.5 (Release data: xxxx-xx-xx)
+============
+
+* Fixed: mean function was not set properly for noisy functions
+* Improved docs slighly
+* Added shortcuts {s,m}nof for generating single-/multi-objective objective functions
+  with numeric parameters only
+
 smoof v1.4 (Release data: 2016-08-03)
 ============
 
