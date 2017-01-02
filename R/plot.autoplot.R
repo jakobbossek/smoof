@@ -135,7 +135,7 @@ autoplot.smoof_function = function(x,
       pl = pl + scale_fill_gradientn(colours = brewer.div(200))
     }
     if (render.contours) {
-      pl = pl + stat_contour(aes_string(z = "y", fill = NULL), colour = "gray", alpha = 0.8)
+      pl = pl + stat_contour(aes_string(z = "y"), colour = "gray", alpha = 0.8)
     }
   }
 

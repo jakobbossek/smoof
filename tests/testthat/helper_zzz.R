@@ -23,6 +23,6 @@ checkGGPlot = function(pl, title, xlab, ylab) {
 
 checkGGFacets = function(pl, rows.cols.expected) {
   expect_true(!is.null(pl$facet))
-  row.cols = c(names(pl$facet$rows), names(pl$facet$cols))
+  row.cols = c(names(pl$facet$params$rows), names(pl$facet$params$cols))
   expect_true(setequal(row.cols, rows.cols.expected))
 }
