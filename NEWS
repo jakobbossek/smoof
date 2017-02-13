@@ -9,6 +9,7 @@ smoof v1.5 (Release data: xxxx-xx-xx)
   default strips numeric values to only 4 digits.
 * Fixed: ggplot2 warnings
 * Fixed: wrong lower bound in MOP3 test function
+* Fixed: issue in definition of Cosine Mixture Function due to faulty online sources
 
 smoof v1.4 (Release data: 2016-08-03)
 ============
