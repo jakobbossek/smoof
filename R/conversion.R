@@ -10,8 +10,6 @@
 #' do exactly that keeping the attributes.
 #'
 #' @note
-#' Internally no wrapper is put around the original function. Instead the function
-#' is copied and the body of the function is manipulated via the \code{body} function.
 #' Both functions will quit with an error if multi-objective functions are passed.
 #'
 #' @param fn [\code{smoof_function}]\cr
@@ -47,6 +45,11 @@ convertToMinimization = function(fn) {
 convertProblemDirection = function(fn, minimize.after = TRUE) {
   assertFlag(minimize.after)
 
+  if (isWrappedSmoofFunction(fn)) {
+    stopf("Conversion works only for unwrapped functions! Apply, e.g., counting wrapper
+      after conversion.")
+  }
+
   if (isMultiobjective(fn)) {
     stopf("Conversion to maximization only supported for single-objective problems
       at the moment, but your function '%s' has %i", getName(fn), getNumberOfObjectives(fn))
@@ -59,16 +62,20 @@ convertProblemDirection = function(fn, minimize.after = TRUE) {
     stopf("Function should already be %s.", (if (minimize.after) "minimized" else "maximized"))
   }
 
-  # make copy of function
-  fn2 = fn
+  # get attributes
+  attribs = attributes(fn)
+  should.minimize = shouldBeMinimized(fn)
+  attributes(fn) = NULL
 
-  # multiply function body with -1
-  body(fn2) = substitute(-1 * FUN, list(FUN = body(fn)))
+  # make wrapper function
+  fn2 = function(x) {
+    -fn(x)
+  }
 
   # copy attributes (get dropped on body() call)
-  attributes(fn2) = attributes(fn)
+  attributes(fn2) = attribs
 
   # flip maximization stuff
-  fn2 = setAttribute(fn2, "minimize", !shouldBeMinimized(fn))
+  fn2 = setAttribute(fn2, "minimize", !should.minimize)
   return(fn2)
 }
