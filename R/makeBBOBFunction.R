@@ -84,7 +84,7 @@ mapBBOBFidToMetaData = function(fid) {
     "16" = list(name = "Weierstrass", tags = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
     "17" = list(name = "Schaffers F7", tags = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
     "18" = list(name = "Schaffers F7 (moderately ill-conditioned)", c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure", "moderate-conditioned")),
-    "19" = list(name = "Composite Griewank-Rosenbrock F8F2", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
+    "19" = list(name = "Composite Griewank-Rosenbrock F8F2", c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
     "20" = list(name = "Schwefel", c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
     "21" = list(name = "Gallagher's Gaussian 101-me Peaks", c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
     "22" = list(name = "Gallagher's Gaussian 21-hi Peaks", c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
