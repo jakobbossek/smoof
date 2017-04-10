@@ -13,6 +13,7 @@ smoof v1.5 (Release data: xxxx-xx-xx)
 * Fixed: issue with min<->max conversion if functions has.simple.signature = FALSE and
   explicit return statement was used.
 * Added: missing single-objective tag for BBOB functions
+* Added: log.scale argument for autoplot
 
 smoof v1.4 (Release data: 2016-08-03)
 ============
