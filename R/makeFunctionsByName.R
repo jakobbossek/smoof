@@ -51,7 +51,7 @@ makeFunctionsByName = function(fun.names, ...) {
       } else if (args$dimensions == 2L) {
         return(do.call(generator, list()))
       } else {
-        stopf("Dimension > 3 passed, but '%s' is a non-scalable 2D function.", fun.name)
+        stopf("Dimension attribute passed, but '%s' is a non-scalable function.", fun.name)
       }
     }
   })
