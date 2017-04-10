@@ -35,6 +35,9 @@
 #' @param render.contours [\code{logical(1)}]\cr
 #'   For 2D numeric functions only: Should contour lines be plotted? Default is
 #'   \code{TRUE}.
+#' @param log.scale [\code{logical(1)}]\cr
+#'   Should the z-axis be plotted on log-scale?
+#'   Default is \code{FALSE}.
 #' @param length.out [\code{integer(1)}]\cr
 #'   Desired length of the sequence of equidistant values generated for numeric parameters.
 #'   Higher values lead to more smooth resolution in particular if \code{render.levels}
@@ -83,6 +86,7 @@ autoplot.smoof_function = function(x,
   show.optimum = FALSE,
   main = getName(x),
   render.levels = FALSE, render.contours = TRUE,
+  log.scale = FALSE,
   length.out = 50L, ...) {
   checkPlotFunParams(x)
 
@@ -92,6 +96,7 @@ autoplot.smoof_function = function(x,
   assertInt(length.out, lower = 10L)
   assertFlag(render.levels)
   assertFlag(render.contours)
+  assertFlag(log.scale)
 
   par.set = ParamHelpers::getParamSet(x)
   par.types = getParamTypes(par.set, df.cols = TRUE, with.nr = TRUE)
@@ -120,6 +125,15 @@ autoplot.smoof_function = function(x,
   }
 
   grid = generateDataframeForGGPlot2(x, length.out)
+
+  # log scale
+  if (log.scale) {
+    if (any(grid$y < 0)) {
+      warning("Log-scale: Negative values occured. Shifting function to apply log transformation.")
+      grid$y = grid$y - min(grid$y) + 1
+    }
+    grid$y = log(grid$y)
+  }
 
   if (n.numeric == 1L) {
     pl = ggplot(grid, aes_string(x = par.names[numeric.idx], y = "y")) + geom_line()
