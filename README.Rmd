@@ -72,6 +72,19 @@ The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing
 ```{r, child = 'NEWS'}
 ```
 
+## Citation
+
+Please cite my [R Journal paper](https://journal.r-project.org/archive/2017/RJ-2017-004/index.html) in publications. Get the information via `citation("smoof")` or use the following BibTex entry:
+```
+@Article{,
+  author = {Jakob Bossek},
+  title = {smoof: Single- and Multi-Objective Optimization Test Functions},
+  year = {2017},
+  journal = {The R Journal},
+  url = {https://journal.r-project.org/archive/2017/RJ-2017-004/index.html},
+}
+```
+
 ## Contact
 
 Please address questions and missing features about the **smoof package** to the author Jakob Bossek <j.bossek@gmail.com>. Found some nasty bugs? Please use the [issue tracker](https://github.com/jakobbossek/smoof/issues) for this. Pay attention to explain the problem as good as possible. At its best you provide an example, so I can reproduce your problem.

@@ -13,6 +13,7 @@ The bi-objective ZDT function family by Zitzler, Deb and Thiele is included as w
 
 At the moment the following optimization test functions respectively function sets/families are implemented:
 
+
 |Function                                  |
 |:-----------------------------------------|
 |Ackley                                    |
@@ -158,6 +159,24 @@ The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing
 
 ## News
 
+smoof v1.5 (Release data: soon)
+============
+
+* Fixed: mean function was not set properly for noisy functions
+* Improved docs slighly
+* Added shortcuts {s,m}nof for generating single-/multi-objective objective functions
+  with numeric parameters only
+* Fixed: precision issue caused by rPython respectively RJSONIO::toJSON, which by
+  default strips numeric values to only 4 digits.
+* Fixed: ggplot2 warnings
+* Fixed: wrong lower bound in MOP3 test function
+* Fixed: issue in definition of Cosine Mixture Function due to faulty online sources
+* Fixed: issue with min<->max conversion if functions has.simple.signature = FALSE and
+  explicit return statement was used.
+* Added: missing single-objective tag for BBOB functions
+* Added: log.scale argument for autoplot
+* Added: CITATION file
+
 smoof v1.4 (Release data: 2016-08-03)
 ============
 
@@ -240,6 +259,19 @@ smoof v1.0 (Release date: 2015-05-19):
 ==========
 
 * First submission to CRAN.
+
+## Citation
+
+Please cite my [R Journal paper](https://journal.r-project.org/archive/2017/RJ-2017-004/index.html) in publications. Get the information via `citation("smoof")` or use the following BibTex entry:
+```
+@Article{,
+  author = {Jakob Bossek},
+  title = {smoof: Single- and Multi-Objective Optimization Test Functions},
+  year = {2017},
+  journal = {The R Journal},
+  url = {https://journal.r-project.org/archive/2017/RJ-2017-004/index.html},
+}
+```
 
 ## Contact
 

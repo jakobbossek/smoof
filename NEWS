@@ -14,6 +14,7 @@ smoof v1.5 (Release data: xxxx-xx-xx)
   explicit return statement was used.
 * Added: missing single-objective tag for BBOB functions
 * Added: log.scale argument for autoplot
+* Added: CITATION file
 
 smoof v1.4 (Release data: 2016-08-03)
 ============
