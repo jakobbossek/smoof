@@ -12,4 +12,3 @@ makeMOP6Function()
 \description{
 MOP6 function from Van Valedhuizen's test suite.
 }
-

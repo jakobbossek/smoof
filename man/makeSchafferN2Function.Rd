@@ -18,4 +18,3 @@ subject to \eqn{\mathbf{x}_i \in [-100, 100], i = 1, 2}.
 S. K. Mishra, Some New Test Functions For Global Optimization
 And Performance of Repulsive Particle Swarm Method.
 }
-

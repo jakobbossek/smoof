@@ -2,8 +2,8 @@
 % Please edit documentation in R/smoof_function.R
 \name{smoof_function}
 \alias{smoof_function}
-\alias{smoof_multi_objective_function}
 \alias{smoof_single_objective_function}
+\alias{smoof_multi_objective_function}
 \title{Smoof function}
 \description{
 Regular R function with additional classes \code{smoof_function} and one of \code{smoof_single_objective_function}
@@ -43,4 +43,3 @@ a reference point:
   \item{ref.point [\code{numeric}]}{Optional reference point of length \code{n.objectives}}.
 }
 }
-

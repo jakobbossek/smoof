@@ -18,4 +18,3 @@ subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
 J. P. Hennart (ed.), Numerical Analysis, Proc. 3rd AS Workshop,
 Lecture Notes in Mathematics, vol. 90, Springer, 1982.
 }
-

@@ -25,4 +25,3 @@ all local optima (including the global one).
 \note{
 Keep in mind, that this method makes sense only for single-objective target functions.
 }
-

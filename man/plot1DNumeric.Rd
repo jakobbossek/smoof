@@ -32,4 +32,3 @@ Nothing
 \description{
 Plot an one-dimensional function.
 }
-

@@ -39,4 +39,3 @@ if (require(plot3D)) {
 See the \href{http://coco.gforge.inria.fr/doku.php?id=bbob-2009-downloads}{BBOB website}
 for a detailed description of the BBOB functions.
 }
-

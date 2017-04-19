@@ -19,4 +19,3 @@ G. A. Bekey, M. T. Ung, A Comparative Evaluation of Two Global
 Search Algorithms, IEEE Transaction on Systems, Man and Cybernetics, vol. 4,
 no. 1, pp. 112- 116, 1974.
 }
-

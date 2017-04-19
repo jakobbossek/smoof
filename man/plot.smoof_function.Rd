@@ -19,4 +19,3 @@ Nothing
 \description{
 Generate \code{\link[ggplot2]{ggplot}} object.
 }
-

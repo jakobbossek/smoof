@@ -100,4 +100,3 @@ print(pl)
 # or hide the legend
 pl + ggtitle("My fancy function") + theme(legend.position = "none")
 }
-

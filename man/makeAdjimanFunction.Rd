@@ -19,4 +19,3 @@ C. S. Adjiman, S. Sallwig, C. A. Flouda, A. Neumaier, A Global Optimization
 Method, aBB for General Twice-Differentiable NLPs-1, Theoretical Advances, Computers
 Chemical Engineering, vol. 22, no. 9, pp. 1137-1158, 1998.
 }
-

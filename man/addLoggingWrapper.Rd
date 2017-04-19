@@ -47,4 +47,3 @@ log.res = getLoggedValues(fn, compact = TRUE)
 print(log.res)
 
 }
-

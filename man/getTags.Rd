@@ -16,4 +16,3 @@ Objective function.}
 \description{
 Returns vector of associated tags.
 }
-

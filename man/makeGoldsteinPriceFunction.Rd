@@ -19,4 +19,3 @@ with \eqn{\mathbf{x}_i \in [-2, 2], i = 1, 2}.
 Goldstein, A. A. and Price, I. F.: On descent from local minima.
 Math. Comput., Vol. 25, No. 115, 1971.
 }
-

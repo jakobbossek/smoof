@@ -16,4 +16,3 @@ Objective function.}
 \description{
 Return lower box constaints.
 }
-

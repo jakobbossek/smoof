@@ -16,4 +16,3 @@ Objective function.}
 \description{
 Checks whether the given function is multi-objective.
 }
-

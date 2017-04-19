@@ -25,4 +25,3 @@ given by the box constraints \eqn{\mathbf{x}_i \in [-32.768, 32.768]}.
 Ackley, D. H.: A connectionist machine for genetic hillclimbing.
 Boston: Kluwer Academic Publishers, 1987.
 }
-

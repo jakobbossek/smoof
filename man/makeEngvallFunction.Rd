@@ -17,4 +17,3 @@ with \eqn{\mathbf{x}_1, \mathbf{x}_2 \in [-2000, 2000]}.
 \references{
 See \url{http://al-roomi.org/benchmarks/unconstrained/2-dimensions/116-engvall-s-function}.
 }
-

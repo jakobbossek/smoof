@@ -113,4 +113,3 @@ fn = snof(
  par.len = 10L, par.id = "a", par.lower = -1.5, par.upper = 1.5
 )
 }
-

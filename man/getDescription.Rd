@@ -16,4 +16,3 @@ Objective function.}
 \description{
 Return the description of the function.
 }
-

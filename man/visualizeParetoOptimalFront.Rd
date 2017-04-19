@@ -29,4 +29,3 @@ vis = visualizeParetoOptimalFront(fn)
 # Alternatively we can pass some more algorithm parameters to the NSGA2 algorithm
 vis = visualizeParetoOptimalFront(fn, popsize = 1000L)
 }
-

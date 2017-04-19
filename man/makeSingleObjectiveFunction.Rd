@@ -124,4 +124,3 @@ fn.mixed = makeSingleObjectiveFunction(
 print(fn.mixed)
 print(autoplot(fn.mixed))
 }
-

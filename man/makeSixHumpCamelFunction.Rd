@@ -20,4 +20,3 @@ with box constraints \eqn{\mathbf{x}_1 \in [-3, 3]} and \eqn{\mathbf{x}_2 \in [-
 Dixon, L. C. W. and Szego, G. P.: The optimization problem: An introduction.
 In: Towards Global Optimization II, New York: North Holland, 1978.
 }
-

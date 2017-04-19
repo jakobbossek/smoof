@@ -19,4 +19,3 @@ and
 \deqn{f_1(\mathbf{x}_1) = 0.5 \left( \sqrt(1 + (x_1 + x_2)^2) + \sqrt(1 + (x_1 - x_2)^2) - x_1 + x_2\right) + d}
 where \eqn{d = \lambda * \exp(-(x_1 - x_2)^2)} and \eqn{\mathbf{x}_i \in [-1.5, 1.5], i = 1, 2}.
 }
-

@@ -22,4 +22,3 @@ and Nuclei Letters, vol. 4, no. 1, pp. 73-80, 2007.
 \seealso{
 \code{\link{makeBukinN2Function}}, \code{\link{makeBukinN4Function}}
 }
-

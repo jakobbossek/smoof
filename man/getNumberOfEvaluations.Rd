@@ -18,4 +18,3 @@ Wrapped \code{smoof_function}.}
 Return the number of function evaluations performed by the wrapped
 \code{smoof_function}.
 }
-

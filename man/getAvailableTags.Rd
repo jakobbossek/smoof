@@ -16,4 +16,3 @@ The \pkg{smoof} package offers the possibility to associate a set of properties,
 termed \dQuote{tags} to a \code{smoof_function}. This helper function returns
 a character vector of all possible tags.
 }
-

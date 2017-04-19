@@ -25,4 +25,3 @@ The domain is given by the constraints \eqn{\mathbf{x}_i \in [-30, 30], i = 1, \
 H. H. Rosenbrock, An Automatic Method for Finding the Greatest or
 least Value of a Function, Computer Journal, vol. 3, no. 3, pp. 175-184, 1960.
 }
-

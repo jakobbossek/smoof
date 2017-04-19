@@ -14,4 +14,3 @@ This function is based on the formula
 \deqn{f(\mathbf{x}) = (\mathbf{x}_1 + 2\mathbf{x}_2 - 7)^2 + (2\mathbf{x}_1 + \mathbf{x}_2 - 5)^2}
 subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
 }
-

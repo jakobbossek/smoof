@@ -52,4 +52,3 @@ A. Auger and N. Hansen. Performance evaluation of an advanced local
 search evolutionary algorithm. In Proceedings of the IEEE Congress on Evolutionary
 Computation (CEC 2005), pages 1777-1784, 2005.
 }
-

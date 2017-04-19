@@ -18,4 +18,3 @@ in Lecture Notes in Computer Science, H.-P. Schwefel and R. Maenner,
 Eds. Berlin, Germany: Springer-Verlag, 1991, vol. 496, Proc. Parallel
 Problem Solving From Nature. 1st Workshop, PPSN I, pp. 193-197.
 }
-

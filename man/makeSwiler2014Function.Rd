@@ -22,4 +22,3 @@ f(\mathbf{x}) = \\
 \sin(2\pi x_3 - \pi) + 7 \sin^2(2 \pi x_2 - \pi) + 3.5 \sin(2 \pi x_3 - \pi) \, if \, x_1 = 5.
 }
 }
-

@@ -21,4 +21,3 @@ Builds and returns the bi-objective Sphere test problem:
 \deqn{f(\mathbf{x}) = \left(\sum_{i=1}^{n} \mathbf{x}_i^2, \sum_{i=1}^{n} (\mathbf{x}_i - \mathbf{a})^2\right)}
 where \deqn{\mathbf{a} \in R^n}.
 }
-

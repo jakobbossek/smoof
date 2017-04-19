@@ -20,4 +20,3 @@ This functions is also know as the Zirilli function.
 \references{
 See \url{http://al-roomi.org/benchmarks/unconstrained/2-dimensions/26-aluffi-pentini-s-or-zirilli-s-function}.
 }
-

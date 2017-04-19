@@ -23,4 +23,3 @@ with box constraints \eqn{-3 \leq \mathbf{x}_1, \mathbf{x}_2 \leq 3}.
 Viennet, R. (1996). Multicriteria optimization using a genetic algorithm for determining the
 Pareto set. International Journal of Systems Science 27 (2), 255-260.
 }
-

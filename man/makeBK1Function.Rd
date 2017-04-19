@@ -15,4 +15,3 @@ makeBK1Function()
 \references{
 ...
 }
-

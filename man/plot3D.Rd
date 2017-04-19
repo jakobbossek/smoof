@@ -44,4 +44,3 @@ plot3D(fn, image = TRUE, phi = 30)
 plot3D(fn, method = "plotly")
 }
 }
-

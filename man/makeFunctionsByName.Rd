@@ -30,4 +30,3 @@ test.set = makeFunctionsByName(filterFunctionsByTags("multimodal"), dimensions =
 \seealso{
 \code{\link{filterFunctionsByTags}}
 }
-

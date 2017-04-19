@@ -24,4 +24,3 @@ O. Begambre, J. E. Laier, A hybrid Particle Swarm Optimization -
 Simplex Algorithm (PSOS) for Structural Damage Identification, Journal of
 Advances in Engineering Software, vol. 40, no. 9, pp. 883-891, 2009.
 }
-

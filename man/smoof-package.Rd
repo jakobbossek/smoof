@@ -33,6 +33,7 @@ of a subset of these functions beside some other functions as well as
 generators for large benchmarking sets like the noiseless BBOB2009 function set [2]
 or functions based on the multiple peaks model 2 [3].
 }
+
 \references{
 [1] Momin Jamil and Xin-She Yang, A literature survey of benchmark
 functions for global optimization problems, Int. Journal of Mathematical
@@ -43,4 +44,3 @@ RR-6829. INRIA, 2009.
 [3] Simon Wessing, The Multiple Peaks Model 2, Algorithm Engineering Report
 TR15-2-001, TU Dortmund University, 2015.
 }
-

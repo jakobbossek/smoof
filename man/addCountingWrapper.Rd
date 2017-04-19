@@ -41,4 +41,3 @@ print(getNumberOfEvaluations(fn))
 \seealso{
 \code{\link{getNumberOfEvaluations}}, \code{\link{resetEvaluationCounter}}
 }
-

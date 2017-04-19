@@ -30,4 +30,3 @@ Extract logged values of a function wrapped by a logging wrapper.
 \seealso{
 \code{\link{addLoggingWrapper}}
 }
-

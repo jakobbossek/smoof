@@ -17,4 +17,3 @@ with \eqn{\mathbf{x}_1, \mathbf{x}_2 \in [-1, 1]}.
 \references{
 See \url{http://al-roomi.org/benchmarks/unconstrained/2-dimensions/134-jennrich-sampson-s-function}.
 }
-

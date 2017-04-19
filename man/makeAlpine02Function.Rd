@@ -24,4 +24,3 @@ M. Clerc, The Swarm and the Queen, Towards a Deterministic and
 Adaptive Particle Swarm Optimization, IEEE Congress on Evolutionary Computation,
 Washington DC, USA, pp. 1951-1957, 1999.
 }
-

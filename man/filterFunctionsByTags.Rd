@@ -33,4 +33,3 @@ filterFunctionsByTags(c("unimodal", "separable"))
 # list all functions which are unimodal or separable
 filterFunctionsByTags(c("multimodal", "separable"), or = TRUE)
 }
-

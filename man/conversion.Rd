@@ -43,4 +43,3 @@ plot(fn2)
 plot(fn3)
 par(opar)
 }
-

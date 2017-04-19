@@ -20,4 +20,3 @@ S. K. Mishra, Global Optimization By Differential Evolution and
 Particle Swarm Methods: Evaluation On Some Benchmark Functions, Munich Research
 Papers in Economics.
 }
-

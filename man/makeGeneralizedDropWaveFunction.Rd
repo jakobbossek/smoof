@@ -18,4 +18,3 @@ Multimodal single-objective function following the formula:
 \deqn{\mathbf{x} = -\frac{1 + \cos(\sqrt{\sum_{i = 1}^{n} \mathbf{x}_i^2})}{2 + 0.5 \sum_{i = 1}^{n} \mathbf{x}_i^2}}
 with \eqn{\mathbf{x}_i \in [-5.12, 5.12], i = 1, \ldots, n}.
 }
-

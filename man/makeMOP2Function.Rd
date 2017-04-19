@@ -21,4 +21,3 @@ C. M. Fonseca and P. J. Fleming, "Multiobjective genetic algorithms
 made easy: Selection, sharing and mating restriction," Genetic Algorithms
 in Engineering Systems: Innovations and Applications, pp. 45-52, Sep. 1995. IEE.
 }
-
