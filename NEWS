@@ -1,4 +1,4 @@
-smoof v1.5 (Release data: xxxx-xx-xx)
+smoof v1.5
 ============
 
 * Fixed: mean function was not set properly for noisy functions
@@ -16,7 +16,7 @@ smoof v1.5 (Release data: xxxx-xx-xx)
 * Added: log.scale argument for autoplot
 * Added: CITATION file
 
-smoof v1.4 (Release data: 2016-08-03)
+smoof v1.4
 ============
 
 * Fixed: issue in formula and global optimum of BukinN2 function
@@ -34,7 +34,7 @@ smoof v1.4 (Release data: 2016-08-03)
 * Added possibility to draw interactive 3D surface plots via smoof::plot3D(fn, package = "plotly")
 * Removed S3 method definition of getParamSet. This function is now contained in ParamHelpers 1.8
 
-smoof v1.3 (Release data: 2016-02-23)
+smoof v1.3
 ============
 
 * Modified: function name is optional now
@@ -47,7 +47,7 @@ smoof v1.3 (Release data: 2016-02-23)
   - Added getter getMeanFunction
 * makeMPM2Function now has additional parameters rotated and peak.shape
 
-smoof v1.2 (Release data: 2016-01-21)
+smoof v1.2
 ============
 
 * Added: functions convertToMaximization and convertToMinimization
@@ -71,7 +71,7 @@ smoof v1.2 (Release data: 2016-01-21)
 * Fixed: hasConstraints for wrapped smoof functions
 * Fixed: getUpperBoxConstraints
 
-smoof v1.1 (Release date: 2015-11-24):
+smoof v1.1
 ============
 
 * Parameter set of predefined smoof function now contains a single vector parameter
