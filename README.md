@@ -155,7 +155,7 @@ print(getParamSet(obj.fn))
 print(autoplot(obj.fn))
 ```
 
-The [ecr](https://github.com/jakobbossek/ecr) package for evolutionary computing in R needs builds upon smoof functions.
+The [ecr](https://github.com/jakobbossek/ecr2) package for evolutionary computing in R needs builds upon smoof functions.
 
 ## News
 
