@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.org/jakobbossek/smoof.svg)](https://travis-ci.org/jakobbossek/smoof)
 [![Build status](https://ci.appveyor.com/api/projects/status/4b468f5phkb4lmeq/branch/master?svg=true)](https://ci.appveyor.com/project/jakobbossek/smoof/branch/master)
 [![Coverage Status](https://coveralls.io/repos/jakobbossek/smoof/badge.svg)](https://coveralls.io/r/jakobbossek/smoof)
+[![Research software impact](http://depsy.org/api/package/cran/smoof/badge.svg)](http://depsy.org/package/r/smoof)
 
 This package offers an interface for objective functions in the context of (multi-objective) global optimization. It conveniently builds up on the S3 objects, i. e., an objective function is a S3 object composed of a descriptive name, the function itself, a parameter set, box constraints or other constraints, number of objectives and so on. Moreover, the package contains generators for a load of both single- and multi-objective optimization test functions which are frequently being used in the literature of (benchmarking) optimization algorithms.
 The bi-objective ZDT function family by Zitzler, Deb and Thiele is included as well as the popular single-objective test functions like De Jong's function, Himmelblau function and Schwefel function. Moreover, the package offers a R interface to the C implementation of the *Black-Box Optimization Benchmarking* (BBOB) [set of noiseless test functions](http://coco.gforge.inria.fr/doku.php?id=bbob-2009-downloads).
