@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.autoplot.R
 \name{autoplot.smoof_function}
 \alias{autoplot.smoof_function}
-\title{Generate \code{\link[ggplot2]{ggplot}} object.}
+\title{Generate ggplot2 object.}
 \usage{
 \method{autoplot}{smoof_function}(x, show.optimum = FALSE,
   main = getName(x), render.levels = FALSE, render.contours = TRUE,

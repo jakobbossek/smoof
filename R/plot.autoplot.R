@@ -1,5 +1,5 @@
 #' @title
-#' Generate \code{\link[ggplot2]{ggplot}} object.
+#' Generate ggplot2 object.
 #'
 #' @description
 #' This function expects a smoof function and returns a ggplot object depicting

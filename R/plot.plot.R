@@ -1,4 +1,4 @@
-#' Generate \code{\link[ggplot2]{ggplot}} object.
+#' Generate ggplot2 object.
 #'
 #' @param x [\code{smoof_function}]\cr
 #'   Function.

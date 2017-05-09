@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.plot.R
 \name{plot.smoof_function}
 \alias{plot.smoof_function}
-\title{Generate \code{\link[ggplot2]{ggplot}} object.}
+\title{Generate ggplot2 object.}
 \usage{
 \method{plot}{smoof_function}(x, ...)
 }
@@ -17,5 +17,5 @@ Further parameters passed to the corresponding plot functions.}
 Nothing
 }
 \description{
-Generate \code{\link[ggplot2]{ggplot}} object.
+Generate ggplot2 object.
 }
