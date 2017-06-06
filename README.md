@@ -2,6 +2,7 @@
 
 [![CRAN Status Badge](http://www.r-pkg.org/badges/version/smoof)](http://cran.r-project.org/web/packages/smoof)
 [![CRAN Downloads](http://cranlogs.r-pkg.org/badges/smoof)](http://cran.rstudio.com/web/packages/smoof/index.html)
+[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/smoof?color=orange)](http://cran.rstudio.com/web/packages/smoof/index.html)
 [![Build Status](https://travis-ci.org/jakobbossek/smoof.svg)](https://travis-ci.org/jakobbossek/smoof)
 [![Build status](https://ci.appveyor.com/api/projects/status/4b468f5phkb4lmeq/branch/master?svg=true)](https://ci.appveyor.com/project/jakobbossek/smoof/branch/master)
 [![Coverage Status](https://coveralls.io/repos/jakobbossek/smoof/badge.svg)](https://coveralls.io/r/jakobbossek/smoof)
