@@ -1,3 +1,9 @@
+# smoof 1.5.1
+
+## Miscelaneous
+
+* logging and couting wrapper now have class smoof_function
+
 # smoof 1.5
 
 ## New features
