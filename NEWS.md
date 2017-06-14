@@ -1,5 +1,13 @@
 # smoof 1.5.1
 
+## New features
+
+* Added Shekel function
+
+## Bugfixes
+
+* Better handling of additional arguments in makeFunctionsByName
+
 ## Miscelaneous
 
 * logging and couting wrapper now have class smoof_function

@@ -2,6 +2,8 @@ smoof 1.5.1
 ===========
 
 * logging and couting wrapper now have class smoof_function
+* Better handling of additional arguments in makeFunctionsByName
+* Added Shekel function
 
 smoof 1.5
 =========
