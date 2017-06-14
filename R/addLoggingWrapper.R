@@ -92,6 +92,6 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
     })
     return(y)
   }
-  class(wrapped.fn) = c("smoof_logging_function", "smoof_wrapped_function")
+  class(wrapped.fn) = c("smoof_logging_function", "smoof_wrapped_function", "smoof_function", "function")
   return(wrapped.fn)
 }

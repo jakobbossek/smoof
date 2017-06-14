@@ -44,6 +44,6 @@ addCountingWrapper = function(fn) {
     }
     fn(x, ...)
   }
-  class(wrapped.fn) = c("smoof_counting_function", "smoof_wrapped_function")
+  class(wrapped.fn) = c("smoof_counting_function", "smoof_wrapped_function", "smoof_function", "function")
   return(wrapped.fn)
 }
