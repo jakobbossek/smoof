@@ -10,7 +10,7 @@ test_that("single-objective test function generators work", {
       "makeSingleObjectiveFunction", "makeBBOBFunction",
       "makeShekelFunction",
       "makeUFFunction", "makeUFParamSet", "makeMPM2Function",
-      "makeGOMOPFunction", paste0("makeMOP", 1:7, "Function")))
+      "makeGOMOPFunction", paste0("makeMOP", 1:7, "Function"), "makeHartmannFunction"))
     all.methods = sapply(all.methods, get)
     fun.generators = Filter(function(fun) inherits(fun, "smoof_generator"), all.methods)
 

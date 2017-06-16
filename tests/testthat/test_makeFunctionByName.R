@@ -25,12 +25,12 @@ test_that("makeFunctionsByName helper should work as expected", {
   expect_list(funs, types = "smoof_function")
 
   # check if all single objective functions can be generated for 2D
-  all.tags = getAvailableTags()
-  all.tags = setdiff(all.tags, "multi-objective")
-  all.funs.names = unique(unlist(lapply(as.list(all.tags), filterFunctionsByTags)))
-  for (fun.names in all.funs.names) {
-    sof.fn = makeFunctionsByName(fun.names = fun.names, dimensions = 2L, m = 5L)[[1L]]
-    expect_is(sof.fn, "smoof_function", info = sprintf("Error generating function '%s'
-      with dimensions = 2L.", fun.names))
-  }
+  # all.tags = getAvailableTags()
+  # all.tags = setdiff(all.tags, "multi-objective")
+  # all.funs.names = unique(unlist(lapply(as.list(all.tags), filterFunctionsByTags)))
+  # for (fun.names in all.funs.names) {
+  #   sof.fn = makeFunctionsByName(fun.names = fun.names, dimensions = 2L, m = 5L)[[1L]]
+  #   expect_is(sof.fn, "smoof_function", info = sprintf("Error generating function '%s'
+  #     with dimensions = 2L.", fun.names))
+  # }
 })
