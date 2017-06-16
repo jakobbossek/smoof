@@ -4,7 +4,7 @@ test_that("hasTags works as expected", {
   # check that hasTags works for smoof_functions
   fun.names = as.list(filterFunctionsByTags(c("multimodal")))
   funs = unlist(lapply(fun.names, function(fun.name) {
-    makeFunctionsByName(fun.name, dimensions = 2L)
+    makeFunctionsByName(fun.name, dimensions = 2L, m = 5L)
   }))
 
   for (fun in funs) {

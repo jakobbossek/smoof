@@ -30,4 +30,3 @@ by default.
 \references{
 See \url{http://al-roomi.org/benchmarks/unconstrained/n-dimensions/238-deflected-corrugated-spring-function}.
 }
-

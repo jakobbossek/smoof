@@ -18,4 +18,3 @@ The box-constraints are given by \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2.}
 A. Lavi, T. P. Vogel (eds), Recent Advances in Optimization
 Techniques, John Wliley & Sons, 1966.
 }
-

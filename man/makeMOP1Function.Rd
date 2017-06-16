@@ -17,4 +17,3 @@ J. D. Schaffer, "Multiple objective optimization with vector evaluated
 genetic algorithms," in Proc. 1st Int. Conf. Genetic Algorithms and Their
 Applications, J. J. Grenfenstett, Ed., 1985, pp. 93-100.
 }
-

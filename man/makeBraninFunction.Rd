@@ -27,4 +27,3 @@ F. H. Branin. Widely convergent method for finding
 multiple solutions of simultaneous nonlinear equations.
 IBM J. Res. Dev. 16, 504-522, 1972.
 }
-

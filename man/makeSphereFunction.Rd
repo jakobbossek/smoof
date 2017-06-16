@@ -23,4 +23,3 @@ with box-constraings \eqn{\mathbf{x}_i \in [-5.12, 5.12], i = 1, \ldots, n}.
 M. A. Schumer, K. Steiglitz, Adaptive Step Size Random Search,
 IEEE Transactions on Automatic Control. vol. 13, no. 3, pp. 270-276, 1968.
 }
-

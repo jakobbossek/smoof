@@ -24,4 +24,3 @@ Sessions of the 3rd ECCOMAS Comput. Fluid Dynamics Conf.
 and the 2nd ECCOMAS Conf. Numerical Methods in Engineering, Sep.
 1996, pp. 258-264
 }
-

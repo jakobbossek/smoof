@@ -20,4 +20,3 @@ domain of defintion.
 L. C. W. Dixon, G. P. Szego (eds.), Towards Global Optimization 2,
 Elsevier, 1978.
 }
-

@@ -19,4 +19,3 @@ F. H. Branin Jr., Widely Convergent Method of Finding Multiple
 Solutions of Simul- taneous Nonlinear Equations, IBM Journal of Research and
 Development, vol. 16, no. 5, pp. 504-522, 1972.
 }
-

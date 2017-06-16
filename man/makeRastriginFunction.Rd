@@ -25,4 +25,3 @@ The box-constraints are given by \eqn{\mathbf{x}_i \in [-5.12, 5.12]} for
 L. A. Rastrigin. Extremal control systems. Theoretical Foundations
 of Engineering Cybernetics Series. Nauka, Moscow, 1974.
 }
-

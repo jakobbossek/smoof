@@ -30,9 +30,9 @@ makeMOP3Function = function(dimensions = 2L) {
     description = "MOP3 function",
     fn = fn,
     par.set =  makeNumericParamSet(
-      len = 2L,
+      len = dimensions,
       id = "x",
-      lower = rep(pi, dimensions),
+      lower = rep(-pi, dimensions),
       upper = rep(pi, dimensions),
       vector = TRUE
     ),

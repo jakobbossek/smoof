@@ -23,4 +23,3 @@ S. Rahnamyan, H. R. Tizhoosh, N. M. M. Salama, A Novel Population
 Initialization Method for Accelerating Evolutionary Algorithms, Computers and
 Mathematics with Applications, vol. 53, no. 10, pp. 1605-1614, 2007.
 }
-

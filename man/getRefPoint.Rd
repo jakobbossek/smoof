@@ -19,4 +19,3 @@ Returns the reference point of a multi-objective function.
 \note{
 Keep in mind, that this method makes sense only for multi-objective target functions.
 }
-

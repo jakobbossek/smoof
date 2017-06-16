@@ -24,4 +24,3 @@ A. O. Griewank, Generalized Descent for Global Optimization,
 Journal of Optimization Theory and Applications, vol. 34, no. 1,
 pp. 11-39, 1981.
 }
-

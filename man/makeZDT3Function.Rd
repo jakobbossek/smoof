@@ -30,4 +30,3 @@ multiple convex parts.
 E. Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective
 Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000
 }
-

@@ -24,4 +24,3 @@ with \eqn{\mathbf{x}_i \in [-500, 500], i = 1, \ldots, n.}
 Schwefel, H.-P.: Numerical optimization of computer models.
 Chichester: Wiley & Sons, 1981.
 }
-

@@ -22,4 +22,3 @@ with \eqn{\mathbf{x}_i \in [-65.536, 65.536], i = 1, \ldots, n}.
 H.-P. Schwefel. Evolution and Optimum Seeking.
 John Wiley & Sons, New York, 1995.
 }
-

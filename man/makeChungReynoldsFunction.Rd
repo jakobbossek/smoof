@@ -23,4 +23,3 @@ C. J. Chung, R. G. Reynolds, CAEP: An Evolution-Based Tool for
 Real-Valued Func- tion Optimization Using Cultural Algorithms, International
 Journal on Artificial In- telligence Tool, vol. 7, no. 3, pp. 239-291, 1998.
 }
-

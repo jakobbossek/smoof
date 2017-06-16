@@ -40,10 +40,10 @@ makeObjectiveFunction = function(
   fn,
   has.simple.signature = TRUE,
   par.set,
-  n.objectives,
+  n.objectives = NULL,
   noisy = FALSE,
   fn.mean = NULL,
-  minimize = rep(TRUE, n.objectives),
+  minimize = NULL,
   vectorized = FALSE,
   constraint.fn = NULL) {
 
@@ -61,11 +61,19 @@ makeObjectiveFunction = function(
   if (has.simple.signature) {
     fn = makeInternalObjectiveFunction(fn)
     if (!is.null(fn.mean)) {
-      fn.mean = makeInternalObjectiveFunction(fn)
+      fn.mean = makeInternalObjectiveFunction(fn.mean)
     }
   }
 
   assertClass(par.set, "ParamSet")
+
+  # guess number of objectives
+  if (is.null(n.objectives)) {
+    test.pars = sampleValue(par.set)
+    test.res = do.call(fn, test.pars)
+    n.objectives = length(test.res)
+  }
+
   assertInt(n.objectives, lower = 1L)
   assertFlag(noisy)
   if (!noisy && !is.null(fn.mean)) {
@@ -74,6 +82,9 @@ makeObjectiveFunction = function(
   if (!is.null(fn.mean)) {
     assertFunction(fn.mean)
   }
+
+  if (is.null(minimize))
+    minimize = rep(TRUE, n.objectives)
   assertLogical(minimize, len = n.objectives, any.missing = FALSE, all.missing = FALSE)
   assertFlag(vectorized)
 

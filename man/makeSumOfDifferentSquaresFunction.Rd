@@ -18,4 +18,3 @@ Simple unimodal test function similar to the Sphere and Hyper-Ellipsoidal functi
 Formula:
 \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} |\mathbf{x}_i|^{i+1}.}
 }
-

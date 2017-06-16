@@ -23,4 +23,3 @@ L. C. W. Dixon, R. C. Price, The Truncated Newton Method for
 Sparse Unconstrained Optimisation Using Automatic Differentiation, Journal of
 Optimization Theory and Applications, vol. 60, no. 2, pp. 261-275, 1989.
 }
-

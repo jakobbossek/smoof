@@ -16,4 +16,3 @@ Objective function.}
 \description{
 Return the ID / short name of the function.
 }
-

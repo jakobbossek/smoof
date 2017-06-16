@@ -13,4 +13,3 @@ Wrapped \code{smoof_function}.}
 \description{
 Reset evaluation counter.
 }
-

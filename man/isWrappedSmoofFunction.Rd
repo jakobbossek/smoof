@@ -16,4 +16,3 @@ Arbitrary R object.}
 \description{
 Checks whether the function is of type \code{smoof_wrapped_function}.
 }
-

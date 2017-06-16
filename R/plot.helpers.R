@@ -70,7 +70,7 @@ generateDataframeForGGPlot = function(fn, sequences, par.set) {
 # @return [\code{data.frame}]
 generateDataframeForGGPlot2 = function(fun, length.out = 50L) {
   # extract a bunch of parameter information
-  par.set = getParamSet(fun)
+  par.set = ParamHelpers::getParamSet(fun)
   par.types = getParamTypes(par.set)
   pars = par.set$pars
   n.pars = length(pars)
@@ -154,7 +154,7 @@ getBounds = function(bound, default) {
 # @return Nothing
 checkPlotFunParams = function(x) {
   n.params = getNumberOfParameters(x)
-  par.set = getParamSet(x)
+  par.set = ParamHelpers::getParamSet(x)
 
   # if (n.params > 2L) {
   #   stopf("Only function with up to 2 parameters can be plotted, but your function has %i", n.params)
@@ -174,7 +174,7 @@ checkPlotFunParams = function(x) {
 # @return [\code{function}]
 getInternalPlotFunction = function(x, mapping) {
   n.params = getNumberOfParameters(x)
-  par.set = getParamSet(x)
+  par.set = ParamHelpers::getParamSet(x)
 
   if (isNumeric(par.set, include.int = FALSE)) {
     if (n.params == 1L) {

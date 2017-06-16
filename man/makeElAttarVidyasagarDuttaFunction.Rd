@@ -19,4 +19,3 @@ R. A. El-Attar, M. Vidyasagar, S. R. K. Dutta, An Algorithm for
 II-norm Minimiza- tion With Application to Nonlinear II-approximation, SIAM
 Journal on Numverical Analysis, vol. 16, no. 1, pp. 70-86, 1979.
 }
-

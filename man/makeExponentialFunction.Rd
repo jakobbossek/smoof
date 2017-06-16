@@ -23,4 +23,3 @@ S. Rahnamyan, H. R. Tizhoosh, N. M. M. Salama, Opposition-Based
 Differential Evolution (ODE) with Variable Jumping Rate, IEEE Sympousim
 Foundations Com- putation Intelligence, Honolulu, HI, pp. 81-88, 2007.
 }
-

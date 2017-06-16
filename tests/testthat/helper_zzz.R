@@ -1,5 +1,5 @@
 expectIsSmoofFunction = function(obj, generator) {
-  expect_is(obj, c("smoof_function", "function"), info = "No snoof function generated '%s'.", generator)
+  expect_is(obj, c("smoof_function", "function"), info = "No smoof function generated '%s'.", generator)
 }
 
 expectGlobalOptimum = function(fun, generator) {
@@ -23,6 +23,6 @@ checkGGPlot = function(pl, title, xlab, ylab) {
 
 checkGGFacets = function(pl, rows.cols.expected) {
   expect_true(!is.null(pl$facet))
-  row.cols = c(names(pl$facet$rows), names(pl$facet$cols))
+  row.cols = c(names(pl$facet$params$rows), names(pl$facet$params$cols))
   expect_true(setequal(row.cols, rows.cols.expected))
 }

@@ -17,4 +17,3 @@ with box-constraings \eqn{\mathbf{x}_i \in [-5, 5], i = 1, 2}.
 \references{
 D. M. Himmelblau, Applied Nonlinear Programming, McGraw-Hill, 1972.
 }
-

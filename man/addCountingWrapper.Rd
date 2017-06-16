@@ -2,7 +2,7 @@
 % Please edit documentation in R/addCountingWrapper.R
 \name{addCountingWrapper}
 \alias{addCountingWrapper}
-\title{Return a function which counts its evaluations.}
+\title{Return a function which counts its function evaluations.}
 \usage{
 addCountingWrapper(fn)
 }
@@ -41,4 +41,3 @@ print(getNumberOfEvaluations(fn))
 \seealso{
 \code{\link{getNumberOfEvaluations}}, \code{\link{resetEvaluationCounter}}
 }
-

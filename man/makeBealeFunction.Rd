@@ -17,4 +17,3 @@ usually evaluated within the bounds \eqn{\mathbf{x}_i \in [-4.5, 4.5], i = 1, 2}
 The function has a flat but multimodal region aroung the single global optimum
 and large peaks in the edges of its definition space.
 }
-

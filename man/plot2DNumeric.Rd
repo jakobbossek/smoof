@@ -38,4 +38,3 @@ Nothing
 \description{
 Either a contour-plot or a level-plot.
 }
-

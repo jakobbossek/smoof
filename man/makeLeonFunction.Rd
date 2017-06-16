@@ -18,4 +18,3 @@ Box-constraints: \eqn{\mathbf{x}_i \in [-1.2, 1.2]} for \eqn{i = 1, 2}.
 A. Lavi, T. P. Vogel (eds), Recent Advances in Optimization
 Techniques, John Wliley & Sons, 1966.
 }
-

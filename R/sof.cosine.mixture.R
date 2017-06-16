@@ -19,7 +19,7 @@ makeCosineMixtureFunction = function(dimensions) {
     id = paste0("cosineMixture", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
-      a = -0.1 * sum(cos(5 * pi * x))
+      a = 0.1 * sum(cos(5 * pi * x))
       b = sum(x^2)
       return (a - b)
     },
@@ -33,7 +33,7 @@ makeCosineMixtureFunction = function(dimensions) {
     minimize = FALSE,
     tags = attr(makeCosineMixtureFunction, "tags"),
     global.opt.params = rep(0, dimensions),
-    global.opt.value = -0.1 * dimensions
+    global.opt.value = 0.1 * dimensions
   )
 }
 

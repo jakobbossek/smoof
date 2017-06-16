@@ -14,4 +14,3 @@ This single-objective function follows the definition
 \deqn{f(\mathbf{x}) = \mathbf{x}_1^2 + \mathbf{x}_2^2 + 25(\sin^2(\mathbf{x}_1) + \sin^2(\mathbf{x}_2))}
 with \eqn{\mathbf{x}_i \in [-5, 5]} for \eqn{i = 1, 2}.
 }
-

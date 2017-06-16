@@ -8,6 +8,7 @@ test_that("single-objective test function generators work", {
     all.methods = setdiff(all.methods, c("makeInternalObjectiveFunction",
       "makeMultiObjectiveFunction", "makeObjectiveFunction",
       "makeSingleObjectiveFunction", "makeBBOBFunction",
+      "makeShekelFunction",
       "makeUFFunction", "makeUFParamSet", "makeMPM2Function",
       "makeGOMOPFunction", paste0("makeMOP", 1:7, "Function")))
     all.methods = sapply(all.methods, get)

@@ -53,8 +53,8 @@
 #'     makeNumericParam("x2", lower = -10, upper = 20)
 #'   )
 #' )
-#' print(fn)
-#' print(autoplot(fn))
+#' print(fn.num2)
+#' print(autoplot(fn.num2))
 #'
 #' fn.mixed = makeSingleObjectiveFunction(
 #'   name = "Mixed 2D",
@@ -66,8 +66,8 @@
 #'   ),
 #'   global.opt.params = list(num1 = 0, disc1 = "b")
 #' )
-#' print(fn)
-#' print(autoplot(fn))
+#' print(fn.mixed)
+#' print(autoplot(fn.mixed))
 #' @export
 makeSingleObjectiveFunction = function(
   name = NULL,

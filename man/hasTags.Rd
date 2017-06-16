@@ -21,4 +21,3 @@ Each single-objective smoof function has tags assigned to it (see
 \code{\link{getAvailableTags}}). This little helper returns a vector of
 assigned tags from a smoof function.
 }
-

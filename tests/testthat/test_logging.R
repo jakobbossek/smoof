@@ -83,7 +83,7 @@ test_that("logging for mixed function works well", {
   obj.vals = c(0, 0, 3)
 
   for (i in 1:nrow(test.df)) {
-    fn(dfRowToList(test.df, i, par.set = getParamSet(fn)))
+    fn(dfRowToList(test.df, i, par.set = ParamHelpers::getParamSet(fn)))
   }
 
   res = getLoggedValues(fn)

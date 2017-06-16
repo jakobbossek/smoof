@@ -26,7 +26,7 @@ visualizeParetoOptimalFront = function(fn, ...) {
   }
   requirePackages("mco", why = "smoof::visualizeParetoOptimalFront")
 
-  par.set = getParamSet(fn)
+  par.set = ParamHelpers::getParamSet(fn)
 
   # get approximated Pareto front
   res = mco::nsga2(fn,

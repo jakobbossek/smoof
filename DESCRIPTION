@@ -5,8 +5,8 @@ Description: Provides generators for a high number of both single- and multi-
     objective test functions which are frequently used for the benchmarking of
     (numerical) optimization algorithms. Moreover, it offers a set of convenient
     functions to generate, plot and work with objective functions.
-Version: 1.4
-Date: 2016-02-23
+Version: 1.5.1
+Date: 2017-04-25
 Authors@R: c(person("Jakob", "Bossek", email = "j.bossek@gmail.com", role =
     c("aut", "cre")), person("Pascal", "Kerschke", email = "kerschke@uni-muenster.de",
     role = "ctb"))
@@ -18,16 +18,17 @@ Depends:
     BBmisc (>= 1.6),
     checkmate (>= 1.1)
 Imports:
-    ggplot2,
+    ggplot2 (>= 2.2.1),
     RColorBrewer,
     plot3D,
     plotly,
     mco,
-    Rcpp (>= 0.11.0)
+    Rcpp (>= 0.11.0),
+    RJSONIO
 Suggests:
     testthat,
     rPython (>= 0.0-5)
 LazyData: yes
 ByteCompile: yes
 LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

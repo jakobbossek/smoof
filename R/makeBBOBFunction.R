@@ -1,7 +1,8 @@
 #' Generator for the noiseless function set of the real-parameter Black-Box
 #' Optimization Benchmarking (BBOB).
 #'
-#' @note It is possible to pass a matrix of parameters to the functions, where
+#' @note
+#' It is possible to pass a matrix of parameters to the functions, where
 #' each column consists of one parameter setting.
 #'
 #' @param dimension [\code{integer(1)}]\cr
@@ -65,30 +66,30 @@ attr(makeBBOBFunction, "type") = c("single-objective")
 
 mapBBOBFidToMetaData = function(fid) {
   mapping = list(
-    "1" = list(name = "Sphere", tags = c("unimodal", "separable", "differentiable", "continuous", "convex")),
-    "2" = list(name = "Ellipsoidal", tags = c("unimodal", "separable", "differentiable", "continuous", "convex")),
-    "3" = list(name = "Rastrigin", tags = c("multimodal", "separable", "differentiable", "continuous")),
-    "4" = list(name = "Bueche-Rastrigin", tags = c("multimodal", "separable", "differentiable", "continuous")),
-    "5" = list(name = "Linear Slope", tags = c("unimodal", "separable", "differentiable", "continuous")),
-    "6" = list(name = "Attractive Sector", tags = c("unimodal", "continuous", "moderate-conditioned", "non-separable")),
-    "7" = list(name = "Step Ellipsoidal", tags = c("unimodal", "moderate-conditioned", "non-separable", "non-differentiable")),
-    "8" = list(name = "Rosenbrock (original)", tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")),
-    "9" = list(name = "Rosenbrock (rotated)", tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal")),
-    "10" = list(name = "Ellipsoidal", tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
-    "11" = list(name = "Discus", tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
-    "12" = list(name = "Bent Cigar", tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
-    "13" = list(name = "Sharp Ridge", tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
-    "14" = list(name = "Different Powers", tags = c("continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
-    "15" = list(name = "Rastrigin", tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
-    "16" = list(name = "Weierstrass", tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
-    "17" = list(name = "Schaffers F7", tags = c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
-    "18" = list(name = "Schaffers F7 (moderately ill-conditioned)", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure", "moderate-conditioned")),
-    "19" = list(name = "Composite Griewank-Rosenbrock F8F2", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
-    "20" = list(name = "Schwefel", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
-    "21" = list(name = "Gallagher's Gaussian 101-me Peaks", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
-    "22" = list(name = "Gallagher's Gaussian 21-hi Peaks", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
-    "23" = list(name = "Katsuura", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
-    "24" = list(name = "Lunacek bi-Rastrigin", c("continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure"))
+    "1" = list(name = "Sphere", tags = c("single-objective", "unimodal", "separable", "differentiable", "continuous", "convex")),
+    "2" = list(name = "Ellipsoidal", tags = c("single-objective", "unimodal", "separable", "differentiable", "continuous", "convex")),
+    "3" = list(name = "Rastrigin", tags = c("single-objective", "multimodal", "separable", "differentiable", "continuous")),
+    "4" = list(name = "Bueche-Rastrigin", tags = c("single-objective", "multimodal", "separable", "differentiable", "continuous")),
+    "5" = list(name = "Linear Slope", tags = c("single-objective", "unimodal", "separable", "differentiable", "continuous")),
+    "6" = list(name = "Attractive Sector", tags = c("single-objective", "unimodal", "continuous", "moderate-conditioned", "non-separable")),
+    "7" = list(name = "Step Ellipsoidal", tags = c("single-objective", "unimodal", "moderate-conditioned", "non-separable", "non-differentiable")),
+    "8" = list(name = "Rosenbrock (original)", tags = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal")),
+    "9" = list(name = "Rosenbrock (rotated)", tags = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal")),
+    "10" = list(name = "Ellipsoidal", tags = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
+    "11" = list(name = "Discus", tags = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
+    "12" = list(name = "Bent Cigar", tags = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
+    "13" = list(name = "Sharp Ridge", tags = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
+    "14" = list(name = "Different Powers", tags = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "unimodal", "highly-conditioned")),
+    "15" = list(name = "Rastrigin", tags = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
+    "16" = list(name = "Weierstrass", tags = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
+    "17" = list(name = "Schaffers F7", tags = c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
+    "18" = list(name = "Schaffers F7 (moderately ill-conditioned)", c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure", "moderate-conditioned")),
+    "19" = list(name = "Composite Griewank-Rosenbrock F8F2", c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "adequate-global-structure")),
+    "20" = list(name = "Schwefel", c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
+    "21" = list(name = "Gallagher's Gaussian 101-me Peaks", c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
+    "22" = list(name = "Gallagher's Gaussian 21-hi Peaks", c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
+    "23" = list(name = "Katsuura", c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure")),
+    "24" = list(name = "Lunacek bi-Rastrigin", c("single-objective", "continuous", "differentiable", "non-separable", "scalable", "multimodal", "weak-global-structure"))
   )
   mapping[[fid]]
 }

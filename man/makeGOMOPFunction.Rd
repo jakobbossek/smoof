@@ -31,4 +31,3 @@ box constraints \eqn{[l_i, u_i], i = 1, \ldots, n}, then
 for \eqn{x \in [0,1]^d} where the additions and multiplication are performed
 component-wise.
 }
-

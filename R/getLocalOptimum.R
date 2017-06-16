@@ -1,7 +1,10 @@
-#' Returns the local optima.
+#' @title
+#' Returns the local optima of a single objective smoof function.
 #'
-#' @description This function returns the parameters and objective values of
+#' @description
+#' This function returns the parameters and objective values of
 #' all local optima (including the global one).
+#'
 #' @template arg_smoof_function
 #' @return [\code{list}] List containing the following entries:
 #' \itemize{

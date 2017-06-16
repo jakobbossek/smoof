@@ -2,11 +2,11 @@
 % Please edit documentation in R/plot.autoplot.R
 \name{autoplot.smoof_function}
 \alias{autoplot.smoof_function}
-\title{Generate \code{\link[ggplot2]{ggplot}} object.}
+\title{Generate ggplot2 object.}
 \usage{
 \method{autoplot}{smoof_function}(x, show.optimum = FALSE,
   main = getName(x), render.levels = FALSE, render.contours = TRUE,
-  length.out = 50L, ...)
+  log.scale = FALSE, length.out = 50L, ...)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr
@@ -28,6 +28,10 @@ For 2D numeric functions only: Should an image map be plotted? Default is
 \item{render.contours}{[\code{logical(1)}]\cr
 For 2D numeric functions only: Should contour lines be plotted? Default is
 \code{TRUE}.}
+
+\item{log.scale}{[\code{logical(1)}]\cr
+Should the z-axis be plotted on log-scale?
+Default is \code{FALSE}.}
 
 \item{length.out}{[\code{integer(1)}]\cr
 Desired length of the sequence of equidistant values generated for numeric parameters.
@@ -96,4 +100,3 @@ print(pl)
 # or hide the legend
 pl + ggtitle("My fancy function") + theme(legend.position = "none")
 }
-

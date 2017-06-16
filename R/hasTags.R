@@ -1,6 +1,8 @@
-#' @title Check if function has assigend special tags.
+#' @title
+#' Check if function has assigend special tags.
 #'
-#' @description Each single-objective smoof function has tags assigned to it (see
+#' @description
+#' Each single-objective smoof function has tags assigned to it (see
 #' \code{\link{getAvailableTags}}). This little helper returns a vector of
 #' assigned tags from a smoof function.
 #'

@@ -20,4 +20,3 @@ fn = makeSphereFunction(3L)
 ps = getParamSet(fn)
 print(ps)
 }
-

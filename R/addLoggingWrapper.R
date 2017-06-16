@@ -1,4 +1,10 @@
+#' @title
 #' Return a function which internally stores x or y values.
+#'
+#' @description
+#' Often it is desired and useful to store the optimization path, i.e., the evaluated
+#' function values and/or the parameters. Not all optimization algorithms offer
+#' such a trace. This wrapper makes a smoof function handle x/y-values itself.
 #'
 #' @param fn [\code{smoof_function}]\cr
 #'   Smoof function.
@@ -43,7 +49,7 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
   force(fn)
   force(logg.x)
   force(logg.y)
-  par.set = getParamSet(fn)
+  par.set = ParamHelpers::getParamSet(fn)
   par.ids = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
   n.obj = getNumberOfObjectives(fn)
   n.pars = getNumberOfParameters(fn)
@@ -86,6 +92,6 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
     })
     return(y)
   }
-  class(wrapped.fn) = c("smoof_logging_function", "smoof_wrapped_function")
+  class(wrapped.fn) = c("smoof_logging_function", "smoof_wrapped_function", "smoof_function", "function")
   return(wrapped.fn)
 }
