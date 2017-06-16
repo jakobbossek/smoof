@@ -41,6 +41,6 @@ plot3D(fn, contour = TRUE)
 plot3D(fn, image = TRUE, phi = 30)
 
 # use plotly::plot_ly for interactive plot
-plot3D(fn, method = "plotly")
+plot3D(fn, package = "plotly")
 }
 }
