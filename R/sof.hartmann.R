@@ -22,6 +22,7 @@
 #' @references Picheny, V., Wagner, T., & Ginsbourger, D. (2012). A benchmark
 #' of kriging-based infill criteria for noisy optimization.
 #'
+#' @template arg_dimensions
 #' @template ret_smoof_single
 #' @export
 makeHartmannFunction = function(dimensions) {

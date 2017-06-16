@@ -14,8 +14,9 @@
 #' @return [\code{smoof_function}]
 #' @examples
 #' # generate a testset of multimodal 2D functions
+#' \dontrun{
 #' test.set = makeFunctionsByName(filterFunctionsByTags("multimodal"), dimensions = 2L, m = 5L)
-#'
+#' }
 #' @seealso \code{\link{filterFunctionsByTags}}
 #' @export
 makeFunctionsByName = function(fun.names, ...) {
@@ -54,14 +55,21 @@ makeFunctionsByName = function(fun.names, ...) {
       return(do.call(generator, args))
     } else {
       if ("scalable" %in% attr(generator, "tags")) {
-        return(do.call(generator, args))
+        tryres = try({do.call(generator, args)}, silent = TRUE)
+        if (inherits(tryres, "try-error")) {
+          warningf("Function '%s' could not be generated.", fun.name)
+          return(NA)
+        }
+        return(tryres)
       } else if (args$dimensions == 2L) {
         args$dimensions = NULL
         return(do.call(generator, args))
       } else {
-        stopf("Dimension attribute passed, but '%s' is a non-scalable function.", fun.name)
+        warningf("Dimension attribute passed, but '%s' is a non-scalable function.", fun.name)
+        return(NA)
       }
     }
   })
+  funs = funs[!is.na(funs)]
   return(funs)
 }
