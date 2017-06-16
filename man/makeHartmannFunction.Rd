@@ -33,4 +33,3 @@ The function is not normalized in contrast to some benchmark applications in the
 Picheny, V., Wagner, T., & Ginsbourger, D. (2012). A benchmark 
 of kriging-based infill criteria for noisy optimization.
 }
-

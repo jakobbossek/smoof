@@ -25,7 +25,7 @@
 #' @template ret_smoof_single
 #' @export
 makeHartmannFunction = function(dimensions) {
-  assertCount(dimensions, upper = 6L, lower = 3L)
+  assertChoice(dimensions, c(3L,4L,6L))
   force(dimensions)
   i = seq_len(dimensions)
 
@@ -88,4 +88,4 @@ makeHartmannFunction = function(dimensions) {
 class(makeHartmannFunction) = c("function", "smoof_generator")
 attr(makeHartmannFunction, "name") = c("Hartmann")
 attr(makeHartmannFunction, "type") = c("single-objective")
-attr(makeHartmannFunction, "tags") = c("single-objective", "continuous", "multimodal")
+attr(makeHartmannFunction, "tags") = c("single-objective", "scalable", "continuous", "multimodal", "differentiable")
