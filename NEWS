@@ -2,6 +2,7 @@ smoof 1.5.1
 ===========
 
 * logging and couting wrapper now have class smoof_function
+* Fixed: convertTo{Minimization,Maximization} now flips sign of optima
 * Better handling of additional arguments in makeFunctionsByName
 * Added Shekel function
 * Added inverted Vincent function

@@ -40,3 +40,5 @@ test_that("min<->max conversion works as expected", {
     checkSumOfMinMaxValuesVanishes(fun2, fun3, getName(fun))
   }
 })
+
+

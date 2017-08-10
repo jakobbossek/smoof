@@ -2,11 +2,15 @@
 
 ## New features
 
-* Added Shekel function
+* Added: Shekel function
+* Added: inverted Vincent function
+* Added: modified Rastrigin function
+* Added: Hartmann{3,4,6} functions
 
 ## Bugfixes
 
 * Better handling of additional arguments in makeFunctionsByName
+* convertTo{Minimization,Maximization} now flips sign of optima
 
 ## Miscelaneous
 
