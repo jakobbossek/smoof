@@ -52,7 +52,7 @@ convertProblemDirection = function(fn, minimize.after = TRUE) {
 
   if (isMultiobjective(fn)) {
     stopf("Conversion to maximization only supported for single-objective problems
-      at the moment, but your function '%s' has %i", getName(fn), getNumberOfObjectives(fn))
+      at the moment, but your function '%s' has %i objectives.", getName(fn), getNumberOfObjectives(fn))
   }
 
   # If both are true, we want to convert min to min
@@ -74,6 +74,13 @@ convertProblemDirection = function(fn, minimize.after = TRUE) {
 
   # copy attributes (get dropped on body() call)
   attributes(fn2) = attribs
+
+  # flip sign(s) of optima
+  if (hasGlobalOptimum(fn2))
+    fn2 = setAttribute(fn2, "global.opt.value", -1.0 * attr(fn2, "global.opt.value"))
+
+  if (hasLocalOptimum(fn2))
+    fn2 = setAttribute(fn2, "local.opt.value", -1.0 * attr(fn2, "local.opt.value"))
 
   # flip maximization stuff
   fn2 = setAttribute(fn2, "minimize", !should.minimize)
