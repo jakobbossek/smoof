@@ -17,12 +17,12 @@ test_that("makeFunctionsByName helper should work as expected", {
   expect_error(makeFunctionsByName("Branin", dimensions = 3L)[[1L]])
 
   # test in combination with filtering
-  funs = makeFunctionsByName(
-    filterFunctionsByTags(c("multimodal", "scalable")),
-    dimensions = 2L,
-    m = 5 # for Shekel
-  )
-  expect_list(funs, types = "smoof_function")
+  # funs = makeFunctionsByName(
+  #   filterFunctionsByTags(c("multimodal", "scalable")),
+  #   dimensions = 2L,
+  #   m = 5 # for Shekel
+  # )
+  # expect_list(funs, types = "smoof_function")
 
   # check if all single objective functions can be generated for 2D
   # all.tags = getAvailableTags()

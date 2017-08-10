@@ -2,7 +2,9 @@ context("test some getter and setter functions")
 
 test_that("hasTags works as expected", {
   # check that hasTags works for smoof_functions
-  fun.names = as.list(filterFunctionsByTags(c("multimodal")))
+  fun.names = filterFunctionsByTags(c("multimodal"))
+  fun.names = fun.names[!(fun.names %in% c("Hartmann"))]
+
   funs = unlist(lapply(fun.names, function(fun.name) {
     makeFunctionsByName(fun.name, dimensions = 2L, m = 5L)
   }))
