@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate smoof function by passing a character vector of generator
-names. — makeFunctionsByName • smoof</title>
+<title>Inverted Vincent Function — makeInvertedVincentFunction • smoof</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -77,47 +76,39 @@ names. — makeFunctionsByName • smoof</title>
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate smoof function by passing a character vector of generator
-names.</h1>
+    <h1>Inverted Vincent Function</h1>
     </div>
 
     
-    <p>This function is especially useful in combination with
-<code><a href='filterFunctionsByTags.html'>filterFunctionsByTags</a></code> to generate a test set of functions
-with certain properties, e.~g., multimodality.</p>
+    <p>Single-objective test function based on the formula
+$$f(\mathbf{x}) = \frac{1}{n} \sum_{i = 1}^{n} \sin(10 \log(\mathbf{x}_i))$$
+subject to \(\mathbf{x}_i \in [0.25, 10]\) for \(i = 1, \ldots, n\).</p>
     
 
-    <pre class="usage"><span class='fu'>makeFunctionsByName</span>(<span class='no'>fun.names</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>makeInvertedVincentFunction</span>(<span class='no'>dimensions</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>fun.names</th>
-      <td><p>[<code>character</code>]
-Non empty character vector of generator function names.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>[any]
-Further arguments passed to generator.</p></td>
+      <th>dimensions</th>
+      <td><p>[<code>integer(1)</code>]
+Size of corresponding parameter space.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>[<code>smoof_function</code>]</p>
+    <p>[<code>smoof_single_objective_function</code>]</p>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p><code><a href='filterFunctionsByTags.html'>filterFunctionsByTags</a></code></p>
+    <p>Xiadong Li, Andries Engelbrecht, and Michael G. Epitropakis. Benchmark
+functions for CEC2013 special session and competition on niching methods for
+multimodal function optimization. Technical report, RMIT University, Evolutionary
+Computation and Machine Learning Group, Australia, 2013.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># generate a testset of multimodal 2D functions</span>
-<span class='fu'>not_run</span>({
-  <span class='no'>test.set</span> <span class='kw'>=</span> <span class='fu'>makeFunctionsByName</span>(<span class='fu'><a href='filterFunctionsByTags.html'>filterFunctionsByTags</a></span>(<span class='st'>"multimodal"</span>), <span class='kw'>dimensions</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>m</span> <span class='kw'>=</span> <span class='fl'>5L</span>)
-})</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -126,10 +117,8 @@ Further arguments passed to generator.</p></td>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#references">References</a></li>
+          </ul>
 
   </div>
 </div>

@@ -21,3 +21,4 @@ man-roxygen
 bbob_generate_images.R
 appveyor.yml
 ^docs$
+README.html

@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate smoof function by passing a character vector of generator
-names. — makeFunctionsByName • smoof</title>
+<title>Rastrigin Function — makeModifiedRastriginFunction • smoof</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -77,47 +76,45 @@ names. — makeFunctionsByName • smoof</title>
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate smoof function by passing a character vector of generator
-names.</h1>
+    <h1>Rastrigin Function</h1>
     </div>
 
     
-    <p>This function is especially useful in combination with
-<code><a href='filterFunctionsByTags.html'>filterFunctionsByTags</a></code> to generate a test set of functions
-with certain properties, e.~g., multimodality.</p>
+    <p>A modified version of the Rastrigin function following the formula:
+$$f(\mathbf{x}) = \sum_{i=1}^{n} 10\left(1 + \cos(2\pi k_i \mathbf{x}_i)\right) + 2 k_i \mathbf{x}_i^2.$$
+The box-constraints are given by \(\mathbf{x}_i \in [0, 1]\) for
+\(i = 1, \ldots, n\) and \(k\) is a numerical vector. Deb et al. (see references)
+use, e.g., \(k = (2, 2, 3, 4)\) for \(n = 4\). See the reference for details.</p>
     
 
-    <pre class="usage"><span class='fu'>makeFunctionsByName</span>(<span class='no'>fun.names</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>makeModifiedRastriginFunction</span>(<span class='no'>dimensions</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fl'>1</span>, <span class='no'>dimensions</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>fun.names</th>
-      <td><p>[<code>character</code>]
-Non empty character vector of generator function names.</p></td>
+      <th>dimensions</th>
+      <td><p>[<code>integer(1)</code>]
+Size of corresponding parameter space.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>[any]
-Further arguments passed to generator.</p></td>
+      <th>k</th>
+      <td><p>[numeric]
+Vector of numerical values of length <code>dimensions</code>.
+Default is <code>rep(1, dimensions)</code></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>[<code>smoof_function</code>]</p>
+    <p>[<code>smoof_single_objective_function</code>]</p>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p><code><a href='filterFunctionsByTags.html'>filterFunctionsByTags</a></code></p>
+    <p>Kalyanmoy Deb and Amit Saha. Multimodal optimization using a bi-
+objective evolutionary algorithm. Evolutionary Computation, 20(1):27-62, 2012.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># generate a testset of multimodal 2D functions</span>
-<span class='fu'>not_run</span>({
-  <span class='no'>test.set</span> <span class='kw'>=</span> <span class='fu'>makeFunctionsByName</span>(<span class='fu'><a href='filterFunctionsByTags.html'>filterFunctionsByTags</a></span>(<span class='st'>"multimodal"</span>), <span class='kw'>dimensions</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>m</span> <span class='kw'>=</span> <span class='fl'>5L</span>)
-})</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -126,10 +123,8 @@ Further arguments passed to generator.</p></td>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#references">References</a></li>
+          </ul>
 
   </div>
 </div>

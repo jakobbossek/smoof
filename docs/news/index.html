@@ -81,12 +81,41 @@
     </div>
 
     <div class="contents">
-    <div id="smoof-1-5" class="section level1">
+    <div id="smoof-1-5-1" class="section level1">
 <h1 class="hasAnchor">
-<a href="#smoof-1-5" class="anchor"></a>smoof 1.5</h1>
+<a href="#smoof-1-5-1" class="anchor"></a>smoof 1.5.1</h1>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New features</h2>
+<ul>
+<li>Added: Shekel function</li>
+<li>Added: inverted Vincent function</li>
+<li>Added: modified Rastrigin function</li>
+<li>Added: Hartmann{3,4,6} functions</li>
+</ul>
+</div>
+<div id="bugfixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bugfixes" class="anchor"></a>Bugfixes</h2>
+<ul>
+<li>Better handling of additional arguments in makeFunctionsByName</li>
+<li>convertTo{Minimization,Maximization} now flips sign of optima</li>
+</ul>
+</div>
+<div id="miscelaneous" class="section level2">
+<h2 class="hasAnchor">
+<a href="#miscelaneous" class="anchor"></a>Miscelaneous</h2>
+<ul>
+<li>logging and couting wrapper now have class smoof_function</li>
+</ul>
+</div>
+</div>
+    <div id="smoof-1-5" class="section level1">
+<h1 class="hasAnchor">
+<a href="#smoof-1-5" class="anchor"></a>smoof 1.5</h1>
+<div id="new-features-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features-1" class="anchor"></a>New features</h2>
 <ul>
 <li>Added shortcuts {s,m}nof for generating single-/multi-objective objective functionswith numeric parameters only</li>
 <li>Added: missing single-objective tag for BBOB functions</li>
@@ -94,9 +123,9 @@
 <li>Added: CITATION file</li>
 </ul>
 </div>
-<div id="bugfixes" class="section level2">
+<div id="bugfixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bugfixes" class="anchor"></a>Bugfixes</h2>
+<a href="#bugfixes-1" class="anchor"></a>Bugfixes</h2>
 <ul>
 <li>Fixed: precision issue caused by rPython respectively RJSONIO::toJSON, which by default strips numeric values to only 4 digits.</li>
 <li>Fixed: ggplot2 warnings</li>
@@ -111,9 +140,9 @@
     <div id="smoof-1-4" class="section level1">
 <h1 class="hasAnchor">
 <a href="#smoof-1-4" class="anchor"></a>smoof 1.4</h1>
-<div id="new-features-1" class="section level2">
+<div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>New features</h2>
+<a href="#new-features-2" class="anchor"></a>New features</h2>
 <ul>
 <li>Added makeGOMOPFunction to create multi-objective test function based on a set of single objective functions.</li>
 <li>Added new single-objective functions: Branin (modified version by Forrester et al. (2008))</li>
@@ -123,9 +152,9 @@
 <li>Added possibility to draw interactive 3D surface plots via smoof::plot3D(fn, package = “plotly”)</li>
 </ul>
 </div>
-<div id="bugfixes-1" class="section level2">
+<div id="bugfixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bugfixes-1" class="anchor"></a>Bugfixes</h2>
+<a href="#bugfixes-2" class="anchor"></a>Bugfixes</h2>
 <ul>
 <li>Fixed: issue in formula and global optimum of BukinN2 function</li>
 <li>overworked and refactored autoplot functions</li>
@@ -139,9 +168,9 @@
     <div id="smoof-1-3" class="section level1">
 <h1 class="hasAnchor">
 <a href="#smoof-1-3" class="anchor"></a>smoof 1.3</h1>
-<div id="new-features-2" class="section level2">
+<div id="new-features-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-2" class="anchor"></a>New features</h2>
+<a href="#new-features-3" class="anchor"></a>New features</h2>
 <ul>
 <li>Added optional reference point ref.point for multi-objective functions</li>
 <li>Reference point for ZDT functions is (11, 11)</li>
@@ -157,9 +186,9 @@
     <div id="smoof-1-2" class="section level1">
 <h1 class="hasAnchor">
 <a href="#smoof-1-2" class="anchor"></a>smoof 1.2</h1>
-<div id="new-features-3" class="section level2">
+<div id="new-features-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-3" class="anchor"></a>New features</h2>
+<a href="#new-features-4" class="anchor"></a>New features</h2>
 <ul>
 <li>Added: functions convertToMaximization and convertToMinimization</li>
 <li>Added: main parameter for plot and autoplot. By default the function name is used for the plot title.</li>
@@ -173,9 +202,9 @@
 <li>Generator names now do not contain the ‘Function’ suffix</li>
 </ul>
 </div>
-<div id="bugfixes-2" class="section level2">
+<div id="bugfixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bugfixes-2" class="anchor"></a>Bugfixes</h2>
+<a href="#bugfixes-3" class="anchor"></a>Bugfixes</h2>
 <ul>
 <li>Fixed: autoplot and plot do not work for wrapped functions.</li>
 <li>Fixed: hasConstraints for wrapped smoof functions</li>
@@ -186,9 +215,9 @@
     <div id="smoof-1-1" class="section level1">
 <h1 class="hasAnchor">
 <a href="#smoof-1-1" class="anchor"></a>smoof 1.1</h1>
-<div id="new-features-4" class="section level2">
+<div id="new-features-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-4" class="anchor"></a>New features</h2>
+<a href="#new-features-5" class="anchor"></a>New features</h2>
 <ul>
 <li>Parameter set of predefined smoof function now contains a single vector parameter instead of multiple single numeric parameters. This is consistent with function calls now, since these always expect a single vector or list.</li>
 <li>Added helper function get{Lower,Upper}BoxConstraints</li>
@@ -202,9 +231,9 @@
 <li>Renamed bochachevsky function to bohachevsky.n1</li>
 </ul>
 </div>
-<div id="bugfixes-3" class="section level2">
+<div id="bugfixes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bugfixes-3" class="anchor"></a>Bugfixes</h2>
+<a href="#bugfixes-4" class="anchor"></a>Bugfixes</h2>
 <ul>
 <li>Fixed some wrong tag assigments</li>
 <li>Fixed global optimum of Giunta function</li>
@@ -218,6 +247,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#smoof-1-5-1">1.5.1</a></li>
         <li><a href="#smoof-1-5">1.5</a></li>
         <li><a href="#smoof-1-4">1.4</a></li>
         <li><a href="#smoof-1-3">1.3</a></li>

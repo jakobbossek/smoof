@@ -223,7 +223,7 @@ only the <code>local.opt.params</code> are passed, the values are computed autom
 #&gt; x numericvector   1   - -5 to 5   -    TRUE     -
 #&gt; Global optimum objective value of 0.0000 at
 #&gt;   x
-#&gt; 1 0</div><div class='input'><span class='fu'>print</span>(<span class='fu'>autoplot</span>(<span class='no'>fn</span>))</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("depth"): nicht anwendbare Methode für 'depth' auf Objekt der Klasse "NULL" angewendet</span></div><img src='makeSingleObjectiveFunction-5.png' alt='' width='540' height='400' /><div class='input'>
+#&gt; 1 0</div><div class='input'><span class='fu'>print</span>(<span class='fu'>autoplot</span>(<span class='no'>fn</span>))</div><img src='makeSingleObjectiveFunction-4.png' alt='' width='540' height='400' /><div class='input'>
 <span class='no'>fn.num2</span> <span class='kw'>=</span> <span class='fu'>makeSingleObjectiveFunction</span>(
   <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Numeric 2D"</span>,
   <span class='kw'>fn</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'>sum</span>(<span class='no'>x</span>^<span class='fl'>2</span>),
@@ -242,8 +242,7 @@ only the <code>local.opt.params</code> are passed, the values are computed autom
 #&gt; Number of parameters: 2
 #&gt;       Type len Def    Constr Req Tunable Trafo
 #&gt; x1 numeric   -   -   -5 to 5   -    TRUE     -
-#&gt; x2 numeric   -   - -10 to 20   -    TRUE     -</div><div class='input'><span class='fu'>print</span>(<span class='fu'>autoplot</span>(<span class='no'>fn.num2</span>))
-
+#&gt; x2 numeric   -   - -10 to 20   -    TRUE     -</div><div class='input'><span class='fu'>print</span>(<span class='fu'>autoplot</span>(<span class='no'>fn.num2</span>))</div><img src='makeSingleObjectiveFunction-8.png' alt='' width='540' height='400' /><div class='input'>
 <span class='no'>fn.mixed</span> <span class='kw'>=</span> <span class='fu'>makeSingleObjectiveFunction</span>(
   <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Mixed 2D"</span>,
   <span class='kw'>fn</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) <span class='no'>x</span>$<span class='no'>num1</span>^<span class='fl'>2</span> + <span class='fu'>as.integer</span>(<span class='fu'>as.character</span>(<span class='no'>x</span>$<span class='no'>disc1</span>) <span class='kw'>==</span> <span class='st'>"a"</span>),
@@ -267,7 +266,7 @@ only the <code>local.opt.params</code> are passed, the values are computed autom
 #&gt; disc1 discrete   -   -     a,b   -    TRUE     -
 #&gt; Global optimum objective value of 0.0000 at
 #&gt;   num1 disc1
-#&gt; 1    0     b</div><div class='input'><span class='fu'>print</span>(<span class='fu'>autoplot</span>(<span class='no'>fn.mixed</span>))</div></pre>
+#&gt; 1    0     b</div><div class='input'><span class='fu'>print</span>(<span class='fu'>autoplot</span>(<span class='no'>fn.mixed</span>))</div><img src='makeSingleObjectiveFunction-12.png' alt='' width='540' height='400' /></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
