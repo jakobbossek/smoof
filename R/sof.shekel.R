@@ -35,15 +35,15 @@ makeShekelFunction = function(m) {
 
     C = matrix(
         c(4.0, 1.0, 8.0, 6.0, 3.0, 2.0, 5.0, 8.0, 6.0, 7.0,
-          4.0, 1.0, 8.0, 6.0, 7.0, 9.0, 3.0, 1.0, 2.0, 3.0,
+          4.0, 1.0, 8.0, 6.0, 7.0, 9.0, 3.0, 1.0, 2.0, 3.6,
           4.0, 1.0, 8.0, 6.0, 3.0, 2.0, 5.0, 8.0, 6.0, 7.0,
-          4.0, 1.0, 8.0, 6.0, 7.0, 9.0, 3.0, 1.0, 2.0, 3.0),
-        nrow = 10L)
+          4.0, 1.0, 8.0, 6.0, 7.0, 9.0, 3.0, 1.0, 2.0, 3.6),
+        nrow = 4L, byrow = TRUE)
     beta = c(1, 2, 2, 4, 4, 6, 3, 7, 5, 5) * 0.1
 
-    x = matrix(rep(x, m), nrow = m)
+    x = matrix(rep(x, m), nrow = 4)
 
-    return(-sum(1 / (rowSums((x - C[1:m, ])^2) + beta[1:m])))
+    return(-sum(1 / (colSums((x - C[1:4, ])^2) + beta[1:m])))
   }
 
   makeSingleObjectiveFunction(
