@@ -31,10 +31,10 @@ makeMichalewiczFunction = function(dimensions, m = 10) {
       (-1) * sum(sin(x) * (sin((i * x^2) / pi)^(2 * m)))
     },
     par.set = makeNumericParamSet(
-      len = 2L,
+      len = dimensions,
       id = "x",
-      lower = c(0, 0),
-      upper = c(pi, pi),
+      lower = rep(0, dimensions),
+      upper = rep(pi, dimensions),
       vector = TRUE
     ),
     tags = attr(makeMichalewiczFunction, "tags"),
