@@ -15,7 +15,6 @@ BugReports: https://github.com/jakobbossek/smoof/issues
 License: BSD_2_clause + file LICENSE
 Depends:
     ParamHelpers (>= 1.8),
-    BBmisc (>= 1.6),
     checkmate (>= 1.1)
 Imports:
     ggplot2 (>= 2.2.1),
