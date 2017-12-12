@@ -43,7 +43,7 @@ makeShekelFunction = function(m) {
 
     x = matrix(rep(x, m), nrow = 4)
 
-    return(-sum(1 / (colSums((x - C[1:4, ])^2) + beta[1:m])))
+    return(-sum(1 / (colSums((x - C[, 1:m])^2) + beta[1:m])))
   }
 
   makeSingleObjectiveFunction(
