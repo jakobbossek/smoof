@@ -5,7 +5,7 @@
 #' @import RColorBrewer
 #' @import plot3D
 #' @import RJSONIO
-#' @useDynLib smoof
+#' @useDynLib smoof, .registration = TRUE
 #' @importFrom mco nsga2
 #' @importFrom Rcpp sourceCpp
 #' @importFrom grDevices colorRampPalette

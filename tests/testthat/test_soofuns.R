@@ -90,9 +90,9 @@ test_that("CEC 2009 functions work", {
       value = fn(param)
       expect_true(is.numeric(value))
       expect_equal(length(value), getNumberOfObjectives(fn),
-        info = "Length of objective vector is wrong!\nExpected %i, but got %i for
+        info = sprintf("Length of objective vector is wrong!\nExpected %i, but got %i for
         dimension %i and UF%i", length(value), getNumberOfObjectives(fn),
-        dimension, id)
+        dimension, id))
     }
   }
 })

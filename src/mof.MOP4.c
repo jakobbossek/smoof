@@ -9,7 +9,7 @@
 SEXP mof_MOP4(SEXP rx) {
   EXTRACT_NUMERIC_VECTOR(rx, x, n);
 
-  SEXP rf = ALLOC_REAL_VECTOR(n);
+  SEXP rf = ALLOC_REAL_VECTOR(2);
   double* f = REAL(rf);
 
   double f1 = 0.0, f2 = 0.0;

@@ -2,30 +2,30 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 dtlz_1 <- function(x, M) {
-    .Call('smoof_dtlz_1', PACKAGE = 'smoof', x, M)
+    .Call(`_smoof_dtlz_1`, x, M)
 }
 
 dtlz_2 <- function(x, M) {
-    .Call('smoof_dtlz_2', PACKAGE = 'smoof', x, M)
+    .Call(`_smoof_dtlz_2`, x, M)
 }
 
 dtlz_3 <- function(x, M) {
-    .Call('smoof_dtlz_3', PACKAGE = 'smoof', x, M)
+    .Call(`_smoof_dtlz_3`, x, M)
 }
 
 dtlz_4 <- function(x, M, alpha = 100) {
-    .Call('smoof_dtlz_4', PACKAGE = 'smoof', x, M, alpha)
+    .Call(`_smoof_dtlz_4`, x, M, alpha)
 }
 
 dtlz_5 <- function(x, M) {
-    .Call('smoof_dtlz_5', PACKAGE = 'smoof', x, M)
+    .Call(`_smoof_dtlz_5`, x, M)
 }
 
 dtlz_6 <- function(x, M) {
-    .Call('smoof_dtlz_6', PACKAGE = 'smoof', x, M)
+    .Call(`_smoof_dtlz_6`, x, M)
 }
 
 dtlz_7 <- function(x, M) {
-    .Call('smoof_dtlz_7', PACKAGE = 'smoof', x, M)
+    .Call(`_smoof_dtlz_7`, x, M)
 }
 

@@ -9,7 +9,7 @@
 SEXP mof_MOP3(SEXP rx) {
   EXTRACT_NUMERIC_VECTOR(rx, x, n);
 
-  SEXP rf = ALLOC_REAL_VECTOR(n);
+  SEXP rf = ALLOC_REAL_VECTOR(2);
   double* f = REAL(rf);
 
   double A1 = 0.5 * sin(1) - 2 * cos(1) + sin(2) - 1.5 * cos(2);
