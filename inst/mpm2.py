@@ -266,6 +266,16 @@ class MultiplePeaksModel2:
         return opts
 
 
+    def getCovMatrices(self):
+        peaks = self.peaks
+        res = []
+        for peak in peaks:
+            X = peak.D
+            X = X.reshape(len(X) * len(X[0]))
+            res.append(np.matrix(X).tolist())
+        return res
+
+
 
 #####################################################################################################
 # stuff for the R interface:
@@ -308,6 +318,11 @@ def getGlobalOptimaParams(npeaks, dimension, topology, randomSeed, rotated, peak
     global currentProblem
     initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
     return currentProblem.getOptimalSolutions()
+
+def getCovarianceMatrices(npeaks, dimension, topology, randomSeed, rotated, peakShape):
+    global currentProblem
+    initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
+    return currentProblem.getCovMatrices()
 
 if __name__ == "__main__":
     # nothing to do here
