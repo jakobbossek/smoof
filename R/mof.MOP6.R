@@ -22,7 +22,7 @@ makeMOP6Function = function() {
     par.set =  makeNumericParamSet(
       len = 2L,
       id = "x",
-      lower = rep(-0, 2L),
+      lower = rep(0, 2L),
       upper = rep(1, 2L),
       vector = TRUE
     ),
