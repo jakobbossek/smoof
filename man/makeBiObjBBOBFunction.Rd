@@ -12,7 +12,7 @@ makeBiObjBBOBFunction(dimension, fid, iid)
 Problem dimension. Integer value between 2 and 40.}
 
 \item{fid}{[\code{integer(1)}]\cr
-Function identifier. Integer value between 1 and 24.}
+Function identifier. Integer value between 1 and 55.}
 
 \item{iid}{[\code{integer(1)}]\cr
 Instance identifier. Integer value greater than or equal 1.}

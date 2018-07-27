@@ -8,7 +8,7 @@
 #' @param dimension [\code{integer(1)}]\cr
 #'   Problem dimension. Integer value between 2 and 40.
 #' @param fid [\code{integer(1)}]\cr
-#'   Function identifier. Integer value between 1 and 24.
+#'   Function identifier. Integer value between 1 and 55.
 #' @param iid [\code{integer(1)}]\cr
 #'   Instance identifier. Integer value greater than or equal 1.
 #' @return [\code{smoof_single_objective_function}]
