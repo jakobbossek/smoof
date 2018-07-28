@@ -18,7 +18,7 @@ Function identifier. Integer value between 1 and 55.}
 Instance identifier. Integer value greater than or equal 1.}
 }
 \value{
-[\code{smoof_single_objective_function}]
+[\code{smoof_multi_objective_function}]
 }
 \description{
 Generator for the function set of the real-parameter Bi-Objective

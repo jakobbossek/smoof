@@ -11,7 +11,7 @@
 #'   Function identifier. Integer value between 1 and 55.
 #' @param iid [\code{integer(1)}]\cr
 #'   Instance identifier. Integer value greater than or equal 1.
-#' @return [\code{smoof_single_objective_function}]
+#' @return [\code{smoof_multi_objective_function}]
 #' @examples
 #' # get the fifth instance of the concatenation of the
 #' # 3D versions of sphere and Rosenbrock
@@ -51,6 +51,9 @@ makeBiObjBBOBFunction = function(dimension, fid, iid) {
 
   fid1 = grid[fid, "fids1"]
   fid2 = grid[fid, "fids2"]
+  # according to the description from COCO (http://numbbo.github.io/coco-doc/bbob-biobj/functions/#instances)
+  # the IID of the bi-objective BBOB problem is used for computing the IIDs of
+  # the two underlying single-objective BBOB problems as given below
   iid1 = 2L * iid + 1L
   iid2 = iid1 + 1L
 
