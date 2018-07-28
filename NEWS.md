@@ -1,3 +1,9 @@
+# smoof 1.6
+
+## New Features
+
+* Added bi-objective BBOB problem generator: makeBiObjBBOBFunction
+
 # smoof 1.5.1
 
 ## New features
