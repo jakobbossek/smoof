@@ -1,8 +1,9 @@
 # smoof 1.6
 
-## New Features
+## New features
 
 * Added bi-objective BBOB problem generator: makeBiObjBBOBFunction
+* Added: Kursawe function
 
 # smoof 1.5.1
 
@@ -18,7 +19,7 @@
 * Better handling of additional arguments in makeFunctionsByName
 * convertTo{Minimization,Maximization} now flips sign of optima
 
-## Miscelaneous
+## Miscellaneous
 
 * logging and couting wrapper now have class smoof_function
 

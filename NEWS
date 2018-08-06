@@ -2,6 +2,7 @@ smoof 1.6
 =========
 
 * Added bi-objective BBOB problem generator: makeBiObjBBOBFunction
+* Added Kursawe function
 
 smoof 1.5.1
 ===========

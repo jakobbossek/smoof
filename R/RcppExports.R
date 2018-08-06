@@ -29,3 +29,7 @@ dtlz_7 <- function(x, M) {
     .Call(`_smoof_dtlz_7`, x, M)
 }
 
+kursawe <- function(x) {
+    .Call(`_smoof_kursawe`, x)
+}
+
