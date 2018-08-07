@@ -27,7 +27,7 @@ makeKursaweFunction = function(dimensions) {
 
   # C++ implementation
   fn = function(x) {
-    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE, lower = -5, upper = 5)
     kursawe(x)
   }
 

@@ -29,6 +29,14 @@ dtlz_7 <- function(x, M) {
     .Call(`_smoof_dtlz_7`, x, M)
 }
 
+mof_ED_1 <- function(x, m, gamma, theta) {
+    .Call(`_smoof_mof_ED_1`, x, m, gamma, theta)
+}
+
+mof_ED_2 <- function(x, m, gamma, theta) {
+    .Call(`_smoof_mof_ED_2`, x, m, gamma, theta)
+}
+
 kursawe <- function(x) {
     .Call(`_smoof_kursawe`, x)
 }

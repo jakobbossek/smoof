@@ -91,13 +91,41 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// mof_ED_1
+NumericVector mof_ED_1(NumericVector x, int m, double gamma, NumericVector theta);
+RcppExport SEXP _smoof_mof_ED_1(SEXP xSEXP, SEXP mSEXP, SEXP gammaSEXP, SEXP thetaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type m(mSEXP);
+    Rcpp::traits::input_parameter< double >::type gamma(gammaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type theta(thetaSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_ED_1(x, m, gamma, theta));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_ED_2
+NumericVector mof_ED_2(NumericVector x, int m, double gamma, NumericVector theta);
+RcppExport SEXP _smoof_mof_ED_2(SEXP xSEXP, SEXP mSEXP, SEXP gammaSEXP, SEXP thetaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type m(mSEXP);
+    Rcpp::traits::input_parameter< double >::type gamma(gammaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type theta(thetaSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_ED_2(x, m, gamma, theta));
+    return rcpp_result_gen;
+END_RCPP
+}
 // kursawe
-NumericVector kursawe(arma::vec x);
+NumericVector kursawe(NumericVector x);
 RcppExport SEXP _smoof_kursawe(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
     rcpp_result_gen = Rcpp::wrap(kursawe(x));
     return rcpp_result_gen;
 END_RCPP
@@ -124,6 +152,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_smoof_dtlz_5", (DL_FUNC) &_smoof_dtlz_5, 2},
     {"_smoof_dtlz_6", (DL_FUNC) &_smoof_dtlz_6, 2},
     {"_smoof_dtlz_7", (DL_FUNC) &_smoof_dtlz_7, 2},
+    {"_smoof_mof_ED_1", (DL_FUNC) &_smoof_mof_ED_1, 4},
+    {"_smoof_mof_ED_2", (DL_FUNC) &_smoof_mof_ED_2, 4},
     {"_smoof_kursawe", (DL_FUNC) &_smoof_kursawe, 1},
     {"evaluateBBOBFunctionCPP",      (DL_FUNC) &evaluateBBOBFunctionCPP,      4},
     {"evaluateUFFunction",           (DL_FUNC) &evaluateUFFunction,           3},

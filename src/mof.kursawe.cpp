@@ -4,7 +4,7 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-NumericVector kursawe(arma::vec x) {
+NumericVector kursawe(NumericVector x) {
 
   NumericVector f(2);
   int n = x.size();
