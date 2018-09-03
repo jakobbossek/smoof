@@ -130,6 +130,123 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// mof_WFG_1
+NumericVector mof_WFG_1(NumericVector z, int M, int k);
+RcppExport SEXP _smoof_mof_WFG_1(SEXP zSEXP, SEXP MSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type z(zSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_WFG_1(z, M, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_WFG_2
+NumericVector mof_WFG_2(NumericVector z, int M, int k);
+RcppExport SEXP _smoof_mof_WFG_2(SEXP zSEXP, SEXP MSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type z(zSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_WFG_2(z, M, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_WFG_3
+NumericVector mof_WFG_3(NumericVector z, int M, int k);
+RcppExport SEXP _smoof_mof_WFG_3(SEXP zSEXP, SEXP MSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type z(zSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_WFG_3(z, M, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_WFG_4
+NumericVector mof_WFG_4(NumericVector z, int M, int k);
+RcppExport SEXP _smoof_mof_WFG_4(SEXP zSEXP, SEXP MSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type z(zSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_WFG_4(z, M, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_WFG_5
+NumericVector mof_WFG_5(NumericVector z, int M, int k);
+RcppExport SEXP _smoof_mof_WFG_5(SEXP zSEXP, SEXP MSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type z(zSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_WFG_5(z, M, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_WFG_6
+NumericVector mof_WFG_6(NumericVector z, int M, int k);
+RcppExport SEXP _smoof_mof_WFG_6(SEXP zSEXP, SEXP MSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type z(zSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_WFG_6(z, M, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_WFG_7
+NumericVector mof_WFG_7(NumericVector z, int M, int k);
+RcppExport SEXP _smoof_mof_WFG_7(SEXP zSEXP, SEXP MSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type z(zSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_WFG_7(z, M, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_WFG_8
+NumericVector mof_WFG_8(NumericVector z, int M, int k);
+RcppExport SEXP _smoof_mof_WFG_8(SEXP zSEXP, SEXP MSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type z(zSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_WFG_8(z, M, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_WFG_9
+NumericVector mof_WFG_9(NumericVector z, int M, int k);
+RcppExport SEXP _smoof_mof_WFG_9(SEXP zSEXP, SEXP MSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type z(zSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_WFG_9(z, M, k));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 RcppExport SEXP evaluateBBOBFunctionCPP(SEXP, SEXP, SEXP, SEXP);
 RcppExport SEXP evaluateUFFunction(SEXP, SEXP, SEXP);
@@ -155,6 +272,15 @@ static const R_CallMethodDef CallEntries[] = {
     {"_smoof_mof_ED_1", (DL_FUNC) &_smoof_mof_ED_1, 4},
     {"_smoof_mof_ED_2", (DL_FUNC) &_smoof_mof_ED_2, 4},
     {"_smoof_kursawe", (DL_FUNC) &_smoof_kursawe, 1},
+    {"_smoof_mof_WFG_1", (DL_FUNC) &_smoof_mof_WFG_1, 3},
+    {"_smoof_mof_WFG_2", (DL_FUNC) &_smoof_mof_WFG_2, 3},
+    {"_smoof_mof_WFG_3", (DL_FUNC) &_smoof_mof_WFG_3, 3},
+    {"_smoof_mof_WFG_4", (DL_FUNC) &_smoof_mof_WFG_4, 3},
+    {"_smoof_mof_WFG_5", (DL_FUNC) &_smoof_mof_WFG_5, 3},
+    {"_smoof_mof_WFG_6", (DL_FUNC) &_smoof_mof_WFG_6, 3},
+    {"_smoof_mof_WFG_7", (DL_FUNC) &_smoof_mof_WFG_7, 3},
+    {"_smoof_mof_WFG_8", (DL_FUNC) &_smoof_mof_WFG_8, 3},
+    {"_smoof_mof_WFG_9", (DL_FUNC) &_smoof_mof_WFG_9, 3},
     {"evaluateBBOBFunctionCPP",      (DL_FUNC) &evaluateBBOBFunctionCPP,      4},
     {"evaluateUFFunction",           (DL_FUNC) &evaluateUFFunction,           3},
     {"getOptimumForBBOBFunctionCPP", (DL_FUNC) &getOptimumForBBOBFunctionCPP, 3},

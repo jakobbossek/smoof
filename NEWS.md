@@ -5,6 +5,7 @@
 * Added bi-objective BBOB problem generator: makeBiObjBBOBFunction
 * Added: Kursawe function
 * Added: ED1 and ED2 functions
+* Added: WFG1 to WFG9 problems from the WFG-Problem Generator Toolkit
 
 # smoof 1.5.1
 

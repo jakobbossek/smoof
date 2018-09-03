@@ -71,8 +71,9 @@ makeBiObjBBOBFunction = function(dimension, fid, iid) {
     },
     par.set = par.set,
     n.objectives = 2L,
-    # all BBOB functions are vectorized
-    vectorized = TRUE
+    # the single-objective BBOB functions are vectorized,
+    # but not the combined one
+    vectorized = FALSE
   )
 
 }
