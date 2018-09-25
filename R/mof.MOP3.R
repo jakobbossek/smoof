@@ -36,7 +36,7 @@ makeMOP3Function = function(dimensions = 2L) {
       upper = rep(pi, dimensions),
       vector = TRUE
     ),
-    minimize = rep(FALSE, dimensions), # MOP3 is the only MOP which shall be maximized by default
+    minimize = rep(FALSE, 2L), # MOP3 is the only MOP which shall be maximized by default
     n.objectives = 2L
   )
 }

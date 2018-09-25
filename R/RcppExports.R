@@ -29,3 +29,51 @@ dtlz_7 <- function(x, M) {
     .Call(`_smoof_dtlz_7`, x, M)
 }
 
+mof_ED_1 <- function(x, m, gamma, theta) {
+    .Call(`_smoof_mof_ED_1`, x, m, gamma, theta)
+}
+
+mof_ED_2 <- function(x, m, gamma, theta) {
+    .Call(`_smoof_mof_ED_2`, x, m, gamma, theta)
+}
+
+kursawe <- function(x) {
+    .Call(`_smoof_kursawe`, x)
+}
+
+mof_WFG_1 <- function(z, M, k) {
+    .Call(`_smoof_mof_WFG_1`, z, M, k)
+}
+
+mof_WFG_2 <- function(z, M, k) {
+    .Call(`_smoof_mof_WFG_2`, z, M, k)
+}
+
+mof_WFG_3 <- function(z, M, k) {
+    .Call(`_smoof_mof_WFG_3`, z, M, k)
+}
+
+mof_WFG_4 <- function(z, M, k) {
+    .Call(`_smoof_mof_WFG_4`, z, M, k)
+}
+
+mof_WFG_5 <- function(z, M, k) {
+    .Call(`_smoof_mof_WFG_5`, z, M, k)
+}
+
+mof_WFG_6 <- function(z, M, k) {
+    .Call(`_smoof_mof_WFG_6`, z, M, k)
+}
+
+mof_WFG_7 <- function(z, M, k) {
+    .Call(`_smoof_mof_WFG_7`, z, M, k)
+}
+
+mof_WFG_8 <- function(z, M, k) {
+    .Call(`_smoof_mof_WFG_8`, z, M, k)
+}
+
+mof_WFG_9 <- function(z, M, k) {
+    .Call(`_smoof_mof_WFG_9`, z, M, k)
+}
+
