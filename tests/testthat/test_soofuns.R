@@ -20,7 +20,13 @@ test_that("single-objective test function generators work", {
             fun = try(do.call(fun.generator, list(dimensions = 2L)), silent = TRUE)
         }
         if (inherits(fun, "try-error")) {
-            fun = do.call(fun.generator, list(dimensions = 3L, n.objectives = 2L))
+            fun = try(do.call(fun.generator, list(dimensions = 3L, n.objectives = 2L)), silent = TRUE)
+        }
+        if (inherits(fun, "try-error")) {
+            fun = try(do.call(fun.generator, list(dimensions = 3L, fid = 2L, iid = 1L)), silent = TRUE) #BBOBFunction
+        }
+        if (inherits(fun, "try-error")) {
+            fun = try(do.call(fun.generator, list(n.objectives = 2L, k = 2L, l = 2L))) #WFG
         }
         expectIsSmoofFunction(fun, attr(fun.generator, "name"))
         if (hasGlobalOptimum(fun)) {
