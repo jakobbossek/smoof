@@ -6,10 +6,10 @@
 \usage{
 snof(name = NULL, id = NULL, par.len = NULL, par.id = "x",
   par.lower = NULL, par.upper = NULL, description = NULL, fn,
-  vectorized = FALSE, noisy = FALSE, fn.mean = NULL, minimize = TRUE,
-  constraint.fn = NULL, tags = character(0), global.opt.params = NULL,
-  global.opt.value = NULL, local.opt.params = NULL,
-  local.opt.values = NULL)
+  vectorized = FALSE, noisy = FALSE, fn.mean = NULL,
+  minimize = TRUE, constraint.fn = NULL, tags = character(0),
+  global.opt.params = NULL, global.opt.value = NULL,
+  local.opt.params = NULL, local.opt.values = NULL)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr

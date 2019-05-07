@@ -5,11 +5,11 @@
 \title{Generator for the function set of the real-parameter Bi-Objective
 Black-Box Optimization Benchmarking (BBOB).}
 \usage{
-makeBiObjBBOBFunction(dimension, fid, iid)
+makeBiObjBBOBFunction(dimensions, fid, iid)
 }
 \arguments{
-\item{dimension}{[\code{integer(1)}]\cr
-Problem dimension. Integer value between 2 and 40.}
+\item{dimensions}{[\code{integer(1)}]\cr
+Problem dimensions. Integer value between 2 and 40.}
 
 \item{fid}{[\code{integer(1)}]\cr
 Function identifier. Integer value between 1 and 55.}
@@ -31,11 +31,11 @@ a bi-objective problem.
 \examples{
 # get the fifth instance of the concatenation of the
 # 3D versions of sphere and Rosenbrock
-fn = makeBiObjBBOBFunction(dimension = 3L, fid = 4L, iid = 5L)
+fn = makeBiObjBBOBFunction(dimensions = 3L, fid = 4L, iid = 5L)
 fn(c(3, -1, 0))
 # compare to the output of its single-objective pendants
-f1 = makeBBOBFunction(dimension = 3L, fid = 1L, iid = 2L * 5L + 1L)
-f2 = makeBBOBFunction(dimension = 3L, fid = 8L, iid = 2L * 5L + 2L)
+f1 = makeBBOBFunction(dimensions = 3L, fid = 1L, iid = 2L * 5L + 1L)
+f2 = makeBBOBFunction(dimensions = 3L, fid = 8L, iid = 2L * 5L + 2L)
 identical(fn(c(3, -1, 0)), c(f1(c(3, -1, 0)), f2(c(3, -1, 0))))
 }
 \references{

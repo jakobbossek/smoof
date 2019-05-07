@@ -89,7 +89,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
 }
 
 class(makeMPM2Function) = c("function", "smoof_generator")
-attr(makeMPM2Function, "name") = c("Multiple peals model 2 function generator")
+attr(makeMPM2Function, "name") = c("Multiple peaks model 2 function generator")
 attr(makeMPM2Function, "type") = c("single-objective")
 
 
