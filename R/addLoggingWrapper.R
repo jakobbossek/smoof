@@ -17,7 +17,7 @@
 #' @return [\code{smoof_logging_function}]
 #' @examples
 #' # We first build the smoof function and apply the logging wrapper to it
-#' fn = makeSphereFunction(dimension = 2L)
+#' fn = makeSphereFunction(dimensions = 2L)
 #' fn = addLoggingWrapper(fn, logg.x = TRUE)
 #'
 #' # We now apply an optimization algorithm to it and the logging wrapper keeps
