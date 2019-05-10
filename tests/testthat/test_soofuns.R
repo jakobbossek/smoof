@@ -20,7 +20,13 @@ test_that("single-objective test function generators work", {
             fun = try(do.call(fun.generator, list(dimensions = 2L)), silent = TRUE)
         }
         if (inherits(fun, "try-error")) {
-            fun = do.call(fun.generator, list(dimensions = 3L, n.objectives = 2L))
+            fun = try(do.call(fun.generator, list(dimensions = 3L, n.objectives = 2L)), silent = TRUE)
+        }
+        if (inherits(fun, "try-error")) {
+            fun = try(do.call(fun.generator, list(dimensions = 3L, fid = 2L, iid = 1L)), silent = TRUE) #BBOBFunction
+        }
+        if (inherits(fun, "try-error")) {
+            fun = try(do.call(fun.generator, list(n.objectives = 2L, k = 2L, l = 2L))) #WFG
         }
         expectIsSmoofFunction(fun, attr(fun.generator, "name"))
         if (hasGlobalOptimum(fun)) {
@@ -44,7 +50,7 @@ test_that("BBOB functions work", {
     for (iid in iids) {
       for (dimension in dimensions) {
         generator = sprintf("(FID: %i, IID : %i, DIM: %i)", fid, iid, dimension)
-        bbob.fn = makeBBOBFunction(dimension = dimension, fid = fid, iid = iid)
+        bbob.fn = makeBBOBFunction(dimensions = dimension, fid = fid, iid = iid)
         # check vectorized input and output
         if (isVectorized(bbob.fn)) {
           par1 = rep(1, dimension)
@@ -85,7 +91,7 @@ test_that("CEC 2009 functions work", {
   dimensions = c(3, 5, 10)
   for (id in ids) {
     for (dimension in dimensions) {
-      fn = makeUFFunction(dimension = dimension, id = id)
+      fn = makeUFFunction(dimensions = dimension, id = id)
       param = sampleValue(getParamSet(fn))
       value = fn(param)
       expect_true(is.numeric(value))

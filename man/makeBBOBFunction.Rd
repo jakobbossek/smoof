@@ -5,10 +5,10 @@
 \title{Generator for the noiseless function set of the real-parameter Black-Box
 Optimization Benchmarking (BBOB).}
 \usage{
-makeBBOBFunction(dimension, fid, iid)
+makeBBOBFunction(dimensions, fid, iid)
 }
 \arguments{
-\item{dimension}{[\code{integer(1)}]\cr
+\item{dimensions}{[\code{integer(1)}]\cr
 Problem dimension. Integer value between 2 and 40.}
 
 \item{fid}{[\code{integer(1)}]\cr
@@ -30,7 +30,7 @@ each column consists of one parameter setting.
 }
 \examples{
 # get the first instance of the 2D Sphere function
-fn = makeBBOBFunction(dimension = 2L, fid = 1L, iid = 1L)
+fn = makeBBOBFunction(dimensions = 2L, fid = 1L, iid = 1L)
 if (require(plot3D)) {
   plot3D(fn, contour = TRUE)
 }

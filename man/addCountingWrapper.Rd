@@ -20,7 +20,7 @@ number of function evaluations of the wrapped function to compute the function
 values and finally passes down the argument to the wrapped \code{smoof_function}.
 }
 \examples{
-fn = makeBBOBFunction(dimension = 2L, fid = 1L, iid = 1L)
+fn = makeBBOBFunction(dimensions = 2L, fid = 1L, iid = 1L)
 fn = addCountingWrapper(fn)
 
 # we get a value of 0 since the function has not been called yet

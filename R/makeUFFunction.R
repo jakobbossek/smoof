@@ -51,7 +51,7 @@ attr(makeUFFunction, "type") = c("Multi-objective")
 #
 # @param id [integer(1)]
 #   UF function id.
-# @param dimension [integer(1)]
+# @param dimensions [integer(1)]
 #   Problem space dimension.
 # @return [ParamSet]
 makeUFParamSet = function(id, dimensions) {

@@ -145,7 +145,7 @@ autoplot.smoof_function = function(x,
       # see http://learnr.wordpress.com/2009/07/20/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-part-6/
       brewer.div = colorRampPalette(brewer.pal(11, "Spectral"), interpolate = "spline")
 
-      pl = pl + geom_tile(aes_string(fill = "y"))
+      pl = pl + geom_raster(aes_string(fill = "y"))
       pl = pl + scale_fill_gradientn(colours = brewer.div(200))
     }
     if (render.contours) {

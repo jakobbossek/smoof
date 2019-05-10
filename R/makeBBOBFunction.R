@@ -5,7 +5,7 @@
 #' It is possible to pass a matrix of parameters to the functions, where
 #' each column consists of one parameter setting.
 #'
-#' @param dimension [\code{integer(1)}]\cr
+#' @param dimensions [\code{integer(1)}]\cr
 #'   Problem dimension. Integer value between 2 and 40.
 #' @param fid [\code{integer(1)}]\cr
 #'   Function identifier. Integer value between 1 and 24.
@@ -14,42 +14,42 @@
 #' @return [\code{smoof_single_objective_function}]
 #' @examples
 #' # get the first instance of the 2D Sphere function
-#' fn = makeBBOBFunction(dimension = 2L, fid = 1L, iid = 1L)
+#' fn = makeBBOBFunction(dimensions = 2L, fid = 1L, iid = 1L)
 #' if (require(plot3D)) {
 #'   plot3D(fn, contour = TRUE)
 #' }
 #' @references See the \href{http://coco.gforge.inria.fr/doku.php?id=bbob-2009-downloads}{BBOB website}
 #' for a detailed description of the BBOB functions.
 #' @export
-makeBBOBFunction = function(dimension, fid, iid) {
+makeBBOBFunction = function(dimensions, fid, iid) {
   # do some sanity checks
-  dimension = asCount(dimension)
+  dimensions = asCount(dimensions)
   fid = asCount(fid)
   iid = asCount(iid)
-  assertInt(dimension, lower = 2L, upper = 40L)
+  assertInt(dimensions, lower = 2L, upper = 40L)
   assertInt(fid, lower = 1L, upper = 24L)
   assertInt(iid, lower = 1L)
 
   # touch vars
-  force(dimension)
+  force(dimensions)
   force(fid)
   force(iid)
 
   # build parameter set (bounds are [-5, 5] for all BBOB funs)
-  par.set = makeNumericParamSet("x", len = dimension, lower = -5, upper = 5)
+  par.set = makeNumericParamSet("x", len = dimensions, lower = -5, upper = 5)
 
   # get optimal values
-  optimals = getOptimumForBBOBFunction(dimension, fid, iid)
+  optimals = getOptimumForBBOBFunction(dimensions, fid, iid)
 
   # get metadata, i. e., tags and name
   meta = mapBBOBFidToMetaData(fid)
 
   makeSingleObjectiveFunction(
-    name = sprintf("BBOB_%i_%i_%i", dimension, fid, iid),
+    name = sprintf("BBOB_%i_%i_%i", dimensions, fid, iid),
     description = sprintf("%i-th noiseless BBOB function\n(FID: %i, IID: %i, DIMENSION: %i)",
-      fid, fid, iid, dimension),
+      fid, fid, iid, dimensions),
     fn = function(x) {
-      .Call("evaluateBBOBFunctionCPP", dimension, fid, iid, x)
+      .Call("evaluateBBOBFunctionCPP", dimensions, fid, iid, x)
     },
     par.set = par.set,
     tags = meta$tags,
@@ -96,6 +96,6 @@ mapBBOBFidToMetaData = function(fid) {
 
 # Get the optimal parameter values and the optimal function value for a BBOB
 # function.
-getOptimumForBBOBFunction = function(dimension, fid, iid) {
-  .Call("getOptimumForBBOBFunctionCPP", dimension, fid, iid)
+getOptimumForBBOBFunction = function(dimensions, fid, iid) {
+  .Call("getOptimumForBBOBFunctionCPP", dimensions, fid, iid)
 }

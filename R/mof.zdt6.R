@@ -22,7 +22,7 @@
 #' @return [\code{smoof_multi_objective_function}]
 #' @export
 makeZDT6Function = function(dimensions) {
-  assertNumber(dimensions, lower = 2L)
+  assertInt(dimensions, lower = 2L)
   force(dimensions)
 
     # define the two-objective ZDT1 function

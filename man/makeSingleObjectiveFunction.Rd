@@ -4,10 +4,11 @@
 \alias{makeSingleObjectiveFunction}
 \title{Generator for single-objective target functions.}
 \usage{
-makeSingleObjectiveFunction(name = NULL, id = NULL, description = NULL,
-  fn, has.simple.signature = TRUE, vectorized = FALSE, par.set,
-  noisy = FALSE, fn.mean = NULL, minimize = TRUE, constraint.fn = NULL,
-  tags = character(0), global.opt.params = NULL, global.opt.value = NULL,
+makeSingleObjectiveFunction(name = NULL, id = NULL,
+  description = NULL, fn, has.simple.signature = TRUE,
+  vectorized = FALSE, par.set, noisy = FALSE, fn.mean = NULL,
+  minimize = TRUE, constraint.fn = NULL, tags = character(0),
+  global.opt.params = NULL, global.opt.value = NULL,
   local.opt.params = NULL, local.opt.values = NULL)
 }
 \arguments{

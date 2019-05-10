@@ -11,7 +11,7 @@
 #'   Smoof function which should be wrapped.
 #' @return [\code{smoof_counting_function}]
 #' @examples
-#' fn = makeBBOBFunction(dimension = 2L, fid = 1L, iid = 1L)
+#' fn = makeBBOBFunction(dimensions = 2L, fid = 1L, iid = 1L)
 #' fn = addCountingWrapper(fn)
 #'
 #' # we get a value of 0 since the function has not been called yet
