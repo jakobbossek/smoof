@@ -6,6 +6,8 @@
 * Added: Kursawe function
 * Added: ED1 and ED2 functions
 * Added: WFG1 to WFG9 problems from the WFG-Problem Generator Toolkit
+* Changed: renamed argument dimension to dimensions (this should not cause any problems with existing code)
+* Changed: replaced geom_tile with geom_raster
 
 # smoof 1.5.1
 
