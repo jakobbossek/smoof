@@ -32,3 +32,4 @@ LazyData: yes
 ByteCompile: yes
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 6.1.1
+Encoding: UTF-8
