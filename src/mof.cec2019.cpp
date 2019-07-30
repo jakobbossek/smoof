@@ -267,13 +267,13 @@ NumericVector mof_cec2019_mmf14(NumericVector x, int M, int np) {
   NumericVector y(M);
   int n = x.size();
   double g = 2 - pow(sin(np * M_PI * x(n - 1)), 2);
-  for (int i = 0; i < M; i++) {
-  	y(i) = 1 + g;
-  	for (int j = 0; j < M - 1; j++) {
+  y(0) = (1 + g);
+  for (int i = 1; i < M; i++) {
+  	y(i) = (1 + g) * sin((M_PI / 2) * x(M - 1 - i));
+  }
+  for (int i = 0; i < M - 1; i++) {
+  	for (int j = 0; j < M - 1 - i; j++) {
   		y(i) = y(i) * cos((M_PI / 2) * x(j));
-  	}
-  	if (i > 0) {
-    	y(i) = y(i) * sin((M_PI / 2) * x(M - i));
   	}
   }
   return y;
@@ -285,13 +285,13 @@ NumericVector mof_cec2019_mmf14_a(NumericVector x, int M, int np) {
   NumericVector y(M);
   int n = x.size();
   double g = 2 - pow(sin(np * M_PI * (x(n - 1) - 0.5 * sin(M_PI * x(n - 2) + (1 / (2 * np))))), 2);
-  for (int i = 0; i < M; i++) {
-  	y(i) = 1 + g;
-  	for (int j = 0; j < M - 1; j++) {
+  y(0) = (1 + g);
+  for (int i = 1; i < M; i++) {
+  	y(i) = (1 + g) * sin((M_PI / 2) * x(M - 1 - i));
+  }
+  for (int i = 0; i < M - 1; i++) {
+  	for (int j = 0; j < M - 1 - i; j++) {
   		y(i) = y(i) * cos((M_PI / 2) * x(j));
-  	}
-  	if (i > 0) {
-    	y(i) = y(i) * sin((M_PI / 2) * x(M - i));
   	}
   }
   return y;
@@ -303,13 +303,13 @@ NumericVector mof_cec2019_mmf15(NumericVector x, int M, int np) {
   NumericVector y(M);
   int n = x.size();
   double g = 2 - exp(-2 * log(2) * pow((x(n - 1) - 0.1) / 0.8, 2)) * pow(sin(np * M_PI * x(n - 1)), 2);
-  for (int i = 0; i < M; i++) {
-  	y(i) = 1 + g;
-  	for (int j = 0; j < M - 1; j++) {
+  y(0) = (1 + g);
+  for (int i = 1; i < M; i++) {
+  	y(i) = (1 + g) * sin((M_PI / 2) * x(M - 1 - i));
+  }
+  for (int i = 0; i < M - 1; i++) {
+  	for (int j = 0; j < M - 1 - i; j++) {
   		y(i) = y(i) * cos((M_PI / 2) * x(j));
-  	}
-  	if (i > 0) {
-    	y(i) = y(i) * sin((M_PI / 2) * x(M - i));
   	}
   }
   return y;
@@ -322,13 +322,13 @@ NumericVector mof_cec2019_mmf15_a(NumericVector x, int M, int np) {
   int n = x.size();
   double t = x(n - 1) - 0.5 * sin(M_PI * x(n - 2)) + (1 / (2 * np));
   double g = 2 - exp(-2 * log(2) * pow((t - 0.1) / 0.8, 2)) * pow(sin(np * M_PI * t), 2);
-  for (int i = 0; i < M; i++) {
-  	y(i) = 1 + g;
-  	for (int j = 0; j < M - 1; j++) {
+  y(0) = (1 + g);
+  for (int i = 1; i < M; i++) {
+  	y(i) = (1 + g) * sin((M_PI / 2) * x(M - 1 - i));
+  }
+  for (int i = 0; i < M - 1; i++) {
+  	for (int j = 0; j < M - 1 - i; j++) {
   		y(i) = y(i) * cos((M_PI / 2) * x(j));
-  	}
-  	if (i > 0) {
-    	y(i) = y(i) * sin((M_PI / 2) * x(M - i));
   	}
   }
   return y;
