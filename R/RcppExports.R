@@ -109,6 +109,22 @@ mof_cec2019_mmf13 <- function(x, np) {
     .Call(`_smoof_mof_cec2019_mmf13`, x, np)
 }
 
+mof_cec2019_mmf14 <- function(x, M, np) {
+    .Call(`_smoof_mof_cec2019_mmf14`, x, M, np)
+}
+
+mof_cec2019_mmf14_a <- function(x, M, np) {
+    .Call(`_smoof_mof_cec2019_mmf14_a`, x, M, np)
+}
+
+mof_cec2019_mmf15 <- function(x, M, np) {
+    .Call(`_smoof_mof_cec2019_mmf15`, x, M, np)
+}
+
+mof_cec2019_mmf15_a <- function(x, M, np) {
+    .Call(`_smoof_mof_cec2019_mmf15_a`, x, M, np)
+}
+
 kursawe <- function(x) {
     .Call(`_smoof_kursawe`, x)
 }
