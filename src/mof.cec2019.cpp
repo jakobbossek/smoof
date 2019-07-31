@@ -281,7 +281,8 @@ NumericVector mof_cec2019_mmf14(NumericVector x, int M, int np) {
 NumericVector mof_cec2019_mmf14_a(NumericVector x, int M, int np) {
   NumericVector y(M);
   int n = x.size();
-  double g = 3 - pow(sin(np * M_PI * (x(n - 1) - 0.5 * sin(M_PI * x(n - 2) + (1 / (2 * np))))), 2);
+  double tmp = x(n - 1) - 0.5 * sin(M_PI * x(n - 2)) + (0.5 / np);
+  double g = 3.0 - pow(sin(np * M_PI * tmp), 2);
   for (int i = 0; i < M - 1; i++) {
     y(M - 1 - i) = g * sin(0.5 * M_PI * x(i));
     g = g * cos(0.5 * M_PI * x(i));
@@ -295,7 +296,7 @@ NumericVector mof_cec2019_mmf14_a(NumericVector x, int M, int np) {
 NumericVector mof_cec2019_mmf15(NumericVector x, int M, int np) {
   NumericVector y(M);
   int n = x.size();
-  double g = 3 - exp(-2 * log(2) * pow((x(n - 1) - 0.1) / 0.8, 2)) * pow(sin(np * M_PI * x(n - 1)), 2);
+  double g = 3.0 - exp(-2.0 * log10(2.0) * pow((x(n - 1) - 0.1) / 0.8, 2)) * pow(sin(np * M_PI * x(n - 1)), 2);
   for (int i = 0; i < M - 1; i++) {
     y(M - 1 - i) = g * sin(0.5 * M_PI * x(i));
     g = g * cos(0.5 * M_PI * x(i));
@@ -309,8 +310,8 @@ NumericVector mof_cec2019_mmf15(NumericVector x, int M, int np) {
 NumericVector mof_cec2019_mmf15_a(NumericVector x, int M, int np) {
   NumericVector y(M);
   int n = x.size();
-  double t = x(n - 1) - 0.5 * sin(M_PI * x(n - 2)) + (1 / (2 * np));
-  double g = 3 - exp(-2 * log(2) * pow((t - 0.1) / 0.8, 2)) * pow(sin(np * M_PI * t), 2);
+  double t = x(n - 1) - 0.5 * sin(M_PI * x(n - 2)) + (0.5 / np);
+  double g = 3.0 - exp(-2.0 * log10(2.0) * pow((t - 0.1) / 0.8, 2)) * pow(sin(np * M_PI * t), 2);
   for (int i = 0; i < M - 1; i++) {
     y(M - 1 - i) = g * sin(0.5 * M_PI * x(i));
     g = g * cos(0.5 * M_PI * x(i));
