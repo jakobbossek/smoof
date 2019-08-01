@@ -32,6 +32,8 @@
 #' Multi-Objective Optimization Test Problems. Computer Engineering and Networks
 #' Laboratory (TIK), Swiss Federal Institute of Technology (ETH) Zurich, 112, 2001
 #'
+#' @note Note that in case of a bi-objective scenario (\code{n.objectives = 2L}) DTLZ2 and DTLZ5 are identical.
+#'
 #' @param dimensions [\code{integer(1)}]\cr
 #'   Number of decision variables.
 #' @param n.objectives [\code{integer(1)}]\cr

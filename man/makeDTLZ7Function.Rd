@@ -47,6 +47,12 @@ g(XM) = 1 + 9 / |XM| * sum{x[i] in XM} {x[i]}}
 and \eqn{h(f_1,f_2,\cdots,f_{M-1}, g) = M - \sum_{i=1}^{M-1}\left[\frac{f_i}{1+g}(1 + sin(3\pi f_i))\right]}{
 h(f[1],f[2],...f[M-1],g) = M - sum{i in 1:(M-1)} {f[i] / (1 + g) * (1 + sin(3 * pi * f[i]))}}
 }
+\note{
+Attention: Within the succeeding work of Deb et al. (K. Deb and L. Thiele and
+M. Laumanns and E. Zitzler (2002). Scalable multi-objective optimization test problems,
+Proceedings of the IEEE Congress on Evolutionary Computation, pp. 825-830)
+this problem was called DTLZ6.
+}
 \references{
 K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
 Multi-Objective Optimization Test Problems. Computer Engineering and Networks
