@@ -20,4 +20,3 @@ with \eqn{\mathbf{x}_i \in [-100, 100], i = 1,2.}
 Easom, E. E.: A survey of global optimization techniques. M. Eng.
 thesis, University of Louisville, Louisville, KY, 1990.
 }
-

@@ -1,5 +1,7 @@
+#' @title
 #' ZDT2 Function
 #'
+#' @description
 #' Builds and returns the two-objective ZDT2 test problem. The function is
 #' nonconvex and resembles the ZDT1 function. For \eqn{m} objective it
 #' is defined as follows
@@ -18,7 +20,7 @@
 #' @return [\code{smoof_multi_objective_function}]
 #' @export
 makeZDT2Function = function(dimensions) {
-  assertNumber(dimensions, lower = 2L, na.ok = FALSE)
+  assertInt(dimensions, lower = 2L)
   force(dimensions)
 
     # define the two-objective ZDT1 function

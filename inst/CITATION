@@ -1,0 +1,10 @@
+citHeader("To cite 'smoof' in publications, please use:")
+
+citEntry(entry = "Article",
+  author = "Jakob Bossek",
+  title = "smoof: Single- and Multi-Objective Optimization Test Functions",
+  year = "2017",
+  journal = "The R Journal",
+  url = "https://journal.r-project.org/archive/2017/RJ-2017-004/index.html",
+  textVersion = "Jakob Bossek (2017). smoof: Single- and Multi-Objective Optimization Test Functions. The R Journal. URL https://journal.r-project.org/archive/2017/RJ-2017-004/index.html"
+)

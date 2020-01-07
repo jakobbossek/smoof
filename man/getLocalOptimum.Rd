@@ -2,7 +2,7 @@
 % Please edit documentation in R/getLocalOptimum.R
 \name{getLocalOptimum}
 \alias{getLocalOptimum}
-\title{Returns the local optima.}
+\title{Returns the local optima of a single objective smoof function.}
 \usage{
 getLocalOptimum(fn)
 }
@@ -25,4 +25,3 @@ all local optima (including the global one).
 \note{
 Keep in mind, that this method makes sense only for single-objective target functions.
 }
-

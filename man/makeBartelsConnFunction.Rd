@@ -14,4 +14,3 @@ The Bartels Conn Function is defined as
 \deqn{f(\mathbf{x}) = |\mathbf{x}_1^2 + \mathbf{x}_2^2 + \mathbf{x}_1\mathbf{x}_2| + |\sin(\mathbf{x}_1)| + |\cos(\mathbf{x})|}
 subject to \eqn{\mathbf{x}_i \in [-500, 500]} for \eqn{i = 1, 2}.
 }
-

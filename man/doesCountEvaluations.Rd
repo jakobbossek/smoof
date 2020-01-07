@@ -21,4 +21,3 @@ if there is a counting wrapper.
 \seealso{
 \code{\link{addCountingWrapper}}
 }
-

@@ -18,8 +18,8 @@
 #' @export
 makeDeflectedCorrugatedSpringFunction = function(dimensions, K = 5, alpha = 5) {
   assertCount(dimensions)
-  assertNumber(K, na.ok = FALSE)
-  assertNumber(alpha, na.ok = FALSE)
+  assertNumber(K)
+  assertNumber(alpha)
 
   force(K)
   force(alpha)

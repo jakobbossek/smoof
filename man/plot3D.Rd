@@ -4,7 +4,7 @@
 \alias{plot3D}
 \title{Surface plot of two-dimensional test function.}
 \usage{
-plot3D(x, length.out = 100L, ...)
+plot3D(x, length.out = 100L, package = "plot3D", ...)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr
@@ -16,8 +16,17 @@ smoother the function landscape looks like. However, you should avoid setting
 this parameter to high, since with the \code{contour} option set to \code{TRUE}
 the drawing can take quite a lot of time. Default is \code{100}.}
 
+\item{package}{[\code{character(1)}]\cr
+String describing the package to use for 3D visualization.
+At the moment \dQuote{plot3D} (package \pkg{plot3D}) and
+\dQuote{plotly} (package \pkg{plotly}) are supported.
+The latter opens a highly interactive plot in a web brower
+and is thus suited well to explore a function by hand.
+Default is \dQuote{plot3D}.}
+
 \item{...}{[any]\cr
-Furhter parameters passed to \code{\link[plot3D]{persp3D}}.}
+Furhter parameters passed to method used for visualization
+(which is determined by the \code{package} argument.}
 }
 \description{
 Surface plot of two-dimensional test function.
@@ -26,9 +35,12 @@ Surface plot of two-dimensional test function.
 library(plot3D)
 fn = makeRastriginFunction(dimensions = 2L)
 \dontrun{
+# use the plot3D::persp3D method (default behaviour)
 plot3D(fn)
 plot3D(fn, contour = TRUE)
 plot3D(fn, image = TRUE, phi = 30)
-}
-}
 
+# use plotly::plot_ly for interactive plot
+plot3D(fn, package = "plotly")
+}
+}

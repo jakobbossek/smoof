@@ -10,7 +10,7 @@
 #' @template ret_smoof_single
 #' @export
 makeBentCigarFunction = function(dimensions) {
-  assertCount(dimensions, na.ok = FALSE)
+  assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = "Bent-Cigar Function",
@@ -20,10 +20,10 @@ makeBentCigarFunction = function(dimensions) {
       x[1]^2 + 1e+06 * sum(x[2:dimensions]^2)
     },
     par.set = makeNumericParamSet(
-      len = 2L,
+      len = dimensions,
       id = "x",
-      lower = c(-100, -100),
-      upper = c(100, 100),
+      lower = rep(-100, dimensions),
+      upper = rep(100, dimensions),
       vector = TRUE
     ),
     tags = attr(makeBentCigarFunction, "tags"),

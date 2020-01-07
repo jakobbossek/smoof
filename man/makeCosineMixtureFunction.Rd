@@ -23,4 +23,3 @@ M. M. Ali, C. Khompatraporn, Z. B. Zabinsky, A Numerical Evaluation
 of Several Stochastic Algorithms on Selected Continuous Global Optimization
 Test Problems, Journal of Global Optimization, vol. 31, pp. 635-672, 2005.
 }
-

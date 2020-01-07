@@ -18,4 +18,3 @@ with box-constraints given by \eqn{\mathbf{x}_i \in [-5, 5], i = 1, 2}.
 Z. K. Silagadze, Finding Two-Dimesnional Peaks, Physics of
 Particles and Nuclei Letters, vol. 4, no. 1, pp. 73-80, 2007.
 }
-

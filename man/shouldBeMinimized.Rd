@@ -18,4 +18,3 @@ objective should be minimized.
 Functions can have an associated global optimum. In this case
 one needs to know whether the optimum is a minimum or a maximum.
 }
-

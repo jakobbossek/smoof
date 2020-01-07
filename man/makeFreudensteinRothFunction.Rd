@@ -18,4 +18,3 @@ subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
 S. S. Rao, Engineering Optimization: Theory and Practice,
 John Wiley & Sons, 2009.
 }
-

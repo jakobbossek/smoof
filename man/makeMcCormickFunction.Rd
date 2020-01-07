@@ -18,4 +18,3 @@ subject to \eqn{\mathbf{x}_1 \in [-1.5, 4], \mathbf{x}_2 \in [-3, 3]}.
 F. A. Lootsma (ed.), Numerical Methods for Non-Linear
 Optimization, Academic Press, 1972.
 }
-

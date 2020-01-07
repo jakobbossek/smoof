@@ -8,7 +8,9 @@ test_that("single-objective test function generators work", {
     all.methods = setdiff(all.methods, c("makeInternalObjectiveFunction",
       "makeMultiObjectiveFunction", "makeObjectiveFunction",
       "makeSingleObjectiveFunction", "makeBBOBFunction",
-      "makeUFFunction", "makeUFParamSet", "makeMPM2Function"))
+      "makeShekelFunction",
+      "makeUFFunction", "makeUFParamSet", "makeMPM2Function",
+      "makeGOMOPFunction", paste0("makeMOP", 1:7, "Function"), "makeHartmannFunction"))
     all.methods = sapply(all.methods, get)
     fun.generators = Filter(function(fun) inherits(fun, "smoof_generator"), all.methods)
 
@@ -18,13 +20,19 @@ test_that("single-objective test function generators work", {
             fun = try(do.call(fun.generator, list(dimensions = 2L)), silent = TRUE)
         }
         if (inherits(fun, "try-error")) {
-            fun = do.call(fun.generator, list(dimensions = 3L, n.objectives = 2L))
+            fun = try(do.call(fun.generator, list(dimensions = 3L, n.objectives = 2L)), silent = TRUE)
+        }
+        if (inherits(fun, "try-error")) {
+            fun = try(do.call(fun.generator, list(dimensions = 3L, fid = 2L, iid = 1L)), silent = TRUE) #BBOBFunction
+        }
+        if (inherits(fun, "try-error")) {
+            fun = try(do.call(fun.generator, list(n.objectives = 2L, k = 2L, l = 2L))) #WFG
         }
         expectIsSmoofFunction(fun, attr(fun.generator, "name"))
         if (hasGlobalOptimum(fun)) {
           expectGlobalOptimum(fun, attr(fun.generator, "name"))
         }
-        test.param = ParamHelpers::sampleValues(getParamSet(fun), 1L)
+        test.param = ParamHelpers::sampleValue(getParamSet(fun))
         test.val = fun(test.param)
         expect_true(is.numeric(test.val))
         expect_true(is.logical(shouldBeMinimized(fun)))
@@ -42,7 +50,7 @@ test_that("BBOB functions work", {
     for (iid in iids) {
       for (dimension in dimensions) {
         generator = sprintf("(FID: %i, IID : %i, DIM: %i)", fid, iid, dimension)
-        bbob.fn = makeBBOBFunction(dimension = dimension, fid = fid, iid = iid)
+        bbob.fn = makeBBOBFunction(dimensions = dimension, fid = fid, iid = iid)
         # check vectorized input and output
         if (isVectorized(bbob.fn)) {
           par1 = rep(1, dimension)
@@ -69,7 +77,7 @@ test_that("Multiple peaks model 2 (MPM2) functions work", {
               fn = makeMPM2Function(n.peaks = n.peaks, dimension = dimension, topology = topology, seed = 123, rotated = rotated, peak.shape = peak.shape)
               expect_is(fn, "smoof_single_objective_function")
               y = fn(rep(0.1, dimension))
-              expect_true(is.numeric(y))          
+              expect_true(is.numeric(y))
             }
           }
         }
@@ -83,14 +91,14 @@ test_that("CEC 2009 functions work", {
   dimensions = c(3, 5, 10)
   for (id in ids) {
     for (dimension in dimensions) {
-      fn = makeUFFunction(dimension = dimension, id = id)
+      fn = makeUFFunction(dimensions = dimension, id = id)
       param = sampleValue(getParamSet(fn))
       value = fn(param)
       expect_true(is.numeric(value))
       expect_equal(length(value), getNumberOfObjectives(fn),
-        info = "Length of objective vector is wrong!\nExpected %i, but got %i for
+        info = sprintf("Length of objective vector is wrong!\nExpected %i, but got %i for
         dimension %i and UF%i", length(value), getNumberOfObjectives(fn),
-        dimension, id)
+        dimension, id))
     }
   }
 })

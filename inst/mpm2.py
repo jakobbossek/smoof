@@ -4,6 +4,12 @@ import random
 
 import numpy as np
 
+try:
+    # Python 2 forward compatibility
+    range = xrange
+except NameError:
+    pass
+
 class MultiplePeaksModel2:
     """A test problem
     """
@@ -26,8 +32,8 @@ class MultiplePeaksModel2:
             rotationMatrix = np.eye(numberVariables)
             if rotated:
                 quarterPi = math.pi / 4.0
-                for j in xrange(numberVariables - 1):
-                    for k in xrange(j + 1, numberVariables):
+                for j in range(numberVariables - 1):
+                    for k in range(j + 1, numberVariables):
                         r = np.eye(numberVariables)
                         alpha = runi(-quarterPi, quarterPi)
                         r[j,j] = cos(alpha)
@@ -164,10 +170,10 @@ class MultiplePeaksModel2:
             # determine random uniform cluster center
             clusterCenter = np.random.rand(numberVariables)
         peaks = []
-        for i in xrange(numberPeaks):
+        for i in range(numberPeaks):
             position = np.random.randn(numberVariables) / 6.0 * math.sqrt(numberVariables) + clusterCenter
             # repair box constraint violations of position
-            for j in xrange(numberVariables):
+            for j in range(numberVariables):
                 while position[j] < 0.0 or 1.0 < position[j]:
                     if 1.0 < position[j]:
                         position[j] = 1.0 - (position[j] - 1.0)
@@ -186,8 +192,8 @@ class MultiplePeaksModel2:
         numberRemainingPeaks = numberPeaks - numberGlobalOptima
         assert(numberRemainingPeaks >= 0)
         runi = random.uniform
-        peaks = [cls.Peak(numberVariables, 1.0, runi(*shapeRange), runi(*radiusRange), rotated=rotated, peakShape=peakShape) for _ in xrange(numberGlobalOptima)]
-        peaks.extend([cls.Peak(numberVariables, runi(*heightRange), runi(*shapeRange), runi(*radiusRange), rotated=rotated, peakShape=peakShape) for _ in xrange(numberRemainingPeaks)])
+        peaks = [cls.Peak(numberVariables, 1.0, runi(*shapeRange), runi(*radiusRange), rotated=rotated, peakShape=peakShape) for _ in range(numberGlobalOptima)]
+        peaks.extend([cls.Peak(numberVariables, runi(*heightRange), runi(*shapeRange), runi(*radiusRange), rotated=rotated, peakShape=peakShape) for _ in range(numberRemainingPeaks)])
         return peaks
 
 
@@ -266,6 +272,16 @@ class MultiplePeaksModel2:
         return opts
 
 
+    def getCovMatrices(self):
+        peaks = self.peaks
+        res = []
+        for peak in peaks:
+            X = peak.D
+            X = X.reshape(len(X) * len(X[0]))
+            res.append(np.matrix(X).tolist())
+        return res
+
+
 
 #####################################################################################################
 # stuff for the R interface:
@@ -308,6 +324,11 @@ def getGlobalOptimaParams(npeaks, dimension, topology, randomSeed, rotated, peak
     global currentProblem
     initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
     return currentProblem.getOptimalSolutions()
+
+def getCovarianceMatrices(npeaks, dimension, topology, randomSeed, rotated, peakShape):
+    global currentProblem
+    initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
+    return currentProblem.getCovMatrices()
 
 if __name__ == "__main__":
     # nothing to do here

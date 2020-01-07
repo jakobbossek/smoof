@@ -24,4 +24,3 @@ The multimodality will be visible by \dQuote{zooming in} in the plot.
 I. O. Bohachevsky, M. E. Johnson, M. L. Stein, General Simulated
 Annealing for Function Optimization, Technometrics, vol. 28, no. 3, pp. 209-217, 1986.
 }
-

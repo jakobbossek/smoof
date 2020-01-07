@@ -17,4 +17,3 @@ with box-constraints \eqn{\mathbf{x}_i \in [-5, 10], i = 1, 2}.
 \references{
 H. P. Schwefel, Evolution and Optimum Seeking, John Wiley Sons, 1995.
 }
-

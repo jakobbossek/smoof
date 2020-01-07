@@ -16,4 +16,3 @@ Objective function.}
 \description{
 Return upper box constaints.
 }
-

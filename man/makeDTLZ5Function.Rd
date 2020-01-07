@@ -22,8 +22,7 @@ can be characterized by a disconnected Pareto-optimal front in the search
 space. This introduces a new challenge to evolutionary multi-objective
 optimizers, i.e., to maintain different subpopulations within the search
 space to cover the entire Pareto-optimal front.
-}
-\details{
+
 The DTLZ5 test problem is defined as follows:
 
 Minimize \eqn{f_1(\mathbf{x}) = (1+g(\mathbf{x}_M)) \cos(\theta_1\pi/2) \cos(\theta_2\pi/2) \cdots \cos(\theta_{M-2}\pi/2) \cos(\theta_{M-1}\pi/2),}{
@@ -57,4 +56,3 @@ K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
 Multi-Objective Optimization Test Problems. Computer Engineering and Networks
 Laboratory (TIK), Swiss Federal Institute of Technology (ETH) Zurich, 112, 2001
 }
-

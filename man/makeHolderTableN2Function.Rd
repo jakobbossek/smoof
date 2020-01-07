@@ -22,4 +22,3 @@ Research Papers in Economics.
 \seealso{
 \code{\link{makeHolderTableN1Function}}
 }
-

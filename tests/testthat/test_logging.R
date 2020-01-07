@@ -8,7 +8,7 @@ expect_logging_result_structure = function(x) {
 }
 
 test_that("logging for functions with matrix input works well", {
-  fn = makeBBOBFunction(fid = 1L, iid = 1L, dimension = 10L)
+  fn = makeBBOBFunction(fid = 1L, iid = 1L, dimensions = 10L)
   fn = addLoggingWrapper(fn, logg.x = TRUE)
   fn(matrix(runif(10L * 10L), ncol = 10L))
 
@@ -20,15 +20,15 @@ test_that("logging for functions with matrix input works well", {
 
 test_that("logging for simple functions works well", {
   # generate Sphere function
-  for (dimension in c(1L, 2L, 5L, 10L)) {
-    fn = makeSphereFunction(dimension = dimension)
-    par.ids = getParamIds(smoof::getParamSet(fn), with.nr = TRUE, repeated = TRUE)
+  for (dimensions in c(1L, 2L, 5L, 10L)) {
+    fn = makeSphereFunction(dimensions = dimensions)
+    par.ids = getParamIds(getParamSet(fn), with.nr = TRUE, repeated = TRUE)
 
     # add logger for both x and y values
     fn = addLoggingWrapper(fn, logg.x = TRUE)
 
     # now apply some evaluations
-    fn(runif(dimension))
+    fn(runif(dimensions))
 
     # check for logged vals
     res = getLoggedValues(fn)
@@ -38,7 +38,7 @@ test_that("logging for simple functions works well", {
     expect_equal(length(res$obj.vals), 1L)
 
     for (i in seq(10L)) {
-      fn(runif(dimension))
+      fn(runif(dimensions))
     }
     res = getLoggedValues(fn)
 
@@ -50,7 +50,7 @@ test_that("logging for simple functions works well", {
     res = getLoggedValues(fn, compact = TRUE)
     expect_true(is.data.frame(res))
     expect_equal(nrow(res), 11L)
-    expect_equal(ncol(res), dimension + 1L) # dim plus the single objective value
+    expect_equal(ncol(res), dimensions + 1L) # dim plus the single objective value
   }
 })
 
@@ -83,7 +83,7 @@ test_that("logging for mixed function works well", {
   obj.vals = c(0, 0, 3)
 
   for (i in 1:nrow(test.df)) {
-    fn(dfRowToList(test.df, i, par.set = smoof::getParamSet(fn)))
+    fn(dfRowToList(test.df, i, par.set = ParamHelpers::getParamSet(fn)))
   }
 
   res = getLoggedValues(fn)

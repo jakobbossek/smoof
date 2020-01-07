@@ -13,11 +13,11 @@
 #' @export
 makeUFFunction = function(dimensions, id) {
   # do some sanity checks
-  dimensions = convertInteger(dimensions)
-  id = convertInteger(id)
+  dimensions = asCount(dimensions)
+  id = asCount(id)
   #FIXME: I guess the lowest possible search space dimension is 3
-  assertInt(dimensions, lower = 3L, na.ok = FALSE)
-  assertInt(id, lower = 1L, upper = 10L, na.ok = FALSE)
+  assertInt(dimensions, lower = 3L)
+  assertInt(id, lower = 1L, upper = 10L)
 
   # touch vars
   force(dimensions)
@@ -51,7 +51,7 @@ attr(makeUFFunction, "type") = c("Multi-objective")
 #
 # @param id [integer(1)]
 #   UF function id.
-# @param dimension [integer(1)]
+# @param dimensions [integer(1)]
 #   Problem space dimension.
 # @return [ParamSet]
 makeUFParamSet = function(id, dimensions) {

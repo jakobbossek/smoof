@@ -1,6 +1,9 @@
+# @title
 # Get data.frame of optima.
 #
+# @description
 # Returns data frame of global / local optima for ggplot.
+#
 # @param fn [\code{smoof_function}]\cr
 #   Smoof function.
 # @return [\code{data.frame}]
@@ -26,9 +29,11 @@ getOptimaDf = function(fn) {
 }
 
 
-# Utility function.
+# @title
+# Get data.frame of evaluated grid.
 #
 # Generates 'gg-plotable' data.frame.
+#
 # @param fn [\code{smoof_function}]\cr
 #   Target function.
 # @param sequences [\code{list}]\cr
@@ -50,8 +55,10 @@ generateDataframeForGGPlot = function(fn, sequences, par.set) {
   return(data)
 }
 
+# @title
 # Generate data frame for ggplot2.
 #
+# @description
 # Gets a function and returns a data.frame evaluated on a large grid
 # of data points in order to visualize functions with 2d numeric and
 # up to 4d functions with >= 1 numeric and >=2 discrete parameters.
@@ -63,7 +70,7 @@ generateDataframeForGGPlot = function(fn, sequences, par.set) {
 # @return [\code{data.frame}]
 generateDataframeForGGPlot2 = function(fun, length.out = 50L) {
   # extract a bunch of parameter information
-  par.set = getParamSet(fun)
+  par.set = ParamHelpers::getParamSet(fun)
   par.types = getParamTypes(par.set)
   pars = par.set$pars
   n.pars = length(pars)
@@ -147,7 +154,7 @@ getBounds = function(bound, default) {
 # @return Nothing
 checkPlotFunParams = function(x) {
   n.params = getNumberOfParameters(x)
-  par.set = getParamSet(x)
+  par.set = ParamHelpers::getParamSet(x)
 
   # if (n.params > 2L) {
   #   stopf("Only function with up to 2 parameters can be plotted, but your function has %i", n.params)
@@ -167,7 +174,7 @@ checkPlotFunParams = function(x) {
 # @return [\code{function}]
 getInternalPlotFunction = function(x, mapping) {
   n.params = getNumberOfParameters(x)
-  par.set = getParamSet(x)
+  par.set = ParamHelpers::getParamSet(x)
 
   if (isNumeric(par.set, include.int = FALSE)) {
     if (n.params == 1L) {

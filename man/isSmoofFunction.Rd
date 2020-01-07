@@ -21,4 +21,3 @@ Checks whether the given object is a \code{smoof_function} or a
 \seealso{
 \code{\link{addCountingWrapper}}, \code{\link{addLoggingWrapper}}
 }
-

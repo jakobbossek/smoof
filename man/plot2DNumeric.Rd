@@ -5,7 +5,8 @@
 \title{Plot a two-dimensional numeric function.}
 \usage{
 plot2DNumeric(x, show.optimum = FALSE, main = getName(x),
-  render.levels = FALSE, render.contours = TRUE, n.samples = 100L, ...)
+  render.levels = FALSE, render.contours = TRUE, n.samples = 100L,
+  ...)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr
@@ -38,4 +39,3 @@ Nothing
 \description{
 Either a contour-plot or a level-plot.
 }
-

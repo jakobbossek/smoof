@@ -31,4 +31,3 @@ If this function is applied to a simple \code{smoof_function}, the
 \seealso{
 \code{\link{addCountingWrapper}}, \code{\link{addLoggingWrapper}}
 }
-

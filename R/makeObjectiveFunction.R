@@ -40,42 +40,53 @@ makeObjectiveFunction = function(
   fn,
   has.simple.signature = TRUE,
   par.set,
-  n.objectives,
+  n.objectives = NULL,
   noisy = FALSE,
   fn.mean = NULL,
-  minimize = rep(TRUE, n.objectives),
+  minimize = NULL,
   vectorized = FALSE,
   constraint.fn = NULL) {
 
   # sanity checks
   if (!is.null(name))
-    assertString(name, na.ok = FALSE)
+    assertString(name)
   if (!is.null(id))
-    assertString(id, na.ok = FALSE)
+    assertString(id)
 
   if (!is.null(description))
-    assertString(description, na.ok = FALSE)
+    assertString(description)
   assertFunction(fn)
-  assertFlag(has.simple.signature, na.ok = FALSE)
+  assertFlag(has.simple.signature)
 
   if (has.simple.signature) {
     fn = makeInternalObjectiveFunction(fn)
     if (!is.null(fn.mean)) {
-      fn.mean = makeInternalObjectiveFunction(fn)
+      fn.mean = makeInternalObjectiveFunction(fn.mean)
     }
   }
 
   assertClass(par.set, "ParamSet")
-  assertInt(n.objectives, na.ok = FALSE, lower = 1L)
-  assertFlag(noisy, na.ok = FALSE)
+
+  # guess number of objectives
+  if (is.null(n.objectives)) {
+    test.pars = sampleValue(par.set)
+    test.res = do.call(fn, test.pars)
+    n.objectives = length(test.res)
+  }
+
+  assertInt(n.objectives, lower = 1L)
+  assertFlag(noisy)
   if (!noisy && !is.null(fn.mean)) {
     stopf("Setting fn.mean only makes sense for noisy functions.")
   }
   if (!is.null(fn.mean)) {
     assertFunction(fn.mean)
   }
+
+  if (is.null(minimize))
+    minimize = rep(TRUE, n.objectives)
   assertLogical(minimize, len = n.objectives, any.missing = FALSE, all.missing = FALSE)
-  assertFlag(vectorized, na.ok = FALSE)
+  assertFlag(vectorized)
 
   if (!has.simple.signature && vectorized) {
     stopf("At the moment we allow 'vectorized' functions only for functions with simple signature.")

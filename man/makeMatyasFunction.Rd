@@ -17,4 +17,3 @@ subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
 \references{
 A.-R. Hedar, Global Optimization Test Problems.
 }
-

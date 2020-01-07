@@ -1,7 +1,7 @@
 context("counting evaluations")
 
 test_that("countingWrapper counts correctly", {
-  fn = makeBBOBFunction(fid = 1L, iid = 1L, dimension = 8L)
+  fn = makeBBOBFunction(fid = 1L, iid = 1L, dimensions = 8L)
   expect_false(doesCountEvaluations(fn))
   fn = addCountingWrapper(fn)
   expect_true(doesCountEvaluations(fn))
@@ -10,7 +10,7 @@ test_that("countingWrapper counts correctly", {
   expect_equal(getNumberOfEvaluations(fn), 0L)
 
   # now perform 10 function evaluations
-  par.set = getParamSet(fn)
+  par.set = ParamHelpers::getParamSet(fn)
   par.mat = matrix(NA, nrow = 8L, ncol = 10L)
   for (i in 1:10) {
     par = unlist(sampleValue(par.set))

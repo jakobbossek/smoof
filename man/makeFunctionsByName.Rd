@@ -24,10 +24,10 @@ with certain properties, e.~g., multimodality.
 }
 \examples{
 # generate a testset of multimodal 2D functions
-test.set = makeFunctionsByName(filterFunctionsByTags("multimodal"), dimensions = 2L)
-
+\dontrun{
+test.set = makeFunctionsByName(filterFunctionsByTags("multimodal"), dimensions = 2L, m = 5L)
+}
 }
 \seealso{
 \code{\link{filterFunctionsByTags}}
 }
-

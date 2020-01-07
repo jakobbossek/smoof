@@ -16,4 +16,3 @@ Objective function.}
 \description{
 Return the true mean function in the noisy case.
 }
-

@@ -11,16 +11,20 @@ addLoggingWrapper(fn, logg.x = FALSE, logg.y = TRUE)
 Smoof function.}
 
 \item{logg.x}{[\code{logical(1)}]\cr
-Should x-values be logged? Default is \code{FALSE}.}
+Should x-values be logged?
+Default is \code{FALSE}.}
 
 \item{logg.y}{[\code{logical(1)}]\cr
-Should objective values be logged? Default is \code{TRUE}.}
+Should objective values be logged?
+Default is \code{TRUE}.}
 }
 \value{
 [\code{smoof_logging_function}]
 }
 \description{
-Return a function which internally stores x or y values.
+Often it is desired and useful to store the optimization path, i.e., the evaluated
+function values and/or the parameters. Not all optimization algorithms offer
+such a trace. This wrapper makes a smoof function handle x/y-values itself.
 }
 \note{
 Logging values, in particular logging x-values, will substantially slow
@@ -28,7 +32,7 @@ down the evaluation of the function.
 }
 \examples{
 # We first build the smoof function and apply the logging wrapper to it
-fn = makeSphereFunction(dimension = 2L)
+fn = makeSphereFunction(dimensions = 2L)
 fn = addLoggingWrapper(fn, logg.x = TRUE)
 
 # We now apply an optimization algorithm to it and the logging wrapper keeps
@@ -43,4 +47,3 @@ log.res = getLoggedValues(fn, compact = TRUE)
 print(log.res)
 
 }
-

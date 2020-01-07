@@ -16,4 +16,3 @@ Objective function.}
 \description{
 Checks whether the objective function has other constraints.
 }
-

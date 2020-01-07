@@ -26,8 +26,6 @@ The functions \code{convertToMaximization} and \code{convertToMinimization}
 do exactly that keeping the attributes.
 }
 \note{
-Internally no wrapper is put around the original function. Instead the function
-is copied and the body of the function is manipulated via the \code{body} function.
 Both functions will quit with an error if multi-objective functions are passed.
 }
 \examples{
@@ -45,4 +43,3 @@ plot(fn2)
 plot(fn3)
 par(opar)
 }
-

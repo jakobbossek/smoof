@@ -21,6 +21,8 @@ getLoggedValues = function(fn, compact = FALSE) {
 
 #' @export
 getLoggedValues.smoof_logging_function = function(fn, compact = FALSE) {
+  assertFlag(compact)
+
   env = environment(fn)
   pars = env$pars
   obj.vals = env$obj.vals

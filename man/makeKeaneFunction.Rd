@@ -15,4 +15,3 @@ Two-dimensional test function based on the defintion
 The domain of definition is bounded by the box constraints
 \eqn{\mathbf{x}_i \in [0, 10], i = 1, 2}.
 }
-

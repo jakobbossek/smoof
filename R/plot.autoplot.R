@@ -1,5 +1,5 @@
 #' @title
-#' Generate \code{\link[ggplot2]{ggplot}} object.
+#' Generate ggplot2 object.
 #'
 #' @description
 #' This function expects a smoof function and returns a ggplot object depicting
@@ -35,6 +35,9 @@
 #' @param render.contours [\code{logical(1)}]\cr
 #'   For 2D numeric functions only: Should contour lines be plotted? Default is
 #'   \code{TRUE}.
+#' @param log.scale [\code{logical(1)}]\cr
+#'   Should the z-axis be plotted on log-scale?
+#'   Default is \code{FALSE}.
 #' @param length.out [\code{integer(1)}]\cr
 #'   Desired length of the sequence of equidistant values generated for numeric parameters.
 #'   Higher values lead to more smooth resolution in particular if \code{render.levels}
@@ -83,18 +86,19 @@ autoplot.smoof_function = function(x,
   show.optimum = FALSE,
   main = getName(x),
   render.levels = FALSE, render.contours = TRUE,
-  length.out = 50L,
-  ...) {
+  log.scale = FALSE,
+  length.out = 50L, ...) {
   checkPlotFunParams(x)
 
-  assertFlag(show.optimum, na.ok = FALSE)
+  assertFlag(show.optimum)
   assertString(main, na.ok = TRUE)
   length.out = convertInteger(length.out)
-  assertInt(length.out, lower = 10L, na.ok = FALSE)
-  assertFlag(render.levels, na.ok = FALSE)
-  assertFlag(render.contours, na.ok = FALSE)
+  assertInt(length.out, lower = 10L)
+  assertFlag(render.levels)
+  assertFlag(render.contours)
+  assertFlag(log.scale)
 
-  par.set = getParamSet(x)
+  par.set = ParamHelpers::getParamSet(x)
   par.types = getParamTypes(par.set, df.cols = TRUE, with.nr = TRUE)
   par.types.count = getParamTypeCounts(par.set)
   par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
@@ -122,6 +126,15 @@ autoplot.smoof_function = function(x,
 
   grid = generateDataframeForGGPlot2(x, length.out)
 
+  # log scale
+  if (log.scale) {
+    if (any(grid$y < 0)) {
+      warning("Log-scale: Negative values occured. Shifting function to apply log transformation.")
+      grid$y = grid$y - min(grid$y) + 1
+    }
+    grid$y = log(grid$y)
+  }
+
   if (n.numeric == 1L) {
     pl = ggplot(grid, aes_string(x = par.names[numeric.idx], y = "y")) + geom_line()
   }
@@ -132,11 +145,11 @@ autoplot.smoof_function = function(x,
       # see http://learnr.wordpress.com/2009/07/20/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-part-6/
       brewer.div = colorRampPalette(brewer.pal(11, "Spectral"), interpolate = "spline")
 
-      pl = pl + geom_tile(aes_string(fill = "y"))
+      pl = pl + geom_raster(aes_string(fill = "y"))
       pl = pl + scale_fill_gradientn(colours = brewer.div(200))
     }
     if (render.contours) {
-      pl = pl + stat_contour(aes_string(z = "y", fill = NULL), colour = "gray", alpha = 0.8)
+      pl = pl + stat_contour(aes_string(z = "y"), colour = "gray", alpha = 0.8)
     }
   }
 
@@ -183,10 +196,7 @@ autoplot.smoof_function = function(x,
 autoplot.smoof_wrapped_function = function(x,
   show.optimum = FALSE,
   main = getName(x),
-  render.levels = FALSE, render.contours = TRUE,
-  ...) {
+  render.levels = FALSE, render.contours = TRUE, ...) {
   autoplot(getWrappedFunction(x), show.optimum, main,
-    render.levels, render.contours,
-    ...
-  )
+    render.levels, render.contours, ...)
 }

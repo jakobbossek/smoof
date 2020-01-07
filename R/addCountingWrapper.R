@@ -1,5 +1,7 @@
-#' Return a function which counts its evaluations.
+#' @title
+#' Return a function which counts its function evaluations.
 #'
+#' @description
 #' This is a counting wrapper for a \code{smoof_function}, i.e., the returned function
 #' first checks whether the given argument is a vector or matrix, saves the
 #' number of function evaluations of the wrapped function to compute the function
@@ -9,7 +11,7 @@
 #'   Smoof function which should be wrapped.
 #' @return [\code{smoof_counting_function}]
 #' @examples
-#' fn = makeBBOBFunction(dimension = 2L, fid = 1L, iid = 1L)
+#' fn = makeBBOBFunction(dimensions = 2L, fid = 1L, iid = 1L)
 #' fn = addCountingWrapper(fn)
 #'
 #' # we get a value of 0 since the function has not been called yet
@@ -42,6 +44,6 @@ addCountingWrapper = function(fn) {
     }
     fn(x, ...)
   }
-  class(wrapped.fn) = c("smoof_counting_function", "smoof_wrapped_function")
+  class(wrapped.fn) = c("smoof_counting_function", "smoof_wrapped_function", "smoof_function", "function")
   return(wrapped.fn)
 }

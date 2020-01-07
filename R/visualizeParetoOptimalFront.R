@@ -1,6 +1,8 @@
-#' @title Pareto-optimal front visualization.
+#' @title
+#' Pareto-optimal front visualization.
 #'
-#' @description Quickly visualize the Pareto-optimal front of a bi-criteria objective
+#' @description
+#' Quickly visualize the Pareto-optimal front of a bi-criteria objective
 #' function by calling the EMOA \code{\link[mco]{nsga2}} and extracting the
 #' approximated Pareto-optimal front.
 #'
@@ -19,12 +21,12 @@
 #' @export
 visualizeParetoOptimalFront = function(fn, ...) {
   n.objectives = getNumberOfObjectives(fn)
-  if (n.objectives == 1L) {
+  if (!isMultiobjective(fn)) {
     stopf("Visualization of approximated Pareto-optimal front only possible fo multi-objective functions with two objectives at the moment.")
   }
   requirePackages("mco", why = "smoof::visualizeParetoOptimalFront")
 
-  par.set = getParamSet(fn)
+  par.set = ParamHelpers::getParamSet(fn)
 
   # get approximated Pareto front
   res = mco::nsga2(fn,
@@ -41,9 +43,9 @@ visualizeParetoOptimalFront = function(fn, ...) {
   colnames(eff.points) = c("f1", "f2")
 
   pl = ggplot(eff.points, mapping = aes_string(x = "f1", y = "f2"))
-  pl = pl + geom_point(colour = "tomato")
+  pl = pl + geom_line(colour = "darkgray")
   pl = pl + xlab(expression(f[1])) + ylab(expression(f[2]))
-  pl = pl + ggtitle(sprintf("Objective space with approximative Pareto-optimal\n
-    front for the bi-criteria %s function", getName(fn)))
+  pl = pl + ggtitle(sprintf("Objective space with shape of Pareto-optimal\n
+    front for the bi-criteria %s", getName(fn)))
   return(pl)
 }

@@ -14,14 +14,14 @@
 #' @template ret_smoof_single
 #' @export
 makeRosenbrockFunction = function(dimensions) {
-  assertCount(dimensions, na.ok = FALSE)
+  assertInt(dimensions, lower = 2)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Rosenbrock Function", sep = ""),
     id = paste0("rosenbrock_", dimensions, "d"),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
-      i = 1:(length(x) - 1L)
+      i = seq_len(length(x) - 1L)
       sum(100 * (x[i]^2 - x[i + 1])^2 + (x[i] - 1)^2)
     },
     par.set = makeNumericParamSet(

@@ -19,4 +19,3 @@ List of values.}
 \description{
 Checks whether constraints are violated.
 }
-

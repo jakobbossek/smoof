@@ -1,4 +1,4 @@
-#' Generate \code{\link[ggplot2]{ggplot}} object.
+#' Generate ggplot2 object.
 #'
 #' @param x [\code{smoof_function}]\cr
 #'   Function.
@@ -43,9 +43,9 @@ plot1DNumeric = function(x,
 
   assertFlag(show.optimum, na.ok = TRUE)
   assertString(main, na.ok = TRUE)
-  assertInt(n.samples, na.ok = FALSE, lower = 10L)
+  assertInt(n.samples, lower = 10L)
 
-  par.set = getParamSet(x)
+  par.set = ParamHelpers::getParamSet(x)
   par.name = getParamIds(par.set)
 
   # get lower and upper bounds
@@ -95,12 +95,12 @@ plot2DNumeric = function(x,
   render.levels = FALSE, render.contours = TRUE,
   n.samples = 100L, ...) {
 
-  assertFlag(show.optimum, na.ok = FALSE)
+  assertFlag(show.optimum)
   assertString(main, na.ok = TRUE)
-  assertFlag(render.levels, na.ok = FALSE)
-  assertFlag(render.contours, na.ok = FALSE)
+  assertFlag(render.levels)
+  assertFlag(render.contours)
 
-  par.set = getParamSet(x)
+  par.set = ParamHelpers::getParamSet(x)
   par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
 
   lower = getBounds(bound = getLower(par.set), default = -10L)

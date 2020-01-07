@@ -17,4 +17,3 @@ Size of corresponding parameter space.}
 Unimodal, convex test function similar to the Sphere function (see \code{\link{makeSphereFunction}}).
 Calculated via the formula: \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} i \cdot \mathbf{x}_i.}
 }
-

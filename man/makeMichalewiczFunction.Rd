@@ -32,4 +32,3 @@ implementation.
 Michalewicz, Z.: Genetic Algorithms + Data Structures = Evolution
 Programs. Berlin, Heidelberg, New York: Springer-Verlag, 1992.
 }
-

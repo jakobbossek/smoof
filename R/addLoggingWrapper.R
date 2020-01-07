@@ -1,15 +1,23 @@
+#' @title
 #' Return a function which internally stores x or y values.
+#'
+#' @description
+#' Often it is desired and useful to store the optimization path, i.e., the evaluated
+#' function values and/or the parameters. Not all optimization algorithms offer
+#' such a trace. This wrapper makes a smoof function handle x/y-values itself.
 #'
 #' @param fn [\code{smoof_function}]\cr
 #'   Smoof function.
 #' @param logg.x [\code{logical(1)}]\cr
-#'   Should x-values be logged? Default is \code{FALSE}.
+#'   Should x-values be logged?
+#'   Default is \code{FALSE}.
 #' @param logg.y [\code{logical(1)}]\cr
-#'   Should objective values be logged? Default is \code{TRUE}.
+#'   Should objective values be logged?
+#'   Default is \code{TRUE}.
 #' @return [\code{smoof_logging_function}]
 #' @examples
 #' # We first build the smoof function and apply the logging wrapper to it
-#' fn = makeSphereFunction(dimension = 2L)
+#' fn = makeSphereFunction(dimensions = 2L)
 #' fn = addLoggingWrapper(fn, logg.x = TRUE)
 #'
 #' # We now apply an optimization algorithm to it and the logging wrapper keeps
@@ -31,8 +39,8 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
   if (!testClass(fn, "smoof_function") && !testClass(fn, "smoof_wrapped_function")) {
     stopf("The passed function needs to be a (wrapped) smoof function.")
   }
-  assertFlag(logg.x, na.ok = FALSE)
-  assertFlag(logg.y, na.ok = FALSE)
+  assertFlag(logg.x)
+  assertFlag(logg.y)
 
   if (!logg.x && !logg.y) {
     stopf("At least x or y values must be logged.")
@@ -41,7 +49,7 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
   force(fn)
   force(logg.x)
   force(logg.y)
-  par.set = smoof::getParamSet(fn)
+  par.set = ParamHelpers::getParamSet(fn)
   par.ids = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
   n.obj = getNumberOfObjectives(fn)
   n.pars = getNumberOfParameters(fn)
@@ -59,7 +67,7 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
   wrapped.fn = function(x, ...) {
     # convert everything to a list
     if (is.matrix(x)) {
-      x = apply(x, 2, function(el) {
+      x = apply(x, 2L, function(el) {
         el = as.list(el)
         names(el) = par.ids
         return(el)
@@ -84,6 +92,6 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE) {
     })
     return(y)
   }
-  class(wrapped.fn) = c("smoof_logging_function", "smoof_wrapped_function")
+  class(wrapped.fn) = c("smoof_logging_function", "smoof_wrapped_function", "smoof_function", "function")
   return(wrapped.fn)
 }

@@ -22,8 +22,7 @@ is very similar to the formula of DTLZ2, but it uses the \eqn{g} function
 of DTLZ1, which introduces a lot of local Pareto-optimal fronts. Thus, this
 problems is well suited to check the ability of an optimizer to converge
 to the global Pareto-optimal front.
-}
-\details{
+
 The DTLZ3 test problem is defined as follows:
 
 Minimize \eqn{f_1(\mathbf{x}) = (1+g(\mathbf{x}_M)) \cos(x_1\pi/2) \cos(x_2\pi/2) \cdots \cos(x_{M-2}\pi/2) \cos(x_{M-1}\pi/2),}{
@@ -53,4 +52,3 @@ K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
 Multi-Objective Optimization Test Problems. Computer Engineering and Networks
 Laboratory (TIK), Swiss Federal Institute of Technology (ETH) Zurich, 112, 2001
 }
-

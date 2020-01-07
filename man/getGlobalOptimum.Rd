@@ -24,4 +24,3 @@ Returns the global optimum and its value.
 \note{
 Keep in mind, that this method makes sense only for single-objective target function.
 }
-

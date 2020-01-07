@@ -18,4 +18,3 @@ see the referenced website.
 \references{
 See \url{http://al-roomi.org/benchmarks/unconstrained/2-dimensions/133-judge-s-function}.
 }
-

@@ -18,4 +18,3 @@ subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
 C. Fraley, Software Performances on Nonlinear lems, Technical
 Report no. STAN-CS-89-1244, Computer Science, Stanford University, 1989.
 }
-

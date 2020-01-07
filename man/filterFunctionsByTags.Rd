@@ -21,7 +21,9 @@ Default is \code{FALSE}.}
   Named vector of function names with the given tags.
 }
 \description{
-Get a list of implemented test functions with specific tags.
+Single objective functions can be tagged, e.g., as unimodal. Searching for all
+functions with a specific tag by hand is tedious. The \code{filterFunctionsByTags}
+function helps to filter all single objective smoof function.
 }
 \examples{
 # list all functions which are unimodal
@@ -31,4 +33,3 @@ filterFunctionsByTags(c("unimodal", "separable"))
 # list all functions which are unimodal or separable
 filterFunctionsByTags(c("multimodal", "separable"), or = TRUE)
 }
-

@@ -23,8 +23,7 @@ Optional parameter. Default is 100, which is recommended by Deb et al.}
 Builds and returns the multi-objective DTLZ4 test problem. It is a slight
 modification of the DTLZ2 problems by introducing the parameter \eqn{\alpha}.
 The parameter is used to map \eqn{\mathbf{x}_i \rightarrow \mathbf{x}_i^{\alpha}}.
-}
-\details{
+
 The DTLZ4 test problem is defined as follows:
 
 Minimize \eqn{f_1(\mathbf{x}) = (1+g(\mathbf{x}_M)) \cos(x_1^\alpha\pi/2) \cos(x_2^\alpha\pi/2) \cdots \cos(x_{M-2}^\alpha\pi/2) \cos(x_{M-1}^\alpha\pi/2),}{
@@ -54,4 +53,3 @@ K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
 Multi-Objective Optimization Test Problems. Computer Engineering and Networks
 Laboratory (TIK), Swiss Federal Institute of Technology (ETH) Zurich, 112, 2001
 }
-

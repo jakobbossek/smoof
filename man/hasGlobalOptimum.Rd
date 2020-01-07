@@ -16,4 +16,3 @@ Objective function.}
 \description{
 Checks whether global optimum is known.
 }
-

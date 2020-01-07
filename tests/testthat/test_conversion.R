@@ -5,7 +5,16 @@ test_that("min<->max conversion works as expected", {
   funs = list(
     makeSphereFunction(1L),
     makeAckleyFunction(1L),
-    makeRastriginFunction(1L)
+    makeRastriginFunction(1L),
+    # custom function (see issue #93)
+    makeSingleObjectiveFunction(
+      name = "foo",
+      fn = function(x) {
+        return(x[[1]]^2)
+      },
+      par.set = makeNumericParamSet("x", lower = -2, upper = 2),
+      has.simple.signature = FALSE
+    )
   )
 
   checkSumOfMinMaxValuesVanishes = function(fun1, fun2, fun.name) {
@@ -31,3 +40,5 @@ test_that("min<->max conversion works as expected", {
     checkSumOfMinMaxValuesVanishes(fun2, fun3, getName(fun))
   }
 })
+
+
