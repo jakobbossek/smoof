@@ -49,8 +49,8 @@ plot(fn, render.levels = TRUE)
 
 }
 \references{
-See the \href{https://ls11-www.cs.uni-dortmund.de/_media/techreports/tr15-01.pdf}{technical report}
-of multiple peaks model 2 for an in-depth description of the underlying algorithm.
+See the technical report of multiple peaks model 2 for an in-depth
+description of the underlying algorithm.
 }
 \author{
 \R interface by Jakob Bossek. Original python code provided by the Simon Wessing.
