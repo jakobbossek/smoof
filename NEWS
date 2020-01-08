@@ -1,5 +1,5 @@
-smoof 1.6
-=========
+smoof 1.6.0
+===========
 
 * Added bi-objective BBOB problem generator: makeBiObjBBOBFunction
 * Added Kursawe function

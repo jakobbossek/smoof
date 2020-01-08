@@ -1,4 +1,4 @@
-# smoof 1.6
+# smoof 1.6.0
 
 ## New features
 
