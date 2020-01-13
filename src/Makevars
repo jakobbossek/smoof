@@ -1,0 +1,3 @@
+PKG_CFLAGS=-fno-common
+PKG_CXXFLAGS=-fno-common
+PKG_CXX11FLAGS=-fno-common
