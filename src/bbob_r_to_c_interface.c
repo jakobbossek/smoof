@@ -18,10 +18,17 @@
 #endif
 
 // import headers of BBOB test set C implementation
+#include "benchmarksdeclare.h"
 #include "bbobStructures.h"
 #include "benchmarkshelper.h"
 #include "benchmarks.h"
-#include "benchmarksdeclare.h"
+
+int DIM = 1;
+int trialid = 0;
+double * peaks;
+double * Xopt;
+double Fopt = 0.0;
+unsigned int isInitDone = 0;
 
 // some variables for bookkeeping
 static int init = 0;

@@ -27,6 +27,13 @@ static double ** arrScales;
 static double ** arrScales21;
 static double ** arrScales22;
 
+// extern int DIM;
+// extern int trialid;
+// extern double * peaks;
+// extern double * Xopt;
+// extern double Fopt;
+// extern unsigned int isInitDone;
+
 /*
  * Noiseless functions testbed. All functions are ranged in [-5, 5]^DIM.
  */
