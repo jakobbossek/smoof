@@ -105,7 +105,7 @@ autoplot.smoof_function = function(x,
   n.pars = length(par.names)
 
   # determine IDs of numeric and factor-like parameters
-  numeric.idx = which(par.types == "numeric")
+  numeric.idx = which(par.types %in% c("numeric", "integer"))
   discrete.idx = which(par.types %in% c("factor", "logical"))
 
   # how many numeric/discrete parameters do exist?
