@@ -14,7 +14,7 @@ test_that("autoplot functions for 1D numeric functions works as expected", {
   plot(fn, show.optimum = TRUE, n.samples = 50L)
   checkGGPlot(pl, title = "Test function", "x", "y")
 
-  pl = autoplot(autoplot(object, ...))
+  pl = autoplot(fn, show.optimum = TRUE, n.samples = 50L)
   checkGGPlot(pl, title = "Test function", "x", "y")
 
   # Now check for wrapped functions
