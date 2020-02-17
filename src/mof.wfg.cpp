@@ -183,7 +183,7 @@ double WFG_trafo_reduction_nonseparable(NumericVector y, int A){
       numerator += fabs(y(j) - y((j + k + 1) % n));
     }
   }
-  double denominator = (fabs(n) / A) * ceil(A / 2.0) * (1.0 + 2 * A - 2.0 * ceil(A / 2.0));
+  double denominator = (abs(n) / A) * ceil(A / 2.0) * (1.0 + 2 * A - 2.0 * ceil(A / 2.0));
   double result = numerator / denominator;
   return result;
 }
