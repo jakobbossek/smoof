@@ -4,8 +4,13 @@
 \alias{plot1DNumeric}
 \title{Plot an one-dimensional function.}
 \usage{
-plot1DNumeric(x, show.optimum = FALSE, main = getName(x),
-  n.samples = 500L, ...)
+plot1DNumeric(
+  x,
+  show.optimum = FALSE,
+  main = getName(x),
+  n.samples = 500L,
+  ...
+)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr

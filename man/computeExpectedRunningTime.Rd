@@ -4,9 +4,13 @@
 \alias{computeExpectedRunningTime}
 \title{Compute the Expected Running Time (ERT) performance measure.}
 \usage{
-computeExpectedRunningTime(fun.evals, fun.success.runs = NULL,
-  fun.reached.target.values = NULL, fun.target.value = NULL,
-  penalty.value = Inf)
+computeExpectedRunningTime(
+  fun.evals,
+  fun.success.runs = NULL,
+  fun.reached.target.values = NULL,
+  fun.target.value = NULL,
+  penalty.value = Inf
+)
 }
 \arguments{
 \item{fun.evals}{[\code{numeric}]\cr

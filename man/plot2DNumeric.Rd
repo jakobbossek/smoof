@@ -4,9 +4,15 @@
 \alias{plot2DNumeric}
 \title{Plot a two-dimensional numeric function.}
 \usage{
-plot2DNumeric(x, show.optimum = FALSE, main = getName(x),
-  render.levels = FALSE, render.contours = TRUE, n.samples = 100L,
-  ...)
+plot2DNumeric(
+  x,
+  show.optimum = FALSE,
+  main = getName(x),
+  render.levels = FALSE,
+  render.contours = TRUE,
+  n.samples = 100L,
+  ...
+)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr

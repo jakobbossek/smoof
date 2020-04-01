@@ -24,13 +24,13 @@ NumericVector WFG_normalize_z(NumericVector z){
 }
 
 
-// SHAPE FUNCTIONS, see Table X from IEEE TEVC paper 
+// SHAPE FUNCTIONS, see Table X from IEEE TEVC paper
 
 double WFG_shape_linear(NumericVector x, int M, int m){
   // linear shape as in first block of Table X
   double result = 1.0;
   int i;
-  
+
   if (m == 1) {
     // linear_1
     for (i = 1; i < M; i++) {
@@ -53,7 +53,7 @@ double WFG_shape_convex(NumericVector x, int M, int m){
   // convex shape as in second block of Table X
   double result = 1.0;
   int i;
-  
+
   if (m == 1) {
     // convex_1
     for (i = 1; i < M; i++) {
@@ -76,7 +76,7 @@ double WFG_shape_concave(NumericVector x, int M, int m){
   // concave shape as in third block of Table X
   double result = 1.0;
   int i;
-  
+
   if (m == 1) {
     // concave_1
     for (i = 1; i < M; i++) {
@@ -106,13 +106,13 @@ double WFG_shape_mixed(NumericVector x, double alpha, int A){
 double WFG_shape_disc(NumericVector x, double alpha, double beta, int A){
   // disconnected shape as in fifth block of Table X
   double result;
-  
+
   result = 1 - pow(x(0), alpha) * pow(cos(A * pow(x(0), beta) * M_PI), 2.0);
   return result;
 }
 
 
-// TRANSFORMATION FUNCTIONS, see Table XI from IEEE TEVC paper 
+// TRANSFORMATION FUNCTIONS, see Table XI from IEEE TEVC paper
 
 
 double WFG_trafo_bias_polynomial(double y, double alpha){
@@ -163,8 +163,8 @@ double WFG_trafo_shift_multimodal(double y, double A, double B, double C){
 double WFG_trafo_reduction_weighted_sum(NumericVector y, NumericVector w){
   // weighted sum reduction, see seventh block of Table XI
   int n = y.size();
-  double a;
-  double b;
+  double a = 0.0;
+  double b = 0.0;
   for (int i = 0; i < n; i++) {
     a += w(i) * y(i);
     b += w(i);
@@ -183,7 +183,7 @@ double WFG_trafo_reduction_nonseparable(NumericVector y, int A){
       numerator += fabs(y(j) - y((j + k + 1) % n));
     }
   }
-  double denominator = (fabs(n) / A) * ceil(A / 2.0) * (1.0 + 2 * A - 2.0 * ceil(A / 2.0));
+  double denominator = (abs(n) / A) * ceil(A / 2.0) * (1.0 + 2 * A - 2.0 * ceil(A / 2.0));
   double result = numerator / denominator;
   return result;
 }
@@ -727,22 +727,22 @@ NumericVector mof_WFG_9(NumericVector z, int M, int k) {
   int n = z.size();
   int l = n - k;
   NumericVector A(M - 1, 1.0);
-  
+
   NumericVector S(M);
   for (m = 0; m < M; m++) {
     S(m) = 2.0 * (m + 1.0);
   }
   int D = 1;
-  
+
   NumericVector y(n);
   NumericVector t3(M);
   NumericVector fi(M);
   NumericVector x(M);
   NumericVector h(M);
-  
+
   // normalize z
   y = WFG_normalize_z(z);
-  
+
   // transformation t1
   for (i = 1; i < n; i++) {
     NumericVector ysub = subvector(y, i + 1, n);

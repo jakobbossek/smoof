@@ -4,9 +4,16 @@
 \alias{autoplot.smoof_function}
 \title{Generate ggplot2 object.}
 \usage{
-\method{autoplot}{smoof_function}(x, show.optimum = FALSE,
-  main = getName(x), render.levels = FALSE, render.contours = TRUE,
-  log.scale = FALSE, length.out = 50L, ...)
+\method{autoplot}{smoof_function}(
+  x,
+  show.optimum = FALSE,
+  main = getName(x),
+  render.levels = FALSE,
+  render.contours = TRUE,
+  log.scale = FALSE,
+  length.out = 50L,
+  ...
+)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr

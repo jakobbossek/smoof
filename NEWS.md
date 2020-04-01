@@ -1,4 +1,12 @@
-# smoof 1.6
+# smoof 1.6.3
+
+## New features
+
+* Added MMF1 to MMF13 problems from CEC2019 test suite
+* Added SYM-Part simple, SYM-Part rotated and Omni-Test problems from CEC2019 test suite
+* Added MMF14, MMF14a, MMF15 and MMF15a problems from CEC2019 test suite
+
+# smoof 1.6.0
 
 ## New features
 
@@ -8,9 +16,6 @@
 * Added: WFG1 to WFG9 problems from the WFG-Problem Generator Toolkit
 * Changed: renamed argument dimension to dimensions (this should not cause any problems with existing code)
 * Changed: replaced geom_tile with geom_raster
-* Added MMF1 to MMF13 problems from CEC2019 test suite
-* Added SYM-Part simple, SYM-Part rotated and Omni-Test problems from CEC2019 test suite
-* Added MMF14, MMF14a, MMF15 and MMF15a problems from CEC2019 test suite
 
 # smoof 1.5.1
 
