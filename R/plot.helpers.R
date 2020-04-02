@@ -97,6 +97,12 @@ generateDataframeForGGPlot2 = function(fun, length.out = 50L) {
       values = lapply(1:the.par$len, function(i) {
         unlist(the.par$values, use.names = FALSE)
       })
+    } else if (par.type == "integer") {
+      values = unique(round(seq(the.par$lower, the.par$upper, length.out = length.out)))
+    } else if (par.type == "integervector") {
+      values = lapply(1:the.par$len, function(i) {
+        unique(round(seq(the.par$lower[i], the.par$upper[i], length.out = length.out)))
+      })
     } else if (par.type == "logical") {
       values = as.character(unlist(the.par$values, use.names = FALSE))
     } else if (par.type == "logicalvector") {

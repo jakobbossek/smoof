@@ -130,6 +130,19 @@ test_that("autoplot functions for mixed functions (discrete/logical and numeric 
   checkGGPlot(pl, title = getName(fn), "x1", "x2")
   checkGGFacets(pl, c("disc1", "logic"))
 
+  fn = makeSingleObjectiveFunction(
+    name = "1d Real + 1d Int",
+    fn = function(x) {
+      x$x1 + x$x2
+    },
+    has.simple.signature = FALSE,
+    par.set = makeParamSet(
+      makeNumericParam("x1", lower = -5, upper = 5),
+      makeIntegerParam("x2", lower = -3, upper = 3)
+    )
+  )
+  pf = autoplot(fn)
+
 })
 
 test_that("3D plots work for two-dimensional funs", {
