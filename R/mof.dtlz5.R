@@ -39,6 +39,11 @@
 #' @references K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
 #' Multi-Objective Optimization Test Problems. Computer Engineering and Networks
 #' Laboratory (TIK), Swiss Federal Institute of Technology (ETH) Zurich, 112, 2001
+#' 
+#' @note This problem definition does not exist in the succeeding work of Deb et al. (K. Deb
+#' and L. Thiele and M. Laumanns and E. Zitzler (2002). Scalable multi-objective optimization
+#' test problems, Proceedings of the IEEE Congress on Evolutionary Computation, pp. 825-830).\cr
+#' Also, note that in case of a bi-objective scenario (\code{n.objectives = 2L}) DTLZ2 and DTLZ5 are identical.
 #'
 #' @param dimensions [\code{integer(1)}]\cr
 #'   Number of decision variables.

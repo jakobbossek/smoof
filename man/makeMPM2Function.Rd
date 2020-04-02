@@ -4,8 +4,14 @@
 \alias{makeMPM2Function}
 \title{Generator for function with multiple peaks following the multiple peaks model 2.}
 \usage{
-makeMPM2Function(n.peaks, dimensions, topology, seed, rotated = TRUE,
-  peak.shape = "ellipse")
+makeMPM2Function(
+  n.peaks,
+  dimensions,
+  topology,
+  seed,
+  rotated = TRUE,
+  peak.shape = "ellipse"
+)
 }
 \arguments{
 \item{n.peaks}{[\code{integer(1)}]\cr

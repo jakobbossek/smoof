@@ -40,6 +40,11 @@
 #' Multi-Objective Optimization Test Problems. Computer Engineering and Networks
 #' Laboratory (TIK), Swiss Federal Institute of Technology (ETH) Zurich, 112, 2001
 #'
+#' @note Attention: Within the succeeding work of Deb et al. (K. Deb and L. Thiele and
+#' M. Laumanns and E. Zitzler (2002). Scalable multi-objective optimization test problems,
+#' Proceedings of the IEEE Congress on Evolutionary Computation, pp. 825-830)
+#' this problem was called DTLZ5.
+#'
 #' @param dimensions [\code{integer(1)}]\cr
 #'   Number of decision variables.
 #' @param n.objectives [\code{integer(1)}]\cr

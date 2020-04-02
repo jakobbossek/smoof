@@ -37,6 +37,94 @@ mof_ED_2 <- function(x, m, gamma, theta) {
     .Call(`_smoof_mof_ED_2`, x, m, gamma, theta)
 }
 
+mof_cec2019_SYM_PART_SIMPLE <- function(x, a, b, c) {
+    .Call(`_smoof_mof_cec2019_SYM_PART_SIMPLE`, x, a, b, c)
+}
+
+mof_cec2019_SYM_PART_ROTATED <- function(x, w, a, b, c) {
+    .Call(`_smoof_mof_cec2019_SYM_PART_ROTATED`, x, w, a, b, c)
+}
+
+mof_cec2019_OMNI_Test <- function(x) {
+    .Call(`_smoof_mof_cec2019_OMNI_Test`, x)
+}
+
+mof_cec2019_mmf1 <- function(x) {
+    .Call(`_smoof_mof_cec2019_mmf1`, x)
+}
+
+mof_cec2019_mmf1_z <- function(x, k) {
+    .Call(`_smoof_mof_cec2019_mmf1_z`, x, k)
+}
+
+mof_cec2019_mmf1_e <- function(x, a) {
+    .Call(`_smoof_mof_cec2019_mmf1_e`, x, a)
+}
+
+mof_cec2019_mmf2 <- function(x) {
+    .Call(`_smoof_mof_cec2019_mmf2`, x)
+}
+
+mof_cec2019_mmf3 <- function(x) {
+    .Call(`_smoof_mof_cec2019_mmf3`, x)
+}
+
+mof_cec2019_mmf4 <- function(x) {
+    .Call(`_smoof_mof_cec2019_mmf4`, x)
+}
+
+mof_cec2019_mmf5 <- function(x) {
+    .Call(`_smoof_mof_cec2019_mmf5`, x)
+}
+
+mof_cec2019_mmf6 <- function(x) {
+    .Call(`_smoof_mof_cec2019_mmf6`, x)
+}
+
+mof_cec2019_mmf7 <- function(x) {
+    .Call(`_smoof_mof_cec2019_mmf7`, x)
+}
+
+mof_cec2019_mmf8 <- function(x) {
+    .Call(`_smoof_mof_cec2019_mmf8`, x)
+}
+
+mof_cec2019_mmf9 <- function(x, np) {
+    .Call(`_smoof_mof_cec2019_mmf9`, x, np)
+}
+
+mof_cec2019_mmf10 <- function(x) {
+    .Call(`_smoof_mof_cec2019_mmf10`, x)
+}
+
+mof_cec2019_mmf11 <- function(x, np) {
+    .Call(`_smoof_mof_cec2019_mmf11`, x, np)
+}
+
+mof_cec2019_mmf12 <- function(x, np, q) {
+    .Call(`_smoof_mof_cec2019_mmf12`, x, np, q)
+}
+
+mof_cec2019_mmf13 <- function(x, np) {
+    .Call(`_smoof_mof_cec2019_mmf13`, x, np)
+}
+
+mof_cec2019_mmf14 <- function(x, M, np) {
+    .Call(`_smoof_mof_cec2019_mmf14`, x, M, np)
+}
+
+mof_cec2019_mmf14_a <- function(x, M, np) {
+    .Call(`_smoof_mof_cec2019_mmf14_a`, x, M, np)
+}
+
+mof_cec2019_mmf15 <- function(x, M, np) {
+    .Call(`_smoof_mof_cec2019_mmf15`, x, M, np)
+}
+
+mof_cec2019_mmf15_a <- function(x, M, np) {
+    .Call(`_smoof_mof_cec2019_mmf15_a`, x, M, np)
+}
+
 kursawe <- function(x) {
     .Call(`_smoof_kursawe`, x)
 }

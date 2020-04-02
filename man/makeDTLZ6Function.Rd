@@ -51,6 +51,12 @@ for \eqn{i = 2,3,\dots,(M-1)}{i = 2,3,...,(M-1)}
 and \eqn{g(\mathbf{x}_M) = \sum\limits_{x_i\in\mathbf{x}_M}x_i^{0.1}}{
 g(XM) = sum{x[i] in XM} {x[i]^0.1}}
 }
+\note{
+Attention: Within the succeeding work of Deb et al. (K. Deb and L. Thiele and
+M. Laumanns and E. Zitzler (2002). Scalable multi-objective optimization test problems,
+Proceedings of the IEEE Congress on Evolutionary Computation, pp. 825-830)
+this problem was called DTLZ5.
+}
 \references{
 K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
 Multi-Objective Optimization Test Problems. Computer Engineering and Networks

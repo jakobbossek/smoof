@@ -119,6 +119,270 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// mof_cec2019_SYM_PART_SIMPLE
+NumericVector mof_cec2019_SYM_PART_SIMPLE(NumericVector x, double a, double b, double c);
+RcppExport SEXP _smoof_mof_cec2019_SYM_PART_SIMPLE(SEXP xSEXP, SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    Rcpp::traits::input_parameter< double >::type c(cSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_SYM_PART_SIMPLE(x, a, b, c));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_SYM_PART_ROTATED
+NumericVector mof_cec2019_SYM_PART_ROTATED(NumericVector x, double w, double a, double b, double c);
+RcppExport SEXP _smoof_mof_cec2019_SYM_PART_ROTATED(SEXP xSEXP, SEXP wSEXP, SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type w(wSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    Rcpp::traits::input_parameter< double >::type b(bSEXP);
+    Rcpp::traits::input_parameter< double >::type c(cSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_SYM_PART_ROTATED(x, w, a, b, c));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_OMNI_Test
+NumericVector mof_cec2019_OMNI_Test(NumericVector x);
+RcppExport SEXP _smoof_mof_cec2019_OMNI_Test(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_OMNI_Test(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf1
+NumericVector mof_cec2019_mmf1(NumericVector x);
+RcppExport SEXP _smoof_mof_cec2019_mmf1(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf1(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf1_z
+NumericVector mof_cec2019_mmf1_z(NumericVector x, double k);
+RcppExport SEXP _smoof_mof_cec2019_mmf1_z(SEXP xSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf1_z(x, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf1_e
+NumericVector mof_cec2019_mmf1_e(NumericVector x, double a);
+RcppExport SEXP _smoof_mof_cec2019_mmf1_e(SEXP xSEXP, SEXP aSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type a(aSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf1_e(x, a));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf2
+NumericVector mof_cec2019_mmf2(NumericVector x);
+RcppExport SEXP _smoof_mof_cec2019_mmf2(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf2(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf3
+NumericVector mof_cec2019_mmf3(NumericVector x);
+RcppExport SEXP _smoof_mof_cec2019_mmf3(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf3(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf4
+NumericVector mof_cec2019_mmf4(NumericVector x);
+RcppExport SEXP _smoof_mof_cec2019_mmf4(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf4(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf5
+NumericVector mof_cec2019_mmf5(NumericVector x);
+RcppExport SEXP _smoof_mof_cec2019_mmf5(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf5(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf6
+NumericVector mof_cec2019_mmf6(NumericVector x);
+RcppExport SEXP _smoof_mof_cec2019_mmf6(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf6(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf7
+NumericVector mof_cec2019_mmf7(NumericVector x);
+RcppExport SEXP _smoof_mof_cec2019_mmf7(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf7(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf8
+NumericVector mof_cec2019_mmf8(NumericVector x);
+RcppExport SEXP _smoof_mof_cec2019_mmf8(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf8(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf9
+NumericVector mof_cec2019_mmf9(NumericVector x, int np);
+RcppExport SEXP _smoof_mof_cec2019_mmf9(SEXP xSEXP, SEXP npSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type np(npSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf9(x, np));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf10
+NumericVector mof_cec2019_mmf10(NumericVector x);
+RcppExport SEXP _smoof_mof_cec2019_mmf10(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf10(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf11
+NumericVector mof_cec2019_mmf11(NumericVector x, int np);
+RcppExport SEXP _smoof_mof_cec2019_mmf11(SEXP xSEXP, SEXP npSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type np(npSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf11(x, np));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf12
+NumericVector mof_cec2019_mmf12(NumericVector x, int np, int q);
+RcppExport SEXP _smoof_mof_cec2019_mmf12(SEXP xSEXP, SEXP npSEXP, SEXP qSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type np(npSEXP);
+    Rcpp::traits::input_parameter< int >::type q(qSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf12(x, np, q));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf13
+NumericVector mof_cec2019_mmf13(NumericVector x, int np);
+RcppExport SEXP _smoof_mof_cec2019_mmf13(SEXP xSEXP, SEXP npSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type np(npSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf13(x, np));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf14
+NumericVector mof_cec2019_mmf14(NumericVector x, int M, int np);
+RcppExport SEXP _smoof_mof_cec2019_mmf14(SEXP xSEXP, SEXP MSEXP, SEXP npSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type np(npSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf14(x, M, np));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf14_a
+NumericVector mof_cec2019_mmf14_a(NumericVector x, int M, int np);
+RcppExport SEXP _smoof_mof_cec2019_mmf14_a(SEXP xSEXP, SEXP MSEXP, SEXP npSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type np(npSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf14_a(x, M, np));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf15
+NumericVector mof_cec2019_mmf15(NumericVector x, int M, int np);
+RcppExport SEXP _smoof_mof_cec2019_mmf15(SEXP xSEXP, SEXP MSEXP, SEXP npSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type np(npSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf15(x, M, np));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mof_cec2019_mmf15_a
+NumericVector mof_cec2019_mmf15_a(NumericVector x, int M, int np);
+RcppExport SEXP _smoof_mof_cec2019_mmf15_a(SEXP xSEXP, SEXP MSEXP, SEXP npSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type np(npSEXP);
+    rcpp_result_gen = Rcpp::wrap(mof_cec2019_mmf15_a(x, M, np));
+    return rcpp_result_gen;
+END_RCPP
+}
 // kursawe
 NumericVector kursawe(NumericVector x);
 RcppExport SEXP _smoof_kursawe(SEXP xSEXP) {
@@ -271,6 +535,28 @@ static const R_CallMethodDef CallEntries[] = {
     {"_smoof_dtlz_7", (DL_FUNC) &_smoof_dtlz_7, 2},
     {"_smoof_mof_ED_1", (DL_FUNC) &_smoof_mof_ED_1, 4},
     {"_smoof_mof_ED_2", (DL_FUNC) &_smoof_mof_ED_2, 4},
+    {"_smoof_mof_cec2019_SYM_PART_SIMPLE", (DL_FUNC) &_smoof_mof_cec2019_SYM_PART_SIMPLE, 4},
+    {"_smoof_mof_cec2019_SYM_PART_ROTATED", (DL_FUNC) &_smoof_mof_cec2019_SYM_PART_ROTATED, 5},
+    {"_smoof_mof_cec2019_OMNI_Test", (DL_FUNC) &_smoof_mof_cec2019_OMNI_Test, 1},
+    {"_smoof_mof_cec2019_mmf1", (DL_FUNC) &_smoof_mof_cec2019_mmf1, 1},
+    {"_smoof_mof_cec2019_mmf1_z", (DL_FUNC) &_smoof_mof_cec2019_mmf1_z, 2},
+    {"_smoof_mof_cec2019_mmf1_e", (DL_FUNC) &_smoof_mof_cec2019_mmf1_e, 2},
+    {"_smoof_mof_cec2019_mmf2", (DL_FUNC) &_smoof_mof_cec2019_mmf2, 1},
+    {"_smoof_mof_cec2019_mmf3", (DL_FUNC) &_smoof_mof_cec2019_mmf3, 1},
+    {"_smoof_mof_cec2019_mmf4", (DL_FUNC) &_smoof_mof_cec2019_mmf4, 1},
+    {"_smoof_mof_cec2019_mmf5", (DL_FUNC) &_smoof_mof_cec2019_mmf5, 1},
+    {"_smoof_mof_cec2019_mmf6", (DL_FUNC) &_smoof_mof_cec2019_mmf6, 1},
+    {"_smoof_mof_cec2019_mmf7", (DL_FUNC) &_smoof_mof_cec2019_mmf7, 1},
+    {"_smoof_mof_cec2019_mmf8", (DL_FUNC) &_smoof_mof_cec2019_mmf8, 1},
+    {"_smoof_mof_cec2019_mmf9", (DL_FUNC) &_smoof_mof_cec2019_mmf9, 2},
+    {"_smoof_mof_cec2019_mmf10", (DL_FUNC) &_smoof_mof_cec2019_mmf10, 1},
+    {"_smoof_mof_cec2019_mmf11", (DL_FUNC) &_smoof_mof_cec2019_mmf11, 2},
+    {"_smoof_mof_cec2019_mmf12", (DL_FUNC) &_smoof_mof_cec2019_mmf12, 3},
+    {"_smoof_mof_cec2019_mmf13", (DL_FUNC) &_smoof_mof_cec2019_mmf13, 2},
+    {"_smoof_mof_cec2019_mmf14", (DL_FUNC) &_smoof_mof_cec2019_mmf14, 3},
+    {"_smoof_mof_cec2019_mmf14_a", (DL_FUNC) &_smoof_mof_cec2019_mmf14_a, 3},
+    {"_smoof_mof_cec2019_mmf15", (DL_FUNC) &_smoof_mof_cec2019_mmf15, 3},
+    {"_smoof_mof_cec2019_mmf15_a", (DL_FUNC) &_smoof_mof_cec2019_mmf15_a, 3},
     {"_smoof_kursawe", (DL_FUNC) &_smoof_kursawe, 1},
     {"_smoof_mof_WFG_1", (DL_FUNC) &_smoof_mof_WFG_1, 3},
     {"_smoof_mof_WFG_2", (DL_FUNC) &_smoof_mof_WFG_2, 3},

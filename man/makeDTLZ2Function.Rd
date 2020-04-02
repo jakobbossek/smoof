@@ -43,6 +43,9 @@ with \eqn{0 \leq x_i \leq 1}{0 <= x[i] <= 1}, for \eqn{i=1,2,\dots,n,}{i=1,2,...
 where \eqn{g(\mathbf{x}_M) = \sum\limits_{x_i\in \mathbf{x}_M}(x_i-0.5)^2}{
 g(XM) = sum{x[i] in XM} {(x[i] - 0.5)^2}}
 }
+\note{
+Note that in case of a bi-objective scenario (\code{n.objectives = 2L}) DTLZ2 and DTLZ5 are identical.
+}
 \references{
 K. Deb and L. Thiele and M. Laumanns and E. Zitzler. Scalable
 Multi-Objective Optimization Test Problems. Computer Engineering and Networks

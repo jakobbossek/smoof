@@ -4,11 +4,23 @@
 \alias{mnof}
 \title{Helper function to create numeric multi-objective optimization test function.}
 \usage{
-mnof(name = NULL, id = NULL, par.len = NULL, par.id = "x",
-  par.lower = NULL, par.upper = NULL, n.objectives,
-  description = NULL, fn, vectorized = FALSE, noisy = FALSE,
-  fn.mean = NULL, minimize = rep(TRUE, n.objectives),
-  constraint.fn = NULL, ref.point = NULL)
+mnof(
+  name = NULL,
+  id = NULL,
+  par.len = NULL,
+  par.id = "x",
+  par.lower = NULL,
+  par.upper = NULL,
+  n.objectives,
+  description = NULL,
+  fn,
+  vectorized = FALSE,
+  noisy = FALSE,
+  fn.mean = NULL,
+  minimize = rep(TRUE, n.objectives),
+  constraint.fn = NULL,
+  ref.point = NULL
+)
 }
 \arguments{
 \item{name}{[\code{character(1)}]\cr
