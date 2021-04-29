@@ -1,5 +1,10 @@
 context("function filtering works well")
 
+test_that("filterFunctionByTags returns unique names", {
+  fns = filterFunctionsByTags("single-objective") 
+  expect_false(any(duplicated(fns)))
+})
+
 test_that("filterFunctionByTags returns reasonable results", {
   expected_tags = c("multimodal", "scalable")
   # check if function works well
