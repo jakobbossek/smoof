@@ -26,7 +26,7 @@ makeMichalewiczFunction = function(dimensions, m = 10) {
     name = paste(dimensions, "-d Michalewicz Function (m = ", m, ")", sep = ""),
     id = paste0("michalewicz_", dimensions, "d_m", m),
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
       i = 1:length(x)
       (-1) * sum(sin(x) * (sin((i * x^2) / pi)^(2 * m)))
     },
@@ -49,7 +49,7 @@ attr(makeMichalewiczFunction, "type") = c("single-objective")
 attr(makeMichalewiczFunction, "tags") = c("single-objective", "continuous", "multimodal", "scalable")
 
 # Helper to determine global optimum based on dimension and m parameter.
-getMichalewiczGlobalOptimum = function(dimensions = 2L, m = 10) {
+getMichalewiczGlobalOptimum = function(dimensions, m = 10) {
   #FIXME: we know optimum only for m = 10
   if (m != 10) {
     return(NULL)
