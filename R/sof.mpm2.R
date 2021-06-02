@@ -95,27 +95,34 @@ attr(makeMPM2Function, "type") = c("single-objective")
 
 smoof.python.call = function (py.foo, ..., simplify = TRUE, as.is = FALSE)
 {
-    foo.args <- list(...)
+    foo.args = list(...)
     if (is.null(names(foo.args)))
-        which.dict <- rep(FALSE, length(foo.args))
-    else which.dict <- names(foo.args) != ""
-    n.args.vect <- sum(!which.dict)
-    n.args.dict <- sum(which.dict)
-    foo.args.dict <- RJSONIO::toJSON(foo.args[which.dict], digits = 12, collapse = " ",
+        which.dict = rep(FALSE, length(foo.args))
+    else which.dict = names(foo.args) != ""
+    n.args.vect = sum(!which.dict)
+    n.args.dict = sum(which.dict)
+
+    if (!requireNamespace("RJSONIO", quietly = TRUE))
+      stopf("Package \"RJSONIO\" needed for this function to work.")
+
+    foo.args.dict = RJSONIO::toJSON(foo.args[which.dict], digits = 12, collapse = " ",
         asIs = as.is)
-    foo.args.vect <- RJSONIO::toJSON(foo.args[!which.dict], digits = 12, collapse = " ",
+    foo.args.vect = RJSONIO::toJSON(foo.args[!which.dict], digits = 12, collapse = " ",
         asIs = as.is)
-    python.command <- c(paste("_r_args_dict =r'''", foo.args.dict,
-        "'''", sep = ""), paste("_r_args_vect =r'''", foo.args.vect,
-        "'''", sep = ""), "_r_args_dict = json.loads( _r_args_dict )",
-        "_r_args_vect = json.loads( _r_args_vect )", python.command <- paste("_r_call_return = ",
-            py.foo, "(", ifelse(n.args.vect == 1, "_r_args_vect[0]",
-                "*_r_args_vect"), ifelse(n.args.dict == 0, ")",
-                ", **_r_args_dict)"), sep = ""))
-    python.command <- paste(python.command, collapse = "\n")
+    python.command = c(
+      paste("_r_args_dict =r'''", foo.args.dict, "'''", sep = ""),
+      paste("_r_args_vect =r'''", foo.args.vect, "'''", sep = ""),
+      "_r_args_dict = json.loads( _r_args_dict )",
+      "_r_args_vect = json.loads( _r_args_vect )",
+      python.command = paste(
+        "_r_call_return = ",
+        py.foo, "(", ifelse(n.args.vect == 1, "_r_args_vect[0]",
+        "*_r_args_vect"), ifelse(n.args.dict == 0, ")",
+        ", **_r_args_dict)"), sep = ""))
+    python.command = paste(python.command, collapse = "\n")
     rPython::python.exec(python.command)
-    ret <- rPython::python.get("_r_call_return")
+    ret = rPython::python.get("_r_call_return")
     if (length(ret) == 1 && simplify)
-        ret <- ret[[1]]
+        ret = ret[[1]]
     ret
 }

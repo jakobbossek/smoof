@@ -5,13 +5,22 @@ Description: Provides generators for a high number of both single- and multi-
     objective test functions which are frequently used for the benchmarking of
     (numerical) optimization algorithms. Moreover, it offers a set of convenient
     functions to generate, plot and work with objective functions.
-Version: 1.6.0.4
-Date: 2021-04-29
-Authors@R: c(person("Jakob", "Bossek", email = "j.bossek@gmail.com", role =
-    c("aut", "cre")), person("Pascal", "Kerschke", email = "kerschke@uni-muenster.de",
+Version: 1.6.0.3
+Date: 2021-06-02
+Authors@R: c(
+  person(
+    given = "Jakob",
+    family = "Bossek",
+    email = "j.bossek@gmail.com",
+    role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-4121-4668")),
+  person(
+    given = "Pascal",
+    family = "Kerschke",
+    email = "kerschke@uni-muenster.de",
     role = "ctb"))
 Maintainer: Jakob Bossek <j.bossek@gmail.com>
-URL: https://github.com/jakobbossek/smoof
+URL: https://jakobbossek.github.io/smoof/, https://github.com/jakobbossek/smoof
 BugReports: https://github.com/jakobbossek/smoof/issues
 License: BSD_2_clause + file LICENSE
 Depends:
@@ -20,14 +29,14 @@ Depends:
 Imports:
     BBmisc (>= 1.6),
     ggplot2 (>= 2.2.1),
-    RColorBrewer,
+    Rcpp (>= 0.11.0)
+Suggests:
+    testthat,
     plot3D,
     plotly,
     mco,
-    Rcpp (>= 0.11.0),
-    RJSONIO
-Suggests:
-    testthat,
+    RColorBrewer,
+    RJSONIO,
     rPython (>= 0.0-5)
 LazyData: yes
 ByteCompile: yes

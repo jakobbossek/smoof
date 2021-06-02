@@ -1,5 +1,5 @@
 
-# smoof: Single- and Multi-Objective Optimization test Functions
+# smoof: Single- and Multi-Objective Optimization Test Functions
 
 Visit the [package website](https://jakobbossek.github.io/smoof/)
 

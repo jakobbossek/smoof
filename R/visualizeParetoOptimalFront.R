@@ -22,9 +22,12 @@
 visualizeParetoOptimalFront = function(fn, ...) {
   n.objectives = getNumberOfObjectives(fn)
   if (!isMultiobjective(fn)) {
-    stopf("Visualization of approximated Pareto-optimal front only possible fo multi-objective functions with two objectives at the moment.")
+    stopf("Visualization of approximated Pareto-optimal front only possible fo multi-objective
+      functions with two objectives at the moment.")
   }
-  requirePackages("mco", why = "smoof::visualizeParetoOptimalFront")
+
+  if (!requireNamespace("mco", quietly = TRUE))
+    stopf("Package \"mco\" needed for this function to work.")
 
   par.set = ParamHelpers::getParamSet(fn)
 

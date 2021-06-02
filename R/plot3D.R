@@ -35,6 +35,9 @@ plot3D = function(x, length.out = 100L, package = "plot3D", ...) {
   assertInt(length.out, lower = 10L)
   assertChoice(package, choices = c("plot3D", "plotly"))
 
+  if (!requireNamespace(package, quietly = TRUE))
+    stopf("Package \"%s\" needed for this function to work.", package)
+
   obj.fn = x
   n = getNumberOfParameters(obj.fn)
   par.set = ParamHelpers::getParamSet(obj.fn)
@@ -55,7 +58,6 @@ plot3D = function(x, length.out = 100L, package = "plot3D", ...) {
   dim(z) = c(length.out, length.out)
 
   # load package whose 3D plot is used
-  requirePackages(package, why = "smoof.plot3D")
   if (package == "plot3D") {
     return(plot3D::persp3D(z = z, x = x, y = y, ...))
   } else if (package == "plotly") {

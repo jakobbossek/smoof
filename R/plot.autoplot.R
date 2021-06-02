@@ -141,9 +141,12 @@ autoplot.smoof_function = function(x,
   if (n.numeric == 2L) {
     pl = ggplot(grid, aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]]))
     if (render.levels) {
+
+      if (!requireNamespace("RColorBrewer", quietly = TRUE))
+        stopf("For render.levels=TRUE the package \"RColorBrewer\" is required.")
       # nice color palette for render.levels
       # see http://learnr.wordpress.com/2009/07/20/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-part-6/
-      brewer.div = colorRampPalette(brewer.pal(11, "Spectral"), interpolate = "spline")
+      brewer.div = colorRampPalette(RColorBrewer::brewer.pal(11, "Spectral"), interpolate = "spline")
 
       pl = pl + geom_raster(aes_string(fill = "y"))
       pl = pl + scale_fill_gradientn(colours = brewer.div(200))

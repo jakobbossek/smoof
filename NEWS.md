@@ -6,6 +6,15 @@
 * Added SYM-Part simple, SYM-Part rotated and Omni-Test problems from CEC2019 test suite
 * Added MMF14, MMF14a, MMF15 and MMF15a problems from CEC2019 test suite
 
+## Bugfixes
+
+* Fixed a bub in Machalewicz function (dimension was ignored when building parameter set)
+* Fix name of Powell Sum generator function.
+
+## Miscellaneous
+
+* Various packages moved from Imports to Suggests for less dependencies.
+
 # smoof 1.6.0
 
 ## New features
