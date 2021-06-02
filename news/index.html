@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">smoof</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0.3</span>
       </span>
     </div>
 
@@ -127,6 +127,21 @@
 <li>Added MMF14, MMF14a, MMF15 and MMF15a problems from CEC2019 test suite</li>
 </ul>
 </div>
+<div id="bugfixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bugfixes" class="anchor"></a>Bugfixes</h2>
+<ul>
+<li>Fixed a bub in Machalewicz function (dimension was ignored when building parameter set)</li>
+<li>Fix name of Powell Sum generator function.</li>
+</ul>
+</div>
+<div id="miscellaneous" class="section level2">
+<h2 class="hasAnchor">
+<a href="#miscellaneous" class="anchor"></a>Miscellaneous</h2>
+<ul>
+<li>Various packages moved from Imports to Suggests for less dependencies.</li>
+</ul>
+</div>
 </div>
     <div id="smoof-160" class="section level1">
 <h1 class="page-header" data-toc-text="1.6.0">
@@ -159,17 +174,17 @@
 <li>Added: Hartmann{3,4,6} functions</li>
 </ul>
 </div>
-<div id="bugfixes" class="section level2">
+<div id="bugfixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bugfixes" class="anchor"></a>Bugfixes</h2>
+<a href="#bugfixes-1" class="anchor"></a>Bugfixes</h2>
 <ul>
 <li>Better handling of additional arguments in makeFunctionsByName</li>
 <li>convertTo{Minimization,Maximization} now flips sign of optima</li>
 </ul>
 </div>
-<div id="miscellaneous" class="section level2">
+<div id="miscellaneous-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#miscellaneous" class="anchor"></a>Miscellaneous</h2>
+<a href="#miscellaneous-1" class="anchor"></a>Miscellaneous</h2>
 <ul>
 <li>logging and couting wrapper now have class smoof_function</li>
 </ul>
@@ -189,9 +204,9 @@
 <li>Added: CITATION file</li>
 </ul>
 </div>
-<div id="bugfixes-1" class="section level2">
+<div id="bugfixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bugfixes-1" class="anchor"></a>Bugfixes</h2>
+<a href="#bugfixes-2" class="anchor"></a>Bugfixes</h2>
 <ul>
 <li>Fixed: precision issue caused by rPython respectively RJSONIO::toJSON, which by default strips numeric values to only 4 digits.</li>
 <li>Fixed: ggplot2 warnings</li>
@@ -219,9 +234,9 @@
 <li>Added possibility to draw interactive 3D surface plots via smoof::plot3D(fn, package = “plotly”)</li>
 </ul>
 </div>
-<div id="bugfixes-2" class="section level2">
+<div id="bugfixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bugfixes-2" class="anchor"></a>Bugfixes</h2>
+<a href="#bugfixes-3" class="anchor"></a>Bugfixes</h2>
 <ul>
 <li>Fixed: issue in formula and global optimum of BukinN2 function</li>
 <li>overworked and refactored autoplot functions
@@ -280,9 +295,9 @@
 <li>Generator names now do not contain the ‘Function’ suffix</li>
 </ul>
 </div>
-<div id="bugfixes-3" class="section level2">
+<div id="bugfixes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bugfixes-3" class="anchor"></a>Bugfixes</h2>
+<a href="#bugfixes-4" class="anchor"></a>Bugfixes</h2>
 <ul>
 <li>Fixed: autoplot and plot do not work for wrapped functions.</li>
 <li>Fixed: hasConstraints for wrapped smoof functions</li>
@@ -310,9 +325,9 @@
 <li>Renamed bochachevsky function to bohachevsky.n1</li>
 </ul>
 </div>
-<div id="bugfixes-4" class="section level2">
+<div id="bugfixes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bugfixes-4" class="anchor"></a>Bugfixes</h2>
+<a href="#bugfixes-5" class="anchor"></a>Bugfixes</h2>
 <ul>
 <li>Fixed some wrong tag assigments</li>
 <li>Fixed global optimum of Giunta function</li>
