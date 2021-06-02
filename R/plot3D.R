@@ -61,6 +61,6 @@ plot3D = function(x, length.out = 100L, package = "plot3D", ...) {
   if (package == "plot3D") {
     return(plot3D::persp3D(z = z, x = x, y = y, ...))
   } else if (package == "plotly") {
-    return(plotly::plot_ly(z = z, type = "surface", ...))
+    return(plotly::plot_ly(z = z, x = x, y = y, type = "surface", ...))
   }
 }
