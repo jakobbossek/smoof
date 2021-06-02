@@ -18,7 +18,8 @@ Authors@R: c(
     given = "Pascal",
     family = "Kerschke",
     email = "kerschke@uni-muenster.de",
-    role = "ctb"))
+    role = "ctb",
+    comment = c(ORCID = "0000-0003-2862-1418")))
 Maintainer: Jakob Bossek <j.bossek@gmail.com>
 URL: https://jakobbossek.github.io/smoof/, https://github.com/jakobbossek/smoof
 BugReports: https://github.com/jakobbossek/smoof/issues
