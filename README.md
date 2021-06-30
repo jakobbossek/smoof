@@ -5,13 +5,15 @@ Visit the [package website](https://jakobbossek.github.io/smoof/)
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/jakobbossek/smoof/workflows/R-CMD-check/badge.svg)](https://github.com/jakobbossek/smoof/actions)
 [![CRAN Status
 Badge](http://www.r-pkg.org/badges/version/smoof)](http://cran.r-project.org/web/packages/smoof)
 [![CRAN
 Downloads](http://cranlogs.r-pkg.org/badges/smoof)](http://cran.rstudio.com/web/packages/smoof/index.html)
 [![CRAN
 Downloads](http://cranlogs.r-pkg.org/badges/grand-total/smoof?color=orange)](http://cran.rstudio.com/web/packages/smoof/index.html)
+[![R-CMD-check](https://github.com/jakobbossek/smoof/workflows/R-CMD-check/badge.svg)](https://github.com/jakobbossek/smoof/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/jakobbossek/smoof/branch/master/graph/badge.svg)](https://codecov.io/gh/jakobbossek/smoof?branch=master)
 [![Research software
 impact](http://depsy.org/api/package/cran/smoof/badge.svg)](http://depsy.org/package/r/smoof)
 <!-- badges: end -->

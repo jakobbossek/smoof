@@ -38,7 +38,8 @@ Suggests:
     mco,
     RColorBrewer,
     RJSONIO,
-    rPython (>= 0.0-5)
+    rPython (>= 0.0-5),
+    covr
 LazyData: yes
 ByteCompile: yes
 LinkingTo: Rcpp, RcppArmadillo

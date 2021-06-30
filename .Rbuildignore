@@ -27,3 +27,4 @@ LICENSE2
 ^_pkgdown\.yml$
 ^pkgdown$
 ^\.github$
+^codecov\.yml$
