@@ -124,7 +124,7 @@ function values and/or the parameters. Not all optimization algorithms offer
 such a trace. This wrapper makes a smoof function handle x/y-values itself.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>addLoggingWrapper</span><span class='op'>(</span><span class='va'>fn</span>, logg.x <span class='op'>=</span> <span class='cn'>FALSE</span>, logg.y <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>addLoggingWrapper</span><span class='op'>(</span><span class='va'>fn</span>, logg.x <span class='op'>=</span> <span class='cn'>FALSE</span>, logg.y <span class='op'>=</span> <span class='cn'>TRUE</span>, size <span class='op'>=</span> <span class='fl'>100L</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -145,6 +145,17 @@ Default is <code>FALSE</code>.</p></td>
       <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
 Should objective values be logged?
 Default is <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>size</th>
+      <td><p>[<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>]<br />
+Initial size of the internal data structures used for logging.
+Default is 100. I.e., there is space reserved for 100 function evaluations.
+In case of an overflow (i.e., more function evaluations than space reserved)
+the data structures are re-initialized by adding space for another <code>size</code> evaluations.
+This comes handy if you know the number of function evaluations (or at least
+an upper bound thereof) a-priori and may serve to reduce the time complextity
+of logging values.</p></td>
     </tr>
     </table>
 
