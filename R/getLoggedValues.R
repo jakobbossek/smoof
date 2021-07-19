@@ -24,8 +24,11 @@ getLoggedValues.smoof_logging_function = function(fn, compact = FALSE) {
   assertFlag(compact)
 
   env = environment(fn)
-  pars = env$pars
-  obj.vals = env$obj.vals
+  max.idx = env$curr.idx - 1L
+  pars = env$pars[seq_len(max.idx), , drop = FALSE]
+  colnames(pars) = getParamIds(ParamHelpers::getParamSet(fn), with.nr = TRUE, repeated = TRUE)
+
+  obj.vals = env$obj.vals[, seq_len(max.idx), drop = FALSE]
   # wrap everything up in a single data frame
   if (compact) {
     # if only the x-values are stored just return the data frame

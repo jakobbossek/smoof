@@ -25,7 +25,7 @@ test_that("logging for simple functions works well", {
     par.ids = getParamIds(getParamSet(fn), with.nr = TRUE, repeated = TRUE)
 
     # add logger for both x and y values
-    fn = addLoggingWrapper(fn, logg.x = TRUE)
+    fn = addLoggingWrapper(fn, logg.x = TRUE, size = 5L)
 
     # now apply some evaluations
     fn(runif(dimensions))
@@ -78,7 +78,8 @@ test_that("logging for mixed function works well", {
   test.df = data.frame(
     disc = c("a", "a", "b"),
     x1 = c(0, 0, 1),
-    x2 = c(0, 0, 1)
+    x2 = c(0, 0, 1),
+    stringsAsFactors = FALSE
   )
   obj.vals = c(0, 0, 3)
 

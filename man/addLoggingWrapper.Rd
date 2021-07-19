@@ -4,7 +4,7 @@
 \alias{addLoggingWrapper}
 \title{Return a function which internally stores x or y values.}
 \usage{
-addLoggingWrapper(fn, logg.x = FALSE, logg.y = TRUE)
+addLoggingWrapper(fn, logg.x = FALSE, logg.y = TRUE, size = 100L)
 }
 \arguments{
 \item{fn}{[\code{smoof_function}]\cr
@@ -17,6 +17,15 @@ Default is \code{FALSE}.}
 \item{logg.y}{[\code{logical(1)}]\cr
 Should objective values be logged?
 Default is \code{TRUE}.}
+
+\item{size}{[\code{integer(1)}]\cr
+Initial size of the internal data structures used for logging.
+Default is 100. I.e., there is space reserved for 100 function evaluations.
+In case of an overflow (i.e., more function evaluations than space reserved)
+the data structures are re-initialized by adding space for another \code{size} evaluations.
+This comes handy if you know the number of function evaluations (or at least
+an upper bound thereof) a-priori and may serve to reduce the time complextity
+of logging values.}
 }
 \value{
 [\code{smoof_logging_function}]

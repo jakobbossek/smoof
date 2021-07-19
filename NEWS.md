@@ -5,6 +5,8 @@
 * Added MMF1 to MMF13 problems from CEC2019 test suite
 * Added SYM-Part simple, SYM-Part rotated and Omni-Test problems from CEC2019 test suite
 * Added MMF14, MMF14a, MMF15 and MMF15a problems from CEC2019 test suite
+* Added parameter size to addLoggingWrapper for improved performance
+* getLoggedValues now correctly names function parameters.
 
 ## Bugfixes
 
