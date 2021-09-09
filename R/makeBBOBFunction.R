@@ -46,6 +46,7 @@ makeBBOBFunction = function(dimensions, fid, iid) {
 
   makeSingleObjectiveFunction(
     name = sprintf("BBOB_%i_%i_%i", dimensions, fid, iid),
+    id = sprintf("bbob_%i_%i_%i", dimensions, fid, iid),
     description = sprintf("%i-th noiseless BBOB function\n(FID: %i, IID: %i, DIMENSION: %i)",
       fid, fid, iid, dimensions),
     fn = function(x) {
