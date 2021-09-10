@@ -16,3 +16,8 @@ isSingleobjective.smoof_function = function(fn) {
 isSingleobjective.smoof_wrapped_function = function(fn) {
   return(isSingleobjective(getWrappedFunction(fn)))
 }
+
+#' @export
+isSingleobjective.smoof_shifted_function = function(fn) {
+  return(isSingleobjective(getWrappedFunction(fn)))
+}

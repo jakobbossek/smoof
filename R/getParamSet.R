@@ -21,6 +21,11 @@ getParamSet.smoof_function = function(x) {
   return(attr(x, "par.set"))
 }
 
+#' @export 
+getParamSet.smoof_shifted_function = function(x) {
+  attr(x, "par.set")
+}
+
 #' @export
 getParamSet.smoof_wrapped_function = function(x) {
   return(getParamSet(getWrappedFunction(x)))

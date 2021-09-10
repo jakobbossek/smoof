@@ -8,10 +8,11 @@
 * Added parameter size to addLoggingWrapper for improved performance
 * getLoggedValues now correctly names function parameters.
 * BBOB test function now return an ID.
+* Add helper to move the origin of a function to a different location.
 
 ## Bugfixes
 
-* Fixed a bub in Machalewicz function (dimension was ignored when building parameter set)
+* Fixed a bug in Machalewicz function (dimension was ignored when building parameter set)
 * Fix name of Powell Sum generator function.
 
 ## Miscellaneous

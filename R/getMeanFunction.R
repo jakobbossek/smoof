@@ -16,3 +16,8 @@ getMeanFunction.smoof_function = function(fn) {
 getMeanFunction.smoof_wrapped_function = function(fn) {
   return(getMeanFunction(getWrappedFunction(fn)))
 }
+
+#' @export
+getMeanFunction.smoof_shifted_function = function(fn) {
+  return(getMeanFunction(getWrappedFunction(fn)))
+}

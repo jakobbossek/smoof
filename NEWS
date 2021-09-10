@@ -7,6 +7,7 @@ smoof 1.6.0.3
 * Added parameter size to addLoggingWrapper for improved performance
 * getLoggedValues now correctly names function parameters.
 * BBOB test function now return an ID.
+* Add helper to move the origin of a function to a different location.
 
 smoof 1.6.0
 ===========

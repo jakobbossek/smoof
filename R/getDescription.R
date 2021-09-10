@@ -16,3 +16,8 @@ getDescription.smoof_function = function(fn) {
 getDescription.smoof_wrapped_function = function(fn) {
   return(getDescription(getWrappedFunction(fn)))
 }
+
+#' @export
+getDescription.smoof_shifted_function = function(fn) {
+  return(getDescription(getWrappedFunction(fn)))
+}

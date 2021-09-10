@@ -34,6 +34,16 @@ getWrappedFunction.smoof_wrapped_function = function(fn, deepest = FALSE) {
 }
 
 #' @export
+getWrappedFunction.smoof_shifted_function = function(fn, deepest = FALSE) {
+  assertFlag(deepest)
+  wrapped.fn = environment(fn)$fn
+  if (deepest) {
+    return(getWrappedFunction(wrapped.fn, deepest))
+  }
+  return(wrapped.fn)
+}
+
+#' @export
 getWrappedFunction.smoof_function = function(fn, deepest = FALSE) {
   return(fn)
 }

@@ -16,3 +16,8 @@ isMultiobjective.smoof_function = function(fn) {
 isMultiobjective.smoof_wrapped_function = function(fn) {
   return(isMultiobjective(getWrappedFunction(fn)))
 }
+
+#' @export
+isMultiobjective.smoof_shifted_function = function(fn) {
+  return(isMultiobjective(getWrappedFunction(fn)))
+}

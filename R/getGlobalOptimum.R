@@ -31,3 +31,10 @@ getGlobalOptimum.smoof_multi_objective_function = function(fn) {
 getGlobalOptimum.smoof_wrapped_function = function(fn) {
   return(getGlobalOptimum(getWrappedFunction(fn)))
 }
+
+#' @export
+getGlobalOptimum.smoof_shifted_function = function(fn) {
+  opt = getGlobalOptimum(getWrappedFunction(fn))
+  opt$param = as.data.frame(apply(opt$param, 2, function(x) x + getShift(fn)))
+  opt
+}

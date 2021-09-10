@@ -39,9 +39,10 @@ Suggests:
     RColorBrewer,
     RJSONIO,
     rPython (>= 0.0-5),
-    covr
+    covr,
+    openssl
 LazyData: yes
 ByteCompile: yes
 LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Encoding: UTF-8
