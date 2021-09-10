@@ -99,7 +99,7 @@ makeObjectiveFunction = function(
   structure(
     fn,
     name = coalesce(name, ""),
-    id = coalesce(id, NA),
+    id = coalesce(id, as.character(NA)),
     description = coalesce(description, ""),
     par.set = par.set,
     noisy = noisy,
