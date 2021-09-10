@@ -7,6 +7,7 @@
 * Added MMF14, MMF14a, MMF15 and MMF15a problems from CEC2019 test suite
 * Added parameter size to addLoggingWrapper for improved performance
 * getLoggedValues now correctly names function parameters.
+* BBOB test function now return an ID.
 
 ## Bugfixes
 
