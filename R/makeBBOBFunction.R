@@ -30,6 +30,9 @@ makeBBOBFunction = function(dimensions, fid, iid) {
   assertInt(fid, lower = 1L, upper = 24L)
   assertInt(iid, lower = 1L)
 
+  # iid is zero-based in C-code
+  iid = iid - 1L
+
   # touch vars
   force(dimensions)
   force(fid)
