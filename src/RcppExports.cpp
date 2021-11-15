@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // dtlz_1
 SEXP dtlz_1(arma::vec x, int M);
 RcppExport SEXP _smoof_dtlz_1(SEXP xSEXP, SEXP MSEXP) {

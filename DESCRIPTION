@@ -6,7 +6,7 @@ Description: Provides generators for a high number of both single- and multi-
     (numerical) optimization algorithms. Moreover, it offers a set of convenient
     functions to generate, plot and work with objective functions.
 Version: 1.6.0.3
-Date: 2021-06-02
+Date: 2021-11-15
 Authors@R: c(
   person(
     given = "Jakob",
@@ -17,7 +17,7 @@ Authors@R: c(
   person(
     given = "Pascal",
     family = "Kerschke",
-    email = "kerschke@uni-muenster.de",
+    email = "pascal.kerschke@tu-dresden.de",
     role = "ctb",
     comment = c(ORCID = "0000-0003-2862-1418")))
 Maintainer: Jakob Bossek <j.bossek@gmail.com>
@@ -37,11 +37,10 @@ Suggests:
     plotly,
     mco,
     RColorBrewer,
-    RJSONIO,
-    rPython (>= 0.0-5),
+    reticulate,
     covr
 LazyData: yes
 ByteCompile: yes
 LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Encoding: UTF-8

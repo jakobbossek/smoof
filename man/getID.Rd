@@ -2,7 +2,7 @@
 % Please edit documentation in R/getID.R
 \name{getID}
 \alias{getID}
-\title{Return the ID / short name of the function.}
+\title{Return the ID / short name of the function or \code{NA} if no ID is set.}
 \usage{
 getID(fn)
 }
@@ -11,8 +11,8 @@ getID(fn)
 Objective function.}
 }
 \value{
-[\code{character(1)}]
+[\code{character(1)}] or \code{NA}
 }
 \description{
-Return the ID / short name of the function.
+Return the ID / short name of the function or \code{NA} if no ID is set.
 }
