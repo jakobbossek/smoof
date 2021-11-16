@@ -64,12 +64,11 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
   # import reticulate namespace
   BBmisc::requirePackages("_reticulate", why = "smoof::makeMultiplePeaksModel2Function")
 
-  # FIXME: initialize 3 functions from mpm2.py as NULL such that they have a visible binding when checking the pkg
+  # initialize 3 functions from mpm2.py as NULL such that they have a visible binding when checking the pkg
   evaluateProblem = getGlobalOptimaParams = getLocalOptimaParams = NULL
 
-  # load funnel generator to global environemt
+  # load funnel generator to global environment
   eval(reticulate::py_run_file(system.file("mpm2.py", package = "smoof")), envir = .GlobalEnv)
-  topol = topology
   eval(reticulate::source_python(system.file("mpm2.py", package = "smoof"), envir = .GlobalEnv, convert = TRUE), envir = .GlobalEnv)
 
   # extract local and global optima

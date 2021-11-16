@@ -17,7 +17,7 @@ class MultiplePeaksModel2:
     class Peak(list):
         """Helper class that maintains the data structures needed for one peak."""
 
-        def __init__(self, numberVariables, height, shape, radius, position=None, minLimits=None, maxLimits=None, rotated=True, peakShape="ellipse"):
+        def __init__(self, numberVariables, height, shape, radius, position = None, minLimits = None, maxLimits = None, rotated = True, peakShape = "ellipse"):
             # shortcuts and initialization
             cos = math.cos
             sin = math.sin
@@ -60,7 +60,7 @@ class MultiplePeaksModel2:
             self.radius = radius
 
 
-    def __init__(self, numberVariables=10, peaks=None):
+    def __init__(self, numberVariables = 10, peaks = None):
         #TestProblem.__init__(self, [ObjectiveFunction(self.objectiveFunction, False)], minObjectiveLimits=[0.0], maxObjectiveLimits=[1.0])
         self.numberVariables = numberVariables
         self.minLimits = [0.0] * numberVariables
@@ -72,19 +72,19 @@ class MultiplePeaksModel2:
 
 
     @classmethod
-    def createInstanceWithExactNumberOfOptima(cls, numberOptima, numberVariables, topology, shapeHeightCorrelation, rotatedPeaks=True, peakShape="ellipse"):
+    def createInstanceWithExactNumberOfOptima(cls, numberOptima, numberVariables, topology, shapeHeightCorrelation, rotatedPeaks = True, peakShape = "ellipse"):
         shapeRange = (1.5, 2.5)
         radiusRange = (0.25 * math.sqrt(numberVariables), 0.5 * math.sqrt(numberVariables))
         heightRange = (0.5, 0.99)
-        globalOptimum = cls.randomUniformPeaks(1, numberVariables, numberGlobalOptima=1, heightRange=heightRange, shapeRange=shapeRange, radiusRange=radiusRange, rotated=rotatedPeaks, peakShape=peakShape)[0]
+        globalOptimum = cls.randomUniformPeaks(1, numberVariables, numberGlobalOptima = 1, heightRange = heightRange, shapeRange = shapeRange, radiusRange = radiusRange, rotated = rotatedPeaks, peakShape = peakShape)[0]
         if numberOptima == 1:
             peaks = [globalOptimum]
             problem = cls.createInstance(peaks, topology, shapeHeightCorrelation)
             return problem
         if topology == "random":
-            peaks = cls.randomUniformPeaks(numberOptima - 1, numberVariables, numberGlobalOptima=0, heightRange=heightRange, shapeRange=shapeRange, radiusRange=radiusRange, rotated=rotatedPeaks, peakShape=peakShape)
+            peaks = cls.randomUniformPeaks(numberOptima - 1, numberVariables, numberGlobalOptima = 0, heightRange = heightRange, shapeRange = shapeRange, radiusRange = radiusRange, rotated = rotatedPeaks, peakShape = peakShape)
         elif topology == "funnel":
-            peaks = cls.clusteredPeaks(numberOptima - 1, numberVariables, numberGlobalOptima=0, heightRange=heightRange, shapeRange=shapeRange, radiusRange=radiusRange, rotated=rotatedPeaks, clusterCenter=globalOptimum, peakShape=peakShape)
+            peaks = cls.clusteredPeaks(numberOptima - 1, numberVariables, numberGlobalOptima = 0, heightRange = heightRange, shapeRange = shapeRange, radiusRange = radiusRange, rotated = rotatedPeaks, clusterCenter = globalOptimum, peakShape = peakShape)
         peaks.append(globalOptimum)
         problem = cls.createInstance(peaks, topology, shapeHeightCorrelation)
         currentNumberOptima = len(problem.getLocalOptima())
@@ -108,9 +108,9 @@ class MultiplePeaksModel2:
             while currentNumberOptima != previousNumberOptima + 1:
                 # generate list of 1 random new peak
                 if topology == "random":
-                    newPeaks = cls.randomUniformPeaks(1, numberVariables, numberGlobalOptima=0, heightRange=heightRange, shapeRange=shapeRange, radiusRange=radiusRange, rotated=rotatedPeaks, peakShape=peakShape)
+                    newPeaks = cls.randomUniformPeaks(1, numberVariables, numberGlobalOptima = 0, heightRange = heightRange, shapeRange = shapeRange, radiusRange = radiusRange, rotated = rotatedPeaks, peakShape = peakShape)
                 elif topology == "funnel":
-                    newPeaks = cls.clusteredPeaks(1, numberVariables, numberGlobalOptima=0, heightRange=heightRange, shapeRange=shapeRange, radiusRange=radiusRange, rotated=rotatedPeaks, clusterCenter=globalOptimum, peakShape=peakShape)
+                    newPeaks = cls.clusteredPeaks(1, numberVariables, numberGlobalOptima = 0, heightRange = heightRange, shapeRange = shapeRange, radiusRange = radiusRange, rotated = rotatedPeaks, clusterCenter = globalOptimum, peakShape = peakShape)
                 problem = cls.createInstance(peaks + newPeaks, topology, shapeHeightCorrelation)
                 currentNumberOptima = len(problem.getLocalOptima())
                 tries += 1
@@ -120,7 +120,7 @@ class MultiplePeaksModel2:
 
 
     @classmethod
-    def createInstance(cls, peaks, topology="random", shapeHeightCorrelation=0):
+    def createInstance(cls, peaks, topology = "random", shapeHeightCorrelation = 0):
         assert(shapeHeightCorrelation in (-1, 0, 1))
         # attention: deepcopy is important because peak objects are
         # modified in the following
@@ -163,7 +163,7 @@ class MultiplePeaksModel2:
 
 
     @classmethod
-    def clusteredPeaks(cls, numberPeaks=8, numberVariables=10, numberGlobalOptima=1, heightRange=(0.5, 0.99), shapeRange=(1.75, 2.25), radiusRange=(0.25, 0.5), rotated=True, clusterCenter=None, peakShape="ellipse"):
+    def clusteredPeaks(cls, numberPeaks = 8, numberVariables = 10, numberGlobalOptima = 1, heightRange = (0.5, 0.99), shapeRange = (1.75, 2.25), radiusRange = (0.25, 0.5), rotated = True, clusterCenter = None, peakShape = "ellipse"):
         assert(numberPeaks >= numberGlobalOptima)
         runi = random.uniform
         if clusterCenter is None:
@@ -188,11 +188,11 @@ class MultiplePeaksModel2:
 
 
     @classmethod
-    def randomUniformPeaks(cls, numberPeaks=8, numberVariables=10, numberGlobalOptima=1, heightRange=(0.5, 0.99), shapeRange=(1.75, 2.25), radiusRange=(0.25, 0.5), rotated=True, peakShape="ellipse"):
+    def randomUniformPeaks(cls, numberPeaks = 8, numberVariables = 10, numberGlobalOptima = 1, heightRange = (0.5, 0.99), shapeRange = (1.75, 2.25), radiusRange = (0.25, 0.5), rotated = True, peakShape = "ellipse"):
         numberRemainingPeaks = numberPeaks - numberGlobalOptima
         assert(numberRemainingPeaks >= 0)
         runi = random.uniform
-        peaks = [cls.Peak(numberVariables, 1.0, runi(*shapeRange), runi(*radiusRange), rotated=rotated, peakShape=peakShape) for _ in range(numberGlobalOptima)]
+        peaks = [cls.Peak(numberVariables, 1.0, runi(*shapeRange), runi(*radiusRange), rotated = rotated, peakShape = peakShape) for _ in range(numberGlobalOptima)]
         peaks.extend([cls.Peak(numberVariables, runi(*heightRange), runi(*shapeRange), runi(*radiusRange), rotated=rotated, peakShape=peakShape) for _ in range(numberRemainingPeaks)])
         return peaks
 
@@ -299,7 +299,7 @@ currentPeakShape = "ellipse"
 
 def initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape):
     global currentProblem, currentNpeaks, currentDimension, currentTopology, currentSeed, currentRotated, currentPeakShape
-    if (currentNpeaks != npeaks or currentDimension != dimension or currentTopology != topology or currentSeed != randomSeed or currentRotated != rotated or currentPeakShape != peakShape):
+    if ((currentNpeaks != npeaks) or (currentDimension != dimension) or (currentTopology != topology) or (currentSeed != randomSeed) or (currentRotated != rotated) or (currentPeakShape != peakShape)):
       currentNpeaks = npeaks
       currentDimension = dimension
       currentTopology = topology
@@ -308,7 +308,7 @@ def initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape):
       currentPeakShape = peakShape
       random.seed(randomSeed)
       np.random.seed(randomSeed)
-      currentProblem = MultiplePeaksModel2.createInstanceWithExactNumberOfOptima(npeaks, dimension, topology, shapeHeightCorrelation = 0, rotatedPeaks = rotated, peakShape = peakShape)
+      currentProblem = MultiplePeaksModel2.createInstanceWithExactNumberOfOptima(npeaks, dimension, topology = topology, shapeHeightCorrelation = 0, rotatedPeaks = rotated, peakShape = peakShape)
 
 def evaluateProblem(position, npeaks, dimension, topology, randomSeed, rotated, peakShape):
     global currentProblem
