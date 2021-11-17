@@ -38,6 +38,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
     stopf("No support for the multiple peaks model 2 generator at the moment.")
   }
 
+  # n.peaks = 1L; dimensions = 2L; topology = "funnel"; seed = 3L; rotated = TRUE; peak.shape = "ellipse"
   # do some sanity checks
   n.peaks = convertInteger(n.peaks)
   dimensions = convertInteger(dimensions)
@@ -60,17 +61,22 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
   # build parameter set (bounds are [0, 1]^d)
   par.set = makeNumericParamSet("x", len = dimensions, lower = 0, upper = 1)
 
-  # import rPython namespace
-  BBmisc::requirePackages("_rPython", why = "smoof::makeMultiplePeaksModel2Function")
+  # import reticulate namespace
+  BBmisc::requirePackages("_reticulate", why = "smoof::makeMultiplePeaksModel2Function")
 
-  # load funnel generator to global environemt
-  eval(rPython::python.load(system.file("mpm2.py", package = "smoof")), envir = .GlobalEnv)
+  # initialize 3 functions from mpm2.py as NULL such that they have a visible binding when checking the pkg
+  evaluateProblem = getGlobalOptimaParams = getLocalOptimaParams = NULL
 
-  local.opt.params = eval(rPython::python.call("getLocalOptimaParams", n.peaks, dimensions, topology, seed, rotated, peak.shape))
-  if (n.peaks == 1)
-    local.opt.params = list(local.opt.params)
-  local.opt.params = do.call(rbind, local.opt.params)
-  global.opt.params = eval(rPython::python.call("getGlobalOptimaParams", n.peaks, dimensions, topology, seed, rotated, peak.shape))
+  # load funnel generator to global environment
+  eval(reticulate::py_run_file(system.file("mpm2.py", package = "smoof")), envir = .GlobalEnv)
+  eval(reticulate::source_python(system.file("mpm2.py", package = "smoof"), envir = .GlobalEnv, convert = TRUE), envir = .GlobalEnv)
+
+  # extract local and global optima
+  local.opt.params = eval(getLocalOptimaParams(n.peaks, dimensions, topology, seed, rotated, peak.shape))
+  local.opt.params = do.call(rbind, lapply(local.opt.params, unlist))
+
+  global.opt.params = eval(getGlobalOptimaParams(n.peaks, dimensions, topology, seed, rotated, peak.shape), envir = .GlobalEnv)
+  global.opt.params = matrix(global.opt.params[[1L]], nrow = 1L)
 
   smoof.fn = makeSingleObjectiveFunction(
     name = sprintf("Funnel_%i_%i_%i_%s_%s%s", n.peaks, dimensions, seed, topology, peak.shape, ifelse(rotated, "_rotated", "")),
@@ -78,7 +84,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
       n.peaks, dimensions, topology, seed, rotated, peak.shape),
     fn = function(x) {
       assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
-      smoof.python.call("evaluateProblem", as.double(x), n.peaks, dimensions, topology, seed, rotated, peak.shape)
+      evaluateProblem(as.double(x), n.peaks, dimensions, topology, seed, rotated, peak.shape)
     },
     par.set = par.set,
     tags = c("non-separable", "scalable", "continuous", "multimodal"),
@@ -91,38 +97,3 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
 class(makeMPM2Function) = c("function", "smoof_generator")
 attr(makeMPM2Function, "name") = c("Multiple peaks model 2 function generator")
 attr(makeMPM2Function, "type") = c("single-objective")
-
-
-smoof.python.call = function (py.foo, ..., simplify = TRUE, as.is = FALSE)
-{
-    foo.args = list(...)
-    if (is.null(names(foo.args)))
-        which.dict = rep(FALSE, length(foo.args))
-    else which.dict = names(foo.args) != ""
-    n.args.vect = sum(!which.dict)
-    n.args.dict = sum(which.dict)
-
-    if (!requireNamespace("RJSONIO", quietly = TRUE))
-      stopf("Package \"RJSONIO\" needed for this function to work.")
-
-    foo.args.dict = RJSONIO::toJSON(foo.args[which.dict], digits = 12, collapse = " ",
-        asIs = as.is)
-    foo.args.vect = RJSONIO::toJSON(foo.args[!which.dict], digits = 12, collapse = " ",
-        asIs = as.is)
-    python.command = c(
-      paste("_r_args_dict =r'''", foo.args.dict, "'''", sep = ""),
-      paste("_r_args_vect =r'''", foo.args.vect, "'''", sep = ""),
-      "_r_args_dict = json.loads( _r_args_dict )",
-      "_r_args_vect = json.loads( _r_args_vect )",
-      python.command = paste(
-        "_r_call_return = ",
-        py.foo, "(", ifelse(n.args.vect == 1, "_r_args_vect[0]",
-        "*_r_args_vect"), ifelse(n.args.dict == 0, ")",
-        ", **_r_args_dict)"), sep = ""))
-    python.command = paste(python.command, collapse = "\n")
-    rPython::python.exec(python.command)
-    ret = rPython::python.get("_r_call_return")
-    if (length(ret) == 1 && simplify)
-        ret = ret[[1]]
-    ret
-}

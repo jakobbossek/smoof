@@ -8,6 +8,7 @@
 * Added parameter size to addLoggingWrapper for improved performance
 * getLoggedValues now correctly names function parameters.
 * BBOB test function now return an ID.
+* Changed: moved from rPython and RJSONIO to reticulate
 
 ## Bugfixes
 
