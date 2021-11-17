@@ -144,19 +144,19 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>name</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
+      <td><p>[<code>character(1)</code>]<br />
 Function name. Used for the title of plots for example.</p></td>
     </tr>
     <tr>
       <th>id</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> | <code>NULL</code>]<br />
+      <td><p>[<code>character(1)</code> | <code>NULL</code>]<br />
 Optional short function identifier. If provided, this should be a short
 name without whitespaces and now special characters beside the underscore.
 Default is <code>NULL</code>, which means no ID at all.</p></td>
     </tr>
     <tr>
       <th>description</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> | <code>NULL</code>]<br />
+      <td><p>[<code>character(1)</code> | <code>NULL</code>]<br />
 Optional function description.</p></td>
     </tr>
     <tr>
@@ -166,14 +166,14 @@ Objective function.</p></td>
     </tr>
     <tr>
       <th>has.simple.signature</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 Set this to <code>TRUE</code> if the objective function expects a vector as input and <code>FALSE</code>
 if it expects a named list of values. The latter is needed if the function depends on mixed
 parameters. Default is <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>vectorized</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 Can the objective function handle &#8220;vector&#8221; input, i.~e., does it
 accept matrix of parameters? Default is <code>FALSE</code>.</p></td>
     </tr>
@@ -186,7 +186,7 @@ for further information.</p></td>
     </tr>
     <tr>
       <th>noisy</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 Is the function noisy? Defaults to <code>FALSE</code>.</p></td>
     </tr>
     <tr>
@@ -197,7 +197,7 @@ have the same mean as <code>fn</code>.</p></td>
     </tr>
     <tr>
       <th>minimize</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 Set this to <code>TRUE</code> if the function should be minimized and to
 <code>FALSE</code> otherwise.
 The default is <code>TRUE</code>.</p></td>
@@ -229,7 +229,7 @@ for reasons of consistency.</p></td>
     </tr>
     <tr>
       <th>global.opt.value</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code> | <code>NULL</code>]<br />
+      <td><p>[<code>numeric(1)</code> | <code>NULL</code>]<br />
 Global optimum value if known. Default is <code>NULL</code>, which means unknown. If
 only the <code>global.opt.params</code> are passed, the value is computed automatically.</p></td>
     </tr>
@@ -252,76 +252,82 @@ only the <code>local.opt.params</code> are passed, the values are computed autom
     <p>[<code>function</code>] Objective function with additional stuff attached as attributes.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-
-<span class='va'>fn</span> <span class='op'>=</span> <span class='fu'>makeSingleObjectiveFunction</span><span class='op'>(</span>
-  name <span class='op'>=</span> <span class='st'>"Sphere Function"</span>,
-  fn <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>,
-  par.set <span class='op'>=</span> <span class='fu'>makeNumericParamSet</span><span class='op'>(</span><span class='st'>"x"</span>, len <span class='op'>=</span> <span class='fl'>1L</span>, lower <span class='op'>=</span> <span class='op'>-</span><span class='fl'>5L</span>, upper <span class='op'>=</span> <span class='fl'>5L</span><span class='op'>)</span>,
-  global.opt.params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
-<span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>fn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Single-objective function
-#&gt; Name: Sphere Function
-#&gt; Description: no description
-#&gt; Tags: 
-#&gt; Noisy: FALSE
-#&gt; Minimize: TRUE
-#&gt; Constraints: TRUE
-#&gt; Number of parameters: 1
-#&gt;            Type len Def  Constr Req Tunable Trafo
-#&gt; x numericvector   1   - -5 to 5   -    TRUE     -
-#&gt; Global optimum objective value of 0.0000 at
-#&gt;   x
-#&gt; 1 0</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>fn</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='makeSingleObjectiveFunction-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='va'>fn.num2</span> <span class='op'>=</span> <span class='fu'>makeSingleObjectiveFunction</span><span class='op'>(</span>
-  name <span class='op'>=</span> <span class='st'>"Numeric 2D"</span>,
-  fn <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>,
-  par.set <span class='op'>=</span> <span class='fu'>makeParamSet</span><span class='op'>(</span>
-    <span class='fu'>makeNumericParam</span><span class='op'>(</span><span class='st'>"x1"</span>, lower <span class='op'>=</span> <span class='op'>-</span><span class='fl'>5</span>, upper <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,
-    <span class='fu'>makeNumericParam</span><span class='op'>(</span><span class='st'>"x2"</span>, lower <span class='op'>=</span> <span class='op'>-</span><span class='fl'>10</span>, upper <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
-  <span class='op'>)</span>
-<span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>fn.num2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Single-objective function
-#&gt; Name: Numeric 2D
-#&gt; Description: no description
-#&gt; Tags: 
-#&gt; Noisy: FALSE
-#&gt; Minimize: TRUE
-#&gt; Constraints: TRUE
-#&gt; Number of parameters: 2
-#&gt;       Type len Def    Constr Req Tunable Trafo
-#&gt; x1 numeric   -   -   -5 to 5   -    TRUE     -
-#&gt; x2 numeric   -   - -10 to 20   -    TRUE     -</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>fn.num2</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='makeSingleObjectiveFunction-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='va'>fn.mixed</span> <span class='op'>=</span> <span class='fu'>makeSingleObjectiveFunction</span><span class='op'>(</span>
-  name <span class='op'>=</span> <span class='st'>"Mixed 2D"</span>,
-  fn <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='va'>x</span><span class='op'>$</span><span class='va'>num1</span><span class='op'>^</span><span class='fl'>2</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>$</span><span class='va'>disc1</span><span class='op'>)</span> <span class='op'>==</span> <span class='st'>"a"</span><span class='op'>)</span>,
-  has.simple.signature <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  par.set <span class='op'>=</span> <span class='fu'>makeParamSet</span><span class='op'>(</span>
-    <span class='fu'>makeNumericParam</span><span class='op'>(</span><span class='st'>"num1"</span>, lower <span class='op'>=</span> <span class='op'>-</span><span class='fl'>5</span>, upper <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,
-    <span class='fu'>makeDiscreteParam</span><span class='op'>(</span><span class='st'>"disc1"</span>, values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='op'>)</span>,
-  global.opt.params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>num1 <span class='op'>=</span> <span class='fl'>0</span>, disc1 <span class='op'>=</span> <span class='st'>"b"</span><span class='op'>)</span>
-<span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>fn.mixed</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Single-objective function
-#&gt; Name: Mixed 2D
-#&gt; Description: no description
-#&gt; Tags: 
-#&gt; Noisy: FALSE
-#&gt; Minimize: TRUE
-#&gt; Constraints: TRUE
-#&gt; Number of parameters: 2
-#&gt;           Type len Def  Constr Req Tunable Trafo
-#&gt; num1   numeric   -   - -5 to 5   -    TRUE     -
-#&gt; disc1 discrete   -   -     a,b   -    TRUE     -
-#&gt; Global optimum objective value of 0.0000 at
-#&gt;   num1 disc1
-#&gt; 1    0     b</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>fn.mixed</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='makeSingleObjectiveFunction-3.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>fn</span> <span class='op'>=</span> <span class='fu'>makeSingleObjectiveFunction</span><span class='op'>(</span></span>
+<span class='r-in'>  name <span class='op'>=</span> <span class='st'>"Sphere Function"</span>,</span>
+<span class='r-in'>  fn <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>,</span>
+<span class='r-in'>  par.set <span class='op'>=</span> <span class='fu'>makeNumericParamSet</span><span class='op'>(</span><span class='st'>"x"</span>, len <span class='op'>=</span> <span class='fl'>1L</span>, lower <span class='op'>=</span> <span class='op'>-</span><span class='fl'>5L</span>, upper <span class='op'>=</span> <span class='fl'>5L</span><span class='op'>)</span>,</span>
+<span class='r-in'>  global.opt.params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>fn</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Single-objective function</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Name: Sphere Function</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Description: no description</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Tags: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Noisy: FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Minimize: TRUE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Constraints: TRUE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Number of parameters: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            Type len Def  Constr Req Tunable Trafo</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> x numericvector   1   - -5 to 5   -    TRUE     -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Global optimum objective value of 0.0000 at</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   x</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 0</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>fn</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='makeSingleObjectiveFunction-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>fn.num2</span> <span class='op'>=</span> <span class='fu'>makeSingleObjectiveFunction</span><span class='op'>(</span></span>
+<span class='r-in'>  name <span class='op'>=</span> <span class='st'>"Numeric 2D"</span>,</span>
+<span class='r-in'>  fn <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>,</span>
+<span class='r-in'>  par.set <span class='op'>=</span> <span class='fu'>makeParamSet</span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='fu'>makeNumericParam</span><span class='op'>(</span><span class='st'>"x1"</span>, lower <span class='op'>=</span> <span class='op'>-</span><span class='fl'>5</span>, upper <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,</span>
+<span class='r-in'>    <span class='fu'>makeNumericParam</span><span class='op'>(</span><span class='st'>"x2"</span>, lower <span class='op'>=</span> <span class='op'>-</span><span class='fl'>10</span>, upper <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>fn.num2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Single-objective function</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Name: Numeric 2D</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Description: no description</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Tags: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Noisy: FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Minimize: TRUE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Constraints: TRUE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Number of parameters: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       Type len Def    Constr Req Tunable Trafo</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> x1 numeric   -   -   -5 to 5   -    TRUE     -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> x2 numeric   -   - -10 to 20   -    TRUE     -</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>fn.num2</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='makeSingleObjectiveFunction-2.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>fn.mixed</span> <span class='op'>=</span> <span class='fu'>makeSingleObjectiveFunction</span><span class='op'>(</span></span>
+<span class='r-in'>  name <span class='op'>=</span> <span class='st'>"Mixed 2D"</span>,</span>
+<span class='r-in'>  fn <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='va'>x</span><span class='op'>$</span><span class='va'>num1</span><span class='op'>^</span><span class='fl'>2</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>$</span><span class='va'>disc1</span><span class='op'>)</span> <span class='op'>==</span> <span class='st'>"a"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  has.simple.signature <span class='op'>=</span> <span class='cn'>FALSE</span>,</span>
+<span class='r-in'>  par.set <span class='op'>=</span> <span class='fu'>makeParamSet</span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='fu'>makeNumericParam</span><span class='op'>(</span><span class='st'>"num1"</span>, lower <span class='op'>=</span> <span class='op'>-</span><span class='fl'>5</span>, upper <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>,</span>
+<span class='r-in'>    <span class='fu'>makeDiscreteParam</span><span class='op'>(</span><span class='st'>"disc1"</span>, values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>)</span>,</span>
+<span class='r-in'>  global.opt.params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>num1 <span class='op'>=</span> <span class='fl'>0</span>, disc1 <span class='op'>=</span> <span class='st'>"b"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>fn.mixed</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Single-objective function</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Name: Mixed 2D</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Description: no description</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Tags: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Noisy: FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Minimize: TRUE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Constraints: TRUE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Number of parameters: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           Type len Def  Constr Req Tunable Trafo</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> num1   numeric   -   - -5 to 5   -    TRUE     -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> disc1 discrete   -   -     a,b   -    TRUE     -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Global optimum objective value of 0.0000 at</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   num1 disc1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1    0     b</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>fn.mixed</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='makeSingleObjectiveFunction-3.png' alt='' width='700' height='433' /></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

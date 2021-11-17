@@ -155,19 +155,19 @@ a reference point:
     <div class="ref-description">
     <p>Regular R function with additional classes <code>smoof_function</code> and one of <code>smoof_single_objective_function</code>
 or codesmoof_multi_objective_function. Both single- and multi-objective functions share the following attributes.</p><dl>
-  <dt>name [<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]</dt><dd><p>Optional function name.</p></dd>
-  <dt>id [<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]</dt><dd><p>Short identifier.</p></dd>
-  <dt>description [<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]</dt><dd><p>Optional function description.</p></dd>
+  <dt>name [<code>character(1)</code>]</dt><dd><p>Optional function name.</p></dd>
+  <dt>id [<code>character(1)</code>]</dt><dd><p>Short identifier.</p></dd>
+  <dt>description [<code>character(1)</code>]</dt><dd><p>Optional function description.</p></dd>
   <dt>has.simple.signature</dt><dd><p><code>TRUE</code> if the target function expects a vector as input and <code>FALSE</code>
   if it expects a named list of values.</p></dd>
   <dt>par.set [<code><a href='https://paramhelpers.mlr-org.com/reference/makeParamSet.html'>ParamSet</a></code>]</dt><dd><p>Parameter set describing different ascpects of the target function parameters, i. e.,
   names, lower and/or upper bounds, types and so on.</p></dd>
-  <dt>n.objectives [<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>]</dt><dd><p>Number of objectives.</p></dd>
-  <dt>noisy [<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]</dt><dd><p>Boolean indicating whether the function is noisy or not.</p></dd>
+  <dt>n.objectives [<code>integer(1)</code>]</dt><dd><p>Number of objectives.</p></dd>
+  <dt>noisy [<code>logical(1)</code>]</dt><dd><p>Boolean indicating whether the function is noisy or not.</p></dd>
   <dt>fn.mean [<code>function</code>]</dt><dd><p>Optional true mean function in case of a noisy objective function.</p></dd>
-  <dt>minimize [<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]</dt><dd><p>Logical vector of length <code>n.objectives</code> indicating which objectives shall
+  <dt>minimize [<code>logical(1)</code>]</dt><dd><p>Logical vector of length <code>n.objectives</code> indicating which objectives shall
   be minimzed/maximized.</p></dd>
-  <dt>vectorized [<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]</dt><dd><p>Can the handle &#8220;vector&#8221; input, i. e., does it accept matrix of
+  <dt>vectorized [<code>logical(1)</code>]</dt><dd><p>Can the handle &#8220;vector&#8221; input, i. e., does it accept matrix of
   parameters?</p></dd>
   <dt>constraint.fn [<code>function</code>]</dt><dd><p>Optional function which returns a logical vector with each component indicating
   whether the corresponding constraint is violated.</p></dd>
@@ -178,7 +178,7 @@ or codesmoof_multi_objective_function. Both single- and multi-objective function
 local and/or global optima as well as characterizing tags.</p><dl>
   <dt>tags [<code>character</code>]</dt><dd><p>Optional character vector of tags or keywords.</p></dd>
   <dt>global.opt.params [<code>data.frame</code>]</dt><dd><p>Data frame of parameter values of global optima.</p></dd>
-  <dt>global.opt.value [<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>]</dt><dd><p>Function value of global optima.</p></dd>
+  <dt>global.opt.value [<code>numeric(1)</code>]</dt><dd><p>Function value of global optima.</p></dd>
   <dt>local.opt.params [<code>data.frame</code>]</dt><dd><p>Data frame of parameter values of local optima.</p></dd>
   <dt>global.opt.value [<code>numeric</code>]</dt><dd><p>Function values of local optima.</p></dd>
 

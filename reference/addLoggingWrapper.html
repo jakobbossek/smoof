@@ -136,19 +136,19 @@ Smoof function.</p></td>
     </tr>
     <tr>
       <th>logg.x</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 Should x-values be logged?
 Default is <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>logg.y</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 Should objective values be logged?
 Default is <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>size</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>]<br />
+      <td><p>[<code>integer(1)</code>]<br />
 Initial size of the internal data structures used for logging.
 Default is 100. I.e., there is space reserved for 100 function evaluations.
 In case of an overflow (i.e., more function evaluations than space reserved)
@@ -168,160 +168,163 @@ of logging values.</p></td>
 down the evaluation of the function.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># We first build the smoof function and apply the logging wrapper to it</span>
-<span class='va'>fn</span> <span class='op'>=</span> <span class='fu'><a href='makeSphereFunction.html'>makeSphereFunction</a></span><span class='op'>(</span>dimensions <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span>
-<span class='va'>fn</span> <span class='op'>=</span> <span class='fu'>addLoggingWrapper</span><span class='op'>(</span><span class='va'>fn</span>, logg.x <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-<span class='co'># We now apply an optimization algorithm to it and the logging wrapper keeps</span>
-<span class='co'># track of the evaluated points.</span>
-<span class='va'>res</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/optim.html'>optim</a></span><span class='op'>(</span><span class='va'>fn</span>, par <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, method <span class='op'>=</span> <span class='st'>"Nelder-Mead"</span><span class='op'>)</span>
-
-<span class='co'># Extract the logged values</span>
-<span class='va'>log.res</span> <span class='op'>=</span> <span class='fu'><a href='getLoggedValues.html'>getLoggedValues</a></span><span class='op'>(</span><span class='va'>fn</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>log.res</span><span class='op'>$</span><span class='va'>pars</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;               x1            x2
-#&gt; 1   1.000000e+00  1.000000e+00
-#&gt; 2   1.100000e+00  1.000000e+00
-#&gt; 3   1.000000e+00  1.100000e+00
-#&gt; 4   9.000000e-01  1.100000e+00
-#&gt; 5   9.500000e-01  1.075000e+00
-#&gt; 6   9.000000e-01  1.000000e+00
-#&gt; 7   8.500000e-01  9.500000e-01
-#&gt; 8   9.500000e-01  8.500000e-01
-#&gt; 9   9.375000e-01  9.125000e-01
-#&gt; 10  8.000000e-01  8.000000e-01
-#&gt; 11  7.000000e-01  7.000000e-01
-#&gt; 12  8.000000e-01  6.000000e-01
-#&gt; 13  8.125000e-01  6.875000e-01
-#&gt; 14  5.500000e-01  4.500000e-01
-#&gt; 15  3.500000e-01  2.500000e-01
-#&gt; 16  2.500000e-01  3.500000e-01
-#&gt; 17  3.875000e-01  4.125000e-01
-#&gt; 18 -1.000000e-01 -1.000000e-01
-#&gt; 19 -5.000000e-01 -5.000000e-01
-#&gt; 20 -2.000000e-01 -8.881784e-16
-#&gt; 21 -6.250000e-02  6.250000e-02
-#&gt; 22 -4.125000e-01 -3.875000e-01
-#&gt; 23  8.437500e-02  1.656250e-01
-#&gt; 24 -2.468750e-01 -2.031250e-01
-#&gt; 25  1.562500e-03  7.343750e-02
-#&gt; 26  3.906250e-02  2.359375e-01
-#&gt; 27 -6.523438e-02 -1.601563e-02
-#&gt; 28 -1.171875e-03 -5.078125e-03
-#&gt; 29  2.949219e-02 -3.886719e-02
-#&gt; 30 -6.796875e-02 -9.453125e-02
-#&gt; 31 -1.582031e-02  3.144531e-02
-#&gt; 32  4.824219e-02  4.238281e-02
-#&gt; 33  1.987305e-02  2.778320e-02
-#&gt; 34  3.452148e-02 -8.740234e-03
-#&gt; 35 -3.234863e-03  2.139893e-02
-#&gt; 36 -2.427979e-02 -1.146240e-02
-#&gt; 37 -1.324158e-02 -1.651001e-03
-#&gt; 38 -1.117859e-02 -2.812805e-02
-#&gt; 39 -5.220795e-03  9.017181e-03
-#&gt; 40  6.848907e-03  5.590057e-03
-#&gt; 41  1.826286e-03  3.779793e-03
-#&gt; 42  5.875206e-03 -1.031551e-02
-#&gt; 43 -2.446795e-03  4.184008e-03
-#&gt; 44  5.513668e-04  1.304193e-02
-#&gt; 45 -7.410645e-04 -5.481124e-04
-#&gt; 46  3.532016e-03 -9.523273e-04
-#&gt; 47  2.037314e-03  3.317565e-04
-#&gt; 48 -5.300373e-04 -3.996149e-03
-#&gt; 49  5.904362e-05 -2.052163e-03
-#&gt; 50 -2.719335e-03 -2.932032e-03
-#&gt; 51  8.481516e-04 -4.841907e-04
-#&gt; 52  4.804339e-05  1.019860e-03
-#&gt; 53  5.079345e-05  2.518544e-04
-#&gt; 54 -1.538423e-03  1.879327e-04
-#&gt; 55  2.515080e-04 -3.161599e-04
-#&gt; 56  1.043366e-03  4.838069e-04
-#&gt; 57 -2.949569e-04 -2.901326e-04
-#&gt; 58  5.972584e-04  2.258271e-04
-#&gt; 59 -7.190309e-05 -1.611427e-04
-#&gt; 60 -2.726176e-04  4.068715e-04
-#&gt; 61  1.204766e-04 -1.354020e-04
-#&gt; 62 -2.219950e-06 -5.483990e-04
-#&gt; 63  3.754010e-05  5.179101e-05</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>log.res</span><span class='op'>$</span><span class='va'>obj.vals</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] 2.000000e+00 2.210000e+00 2.210000e+00 2.020000e+00 2.058125e+00
-#&gt;  [6] 1.810000e+00 1.625000e+00 1.625000e+00 1.711562e+00 1.280000e+00
-#&gt; [11] 9.800000e-01 1.000000e+00 1.132812e+00 5.050000e-01 1.850000e-01
-#&gt; [16] 1.850000e-01 3.203125e-01 2.000000e-02 5.000000e-01 4.000000e-02
-#&gt; [21] 7.812500e-03 3.203125e-01 3.455078e-02 1.022070e-01 5.395508e-03
-#&gt; [26] 5.719238e-02 4.512024e-03 2.716064e-05 2.380447e-03 1.355591e-02
-#&gt; [31] 1.239090e-03 4.123611e-03 1.166844e-03 1.268125e-03 4.683784e-04
-#&gt; [36] 7.208946e-04 1.780652e-04 9.161481e-04 1.085663e-04 7.815627e-05
-#&gt; [41] 1.762216e-05 1.409279e-04 2.349272e-05 1.703958e-04 8.496039e-07
-#&gt; [46] 1.338207e-05 4.260709e-06 1.625014e-05 4.214860e-06 1.599159e-05
-#&gt; [51] 9.538017e-07 1.042423e-06 6.601059e-08 2.402063e-06 1.632133e-07
-#&gt; [56] 1.322682e-06 1.711765e-07 4.077154e-07 3.113701e-08 2.398648e-07
-#&gt; [61] 3.284831e-08 3.007464e-07 4.091568e-09</div><div class='input'><span class='va'>log.res</span> <span class='op'>=</span> <span class='fu'><a href='getLoggedValues.html'>getLoggedValues</a></span><span class='op'>(</span><span class='va'>fn</span>, compact <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>log.res</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;               x1            x2           y1
-#&gt; 1   1.000000e+00  1.000000e+00 2.000000e+00
-#&gt; 2   1.100000e+00  1.000000e+00 2.210000e+00
-#&gt; 3   1.000000e+00  1.100000e+00 2.210000e+00
-#&gt; 4   9.000000e-01  1.100000e+00 2.020000e+00
-#&gt; 5   9.500000e-01  1.075000e+00 2.058125e+00
-#&gt; 6   9.000000e-01  1.000000e+00 1.810000e+00
-#&gt; 7   8.500000e-01  9.500000e-01 1.625000e+00
-#&gt; 8   9.500000e-01  8.500000e-01 1.625000e+00
-#&gt; 9   9.375000e-01  9.125000e-01 1.711562e+00
-#&gt; 10  8.000000e-01  8.000000e-01 1.280000e+00
-#&gt; 11  7.000000e-01  7.000000e-01 9.800000e-01
-#&gt; 12  8.000000e-01  6.000000e-01 1.000000e+00
-#&gt; 13  8.125000e-01  6.875000e-01 1.132812e+00
-#&gt; 14  5.500000e-01  4.500000e-01 5.050000e-01
-#&gt; 15  3.500000e-01  2.500000e-01 1.850000e-01
-#&gt; 16  2.500000e-01  3.500000e-01 1.850000e-01
-#&gt; 17  3.875000e-01  4.125000e-01 3.203125e-01
-#&gt; 18 -1.000000e-01 -1.000000e-01 2.000000e-02
-#&gt; 19 -5.000000e-01 -5.000000e-01 5.000000e-01
-#&gt; 20 -2.000000e-01 -8.881784e-16 4.000000e-02
-#&gt; 21 -6.250000e-02  6.250000e-02 7.812500e-03
-#&gt; 22 -4.125000e-01 -3.875000e-01 3.203125e-01
-#&gt; 23  8.437500e-02  1.656250e-01 3.455078e-02
-#&gt; 24 -2.468750e-01 -2.031250e-01 1.022070e-01
-#&gt; 25  1.562500e-03  7.343750e-02 5.395508e-03
-#&gt; 26  3.906250e-02  2.359375e-01 5.719238e-02
-#&gt; 27 -6.523438e-02 -1.601563e-02 4.512024e-03
-#&gt; 28 -1.171875e-03 -5.078125e-03 2.716064e-05
-#&gt; 29  2.949219e-02 -3.886719e-02 2.380447e-03
-#&gt; 30 -6.796875e-02 -9.453125e-02 1.355591e-02
-#&gt; 31 -1.582031e-02  3.144531e-02 1.239090e-03
-#&gt; 32  4.824219e-02  4.238281e-02 4.123611e-03
-#&gt; 33  1.987305e-02  2.778320e-02 1.166844e-03
-#&gt; 34  3.452148e-02 -8.740234e-03 1.268125e-03
-#&gt; 35 -3.234863e-03  2.139893e-02 4.683784e-04
-#&gt; 36 -2.427979e-02 -1.146240e-02 7.208946e-04
-#&gt; 37 -1.324158e-02 -1.651001e-03 1.780652e-04
-#&gt; 38 -1.117859e-02 -2.812805e-02 9.161481e-04
-#&gt; 39 -5.220795e-03  9.017181e-03 1.085663e-04
-#&gt; 40  6.848907e-03  5.590057e-03 7.815627e-05
-#&gt; 41  1.826286e-03  3.779793e-03 1.762216e-05
-#&gt; 42  5.875206e-03 -1.031551e-02 1.409279e-04
-#&gt; 43 -2.446795e-03  4.184008e-03 2.349272e-05
-#&gt; 44  5.513668e-04  1.304193e-02 1.703958e-04
-#&gt; 45 -7.410645e-04 -5.481124e-04 8.496039e-07
-#&gt; 46  3.532016e-03 -9.523273e-04 1.338207e-05
-#&gt; 47  2.037314e-03  3.317565e-04 4.260709e-06
-#&gt; 48 -5.300373e-04 -3.996149e-03 1.625014e-05
-#&gt; 49  5.904362e-05 -2.052163e-03 4.214860e-06
-#&gt; 50 -2.719335e-03 -2.932032e-03 1.599159e-05
-#&gt; 51  8.481516e-04 -4.841907e-04 9.538017e-07
-#&gt; 52  4.804339e-05  1.019860e-03 1.042423e-06
-#&gt; 53  5.079345e-05  2.518544e-04 6.601059e-08
-#&gt; 54 -1.538423e-03  1.879327e-04 2.402063e-06
-#&gt; 55  2.515080e-04 -3.161599e-04 1.632133e-07
-#&gt; 56  1.043366e-03  4.838069e-04 1.322682e-06
-#&gt; 57 -2.949569e-04 -2.901326e-04 1.711765e-07
-#&gt; 58  5.972584e-04  2.258271e-04 4.077154e-07
-#&gt; 59 -7.190309e-05 -1.611427e-04 3.113701e-08
-#&gt; 60 -2.726176e-04  4.068715e-04 2.398648e-07
-#&gt; 61  1.204766e-04 -1.354020e-04 3.284831e-08
-#&gt; 62 -2.219950e-06 -5.483990e-04 3.007464e-07
-#&gt; 63  3.754010e-05  5.179101e-05 4.091568e-09</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># We first build the smoof function and apply the logging wrapper to it</span></span>
+<span class='r-in'><span class='va'>fn</span> <span class='op'>=</span> <span class='fu'><a href='makeSphereFunction.html'>makeSphereFunction</a></span><span class='op'>(</span>dimensions <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>fn</span> <span class='op'>=</span> <span class='fu'>addLoggingWrapper</span><span class='op'>(</span><span class='va'>fn</span>, logg.x <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># We now apply an optimization algorithm to it and the logging wrapper keeps</span></span>
+<span class='r-in'><span class='co'># track of the evaluated points.</span></span>
+<span class='r-in'><span class='va'>res</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/optim.html'>optim</a></span><span class='op'>(</span><span class='va'>fn</span>, par <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, method <span class='op'>=</span> <span class='st'>"Nelder-Mead"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Extract the logged values</span></span>
+<span class='r-in'><span class='va'>log.res</span> <span class='op'>=</span> <span class='fu'><a href='getLoggedValues.html'>getLoggedValues</a></span><span class='op'>(</span><span class='va'>fn</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>log.res</span><span class='op'>$</span><span class='va'>pars</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>               x1            x2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1   1.000000e+00  1.000000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2   1.100000e+00  1.000000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3   1.000000e+00  1.100000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4   9.000000e-01  1.100000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5   9.500000e-01  1.075000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6   9.000000e-01  1.000000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7   8.500000e-01  9.500000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8   9.500000e-01  8.500000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 9   9.375000e-01  9.125000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10  8.000000e-01  8.000000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 11  7.000000e-01  7.000000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 12  8.000000e-01  6.000000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 13  8.125000e-01  6.875000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 14  5.500000e-01  4.500000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 15  3.500000e-01  2.500000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 16  2.500000e-01  3.500000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 17  3.875000e-01  4.125000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 18 -1.000000e-01 -1.000000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 19 -5.000000e-01 -5.000000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 20 -2.000000e-01 -8.881784e-16</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 21 -6.250000e-02  6.250000e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 22 -4.125000e-01 -3.875000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 23  8.437500e-02  1.656250e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 24 -2.468750e-01 -2.031250e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 25  1.562500e-03  7.343750e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 26  3.906250e-02  2.359375e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 27 -6.523438e-02 -1.601563e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 28 -1.171875e-03 -5.078125e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 29  2.949219e-02 -3.886719e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 30 -6.796875e-02 -9.453125e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 31 -1.582031e-02  3.144531e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 32  4.824219e-02  4.238281e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 33  1.987305e-02  2.778320e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 34  3.452148e-02 -8.740234e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 35 -3.234863e-03  2.139893e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 36 -2.427979e-02 -1.146240e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 37 -1.324158e-02 -1.651001e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 38 -1.117859e-02 -2.812805e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 39 -5.220795e-03  9.017181e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 40  6.848907e-03  5.590057e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 41  1.826286e-03  3.779793e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 42  5.875206e-03 -1.031551e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 43 -2.446795e-03  4.184008e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 44  5.513668e-04  1.304193e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 45 -7.410645e-04 -5.481124e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 46  3.532016e-03 -9.523273e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 47  2.037314e-03  3.317565e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 48 -5.300373e-04 -3.996149e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 49  5.904362e-05 -2.052163e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50 -2.719335e-03 -2.932032e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 51  8.481516e-04 -4.841907e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52  4.804339e-05  1.019860e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53  5.079345e-05  2.518544e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 54 -1.538423e-03  1.879327e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 55  2.515080e-04 -3.161599e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 56  1.043366e-03  4.838069e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 57 -2.949569e-04 -2.901326e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 58  5.972584e-04  2.258271e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 59 -7.190309e-05 -1.611427e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 60 -2.726176e-04  4.068715e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 61  1.204766e-04 -1.354020e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 62 -2.219950e-06 -5.483990e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 63  3.754010e-05  5.179101e-05</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>log.res</span><span class='op'>$</span><span class='va'>obj.vals</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] 2.000000e+00 2.210000e+00 2.210000e+00 2.020000e+00 2.058125e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] 1.810000e+00 1.625000e+00 1.625000e+00 1.711562e+00 1.280000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [11] 9.800000e-01 1.000000e+00 1.132812e+00 5.050000e-01 1.850000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [16] 1.850000e-01 3.203125e-01 2.000000e-02 5.000000e-01 4.000000e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [21] 7.812500e-03 3.203125e-01 3.455078e-02 1.022070e-01 5.395508e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [26] 5.719238e-02 4.512024e-03 2.716064e-05 2.380447e-03 1.355591e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [31] 1.239090e-03 4.123611e-03 1.166844e-03 1.268125e-03 4.683784e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [36] 7.208946e-04 1.780652e-04 9.161481e-04 1.085663e-04 7.815627e-05</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [41] 1.762216e-05 1.409279e-04 2.349272e-05 1.703958e-04 8.496039e-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [46] 1.338207e-05 4.260709e-06 1.625014e-05 4.214860e-06 1.599159e-05</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [51] 9.538017e-07 1.042423e-06 6.601059e-08 2.402063e-06 1.632133e-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [56] 1.322682e-06 1.711765e-07 4.077154e-07 3.113701e-08 2.398648e-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [61] 3.284831e-08 3.007464e-07 4.091568e-09</span>
+<span class='r-in'><span class='va'>log.res</span> <span class='op'>=</span> <span class='fu'><a href='getLoggedValues.html'>getLoggedValues</a></span><span class='op'>(</span><span class='va'>fn</span>, compact <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>log.res</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>               x1            x2           y1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1   1.000000e+00  1.000000e+00 2.000000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2   1.100000e+00  1.000000e+00 2.210000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3   1.000000e+00  1.100000e+00 2.210000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4   9.000000e-01  1.100000e+00 2.020000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5   9.500000e-01  1.075000e+00 2.058125e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6   9.000000e-01  1.000000e+00 1.810000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7   8.500000e-01  9.500000e-01 1.625000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8   9.500000e-01  8.500000e-01 1.625000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 9   9.375000e-01  9.125000e-01 1.711562e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10  8.000000e-01  8.000000e-01 1.280000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 11  7.000000e-01  7.000000e-01 9.800000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 12  8.000000e-01  6.000000e-01 1.000000e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 13  8.125000e-01  6.875000e-01 1.132812e+00</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 14  5.500000e-01  4.500000e-01 5.050000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 15  3.500000e-01  2.500000e-01 1.850000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 16  2.500000e-01  3.500000e-01 1.850000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 17  3.875000e-01  4.125000e-01 3.203125e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 18 -1.000000e-01 -1.000000e-01 2.000000e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 19 -5.000000e-01 -5.000000e-01 5.000000e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 20 -2.000000e-01 -8.881784e-16 4.000000e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 21 -6.250000e-02  6.250000e-02 7.812500e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 22 -4.125000e-01 -3.875000e-01 3.203125e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 23  8.437500e-02  1.656250e-01 3.455078e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 24 -2.468750e-01 -2.031250e-01 1.022070e-01</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 25  1.562500e-03  7.343750e-02 5.395508e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 26  3.906250e-02  2.359375e-01 5.719238e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 27 -6.523438e-02 -1.601563e-02 4.512024e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 28 -1.171875e-03 -5.078125e-03 2.716064e-05</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 29  2.949219e-02 -3.886719e-02 2.380447e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 30 -6.796875e-02 -9.453125e-02 1.355591e-02</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 31 -1.582031e-02  3.144531e-02 1.239090e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 32  4.824219e-02  4.238281e-02 4.123611e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 33  1.987305e-02  2.778320e-02 1.166844e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 34  3.452148e-02 -8.740234e-03 1.268125e-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 35 -3.234863e-03  2.139893e-02 4.683784e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 36 -2.427979e-02 -1.146240e-02 7.208946e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 37 -1.324158e-02 -1.651001e-03 1.780652e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 38 -1.117859e-02 -2.812805e-02 9.161481e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 39 -5.220795e-03  9.017181e-03 1.085663e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 40  6.848907e-03  5.590057e-03 7.815627e-05</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 41  1.826286e-03  3.779793e-03 1.762216e-05</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 42  5.875206e-03 -1.031551e-02 1.409279e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 43 -2.446795e-03  4.184008e-03 2.349272e-05</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 44  5.513668e-04  1.304193e-02 1.703958e-04</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 45 -7.410645e-04 -5.481124e-04 8.496039e-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 46  3.532016e-03 -9.523273e-04 1.338207e-05</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 47  2.037314e-03  3.317565e-04 4.260709e-06</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 48 -5.300373e-04 -3.996149e-03 1.625014e-05</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 49  5.904362e-05 -2.052163e-03 4.214860e-06</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 50 -2.719335e-03 -2.932032e-03 1.599159e-05</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 51  8.481516e-04 -4.841907e-04 9.538017e-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 52  4.804339e-05  1.019860e-03 1.042423e-06</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 53  5.079345e-05  2.518544e-04 6.601059e-08</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 54 -1.538423e-03  1.879327e-04 2.402063e-06</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 55  2.515080e-04 -3.161599e-04 1.632133e-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 56  1.043366e-03  4.838069e-04 1.322682e-06</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 57 -2.949569e-04 -2.901326e-04 1.711765e-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 58  5.972584e-04  2.258271e-04 4.077154e-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 59 -7.190309e-05 -1.611427e-04 3.113701e-08</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 60 -2.726176e-04  4.068715e-04 2.398648e-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 61  1.204766e-04 -1.354020e-04 3.284831e-08</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 62 -2.219950e-06 -5.483990e-04 3.007464e-07</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 63  3.754010e-05  5.179101e-05 4.091568e-09</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

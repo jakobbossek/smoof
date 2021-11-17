@@ -146,13 +146,13 @@ Arguments passed to <code><a href='https://rdrr.io/pkg/mco/man/nsga2.html'>nsga2
     <p>[<code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code>]</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Here we visualize the Pareto-optimal front of the bi-objective ZDT3 function</span>
-<span class='va'>fn</span> <span class='op'>=</span> <span class='fu'><a href='makeZDT3Function.html'>makeZDT3Function</a></span><span class='op'>(</span>dimensions <span class='op'>=</span> <span class='fl'>3L</span><span class='op'>)</span>
-<span class='va'>vis</span> <span class='op'>=</span> <span class='fu'>visualizeParetoOptimalFront</span><span class='op'>(</span><span class='va'>fn</span><span class='op'>)</span>
-
-<span class='co'># Alternatively we can pass some more algorithm parameters to the NSGA2 algorithm</span>
-<span class='va'>vis</span> <span class='op'>=</span> <span class='fu'>visualizeParetoOptimalFront</span><span class='op'>(</span><span class='va'>fn</span>, popsize <span class='op'>=</span> <span class='fl'>1000L</span><span class='op'>)</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Here we visualize the Pareto-optimal front of the bi-objective ZDT3 function</span></span>
+<span class='r-in'><span class='va'>fn</span> <span class='op'>=</span> <span class='fu'><a href='makeZDT3Function.html'>makeZDT3Function</a></span><span class='op'>(</span>dimensions <span class='op'>=</span> <span class='fl'>3L</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>vis</span> <span class='op'>=</span> <span class='fu'>visualizeParetoOptimalFront</span><span class='op'>(</span><span class='va'>fn</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Alternatively we can pass some more algorithm parameters to the NSGA2 algorithm</span></span>
+<span class='r-in'><span class='va'>vis</span> <span class='op'>=</span> <span class='fu'>visualizeParetoOptimalFront</span><span class='op'>(</span><span class='va'>fn</span>, popsize <span class='op'>=</span> <span class='fl'>1000L</span><span class='op'>)</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

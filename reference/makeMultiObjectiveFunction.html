@@ -141,19 +141,19 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>name</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
+      <td><p>[<code>character(1)</code>]<br />
 Function name. Used for the title of plots for example.</p></td>
     </tr>
     <tr>
       <th>id</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> | <code>NULL</code>]<br />
+      <td><p>[<code>character(1)</code> | <code>NULL</code>]<br />
 Optional short function identifier. If provided, this should be a short
 name without whitespaces and now special characters beside the underscore.
 Default is <code>NULL</code>, which means no ID at all.</p></td>
     </tr>
     <tr>
       <th>description</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> | <code>NULL</code>]<br />
+      <td><p>[<code>character(1)</code> | <code>NULL</code>]<br />
 Optional function description.</p></td>
     </tr>
     <tr>
@@ -163,7 +163,7 @@ Objective function.</p></td>
     </tr>
     <tr>
       <th>has.simple.signature</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 Set this to <code>TRUE</code> if the objective function expects a vector as input and <code>FALSE</code>
 if it expects a named list of values. The latter is needed if the function depends on mixed
 parameters. Default is <code>TRUE</code>.</p></td>
@@ -177,12 +177,12 @@ for further information.</p></td>
     </tr>
     <tr>
       <th>n.objectives</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>]<br />
+      <td><p>[<code>integer(1)</code>]<br />
 Number of objectives of the multi-objective function.</p></td>
     </tr>
     <tr>
       <th>noisy</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 Is the function noisy? Defaults to <code>FALSE</code>.</p></td>
     </tr>
     <tr>
@@ -200,7 +200,7 @@ Default is the vector with all components set to <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>vectorized</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 Can the objective function handle &#8220;vector&#8221; input, i.~e., does it
 accept matrix of parameters? Default is <code>FALSE</code>.</p></td>
     </tr>
@@ -223,25 +223,26 @@ Optional reference point in the objective space, e.g., for hypervolume computati
     <p>[<code>function</code>] Target function with additional stuff attached as attributes.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>fn</span> <span class='op'>=</span> <span class='fu'>makeMultiObjectiveFunction</span><span class='op'>(</span>
-  name <span class='op'>=</span> <span class='st'>"My test function"</span>,
-  fn <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>,
-  n.objectives <span class='op'>=</span> <span class='fl'>2L</span>,
-  par.set <span class='op'>=</span> <span class='fu'>makeNumericParamSet</span><span class='op'>(</span><span class='st'>"x"</span>, len <span class='op'>=</span> <span class='fl'>1L</span>, lower <span class='op'>=</span> <span class='op'>-</span><span class='fl'>5L</span>, upper <span class='op'>=</span> <span class='fl'>5L</span><span class='op'>)</span>
-<span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>fn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Multi-objective function
-#&gt; Number of objectives: 2
-#&gt; Reference point:      ()
-#&gt; Name: My test function
-#&gt; Description: no description
-#&gt; Tags: 
-#&gt; Noisy: FALSE
-#&gt; Minimize: TRUE,TRUE
-#&gt; Constraints: TRUE
-#&gt; Number of parameters: 1
-#&gt;            Type len Def  Constr Req Tunable Trafo
-#&gt; x numericvector   1   - -5 to 5   -    TRUE     -</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>fn</span> <span class='op'>=</span> <span class='fu'>makeMultiObjectiveFunction</span><span class='op'>(</span></span>
+<span class='r-in'>  name <span class='op'>=</span> <span class='st'>"My test function"</span>,</span>
+<span class='r-in'>  fn <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span class='r-in'>  n.objectives <span class='op'>=</span> <span class='fl'>2L</span>,</span>
+<span class='r-in'>  par.set <span class='op'>=</span> <span class='fu'>makeNumericParamSet</span><span class='op'>(</span><span class='st'>"x"</span>, len <span class='op'>=</span> <span class='fl'>1L</span>, lower <span class='op'>=</span> <span class='op'>-</span><span class='fl'>5L</span>, upper <span class='op'>=</span> <span class='fl'>5L</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>fn</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Multi-objective function</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Number of objectives: 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Reference point:      ()</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Name: My test function</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Description: no description</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Tags: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Noisy: FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Minimize: TRUE,TRUE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Constraints: TRUE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Number of parameters: 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            Type len Def  Constr Req Tunable Trafo</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> x numericvector   1   - -5 to 5   -    TRUE     -</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
