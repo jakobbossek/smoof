@@ -9,6 +9,7 @@
 * getLoggedValues now correctly names function parameters.
 * BBOB test function now return an ID.
 * Changed: moved from rPython and RJSONIO to reticulate
+* Added vectorization to the MPM2 generator
 
 ## Bugfixes
 
