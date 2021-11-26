@@ -83,10 +83,10 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
     description = sprintf("Funnel-like function\n(n.peaks: %i, dimension: %i, topology: %s, seed: %i, rotated: %s, shape: %s)",
       n.peaks, dimensions, topology, seed, rotated, peak.shape),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
-      evaluateProblem(as.double(x), n.peaks, dimensions, topology, seed, rotated, peak.shape)
+      evaluateProblem(x, n.peaks, dimensions, topology, seed, rotated, peak.shape)
     },
     par.set = par.set,
+    vectorized = TRUE,
     tags = c("non-separable", "scalable", "continuous", "multimodal"),
     local.opt.params = local.opt.params,
     global.opt.params = global.opt.params
