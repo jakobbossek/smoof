@@ -313,7 +313,12 @@ def initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape):
 def evaluateProblem(position, npeaks, dimension, topology, randomSeed, rotated, peakShape):
     global currentProblem
     initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
-    return currentProblem.objectiveFunction(position)
+    
+    if isinstance(position, np.ndarray):
+      # if we have a matrix input, apply the function for each column
+      return [currentProblem.objectiveFunction(col) for col in position.T]
+    else:
+      return currentProblem.objectiveFunction(position)
 
 def getLocalOptimaParams(npeaks, dimension, topology, randomSeed, rotated, peakShape):
     global currentProblem
