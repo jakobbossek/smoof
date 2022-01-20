@@ -53,7 +53,7 @@ makeMMF15aFunction = function(dimensions, n.objectives, np = 2L) {
   )
 }
 
-class(makeMMF13Function) = c("function", "smoof_generator")
-attr(makeMMF13Function, "name") = c("MMF15a")
-attr(makeMMF13Function, "type") = c("multi-objective")
-attr(makeMMF13Function, "tags") = c("multi-objective")
+class(makeMMF15aFunction) = c("function", "smoof_generator")
+attr(makeMMF15aFunction, "name") = c("MMF15a")
+attr(makeMMF15aFunction, "type") = c("multi-objective")
+attr(makeMMF15aFunction, "tags") = c("multi-objective")
