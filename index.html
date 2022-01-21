@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -34,18 +36,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">smoof</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.0.3</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -55,7 +51,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/jakobbossek/smoof/">
+  <a href="https://github.com/jakobbossek/smoof/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -72,59 +68,61 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="smoof-single--and-multi-objective-optimization-test-functions" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#smoof-single--and-multi-objective-optimization-test-functions" class="anchor"></a>smoof: Single- and Multi-Objective Optimization Test Functions</h1></div>
-<p>Visit the <a href="https://jakobbossek.github.io/smoof/">package website</a></p>
+<div class="section level1">
+<div class="page-header"><h1 id="smoof-single--and-multi-objective-optimization-test-functions">smoof: Single- and Multi-Objective Optimization Test Functions<a class="anchor" aria-label="anchor" href="#smoof-single--and-multi-objective-optimization-test-functions"></a>
+</h1></div>
+<p>Visit the <a href="https://jakobbossek.github.io/smoof/" class="external-link">package website</a></p>
 <!-- badges: start -->
-<p><a href="http://cran.r-project.org/web/packages/smoof"><img src="http://www.r-pkg.org/badges/version/smoof" alt="CRAN Status Badge"></a> <a href="http://cran.rstudio.com/web/packages/smoof/index.html"><img src="http://cranlogs.r-pkg.org/badges/smoof" alt="CRAN Downloads"></a> <a href="http://cran.rstudio.com/web/packages/smoof/index.html"><img src="http://cranlogs.r-pkg.org/badges/grand-total/smoof?color=orange" alt="CRAN Downloads"></a> <a href="https://github.com/jakobbossek/smoof/actions"><img src="https://github.com/jakobbossek/smoof/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://codecov.io/gh/jakobbossek/smoof?branch=master"><img src="https://codecov.io/gh/jakobbossek/smoof/branch/master/graph/badge.svg" alt="Codecov test coverage"></a> <a href="http://depsy.org/package/r/smoof"><img src="http://depsy.org/api/package/cran/smoof/badge.svg" alt="Research software impact"></a> <!-- badges: end --></p>
-<p>This package offers an interface for objective functions in the context of (multi-objective) global optimization. It conveniently builds up on the S3 objects, i. e., an objective function is a S3 object composed of a descriptive name, the function itself, a parameter set, box constraints or other constraints, number of objectives and so on. Moreover, the package contains generators for a load of both single- and multi-objective optimization test functions which are frequently being used in the literature of (benchmarking) optimization algorithms. The bi-objective ZDT function family by Zitzler, Deb and Thiele is included as well as the popular single-objective test functions like De Jong’s function, Himmelblau function and Schwefel function. Moreover, the package offers a R interface to the C implementation of the <em>Black-Box Optimization Benchmarking</em> (BBOB) <a href="http://coco.gforge.inria.fr/doku.php?id=bbob-2009-downloads">set of noiseless test functions</a>.</p>
-<p><img src="https://raw.githubusercontent.com/jakobbossek/smoof/screenshots/smoof_funs_example.png" alt="examplary smoof functions"></p>
-<div id="installation-instructions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation-instructions" class="anchor"></a>Installation instructions</h2>
-<p>Visit the <a href="http://cran.r-project.org/web/packages/smoof/index.html">package repository on CRAN</a>. If you want to take a glance at the developement version install the github developement version by executing the following command:</p>
+
+<p>This package offers an interface for objective functions in the context of (multi-objective) global optimization. It conveniently builds up on the S3 objects, i. e., an objective function is a S3 object composed of a descriptive name, the function itself, a parameter set, box constraints or other constraints, number of objectives and so on. Moreover, the package contains generators for a load of both single- and multi-objective optimization test functions which are frequently being used in the literature of (benchmarking) optimization algorithms. The bi-objective ZDT function family by Zitzler, Deb and Thiele is included as well as the popular single-objective test functions like De Jong’s function, Himmelblau function and Schwefel function. Moreover, the package offers a R interface to the C implementation of the <em>Black-Box Optimization Benchmarking</em> (BBOB) <a href="http://coco.gforge.inria.fr/doku.php?id=bbob-2009-downloads" class="external-link">set of noiseless test functions</a>.</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/jakobbossek/smoof/screenshots/smoof_funs_example.png" alt=""><p class="caption">examplary smoof functions</p>
+</div>
+<div class="section level2">
+<h2 id="installation-instructions">Installation instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a>
+</h2>
+<p>Visit the <a href="http://cran.r-project.org/web/packages/smoof/index.html" class="external-link">package repository on CRAN</a>. If you want to take a glance at the developement version install the github developement version by executing the following command:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"jakobbossek/smoof"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<div id="use-a-build-in-generator" class="section level3">
-<h3 class="hasAnchor">
-<a href="#use-a-build-in-generator" class="anchor"></a>Use a build-in generator</h3>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<div class="section level3">
+<h3 id="use-a-build-in-generator">Use a build-in generator<a class="anchor" aria-label="anchor" href="#use-a-build-in-generator"></a>
+</h3>
 <p>Assume the simplifying case where we want to benchmark a set of optimization algorithms on a single objective instance. We decide ourselves for the popular 10-dimensional Rosenbrock banana function. Instead of looking up the function definition, the box constraints and where the global optimum is located, we simply generate the function with <strong>smoof</strong> and get all the stuff:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">plot3D</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">plot3D</span><span class="op">)</span>
 
 <span class="va">obj.fn</span> <span class="op">=</span> <span class="fu"><a href="reference/makeRosenbrockFunction.html">makeRosenbrockFunction</a></span><span class="op">(</span>dimensions <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="reference/plot3D.html">plot3D</a></span><span class="op">(</span><span class="va">obj.fn</span>, length.out <span class="op">=</span> <span class="fl">50L</span>, contour <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="set-up-an-objective-function-by-hand" class="section level3">
-<h3 class="hasAnchor">
-<a href="#set-up-an-objective-function-by-hand" class="anchor"></a>Set up an objective function by hand</h3>
-<p>Let us consider the problem of finding the (global) minimum of the multimodal target function f(x) = x sin(3x) on the closed intervall <br><span class="math display">0, 2<em>P</em><em>I</em></span><br>. We define our target function via the <code><a href="reference/makeSingleObjectiveFunction.html">makeSingleObjectiveFunction()</a></code> method providing a name, the function itself and a parameter set. We can display the function within the box constraints with ggplot.</p>
+<div class="section level3">
+<h3 id="set-up-an-objective-function-by-hand">Set up an objective function by hand<a class="anchor" aria-label="anchor" href="#set-up-an-objective-function-by-hand"></a>
+</h3>
+<p>Let us consider the problem of finding the (global) minimum of the multimodal target function f(x) = x sin(3x) on the closed intervall [0, 2PI]. We define our target function via the <code><a href="reference/makeSingleObjectiveFunction.html">makeSingleObjectiveFunction()</a></code> method providing a name, the function itself and a parameter set. We can display the function within the box constraints with ggplot.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
 <span class="va">obj.fn</span> <span class="op">=</span> <span class="fu"><a href="reference/makeSingleObjectiveFunction.html">makeSingleObjectiveFunction</a></span><span class="op">(</span>
   name <span class="op">=</span> <span class="st">"My fancy function name"</span>,
-  fn <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="fl">3</span><span class="op">*</span><span class="va">x</span><span class="op">)</span>,
+  fn <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">3</span><span class="op">*</span><span class="va">x</span><span class="op">)</span>,
   par.set <span class="op">=</span> <span class="fu">makeNumericParamSet</span><span class="op">(</span><span class="st">"x"</span>, len <span class="op">=</span> <span class="fl">1L</span>, lower <span class="op">=</span> <span class="fl">0</span>, upper <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span><span class="op">)</span>
 <span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="reference/getParamSet.html">getParamSet</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>The <a href="https://github.com/jakobbossek/ecr2">ecr</a> package for evolutionary computing in R needs builds upon smoof functions.</p>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="reference/getParamSet.html">getParamSet</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>The <a href="https://github.com/jakobbossek/ecr2" class="external-link">ecr</a> package for evolutionary computing in R needs builds upon smoof functions.</p>
 </div>
 </div>
-<div id="citation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h2>
-<p>Please cite my <a href="https://journal.r-project.org/archive/2017/RJ-2017-004/index.html">R Journal paper</a> in publications. Get the information via <code>citation("smoof")</code> or use the following BibTex entry:</p>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>Please cite my <a href="https://journal.r-project.org/archive/2017/RJ-2017-004/index.html" class="external-link">R Journal paper</a> in publications. Get the information via <code>citation("smoof")</code> or use the following BibTex entry:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">@</span>Article{,</span>
 <span id="cb4-2"><a href="#cb4-2"></a>  author =<span class="st"> </span>{Jakob Bossek},</span>
 <span id="cb4-3"><a href="#cb4-3"></a>  title =<span class="st"> </span>{smoof<span class="op">:</span><span class="st"> </span>Single<span class="op">-</span><span class="st"> </span>and Multi<span class="op">-</span>Objective Optimization Test Functions},</span>
@@ -133,45 +131,58 @@
 <span id="cb4-6"><a href="#cb4-6"></a>  url =<span class="st"> </span>{https<span class="op">:</span><span class="er">//</span>journal.r<span class="op">-</span>project.org<span class="op">/</span>archive<span class="op">/</span><span class="dv">2017</span><span class="op">/</span>RJ<span class="dv">-2017-004</span><span class="op">/</span>index.html},</span>
 <span id="cb4-7"><a href="#cb4-7"></a>}</span></code></pre></div>
 </div>
-<div id="contact" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contact" class="anchor"></a>Contact</h2>
-<p>Please address questions and missing features about the <strong>smoof package</strong> to the author Jakob Bossek <a href="mailto:j.bossek@gmail.com" class="email">j.bossek@gmail.com</a>. Found some nasty bugs? Please use the <a href="https://github.com/jakobbossek/smoof/issues">issue tracker</a> for this. Pay attention to explain the problem as good as possible. At its best you provide an example, so I can reproduce your problem.</p>
+<div class="section level2">
+<h2 id="contact">Contact<a class="anchor" aria-label="anchor" href="#contact"></a>
+</h2>
+<p>Please address questions and missing features about the <strong>smoof package</strong> to the author Jakob Bossek <a href="mailto:j.bossek@gmail.com" class="email">j.bossek@gmail.com</a>. Found some nasty bugs? Please use the <a href="https://github.com/jakobbossek/smoof/issues" class="external-link">issue tracker</a> for this. Pay attention to explain the problem as good as possible. At its best you provide an example, so I can reproduce your problem.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=smoof">https://​cloud.r-project.org/​package=smoof</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/jakobbossek/smoof/">https://​github.com/​jakobbossek/​smoof/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/jakobbossek/smoof/issues">https://​github.com/​jakobbossek/​smoof/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=smoof" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/jakobbossek/smoof/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/jakobbossek/smoof/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://opensource.org/licenses/BSD-2-Clause">BSD_2_clause</a> + file <a href="LICENSE-text.html">LICENSE</a>
+<a href="https://opensource.org/licenses/BSD-2-Clause" class="external-link">BSD_2_clause</a> + file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
+
+
 <div class="citation">
-<h2>Citation</h2>
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html">Citing smoof</a></li>
+<li><a href="authors.html#citation">Citing smoof</a></li>
 </ul>
 </div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Jakob Bossek <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4121-4668" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">All authors...</a></li>
+<li>Jakob Bossek <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4121-4668" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="http://cran.r-project.org/web/packages/smoof" class="external-link"><img src="http://www.r-pkg.org/badges/version/smoof" alt="CRAN Status Badge"></a></li>
+<li><a href="http://cran.rstudio.com/web/packages/smoof/index.html" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/smoof" alt="CRAN Downloads"></a></li>
+<li><a href="http://cran.rstudio.com/web/packages/smoof/index.html" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/smoof?color=orange" alt="CRAN Downloads"></a></li>
+<li><a href="https://github.com/jakobbossek/smoof/actions" class="external-link"><img src="https://github.com/jakobbossek/smoof/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://codecov.io/gh/jakobbossek/smoof?branch=master" class="external-link"><img src="https://codecov.io/gh/jakobbossek/smoof/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="http://depsy.org/package/r/smoof" class="external-link"><img src="http://depsy.org/api/package/cran/smoof/badge.svg" alt="Research software impact"></a></li>
 </ul>
 </div>
 
@@ -180,11 +191,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Jakob Bossek.</p>
+  <p></p>
+<p>Developed by Jakob Bossek.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -192,6 +205,8 @@
 
   
 
+
+  
 
   </body>
 </html>
