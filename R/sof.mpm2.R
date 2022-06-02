@@ -34,9 +34,9 @@
 #'
 #' @export
 makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE, peak.shape = "ellipse") {
-  if (isWindows()) {
-    stopf("No support for the multiple peaks model 2 generator at the moment.")
-  }
+  # if (isWindows()) {
+  #  stopf("No support for the multiple peaks model 2 generator at the moment.")
+  # }
 
   # n.peaks = 1L; dimensions = 2L; topology = "funnel"; seed = 3L; rotated = TRUE; peak.shape = "ellipse"
   # do some sanity checks
