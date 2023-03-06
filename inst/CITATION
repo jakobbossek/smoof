@@ -1,4 +1,5 @@
-bibentry(entry = "Article",
+bibentry(
+  bibtype = "Article",
   author = "Jakob Bossek",
   title = "smoof: Single- and Multi-Objective Optimization Test Functions",
   year = "2017",
