@@ -1,6 +1,4 @@
-citHeader("To cite 'smoof' in publications, please use:")
-
-citEntry(entry = "Article",
+bibentry(entry = "Article",
   author = "Jakob Bossek",
   title = "smoof: Single- and Multi-Objective Optimization Test Functions",
   year = "2017",

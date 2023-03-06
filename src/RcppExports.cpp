@@ -517,18 +517,18 @@ BEGIN_RCPP
 END_RCPP
 }
 
-RcppExport SEXP evaluateBBOBFunctionCPP(SEXP, SEXP, SEXP, SEXP);
-RcppExport SEXP evaluateUFFunction(SEXP, SEXP, SEXP);
-RcppExport SEXP getOptimumForBBOBFunctionCPP(SEXP, SEXP, SEXP);
-RcppExport SEXP mof_bk1(SEXP);
-RcppExport SEXP mof_MOP1(SEXP);
-RcppExport SEXP mof_MOP2(SEXP);
-RcppExport SEXP mof_MOP3(SEXP);
-RcppExport SEXP mof_MOP4(SEXP);
-RcppExport SEXP mof_MOP5(SEXP);
-RcppExport SEXP mof_MOP6(SEXP);
-RcppExport SEXP mof_MOP7(SEXP);
-RcppExport SEXP mof_viennet(SEXP);
+RcppExport SEXP evaluateBBOBFunctionCPP(void *, void *, void *, void *);
+RcppExport SEXP evaluateUFFunction(void *, void *, void *);
+RcppExport SEXP getOptimumForBBOBFunctionCPP(void *, void *, void *);
+RcppExport SEXP mof_bk1(void *);
+RcppExport SEXP mof_MOP1(void *);
+RcppExport SEXP mof_MOP2(void *);
+RcppExport SEXP mof_MOP3(void *);
+RcppExport SEXP mof_MOP4(void *);
+RcppExport SEXP mof_MOP5(void *);
+RcppExport SEXP mof_MOP6(void *);
+RcppExport SEXP mof_MOP7(void *);
+RcppExport SEXP mof_viennet(void *);
 
 static const R_CallMethodDef CallEntries[] = {
     {"_smoof_dtlz_1", (DL_FUNC) &_smoof_dtlz_1, 2},

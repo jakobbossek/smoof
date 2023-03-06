@@ -6,8 +6,7 @@ Description: Provides generators for a high number of both single- and multi-
     (numerical) optimization algorithms. Moreover, it offers a set of convenient
     functions to generate, plot and work with objective functions.
 Version: 1.6.0.3
-Date: 2021-11-15
-Author: Jakob Bossek
+Date: 2023-03-06
 Authors@R: c(
   person(
     given = "Jakob",
