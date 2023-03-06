@@ -53,7 +53,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">plot3D</span><span class="op">(</span><span class="va">x</span>, length.out <span class="op">=</span> <span class="fl">100L</span>, package <span class="op">=</span> <span class="st">"plot3D"</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot3D</span><span class="op">(</span><span class="va">x</span>, length.out <span class="op">=</span> <span class="fl">100L</span>, package <span class="op">=</span> <span class="st">"plot3D"</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -61,12 +61,16 @@
     <dl><dt>x</dt>
 <dd><p>[<code>smoof_function</code>]<br>
 Two-dimensional snoof function.</p></dd>
+
+
 <dt>length.out</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Determines the “smoothness” of the grid. The higher the value, the
 smoother the function landscape looks like. However, you should avoid setting
 this parameter to high, since with the <code>contour</code> option set to <code>TRUE</code>
 the drawing can take quite a lot of time. Default is <code>100</code>.</p></dd>
+
+
 <dt>package</dt>
 <dd><p>[<code>character(1)</code>]<br>
 String describing the package to use for 3D visualization.
@@ -75,25 +79,28 @@ At the moment “plot3D” (package <span class="pkg">plot3D</span>) and
 The latter opens a highly interactive plot in a web brower
 and is thus suited well to explore a function by hand.
 Default is “plot3D”.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>[any]<br>
 Furhter parameters passed to method used for visualization
 (which is determined by the <code>package</code> argument.</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">plot3D</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">fn</span> <span class="op">=</span> <span class="fu"><a href="makeRastriginFunction.html">makeRastriginFunction</a></span><span class="op">(</span>dimensions <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># use the plot3D::persp3D method (default behaviour)</span></span>
-<span class="r-in"><span class="fu">plot3D</span><span class="op">(</span><span class="va">fn</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">plot3D</span><span class="op">(</span><span class="va">fn</span>, contour <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">plot3D</span><span class="op">(</span><span class="va">fn</span>, image <span class="op">=</span> <span class="cn">TRUE</span>, phi <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># use plotly::plot_ly for interactive plot</span></span>
-<span class="r-in"><span class="fu">plot3D</span><span class="op">(</span><span class="va">fn</span>, package <span class="op">=</span> <span class="st">"plotly"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">plot3D</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fn</span> <span class="op">=</span> <span class="fu"><a href="makeRastriginFunction.html">makeRastriginFunction</a></span><span class="op">(</span>dimensions <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># use the plot3D::persp3D method (default behaviour)</span></span></span>
+<span class="r-in"><span><span class="fu">plot3D</span><span class="op">(</span><span class="va">fn</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plot3D</span><span class="op">(</span><span class="va">fn</span>, contour <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plot3D</span><span class="op">(</span><span class="va">fn</span>, image <span class="op">=</span> <span class="cn">TRUE</span>, phi <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># use plotly::plot_ly for interactive plot</span></span></span>
+<span class="r-in"><span><span class="fu">plot3D</span><span class="op">(</span><span class="va">fn</span>, package <span class="op">=</span> <span class="st">"plotly"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -108,7 +115,7 @@ Furhter parameters passed to method used for visualization
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

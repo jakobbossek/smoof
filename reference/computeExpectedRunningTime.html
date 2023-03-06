@@ -64,13 +64,13 @@
 </ul></div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">computeExpectedRunningTime</span><span class="op">(</span>
-  <span class="va">fun.evals</span>,
-  fun.success.runs <span class="op">=</span> <span class="cn">NULL</span>,
-  fun.reached.target.values <span class="op">=</span> <span class="cn">NULL</span>,
-  fun.target.value <span class="op">=</span> <span class="cn">NULL</span>,
-  penalty.value <span class="op">=</span> <span class="cn">Inf</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">computeExpectedRunningTime</span><span class="op">(</span></span>
+<span>  <span class="va">fun.evals</span>,</span>
+<span>  fun.success.runs <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  fun.reached.target.values <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  fun.target.value <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  penalty.value <span class="op">=</span> <span class="cn">Inf</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -78,25 +78,36 @@
     <dl><dt>fun.evals</dt>
 <dd><p>[<code>numeric</code>]<br>
 Vector containing the number of function evaluations.</p></dd>
+
+
 <dt>fun.success.runs</dt>
 <dd><p>[<code>logical</code>]<br>
 Boolean vector indicating which algorithm runs were successful,
 i. e., which runs reached the desired target value. Default is <code>NULL</code>.</p></dd>
+
+
 <dt>fun.reached.target.values</dt>
 <dd><p>[<code>numeric</code> | <code>NULL</code>]<br>
 Numeric vector with the objective values reached in the runs. Default is
 <code>NULL</code>.</p></dd>
+
+
 <dt>fun.target.value</dt>
 <dd><p>[<code>numeric(1)</code> | <code>NULL</code>]<br>
 Target value which shall be reached. Default is <code>NULL</code>.</p></dd>
+
+
 <dt>penalty.value</dt>
 <dd><p>[<code>numeric(1)</code>]<br>
 Penalty value which should be returned if none of the algorithm runs
 was successful. Default is <code>Inf</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>[<code>numeric(1)</code>]
+    
+
+<p>[<code>numeric(1)</code>]
   Estimated Expected Running Time.</p>
     </div>
     <div id="details">
@@ -125,7 +136,7 @@ Computation (CEC 2005), pages 1777-1784, 2005.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

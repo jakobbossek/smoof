@@ -63,9 +63,9 @@ do exactly that keeping the attributes.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">convertToMaximization</span><span class="op">(</span><span class="va">fn</span><span class="op">)</span>
-
-<span class="fu">convertToMinimization</span><span class="op">(</span><span class="va">fn</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">convertToMaximization</span><span class="op">(</span><span class="va">fn</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">convertToMinimization</span><span class="op">(</span><span class="va">fn</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -73,10 +73,13 @@ do exactly that keeping the attributes.</p>
     <dl><dt>fn</dt>
 <dd><p>[<code>smoof_function</code>]<br>
 Smoof function.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>[<code>smoof_function</code>]</p>
+    
+
+<p>[<code>smoof_function</code>]</p>
     </div>
     <div id="note">
     <h2>Note</h2>
@@ -85,21 +88,21 @@ Smoof function.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># create a function which should be minimized by default</span></span>
-<span class="r-in"><span class="va">fn</span> <span class="op">=</span> <span class="fu"><a href="makeSphereFunction.html">makeSphereFunction</a></span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="shouldBeMinimized.html">shouldBeMinimized</a></span><span class="op">(</span><span class="va">fn</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># create a function which should be minimized by default</span></span></span>
+<span class="r-in"><span><span class="va">fn</span> <span class="op">=</span> <span class="fu"><a href="makeSphereFunction.html">makeSphereFunction</a></span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="shouldBeMinimized.html">shouldBeMinimized</a></span><span class="op">(</span><span class="va">fn</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"><span class="co"># Now invert the objective direction ...</span></span>
-<span class="r-in"><span class="va">fn2</span> <span class="op">=</span> <span class="fu">convertToMaximization</span><span class="op">(</span><span class="va">fn</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># and invert it again</span></span>
-<span class="r-in"><span class="va">fn3</span> <span class="op">=</span> <span class="fu">convertToMinimization</span><span class="op">(</span><span class="va">fn2</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># Now to convince ourselves we render some plots</span></span>
-<span class="r-in"><span class="va">opar</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fn</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fn2</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fn3</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># Now invert the objective direction ...</span></span></span>
+<span class="r-in"><span><span class="va">fn2</span> <span class="op">=</span> <span class="fu">convertToMaximization</span><span class="op">(</span><span class="va">fn</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># and invert it again</span></span></span>
+<span class="r-in"><span><span class="va">fn3</span> <span class="op">=</span> <span class="fu">convertToMinimization</span><span class="op">(</span><span class="va">fn2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Now to convince ourselves we render some plots</span></span></span>
+<span class="r-in"><span><span class="va">opar</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fn</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fn2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fn3</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="conversion-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -114,7 +117,7 @@ Smoof function.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -75,7 +75,7 @@ for \(2 \le j \le m - 1\),</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">makeED1Function</span><span class="op">(</span><span class="va">dimensions</span>, <span class="va">n.objectives</span>, gamma <span class="op">=</span> <span class="fl">2</span>, <span class="va">theta</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">makeED1Function</span><span class="op">(</span><span class="va">dimensions</span>, <span class="va">n.objectives</span>, gamma <span class="op">=</span> <span class="fl">2</span>, <span class="va">theta</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -83,20 +83,29 @@ for \(2 \le j \le m - 1\),</p>
     <dl><dt>dimensions</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Number of decision variables.</p></dd>
+
+
 <dt>n.objectives</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Number of objectives.</p></dd>
+
+
 <dt>gamma</dt>
 <dd><p>[<code>numeric(1)</code>]<br>
 Optional parameter. Default is 2, which is recommended by Emmerich and Deutz.</p></dd>
+
+
 <dt>theta</dt>
 <dd><p>[<code>numeric(dimensions)</code>]<br>
 Parameter vector, whose components have to be between <code>0</code> and <code>0.5*pi</code>.
 The default is <code>theta = (pi/2) * x</code> (with <code>x</code> being the point from the decision space) as recommended by Emmerich and Deutz.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>[<code>smoof_multi_objective_function</code>]</p>
+    
+
+<p>[<code>smoof_multi_objective_function</code>]</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -117,7 +126,7 @@ Multi-Criterion Optimization (EMO 2007), pp. 922-936, Springer, 2007.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

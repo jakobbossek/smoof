@@ -82,7 +82,7 @@
 </h2>
 <p>Visit the <a href="http://cran.r-project.org/web/packages/smoof/index.html" class="external-link">package repository on CRAN</a>. If you want to take a glance at the developement version install the github developement version by executing the following command:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"jakobbossek/smoof"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"jakobbossek/smoof"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
@@ -92,29 +92,29 @@
 </h3>
 <p>Assume the simplifying case where we want to benchmark a set of optimization algorithms on a single objective instance. We decide ourselves for the popular 10-dimensional Rosenbrock banana function. Instead of looking up the function definition, the box constraints and where the global optimum is located, we simply generate the function with <strong>smoof</strong> and get all the stuff:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">plot3D</span><span class="op">)</span>
-
-<span class="va">obj.fn</span> <span class="op">=</span> <span class="fu"><a href="reference/makeRosenbrockFunction.html">makeRosenbrockFunction</a></span><span class="op">(</span>dimensions <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="reference/plot3D.html">plot3D</a></span><span class="op">(</span><span class="va">obj.fn</span>, length.out <span class="op">=</span> <span class="fl">50L</span>, contour <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">plot3D</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">obj.fn</span> <span class="op">=</span> <span class="fu"><a href="reference/makeRosenbrockFunction.html">makeRosenbrockFunction</a></span><span class="op">(</span>dimensions <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot3D.html">plot3D</a></span><span class="op">(</span><span class="va">obj.fn</span>, length.out <span class="op">=</span> <span class="fl">50L</span>, contour <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="set-up-an-objective-function-by-hand">Set up an objective function by hand<a class="anchor" aria-label="anchor" href="#set-up-an-objective-function-by-hand"></a>
 </h3>
 <p>Let us consider the problem of finding the (global) minimum of the multimodal target function f(x) = x sin(3x) on the closed intervall [0, 2PI]. We define our target function via the <code><a href="reference/makeSingleObjectiveFunction.html">makeSingleObjectiveFunction()</a></code> method providing a name, the function itself and a parameter set. We can display the function within the box constraints with ggplot.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
-
-<span class="va">obj.fn</span> <span class="op">=</span> <span class="fu"><a href="reference/makeSingleObjectiveFunction.html">makeSingleObjectiveFunction</a></span><span class="op">(</span>
-  name <span class="op">=</span> <span class="st">"My fancy function name"</span>,
-  fn <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">3</span><span class="op">*</span><span class="va">x</span><span class="op">)</span>,
-  par.set <span class="op">=</span> <span class="fu">makeNumericParamSet</span><span class="op">(</span><span class="st">"x"</span>, len <span class="op">=</span> <span class="fl">1L</span>, lower <span class="op">=</span> <span class="fl">0</span>, upper <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span><span class="op">)</span>
-<span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="reference/getParamSet.html">getParamSet</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">obj.fn</span> <span class="op">=</span> <span class="fu"><a href="reference/makeSingleObjectiveFunction.html">makeSingleObjectiveFunction</a></span><span class="op">(</span></span>
+<span>  name <span class="op">=</span> <span class="st">"My fancy function name"</span>,</span>
+<span>  fn <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">3</span><span class="op">*</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  par.set <span class="op">=</span> <span class="fu">makeNumericParamSet</span><span class="op">(</span><span class="st">"x"</span>, len <span class="op">=</span> <span class="fl">1L</span>, lower <span class="op">=</span> <span class="fl">0</span>, upper <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="reference/getParamSet.html">getParamSet</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">obj.fn</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>The <a href="https://github.com/jakobbossek/ecr2" class="external-link">ecr</a> package for evolutionary computing in R needs builds upon smoof functions.</p>
 </div>
 </div>
@@ -196,7 +196,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

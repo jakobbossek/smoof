@@ -57,7 +57,7 @@ such a trace. This wrapper makes a smoof function handle x/y-values itself.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">addLoggingWrapper</span><span class="op">(</span><span class="va">fn</span>, logg.x <span class="op">=</span> <span class="cn">FALSE</span>, logg.y <span class="op">=</span> <span class="cn">TRUE</span>, size <span class="op">=</span> <span class="fl">100L</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">addLoggingWrapper</span><span class="op">(</span><span class="va">fn</span>, logg.x <span class="op">=</span> <span class="cn">FALSE</span>, logg.y <span class="op">=</span> <span class="cn">TRUE</span>, size <span class="op">=</span> <span class="fl">100L</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -65,14 +65,20 @@ such a trace. This wrapper makes a smoof function handle x/y-values itself.</p>
     <dl><dt>fn</dt>
 <dd><p>[<code>smoof_function</code>]<br>
 Smoof function.</p></dd>
+
+
 <dt>logg.x</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Should x-values be logged?
 Default is <code>FALSE</code>.</p></dd>
+
+
 <dt>logg.y</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Should objective values be logged?
 Default is <code>TRUE</code>.</p></dd>
+
+
 <dt>size</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Initial size of the internal data structures used for logging.
@@ -82,10 +88,13 @@ the data structures are re-initialized by adding space for another <code>size</c
 This comes handy if you know the number of function evaluations (or at least
 an upper bound thereof) a-priori and may serve to reduce the time complextity
 of logging values.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>[<code>smoof_logging_function</code>]</p>
+    
+
+<p>[<code>smoof_logging_function</code>]</p>
     </div>
     <div id="note">
     <h2>Note</h2>
@@ -95,17 +104,17 @@ down the evaluation of the function.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># We first build the smoof function and apply the logging wrapper to it</span></span>
-<span class="r-in"><span class="va">fn</span> <span class="op">=</span> <span class="fu"><a href="makeSphereFunction.html">makeSphereFunction</a></span><span class="op">(</span>dimensions <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">fn</span> <span class="op">=</span> <span class="fu">addLoggingWrapper</span><span class="op">(</span><span class="va">fn</span>, logg.x <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># We now apply an optimization algorithm to it and the logging wrapper keeps</span></span>
-<span class="r-in"><span class="co"># track of the evaluated points.</span></span>
-<span class="r-in"><span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/optim.html" class="external-link">optim</a></span><span class="op">(</span><span class="va">fn</span>, par <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, method <span class="op">=</span> <span class="st">"Nelder-Mead"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Extract the logged values</span></span>
-<span class="r-in"><span class="va">log.res</span> <span class="op">=</span> <span class="fu"><a href="getLoggedValues.html">getLoggedValues</a></span><span class="op">(</span><span class="va">fn</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">log.res</span><span class="op">$</span><span class="va">pars</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># We first build the smoof function and apply the logging wrapper to it</span></span></span>
+<span class="r-in"><span><span class="va">fn</span> <span class="op">=</span> <span class="fu"><a href="makeSphereFunction.html">makeSphereFunction</a></span><span class="op">(</span>dimensions <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fn</span> <span class="op">=</span> <span class="fu">addLoggingWrapper</span><span class="op">(</span><span class="va">fn</span>, logg.x <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># We now apply an optimization algorithm to it and the logging wrapper keeps</span></span></span>
+<span class="r-in"><span><span class="co"># track of the evaluated points.</span></span></span>
+<span class="r-in"><span><span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/optim.html" class="external-link">optim</a></span><span class="op">(</span><span class="va">fn</span>, par <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, method <span class="op">=</span> <span class="st">"Nelder-Mead"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Extract the logged values</span></span></span>
+<span class="r-in"><span><span class="va">log.res</span> <span class="op">=</span> <span class="fu"><a href="getLoggedValues.html">getLoggedValues</a></span><span class="op">(</span><span class="va">fn</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">log.res</span><span class="op">$</span><span class="va">pars</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               x1            x2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1   1.000000e+00  1.000000e+00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2   1.100000e+00  1.000000e+00</span>
@@ -170,7 +179,7 @@ down the evaluation of the function.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 61  1.204766e-04 -1.354020e-04</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 62 -2.219950e-06 -5.483990e-04</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 63  3.754010e-05  5.179101e-05</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">log.res</span><span class="op">$</span><span class="va">obj.vals</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">log.res</span><span class="op">$</span><span class="va">obj.vals</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.000000e+00 2.210000e+00 2.210000e+00 2.020000e+00 2.058125e+00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 1.810000e+00 1.625000e+00 1.625000e+00 1.711562e+00 1.280000e+00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [11] 9.800000e-01 1.000000e+00 1.132812e+00 5.050000e-01 1.850000e-01</span>
@@ -184,8 +193,8 @@ down the evaluation of the function.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [51] 9.538017e-07 1.042423e-06 6.601059e-08 2.402063e-06 1.632133e-07</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [56] 1.322682e-06 1.711765e-07 4.077154e-07 3.113701e-08 2.398648e-07</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [61] 3.284831e-08 3.007464e-07 4.091568e-09</span>
-<span class="r-in"><span class="va">log.res</span> <span class="op">=</span> <span class="fu"><a href="getLoggedValues.html">getLoggedValues</a></span><span class="op">(</span><span class="va">fn</span>, compact <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">log.res</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">log.res</span> <span class="op">=</span> <span class="fu"><a href="getLoggedValues.html">getLoggedValues</a></span><span class="op">(</span><span class="va">fn</span>, compact <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">log.res</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               x1            x2           y1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1   1.000000e+00  1.000000e+00 2.000000e+00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2   1.100000e+00  1.000000e+00 2.210000e+00</span>
@@ -250,7 +259,7 @@ down the evaluation of the function.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 61  1.204766e-04 -1.354020e-04 3.284831e-08</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 62 -2.219950e-06 -5.483990e-04 3.007464e-07</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 63  3.754010e-05  5.179101e-05 4.091568e-09</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -265,7 +274,7 @@ down the evaluation of the function.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

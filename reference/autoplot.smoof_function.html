@@ -73,17 +73,17 @@ parameters.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S3 method for smoof_function</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span>
-  <span class="va">x</span>,
-  show.optimum <span class="op">=</span> <span class="cn">FALSE</span>,
-  main <span class="op">=</span> <span class="fu"><a href="getName.html">getName</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
-  render.levels <span class="op">=</span> <span class="cn">FALSE</span>,
-  render.contours <span class="op">=</span> <span class="cn">TRUE</span>,
-  log.scale <span class="op">=</span> <span class="cn">FALSE</span>,
-  length.out <span class="op">=</span> <span class="fl">50L</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for smoof_function</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  show.optimum <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  main <span class="op">=</span> <span class="fu"><a href="getName.html">getName</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  render.levels <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  render.contours <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  log.scale <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  length.out <span class="op">=</span> <span class="fl">50L</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -91,27 +91,39 @@ parameters.</p>
     <dl><dt>x</dt>
 <dd><p>[<code>smoof_function</code>]<br>
 Objective function.</p></dd>
+
+
 <dt>show.optimum</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 If the function has a known global optimum, should its location be
 plotted by a point or multiple points in case of multiple global optima?
 Default is <code>FALSE</code>.</p></dd>
+
+
 <dt>main</dt>
 <dd><p>[<code>character(1L)</code>]<br>
 Plot title.
 Default is the name of the smoof function.</p></dd>
+
+
 <dt>render.levels</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 For 2D numeric functions only: Should an image map be plotted? Default is
 <code>FALSE</code>.</p></dd>
+
+
 <dt>render.contours</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 For 2D numeric functions only: Should contour lines be plotted? Default is
 <code>TRUE</code>.</p></dd>
+
+
 <dt>log.scale</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Should the z-axis be plotted on log-scale?
 Default is <code>FALSE</code>.</p></dd>
+
+
 <dt>length.out</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Desired length of the sequence of equidistant values generated for numeric parameters.
@@ -119,13 +131,18 @@ Higher values lead to more smooth resolution in particular if <code>render.level
 is <code>TRUE</code>. Avoid using a very high value here especially if the function
 at hand has many parameters.
 Default is 50.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>[any]<br>
 Not used.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>[<code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></code>]</p>
+    
+
+<p>[<code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></code>]</p>
     </div>
     <div id="note">
     <h2>Note</h2>
@@ -137,43 +154,43 @@ possible values we end up with n_1 x n_2 x ... x n_d subplots.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Simple 2D contour plot with activated heatmap for the Himmelblau function</span></span>
-<span class="r-in"><span class="va">fn</span> <span class="op">=</span> <span class="fu"><a href="makeHimmelblauFunction.html">makeHimmelblauFunction</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">fn</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Simple 2D contour plot with activated heatmap for the Himmelblau function</span></span></span>
+<span class="r-in"><span><span class="va">fn</span> <span class="op">=</span> <span class="fu"><a href="makeHimmelblauFunction.html">makeHimmelblauFunction</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">fn</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="autoplot.smoof_function-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">fn</span>, render.levels <span class="op">=</span> <span class="cn">TRUE</span>, render.contours <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">fn</span>, render.levels <span class="op">=</span> <span class="cn">TRUE</span>, render.contours <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="autoplot.smoof_function-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">fn</span>, show.optimum <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">fn</span>, show.optimum <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="autoplot.smoof_function-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Now we create 4D function with a mixed decision space (two numeric, one discrete,</span></span>
-<span class="r-in"><span class="co"># and one logical parameter)</span></span>
-<span class="r-in"><span class="va">fn.mixed</span> <span class="op">=</span> <span class="fu"><a href="makeSingleObjectiveFunction.html">makeSingleObjectiveFunction</a></span><span class="op">(</span></span>
-<span class="r-in">  name <span class="op">=</span> <span class="st">"4d SOO function"</span>,</span>
-<span class="r-in">  fn <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">    <span class="kw">if</span> <span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">disc1</span> <span class="op">==</span> <span class="st">"a"</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">      <span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">x1</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">x</span><span class="op">$</span><span class="va">x2</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fl">10</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">logic</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span class="r-in">      <span class="va">x</span><span class="op">$</span><span class="va">x1</span> <span class="op">+</span> <span class="va">x</span><span class="op">$</span><span class="va">x2</span> <span class="op">-</span> <span class="fl">10</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">logic</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">}</span></span>
-<span class="r-in">  <span class="op">}</span>,</span>
-<span class="r-in">  has.simple.signature <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">  par.set <span class="op">=</span> <span class="fu">makeParamSet</span><span class="op">(</span></span>
-<span class="r-in">    <span class="fu">makeNumericParam</span><span class="op">(</span><span class="st">"x1"</span>, lower <span class="op">=</span> <span class="op">-</span><span class="fl">5</span>, upper <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
-<span class="r-in">    <span class="fu">makeNumericParam</span><span class="op">(</span><span class="st">"x2"</span>, lower <span class="op">=</span> <span class="op">-</span><span class="fl">3</span>, upper <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,</span>
-<span class="r-in">    <span class="fu">makeDiscreteParam</span><span class="op">(</span><span class="st">"disc1"</span>, values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">    <span class="fu">makeLogicalParam</span><span class="op">(</span><span class="st">"logic"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">pl</span> <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">fn.mixed</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pl</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Now we create 4D function with a mixed decision space (two numeric, one discrete,</span></span></span>
+<span class="r-in"><span><span class="co"># and one logical parameter)</span></span></span>
+<span class="r-in"><span><span class="va">fn.mixed</span> <span class="op">=</span> <span class="fu"><a href="makeSingleObjectiveFunction.html">makeSingleObjectiveFunction</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  name <span class="op">=</span> <span class="st">"4d SOO function"</span>,</span></span>
+<span class="r-in"><span>  fn <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="kw">if</span> <span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">disc1</span> <span class="op">==</span> <span class="st">"a"</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>      <span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">x1</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">x</span><span class="op">$</span><span class="va">x2</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fl">10</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">logic</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>      <span class="va">x</span><span class="op">$</span><span class="va">x1</span> <span class="op">+</span> <span class="va">x</span><span class="op">$</span><span class="va">x2</span> <span class="op">-</span> <span class="fl">10</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">logic</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">}</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span>,</span></span>
+<span class="r-in"><span>  has.simple.signature <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>  par.set <span class="op">=</span> <span class="fu">makeParamSet</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu">makeNumericParam</span><span class="op">(</span><span class="st">"x1"</span>, lower <span class="op">=</span> <span class="op">-</span><span class="fl">5</span>, upper <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="fu">makeNumericParam</span><span class="op">(</span><span class="st">"x2"</span>, lower <span class="op">=</span> <span class="op">-</span><span class="fl">3</span>, upper <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="fu">makeDiscreteParam</span><span class="op">(</span><span class="st">"disc1"</span>, values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="fu">makeLogicalParam</span><span class="op">(</span><span class="st">"logic"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">pl</span> <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">fn.mixed</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pl</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="autoplot.smoof_function-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Since autoplot returns a ggplot object we can modify it, e.g., add a title</span></span>
-<span class="r-in"><span class="co"># or hide the legend</span></span>
-<span class="r-in"><span class="va">pl</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"My fancy function"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Since autoplot returns a ggplot object we can modify it, e.g., add a title</span></span></span>
+<span class="r-in"><span><span class="co"># or hide the legend</span></span></span>
+<span class="r-in"><span><span class="va">pl</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"My fancy function"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="autoplot.smoof_function-5.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -189,7 +206,7 @@ possible values we end up with n_1 x n_2 x ... x n_d subplots.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

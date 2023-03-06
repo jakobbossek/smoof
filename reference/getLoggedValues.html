@@ -53,7 +53,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getLoggedValues</span><span class="op">(</span><span class="va">fn</span>, compact <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getLoggedValues</span><span class="op">(</span><span class="va">fn</span>, compact <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -61,15 +61,22 @@
     <dl><dt>fn</dt>
 <dd><p>[<code>wrapped_smoof_function</code>]<br>
 Wrapped smoof function.</p></dd>
+
+
 <dt>compact</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Wrap all logged values in a single data frame? Default is <code>FALSE</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>[<code>list</code> || <code>data.frame</code>]
+    
+
+<p>[<code>list</code> || <code>data.frame</code>]
   If <code>compact</code> is <code>TRUE</code>, a single data frame. Otherwise the function
-  returns a list containing the following values:</p><dl><dt>pars</dt>
+  returns a list containing the following values:</p>
+<p></p>
+<dl><dt>pars</dt>
 <dd><p>Data frame of parameter values, i.e., x-values or the empty
     data frame if x-values were not logged.</p></dd>
 
@@ -96,7 +103,7 @@ Wrap all logged values in a single data frame? Default is <code>FALSE</code>.</p
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

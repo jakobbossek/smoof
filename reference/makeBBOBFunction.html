@@ -58,7 +58,7 @@ Optimization Benchmarking (BBOB).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">makeBBOBFunction</span><span class="op">(</span><span class="va">dimensions</span>, <span class="va">fid</span>, <span class="va">iid</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">makeBBOBFunction</span><span class="op">(</span><span class="va">dimensions</span>, <span class="va">fid</span>, <span class="va">iid</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -66,16 +66,23 @@ Optimization Benchmarking (BBOB).</p>
     <dl><dt>dimensions</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Problem dimension. Integer value between 2 and 40.</p></dd>
+
+
 <dt>fid</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Function identifier. Integer value between 1 and 24.</p></dd>
+
+
 <dt>iid</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Instance identifier. Integer value greater than or equal 1.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>[<code>smoof_single_objective_function</code>]</p>
+    
+
+<p>[<code>smoof_single_objective_function</code>]</p>
     </div>
     <div id="note">
     <h2>Note</h2>
@@ -90,11 +97,11 @@ for a detailed description of the BBOB functions.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># get the first instance of the 2D Sphere function</span></span>
-<span class="r-in"><span class="va">fn</span> <span class="op">=</span> <span class="fu">makeBBOBFunction</span><span class="op">(</span>dimensions <span class="op">=</span> <span class="fl">2L</span>, fid <span class="op">=</span> <span class="fl">1L</span>, iid <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">plot3D</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu"><a href="plot3D.html">plot3D</a></span><span class="op">(</span><span class="va">fn</span>, contour <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># get the first instance of the 2D Sphere function</span></span></span>
+<span class="r-in"><span><span class="va">fn</span> <span class="op">=</span> <span class="fu">makeBBOBFunction</span><span class="op">(</span>dimensions <span class="op">=</span> <span class="fl">2L</span>, fid <span class="op">=</span> <span class="fl">1L</span>, iid <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">plot3D</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="plot3D.html">plot3D</a></span><span class="op">(</span><span class="va">fn</span>, contour <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: plot3D</span>
 <span class="r-plt img"><img src="makeBBOBFunction-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
@@ -111,7 +118,7 @@ for a detailed description of the BBOB functions.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

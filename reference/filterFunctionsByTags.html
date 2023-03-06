@@ -57,7 +57,7 @@ function helps to filter all single objective smoof function.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">filterFunctionsByTags</span><span class="op">(</span><span class="va">tags</span>, or <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">filterFunctionsByTags</span><span class="op">(</span><span class="va">tags</span>, or <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -66,22 +66,27 @@ function helps to filter all single objective smoof function.</p>
 <dd><p>[<code>character</code>]<br>
 Character vector of tags. All available tags can be determined with a call
 to <code><a href="getAvailableTags.html">getAvailableTags</a></code>.</p></dd>
+
+
 <dt>or</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Should all <code>tags</code> be assigned to the function or are single tags allowed
 as well?
 Default is <code>FALSE</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>[<code>character</code>]
+    
+
+<p>[<code>character</code>]
   Named vector of function names with the given tags.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># list all functions which are unimodal</span></span>
-<span class="r-in"><span class="fu">filterFunctionsByTags</span><span class="op">(</span><span class="st">"unimodal"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># list all functions which are unimodal</span></span></span>
+<span class="r-in"><span><span class="fu">filterFunctionsByTags</span><span class="op">(</span><span class="st">"unimodal"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "Aluffi-Pentini"            "Beale"                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "Bent-Cigar"                "Booth"                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "Brent"                     "Brown"                    </span>
@@ -94,11 +99,11 @@ Default is <code>FALSE</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [19] "Schaffer N. 4"             "Sphere"                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [21] "Sum of Different Squares"  "Trecanni"                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [23] "Zettl"                    </span>
-<span class="r-in"><span class="co"># list all functions which are both unimodal and separable</span></span>
-<span class="r-in"><span class="fu">filterFunctionsByTags</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"unimodal"</span>, <span class="st">"separable"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># list all functions which are both unimodal and separable</span></span></span>
+<span class="r-in"><span><span class="fu">filterFunctionsByTags</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"unimodal"</span>, <span class="st">"separable"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Double-Sum" "Powell-Sum" "Sphere"     "Trecanni"  </span>
-<span class="r-in"><span class="co"># list all functions which are unimodal or separable</span></span>
-<span class="r-in"><span class="fu">filterFunctionsByTags</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"multimodal"</span>, <span class="st">"separable"</span><span class="op">)</span>, or <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># list all functions which are unimodal or separable</span></span></span>
+<span class="r-in"><span><span class="fu">filterFunctionsByTags</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"multimodal"</span>, <span class="st">"separable"</span><span class="op">)</span>, or <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "Ackley"                      "Adjiman"                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "Alpine N. 1"                 "Alpine N. 2"                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "Bartels Conn"                "Bird"                       </span>
@@ -141,7 +146,7 @@ Default is <code>FALSE</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
