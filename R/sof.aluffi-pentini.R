@@ -4,7 +4,7 @@
 #' \deqn{f(\mathbf{x}) = 0.25 x_1^4 - 0.5 x_1^2 + 0.1 x_1 + 0.5 x_2^2}
 #' with \eqn{\mathbf{x}_1, \mathbf{x}_2 \in [-10, 10]}.
 #'
-#' @references See \url{http://al-roomi.org/benchmarks/unconstrained/2-dimensions/26-aluffi-pentini-s-or-zirilli-s-function}.
+#' @references See \url{https://al-roomi.org/benchmarks/unconstrained/2-dimensions/26-aluffi-pentini-s-or-zirilli-s-function}.
 #'
 #' @note This functions is also know as the Zirilli function.
 #'

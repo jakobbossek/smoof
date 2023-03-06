@@ -5,7 +5,7 @@
 #' with \eqn{\mathbf{x}_1, \mathbf{x}_2 \in [-10, 10]}. For details on \eqn{A, B, C}
 #' see the referenced website.
 #'
-#' @references See \url{http://al-roomi.org/benchmarks/unconstrained/2-dimensions/133-judge-s-function}.
+#' @references See \url{https://al-roomi.org/benchmarks/unconstrained/2-dimensions/133-judge-s-function}.
 #'
 #' @template ret_smoof_single
 #' @export

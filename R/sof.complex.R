@@ -4,7 +4,7 @@
 #' \deqn{f(\mathbf{x}) = (x_1^3 - 3 x_1 x_2^2 - 1)^2 + (3 x_2 x_1^2 - x_2^3)^2}
 #' with \eqn{\mathbf{x}_1, \mathbf{x}_2 \in [-2, 2]}.
 #'
-#' @references See \url{http://al-roomi.org/benchmarks/unconstrained/2-dimensions/43-complex-function}.
+#' @references See \url{https://al-roomi.org/benchmarks/unconstrained/2-dimensions/43-complex-function}.
 #'
 #' @template ret_smoof_single
 #' @export

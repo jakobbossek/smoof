@@ -15,5 +15,5 @@ Two-dimensional test function based on the formula
 with \eqn{\mathbf{x}_1, \mathbf{x}_2 \in [-3, 4]}.
 }
 \references{
-See \url{http://al-roomi.org/benchmarks/unconstrained/2-dimensions/59-kearfott-s-function}.
+See \url{https://al-roomi.org/benchmarks/unconstrained/2-dimensions/59-kearfott-s-function}.
 }

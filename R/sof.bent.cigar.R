@@ -4,7 +4,7 @@
 #' \deqn{f(\mathbf{x}) = x_1^2 + 10^6 \sum_{i = 2}^{n} x_i^2}
 #' subject to \eqn{-100 \leq \mathbf{x}_i \leq 100} for \eqn{i = 1, \ldots, n}.
 #'
-#' @references See \url{http://al-roomi.org/benchmarks/unconstrained/n-dimensions/164-bent-cigar-function}.
+#' @references See \url{https://al-roomi.org/benchmarks/unconstrained/n-dimensions/164-bent-cigar-function}.
 #'
 #' @template arg_dimensions
 #' @template ret_smoof_single

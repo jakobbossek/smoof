@@ -129,7 +129,7 @@ NumericVector mof_cec2019_mmf3(NumericVector x) {
   if (x(1) >= 1.0) {
     y2 = y2 - 0.5;
   } else if (x(0) < 0.25) {
-    if ((x(1) > 0.5) & (x(1) < 1.0)) {
+    if ((x(1) > 0.5) && (x(1) < 1.0)) {
       y2 = y2 - 0.5;
     }
   }

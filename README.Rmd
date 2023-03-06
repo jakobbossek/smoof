@@ -6,12 +6,11 @@ output: github_document
 Visit the [package website](https://jakobbossek.github.io/smoof/)
 
 <!-- badges: start -->
-[![CRAN Status Badge](http://www.r-pkg.org/badges/version/smoof)](http://cran.r-project.org/web/packages/smoof)
-[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/smoof)](http://cran.rstudio.com/web/packages/smoof/index.html)
-[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/smoof?color=orange)](http://cran.rstudio.com/web/packages/smoof/index.html)
+[![CRAN Status Badge](http://www.r-pkg.org/badges/version/smoof)](https://CRAN.R-project.org/package=smoof)
+[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/smoof)](https://CRAN.R-project.org/package=smoof)
+[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/smoof?color=orange)](https://CRAN.R-project.org/package=smoof)
 [![R-CMD-check](https://github.com/jakobbossek/smoof/workflows/R-CMD-check/badge.svg)](https://github.com/jakobbossek/smoof/actions)
-[![Codecov test coverage](https://codecov.io/gh/jakobbossek/smoof/branch/master/graph/badge.svg)](https://codecov.io/gh/jakobbossek/smoof?branch=master)
-[![Research software impact](http://depsy.org/api/package/cran/smoof/badge.svg)](http://depsy.org/package/r/smoof)
+[![Codecov test coverage](https://codecov.io/gh/jakobbossek/smoof/branch/master/graph/badge.svg)](https://app.codecov.io/gh/jakobbossek/smoof?branch=master)
 <!-- badges: end -->
 
 This package offers an interface for objective functions in the context of (multi-objective) global optimization. It conveniently builds up on the S3 objects, i. e., an objective function is a S3 object composed of a descriptive name, the function itself, a parameter set, box constraints or other constraints, number of objectives and so on. Moreover, the package contains generators for a load of both single- and multi-objective optimization test functions which are frequently being used in the literature of (benchmarking) optimization algorithms.
@@ -21,7 +20,7 @@ The bi-objective ZDT function family by Zitzler, Deb and Thiele is included as w
 
 ## Installation instructions
 
-Visit the [package repository on CRAN](http://cran.r-project.org/web/packages/smoof/index.html). If you want to take a glance at the developement version install the github developement version by executing the following command:
+Visit the [package repository on CRAN](https://CRAN.R-project.org/package=smoof). If you want to take a glance at the developement version install the github developement version by executing the following command:
 
 ```r
 devtools::install_github("jakobbossek/smoof")

@@ -5,7 +5,7 @@
 #' with \eqn{\mathbf{x}_i \in [0, 2\alpha], i = 1, \ldots, n} and \eqn{\alpha = K = 5}
 #' by default.
 #'
-#' @references See \url{http://al-roomi.org/benchmarks/unconstrained/n-dimensions/238-deflected-corrugated-spring-function}.
+#' @references See \url{https://al-roomi.org/benchmarks/unconstrained/n-dimensions/238-deflected-corrugated-spring-function}.
 #'
 #' @template arg_dimensions
 #' @param K [\code{numeric(1)}]\cr
