@@ -75,7 +75,6 @@ void unif(double* r, int N, int inseed)
         r[i] = (double)aktrand/2.147483647e9;
         if (r[i] == 0.)
         {
-            //printf("Warning: zero sampled(?), set to 1e-99.\n");
             r[i] = 1e-99;
         }
     }
@@ -189,7 +188,7 @@ void computeRotation(double ** B, int seed, int DIM)
     }
 }
 
-double myrand() {
+double myrand(void) {
     /*Adaptation of myrand*/
     if (seed == -1)
         seed = time(NULL) % 1000000000; /* cannot be larger than 1e9 */
@@ -201,7 +200,7 @@ double myrand() {
     return uniftmp[0];
 }
 
-double randn() {
+double randn(void) {
     /*Adaptation of myrandn*/
     if (seedn == -1)
         seedn = time(NULL) % 1000000000; /* cannot be larger than 1e9 */
@@ -301,7 +300,7 @@ void setGlobalVariables(ParamStruct params) {
     return;
 }
 
-void initbenchmarkshelper() {
+void initbenchmarkshelper(void) {
     gval = malloc(sizeof(double) * 1);
     gval2 = malloc(sizeof(double) * 1);
     gvect = malloc(sizeof(double) * DIM * DIM);
@@ -311,7 +310,7 @@ void initbenchmarkshelper() {
     return;
 }
 
-void finibenchmarkshelper() {
+void finibenchmarkshelper(void) {
     free(gval);
     free(gval2);
     free(gvect);
@@ -326,11 +325,8 @@ void finibenchmarkshelper() {
 void ERROR(char *fmt, ...)
 {
   va_list argp;
-  //fprintf(stderr, "ERROR: ");
   va_start(argp, fmt);
-  //vfprintf(stderr, fmt, argp);
   va_end(argp);
-  //fprintf(stderr, "\n");
 /* and EXIT */
   //exit(1);
 }
@@ -339,11 +335,8 @@ void ERROR(char *fmt, ...)
 void WARNING(char *fmt, ...)
 {
   va_list argp;
-  //fprintf(stderr, "WARNING: ");
   va_start(argp, fmt);
-  //vfprintf(stderr, fmt, argp);
   va_end(argp);
-  //fprintf(stderr, "\n");
 /* and RETURN */
   return;
 }
@@ -352,17 +345,16 @@ void WARNING(char *fmt, ...)
    is SYSTEM dependent (should be some #ifdef WINDOWS etc ...)
    fullFileName should already be allocated, at least 1024 bytes long
 */
-void createFullFileName(char *fullFileName, char *dirName, char *fileName)
-{
-char sLoc[1024];
-if ( (strlen(fileName) + strlen(dirName)) > 1022 )
-   ERROR("FileName will be too long for %s + %s", dirName, fileName);
+// void createFullFileName(char *fullFileName, char *dirName, char *fileName)
+// {
+// char sLoc[1024];
+// if ( (strlen(fileName) + strlen(dirName)) > 1022 )
+//    ERROR("FileName will be too long for %s + %s", dirName, fileName);
 
-sprintf(sLoc, "%s/%s", dirName, fileName);
-strcpy(fullFileName, sLoc);
-/* What if fullFileName is not long enough? */
-return;
-}
+// strcpy(fullFileName, sLoc);
+// /* What if fullFileName is not long enough? */
+// return;
+// }
 
 /* Checks if sDir exists,
    creates it if not

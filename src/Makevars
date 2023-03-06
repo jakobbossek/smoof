@@ -1,3 +1,7 @@
 #PKG_CFLAGS=-fno-common
 #PKG_CXXFLAGS=-fno-common
 #PKG_CXX11FLAGS=-fno-common
+
+PKG_CFLAGS=-Wstrict-prototypes
+PKG_CXXFLAGS=-Wstrict-prototypes
+PKG_CXX11FLAGS=-Wstrict-prototypes

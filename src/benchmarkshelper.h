@@ -9,14 +9,14 @@ void monotoneTFosc(double* f);
 void freeStarStar(double** M, int m);
 double** reshape(double** B, double* vector, int m, int n);
 double** computeRotation(double ** B, int seed, int DIM);
-double myrand();
-double randn();
+double myrand(void);
+double randn(void);
 double FGauss(double Ftrue, double beta);
 double FUniform(double Ftrue, double alpha, double beta);
 double FCauchy(double Ftrue, double alpha, double p);
 int compare_doubles (const void *a, const void *b);
-void initbenchmarkshelper();
-void finibenchmarkshelper();
+void initbenchmarkshelper(void);
+void finibenchmarkshelper(void);
 double computeFopt(int _funcId, int _trialId);
 void setNoiseSeed(unsigned int _seed, unsigned int _seedn);
 
@@ -37,7 +37,7 @@ void dirOK(char *sDir);
    is SYSTEM dependent (should be some #ifdef WINDOWS etc ...)
    fullFileName should already be allocated, at least 1024 bytes long
 */
-void createFullFileName(char *fullFileName, char *dirName, char *fileName);
+// void createFullFileName(char *fullFileName, char *dirName, char *fileName);
 
 /* checks the existence of a file */
 int existFile(char * fileName);

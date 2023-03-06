@@ -7,6 +7,7 @@ Description: Provides generators for a high number of both single- and multi-
     functions to generate, plot and work with objective functions.
 Version: 1.6.0.3
 Date: 2021-11-15
+Author: Jakob Bossek
 Authors@R: c(
   person(
     given = "Jakob",
@@ -39,7 +40,6 @@ Suggests:
     RColorBrewer,
     reticulate,
     covr
-LazyData: yes
 ByteCompile: yes
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 7.1.2

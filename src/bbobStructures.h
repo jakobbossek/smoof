@@ -123,13 +123,13 @@ typedef struct lastEvalStruct LastEvalStruct;
 ***********************************/
 
 double fgeneric_initialize(ParamStruct PARAMS);
-double  fgeneric_finalize();
+double  fgeneric_finalize(void);
 double fgeneric_evaluate(double * X);
-double fgeneric_ftarget();
+double fgeneric_ftarget(void);
 unsigned int fgeneric_maxevals(unsigned int DIM);
-unsigned int fgeneric_evaluations();
-double fgeneric_best();
+unsigned int fgeneric_evaluations(void);
+double fgeneric_best(void);
 void fgeneric_noiseseed(unsigned int seed);
-ParamStruct fgeneric_getDefaultPARAMS();
+ParamStruct fgeneric_getDefaultPARAMS(void);
 
 #endif

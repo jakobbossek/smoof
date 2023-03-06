@@ -24,8 +24,8 @@ TwoDoubles f22(double* x);
 TwoDoubles f23(double* x);
 TwoDoubles f24(double* x);
 
-void initbenchmarks();
-void finibenchmarks();
+void initbenchmarks(void);
+void finibenchmarks(void);
 
 //bbobFunction handles[24];
 //unsigned int handlesLength;

@@ -1634,7 +1634,7 @@ TwoDoubles f24(double* x) {
 }
 
 
-void initbenchmarks() /*ParamStruct params)*/
+void initbenchmarks(void) /*ParamStruct params)*/
 {
 
     int i;
@@ -1668,7 +1668,7 @@ void initbenchmarks() /*ParamStruct params)*/
     return;
 }
 
-void finibenchmarks()
+void finibenchmarks(void)
 {
     free(tmpvect);
     free(tmx);
