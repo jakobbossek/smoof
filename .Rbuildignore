@@ -28,3 +28,4 @@ LICENSE2
 ^pkgdown$
 ^\.github$
 ^codecov\.yml$
+^CRAN-SUBMISSION$

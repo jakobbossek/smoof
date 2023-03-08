@@ -5,19 +5,22 @@
 \title{Generate ggplot2 object.}
 \usage{
 \method{autoplot}{smoof_function}(
-  x,
+  object,
+  ...,
   show.optimum = FALSE,
   main = getName(x),
   render.levels = FALSE,
   render.contours = TRUE,
   log.scale = FALSE,
-  length.out = 50L,
-  ...
+  length.out = 50L
 )
 }
 \arguments{
-\item{x}{[\code{smoof_function}]\cr
+\item{object}{[\code{smoof_function}]\cr
 Objective function.}
+
+\item{...}{[any]\cr
+Not used.}
 
 \item{show.optimum}{[\code{logical(1)}]\cr
 If the function has a known global optimum, should its location be
@@ -46,9 +49,6 @@ Higher values lead to more smooth resolution in particular if \code{render.level
 is \code{TRUE}. Avoid using a very high value here especially if the function
 at hand has many parameters.
 Default is 50.}
-
-\item{...}{[any]\cr
-Not used.}
 }
 \value{
 [\code{\link[ggplot2]{ggplot}}]

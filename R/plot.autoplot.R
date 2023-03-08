@@ -20,8 +20,10 @@
 #' is large. I.e., if we have d discrete parameter with each n_1, n_2, ..., n_d
 #' possible values we end up with n_1 x n_2 x ... x n_d subplots.
 #'
-#' @param x [\code{smoof_function}]\cr
+#' @param object [\code{smoof_function}]\cr
 #'   Objective function.
+#' @param ... [any]\cr
+#'   Not used.
 #' @param show.optimum [\code{logical(1)}]\cr
 #'   If the function has a known global optimum, should its location be
 #'   plotted by a point or multiple points in case of multiple global optima?
@@ -44,8 +46,6 @@
 #'   is \code{TRUE}. Avoid using a very high value here especially if the function
 #'   at hand has many parameters.
 #'   Default is 50.
-#' @param ... [any]\cr
-#'   Not used.
 #' @return [\code{\link[ggplot2]{ggplot}}]
 #' @examples
 #' library(ggplot2)
@@ -82,12 +82,16 @@
 #' # or hide the legend
 #' pl + ggtitle("My fancy function") + theme(legend.position = "none")
 #' @export
-autoplot.smoof_function = function(x,
+autoplot.smoof_function = function(object,
+  ...,
   show.optimum = FALSE,
   main = getName(x),
-  render.levels = FALSE, render.contours = TRUE,
+  render.levels = FALSE,
+  render.contours = TRUE,
   log.scale = FALSE,
-  length.out = 50L, ...) {
+  length.out = 50L) {
+
+  x = object
   checkPlotFunParams(x)
 
   assertFlag(show.optimum)
@@ -196,10 +200,21 @@ autoplot.smoof_function = function(x,
 }
 
 #' @export
-autoplot.smoof_wrapped_function = function(x,
+autoplot.smoof_wrapped_function = function(object,
+  ...,
   show.optimum = FALSE,
-  main = getName(x),
-  render.levels = FALSE, render.contours = TRUE, ...) {
-  autoplot(getWrappedFunction(x), show.optimum, main,
-    render.levels, render.contours, ...)
+  main = getName(object),
+  render.levels = FALSE,
+  render.contours = TRUE,
+  log.scale = FALSE,
+  length.out = 50L) {
+  autoplot(
+    getWrappedFunction(object),
+    ...,
+    show.optimum = show.optimum,
+    main = main,
+    render.levels = render.levels,
+    render.contours = render.contours,
+    log.scale = log.scale,
+    length.out = length.out)
 }
