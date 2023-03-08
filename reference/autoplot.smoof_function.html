@@ -75,22 +75,27 @@ parameters.</p>
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for smoof_function</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span></span>
-<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">object</span>,</span>
+<span>  <span class="va">...</span>,</span>
 <span>  show.optimum <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  main <span class="op">=</span> <span class="fu"><a href="getName.html">getName</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
 <span>  render.levels <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  render.contours <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  log.scale <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  length.out <span class="op">=</span> <span class="fl">50L</span>,</span>
-<span>  <span class="va">...</span></span>
+<span>  length.out <span class="op">=</span> <span class="fl">50L</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>x</dt>
+    <dl><dt>object</dt>
 <dd><p>[<code>smoof_function</code>]<br>
 Objective function.</p></dd>
+
+
+<dt>...</dt>
+<dd><p>[any]<br>
+Not used.</p></dd>
 
 
 <dt>show.optimum</dt>
@@ -131,11 +136,6 @@ Higher values lead to more smooth resolution in particular if <code>render.level
 is <code>TRUE</code>. Avoid using a very high value here especially if the function
 at hand has many parameters.
 Default is 50.</p></dd>
-
-
-<dt>...</dt>
-<dd><p>[any]<br>
-Not used.</p></dd>
 
 </dl></div>
     <div id="value">
