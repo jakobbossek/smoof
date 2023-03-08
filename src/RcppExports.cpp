@@ -517,18 +517,18 @@ BEGIN_RCPP
 END_RCPP
 }
 
-RcppExport SEXP evaluateBBOBFunctionCPP(void *, void *, void *, void *);
-RcppExport SEXP evaluateUFFunction(void *, void *, void *);
-RcppExport SEXP getOptimumForBBOBFunctionCPP(void *, void *, void *);
-RcppExport SEXP mof_bk1(void *);
-RcppExport SEXP mof_MOP1(void *);
-RcppExport SEXP mof_MOP2(void *);
-RcppExport SEXP mof_MOP3(void *);
-RcppExport SEXP mof_MOP4(void *);
-RcppExport SEXP mof_MOP5(void *);
-RcppExport SEXP mof_MOP6(void *);
-RcppExport SEXP mof_MOP7(void *);
-RcppExport SEXP mof_viennet(void *);
+RcppExport SEXP evaluateBBOBFunctionCPP(SEXP, SEXP, SEXP, SEXP);
+RcppExport SEXP evaluateUFFunction(SEXP, SEXP, SEXP);
+RcppExport SEXP getOptimumForBBOBFunctionCPP(SEXP, SEXP, SEXP);
+RcppExport SEXP mof_MOP1(SEXP);
+RcppExport SEXP mof_MOP2(SEXP);
+RcppExport SEXP mof_MOP3(SEXP);
+RcppExport SEXP mof_MOP4(SEXP);
+RcppExport SEXP mof_MOP5(SEXP);
+RcppExport SEXP mof_MOP6(SEXP);
+RcppExport SEXP mof_MOP7(SEXP);
+RcppExport SEXP mof_bk1(SEXP);
+RcppExport SEXP mof_viennet(SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
     {"_smoof_dtlz_1", (DL_FUNC) &_smoof_dtlz_1, 2},
@@ -575,7 +575,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"evaluateBBOBFunctionCPP",      (DL_FUNC) &evaluateBBOBFunctionCPP,      4},
     {"evaluateUFFunction",           (DL_FUNC) &evaluateUFFunction,           3},
     {"getOptimumForBBOBFunctionCPP", (DL_FUNC) &getOptimumForBBOBFunctionCPP, 3},
-    {"mof_bk1",                      (DL_FUNC) &mof_bk1,                      1},
     {"mof_MOP1",                     (DL_FUNC) &mof_MOP1,                     1},
     {"mof_MOP2",                     (DL_FUNC) &mof_MOP2,                     1},
     {"mof_MOP3",                     (DL_FUNC) &mof_MOP3,                     1},
@@ -583,6 +582,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"mof_MOP5",                     (DL_FUNC) &mof_MOP5,                     1},
     {"mof_MOP6",                     (DL_FUNC) &mof_MOP6,                     1},
     {"mof_MOP7",                     (DL_FUNC) &mof_MOP7,                     1},
+    {"mof_bk1",                      (DL_FUNC) &mof_bk1,                      1},
     {"mof_viennet",                  (DL_FUNC) &mof_viennet,                  1},
     {NULL, NULL, 0}
 };

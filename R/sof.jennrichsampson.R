@@ -4,7 +4,7 @@
 #' \deqn{f(\mathbf{x}) = \sum_{i=1}^{10} \left[2 + 2i - (e^{ix_1} + e^{ix_2})\right]^2}
 #' with \eqn{\mathbf{x}_1, \mathbf{x}_2 \in [-1, 1]}.
 #'
-#' @references See \url{http://al-roomi.org/benchmarks/unconstrained/2-dimensions/134-jennrich-sampson-s-function}.
+#' @references See \url{https://al-roomi.org/benchmarks/unconstrained/2-dimensions/134-jennrich-sampson-s-function}.
 #'
 #' @template ret_smoof_single
 #' @export

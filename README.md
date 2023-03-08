@@ -6,16 +6,14 @@ Visit the [package website](https://jakobbossek.github.io/smoof/)
 <!-- badges: start -->
 
 [![CRAN Status
-Badge](http://www.r-pkg.org/badges/version/smoof)](http://cran.r-project.org/web/packages/smoof)
+Badge](http://www.r-pkg.org/badges/version/smoof)](https://CRAN.R-project.org/package=smoof)
 [![CRAN
-Downloads](http://cranlogs.r-pkg.org/badges/smoof)](http://cran.rstudio.com/web/packages/smoof/index.html)
+Downloads](http://cranlogs.r-pkg.org/badges/smoof)](https://CRAN.R-project.org/package=smoof)
 [![CRAN
-Downloads](http://cranlogs.r-pkg.org/badges/grand-total/smoof?color=orange)](http://cran.rstudio.com/web/packages/smoof/index.html)
+Downloads](http://cranlogs.r-pkg.org/badges/grand-total/smoof?color=orange)](https://CRAN.R-project.org/package=smoof)
 [![R-CMD-check](https://github.com/jakobbossek/smoof/workflows/R-CMD-check/badge.svg)](https://github.com/jakobbossek/smoof/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/jakobbossek/smoof/branch/master/graph/badge.svg)](https://codecov.io/gh/jakobbossek/smoof?branch=master)
-[![Research software
-impact](http://depsy.org/api/package/cran/smoof/badge.svg)](http://depsy.org/package/r/smoof)
+coverage](https://codecov.io/gh/jakobbossek/smoof/branch/master/graph/badge.svg)](https://app.codecov.io/gh/jakobbossek/smoof?branch=master)
 <!-- badges: end -->
 
 This package offers an interface for objective functions in the context
@@ -31,7 +29,7 @@ as well as the popular single-objective test functions like De Jong’s
 function, Himmelblau function and Schwefel function. Moreover, the
 package offers a R interface to the C implementation of the *Black-Box
 Optimization Benchmarking* (BBOB) [set of noiseless test
-functions](http://coco.gforge.inria.fr/doku.php?id=bbob-2009-downloads).
+functions](http://numbbo.github.io/coco/?id=bbob-2009-downloads).
 
 ![examplary smoof
 functions](https://raw.githubusercontent.com/jakobbossek/smoof/screenshots/smoof_funs_example.png)
@@ -39,7 +37,7 @@ functions](https://raw.githubusercontent.com/jakobbossek/smoof/screenshots/smoof
 ## Installation instructions
 
 Visit the [package repository on
-CRAN](http://cran.r-project.org/web/packages/smoof/index.html). If you
+CRAN](https://cran.r-project.org/package=smoof). If you
 want to take a glance at the developement version install the github
 developement version by executing the following command:
 

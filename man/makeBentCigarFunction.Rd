@@ -19,5 +19,5 @@ Scalable test function \eqn{f} with
 subject to \eqn{-100 \leq \mathbf{x}_i \leq 100} for \eqn{i = 1, \ldots, n}.
 }
 \references{
-See \url{http://al-roomi.org/benchmarks/unconstrained/n-dimensions/164-bent-cigar-function}.
+See \url{https://al-roomi.org/benchmarks/unconstrained/n-dimensions/164-bent-cigar-function}.
 }

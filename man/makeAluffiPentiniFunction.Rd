@@ -18,5 +18,5 @@ with \eqn{\mathbf{x}_1, \mathbf{x}_2 \in [-10, 10]}.
 This functions is also know as the Zirilli function.
 }
 \references{
-See \url{http://al-roomi.org/benchmarks/unconstrained/2-dimensions/26-aluffi-pentini-s-or-zirilli-s-function}.
+See \url{https://al-roomi.org/benchmarks/unconstrained/2-dimensions/26-aluffi-pentini-s-or-zirilli-s-function}.
 }

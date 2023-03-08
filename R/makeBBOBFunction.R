@@ -18,7 +18,7 @@
 #' if (require(plot3D)) {
 #'   plot3D(fn, contour = TRUE)
 #' }
-#' @references See the \href{http://coco.gforge.inria.fr/doku.php?id=bbob-2009-downloads}{BBOB website}
+#' @references See the \href{http://numbbo.github.io/coco/?id=bbob-2009-downloads}{BBOB website}
 #' for a detailed description of the BBOB functions.
 #' @export
 makeBBOBFunction = function(dimensions, fid, iid) {

@@ -36,6 +36,6 @@ if (require(plot3D)) {
 }
 }
 \references{
-See the \href{http://coco.gforge.inria.fr/doku.php?id=bbob-2009-downloads}{BBOB website}
+See the \href{http://numbbo.github.io/coco/?id=bbob-2009-downloads}{BBOB website}
 for a detailed description of the BBOB functions.
 }
