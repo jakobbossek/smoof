@@ -280,6 +280,19 @@ class MultiplePeaksModel2:
             X = X.reshape(len(X) * len(X[0]))
             res.append(np.matrix(X).tolist())
         return res
+      
+    def getAllPeaks(self):
+        return np.vstack(self.peaks)
+      
+    def getAllHeights(self):
+        return [peak.height for peak in self.peaks]
+      
+    def getAllShapes(self):
+        return [peak.shape for peak in self.peaks]
+      
+    def getAllRadii(self):
+        return [peak.radius for peak in self.peaks]
+
 
 
 
@@ -334,6 +347,26 @@ def getCovarianceMatrices(npeaks, dimension, topology, randomSeed, rotated, peak
     global currentProblem
     initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
     return currentProblem.getCovMatrices()
+
+def getAllPeaks(npeaks, dimension, topology, randomSeed, rotated, peakShape):
+    global currentProblem
+    initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
+    return currentProblem.getAllPeaks()
+
+def getAllHeights(npeaks, dimension, topology, randomSeed, rotated, peakShape):
+    global currentProblem
+    initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
+    return currentProblem.getAllHeights()
+
+def getAllShapes(npeaks, dimension, topology, randomSeed, rotated, peakShape):
+    global currentProblem
+    initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
+    return currentProblem.getAllShapes()
+
+def getAllRadii(npeaks, dimension, topology, randomSeed, rotated, peakShape):
+    global currentProblem
+    initProblem(npeaks, dimension, topology, randomSeed, rotated, peakShape)
+    return currentProblem.getAllRadii()
 
 if __name__ == "__main__":
     # nothing to do here
