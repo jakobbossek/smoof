@@ -88,7 +88,8 @@ addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE, size = 100L) {
     # re-scale
     if (curr.idx > max.idx) {
       # extend data structures by another 'size' rows/columns
-      pars <<- rbind(pars, data.frame(matrix(NA, nrow = size, ncol = n.pars), stringsAsFactors = FALSE))
+      if (logg.x)
+        pars <<- rbind(pars, data.frame(matrix(NA, nrow = size, ncol = n.pars), stringsAsFactors = FALSE))
       obj.vals <<- cbind(obj.vals, matrix(NA, nrow = n.obj, ncol = size))
       max.idx <<- max.idx + size
     }

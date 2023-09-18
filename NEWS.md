@@ -1,3 +1,10 @@
+# smoof 1.6.0.4
+
+## Bugfixes 
+
+* Fixed bug in getLoggedValues when logging of x-values was set to FALSE in addLoggingWrapper
+
+
 # smoof 1.6.0.3
 
 ## New features

@@ -18,6 +18,40 @@ test_that("logging for functions with matrix input works well", {
   expect_equal(ncol(res), 10L + 1L) # dim plus y
 })
 
+test_that("logging works without logging of objective space values", {
+  for (dimensions in c(1L, 2L, 5L, 10L)) {
+    fn = makeSphereFunction(dimensions = dimensions)
+
+    # add logger for both x and y values
+    fn = addLoggingWrapper(fn, logg.x = FALSE)
+
+    # now apply some evaluations
+    fn(runif(dimensions))
+
+    res = getLoggedValues(fn, compact = TRUE)
+    expect_true(is.data.frame(res))
+    expect_equal(colnames(res), "y1")
+  }
+})
+
+test_that("logging works without logging of decision space values", {
+  for (dimensions in c(1L, 2L, 5L, 10L)) {
+    fn = makeSphereFunction(dimensions = dimensions)
+    par.ids = getParamIds(getParamSet(fn), with.nr = TRUE, repeated = TRUE)
+
+    # add logger for both x and y values
+    fn = addLoggingWrapper(fn, logg.x = TRUE, logg.y = FALSE)
+
+    # now apply some evaluations
+    fn(runif(dimensions))
+
+    res = getLoggedValues(fn, compact = TRUE)
+    expect_true(is.data.frame(res))
+    expect_equal(ncol(res), dimensions)
+    expect_equal(colnames(res), par.ids)
+  }
+})
+
 test_that("logging for simple functions works well", {
   # generate Sphere function
   for (dimensions in c(1L, 2L, 5L, 10L)) {

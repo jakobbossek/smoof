@@ -25,19 +25,24 @@ getLoggedValues.smoof_logging_function = function(fn, compact = FALSE) {
 
   env = environment(fn)
   max.idx = env$curr.idx - 1L
-  pars = env$pars[seq_len(max.idx), , drop = FALSE]
-  colnames(pars) = getParamIds(ParamHelpers::getParamSet(fn), with.nr = TRUE, repeated = TRUE)
+  pars = NULL
+  if (env$logg.x) {
+    pars = env$pars[seq_len(max.idx), , drop = FALSE]
+    colnames(pars) = getParamIds(ParamHelpers::getParamSet(fn), with.nr = TRUE, repeated = TRUE)
+  }
 
-  obj.vals = env$obj.vals[, seq_len(max.idx), drop = FALSE]
+  obj.vals = NULL
+  if (env$logg.y)
+    obj.vals = env$obj.vals[, seq_len(max.idx), drop = FALSE]
   # wrap everything up in a single data frame
   if (compact) {
     # if only the x-values are stored just return the data frame
-    if (is.null(obj.vals)) {
+    if (!env$logg.y) {
       return(pars)
     }
     df = as.data.frame(t(obj.vals))
     names(df) = paste0("y", seq(ncol(df)))
-    if (!is.null(pars)) {
+    if (env$logg.x) {
       # append x-values if stored
       df = cbind(pars, df)
     }
