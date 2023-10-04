@@ -27,18 +27,22 @@
 #' which of the 55 bi-objective BBOB functions can be found \href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/#the-bbob-biobj-test-functions-and-their-properties}{here}.
 #' @export
 makeBiObjBBOBFunction = function(dimensions, fid, iid) {
-  # do some sanity checks
+  
+  # ==== Sanity Checks ====
+  
   dimensions = asCount(dimensions)
   fid = asCount(fid)
   iid = asCount(iid)
   assertInt(dimensions, lower = 2L, upper = 40L)
   assertInt(fid, lower = 1L, upper = 55L)
-  assertInt(iid, lower = 1L)
+  assertInt(iid, lower = 1L, upper = 15L) # restrict to documented "safe" range
 
   # touch vars
   force(dimensions)
   force(fid)
   force(iid)
+  
+  # ==== FID Mapping ====
 
   # single-objective BBOB functions, which are used by bi-objective BBOB
   fids = c(1L, 2L, 6L, 8L, 13L, 14L, 15L, 17L, 20L, 21L)
@@ -51,12 +55,37 @@ makeBiObjBBOBFunction = function(dimensions, fid, iid) {
 
   fid1 = grid[fid, "fids1"]
   fid2 = grid[fid, "fids2"]
-  # according to the description from COCO (http://numbbo.github.io/coco-doc/bbob-biobj/functions/#instances)
-  # the IID of the bi-objective BBOB problem is used for computing the IIDs of
-  # the two underlying single-objective BBOB problems as given below
-  iid1 = 2L * iid + 1L
-  iid2 = iid1 + 1L
+  
+  # ==== IID Mapping ====
 
+  # Regularly, single objective IIDs are computed as
+  # IID_1 = 2 * IID + 1, and
+  # IID_2 = IID_1 + 1.
+  # (http://numbbo.github.io/coco-doc/bbob-biobj/functions/#instances)
+  # 
+  # However, there are some exceptions either for historical reasons (IIDs 1, 2)
+  # or because optima are too close to each other in decision or objective space
+  # (IIDs 9, 15). Here, we restrict the list to the tested IIDs (up to IID 15)
+  # from the COCO source code.
+  # https://github.com/numbbo/coco/blob/29ac4063cea8cf74257e2a0671a6cafc4d5e7752/code-experiments/src/suite_biobj_utilities.c#L23-L39
+  max_iid = 15L
+  
+  vec_iid_1 = 2 * (1:max_iid) + 1
+  vec_iid_2 = vec_iid_1 + 1
+  
+  iid_mapping = cbind(vec_iid_1, vec_iid_2)
+  
+  # exceptions, cf. above
+  iid_mapping[1L,] = c(2L, 4L)
+  iid_mapping[2L,] = c(3L, 5L)
+  iid_mapping[9L,] = c(19L, 21L)
+  iid_mapping[15L,] = c(31L, 34L)
+  
+  iid1 = iid_mapping[iid,1]
+  iid2 = iid_mapping[iid,2]
+  
+  # ==== Build smoof function ====
+  
   # build parameter set (bounds are [-5, 5] for all BBOB funs)
   par.set = makeNumericParamSet("x", len = dimensions, lower = -5, upper = 5)
 
