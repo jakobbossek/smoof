@@ -1,5 +1,9 @@
 # smoof 1.6.0.4
 
+## New features
+
+* Added extra helper functions to extract all problem instance-specific data from MPM2 generator
+
 ## Bugfixes 
 
 * Fixed bug in getLoggedValues when logging of x-values was set to FALSE in addLoggingWrapper
