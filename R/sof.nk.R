@@ -153,7 +153,7 @@ generateRMNKFunction = function(M, N, K, rho) {
     for (n in seq_len(N)) {
       end = start + sizes[n] - 1L
       tmp[[n]] = values[start:end, m]
-      start = end
+      start = end + 1L
     }
     return(tmp)
   })
