@@ -1,3 +1,17 @@
+# TODOS
+# ===
+# * Check convertBitstringToInt (took this from OPs implementation, but I beleive it is wrong now)
+# * Finalise documentation:
+# * attributes are not moved/copied and thus not accessible in wrappers. Thus, we cannot export
+#   a wrapped function. Should we access the wrapped function in exportNKFunction?
+# * makeRMNKFunction: we should be able to pass a list of vectors (each one k or even N different
+#   K's for each objective).
+# * Handle K_string stuff in make* and export* functions (i.e., how to display this information)
+# * Polish code and add more meaningful explanations
+# * Add comprehensive description/details sections for makeNKFunction and makeRMNKFunction
+# * Add examples
+# * Add tests (also with counting- and logging-wrappers)
+
 #' Combinatorial NK-landscapes
 #'
 #' Generate a rNK-landscape function
