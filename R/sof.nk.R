@@ -11,6 +11,7 @@
 # * Add comprehensive description/details sections for makeNKFunction and makeRMNKFunction
 # * Add examples
 # * Add tests (also with counting- and logging-wrappers)
+# * makeRMNKFunction: allow to pass list of single-objective NK-functions to build MNK-function.
 
 #' Combinatorial NK-landscapes
 #'
@@ -24,36 +25,46 @@
 #'   Integer vector of the number of epistatic interactions.
 #'   If a single value is passed a homogeneous NK-landscape is generated, i.e.
 #'   \eqn{k_i = k \forall i = 1, \ldots, N}.
-#' @param distr [\code{function}]\cr
-#'   Not used at the moment.
 #'
+#' @examples
+#' # generate homogeneous NK-landscape with each K=3 epistatic links
+#' fn = makeNKFunction(10L, 3L)
+#'
+#' # generate heterogeneous NK-landscape where K is sampled from {2,3,4}
+#' # uniformly at random
+#' N = 20L
+#' fn = makeNKFunction(N, K = sample(2:4, size = N, replace = TRUE))
+#'
+#' # evaluate function on some random bitstrings
+#' bitstrings = matrix(sample(c(0, 1), size = 10 * N, replace = TRUE), ncol = N)
+#' apply(bitstrings, fn)
 #' @return [\code{smoof_single_objective_function}]
 #' @export
-makeNKFunction = function(N, K, distr = NULL) {
+makeNKFunction = function(N, K) {
   N = checkmate::asInt(N)
   checkmate::assertInteger(K, lower = 0, upper = N - 1L)
-
-  # for consistency
-  if (length(K) == 1L) {
-    K_string = as.character(K)
-    K = rep(K, N)
-  } else {
-    # FIXME: finish! Want: heterogeneous: 4, 5, 3, ...
-    K_string = sprintf("heterogenous: %s", "test")
-  }
+  K = prepareEpistaticLinks(M = 1L, N, K)
 
   # delegate to flexible generator
   links_and_values = generateRMNKFunction(M = 1L, N, K, rho = 0)
-  links = links_and_values$links[[1L]]
-  values = links_and_values$values[[1L]]
 
-  fn = makeNKFunctionInternal(N, K, links, values)
-  attr(fn, "links_and_values") = links_and_values
-  return(fn)
+  makeNKFunctionInternal(links_and_values, m = 1L)
 }
 
+class(makeNKFunction) = c("function", "smoof_generator", "nk_generator")
+attr(makeNKFunction, "name") = c("NK")
+attr(makeNKFunction, "type") = c("single-objective")
+attr(makeNKFunction, "tags") = c("single-objective", "combinatorial")
 
-makeNKFunctionInternal = function(N, K, links, values) {
+
+makeNKFunctionInternal = function(links_and_values, m) {
+  M = links_and_values$M
+  N = links_and_values$N
+  K = links_and_values$K
+
+  links = links_and_values$links[[m]]
+  values = links_and_values$values[[m]]
+
   force(N)
   force(K)
   force(links)
@@ -63,10 +74,10 @@ makeNKFunctionInternal = function(N, K, links, values) {
     # for every bit position ...
     res = sapply(seq_len(N), function(i) {
       # ... get active links, i.e., those that have a value of 1
-      active_links = as.integer(x[links[[i]] + 1] == 1) # +1 since epistatic links are zero-based
+      the_links = x[links[[i]] + 1] # +1 since epistatic links are zero-based
       # ... convert the bitstring to an integer offset of access the value table
-      active_links = rev(active_links)
-      offset = convertBitstringToInt(active_links)
+      # FIXME: IMPLEMENT convertBitstringToInt in C
+      offset = convertBitstringToInt(the_links)
       # ... and return the stored value
       values[[i]][offset + 1L]
     })
@@ -76,7 +87,7 @@ makeNKFunctionInternal = function(N, K, links, values) {
 
   # FIXME: id should be random since the function values depend on seed?
   # FIXME: also the name should include some kind of hash
-  makeSingleObjectiveFunction(
+  fn = makeSingleObjectiveFunction(
     name = sprintf("NK-landscape (N=%i, k=%s", N, "K_string"),
     id = "NK_landscape",
     fn = fn,
@@ -85,18 +96,34 @@ makeNKFunctionInternal = function(N, K, links, values) {
       id = "x",
       lower = rep(0, N),
       upper = rep(1, N)
-    ))#,
-    #tags = attr(makeRMNKFunction, "tags")
+    ))
   )
+  attr(fn, "links_and_values") = links_and_values
+  return(fn)
 }
 
-makeRMNKFunctionInternal = function(rho, M, N, K, links_and_values) {
-  links = links_and_values$links
-  values = links_and_values$values
+makeRMNKFunctionInternalFromFunctions = function(fns) {
+  # print(fns)
+  links_and_values = list(
+    rho = 0, # uncorrelated!
+    M = length(fns),
+    N = attr(fns[[1L]], "links_and_values")$N,
+    K = lapply(fns, function(fn) attr(fn, "links_and_values")$K[[1L]]),
+    links = lapply(fns, function(fn) attr(fn, "links_and_values")$links[[1L]]),
+    values = lapply(fns, function(fn) attr(fn, "links_and_values")$values[[1L]])
+  )
+  makeRMNKFunctionInternal(links_and_values)
+}
+
+makeRMNKFunctionInternal = function(links_and_values) {
+  rho = links_and_values$rho
+  M = links_and_values$M
+  N = links_and_values$N
+  K = links_and_values$K
 
   # generate M single-objective NK-landscape functions
   fns = sapply(seq_len(M), function(m) {
-    makeNKFunctionInternal(N, K, links[[m]], values[[m]])
+    makeNKFunctionInternal(links_and_values, m = m)
   })
 
   force(fns)
@@ -118,8 +145,7 @@ makeRMNKFunctionInternal = function(rho, M, N, K, links_and_values) {
       lower = rep(0, N),
       upper = rep(1, N)
     )),
-    n.objectives = M#,
-    #tags = attr(makeRMNKFunction, "tags")
+    n.objectives = M
   )
   attr(mfn, "links_and_values") = links_and_values
   return(mfn)
@@ -127,7 +153,14 @@ makeRMNKFunctionInternal = function(rho, M, N, K, links_and_values) {
 
 # helper to calculate offset for values table
 convertBitstringToInt = function(x) {
-  packBits(rev(c(rep(FALSE, 32 - length(x) %% 32), as.logical(x))), "integer")
+  n = length(x)
+  sum(x * 2^(0:(n-1)))
+  #print(idx1)
+  #return(idx)
+  # idx1 = base::strtoi(BBmisc::collapse(x, sep = ""), base = 2L)
+  #print(idx2)
+  #print(idx1 == idx2)
+  #packBits(rev(c(rep(FALSE, 32 - length(x) %% 32), as.logical(x))), "integer")
 }
 
 # Internal helper function to actually create links and values for given rMNK parameters
@@ -159,7 +192,7 @@ generateRMNKFunction = function(M, N, K, rho) {
     # ...and for each bit position generate random epistatic links
     idxs = seq_len(N)
     lapply(idxs, function(n) {
-      sample(idxs[-n], size = K[n], replace = FALSE) - 1L # zero-based
+      sample(idxs[-n], size = K[[m]][n], replace = FALSE) - 1L # zero-based
     })
   })
 
@@ -177,13 +210,14 @@ generateRMNKFunction = function(M, N, K, rho) {
   # -> there are 2^K[i] possible expressions of these values
   # -> the bit itself has two values
   # -> 2^(K[i] + 1) possibilities for the ith bit
-  n_values = sum(2^(K + 1))
+  K2 = K[[1L]] # K is always a length-M list
+  n_values = sum(2^(K2 + 1))
   values = pnorm(MASS::mvrnorm(n = n_values, mu = mu, Sigma = Sigma))
 
   # convert to list of form values[[M]][[N]][[K[...]]]
   values = lapply(seq_len(M), function(m) {
     tmp = vector(length = N, mode = "list")
-    sizes = 2^(K + 1L)
+    sizes = 2^(K2 + 1L)
     start = 1L
     for (n in seq_len(N)) {
       end = start + sizes[n] - 1L
@@ -203,6 +237,20 @@ generateRMNKFunction = function(M, N, K, rho) {
   ))
 }
 
+prepareEpistaticLinks = function(M, N, K) {
+  if (M == 1L & length(K) == 1L)
+    K = list(rep(K, N)) # nevertheless a list of length 1
+  else if ((M > 1L) & (length(K) == 1L))
+    K = lapply(seq_len(M), function(i) rep(K, N))
+  else if ((M > 1L) & (length(K) == M))
+    K = lapply(K, function(k) rep(k, N))
+  else
+    BBmisc::stopf("[prepareEpistaticLinks] Passed value of K is illegal.")
+
+  return(K)
+}
+
+
 #' rMNK-generator
 #'
 #' Generates an NK-landscapes with input dimension \code{N}, output dimension \code{M}
@@ -221,35 +269,69 @@ generateRMNKFunction = function(M, N, K, rho) {
 #' @param rho [\code{numeric(1)}]\cr
 #'   Correlation between table contributions.
 #'   Defaults to zero, i.e., no correlation at all.
+#' @param funs [\code{list} | \code{NULL}]\cr
+#'   Allows for an alternative way to build a MNK-landscape by passing a list of
+#'   at least two single-objective NK-landscapes. In this case all other parameters
+#'   are ignored. Default is \code{NULL}.
 #' @return [\code{smoof_multi_objective_function}]
+#'
+#' @examples
+#' # generate homogeneous uncorrelated bi-objective rMNK-landscape with each
+#' # three epistatic links
+#' M = 2L
+#' N = 20L
+#' K = 3L
+#' fn = makeRMNKFunction(M, N, K)
+#'
+#' # generate strongly correlated objectives
+#' fn = makeRMNKFunction(rho = 0.9, M, N, K)
+#'
+#' # generate first function has 3 epistatic links while the second has 2
+#' fn = makeRMNKFunction(rho = 0.9, M, N, K = c(3L, 2L))
+#'
+#' # alternative constructor: generate two single-objective NK-landscapes
+#' # and combine into bi-objective problem
+#' soofn1 = makeNKFunction(N, K) # homegeneous in K
+#' K = sample(2:3, size = N, replace = TRUE)
+#' soofn2 = makeNKfunction(N, K = K) # heterogeneous in K
+#' moofn = makeRMNKFunction(funs = list(soofn1, soofn2))
+#' getNumberOfObjectives(moofn)
 #'
 #' @seealso \code{\link{makeNKFunction}}
 #' @export
-makeRMNKFunction = function(M, N, K, rho = 0) {
+makeRMNKFunction = function(M, N, K, rho = 0, funs = NULL) {
+  if (!is.null(funs)) {
+    if (checkmate::testCharacter(funs, min.len = 2L))
+      funs = lapply(funs, importNKFunction)
+
+    checkmate::assertList(funs, types = "smoof_function", min.len = 2L, any.missing = FALSE, all.missing = FALSE)
+    Ns = lapply(funs, getNumberOfParameters)
+    if (length(unique(Ns)) != 1L)
+      BBmisc::stopf("[makeRMNKFunction] functions in 'funs' are incompatible! Note that all function need to have the same input dimension N.")
+
+    Ms = lapply(funs, getNumberOfObjectives)
+    if ((length(unique(Ms)) != 1L) | any(Ms > 1L))
+      BBmisc::stopf("[makeRMNKFunction] functions in 'funs' do not fulfill the requirements. Note that all passed function need to be single-objective.")
+
+    return(makeRMNKFunctionInternalFromFunctions(funs))
+  }
+
   M = checkmate::asInt(M, lower = 2L, upper = 20L)
   checkmate::assertNumber(rho, lower = -1, upper = 1)
-
-  # for consistency
-  if (length(K) == 1L) {
-    K_string = as.character(K)
-    K = rep(K, N)
-  } else {
-    # FIXME: finish! Want: heterogeneous: 4, 5, 3, ...
-    K_string = sprintf("heterogenous: %s", "test")
-  }
+  K = prepareEpistaticLinks(M = M, N, K)
 
   # generate links and values
   # * returns a list of lists of links (each one list for each objective)
   # * returns a list of lists of value tables (each one list for each objective)
   links_and_values = generateRMNKFunction(M, N, K, rho)
 
-  makeRMNKFunctionInternal(rho, M, N, K, links_and_values)
+  makeRMNKFunctionInternal(links_and_values)
 }
 
-class(makeNKFunction) = c("function", "smoof_generator", "nk_generator")
-attr(makeNKFunction, "name") = c("rMNK")
-attr(makeNKFunction, "type") = c("single-objective")
-attr(makeNKFunction, "tags") = c("single-objective", "combinatorial")
+class(makeRMNKFunction) = c("function", "smoof_generator", "nk_generator")
+attr(makeRMNKFunction, "name") = c("rMNK")
+attr(makeRMNKFunction, "type") = c("multi-objective")
+attr(makeRMNKFunction, "tags") = c("multi-objective", "combinatorial")
 
 #' Export (rM)NK-landscape function to file
 #'
@@ -290,12 +372,12 @@ exportNKFunction = function(x, path) {
   cat(sprintf("COMMENT: file generated with R package smoof v1.6.0, %s\n", format(Sys.time(), "%m/%d/%Y %H:%M:%S")), file = file)
   cat("COMMENT: links are random and identical for every objective function\n", file = file)
   # FIXME: heterogenous K
-  cat(sprintf("rMNK %.5f %i %i %i\n", rho, M, N, K[1L]), file = file)
+  cat(sprintf("rMNK %.5f %i %i %i\n", rho, M, N, K[[1L]][1L]), file = file)
 
   # export epistatic links
   for (m in seq_len(M)) {
     for (n in seq_len(N)) {
-      if (K[n] == 0L) {
+      if (K[[m]][n] == 0L) {
         cat("-\n")
         next
       }
@@ -313,6 +395,14 @@ exportNKFunction = function(x, path) {
   return(invisible(TRUE))
 }
 
+#' Import a (rM)NK-landscape function from a file
+#'
+#' @param path [\code{character(1)}]\cr
+#'   Path to file.
+#' @return [\code{smoof_single_objective_function} | [\code{smoof_multi_objective_function}]
+#'
+#' @seealso \code{\link{exportNKFunction}}
+#' @export
 importNKFunction = function(path) {
   checkmate::assertFileExists(path)
 
@@ -357,7 +447,16 @@ importNKFunction = function(path) {
     }
   }
 
-  if (M == 1)
-    return(makeNKFunctionInternal(N, K[[1L]], links[[1L]], values[[1L]]))
-  return(makeRMNKFunctionInternal(rho, M, N, K, links_and_values = list(links = links, values = values)))
+  links_and_values = list(
+    rho = rho,
+    M = M,
+    N = N,
+    K = K,
+    links = links,
+    values = values
+  )
+
+  if (M == 1L)
+    return(makeNKFunctionInternal(links_and_values, m = 1L))
+  return(makeRMNKFunctionInternal(links_and_values))
 }
