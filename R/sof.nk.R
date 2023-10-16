@@ -1,18 +1,3 @@
-# TODOS
-# ===
-# * Check convertBitstringToInt (took this from OPs implementation, but I beleive it is wrong now)
-# * Finalise documentation:
-# * attributes are not moved/copied and thus not accessible in wrappers. Thus, we cannot export
-#   a wrapped function. Should we access the wrapped function in exportNKFunction?
-# * makeRMNKFunction: we should be able to pass a list of vectors (each one k or even N different
-#   K's for each objective).
-# * Handle K_string stuff in make* and export* functions (i.e., how to display this information)
-# * Polish code and add more meaningful explanations
-# * Add comprehensive description/details sections for makeNKFunction and makeRMNKFunction
-# * Add examples
-# * Add tests (also with counting- and logging-wrappers)
-# * makeRMNKFunction: allow to pass list of single-objective NK-functions to build MNK-function.
-
 #' Combinatorial NK-landscapes
 #'
 #' Generate a rNK-landscape function
@@ -74,7 +59,7 @@ makeNKFunctionInternal = function(links_and_values, m) {
     # for every bit position ...
     res = sapply(seq_len(N), function(i) {
       # ... get active links, i.e., those that have a value of 1
-      the_links = x[links[[i]] + 1] # +1 since epistatic links are zero-based
+      the_links = c(x[i], x[links[[i]] + 1]) # +1 since epistatic links are zero-based
       # ... convert the bitstring to an integer offset of access the value table
       # FIXME: IMPLEMENT convertBitstringToInt in C
       offset = convertBitstringToInt(the_links)
@@ -88,7 +73,7 @@ makeNKFunctionInternal = function(links_and_values, m) {
   # FIXME: id should be random since the function values depend on seed?
   # FIXME: also the name should include some kind of hash
   fn = makeSingleObjectiveFunction(
-    name = sprintf("NK-landscape (N=%i, k=%s", N, "K_string"),
+    name = sprintf("NK-landscape (N=%i, k=%s)", N, "K_string"),
     id = "NK_landscape",
     fn = fn,
     par.set = makeParamSet(makeIntegerVectorParam(
@@ -155,12 +140,6 @@ makeRMNKFunctionInternal = function(links_and_values) {
 convertBitstringToInt = function(x) {
   n = length(x)
   sum(x * 2^(0:(n-1)))
-  #print(idx1)
-  #return(idx)
-  # idx1 = base::strtoi(BBmisc::collapse(x, sep = ""), base = 2L)
-  #print(idx2)
-  #print(idx1 == idx2)
-  #packBits(rev(c(rep(FALSE, 32 - length(x) %% 32), as.logical(x))), "integer")
 }
 
 # Internal helper function to actually create links and values for given rMNK parameters
