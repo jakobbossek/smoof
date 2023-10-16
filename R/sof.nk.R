@@ -90,6 +90,41 @@ makeNKFunctionInternal = function(N, K, links, values) {
   )
 }
 
+makeRMNKFunctionInternal = function(rho, M, N, K, links_and_values) {
+  links = links_and_values$links
+  values = links_and_values$values
+
+  # generate M single-objective NK-landscape functions
+  fns = sapply(seq_len(M), function(m) {
+    makeNKFunctionInternal(N, K, links[[m]], values[[m]])
+  })
+
+  force(fns)
+
+  # actual objective function
+  fn = function(x) {
+    sapply(fns, function(fn) fn(x))
+  }
+
+  # FIXME: id should be random since the function values depend on seed?
+  # FIXME: also the name should include some kind of hash
+  mfn = makeMultiObjectiveFunction(
+    name = sprintf("rMNK-landscape (M=%i, N=%i, k=%s, rho=%.5f", M, N, "K_string", rho),
+    id = "rMNK_landscape",
+    fn = fn,
+    par.set = makeParamSet(makeIntegerVectorParam(
+      len = N,
+      id = "x",
+      lower = rep(0, N),
+      upper = rep(1, N)
+    )),
+    n.objectives = M#,
+    #tags = attr(makeRMNKFunction, "tags")
+  )
+  attr(mfn, "links_and_values") = links_and_values
+  return(mfn)
+}
+
 # helper to calculate offset for values table
 convertBitstringToInt = function(x) {
   packBits(rev(c(rep(FALSE, 32 - length(x) %% 32), as.logical(x))), "integer")
@@ -208,38 +243,7 @@ makeRMNKFunction = function(M, N, K, rho = 0) {
   # * returns a list of lists of value tables (each one list for each objective)
   links_and_values = generateRMNKFunction(M, N, K, rho)
 
-  links = links_and_values$links
-  values = links_and_values$values
-
-  # generate M single-objective NK-landscape functions
-  fns = sapply(seq_len(M), function(m) {
-    makeNKFunctionInternal(N, K, links[[m]], values[[m]])
-  })
-
-  force(fns)
-
-  # actual objective function
-  fn = function(x) {
-    sapply(fns, function(fn) fn(x))
-  }
-
-  # FIXME: id should be random since the function values depend on seed?
-  # FIXME: also the name should include some kind of hash
-  mfn = makeMultiObjectiveFunction(
-    name = sprintf("rMNK-landscape (M=%i, N=%i, k=%s, %.3f", M, N, "K_string", rho),
-    id = "rMNK_landscape",
-    fn = fn,
-    par.set = makeParamSet(makeIntegerVectorParam(
-      len = N,
-      id = "x",
-      lower = rep(0, N),
-      upper = rep(1, N)
-    )),
-    n.objectives = M#,
-    #tags = attr(makeRMNKFunction, "tags")
-  )
-  attr(fn, "links_and_values") = links_and_values
-  return(mfn)
+  makeRMNKFunctionInternal(rho, M, N, K, links_and_values)
 }
 
 class(makeNKFunction) = c("function", "smoof_generator", "nk_generator")
@@ -286,7 +290,7 @@ exportNKFunction = function(x, path) {
   cat(sprintf("COMMENT: file generated with R package smoof v1.6.0, %s\n", format(Sys.time(), "%m/%d/%Y %H:%M:%S")), file = file)
   cat("COMMENT: links are random and identical for every objective function\n", file = file)
   # FIXME: heterogenous K
-  cat(sprintf("rMNK %.5f %i %i %i\n", rho, M, N, K[1L]))
+  cat(sprintf("rMNK %.5f %i %i %i\n", rho, M, N, K[1L]), file = file)
 
   # export epistatic links
   for (m in seq_len(M)) {
@@ -310,5 +314,50 @@ exportNKFunction = function(x, path) {
 }
 
 importNKFunction = function(path) {
+  checkmate::assertFileExists(path)
 
+  lines = readLines(path)
+
+  # skip comments
+  index = 1L
+  while (substr(lines[index], 1, 1) == "C")
+    index = index + 1L
+
+  # read meta data
+  meta = strsplit(lines[index], " ")[[1L]]
+
+  rho = as.numeric(meta[2L])
+  M = as.integer(meta[3L])
+  N = as.integer(meta[4L])
+  K = vector(length = M, mode = "list") # extracted from links
+
+  index = index + 1L
+
+  # read epistatic links
+  links = vector(length = M, mode = "list")
+  for (m in seq_len(M)) {
+    links[[m]] = vector(length = N, mode = "list")
+    for (n in seq_len(N)) {
+      current_links = as.integer(strsplit(lines[index], " ", fixed = TRUE)[[1L]])
+      links[[m]][[n]] = current_links
+      index = index + 1L
+    }
+    # extract number of links for each bit
+    K[[m]] = sapply(links[[m]], length)
+  }
+
+  # read table values
+  values = vector(length = M, mode = "list")
+  for (m in seq_len(M)) {
+    values[[m]] = vector(length = N, mode = "list")
+    for (n in seq_len(N)) {
+      current_values = as.numeric(strsplit(lines[index], " ", fixed = TRUE)[[1L]])
+      values[[m]][[n]] = current_values
+      index = index + 1L
+    }
+  }
+
+  if (M == 1)
+    return(makeNKFunctionInternal(N, K[[1L]], links[[1L]], values[[1L]]))
+  return(makeRMNKFunctionInternal(rho, M, N, K, links_and_values = list(links = links, values = values)))
 }
