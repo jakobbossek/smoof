@@ -5,7 +5,12 @@ test_that("single-objective test function generators work", {
     all.methods = unclass(lsf.str(envir = asNamespace("smoof"), all = TRUE))
     all.methods = all.methods[grepl("^make", all.methods)]
     all.methods = Filter(function(fun) exists(fun), all.methods)
-    all.methods = setdiff(all.methods, c("makeInternalObjectiveFunction",
+    all.methods = setdiff(all.methods, c(
+      "makeNKFunction",
+      "makeRMNKFunction",
+      "makeNKFunctionInternal",
+      "makeRMNKFunctionInternal",
+      "makeRMNKFunctionInternalFromFunctions",
       "makeMultiObjectiveFunction", "makeObjectiveFunction",
       "makeSingleObjectiveFunction", "makeBBOBFunction",
       "makeShekelFunction",
@@ -100,5 +105,49 @@ test_that("CEC 2009 functions work", {
         dimension %i and UF%i", length(value), getNumberOfObjectives(fn),
         dimension, id))
     }
+  }
+})
+
+test_that("NK-landscape generator works", {
+  N = c(10, 15, 20)
+
+  randomK = function(N) {
+    sample(2:7, size = N, replace = TRUE)
+  }
+
+  for (n in N) {
+    fn = makeNKFunction(n, K = randomK(n))
+    x = sampleValue(getParamSet(fn))$x
+    value = fn(x)
+    expect_true(is.numeric(value))
+  }
+})
+
+test_that("rMNK-landscape generator works", {
+  N = c(10, 15, 20)
+  M = 2:4
+
+  for (m in M) {
+    for (n in N) {
+      fn = makeRMNKFunction(rho = runif(1, 0.5, 0.9), m, n, K = 4L)
+      x = sampleValue(getParamSet(fn))$x
+      value = fn(x)
+      expect_true(is.numeric(value))
+      expect_true(length(value) == m)
+    }
+  }
+})
+
+test_that("rMNK-landscape works when passing single-objective NK-landscapes", {
+  N = c(10, 15, 20)
+
+  for (n in N) {
+    fn1 = makeNKFunction(n, K = 4L)
+    fn2 = makeNKFunction(n, K = sample(2:7, size = N, replace = TRUE))
+    moofn = makeRMNKFunction(funs = list(fn1, fn2))
+    x = sampleValue(getParamSet(fn))$x
+    value = fn(x)
+    expect_true(is.numeric(value))
+    expect_true(length(value) == 2L)
   }
 })

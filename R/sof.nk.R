@@ -240,6 +240,8 @@ generateRMNKFunction = function(M, N, K, rho) {
 prepareEpistaticLinks = function(M, N, K) {
   if (M == 1L & length(K) == 1L)
     K = list(rep(K, N)) # nevertheless a list of length 1
+  else if (M == 1L & (length(K) == N))
+    K = list(K)
   else if ((M > 1L) & (length(K) == 1L))
     K = lapply(seq_len(M), function(i) rep(K, N))
   else if ((M > 1L) & (length(K) == M))
