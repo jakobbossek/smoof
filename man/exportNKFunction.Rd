@@ -2,9 +2,12 @@
 % Please edit documentation in R/sof.nk.R
 \name{exportNKFunction}
 \alias{exportNKFunction}
+\alias{importNKFunction}
 \title{Export/import (rM)NK-landscapes}
 \usage{
 exportNKFunction(x, path)
+
+importNKFunction(path)
 }
 \arguments{
 \item{x}{[\code{smoof_function}]\cr

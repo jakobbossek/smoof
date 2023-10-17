@@ -60,21 +60,6 @@ makeNKFunctionInternal = function(links_and_values, m) {
   force(links)
   force(values)
 
-  # fn = function(x) {
-  #   # for every bit position ...
-  #   res = sapply(seq_len(N), function(i) {
-  #     # ... get active links, i.e., those that have a value of 1
-  #     the_links = c(x[i], x[links[[i]] + 1]) # +1 since epistatic links are zero-based
-  #     # ... convert the bitstring to an integer offset of access the value table
-  #     # FIXME: IMPLEMENT convertBitstringToInt in C
-  #     offset = convertBitstringToInt(the_links)
-  #     # ... and return the stored value
-  #     values[[i]][offset + 1L]
-  #   })
-  #   # normalise
-  #   sum(res) / N
-  # }
-
   fn = function(x) {
     evaluate_nk_landscape(values, links, x)
   }
@@ -85,6 +70,7 @@ makeNKFunctionInternal = function(links_and_values, m) {
     name = sprintf("NK-landscape (N=%i, k=%s)", N, "K_string"),
     id = "NK_landscape",
     fn = fn,
+    minimize = FALSE,
     par.set = makeParamSet(makeIntegerVectorParam(
       len = N,
       id = "x",
@@ -133,6 +119,7 @@ makeRMNKFunctionInternal = function(links_and_values) {
     name = sprintf("rMNK-landscape (M=%i, N=%i, k=%s, rho=%.5f", M, N, "K_string", rho),
     id = "rMNK_landscape",
     fn = fn,
+    minimize = rep(FALSE, M), # always to be maximised
     par.set = makeParamSet(makeIntegerVectorParam(
       len = N,
       id = "x",
@@ -143,12 +130,6 @@ makeRMNKFunctionInternal = function(links_and_values) {
   )
   attr(mfn, "links_and_values") = links_and_values
   return(mfn)
-}
-
-# helper to calculate offset for values table
-convertBitstringToInt = function(x) {
-  n = length(x)
-  sum(x * 2^(0:(n-1)))
 }
 
 # Internal helper function to actually create links and values for given rMNK parameters
