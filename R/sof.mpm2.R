@@ -71,9 +71,11 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
   # import reticulate namespace
   BBmisc::requirePackages("_reticulate", why = "smoof::makeMultiplePeaksModel2Function")
 
-  # initialize 3 functions from mpm2.py as NULL such that they have a visible binding when checking the pkg
+  # initialize helper functions from mpm2.py as NULL such that they have a visible binding when checking the pkg
   evaluateProblem = getGlobalOptimaParams = getLocalOptimaParams = NULL
-
+  getCovarianceMatrices = getAllPeaks = getAllHeights = getAllShapes = NULL
+  getAllRadii = NULL
+# 
   # load funnel generator to global environment
   eval(reticulate::py_run_file(system.file("mpm2.py", package = "smoof")), envir = .GlobalEnv)
   eval(reticulate::source_python(system.file("mpm2.py", package = "smoof"), envir = .GlobalEnv, convert = TRUE), envir = .GlobalEnv)
@@ -90,6 +92,53 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
       evaluateProblem(x, n.peaks, dimensions, topology, seed, rotated, peak.shape)
     }
   } else if (evaluation.env == "R") {
+    # helper functions
+    getPeakMetadata = function(n.peaks, dimensions, topology, seed, rotated, peak.shape) {
+      
+      xopt = getAllPeaks(n.peaks, dimensions, topology, seed, rotated, peak.shape)
+      colnames(xopt) = paste0("x", 1:dimensions)
+      
+      cov.mats = getCovarianceMatrices(n.peaks, dimensions, topology, seed, rotated, peak.shape)
+      cov = lapply(cov.mats, function(x) matrix(x[[1]], nrow = dimensions, ncol = dimensions))
+      
+      height = getAllHeights(n.peaks, dimensions, topology, seed, rotated, peak.shape)
+      
+      shape = getAllShapes(n.peaks, dimensions, topology, seed, rotated, peak.shape)
+      
+      radius = getAllRadii(n.peaks, dimensions, topology, seed, rotated, peak.shape)
+      
+      peak_fns = lapply(1:nrow(xopt), function(i) {
+        createPeakFunction(cov[[i]], xopt[i,], height[i], shape[i], radius[i])
+      })
+      
+      fn = function(x) {
+        min(sapply(peak_fns, function(f) f(x)))
+      }
+      
+      list(
+        xopt = xopt,
+        cov = cov,
+        height = height,
+        shape = shape,
+        radius = radius,
+        peak_fns = peak_fns,
+        fn = fn
+      )
+    }
+    
+    createPeakFunction = function(cov, xopt, height, shape, radius) {
+      function(x) {
+        if (is.matrix(x)) {
+          dx = t(apply(x, 1, function(row) (row - xopt))) %*% chol(cov)
+          md = apply(dx, 1, function(row) sqrt(sum(row**2)))
+        } else {
+          md = sqrt(t(x - xopt) %*% cov %*% (x - xopt))
+        }
+        g = height / (1 + md**shape / radius)
+        return(1 - g)
+      }
+    }
+    
     peakData = getPeakMetadata(n.peaks, dimensions, topology, seed, rotated, peak.shape)
     evalFn = function(x) {
       if (is.matrix(x)) {
@@ -120,51 +169,3 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
 class(makeMPM2Function) = c("function", "smoof_generator")
 attr(makeMPM2Function, "name") = c("Multiple peaks model 2 function generator")
 attr(makeMPM2Function, "type") = c("single-objective")
-
-# ==== Helper functions ====
-
-getPeakMetadata = function(n.peaks, dimensions, topology, seed, rotated, peak.shape) {
-  
-  xopt = getAllPeaks(n.peaks, dimensions, topology, seed, rotated, peak.shape)
-  colnames(xopt) = paste0("x", 1:dimensions)
-  
-  cov.mats = getCovarianceMatrices(n.peaks, dimensions, topology, seed, rotated, peak.shape)
-  cov = lapply(cov.mats, function(x) matrix(x[[1]], nrow = dimensions, ncol = dimensions))
-  
-  height = getAllHeights(n.peaks, dimensions, topology, seed, rotated, peak.shape)
-  
-  shape = getAllShapes(n.peaks, dimensions, topology, seed, rotated, peak.shape)
-  
-  radius = getAllRadii(n.peaks, dimensions, topology, seed, rotated, peak.shape)
-  
-  peak_fns = lapply(1:nrow(xopt), function(i) {
-    createPeakFunction(cov[[i]], xopt[i,], height[i], shape[i], radius[i])
-  })
-  
-  fn = function(x) {
-    min(sapply(peak_fns, function(f) f(x)))
-  }
-  
-  list(
-    xopt = xopt,
-    cov = cov,
-    height = height,
-    shape = shape,
-    radius = radius,
-    peak_fns = peak_fns,
-    fn = fn
-  )
-}
-
-createPeakFunction = function(cov, xopt, height, shape, radius) {
-  function(x) {
-    if (is.matrix(x)) {
-      dx = t(apply(x, 1, function(row) (row - xopt))) %*% chol(cov)
-      md = apply(dx, 1, function(row) sqrt(sum(row**2)))
-    } else {
-      md = sqrt(t(x - xopt) %*% cov %*% (x - xopt))
-    }
-    g = height / (1 + md**shape / radius)
-    return(1 - g)
-  }
-}
