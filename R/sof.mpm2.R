@@ -12,6 +12,12 @@
 #'   of elliptically shaped peaks.
 #' @param peak.shape [\code{character(1)}]\cr
 #'   Shape of peak(s). Possible values are \dQuote{ellipse} and \dQuote{sphere}.
+#' @param evaluation.env [\code{character(1)}]\cr
+#'   Evaluation environment after the function was created. Possible values are
+#'   \dQuote{R} (default) and \dQuote{Python}. The original generation of the
+#'   problem is always done in the original Python environment. However,
+#'   evaluation in R is faster, especially if multiple MPM2 functions are used
+#'   in a multi-objective setting.
 #' @return [\code{smoof_single_objective_function}]
 #' @examples
 #' \dontrun{
@@ -33,7 +39,8 @@
 #' @author \R interface by Jakob Bossek. Original python code provided by the Simon Wessing.
 #'
 #' @export
-makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE, peak.shape = "ellipse") {
+makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
+                            peak.shape = "ellipse", evaluation.env = "R") {
   # if (isWindows()) {
   #  stopf("No support for the multiple peaks model 2 generator at the moment.")
   # }
@@ -78,22 +85,86 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
   global.opt.params = eval(getGlobalOptimaParams(n.peaks, dimensions, topology, seed, rotated, peak.shape), envir = .GlobalEnv)
   global.opt.params = matrix(global.opt.params[[1L]], nrow = 1L)
 
+  if (evaluation.env == "Python") {
+    evalFn = function(x) {
+      evaluateProblem(x, n.peaks, dimensions, topology, seed, rotated, peak.shape)
+    }
+  } else if (evaluation.env == "R") {
+    peakData = getPeakMetadata(n.peaks, dimensions, topology, seed, rotated, peak.shape)
+    evalFn = function(x) {
+      if (is.matrix(x)) {
+        apply(x, 2, peakData$fn)
+      } else {
+        peakData$fn(x)
+      }
+    }
+  } else {
+    warning(paste0("Unknown evaluation.env \"", evaluation.env, "\""))
+  }
+  
   smoof.fn = makeSingleObjectiveFunction(
     name = sprintf("Funnel_%i_%i_%i_%s_%s%s", n.peaks, dimensions, seed, topology, peak.shape, ifelse(rotated, "_rotated", "")),
     description = sprintf("Funnel-like function\n(n.peaks: %i, dimension: %i, topology: %s, seed: %i, rotated: %s, shape: %s)",
-      n.peaks, dimensions, topology, seed, rotated, peak.shape),
-    fn = function(x) {
-      evaluateProblem(x, n.peaks, dimensions, topology, seed, rotated, peak.shape)
-    },
+                          n.peaks, dimensions, topology, seed, rotated, peak.shape),
+    fn = evalFn,
     par.set = par.set,
     vectorized = TRUE,
     tags = c("non-separable", "scalable", "continuous", "multimodal"),
     local.opt.params = local.opt.params,
     global.opt.params = global.opt.params
   )
+  
   return(smoof.fn)
 }
 
 class(makeMPM2Function) = c("function", "smoof_generator")
 attr(makeMPM2Function, "name") = c("Multiple peaks model 2 function generator")
 attr(makeMPM2Function, "type") = c("single-objective")
+
+# ==== Helper functions ====
+
+getPeakMetadata = function(n.peaks, dimensions, topology, seed, rotated, peak.shape) {
+  
+  xopt = getAllPeaks(n.peaks, dimensions, topology, seed, rotated, peak.shape)
+  colnames(xopt) = paste0("x", 1:dimensions)
+  
+  cov.mats = getCovarianceMatrices(n.peaks, dimensions, topology, seed, rotated, peak.shape)
+  cov = lapply(cov.mats, function(x) matrix(x[[1]], nrow = dimensions, ncol = dimensions))
+  
+  height = getAllHeights(n.peaks, dimensions, topology, seed, rotated, peak.shape)
+  
+  shape = getAllShapes(n.peaks, dimensions, topology, seed, rotated, peak.shape)
+  
+  radius = getAllRadii(n.peaks, dimensions, topology, seed, rotated, peak.shape)
+  
+  peak_fns = lapply(1:nrow(xopt), function(i) {
+    createPeakFunction(cov[[i]], xopt[i,], height[i], shape[i], radius[i])
+  })
+  
+  fn = function(x) {
+    min(sapply(peak_fns, function(f) f(x)))
+  }
+  
+  list(
+    xopt = xopt,
+    cov = cov,
+    height = height,
+    shape = shape,
+    radius = radius,
+    peak_fns = peak_fns,
+    fn = fn
+  )
+}
+
+createPeakFunction = function(cov, xopt, height, shape, radius) {
+  function(x) {
+    if (is.matrix(x)) {
+      dx = t(apply(x, 1, function(row) (row - xopt))) %*% chol(cov)
+      md = apply(dx, 1, function(row) sqrt(sum(row**2)))
+    } else {
+      md = sqrt(t(x - xopt) %*% cov %*% (x - xopt))
+    }
+    g = height / (1 + md**shape / radius)
+    return(1 - g)
+  }
+}
