@@ -165,3 +165,7 @@ mof_WFG_9 <- function(z, M, k) {
     .Call(`_smoof_mof_WFG_9`, z, M, k)
 }
 
+evaluate_nk_landscape <- function(values, links, x) {
+    .Call(`_smoof_evaluate_nk_landscape`, values, links, x)
+}
+

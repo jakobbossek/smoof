@@ -516,6 +516,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// evaluate_nk_landscape
+NumericVector evaluate_nk_landscape(Rcpp::List values, Rcpp::List links, IntegerVector x);
+RcppExport SEXP _smoof_evaluate_nk_landscape(SEXP valuesSEXP, SEXP linksSEXP, SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::List >::type values(valuesSEXP);
+    Rcpp::traits::input_parameter< Rcpp::List >::type links(linksSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(evaluate_nk_landscape(values, links, x));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 RcppExport SEXP evaluateBBOBFunctionCPP(SEXP, SEXP, SEXP, SEXP);
 RcppExport SEXP evaluateUFFunction(SEXP, SEXP, SEXP);
@@ -572,6 +585,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_smoof_mof_WFG_7", (DL_FUNC) &_smoof_mof_WFG_7, 3},
     {"_smoof_mof_WFG_8", (DL_FUNC) &_smoof_mof_WFG_8, 3},
     {"_smoof_mof_WFG_9", (DL_FUNC) &_smoof_mof_WFG_9, 3},
+    {"_smoof_evaluate_nk_landscape", (DL_FUNC) &_smoof_evaluate_nk_landscape, 3},
     {"evaluateBBOBFunctionCPP",      (DL_FUNC) &evaluateBBOBFunctionCPP,      4},
     {"evaluateUFFunction",           (DL_FUNC) &evaluateUFFunction,           3},
     {"getOptimumForBBOBFunctionCPP", (DL_FUNC) &getOptimumForBBOBFunctionCPP, 3},

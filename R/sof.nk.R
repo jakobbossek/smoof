@@ -1,6 +1,9 @@
-#' Combinatorial NK-landscapes
+#' Generator for NK-landscapes
 #'
-#' Generate a rNK-landscape function
+#' Generate a single-objective NK-landscape. NK-landscapes are combinatorial
+#' problem with input space \eqn{\{0,1\}^N}. The value of each bit position
+#' \eqn{i \in \{1, \ldots, N\}} depends on \eqn{K} other bits, the so-called
+#' \emph{(epistatic) links / interactions}.
 #'
 #' @references
 #'
@@ -13,16 +16,18 @@
 #'
 #' @examples
 #' # generate homogeneous NK-landscape with each K=3 epistatic links
-#' fn = makeNKFunction(10L, 3L)
-#'
-#' # generate heterogeneous NK-landscape where K is sampled from {2,3,4}
-#' # uniformly at random
-#' N = 20L
-#' fn = makeNKFunction(N, K = sample(2:4, size = N, replace = TRUE))
+#' N = 20
+#' fn = makeNKFunction(N, 3)
 #'
 #' # evaluate function on some random bitstrings
 #' bitstrings = matrix(sample(c(0, 1), size = 10 * N, replace = TRUE), ncol = N)
 #' apply(bitstrings, fn)
+#'
+#' # generate heterogeneous NK-landscape where K is sampled from {2,3,4}
+#' # uniformly at random
+#' fn = makeNKFunction(N, K = sample(2:4, size = N, replace = TRUE))
+#'
+#' @family nk_landscapes
 #' @return [\code{smoof_single_objective_function}]
 #' @export
 makeNKFunction = function(N, K) {
@@ -55,19 +60,23 @@ makeNKFunctionInternal = function(links_and_values, m) {
   force(links)
   force(values)
 
+  # fn = function(x) {
+  #   # for every bit position ...
+  #   res = sapply(seq_len(N), function(i) {
+  #     # ... get active links, i.e., those that have a value of 1
+  #     the_links = c(x[i], x[links[[i]] + 1]) # +1 since epistatic links are zero-based
+  #     # ... convert the bitstring to an integer offset of access the value table
+  #     # FIXME: IMPLEMENT convertBitstringToInt in C
+  #     offset = convertBitstringToInt(the_links)
+  #     # ... and return the stored value
+  #     values[[i]][offset + 1L]
+  #   })
+  #   # normalise
+  #   sum(res) / N
+  # }
+
   fn = function(x) {
-    # for every bit position ...
-    res = sapply(seq_len(N), function(i) {
-      # ... get active links, i.e., those that have a value of 1
-      the_links = c(x[i], x[links[[i]] + 1]) # +1 since epistatic links are zero-based
-      # ... convert the bitstring to an integer offset of access the value table
-      # FIXME: IMPLEMENT convertBitstringToInt in C
-      offset = convertBitstringToInt(the_links)
-      # ... and return the stored value
-      values[[i]][offset + 1L]
-    })
-    # normalise
-    sum(res) / N
+    evaluate_nk_landscape(values, links, x)
   }
 
   # FIXME: id should be random since the function values depend on seed?
@@ -248,12 +257,14 @@ prepareEpistaticLinks = function(M, N, K) {
 #'   If a single value is passed a homogeneous NK-landscape is generated, i.e.
 #'   \eqn{k_i = k \forall i = 1, \ldots, N}.
 #' @param rho [\code{numeric(1)}]\cr
-#'   Correlation between table contributions.
+#'   Correlation between objectives.
 #'   Defaults to zero, i.e., no correlation at all.
 #' @param funs [\code{list} | \code{NULL}]\cr
 #'   Allows for an alternative way to build a MNK-landscape by passing a list of
 #'   at least two single-objective NK-landscapes. In this case all other parameters
-#'   are ignored. Default is \code{NULL}.
+#'   are ignored. Note that the passed function must be compatible, i.e., the
+#'   input dimension \code{N} needs to match.
+#'   Default is \code{NULL}.
 #' @return [\code{smoof_multi_objective_function}]
 #'
 #' @examples
@@ -278,6 +289,7 @@ prepareEpistaticLinks = function(M, N, K) {
 #' moofn = makeRMNKFunction(funs = list(soofn1, soofn2))
 #' getNumberOfObjectives(moofn)
 #'
+#' @family nk_landscapes
 #' @seealso \code{\link{makeNKFunction}}
 #' @export
 makeRMNKFunction = function(M, N, K, rho = 0, funs = NULL) {
@@ -314,7 +326,7 @@ attr(makeRMNKFunction, "name") = c("rMNK")
 attr(makeRMNKFunction, "type") = c("multi-objective")
 attr(makeRMNKFunction, "tags") = c("multi-objective", "combinatorial")
 
-#' Export (rM)NK-landscape function to file
+#' Export/import (rM)NK-landscapes
 #'
 #' NK-landscapes and rMNK-landscapes are randomly generated combinatorial structures.
 #' In contrast to continuous benchmark function it thus makes perfect sense to store
@@ -325,9 +337,10 @@ attr(makeRMNKFunction, "tags") = c("multi-objective", "combinatorial")
 #' @param x [\code{smoof_function}]\cr
 #'   NK-landscape of rMNK-landscape.
 #' @param path [\code{character(1)}]\cr
-#'   Path to file where the landscape shall be stored.
+#'   Path to file.
 #' @return Silently returns \code{TRUE} on success.
 #'
+#' @family nk_landscapes
 #' @seealso importNKFunction
 #' @export
 exportNKFunction = function(x, path) {
@@ -376,13 +389,7 @@ exportNKFunction = function(x, path) {
   return(invisible(TRUE))
 }
 
-#' Import a (rM)NK-landscape function from a file
-#'
-#' @param path [\code{character(1)}]\cr
-#'   Path to file.
-#' @return [\code{smoof_single_objective_function} | [\code{smoof_multi_objective_function}]
-#'
-#' @seealso \code{\link{exportNKFunction}}
+#' @rdname exportNKFunction
 #' @export
 importNKFunction = function(path) {
   checkmate::assertFileExists(path)
