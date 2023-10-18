@@ -15,6 +15,27 @@ test_that("NK-landscape generator works", {
   }
 })
 
+test_that("MNK-landscape generator works", {
+  N = c(10, 15, 20)
+  M = 2:4
+  K_min = 1L
+  K_max = 6L
+
+  for (m in M) {
+    for (n in N) {
+      # random links for each bit and objective
+      K = lapply(seq_len(m), function(i) {
+        sample(K_min:K_max, size = n, replace = TRUE)
+      })
+      fn = makeMNKFunction(m, n, K = K)
+      x = sampleValue(getParamSet(fn))$x
+      value = fn(x)
+      expect_true(is.numeric(value))
+      expect_true(length(value) == m)
+    }
+  }
+})
+
 test_that("rMNK-landscape generator works", {
   N = c(10, 15, 20)
   M = 2:4
@@ -36,7 +57,7 @@ test_that("rMNK-landscape works when passing single-objective NK-landscapes", {
   for (n in N) {
     fn1 = makeNKFunction(n, K = 4L)
     fn2 = makeNKFunction(n, K = sample(2:7, size = n, replace = TRUE))
-    moofn = makeRMNKFunction(funs = list(fn1, fn2))
+    moofn = makeMNKFunction(funs = list(fn1, fn2))
 
     f = tempfile()
     on.exit(unlink(f))

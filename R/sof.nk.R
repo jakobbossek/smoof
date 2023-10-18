@@ -21,7 +21,7 @@
 #'
 #' # evaluate function on some random bitstrings
 #' bitstrings = matrix(sample(c(0, 1), size = 10 * N, replace = TRUE), ncol = N)
-#' apply(bitstrings, fn)
+#' apply(bitstrings, 1, fn)
 #'
 #' # generate heterogeneous NK-landscape where K is sampled from {2,3,4}
 #' # uniformly at random
@@ -32,13 +32,13 @@
 #' @export
 makeNKFunction = function(N, K) {
   N = checkmate::asInt(N)
-  checkmate::assertInteger(K, lower = 0, upper = N - 1L)
+  K = checkmate::asInteger(K, lower = 0, upper = N - 1L)
   K = prepareEpistaticLinks(M = 1L, N, K)
 
   # delegate to flexible generator
-  links_and_values = generateRMNKFunction(M = 1L, N, K, rho = 0)
+  nk_properties = generateRMNKFunction(M = 1L, N, K, rho = 0)
 
-  makeNKFunctionInternal(links_and_values, m = 1L)
+  makeNKFunctionInternal(nk_properties, m = 1L)
 }
 
 class(makeNKFunction) = c("function", "smoof_generator", "nk_generator")
@@ -47,90 +47,6 @@ attr(makeNKFunction, "type") = c("single-objective")
 attr(makeNKFunction, "tags") = c("single-objective", "combinatorial")
 
 
-makeNKFunctionInternal = function(links_and_values, m) {
-  M = links_and_values$M
-  N = links_and_values$N
-  K = links_and_values$K
-
-  links = links_and_values$links[[m]]
-  values = links_and_values$values[[m]]
-
-  force(N)
-  force(K)
-  force(links)
-  force(values)
-
-  fn = function(x) {
-    evaluate_nk_landscape(values, links, x)
-  }
-
-  # FIXME: id should be random since the function values depend on seed?
-  # FIXME: also the name should include some kind of hash
-  fn = makeSingleObjectiveFunction(
-    name = sprintf("NK-landscape (N=%i, k=%s)", N, "K_string"),
-    id = "NK_landscape",
-    fn = fn,
-    minimize = FALSE,
-    par.set = makeParamSet(makeIntegerVectorParam(
-      len = N,
-      id = "x",
-      lower = rep(0, N),
-      upper = rep(1, N)
-    ))
-  )
-  attr(fn, "links_and_values") = links_and_values
-  return(fn)
-}
-
-makeRMNKFunctionInternalFromFunctions = function(fns) {
-  # print(fns)
-  links_and_values = list(
-    rho = 0, # uncorrelated!
-    M = length(fns),
-    N = attr(fns[[1L]], "links_and_values")$N,
-    K = lapply(fns, function(fn) attr(fn, "links_and_values")$K[[1L]]),
-    links = lapply(fns, function(fn) attr(fn, "links_and_values")$links[[1L]]),
-    values = lapply(fns, function(fn) attr(fn, "links_and_values")$values[[1L]])
-  )
-  makeRMNKFunctionInternal(links_and_values)
-}
-
-makeRMNKFunctionInternal = function(links_and_values) {
-  rho = links_and_values$rho
-  M = links_and_values$M
-  N = links_and_values$N
-  K = links_and_values$K
-
-  # generate M single-objective NK-landscape functions
-  fns = sapply(seq_len(M), function(m) {
-    makeNKFunctionInternal(links_and_values, m = m)
-  })
-
-  force(fns)
-
-  # actual objective function
-  fn = function(x) {
-    sapply(fns, function(fn) fn(x))
-  }
-
-  # FIXME: id should be random since the function values depend on seed?
-  # FIXME: also the name should include some kind of hash
-  mfn = makeMultiObjectiveFunction(
-    name = sprintf("rMNK-landscape (M=%i, N=%i, k=%s, rho=%.5f", M, N, "K_string", rho),
-    id = "rMNK_landscape",
-    fn = fn,
-    minimize = rep(FALSE, M), # always to be maximised
-    par.set = makeParamSet(makeIntegerVectorParam(
-      len = N,
-      id = "x",
-      lower = rep(0, N),
-      upper = rep(1, N)
-    )),
-    n.objectives = M
-  )
-  attr(mfn, "links_and_values") = links_and_values
-  return(mfn)
-}
 
 # Internal helper function to actually create links and values for given rMNK parameters
 #
@@ -206,28 +122,50 @@ generateRMNKFunction = function(M, N, K, rho) {
   ))
 }
 
+# Prepare epistatic links K_i, i = 1, ..., N
+#
+# Background: we store K as a list of length-N integer vectors [[M]][N]
+#
+# @param M [\code{integer(1)}]\cr
+#  Number of objectives.
+# @param N [\code{integer(1)}]\cr
+#  Number of bits, i.e., input space dimension.
+# @param K [\code{integer}]\cr
+#  Epistatic links
+# @return List of in
 prepareEpistaticLinks = function(M, N, K) {
   if (M == 1L & length(K) == 1L)
     K = list(rep(K, N)) # nevertheless a list of length 1
   else if (M == 1L & (length(K) == N))
     K = list(K)
-  else if ((M > 1L) & (length(K) == 1L))
+  else if ((M > 1L) & (!is.list(K)) & (length(K) == 1L))
     K = lapply(seq_len(M), function(i) rep(K, N))
-  else if ((M > 1L) & (length(K) == M))
+  else if ((M > 1L) & (!is.list(K)) & (length(K) == M))
     K = lapply(K, function(k) rep(k, N))
-  else
+  else if ((M > 1L) & is.list(K)) {
+    for (k in K) {
+      checkmate::assertIntegerish(k, len = N, lower = 0, upper = N - 1L)
+    }
+  } else
     BBmisc::stopf("[prepareEpistaticLinks] Passed value of K is illegal.")
 
   return(K)
 }
 
-
-#' rMNK-generator
+#' Generators for (r)MNK-landscapes
 #'
-#' Generates an NK-landscapes with input dimension \code{N}, output dimension \code{M}
-#' and epistatic links/interactions between bits specified by the vector \code{K}.
-#' The correlation between the objectives can be adjusted via the correlation
-#' parameter \eqn{\rho \in [-1,1]}.
+#' Generators for multi-objective NK-landscapes, i.e., with at least two objectives.
+#' Function \code{makeMNKLandscape(M, N, K)} create NK-landscapes with \code{M}
+#' (\eqn{\geq 2}) objectives, input dimension \code{N}, and epistatic links specified
+#' via parameter \code{K}. \code{K} can be a single integer value, a vector of
+#' \code{M} integers or a list of length-\code{N} integer vectors (see parameter
+#' description for details) which allow for maximum flexibility. It is also
+#' possible to compose a MNK-landscape by passing a list of single-objective
+#' NK-landscapes via argument \code{funs}.
+#'
+#' Function \code{makeRMNKLandscape(M, N, K, rho)} generates a MNK-landscape
+#' with correlated objective function values. The correlation can be adjusted
+#' by setting the \code{rho} parameter to a value between minus one and one.
 #'
 #' @param M [\code{integer(1)}]\cr
 #'   Number of objectives (at least two).
@@ -238,8 +176,7 @@ prepareEpistaticLinks = function(M, N, K) {
 #'   If a single value is passed a homogeneous NK-landscape is generated, i.e.
 #'   \eqn{k_i = k \forall i = 1, \ldots, N}.
 #' @param rho [\code{numeric(1)}]\cr
-#'   Correlation between objectives.
-#'   Defaults to zero, i.e., no correlation at all.
+#'   Correlation between objectives (value between -1 and 1).
 #' @param funs [\code{list} | \code{NULL}]\cr
 #'   Allows for an alternative way to build a MNK-landscape by passing a list of
 #'   at least two single-objective NK-landscapes. In this case all other parameters
@@ -249,31 +186,37 @@ prepareEpistaticLinks = function(M, N, K) {
 #' @return [\code{smoof_multi_objective_function}]
 #'
 #' @examples
-#' # generate homogeneous uncorrelated bi-objective rMNK-landscape with each
+#' # generate homogeneous uncorrelated bi-objective MNK-landscape with each
 #' # three epistatic links
 #' M = 2L
 #' N = 20L
 #' K = 3L
-#' fn = makeRMNKFunction(M, N, K)
+#' fn = makeMNKFunction(M, N, K)
 #'
-#' # generate strongly correlated objectives
-#' fn = makeRMNKFunction(rho = 0.9, M, N, K)
+#' # generate MNK-landscape where the first function has 3 epistatic links
+#' # per bit while the second function has 2
+#' fn = makeMNKFunction(M, N, K = c(3L, 2L))
 #'
-#' # generate first function has 3 epistatic links while the second has 2
-#' fn = makeRMNKFunction(rho = 0.9, M, N, K = c(3L, 2L))
+#' # sample the number of epistatic links individually from {1, ..., 5} for
+#' # every bit position and every objective
+#' K = lapply(seq_len(M), function(m) sample(1:(N-1), size = N, replace = TRUE))
+#' fn = makeMNKFunction(M, N, K = K)
+#'
+#' #' # generate strongly positively correlated objectives
+#' fn = makeRMNKFunction(M, N, K, rho = 0.9)
 #'
 #' # alternative constructor: generate two single-objective NK-landscapes
 #' # and combine into bi-objective problem
-#' soofn1 = makeNKFunction(N, K) # homegeneous in K
+#' soofn1 = makeNKFunction(N, K = 2L) # homegeneous in K
 #' K = sample(2:3, size = N, replace = TRUE)
-#' soofn2 = makeNKfunction(N, K = K) # heterogeneous in K
-#' moofn = makeRMNKFunction(funs = list(soofn1, soofn2))
+#' soofn2 = makeNKFunction(N, K = K) # heterogeneous in K
+#' moofn = makeMNKFunction(funs = list(soofn1, soofn2))
 #' getNumberOfObjectives(moofn)
 #'
 #' @family nk_landscapes
 #' @seealso \code{\link{makeNKFunction}}
 #' @export
-makeRMNKFunction = function(M, N, K, rho = 0, funs = NULL) {
+makeMNKFunction = function(M, N, K, funs = NULL) {
   if (!is.null(funs)) {
     if (checkmate::testCharacter(funs, min.len = 2L))
       funs = lapply(funs, importNKFunction)
@@ -287,25 +230,131 @@ makeRMNKFunction = function(M, N, K, rho = 0, funs = NULL) {
     if ((length(unique(Ms)) != 1L) | any(Ms > 1L))
       BBmisc::stopf("[makeRMNKFunction] functions in 'funs' do not fulfill the requirements. Note that all passed function need to be single-objective.")
 
-    return(makeRMNKFunctionInternalFromFunctions(funs))
+    return(makeMNKFunctionInternalFromFunctions(funs))
   }
 
+  M = checkmate::asInt(M, lower = 2L, upper = 20L)
+  if (!(length(K) %in% c(1L, M)))
+    BBmisc::stopf("[makeMNKFunction] Epistatic links 'K' must be an integer vector of length one or M (set to %i).", M)
+  K = prepareEpistaticLinks(M = M, N, K)
+
+  funs = lapply(seq_len(M), function(m) {
+    makeNKFunction(N, K[[m]])
+  })
+
+  makeMNKFunctionInternalFromFunctions(funs)
+}
+
+class(makeMNKFunction) = c("function", "smoof_generator", "mnk_generator")
+attr(makeMNKFunction, "name") = c("MNK")
+attr(makeMNKFunction, "type") = c("multi-objective")
+attr(makeMNKFunction, "tags") = c("multi-objective", "combinatorial")
+
+
+#' @rdname makeMNKFunction
+#' @export
+makeRMNKFunction = function(M, N, K, rho = 0) {
   M = checkmate::asInt(M, lower = 2L, upper = 20L)
   checkmate::assertNumber(rho, lower = -1, upper = 1)
   K = prepareEpistaticLinks(M = M, N, K)
 
-  # generate links and values
-  # * returns a list of lists of links (each one list for each objective)
-  # * returns a list of lists of value tables (each one list for each objective)
-  links_and_values = generateRMNKFunction(M, N, K, rho)
+  nk_properties = generateRMNKFunction(M, N, K, rho)
 
-  makeRMNKFunctionInternal(links_and_values)
+  makeMNKFunctionInternal(nk_properties)
 }
 
-class(makeRMNKFunction) = c("function", "smoof_generator", "nk_generator")
+class(makeRMNKFunction) = c("function", "smoof_generator", "rmnk_generator")
 attr(makeRMNKFunction, "name") = c("rMNK")
 attr(makeRMNKFunction, "type") = c("multi-objective")
 attr(makeRMNKFunction, "tags") = c("multi-objective", "combinatorial")
+
+
+makeNKFunctionInternal = function(nk_properties, m) {
+  M = nk_properties$M
+  N = nk_properties$N
+  K = nk_properties$K
+
+  links = nk_properties$links[[m]]
+  values = nk_properties$values[[m]]
+
+  force(N)
+  force(K)
+  force(links)
+  force(values)
+
+  fn = function(x) {
+    # call C++ function for fast evaluation
+    evaluate_nk_landscape(values, links, x)
+  }
+
+  # FIXME: id should be random since the function values depend on seed?
+  # FIXME: also the name should include some kind of hash
+  fn = makeSingleObjectiveFunction(
+    name = sprintf("NK-landscape (N=%i, k=%s)", N, "K_string"),
+    id = "NK_landscape",
+    fn = fn,
+    minimize = FALSE,
+    par.set = makeParamSet(makeIntegerVectorParam(
+      len = N,
+      id = "x",
+      lower = rep(0, N),
+      upper = rep(1, N)
+    ))
+  )
+  attr(fn, "nk_properties") = nk_properties
+  return(fn)
+}
+
+makeMNKFunctionInternalFromFunctions = function(fns) {
+  # print(fns)
+  nk_properties = list(
+    rho = 0, # uncorrelated!
+    M = length(fns),
+    N = attr(fns[[1L]], "nk_properties")$N,
+    K = lapply(fns, function(fn) attr(fn, "nk_properties")$K[[1L]]),
+    links = lapply(fns, function(fn) attr(fn, "nk_properties")$links[[1L]]),
+    values = lapply(fns, function(fn) attr(fn, "nk_properties")$values[[1L]])
+  )
+  makeMNKFunctionInternal(nk_properties)
+}
+
+makeMNKFunctionInternal = function(nk_properties) {
+  rho = nk_properties$rho
+  M = nk_properties$M
+  N = nk_properties$N
+  K = nk_properties$K
+
+  # generate M single-objective NK-landscape functions
+  fns = sapply(seq_len(M), function(m) {
+    makeNKFunctionInternal(nk_properties, m = m)
+  })
+
+  force(fns)
+
+  # actual objective function
+  fn = function(x) {
+    sapply(fns, function(fn) fn(x))
+  }
+
+  # FIXME: id should be random since the function values depend on seed?
+  # FIXME: also the name should include some kind of hash
+  mfn = makeMultiObjectiveFunction(
+    name = sprintf("rMNK-landscape (M=%i, N=%i, k=%s, rho=%.5f", M, N, "K_string", rho),
+    id = "rMNK_landscape",
+    fn = fn,
+    minimize = rep(FALSE, M), # always to be maximised
+    par.set = makeParamSet(makeIntegerVectorParam(
+      len = N,
+      id = "x",
+      lower = rep(0, N),
+      upper = rep(1, N)
+    )),
+    n.objectives = M
+  )
+  attr(mfn, "nk_properties") = nk_properties
+  return(mfn)
+}
+
 
 #' Export/import (rM)NK-landscapes
 #'
@@ -327,26 +376,25 @@ attr(makeRMNKFunction, "tags") = c("multi-objective", "combinatorial")
 exportNKFunction = function(x, path) {
   checkmate::assertPathForOutput(path, overwrite = TRUE)
 
-  if (!BBmisc::hasAttributes(x, "links_and_values"))
-    BBmisc::stopf("[exportNKFunction] x is missing attribute 'links_and_values'. Obviously, this is not an NK- or rMNK-landscape.")
+  if (!BBmisc::hasAttributes(x, "nk_properties"))
+    BBmisc::stopf("[exportNKFunction] x is missing attribute 'nk_properties'. Obviously, this is not an NK- or rMNK-landscape.")
 
   file = file(path, open = 'w')
   on.exit(close(file))
 
-  links_and_values = attr(x, "links_and_values")
-  links = links_and_values$links
-  values = links_and_values$values
+  nk_properties = attr(x, "nk_properties")
+  links = nk_properties$links
+  values = nk_properties$values
 
   # FIXME: save these things in the function?
-  rho = links_and_values$rho
-  M = links_and_values$M
-  N = links_and_values$N
-  K = links_and_values$K
+  rho = nk_properties$rho
+  M = nk_properties$M
+  N = nk_properties$N
+  K = nk_properties$K
 
   # FIXME: how to get the package version in here?
   cat(sprintf("COMMENT: file generated with R package smoof v1.6.0, %s\n", format(Sys.time(), "%m/%d/%Y %H:%M:%S")), file = file)
   cat("COMMENT: links are random and identical for every objective function\n", file = file)
-  # FIXME: heterogenous K
   cat(sprintf("rMNK %.5f %i %i %i\n", rho, M, N, K[[1L]][1L]), file = file)
 
   # export epistatic links
@@ -416,7 +464,7 @@ importNKFunction = function(path) {
     }
   }
 
-  links_and_values = list(
+  nk_properties = list(
     rho = rho,
     M = M,
     N = N,
@@ -426,6 +474,6 @@ importNKFunction = function(path) {
   )
 
   if (M == 1L)
-    return(makeNKFunctionInternal(links_and_values, m = 1L))
-  return(makeRMNKFunctionInternal(links_and_values))
+    return(makeNKFunctionInternal(nk_properties, m = 1L))
+  return(makeMNKFunctionInternal(nk_properties))
 }

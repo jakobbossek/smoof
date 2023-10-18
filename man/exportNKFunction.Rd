@@ -31,7 +31,7 @@ Note: the function overwrites existing files without asking.
 importNKFunction
 
 Other nk_landscapes: 
-\code{\link{makeNKFunction}()},
-\code{\link{makeRMNKFunction}()}
+\code{\link{makeMNKFunction}()},
+\code{\link{makeNKFunction}()}
 }
 \concept{nk_landscapes}

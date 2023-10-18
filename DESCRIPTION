@@ -33,6 +33,7 @@ Imports:
     Rcpp (>= 0.11.0)
 Suggests:
     testthat,
+    MASS,
     plot3D,
     plotly,
     mco,

@@ -31,7 +31,7 @@ fn = makeNKFunction(N, 3)
 
 # evaluate function on some random bitstrings
 bitstrings = matrix(sample(c(0, 1), size = 10 * N, replace = TRUE), ncol = N)
-apply(bitstrings, fn)
+apply(bitstrings, 1, fn)
 
 # generate heterogeneous NK-landscape where K is sampled from {2,3,4}
 # uniformly at random
@@ -41,6 +41,6 @@ fn = makeNKFunction(N, K = sample(2:4, size = N, replace = TRUE))
 \seealso{
 Other nk_landscapes: 
 \code{\link{exportNKFunction}()},
-\code{\link{makeRMNKFunction}()}
+\code{\link{makeMNKFunction}()}
 }
 \concept{nk_landscapes}
