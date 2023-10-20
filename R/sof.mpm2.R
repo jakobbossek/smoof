@@ -13,11 +13,11 @@
 #' @param peak.shape [\code{character(1)}]\cr
 #'   Shape of peak(s). Possible values are \dQuote{ellipse} and \dQuote{sphere}.
 #' @param evaluation.env [\code{character(1)}]\cr
-#'   Evaluation environment after the function was created. Possible values are
-#'   \dQuote{R} (default) and \dQuote{Python}. The original generation of the
-#'   problem is always done in the original Python environment. However,
-#'   evaluation in R is faster, especially if multiple MPM2 functions are used
-#'   in a multi-objective setting.
+#'   Evaluation environment after the function was created. Possible
+#'   (case-insensitive) values are \dQuote{R} (default) and \dQuote{Python}. The
+#'   original generation of the problem is always done in the original Python
+#'   environment. However, evaluation in R is faster, especially if multiple
+#'   MPM2 functions are used in a multi-objective setting.
 #' @return [\code{smoof_single_objective_function}]
 #' @examples
 #' \dontrun{
@@ -87,11 +87,11 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
   global.opt.params = eval(getGlobalOptimaParams(n.peaks, dimensions, topology, seed, rotated, peak.shape), envir = .GlobalEnv)
   global.opt.params = matrix(global.opt.params[[1L]], nrow = 1L)
 
-  if (evaluation.env == "Python") {
+  if (tolower(evaluation.env) == "python") {
     evalFn = function(x) {
       evaluateProblem(x, n.peaks, dimensions, topology, seed, rotated, peak.shape)
     }
-  } else if (evaluation.env == "R") {
+  } else if (tolower(evaluation.env) == "r") {
     # helper functions
     getPeakMetadata = function(n.peaks, dimensions, topology, seed, rotated, peak.shape) {
       
