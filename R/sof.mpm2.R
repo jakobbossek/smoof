@@ -128,12 +128,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
     
     createPeakFunction = function(cov, xopt, height, shape, radius) {
       function(x) {
-        if (is.matrix(x)) {
-          dx = t(apply(x, 1, function(row) (row - xopt))) %*% chol(cov)
-          md = apply(dx, 1, function(row) sqrt(sum(row**2)))
-        } else {
-          md = sqrt(t(x - xopt) %*% cov %*% (x - xopt))
-        }
+        md = sqrt(t(x - xopt) %*% cov %*% (x - xopt))
         g = height / (1 + md**shape / radius)
         return(1 - g)
       }
