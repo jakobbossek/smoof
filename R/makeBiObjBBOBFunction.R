@@ -25,9 +25,10 @@
 #' @references See the \href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/}{COCO website}
 #' for a detailed description of the bi-objective BBOB functions.
 #' An overview of which pair of single-objective BBOB functions creates
-#' which of the 55 bi-objective BBOB functions can be found \href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/#the-bbob-biobj-test-functions-and-their-properties}{here}.
-#' A full description of the extended suite with 92 functions can be found
-#' \href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/#the-extended-bbob-biobj-ext-test-suite-and-its-functions}{here}.
+#' which of the 55 bi-objective BBOB functions can be found in the
+#' \href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/#the-bbob-biobj-test-functions-and-their-properties}{official documentation of the bi-objective BBOB test suite}.
+#' And a full description of the extended suite with 92 functions can be found in the
+#' \href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/#the-extended-bbob-biobj-ext-test-suite-and-its-functions}{official documentation of the extended bi-objective BBOB test suite}.
 #' @export
 makeBiObjBBOBFunction = function(dimensions, fid, iid) {
   
