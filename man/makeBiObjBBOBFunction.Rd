@@ -3,7 +3,8 @@
 \name{makeBiObjBBOBFunction}
 \alias{makeBiObjBBOBFunction}
 \title{Generator for the function set of the real-parameter Bi-Objective
-Black-Box Optimization Benchmarking (BBOB).}
+Black-Box Optimization Benchmarking (BBOB) with Function IDs 1-55, as well as
+its extended version (bbob-biobj-ext) with Function IDs 1-92.}
 \usage{
 makeBiObjBBOBFunction(dimensions, fid, iid)
 }
@@ -12,7 +13,7 @@ makeBiObjBBOBFunction(dimensions, fid, iid)
 Problem dimensions. Integer value between 2 and 40.}
 
 \item{fid}{[\code{integer(1)}]\cr
-Function identifier. Integer value between 1 and 55.}
+Function identifier. Integer value between 1 and 92.}
 
 \item{iid}{[\code{integer(1)}]\cr
 Instance identifier. Integer value greater than or equal 1.}
@@ -22,7 +23,8 @@ Instance identifier. Integer value greater than or equal 1.}
 }
 \description{
 Generator for the function set of the real-parameter Bi-Objective
-Black-Box Optimization Benchmarking (BBOB).
+Black-Box Optimization Benchmarking (BBOB) with Function IDs 1-55, as well as
+its extended version (bbob-biobj-ext) with Function IDs 1-92.
 }
 \note{
 Concatenation of single-objective BBOB functions into
@@ -42,5 +44,8 @@ identical(fn(c(3, -1, 0)), c(f1(c(3, -1, 0)), f2(c(3, -1, 0))))
 See the \href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/}{COCO website}
 for a detailed description of the bi-objective BBOB functions.
 An overview of which pair of single-objective BBOB functions creates
-which of the 55 bi-objective BBOB functions can be found \href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/#the-bbob-biobj-test-functions-and-their-properties}{here}.
+which of the 55 bi-objective BBOB functions can be found in the
+\href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/#the-bbob-biobj-test-functions-and-their-properties}{official documentation of the bi-objective BBOB test suite}.
+And a full description of the extended suite with 92 functions can be found in the
+\href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/#the-extended-bbob-biobj-ext-test-suite-and-its-functions}{official documentation of the extended bi-objective BBOB test suite}.
 }

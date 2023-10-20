@@ -35,11 +35,11 @@ of elliptically shaped peaks.}
 Shape of peak(s). Possible values are \dQuote{ellipse} and \dQuote{sphere}.}
 
 \item{evaluation.env}{[\code{character(1)}]\cr
-Evaluation environment after the function was created. Possible values are
-\dQuote{R} (default) and \dQuote{Python}. The original generation of the
-problem is always done in the original Python environment. However,
-evaluation in R is faster, especially if multiple MPM2 functions are used
-in a multi-objective setting.}
+Evaluation environment after the function was created. Possible
+(case-insensitive) values are \dQuote{R} (default) and \dQuote{Python}. The
+original generation of the problem is always done in the original Python
+environment. However, evaluation in R is faster, especially if multiple
+MPM2 functions are used in a multi-objective setting.}
 }
 \value{
 [\code{smoof_single_objective_function}]
