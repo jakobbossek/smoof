@@ -1,5 +1,9 @@
 # smoof 1.6.0.4
 
+## New features
+
+* Added support for the extended bi-objective BBOB functions (FIDs 56-92) in makeBiObjBBOBFunction
+
 ## Bugfixes 
 
 * Fixed bug in getLoggedValues when logging of x-values was set to FALSE in addLoggingWrapper
