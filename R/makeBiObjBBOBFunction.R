@@ -54,7 +54,7 @@ makeBiObjBBOBFunction = function(dimensions, fid, iid) {
   # grid with all pairs of BBOB problems
   grid = expand.grid(fids1 = fids, fids2 = fids)
   grid = grid[grid[, 1L] <= grid[, 2L], ]
-  grid = grid[order(grid[, 1L]),]
+  grid = grid[order(grid[, 1L]), ]
   
   # Add all off-diagonal combinations per BBOB group (excluding FID 16)
   # for the extended bi-objective suite
@@ -62,10 +62,10 @@ makeBiObjBBOBFunction = function(dimensions, fid, iid) {
   for (group in list(1L:5L, 6L:9L, 10L:14L, setdiff(15L:19L, 16L), 20L:24L)) {
     group.grid = expand.grid(fids1 = group, fids2 = group)
     group.grid = group.grid[group.grid[, 1L] < group.grid[, 2L], ]
-    group.grid = group.grid[order(group.grid[, 1L]),]
+    group.grid = group.grid[order(group.grid[, 1L]), ]
     
     grid = rbind(grid, group.grid)
-    grid = grid[!duplicated(grid),]
+    grid = grid[!duplicated(grid), ]
   }
   
   rownames(grid) = NULL
