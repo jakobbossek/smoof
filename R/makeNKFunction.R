@@ -1,9 +1,10 @@
 #' Generator for NK-landscapes
 #'
 #' Generate a single-objective NK-landscape. NK-landscapes are combinatorial
-#' problem with input space \eqn{\{0,1\}^N}. The value of each bit position
-#' \eqn{i \in \{1, \ldots, N\}} depends on \eqn{K} other bits, the so-called
-#' \emph{(epistatic) links / interactions}.
+#' problems with input space \eqn{\{0,1\}^N} (in their besic definition). The
+#' value of each bit position \eqn{i \in \{1, \ldots, N\}} depends on \eqn{K}
+#' other bits, the so-called \emph{(epistatic) links / interactions}.
+#' This generator
 #'
 #' @references
 #'
@@ -167,21 +168,25 @@ prepareEpistaticLinks = function(M, N, K) {
 #' with correlated objective function values. The correlation can be adjusted
 #' by setting the \code{rho} parameter to a value between minus one and one.
 #'
+#' @references
+#'
 #' @param M [\code{integer(1)}]\cr
 #'   Number of objectives (at least two).
 #' @param N [\code{integer(1)}]\cr
 #'   Length of the bit-string (decision space dimension).
 #' @param K [\code{integer}]\cr
-#'   Integer vector of the number of epistatic interactions.
-#'   If a single value is passed a homogeneous NK-landscape is generated, i.e.
-#'   \eqn{k_i = k \forall i = 1, \ldots, N}.
+#'   Epistatic links. Possible values are a a) single integer which is used for all
+#'   bits and positions, b) an integer vector of \code{N} integers that are used
+#'   across the objectives, c) a list of \code{M} length-\code{N} integers to
+#'   define specific epistatic links for every bit position of every objective.
 #' @param rho [\code{numeric(1)}]\cr
 #'   Correlation between objectives (value between -1 and 1).
 #' @param funs [\code{list} | \code{NULL}]\cr
 #'   Allows for an alternative way to build a MNK-landscape by passing a list of
 #'   at least two single-objective NK-landscapes. In this case all other parameters
-#'   are ignored. Note that the passed function must be compatible, i.e., the
-#'   input dimension \code{N} needs to match.
+#'   \code{M}, \code{N}, \code{K} and \code{rho} are ignored. Note that the passed
+#'   functions must be compatible, i.e., a) the input dimension \code{N} needs to match
+#'   and b) all pased functions need to be multi-objective.
 #'   Default is \code{NULL}.
 #' @return [\code{smoof_multi_objective_function}]
 #'
@@ -224,11 +229,11 @@ makeMNKFunction = function(M, N, K, funs = NULL) {
     checkmate::assertList(funs, types = "smoof_function", min.len = 2L, any.missing = FALSE, all.missing = FALSE)
     Ns = lapply(funs, getNumberOfParameters)
     if (length(unique(Ns)) != 1L)
-      BBmisc::stopf("[makeRMNKFunction] functions in 'funs' are incompatible! Note that all function need to have the same input dimension N.")
+      BBmisc::stopf("[makeMNKFunction] functions in 'funs' are incompatible! Note that all function need to have the same input dimension N.")
 
     Ms = lapply(funs, getNumberOfObjectives)
     if ((length(unique(Ms)) != 1L) | any(Ms > 1L))
-      BBmisc::stopf("[makeRMNKFunction] functions in 'funs' do not fulfill the requirements. Note that all passed function need to be single-objective.")
+      BBmisc::stopf("[makeMNKFunction] functions in 'funs' do not fulfill the requirements. Note that all passed function need to be single-objective.")
 
     return(makeMNKFunctionInternalFromFunctions(funs))
   }
@@ -288,9 +293,8 @@ makeNKFunctionInternal = function(nk_properties, m) {
   }
 
   # FIXME: id should be random since the function values depend on seed?
-  # FIXME: also the name should include some kind of hash
   fn = makeSingleObjectiveFunction(
-    name = sprintf("NK-landscape (N=%i, k=%s)", N, "K_string"),
+    name = sprintf("NK-landscape (N=%i)", N),
     id = "NK_landscape",
     fn = fn,
     minimize = FALSE,
@@ -336,10 +340,9 @@ makeMNKFunctionInternal = function(nk_properties) {
     sapply(fns, function(fn) fn(x))
   }
 
-  # FIXME: id should be random since the function values depend on seed?
   # FIXME: also the name should include some kind of hash
   mfn = makeMultiObjectiveFunction(
-    name = sprintf("rMNK-landscape (M=%i, N=%i, k=%s, rho=%.5f", M, N, "K_string", rho),
+    name = sprintf("rMNK-landscape (rho = %.5f, M=%i, N=%i)", rho, M, N),
     id = "rMNK_landscape",
     fn = fn,
     minimize = rep(FALSE, M), # always to be maximised
@@ -362,7 +365,16 @@ makeMNKFunctionInternal = function(nk_properties) {
 #' In contrast to continuous benchmark function it thus makes perfect sense to store
 #' the landscape definitions in a text-based format.
 #'
-#' Note: the function overwrites existing files without asking.
+#' The format uses two comment lines with basic information like the package version,
+#' the date of storage etc. The third line contains \eqn{\rho}, \eqn{M} and \eqn{N}
+#' separated by a single-whitespace. Following that follow epistatic links from
+#' which the number of epistatic links can be attracted. There are \eqn{M * N}
+#' lines for a MNK-landscape with \eqn{M} objectives and input dimension \code{N}.
+#' The first \eqn{N} lines contain the links for the first objective an so on.
+#' Following that the tabular values follow in the same manner. For every position
+#' \eqn{i = 1, \ldots, N} there is a line with \eqn{2^{K_i + 1}} values.
+#'
+#' Note: \code{exportNKFunction} overwrites existing files without asking.
 #'
 #' @param x [\code{smoof_function}]\cr
 #'   NK-landscape of rMNK-landscape.
@@ -395,7 +407,7 @@ exportNKFunction = function(x, path) {
   # FIXME: how to get the package version in here?
   cat(sprintf("COMMENT: file generated with R package smoof v1.6.0, %s\n", format(Sys.time(), "%m/%d/%Y %H:%M:%S")), file = file)
   cat("COMMENT: links are random and identical for every objective function\n", file = file)
-  cat(sprintf("rMNK %.5f %i %i %i\n", rho, M, N, K[[1L]][1L]), file = file)
+  cat(sprintf("%.5f %i %i\n", rho, M, N), file = file)
 
   # export epistatic links
   for (m in seq_len(M)) {
@@ -433,9 +445,9 @@ importNKFunction = function(path) {
   # read meta data
   meta = strsplit(lines[index], " ")[[1L]]
 
-  rho = as.numeric(meta[2L])
-  M = as.integer(meta[3L])
-  N = as.integer(meta[4L])
+  rho = as.numeric(meta[1L])
+  M = as.integer(meta[2L])
+  N = as.integer(meta[3L])
   K = vector(length = M, mode = "list") # extracted from links
 
   index = index + 1L
