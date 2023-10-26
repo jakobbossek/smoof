@@ -80,6 +80,11 @@ moofn = makeMNKFunction(funs = list(soofn1, soofn2))
 getNumberOfObjectives(moofn)
 
 }
+\references{
+H. E. Aguirre and K. Tanaka, Insights on properties of multiobjective MNK-landscapes,
+Proceedings of the 2004 Congress on Evolutionary Computation, Portland, OR, USA, 2004,
+pp. 196-203 Vol.1, doi: 10.1109/CEC.2004.1330857.
+}
 \seealso{
 \code{\link{makeNKFunction}}
 

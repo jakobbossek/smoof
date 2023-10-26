@@ -20,10 +20,9 @@ If a single value is passed a homogeneous NK-landscape is generated, i.e.
 }
 \description{
 Generate a single-objective NK-landscape. NK-landscapes are combinatorial
-problems with input space \eqn{\{0,1\}^N} (in their besic definition). The
+problems with input space \eqn{\{0,1\}^N} (in their basic definition). The
 value of each bit position \eqn{i \in \{1, \ldots, N\}} depends on \eqn{K}
 other bits, the so-called \emph{(epistatic) links / interactions}.
-This generator
 }
 \examples{
 # generate homogeneous NK-landscape with each K=3 epistatic links
@@ -38,6 +37,11 @@ apply(bitstrings, 1, fn)
 # uniformly at random
 fn = makeNKFunction(N, K = sample(2:4, size = N, replace = TRUE))
 
+}
+\references{
+Kauffman SA, Weinberger ED. The NK model of rugged fitness landscapes and
+its application to maturation of the immune response. Journal of Theoretical
+Biology 1989 Nov 21;141(2):211-45. doi: 10.1016/s0022-5193(89)80019-0.
 }
 \seealso{
 Other nk_landscapes: 

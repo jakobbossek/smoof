@@ -7,6 +7,7 @@ test_that("single-objective test function generators work", {
     all.methods = Filter(function(fun) exists(fun), all.methods)
     all.methods = setdiff(all.methods, c(
       "makeNKFunction",
+      "makeMNKFunction",
       "makeRMNKFunction",
       "makeNKFunctionInternal",
       "makeRMNKFunctionInternal",
@@ -175,10 +176,10 @@ test_that("rMNK-landscape works when passing single-objective NK-landscapes", {
 
   for (n in N) {
     fn1 = makeNKFunction(n, K = 4L)
-    fn2 = makeNKFunction(n, K = sample(2:7, size = N, replace = TRUE))
-    moofn = makeRMNKFunction(funs = list(fn1, fn2))
-    x = sampleValue(getParamSet(fn))$x
-    value = fn(x)
+    fn2 = makeNKFunction(n, K = sample(2:7, size = n, replace = TRUE))
+    moofn = makeMNKFunction(funs = list(fn1, fn2))
+    x = sampleValue(getParamSet(moofn))$x
+    value = moofn(x)
     expect_true(is.numeric(value))
     expect_true(length(value) == 2L)
   }

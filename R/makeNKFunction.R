@@ -1,12 +1,14 @@
 #' Generator for NK-landscapes
 #'
 #' Generate a single-objective NK-landscape. NK-landscapes are combinatorial
-#' problems with input space \eqn{\{0,1\}^N} (in their besic definition). The
+#' problems with input space \eqn{\{0,1\}^N} (in their basic definition). The
 #' value of each bit position \eqn{i \in \{1, \ldots, N\}} depends on \eqn{K}
 #' other bits, the so-called \emph{(epistatic) links / interactions}.
-#' This generator
 #'
 #' @references
+#' Kauffman SA, Weinberger ED. The NK model of rugged fitness landscapes and
+#' its application to maturation of the immune response. Journal of Theoretical
+#' Biology 1989 Nov 21;141(2):211-45. doi: 10.1016/s0022-5193(89)80019-0.
 #'
 #' @param N [\code{integer(1)}]\cr
 #'   Length of the bit-string (decision space dimension).
@@ -169,6 +171,9 @@ prepareEpistaticLinks = function(M, N, K) {
 #' by setting the \code{rho} parameter to a value between minus one and one.
 #'
 #' @references
+#' H. E. Aguirre and K. Tanaka, Insights on properties of multiobjective MNK-landscapes,
+#' Proceedings of the 2004 Congress on Evolutionary Computation, Portland, OR, USA, 2004,
+#' pp. 196-203 Vol.1, doi: 10.1109/CEC.2004.1330857.
 #'
 #' @param M [\code{integer(1)}]\cr
 #'   Number of objectives (at least two).

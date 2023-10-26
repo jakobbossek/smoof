@@ -49,7 +49,9 @@ makeDTLZ1Function = function(dimensions, n.objectives) {
 
   # C++ implementation
   fn = function(x) {
-    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+    if (getOption("smoof.do_sanity_checks_before_function_evaluation", TRUE)) {
+      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+    }
     dtlz_1(x, M)
   }
 
