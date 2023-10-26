@@ -79,10 +79,42 @@ test_that("Multiple peaks model 2 (MPM2) functions work", {
         for (topology in c("funnel", "random")) {
           for (rotated in c(TRUE, FALSE)) {
             for (peak.shape in c("ellipse", "sphere")) {
-              fn = makeMPM2Function(n.peaks = n.peaks, dimension = dimension, topology = topology, seed = 123, rotated = rotated, peak.shape = peak.shape)
-              expect_is(fn, "smoof_single_objective_function")
-              y = fn(rep(0.1, dimension))
-              expect_true(is.numeric(y))
+              fnp = makeMPM2Function(n.peaks = n.peaks, dimensions = dimension,
+                                     topology = topology, seed = 123, rotated = rotated,
+                                     peak.shape = peak.shape, evaluation.env = "Python")
+              fnr = makeMPM2Function(n.peaks = n.peaks, dimensions = dimension,
+                                     topology = topology, seed = 123, rotated = rotated,
+                                     peak.shape = peak.shape, evaluation.env = "R")
+              
+              # confirm that both evaluation environments can be created
+              expect_is(fnp, "smoof_single_objective_function")
+              yp = fnp(rep(0.1, dimension))
+              expect_true(is.numeric(yp))
+              
+              expect_is(fnr, "smoof_single_objective_function")
+              yr = fnr(rep(0.1, dimension))
+              expect_true(is.numeric(yr))
+              
+              # confirm that results are identical between evaluation environments
+              expect_identical(yp, yr)
+              
+              # confirm vectorization works as expected
+              expect_true(isVectorized(fnr))
+              expect_true(isVectorized(fnp))
+              
+              par1 = rep(0.1, dimension)
+              par2 = rep(0.2, dimension)
+              
+              res.seq = c(fnr(par1), fnr(par2))
+              res.vec = fnr(cbind(par1, par2))
+              expect_true(all(res.seq == res.vec),
+                          info = sprintf("Sequential and vectorized input not equal for %s (R)", getID(fnr)))
+              
+              res.seq = c(fnr(par1), fnr(par2))
+              res.vec = fnr(cbind(par1, par2))
+              expect_true(all(res.seq == res.vec),
+                          info = sprintf("Sequential and vectorized input not equal for %s (Python)", getID(fnr)))
+              
             }
           }
         }

@@ -1,5 +1,6 @@
 #' Generator for the function set of the real-parameter Bi-Objective
-#' Black-Box Optimization Benchmarking (BBOB).
+#' Black-Box Optimization Benchmarking (BBOB) with Function IDs 1-55, as well as
+#' its extended version (bbob-biobj-ext) with Function IDs 1-92.
 #'
 #' @note
 #' Concatenation of single-objective BBOB functions into
@@ -8,7 +9,7 @@
 #' @param dimensions [\code{integer(1)}]\cr
 #'   Problem dimensions. Integer value between 2 and 40.
 #' @param fid [\code{integer(1)}]\cr
-#'   Function identifier. Integer value between 1 and 55.
+#'   Function identifier. Integer value between 1 and 92.
 #' @param iid [\code{integer(1)}]\cr
 #'   Instance identifier. Integer value greater than or equal 1.
 #' @return [\code{smoof_multi_objective_function}]
@@ -24,7 +25,10 @@
 #' @references See the \href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/}{COCO website}
 #' for a detailed description of the bi-objective BBOB functions.
 #' An overview of which pair of single-objective BBOB functions creates
-#' which of the 55 bi-objective BBOB functions can be found \href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/#the-bbob-biobj-test-functions-and-their-properties}{here}.
+#' which of the 55 bi-objective BBOB functions can be found in the
+#' \href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/#the-bbob-biobj-test-functions-and-their-properties}{official documentation of the bi-objective BBOB test suite}.
+#' And a full description of the extended suite with 92 functions can be found in the
+#' \href{http://numbbo.github.io/coco-doc/bbob-biobj/functions/#the-extended-bbob-biobj-ext-test-suite-and-its-functions}{official documentation of the extended bi-objective BBOB test suite}.
 #' @export
 makeBiObjBBOBFunction = function(dimensions, fid, iid) {
   
@@ -34,7 +38,7 @@ makeBiObjBBOBFunction = function(dimensions, fid, iid) {
   fid = asCount(fid)
   iid = asCount(iid)
   assertInt(dimensions, lower = 2L, upper = 40L)
-  assertInt(fid, lower = 1L, upper = 55L)
+  assertInt(fid, lower = 1L, upper = 92L)
   assertInt(iid, lower = 1L, upper = 15L) # restrict to documented "safe" range
 
   # touch vars
@@ -50,7 +54,20 @@ makeBiObjBBOBFunction = function(dimensions, fid, iid) {
   # grid with all pairs of BBOB problems
   grid = expand.grid(fids1 = fids, fids2 = fids)
   grid = grid[grid[, 1L] <= grid[, 2L], ]
-  grid = grid[order(grid[, 1L]),]
+  grid = grid[order(grid[, 1L]), ]
+  
+  # Add all off-diagonal combinations per BBOB group (excluding FID 16)
+  # for the extended bi-objective suite
+  # cf. http://numbbo.github.io/coco-doc/bbob-biobj/functions/#the-extended-bbob-biobj-ext-test-suite-and-its-functions
+  for (group in list(1L:5L, 6L:9L, 10L:14L, setdiff(15L:19L, 16L), 20L:24L)) {
+    group.grid = expand.grid(fids1 = group, fids2 = group)
+    group.grid = group.grid[group.grid[, 1L] < group.grid[, 2L], ]
+    group.grid = group.grid[order(group.grid[, 1L]), ]
+    
+    grid = rbind(grid, group.grid)
+    grid = grid[!duplicated(grid), ]
+  }
+  
   rownames(grid) = NULL
 
   fid1 = grid[fid, "fids1"]
