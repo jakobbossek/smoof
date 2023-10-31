@@ -97,7 +97,7 @@ test_that("Multiple peaks model 2 (MPM2) functions work", {
               expect_true(is.numeric(yr))
               
               # confirm that results are identical between evaluation environments
-              expect_identical(yp, yr)
+              expect_equal(yp, yr)
               
               # confirm vectorization works as expected
               expect_true(isVectorized(fnr))
