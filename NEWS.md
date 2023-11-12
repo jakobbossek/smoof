@@ -6,7 +6,7 @@
 * Added extra helper functions to extract all problem instance-specific data from MPM2 generator
 * Added R-based evaluation environment for MPM2 generator which greatly accelerates evaluation in multi-objective settings
 * Added support for single- and multi-objective NK-landscapes
-* Sanity checks for smoof functions evaluations are now optional (you may set the option smoof.check_input_before_evaluation to FALSE in order to deactivate those checks). This can lead to significant speed ups when a function is evalauted many times
+* Sanity checks for smoof functions evaluations are now optional (you may set the option smoof.check_input_before_evaluation to FALSE in order to deactivate those checks). This can lead to significant speed ups when a function is evaluated many times
 
 ## Bugfixes 
 
