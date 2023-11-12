@@ -26,7 +26,7 @@ makeMichalewiczFunction = function(dimensions, m = 10) {
     name = paste(dimensions, "-d Michalewicz Function (m = ", m, ")", sep = ""),
     id = paste0("michalewicz_", dimensions, "d_m", m),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       i = 1:length(x)
       (-1) * sum(sin(x) * (sin((i * x^2) / pi)^(2 * m)))
     },

@@ -14,7 +14,7 @@ makeMcCormickFunction = function() {
     name = "McCormick Function",
     id = "mccormick_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       sin(x[1] + x[2]) + (x[1] - x[2])^2 - 1.5 * x[1] + 2.5 * x[2] + 1
     },
     par.set = makeNumericParamSet(

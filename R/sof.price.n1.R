@@ -16,7 +16,7 @@ makePriceN1Function = function() {
     name = "Price Function N. 1",
     id = "price01_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       sum((abs(x) - 5)^2)
     },
     par.set = makeNumericParamSet(

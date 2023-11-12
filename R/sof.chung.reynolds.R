@@ -18,7 +18,7 @@ makeChungReynoldsFunction = function(dimensions) {
     name = paste(dimensions, "-d Chung Reynolds Function", sep = ""),
     id = paste0("chungReynolds", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       sum(x^2)^2
     },
     par.set = makeNumericParamSet(

@@ -31,7 +31,7 @@ makeShekelFunction = function(m) {
   # }
 
   fn = function(x) {
-    assertNumeric(x, len = 4L, any.missing = FALSE, all.missing = FALSE)
+    checkNumericInput(x, 4L)
 
     C = matrix(
         c(4.0, 1.0, 8.0, 6.0, 3.0, 2.0, 5.0, 8.0, 6.0, 7.0,

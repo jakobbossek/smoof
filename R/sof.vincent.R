@@ -19,7 +19,7 @@ makeInvertedVincentFunction = function(dimensions) {
     name = "Inverted Vincent Function",
     id = sprintf("invertedVincent_%id", dimensions),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       sum(sin(10 * log(x))) / length(x)
     },
     par.set = makeNumericParamSet(

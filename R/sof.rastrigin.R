@@ -20,7 +20,7 @@ makeRastriginFunction = function(dimensions) {
     name = paste(dimensions, "-d Rastrigin Function", sep = ""),
     id = paste0("rastrigin_", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       n = length(x)
       10 * n + sum(x^2 - 10 * cos(2 * pi * x))
     },

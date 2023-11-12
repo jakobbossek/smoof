@@ -19,7 +19,7 @@ makeBohachevskyN1Function = function(dimensions) {
     name = paste(dimensions, "-d Bohachevsky Function N. 1", sep = ""),
     id = paste0("bohachevsky01_", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       i = 1:(length(x) - 1)
       sum(x[i]^2 + 2 * x[i + 1]^2 - 0.3 * cos(3 * pi * x[i]) - 0.4 * cos(4 * pi * x[i + 1]) + 0.7)
     },

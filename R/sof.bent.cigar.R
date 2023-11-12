@@ -16,7 +16,7 @@ makeBentCigarFunction = function(dimensions) {
     name = "Bent-Cigar Function",
     id = "bentCigar_2d",
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       x[1]^2 + 1e+06 * sum(x[2:dimensions]^2)
     },
     par.set = makeNumericParamSet(

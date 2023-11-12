@@ -32,8 +32,8 @@ makeMMF14Function = function(dimensions, n.objectives, np = 2L) {
 
   # C implementation
   fn = function(x) {
-    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE, finite = TRUE)
-    return(mof_cec2019_mmf14(x = x, M = M, np = np))
+    checkNumericInput(x, dimensions)
+    mof_cec2019_mmf14(x = x, M = M, np = np)
   }
 
   makeMultiObjectiveFunction(

@@ -20,7 +20,7 @@ makeDixonPriceFunction = function(dimensions) {
     name = paste(dimensions, "-d Dixon-Price function", sep = ""),
     id = paste0("dixonPrice_", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       a = (x[1] - 1)^2
       i = 2:length(x)
       b = sum(i * (2 * x[i]^2 - x[i - 1])^2)

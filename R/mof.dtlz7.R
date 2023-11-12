@@ -58,7 +58,7 @@ makeDTLZ7Function = function(dimensions, n.objectives) {
 
   # C++ implementation
   fn = function(x) {
-    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+    checkNumericInput(x, dimensions)
     dtlz_7(x, M)
   }
 

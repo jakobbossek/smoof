@@ -14,7 +14,7 @@ makeGeneralizedDropWaveFunction = function(dimensions = 2L) {
     name = paste(dimensions, "-d Generelized Drop-Wave Function", sep = ""),
     id = paste0("generalizedDropWave_", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       a = sum(x^2)
       -(1 + cos(12 * sqrt(a))) / (0.5 * a + 2)
     },

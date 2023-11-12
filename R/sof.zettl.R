@@ -13,7 +13,7 @@ makeZettlFunction = function() {
     name = "Zettl Function",
     id = "zettl_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       (x[1]^2 + x[2]^2 - 2 * x[1])^2 + 0.25 * x[1]
     },
     par.set = makeNumericParamSet(

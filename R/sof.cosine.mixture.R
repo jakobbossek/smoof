@@ -18,10 +18,10 @@ makeCosineMixtureFunction = function(dimensions) {
     name = "Cosine Mixture Function",
     id = paste0("cosineMixture", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       a = 0.1 * sum(cos(5 * pi * x))
       b = sum(x^2)
-      return (a - b)
+      (a - b)
     },
     par.set = makeNumericParamSet(
       len = dimensions,

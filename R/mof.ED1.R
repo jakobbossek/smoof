@@ -53,9 +53,9 @@ makeED1Function = function(dimensions, n.objectives, gamma = 2, theta) {
 
   # C++ implementation
   fn = function(x) {
-    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE, lower = 0, upper = 1)
+    checkNumericInput(x, dimensions, lower = 0, upper = 1)
     theta = eval(theta, list(x))
-    assertNumeric(theta, len = dimensions, any.missing = FALSE, all.missing = FALSE, lower = 0, upper = pi/2)
+    checkNumericInput(theta, dimensions, lower = 0, upper = pi/2)
     force(theta)
     mof_ED_1(x, n.objectives, gamma, theta)
   }

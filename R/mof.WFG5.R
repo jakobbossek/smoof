@@ -51,8 +51,8 @@ makeWFG5Function = function(n.objectives, k, l) {
 
   # C implementation
   fn = function(x) {
-    assertNumeric(x, len = k + l, any.missing = FALSE, all.missing = FALSE)
-    return(mof_WFG_5(z = x, M = n.objectives, k = k))
+    checkNumericInput(x, k + l)
+    mof_WFG_5(z = x, M = n.objectives, k = k)
   }
 
   makeMultiObjectiveFunction(

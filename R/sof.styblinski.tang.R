@@ -15,7 +15,7 @@ makeStyblinkskiTangFunction = function() {
     name = "Styblinkski-Tang Function",
     id = "styblinskiTang_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       a = x^2
       b = a^2
       return(0.5 * sum(b - 16 * a + 5 * x))

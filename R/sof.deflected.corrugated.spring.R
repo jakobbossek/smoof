@@ -30,7 +30,7 @@ makeDeflectedCorrugatedSpringFunction = function(dimensions, K = 5, alpha = 5) {
     #FIXME: eventually encode K and alpha in fun?
     id = paste0("deflectedCorrugatedSpring_", dimensions, "d_K", K, "alpha", alpha),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       a = (x - alpha)^2
       sa = sum(a)
       0.1 * sa - cos(K * sqrt(sa))

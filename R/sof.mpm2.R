@@ -75,7 +75,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
   evaluateProblem = getGlobalOptimaParams = getLocalOptimaParams = NULL
   getCovarianceMatrices = getAllPeaks = getAllHeights = getAllShapes = NULL
   getAllRadii = NULL
-# 
+#
   # load funnel generator to global environment
   eval(reticulate::py_run_file(system.file("mpm2.py", package = "smoof")), envir = .GlobalEnv)
   eval(reticulate::source_python(system.file("mpm2.py", package = "smoof"), envir = .GlobalEnv, convert = TRUE), envir = .GlobalEnv)
@@ -94,27 +94,27 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
   } else if (tolower(evaluation.env) == "r") {
     # helper functions
     getPeakMetadata = function(n.peaks, dimensions, topology, seed, rotated, peak.shape) {
-      
+
       xopt = getAllPeaks(n.peaks, dimensions, topology, seed, rotated, peak.shape)
       colnames(xopt) = paste0("x", 1:dimensions)
-      
+
       cov.mats = getCovarianceMatrices(n.peaks, dimensions, topology, seed, rotated, peak.shape)
       cov = lapply(cov.mats, function(x) matrix(x[[1]], nrow = dimensions, ncol = dimensions))
-      
+
       height = getAllHeights(n.peaks, dimensions, topology, seed, rotated, peak.shape)
-      
+
       shape = getAllShapes(n.peaks, dimensions, topology, seed, rotated, peak.shape)
-      
+
       radius = getAllRadii(n.peaks, dimensions, topology, seed, rotated, peak.shape)
-      
+
       peak_fns = lapply(1:nrow(xopt), function(i) {
         createPeakFunction(cov[[i]], xopt[i,], height[i], shape[i], radius[i])
       })
-      
+
       fn = function(x) {
         min(sapply(peak_fns, function(f) f(x)))
       }
-      
+
       list(
         xopt = xopt,
         cov = cov,
@@ -125,7 +125,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
         fn = fn
       )
     }
-    
+
     createPeakFunction = function(cov, xopt, height, shape, radius) {
       function(x) {
         md = sqrt(t(x - xopt) %*% cov %*% (x - xopt))
@@ -133,7 +133,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
         return(1 - g)
       }
     }
-    
+
     peakData = getPeakMetadata(n.peaks, dimensions, topology, seed, rotated, peak.shape)
     evalFn = function(x) {
       if (is.matrix(x)) {
@@ -145,7 +145,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
   } else {
     warning(paste0("Unknown evaluation.env \"", evaluation.env, "\""))
   }
-  
+
   smoof.fn = makeSingleObjectiveFunction(
     name = sprintf("Funnel_%i_%i_%i_%s_%s%s", n.peaks, dimensions, seed, topology, peak.shape, ifelse(rotated, "_rotated", "")),
     description = sprintf("Funnel-like function\n(n.peaks: %i, dimension: %i, topology: %s, seed: %i, rotated: %s, shape: %s)",
@@ -157,7 +157,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
     local.opt.params = local.opt.params,
     global.opt.params = global.opt.params
   )
-  
+
   return(smoof.fn)
 }
 

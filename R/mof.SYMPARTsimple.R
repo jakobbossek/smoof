@@ -31,8 +31,8 @@ makeSYMPARTsimpleFunction = function(a = 1, b = 10, c = 8) {
 
   # C implementation
   fn = function(x) {
-    assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE, finite = TRUE)
-    return(mof_cec2019_SYM_PART_SIMPLE(x = x, a = a, b = b, c = c))
+    checkNumericInput(x, 2L)
+    mof_cec2019_SYM_PART_SIMPLE(x = x, a = a, b = b, c = c)
   }
 
   n.objectives = 2L

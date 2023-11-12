@@ -22,7 +22,7 @@ makeModifiedRastriginFunction = function(dimensions, k = rep(1, dimensions)) {
     name = sprintf("%i-d Modified Rastrigin Function", dimensions),
     id = sprintf("rastrigin_%id", dimensions),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       n = length(x)
       sum(10 * (1 + cos(2 * pi * k * x)) + 2 * k * x^2)
     },

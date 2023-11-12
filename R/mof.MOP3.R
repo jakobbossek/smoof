@@ -20,8 +20,8 @@ makeMOP3Function = function(dimensions = 2L) {
 
   # C implementation
   fn = function(x) {
-    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
-    return(.Call("mof_MOP3", x))
+    checkNumericInput(x, dimensions)
+    .Call("mof_MOP3", x)
   }
 
   makeMultiObjectiveFunction(

@@ -22,8 +22,8 @@ makeMMF1eFunction = function(a = exp(1L)) {
 
   # C implementation
   fn = function(x) {
-    assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE, finite = TRUE)
-    return(mof_cec2019_mmf1_e(x = x, a = a))
+    checkNumericInput(x, 2L)
+    mof_cec2019_mmf1_e(x = x, a = a)
   }
 
   n.objectives = 2L

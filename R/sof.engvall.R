@@ -13,7 +13,7 @@ makeEngvallFunction = function() {
     name = "Engvall Function",
     id = "engvall_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       x[1]^4 + x[2]^4 + 2 * x[1]^2 * x[2]^2 - 4 * x[1] + 3
     },
     par.set = makeNumericParamSet(

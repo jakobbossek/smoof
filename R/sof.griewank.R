@@ -19,7 +19,7 @@ makeGriewankFunction = function(dimensions) {
     name = paste(dimensions, "-d Griewank Function", sep = ""),
     id = paste0("griewank_", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       a = sum(x^2) / 4000
       b = prod(cos(x / sqrt(1:length(x))))
       return(a - b + 1)

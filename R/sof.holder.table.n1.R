@@ -17,7 +17,7 @@ makeHolderTableN1Function = function() {
     name = "Holder Table Function N. 1",
     id = "holderTable01_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       -abs(cos(x[1]) * cos(x[2]) * exp(abs(1 - sqrt(x[1]^2 + x[2]^2) / 3.1415)))
     },
     par.set = makeNumericParamSet(

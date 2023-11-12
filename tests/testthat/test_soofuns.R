@@ -21,6 +21,7 @@ test_that("single-objective test function generators work", {
     fun.generators = Filter(function(fun) inherits(fun, "smoof_generator"), all.methods)
 
     for (fun.generator in fun.generators) {
+        options("smoof.check_input_before_evaluation" = sample(c(TRUE, FALSE), size = 1L))
         fun = try(do.call(fun.generator, list()), silent = TRUE)
         if (inherits(fun, "try-error")) {
             fun = try(do.call(fun.generator, list(dimensions = 2L)), silent = TRUE)

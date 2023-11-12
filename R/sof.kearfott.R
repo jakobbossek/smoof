@@ -13,7 +13,7 @@ makeKearfottFunction = function() {
     name = "Kearfott Function",
     id = "kearfott_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       (x[1]^2 + x[2]^2 - 2)^2 + (x[1]^2 - x[2]^2 - 1)^2
     },
     par.set = makeNumericParamSet(

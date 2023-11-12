@@ -26,7 +26,7 @@ makeZDT4Function = function(dimensions) {
 
   # define the two-objective ZDT1 function
   fn = function(x) {
-    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+    checkNumericInput(x, dimensions)
     n = length(x)
     f1 = x[1]
     g = 1 + 10 * (n - 1) + sum(x[2:n]^2 - 10 * cos(4 * pi * x[2:n]))

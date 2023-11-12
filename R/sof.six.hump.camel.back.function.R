@@ -16,7 +16,7 @@ makeSixHumpCamelFunction = function() {
     name = "Six-Hump Camel Back Function",
     id = "sixHumpCamelBack_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       xx1 = x[1]^2
       xx2 = x[2]^2
       (4 - 2.1 * xx1 + xx1^2 / 3) * xx1 + x[1] * x[2] + (4 * xx2 - 4) * xx2

@@ -16,7 +16,7 @@ makeGiuntaFunction = function() {
     name = "Giunta Function",
     id = "giunta_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       a = 1.067 * x - 1
       b = sin(a)
       0.6 + sum(b + b^2 + 0.02 * sin(4 * a))

@@ -18,7 +18,7 @@ makeSphereFunction = function(dimensions) {
     name = paste(dimensions, "-d Sphere Function", sep = ""),
     id = paste0("sphere_", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       sum(x^2)
     },
     par.set = makeNumericParamSet(
