@@ -14,8 +14,8 @@
 makeMMF8Function = function() {
   # C implementation
   fn = function(x) {
-    assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE, finite = TRUE)
-    return(mof_cec2019_mmf8(x = x))
+    checkNumericInput(x, 2L)
+    mof_cec2019_mmf8(x = x)
   }
 
   n.objectives = 2L

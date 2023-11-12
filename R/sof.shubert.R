@@ -14,7 +14,7 @@ makeShubertFunction = function() {
     name = "Shubert Function",
     id = "shubert_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       j = 1:5
       a = sum(j * cos((j + 1) * x[1] + j))
       b = sum(j * cos((j + 1) * x[2] + j))

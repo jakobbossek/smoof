@@ -27,6 +27,14 @@
 #' generators for large benchmarking sets like the noiseless BBOB2009 function set [2]
 #' or functions based on the multiple peaks model 2 [3].
 #'
+#' @section Sanity checks before evaluation
+#' Almost all continuous smoof function check the input before evaluating the function
+#' by default. It checks whether the numeric vector has the expected length, there
+#' are no missing values and all values are finite. Not that currently box constraints
+#' are not checked though. Evaluating a function millions of times can be slowed
+#' down by these checks significantly. Set the option \dQuote{smoof.check_input_before_evaluation}
+#' to \code{FALSE} to deactivate those checks.
+#'
 #' @references
 #' [1] Momin Jamil and Xin-She Yang, A literature survey of benchmark
 #' functions for global optimization problems, Int. Journal of Mathematical

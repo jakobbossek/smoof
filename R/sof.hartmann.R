@@ -67,6 +67,7 @@ makeHartmannFunction = function(dimensions) {
     name = sprintf("%i-d Hartmann Function", dimensions),
     id = sprintf("hartmann_%id", dimensions),
     fn = function(x) {
+      checkNumericInput(x, dimensions)
       alpha = c(1.0, 1.2, 3.0, 3.2)
       x.mat = matrix(rep(x, 4L), 4L, dimensions, byrow = TRUE)
       inner = rowSums(A[, i] * (x.mat - P[, i])^2)

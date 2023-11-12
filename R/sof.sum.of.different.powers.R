@@ -14,7 +14,7 @@ makeSumOfDifferentSquaresFunction = function(dimensions) {
     name = paste(dimensions, "-d Sum of Different Squares Function", sep = ""),
     id = paste0("sumOfDifferentSquares_", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       n = length(x)
       sum(abs(x)^(1:n + 1))
     },

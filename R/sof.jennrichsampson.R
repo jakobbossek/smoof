@@ -13,7 +13,7 @@ makeJennrichSampsonFunction = function() {
     name = "Jennrich-Sampson Function",
     id = "jennrichSampson_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       i = 1:10
       sum((2 + 2 * i - (exp(i * x[1]) + exp(i * x[2])))^2)
     },

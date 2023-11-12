@@ -15,8 +15,8 @@
 makeOmniTestFunction = function() {
   # C implementation
   fn = function(x) {
-    assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE, finite = TRUE)
-    return(mof_cec2019_OMNI_Test(x = x))
+    checkNumericInput(x, 2L)
+    mof_cec2019_OMNI_Test(x = x)
   }
 
   n.objectives = 2L

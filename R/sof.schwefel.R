@@ -19,7 +19,7 @@ makeSchwefelFunction = function(dimensions) {
     name = paste(dimensions, "-d Schwefel function", sep = ""),
     id = paste0("schwefel_", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       sum(-x * sin(sqrt(abs(x))))
     },
     par.set = makeNumericParamSet(

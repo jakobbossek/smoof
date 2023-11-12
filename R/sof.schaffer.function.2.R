@@ -14,7 +14,7 @@ makeSchafferN2Function = function() {
     name = "Schaffer Function N. 2",
     id = "schaffer02_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       a = x[1]^2
       b = x[2]^2
       0.5 + (sin(a - b)^2 - 0.5) / (1 + 0.001 * (a + b))^2

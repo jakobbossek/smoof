@@ -14,7 +14,7 @@ makeEggholderFunction = function() {
     name = "Egg Holder Function",
     id = "eggHolder_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       i = 1L
       sum(-(x[i + 1] + 47) * sin(sqrt(abs(x[i + 1] + 0.5 * x[i] + 47))) - x[i] * sin(sqrt(abs(x[i] - (x[i + 1] + 47)))))
     },

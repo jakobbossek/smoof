@@ -22,8 +22,8 @@ makeMMF13Function = function(np = 2L) {
 
   # C implementation
   fn = function(x) {
-    assertNumeric(x, len = 3L, any.missing = FALSE, all.missing = FALSE, finite = TRUE)
-    return(mof_cec2019_mmf13(x = x, np = np))
+    checkNumericInput(x, 3L)
+    mof_cec2019_mmf13(x = x, np = np)
   }
 
   n.objectives = 2L

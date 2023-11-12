@@ -27,7 +27,7 @@ makeMMF12Function = function(np = 2L, q = 4L) {
 
   # C implementation
   fn = function(x) {
-    assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE, finite = TRUE)
+    checkNumericInput(x, 2L)
     return(mof_cec2019_mmf12(x = x, np = np, q = q))
   }
 

@@ -16,8 +16,8 @@ makeMOP4Function = function() {
 
   # C implementation
   fn = function(x) {
-    assertNumeric(x, len = 3L, any.missing = FALSE, all.missing = FALSE)
-    return(.Call("mof_MOP4", x))
+    checkNumericInput(x, 3L)
+    .Call("mof_MOP4", x)
   }
 
   makeMultiObjectiveFunction(

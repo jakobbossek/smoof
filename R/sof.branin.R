@@ -22,7 +22,7 @@ makeBraninFunction = function() {
     name = "Branin RCOS Function",
     id = "branin_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       a = 1
       b = 5.1 / (4 * pi^2)
       c = 5 / pi

@@ -17,7 +17,7 @@ makeDentFunction = function() {
 
   # define the two-objective Dent function
   fn = function(x) {
-    assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+    checkNumericInput(x, 2L)
     lambda = 0.85
     d = lambda * exp(-1 * (x[1] - x[2])^2)
 

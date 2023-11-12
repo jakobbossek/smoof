@@ -19,7 +19,7 @@ makeBrownFunction = function(dimensions) {
     name = "Brown Function",
     id = "brown_2d",
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       i = 1:(length(x) - 1)
       a = x[i]^2
       b = x[i + 1]^2

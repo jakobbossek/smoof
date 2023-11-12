@@ -51,7 +51,7 @@ makeDTLZ2Function = function(dimensions, n.objectives) {
 
   # C++ implementation
   fn = function(x) {
-    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+    checkNumericInput(x, dimensions)
     dtlz_2(x, M)
   }
 
@@ -93,3 +93,4 @@ class(makeDTLZ2Function) = c("function", "smoof_generator")
 attr(makeDTLZ2Function, "name") = c("DTLZ2")
 attr(makeDTLZ2Function, "type") = c("multi-objective")
 attr(makeDTLZ2Function, "tags") = c("multi-objective")
+

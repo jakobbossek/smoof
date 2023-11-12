@@ -15,7 +15,7 @@ makeDeckkersAartsFunction = function() {
     name = "Deckkers-Aarts Function",
     id = "deckkersAarts_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       a = x[1]^2
       b = x[2]^2
       1e+05 * a + b - (a + b)^2 + 1e-05 * (a + b)^4

@@ -14,7 +14,7 @@ makeLeonFunction = function() {
     name = "Leon Function",
     id = "leon_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       100 * (x[2] - x[1]^2)^2 + (1 - x[1])^2
     },
     par.set = makeNumericParamSet(

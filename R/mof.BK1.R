@@ -13,7 +13,7 @@ makeBK1Function = function() {
 
   # C++ implementation
   fn = function(x) {
-    assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+    checkNumericInput(x, 2L)
     return(.Call("mof_bk1", x))
   }
 

@@ -14,7 +14,7 @@ makeBealeFunction = function() {
     name = "Beale Function",
     id = "beale_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       a = x[1] * x[2]
       b = a * x[2]
       c = b * x[2]

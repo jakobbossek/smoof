@@ -20,7 +20,7 @@ makeRosenbrockFunction = function(dimensions) {
     name = paste(dimensions, "-d Rosenbrock Function", sep = ""),
     id = paste0("rosenbrock_", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       i = seq_len(length(x) - 1L)
       sum(100 * (x[i]^2 - x[i + 1])^2 + (x[i] - 1)^2)
     },

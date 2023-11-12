@@ -15,7 +15,7 @@ makeAluffiPentiniFunction = function() {
     name = "Aluffi-Pentini Function",
     id = "allufiPentini_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       0.25 * x[1]^4 - 0.5 * x[1]^2 + 0.1 * x[1] + 0.5 * x[2]^2
     },
     par.set = makeNumericParamSet(

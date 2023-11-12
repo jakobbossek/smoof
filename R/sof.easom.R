@@ -16,7 +16,7 @@ makeEasomFunction = function() {
     name = "Easom Function",
     id = paste0("easom_2d"),
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       -cos(x[1]) * cos(x[2]) * exp(-((x[1] - pi)^2 + (x[2] - pi)^2))
     },
     par.set = makeNumericParamSet(

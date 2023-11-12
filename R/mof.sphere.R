@@ -21,8 +21,8 @@ makeBiSphereFunction = function(dimensions, a = rep(0, dimensions)) {
 
   # define the two-objective Dent function
   fn = function(x) {
-    assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
-    return(c(sum(x^2), sum((x - a)^2)))
+    checkNumericInput(x, dimensions)
+    c(sum(x^2), sum((x - a)^2))
   }
 
   makeMultiObjectiveFunction(

@@ -18,8 +18,8 @@ makeMOP5Function = function() {
 
   # C implementation
   fn = function(x) {
-    assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
-    return(.Call("mof_MOP5", x))
+    checkNumericInput(x, 2L)
+    .Call("mof_MOP5", x)
   }
 
   makeMultiObjectiveFunction(

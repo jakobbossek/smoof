@@ -13,7 +13,7 @@ makeHyperEllipsoidFunction = function(dimensions) {
     name = paste(dimensions, "-d Hyper-Ellipsoid function", sep = ""),
     id = paste0("hyperEllipsoid_", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       #FIXME: check if this is correct. http://www.geocities.ws/eadorio/mvf.pdf has another definiton
       n = length(x)
       sum(1:n * x^2)

@@ -19,7 +19,7 @@ makeAlpine02Function = function(dimensions) {
     name = paste(dimensions, "-d Alpine N. 2 Function", sep = ""),
     id = paste0("alpine02_", dimensions, "d"),
     fn = function(x) {
-      assertNumeric(x, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, dimensions)
       prod(sqrt(x) * sin(x))
     },
     par.set = makeNumericParamSet(

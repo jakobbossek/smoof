@@ -83,6 +83,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
     description = sprintf("Funnel-like function\n(n.peaks: %i, dimension: %i, topology: %s, seed: %i, rotated: %s, shape: %s)",
       n.peaks, dimensions, topology, seed, rotated, peak.shape),
     fn = function(x) {
+      checkNumericInput(x, dimensions)
       evaluateProblem(x, n.peaks, dimensions, topology, seed, rotated, peak.shape)
     },
     par.set = par.set,

@@ -14,7 +14,7 @@ makeFreudensteinRothFunction = function() {
     name = "Freudenstein Roth Function",
     id = "freudensteinRoth_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       (x[1] - 13 + ((5 - x[2]) * x[2] - 2) * x[2])^2 + (x[1] - 29 + ((x[2] + 1) * x[2] - 14) * x[2])^2
     },
     par.set = makeNumericParamSet(

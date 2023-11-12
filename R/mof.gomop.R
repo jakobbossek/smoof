@@ -37,7 +37,7 @@ makeGOMOPFunction = function(dimensions = 2L, funs = list()) {
 
   fn = function(x) {
     # GOMOP function need input argument in [0, 1]^dimension
-    assertNumeric(x, len = dimensions, lower = 0, upper = 1, any.missing = FALSE, all.missing = FALSE)
+    checkNumericInput(x, dimensions, lower = 0, upper = 1)
     res = sapply(funs, function(fun) {
       lower = getLowerBoxConstraints(fun)
       upper = getUpperBoxConstraints(fun)

@@ -15,7 +15,7 @@ makeCrossInTrayFunction = function() {
     name = "Cross-In-Tray Function",
     id = "crossInTray_2d",
     fn = function(x) {
-      assertNumeric(x, len = 2L, any.missing = FALSE, all.missing = FALSE)
+      checkNumericInput(x, 2L)
       a = exp(abs(100 - (sqrt(x[1]^2 + x[2]^2) / pi)))
       -0.0001 * (abs(a * sin(x[1]) * sin(x[2])) + 1)^(0.1)
     },
