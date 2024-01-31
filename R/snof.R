@@ -48,16 +48,16 @@ snof = function(name = NULL,
   local.opt.params = NULL,
   local.opt.values = NULL) {
 
-  assertString(par.id, null.ok = TRUE)
-  par.len = asCount(par.len)
+  checkmate::assertString(par.id, null.ok = TRUE)
+  par.len = checkmate::asCount(par.len)
 
   # furhter checks are performed by ParamHelpers
   if (is.null(par.lower))
     par.lower = -Inf
   if (is.null(par.upper))
     par.upper = Inf
-  assertNumeric(par.lower, min.len = 1L)
-  assertNumeric(par.upper, min.len = 1L)
+  checkmate::assertNumeric(par.lower, min.len = 1L)
+  checkmate::assertNumeric(par.upper, min.len = 1L)
 
   makeSingleObjectiveFunction(
     name = name,
@@ -70,7 +70,7 @@ snof = function(name = NULL,
     fn.mean = fn.mean,
     minimize = minimize,
     constraint.fn = constraint.fn,
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = par.len,
       id = par.id,
       lower = par.lower,

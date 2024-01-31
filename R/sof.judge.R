@@ -1,9 +1,14 @@
-#' @title Judge function.
+#' @title 
+#' Judge function.
 #'
-#' @description Two-dimensional test function based on the formula
+#' @description 
+#' Two-dimensional test function based on the formula
 #' \deqn{f(\mathbf{x}) = \sum_{i=1}^{20} \left[(x_1 + B_i x_2 + C_i x_2^2) - A_i\right]^2}
 #' with \eqn{\mathbf{x}_1, \mathbf{x}_2 \in [-10, 10]}. For details on \eqn{A, B, C}
 #' see the referenced website.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Judge Function.
 #'
 #' @references See \url{https://al-roomi.org/benchmarks/unconstrained/2-dimensions/133-judge-s-function}.
 #'
@@ -21,7 +26,7 @@ makeJudgeFunction = function() {
       i = 1:20
       sum(((x[1] + B * x[2] + C * x[2]^2) - A)^2)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-10, -10),

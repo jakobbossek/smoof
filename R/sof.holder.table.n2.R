@@ -1,8 +1,13 @@
+#' @title
 #' Holder Table function N. 2
 #'
-#' This multimodal function is defined as
+#' @description
+#' This multi-modal function is defined as
 #' \deqn{f(\mathbf{x}) = -\left|\sin(\mathbf{x}_1)\cos(\mathbf{x}_2)\exp(|1 - \sqrt{\mathbf{x}_1 + \mathbf{x}_2}/\pi|)\right|}
 #' with box-constraints \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Holder Table function N. 2 Function.
 #'
 #' @references S. K. Mishra, Global Optimization By Differential Evolution and
 #' Particle Swarm Methods: Evaluation On Some Benchmark Functions, Munich
@@ -20,7 +25,7 @@ makeHolderTableN2Function = function() {
       checkNumericInput(x, 2L)
       -abs(sin(x[1]) * cos(x[2]) * exp(abs(1 - sqrt(x[1]^2 + x[2]^2) / 3.1415)))
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-10, -10),

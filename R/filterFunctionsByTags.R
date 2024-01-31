@@ -4,7 +4,7 @@
 #' @description
 #' Single objective functions can be tagged, e.g., as unimodal. Searching for all
 #' functions with a specific tag by hand is tedious. The \code{filterFunctionsByTags}
-#' function helps to filter all single objective smoof function.
+#' function helps to filter all single objective smoof functions.
 #'
 #' @param tags [\code{character}]\cr
 #'   Character vector of tags. All available tags can be determined with a call
@@ -24,11 +24,11 @@
 #' filterFunctionsByTags(c("multimodal", "separable"), or = TRUE)
 #' @export
 filterFunctionsByTags = function(tags, or = FALSE) {
-  assertSubset(tags, choices = getAvailableTags(), empty.ok = FALSE)
-  assertFlag(or)
+  checkmate::assertSubset(tags, choices = getAvailableTags(), empty.ok = FALSE)
+  checkmate::assertFlag(or)
 
-  if (isSubset(c("single-objective", "multi-objective"), tags)) {
-    stopf("Trying to search for both single- and multi-objective functions.")
+  if (BBmisc::isSubset(c("single-objective", "multi-objective"), tags)) {
+    BBmisc::stopf("Trying to search for both single- and multi-objective functions.")
   }
 
   fun.generators = getGeneratorFunctions()

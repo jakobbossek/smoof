@@ -12,6 +12,7 @@
 #' @param ... [any]\cr
 #'   Further arguments passed to generator.
 #' @return [\code{smoof_function}]
+#'  Smoof function generated based on the specified names and arguments.
 #' @examples
 #' # generate a testset of multimodal 2D functions
 #' \dontrun{
@@ -20,7 +21,7 @@
 #' @seealso \code{\link{filterFunctionsByTags}}
 #' @export
 makeFunctionsByName = function(fun.names, ...) {
-  assertCharacter(fun.names, min.len = 1L, any.missing = FALSE, all.missing = FALSE)
+  checkmate::assertCharacter(fun.names, min.len = 1L, any.missing = FALSE, all.missing = FALSE)
   fun.generators = getGeneratorFunctions()
   valid.fun.names = sapply(fun.generators, function(generator) attr(generator, "name"))
 
@@ -29,7 +30,7 @@ makeFunctionsByName = function(fun.names, ...) {
 
   funs = lapply(fun.names, function(fun.name) {
     if (fun.name %nin% valid.fun.names) {
-      stopf("There is no generator for function '%s'.", fun.name)
+      BBmisc::stopf("There is no generator for function '%s'.", fun.name)
     }
 
     # find the right generator
@@ -50,14 +51,14 @@ makeFunctionsByName = function(fun.names, ...) {
 
     if (is.null(args$dimensions)) {
       if ("scalable" %in% attr(generator, "tags")) {
-        stopf("'%s' is scalable and needs a dimension argument to be passed.", fun.name)
+        BBmisc::stopf("'%s' is scalable and needs a dimension argument to be passed.", fun.name)
       }
       return(do.call(generator, args))
     } else {
       if ("scalable" %in% attr(generator, "tags")) {
         tryres = try({do.call(generator, args)}, silent = TRUE)
         if (inherits(tryres, "try-error")) {
-          warningf("Function '%s' could not be generated.", fun.name)
+          BBmisc::warningf("Function '%s' could not be generated.", fun.name)
           return(NA)
         }
         return(tryres)
@@ -65,7 +66,7 @@ makeFunctionsByName = function(fun.names, ...) {
         args$dimensions = NULL
         return(do.call(generator, args))
       } else {
-        warningf("Dimension attribute passed, but '%s' is a non-scalable function.", fun.name)
+        BBmisc::warningf("Dimension attribute passed, but '%s' is a non-scalable function.", fun.name)
         return(NA)
       }
     }

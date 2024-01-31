@@ -1,9 +1,14 @@
+#' @title
 #' Brown Function
 #'
-#' This function belongs the the unimodal single-objective test functions. The
+#' @description
+#' This function belongs the the uni-modal single-objective test functions. The
 #' function is forumlated as
 #' \deqn{f(\mathbf{x}) = \sum_{i = 1}^{n} (\mathbf{x}_i^2)^{(\mathbf{x}_{i + 1} + 1)} + (\mathbf{x}_{i + 1})^{(\mathbf{x}_i + 1)}}
 #' subject to \eqn{\mathbf{x}_i \in [-1, 4]} for \eqn{i = 1, \ldots, n}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Brown Function.
 #'
 #' @references O. Begambre, J. E. Laier, A hybrid Particle Swarm Optimization -
 #' Simplex Algorithm (PSOS) for Structural Damage Identification, Journal of
@@ -13,7 +18,7 @@
 #' @template ret_smoof_single
 #' @export
 makeBrownFunction = function(dimensions) {
-  assertCount(dimensions)
+  checkmate::assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = "Brown Function",
@@ -25,7 +30,7 @@ makeBrownFunction = function(dimensions) {
       b = x[i + 1]^2
       sum(a^(b + 1) + b^(a + 1))
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-1, dimensions),

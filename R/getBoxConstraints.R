@@ -1,7 +1,8 @@
-#' Return lower box constaints.
+#' Returns lower box constraints for a Smoof function.
 #'
 #' @template arg_smoof_function
 #' @return [\code{numeric}]
+#'  Numeric vector representing the lower box constraints
 #' @export
 getLowerBoxConstraints = function(fn) {
   UseMethod("getLowerBoxConstraints")

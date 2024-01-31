@@ -1,12 +1,15 @@
-# @title
-# Get data.frame of optima.
-#
-# @description
-# Returns data frame of global / local optima for ggplot.
-#
-# @param fn [\code{smoof_function}]\cr
-#   Smoof function.
-# @return [\code{data.frame}]
+#' @title
+#' Get Data Frame of optima.
+#'
+#' @description
+#' This function returns data frame of global / local optima for visualization using ggplot.
+#'
+#' @param fn [\code{smoof_function}]\cr
+#'  Smoof function.
+#' @return [\code{data.frame}]
+#' A data frame containing information about the optima.
+#' 
+#' @export
 getOptimaDf = function(fn) {
   df = data.frame()
   # local optima first since the global opt is a local opt as well and
@@ -44,8 +47,8 @@ getOptimaDf = function(fn) {
 # @return [\code{data.frame}]
 generateDataframeForGGPlot = function(fn, sequences, par.set) {
   data = do.call(expand.grid, sequences)
-  colnames(data) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
-  data.as.list = dfRowsToList(par.set = par.set, df = data)
+  colnames(data) = ParamHelpers::getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+  data.as.list = BBmisc::dfRowsToList(par.set = par.set, df = data)
   data[["y"]] = sapply(data.as.list, function(data.row) {
     if (violatesConstraints(fn, unlist(data.row))) {
       return(NA)
@@ -71,7 +74,7 @@ generateDataframeForGGPlot = function(fn, sequences, par.set) {
 generateDataframeForGGPlot2 = function(fun, length.out = 50L) {
   # extract a bunch of parameter information
   par.set = ParamHelpers::getParamSet(fun)
-  par.types = getParamTypes(par.set)
+  par.types = ParamHelpers::getParamTypes(par.set)
   pars = par.set$pars
   n.pars = length(pars)
 
@@ -128,12 +131,12 @@ generateDataframeForGGPlot2 = function(fun, length.out = 50L) {
 
   # finally build the grid
   grid = do.call(expand.grid, values)
-  colnames(grid) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+  colnames(grid) = ParamHelpers::getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
 
   # now compute the function values and append
   #FIXME: check if one of the parameters is named "y"
 
-  grid2 = dfRowsToList(par.set = par.set, df = grid, enforce.col.types = TRUE)
+  grid2 = BBmisc::dfRowsToList(par.set = par.set, df = grid, enforce.col.types = TRUE)
   grid[, "y"] = sapply(grid2, fun)
 
   return(grid)
@@ -167,7 +170,7 @@ checkPlotFunParams = function(x) {
   # }
 
   if (isMultiobjective(x)) {
-    stopf("Plotting of multiobjective functions not possible.")
+    BBmisc::stopf("Plotting of multiobjective functions not possible.")
   }
 }
 
@@ -182,14 +185,14 @@ getInternalPlotFunction = function(x, mapping) {
   n.params = getNumberOfParameters(x)
   par.set = ParamHelpers::getParamSet(x)
 
-  if (isNumeric(par.set, include.int = FALSE)) {
+  if (ParamHelpers::isNumeric(par.set, include.int = FALSE)) {
     if (n.params == 1L) {
       return(mapping[["1Dnumeric"]])
     } else {
       return(mapping[["2Dnumeric"]])
     }
-  } else if (hasDiscrete(par.set) & hasNumeric(par.set, include.int = FALSE)) {
+  } else if (ParamHelpers::hasDiscrete(par.set) & ParamHelpers::hasNumeric(par.set, include.int = FALSE)) {
     return(mapping[["2DMixed"]])
   }
-  stopf("This type of function cannot be plotted.")
+  BBmisc::stopf("This type of function cannot be plotted.")
 }

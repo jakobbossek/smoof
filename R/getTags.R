@@ -1,7 +1,8 @@
-#' Returns vector of associated tags.
+#' Returns the vector of associated tags.
 #'
 #' @template arg_smoof_function
 #' @return [\code{character}]
+#'  Vector of associated tags.
 #' @export
 getTags = function(fn) {
   UseMethod("getTags")

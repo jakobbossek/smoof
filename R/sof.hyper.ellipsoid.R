@@ -1,13 +1,18 @@
+#' @title
 #' Hyper-Ellipsoid function
 #'
-#' Unimodal, convex test function similar to the Sphere function (see \code{\link{makeSphereFunction}}).
+#' @description
+#' Uni-modal, convex test function similar to the Sphere function (see \code{\link{makeSphereFunction}}).
 #' Calculated via the formula: \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} i \cdot \mathbf{x}_i.}
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Hyper-Ellipsoid Function.
 #'
 #' @template arg_dimensions
 #' @template ret_smoof_single
 #' @export
 makeHyperEllipsoidFunction = function(dimensions) {
-  assertCount(dimensions)
+  checkmate::assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Hyper-Ellipsoid function", sep = ""),
@@ -18,7 +23,7 @@ makeHyperEllipsoidFunction = function(dimensions) {
       n = length(x)
       sum(1:n * x^2)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-5.12, dimensions),

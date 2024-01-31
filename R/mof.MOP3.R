@@ -5,7 +5,7 @@
 #' MOP3 function from Van Valedhuizen's test suite.
 #'
 #' @references
-#' C. Poloni, G. Mosetti, and S. Contessi, "Multi objective optimization by
+#' C. Poloni, G. Mosetti, and S. Contessi, "Multi-objective optimization by
 #' GAs: Application to system and component design," in Proc. Comput.
 #' Methods in Applied Sciences'96: Invited Lectures and Special Technological
 #' Sessions of the 3rd ECCOMAS Comput. Fluid Dynamics Conf.
@@ -13,9 +13,10 @@
 #' 1996, pp. 258-264
 #' @template arg_dimensions
 #' @return [\code{smoof_multi_objective_function}]
+#' Returns an instance of the MOP3 function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeMOP3Function = function(dimensions = 2L) {
-  assertInt(dimensions, lower = 1L)
+  checkmate::assertInt(dimensions, lower = 1L)
   force(dimensions)
 
   # C implementation
@@ -29,7 +30,7 @@ makeMOP3Function = function(dimensions = 2L) {
     id = sprintf("MOP3-%id-%io", dimensions, 2L),
     description = "MOP3 function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-pi, dimensions),

@@ -1,5 +1,5 @@
 #' @title
-#' Check if function has assigend special tags.
+#' Checks if the function has assigned special tags.
 #'
 #' @description
 #' Each single-objective smoof function has tags assigned to it (see
@@ -11,6 +11,7 @@
 #' @param tags [\code{character}]\cr
 #'   Vector of tags/properties to check \code{fn} for.
 #' @return [\code{logical(1)}]
+#'  Logical vector indicating the presence of specified tags.
 #' @export
 hasTags = function(fn, tags) {
   UseMethod("hasTags")
@@ -18,22 +19,22 @@ hasTags = function(fn, tags) {
 
 #' @export
 hasTags.smoof_function = function(fn, tags) {
-  assertChoice(tags, choices = getAvailableTags())
-  return(isSubset(tags, getTags(fn)))
+  checkmate::assertChoice(tags, choices = getAvailableTags())
+  return(BBmisc::isSubset(tags, getTags(fn)))
 }
 
 #' @export
 hasTags.smoof_generator = function(fn, tags) {
-  assertChoice(tags, choices = getAvailableTags())
-  return(isSubset(tags, attr(fn, "tags")))
+  checkmate::assertChoice(tags, choices = getAvailableTags())
+  return(BBmisc::isSubset(tags, attr(fn, "tags")))
 }
 
 #' @export
 hasTags.character = function(fn, tags) {
-  assertChoice(tags, choices = getAvailableTags())
+  checkmate::assertChoice(tags, choices = getAvailableTags())
   generator = getGeneratorByName(fn)
   if (is.null(generator)) {
-    stopf("No generator for function '%s'", fn)
+    BBmisc::stopf("No generator for function '%s'", fn)
   }
   return(hasTags(generator, tags))
 }

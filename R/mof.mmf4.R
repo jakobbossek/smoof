@@ -2,14 +2,15 @@
 #' MMF4 Function
 #'
 #' @description
-#' Test problem from the set of "multimodal multiobjective functions" as for
+#' Test problem from the set of "multi-modal multi-objective functions" as for
 #' instance used in the CEC2019 competition.
 #' 
 #' @references
 #' Caitong Yue, Boyang Qu, Kunjie Yu, Jing Liang, and Xiaodong Li, "A novel
-#' scalable test problem suite for multimodal multiobjective optimization," in
+#' scalable test problem suite for multi-modal multi-objective optimization," in
 #' Swarm and Evolutionary Computation, Volume 48, August 2019, pp. 62–71, Elsevier.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the MMF4 function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeMMF4Function = function() {
   # C implementation
@@ -24,7 +25,7 @@ makeMMF4Function = function() {
     id = sprintf("MMF4-%id-%io", 2L, n.objectives),
     description = "MMF4 function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-1, 0),

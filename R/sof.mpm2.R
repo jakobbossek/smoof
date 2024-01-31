@@ -19,6 +19,7 @@
 #'   environment. However, evaluation in R is faster, especially if multiple
 #'   MPM2 functions are used in a multi-objective setting.
 #' @return [\code{smoof_single_objective_function}]
+#'  An object of class \code{SingleObjectiveFunction}, representing the Multiple peaks model 2 Function.
 #' @examples
 #' \dontrun{
 #' fn = makeMPM2Function(n.peaks = 10L, dimensions = 2L,
@@ -47,15 +48,15 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
 
   # n.peaks = 1L; dimensions = 2L; topology = "funnel"; seed = 3L; rotated = TRUE; peak.shape = "ellipse"
   # do some sanity checks
-  n.peaks = convertInteger(n.peaks)
-  dimensions = convertInteger(dimensions)
-  seed = convertInteger(seed)
-  assertInt(n.peaks, lower = 1L)
-  assertInt(dimensions, lower = 1L)
-  assertChoice(topology, choices = c("random", "funnel"))
-  assertInt(seed, lower = 1L)
-  assertLogical(rotated, any.missing = FALSE)
-  assertChoice(peak.shape, choices = c("ellipse", "sphere"))
+  n.peaks = BBmisc::convertInteger(n.peaks)
+  dimensions = BBmisc::convertInteger(dimensions)
+  seed = BBmisc::convertInteger(seed)
+  checkmate::assertInt(n.peaks, lower = 1L)
+  checkmate::assertInt(dimensions, lower = 1L)
+  checkmate::assertChoice(topology, choices = c("random", "funnel"))
+  checkmate::assertInt(seed, lower = 1L)
+  checkmate::assertLogical(rotated, any.missing = FALSE)
+  checkmate::assertChoice(peak.shape, choices = c("ellipse", "sphere"))
 
   # touch vars
   force(n.peaks)
@@ -66,7 +67,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
   force(peak.shape)
 
   # build parameter set (bounds are [0, 1]^d)
-  par.set = makeNumericParamSet("x", len = dimensions, lower = 0, upper = 1)
+  par.set = ParammHelpers::makeNumericParamSet("x", len = dimensions, lower = 0, upper = 1)
 
   # import reticulate namespace
   BBmisc::requirePackages("_reticulate", why = "smoof::makeMultiplePeaksModel2Function")

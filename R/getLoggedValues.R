@@ -1,4 +1,4 @@
-#' Extract logged values of a function wrapped by a logging wrapper.
+#' Extracts the logged values of a function wrapped by a logging wrapper.
 #'
 #' @param fn [\code{wrapped_smoof_function}]\cr
 #'   Wrapped smoof function.
@@ -10,8 +10,8 @@
 #'   \describe{
 #'     \item{pars}{Data frame of parameter values, i.e., x-values or the empty
 #'     data frame if x-values were not logged.}
-#'     \item{obj.vals}{Numeric vector of objective vals in the single-objective
-#'     case respectively a matrix of objective vals for multi-objective functions.}
+#'     \item{obj.vals}{Numeric vector of objective values in the single-objective
+#'     case respectively a matrix of objective values for multi-objective functions.}
 #'   }
 #' @seealso \code{\link{addLoggingWrapper}}
 #' @export
@@ -21,7 +21,7 @@ getLoggedValues = function(fn, compact = FALSE) {
 
 #' @export
 getLoggedValues.smoof_logging_function = function(fn, compact = FALSE) {
-  assertFlag(compact)
+  checkmate::assertFlag(compact)
 
   env = environment(fn)
   max.idx = env$curr.idx - 1L

@@ -1,8 +1,13 @@
+#' @title
 #' Booth Function
 #'
+#' @description
 #' This function is based on the formula
 #' \deqn{f(\mathbf{x}) = (\mathbf{x}_1 + 2\mathbf{x}_2 - 7)^2 + (2\mathbf{x}_1 + \mathbf{x}_2 - 5)^2}
 #' subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Booth Function.
 #'
 #' @template ret_smoof_single
 #' @export
@@ -14,7 +19,7 @@ makeBoothFunction = function() {
       checkNumericInput(x, 2L)
       (x[1] + 2 * x[2] - 7)^2 + (2 * x[1] + x[2] - 5)^2
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-10, -10),

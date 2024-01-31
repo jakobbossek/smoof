@@ -1,8 +1,13 @@
+#' @title
 #' Brent Function
 #'
+#' @description
 #' Single-objective two-dimensional test function. The formula is given as
 #' \deqn{f(\mathbf{x}) = (\mathbf{x}_1 + 10)^2 + (\mathbf{x}_2 + 10)^2 + exp(-\mathbf{x}_1^2 - \mathbf{x}_2^2)}
 #' subject to the constraints \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2.}
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Brent Function.
 #'
 #' @references F. H. Branin Jr., Widely Convergent Method of Finding Multiple
 #' Solutions of Simul- taneous Nonlinear Equations, IBM Journal of Research and
@@ -18,7 +23,7 @@ makeBrentFunction = function() {
       checkNumericInput(x, 2L)
       (x[1] + 10)^2 + (x[2] + 10)^2 + exp(-x[1]^2 - x[2]^2)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-10, -10),

@@ -5,7 +5,7 @@
 #' Builds and returns the multi-objective DTLZ5 test problem. This problem
 #' can be characterized by a disconnected Pareto-optimal front in the search
 #' space. This introduces a new challenge to evolutionary multi-objective
-#' optimizers, i.e., to maintain different subpopulations within the search
+#' optimizers, i.e., to maintain different sub-populations within the search
 #' space to cover the entire Pareto-optimal front.
 #'
 #' The DTLZ5 test problem is defined as follows:
@@ -50,10 +50,11 @@
 #' @param n.objectives [\code{integer(1)}]\cr
 #'   Number of objectives.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the DTLZ5 family as a \code{smoof_multi_objective_function} object.
 #' @export
 makeDTLZ5Function = function(dimensions, n.objectives) {
-  assertInt(n.objectives, lower = 2L)
-  assertInt(dimensions, lower = n.objectives)
+  checkmate::assertInt(n.objectives, lower = 2L)
+  checkmate::assertInt(dimensions, lower = n.objectives)
 
   # Renaming n.objectives here to stick to the notation in the paper
   M = n.objectives
@@ -92,7 +93,7 @@ makeDTLZ5Function = function(dimensions, n.objectives) {
     id = paste0("dtlz5_", dimensions, "d_", n.objectives, "o"),
     description = "Deb et al.",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

@@ -1,12 +1,17 @@
+#' @title
 #' El-Attar-Vidyasagar-Dutta Function
 #'
+#' @description
 #' This function is based on the formula
 #' \deqn{f(\mathbf{x}) = (\mathbf{x}_1^2 + \mathbf{x}_2 - 10)^2 + (\mathbf{x}_1 + \mathbf{x}_2^2 - 7)^2 + (\mathbf{x}_1^2 + \mathbf{x}_2^3 - 1)^2}
 #' subject to \eqn{\mathbf{x}_i \in [-500, 500], i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the El-Attar-Vidyasagar-Dutta Function.
 #'
 #' @references R. A. El-Attar, M. Vidyasagar, S. R. K. Dutta, An Algorithm for
-#' II-norm Minimiza- tion With Application to Nonlinear II-approximation, SIAM
-#' Journal on Numverical Analysis, vol. 16, no. 1, pp. 70-86, 1979.
+#' II-norm Minimization With Application to Nonlinear II-approximation, SIAM
+#' Journal on Numerical Analysis, vol. 16, no. 1, pp. 70-86, 1979.
 #'
 #' @template ret_smoof_single
 #' @export
@@ -18,7 +23,7 @@ makeElAttarVidyasagarDuttaFunction = function() {
       checkNumericInput(x, 2L)
       (x[1]^2 + x[2] - 10)^2 + (x[1] + x[2]^2 - 7)^2 + (x[1]^2 + x[2]^3 - 1)^2
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-100, -100),

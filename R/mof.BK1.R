@@ -2,12 +2,14 @@
 #' BK1 function generator
 #'
 #' @description
-#' ...
+#' Generates the BK1 function, a multi-objective optimization test function. The BK1 function
+#' is commonly used in benchmarking studies for evaluating the performance of optimization algorithms.
 #'
 #' @references
 #' ...
 #'
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the BK1 function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeBK1Function = function() {
 
@@ -22,7 +24,7 @@ makeBK1Function = function() {
     id = "bk1",
     description = "BK1 function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = rep(-5, 2L),

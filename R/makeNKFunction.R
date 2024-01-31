@@ -32,6 +32,7 @@
 #'
 #' @family nk_landscapes
 #' @return [\code{smoof_single_objective_function}]
+#'   NK-landscape function.
 #' @export
 makeNKFunction = function(N, K) {
   N = checkmate::asInt(N)
@@ -303,7 +304,7 @@ makeNKFunctionInternal = function(nk_properties, m) {
     id = "NK_landscape",
     fn = fn,
     minimize = FALSE,
-    par.set = makeParamSet(makeIntegerVectorParam(
+    par.set = ParamHelpers::makeParamSet(ParamHelpers::makeIntegerVectorParam(
       len = N,
       id = "x",
       lower = rep(0, N),
@@ -351,7 +352,7 @@ makeMNKFunctionInternal = function(nk_properties) {
     id = "rMNK_landscape",
     fn = fn,
     minimize = rep(FALSE, M), # always to be maximised
-    par.set = makeParamSet(makeIntegerVectorParam(
+    par.set = ParamHelpers::makeParamSet(ParamHelpers::makeIntegerVectorParam(
       len = N,
       id = "x",
       lower = rep(0, N),

@@ -3,6 +3,9 @@
 #' @description Two-dimensional test function based on the formula
 #' \deqn{f(\mathbf{x}) = \sum_{i=1}^{10} \left[2 + 2i - (e^{ix_1} + e^{ix_2})\right]^2}
 #' with \eqn{\mathbf{x}_1, \mathbf{x}_2 \in [-1, 1]}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Jennrich-Sampson Function.
 #'
 #' @references See \url{https://al-roomi.org/benchmarks/unconstrained/2-dimensions/134-jennrich-sampson-s-function}.
 #'
@@ -17,7 +20,7 @@ makeJennrichSampsonFunction = function() {
       i = 1:10
       sum((2 + 2 * i - (exp(i * x[1]) + exp(i * x[2])))^2)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-1, -1),

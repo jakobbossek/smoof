@@ -1,12 +1,17 @@
+#' @title
 #' Rastrigin Function
 #'
+#' @description
 #' A modified version of the Rastrigin function following the formula:
 #' \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} 10\left(1 + \cos(2\pi k_i \mathbf{x}_i)\right) + 2 k_i \mathbf{x}_i^2.}
 #' The box-constraints are given by \eqn{\mathbf{x}_i \in [0, 1]} for
 #' \eqn{i = 1, \ldots, n} and \eqn{k} is a numerical vector. Deb et al. (see references)
 #' use, e.g., \eqn{k = (2, 2, 3, 4)} for \eqn{n = 4}. See the reference for details.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Rastrigin Function.
 #'
-#' @references Kalyanmoy Deb and Amit Saha. Multimodal optimization using a bi-
+#' @references Kalyanmoy Deb and Amit Saha. Multi-modal optimization using a bi-
 #' objective evolutionary algorithm. Evolutionary Computation, 20(1):27-62, 2012.
 #'
 #' @template arg_dimensions
@@ -16,7 +21,7 @@
 #' @template ret_smoof_single
 #' @export
 makeModifiedRastriginFunction = function(dimensions, k = rep(1, dimensions)) {
-  assertCount(dimensions)
+  checkmate::assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = sprintf("%i-d Modified Rastrigin Function", dimensions),
@@ -26,7 +31,7 @@ makeModifiedRastriginFunction = function(dimensions, k = rep(1, dimensions)) {
       n = length(x)
       sum(10 * (1 + cos(2 * pi * k * x)) + 2 * k * x^2)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

@@ -1,8 +1,13 @@
+#' @title
 #' Exponential Function
 #'
+#' @description
 #' This scalable test function is based on the definition
 #' \deqn{f(\mathbf{x}) = -\exp\left(-0.5 \sum_{i = 1}^{n} \mathbf{x}_i^2\right)}
 #' with the box-constraints \eqn{\mathbf{x}_i \in [-1, 1], i = 1, \ldots, n}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Exponential Function.
 #'
 #' @references S. Rahnamyan, H. R. Tizhoosh, N. M. M. Salama, Opposition-Based
 #' Differential Evolution (ODE) with Variable Jumping Rate, IEEE Sympousim
@@ -12,7 +17,7 @@
 #' @template ret_smoof_single
 #' @export
 makeExponentialFunction = function(dimensions) {
-  assertCount(dimensions)
+  checkmate::assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Exponential Function", sep = ""),
@@ -21,7 +26,7 @@ makeExponentialFunction = function(dimensions) {
       checkNumericInput(x, dimensions)
       -exp(-0.5 * sum(x^2))
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-1, dimensions),

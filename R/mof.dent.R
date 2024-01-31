@@ -1,5 +1,5 @@
 #' @title
-#' Dent Function
+#' Dent Function Generator
 #'
 #' @description
 #' Builds and returns the bi-objective Dent test problem, which is defined as
@@ -12,6 +12,7 @@
 #' where \eqn{d = \lambda * \exp(-(x_1 - x_2)^2)} and \eqn{\mathbf{x}_i \in [-1.5, 1.5], i = 1, 2}.
 #'
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the Dent function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeDentFunction = function() {
 
@@ -33,7 +34,7 @@ makeDentFunction = function() {
     id = paste0("dent_2d_2o"),
     description = "Dent Function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-1.5, -1.5),

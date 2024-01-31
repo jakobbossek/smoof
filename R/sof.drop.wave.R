@@ -1,14 +1,19 @@
+#' @title
 #' Generalized Drop-Wave Function
 #'
-#' Multimodal single-objective function following the formula:
+#' @description
+#' Multi-modal single-objective function following the formula:
 #' \deqn{\mathbf{x} = -\frac{1 + \cos(\sqrt{\sum_{i = 1}^{n} \mathbf{x}_i^2})}{2 + 0.5 \sum_{i = 1}^{n} \mathbf{x}_i^2}}
 #' with \eqn{\mathbf{x}_i \in [-5.12, 5.12], i = 1, \ldots, n}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Generalized Drop-Wave Function.
 #'
 #' @template arg_dimensions
 #' @template ret_smoof_single
 #' @export
 makeGeneralizedDropWaveFunction = function(dimensions = 2L) {
-  assertCount(dimensions)
+  checkmate::assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Generelized Drop-Wave Function", sep = ""),
@@ -18,7 +23,7 @@ makeGeneralizedDropWaveFunction = function(dimensions = 2L) {
       a = sum(x^2)
       -(1 + cos(12 * sqrt(a))) / (0.5 * a + 2)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-5.12, dimensions),

@@ -3,7 +3,7 @@
 #'
 #' @description
 #' Builds and returns the two-objective ZDT2 test problem. The function is
-#' nonconvex and resembles the ZDT1 function. For \eqn{m} objective it
+#' non-convex and resembles the ZDT1 function. For \eqn{m} objective it
 #' is defined as follows
 #' \deqn{f(\mathbf{x}) = \left(f_1(\mathbf{x}_1), f_2(\mathbf{x})\right)}
 #' with
@@ -12,15 +12,17 @@
 #' \deqn{g(\mathbf{x}) = 1 + \frac{9}{m - 1} \sum_{i = 2}^m \mathbf{x}_i, h(f_1, g) = 1 - \left(\frac{f_1}{g}\right)^2}
 #' and \eqn{\mathbf{x}_i \in [0,1], i = 1, \ldots, m}
 #'
-#' @references E. Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective
+#' @references E. Zitzler, K. Deb, and L. Thiele. Comparison of Multi-objective
 #' Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000
 #'
 #' @param dimensions [\code{integer(1)}]\cr
 #'   Number of decision variables.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the ZDT2 function as a \code{smoof_multi_objective_function} object.
+#'  
 #' @export
 makeZDT2Function = function(dimensions) {
-  assertInt(dimensions, lower = 2L)
+  checkmate::assertInt(dimensions, lower = 2L)
   force(dimensions)
 
     # define the two-objective ZDT1 function
@@ -39,7 +41,7 @@ makeZDT2Function = function(dimensions) {
     id = paste0("zdt2_", dimensions, "d_2o"),
     description = "Zitzler et al. function N. 2",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

@@ -2,6 +2,7 @@
 #'
 #' @template arg_smoof_function
 #' @return [\code{logical(1)}]
+#'  \code{TRUE} if the function is noisy, \code{FALSE} otherwise.
 #' @export
 isNoisy = function(fn) {
   UseMethod("isNoisy")

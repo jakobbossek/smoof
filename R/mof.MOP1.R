@@ -10,6 +10,7 @@
 #' Applications, J. J. Grenfenstett, Ed., 1985, pp. 93-100.
 #'
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the MOP1 function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeMOP1Function = function() {
 
@@ -24,7 +25,7 @@ makeMOP1Function = function() {
     id = "MOP1",
     description = "MOP1 function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = -1e5,

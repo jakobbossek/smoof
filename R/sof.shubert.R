@@ -1,8 +1,13 @@
+#' @title
 #' Shubert Function
 #'
-#' The defintion of this two-dimensional function is given by
+#' @description
+#' The definition of this two-dimensional function is given by
 #' \deqn{f(\mathbf{x}) = \prod_{i = 1}^{2} \left(\sum_{j = 1}^{5} \cos((j + 1)\mathbf{x}_i + j\right)}
 #' subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Shubert Function.
 #'
 #' @references J. P. Hennart (ed.), Numerical Analysis, Proc. 3rd AS Workshop,
 #' Lecture Notes in Mathematics, vol. 90, Springer, 1982.

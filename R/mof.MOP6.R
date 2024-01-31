@@ -5,6 +5,7 @@
 #' MOP6 function from Van Valedhuizen's test suite.
 #'
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the MOP6 function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeMOP6Function = function() {
 
@@ -19,7 +20,7 @@ makeMOP6Function = function() {
     id = sprintf("MOP6-%id-%io", 2L, 2L),
     description = "MOP6 function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = rep(0, 2L),

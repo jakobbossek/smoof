@@ -1,8 +1,17 @@
+#' @title
 #' Adjiman function
 #'
+#' @description
 #' This two-dimensional multimodal test function follows the formula
 #' \deqn{f(\mathbf{x}) = \cos(\mathbf{x}_1)\sin(\mathbf{x}_2) - \frac{\mathbf{x}_1}{(\mathbf{x}_2^2 + 1)}}
 #' with \eqn{\mathbf{x}_1 \in [-1, 2], \mathbf{x}_2 \in [2, 1]}.
+#' 
+#' @param
+#' A numeric vector of length 2 representing the input coordinates.
+#'   \code{x[1]} should be in the range [-1, 2], and \code{x[2]} should be in the range [2, 1].
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Adjiman Function.
 #'
 #' @references C. S. Adjiman, S. Sallwig, C. A. Flouda, A. Neumaier, A Global Optimization
 #' Method, aBB for General Twice-Differentiable NLPs-1, Theoretical Advances, Computers
@@ -18,7 +27,7 @@ makeAdjimanFunction = function() {
       checkNumericInput(x, 2L)
       cos(x[1]) * sin(x[2]) - x[1] / (x[2]^2 + 1)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-1, -1),

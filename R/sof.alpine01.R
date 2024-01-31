@@ -1,8 +1,13 @@
+#' @title
 #' Alpine01 function
 #'
-#' Highly multimodal single-objective optimization test function. It is defined
+#' @description
+#' Highly multi-modal single-objective optimization test function. It is defined
 #' as \deqn{f(\mathbf{x}) = \sum_{i = 1}^{n} |\mathbf{x}_i \sin(\mathbf{x}_i) + 0.1\mathbf{x}_i|}
 #' with box constraints \eqn{\mathbf{x}_i \in [-10, 10]} for \eqn{i = 1, \ldots, n}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Alpine01 Function.
 #'
 #' @references S. Rahnamyan, H. R. Tizhoosh, N. M. M. Salama, A Novel Population
 #' Initialization Method for Accelerating Evolutionary Algorithms, Computers and
@@ -12,7 +17,7 @@
 #' @template ret_smoof_single
 #' @export
 makeAlpine01Function = function(dimensions) {
-  assertCount(dimensions)
+  checkmate::assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Alpine01 Function", sep = ""),
@@ -21,7 +26,7 @@ makeAlpine01Function = function(dimensions) {
       checkNumericInput(x, dimensions)
       sum(abs(x * sin(x) + 0.1 * x))
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-10, dimensions),

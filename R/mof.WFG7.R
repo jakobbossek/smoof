@@ -18,6 +18,7 @@
 #'   Number of distance-related parameters. These will automatically be
 #'   the last \code{l} elements from the input vector.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the WFG7 function as a \code{smoof_multi_objective_function} object.
 #' @details 
 #'   Huband et al. recommend a value of \code{k = 4L} position-related
 #'   parameters for bi-objective problems and \code{k = 2L * (n.objectives - 1L)}
@@ -28,7 +29,7 @@
 #' 
 #' @export
 makeWFG7Function = function(n.objectives, k, l) {
-  assertInt(n.objectives, lower = 2L)
+  checkmate::assertInt(n.objectives, lower = 2L)
   force(n.objectives)
 
   if (missing(k)) {
@@ -38,14 +39,14 @@ makeWFG7Function = function(n.objectives, k, l) {
       k = 2L * (n.objectives - 1L)
     }
   }
-  assertInt(k, lower = n.objectives - 1L)
-  assertTRUE(k %% (n.objectives - 1L) == 0L)
+  checkmate::assertInt(k, lower = n.objectives - 1L)
+  checkmate::assertTRUE(k %% (n.objectives - 1L) == 0L)
   force(k)
 
   if (missing(l)) {
     l = 20L
   }
-  assertInt(l, lower = 1L)
+  checkmate::assertInt(l, lower = 1L)
   force(l)
   dimensions = k + l
 
@@ -60,7 +61,7 @@ makeWFG7Function = function(n.objectives, k, l) {
     id = sprintf("WFG7-%id-%io", dimensions, n.objectives),
     description = "WFG7 function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

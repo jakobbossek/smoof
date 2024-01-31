@@ -18,7 +18,7 @@ makeAluffiPentiniFunction = function() {
       checkNumericInput(x, 2L)
       0.25 * x[1]^4 - 0.5 * x[1]^2 + 0.1 * x[1] + 0.5 * x[2]^2
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-10, -10),

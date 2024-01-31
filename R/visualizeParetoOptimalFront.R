@@ -17,17 +17,20 @@
 #'
 #' # Alternatively we can pass some more algorithm parameters to the NSGA2 algorithm
 #' vis = visualizeParetoOptimalFront(fn, popsize = 1000L)
+#' 
 #' @return [\code{\link[ggplot2]{ggplot}}]
+#' Returns a ggplot object representing the Pareto-optimal front visualization.
+#' 
 #' @export
 visualizeParetoOptimalFront = function(fn, ...) {
   n.objectives = getNumberOfObjectives(fn)
   if (!isMultiobjective(fn)) {
-    stopf("Visualization of approximated Pareto-optimal front only possible fo multi-objective
+    BBmisc::stopf("Visualization of approximated Pareto-optimal front only possible fo multi-objective
       functions with two objectives at the moment.")
   }
 
   if (!requireNamespace("mco", quietly = TRUE))
-    stopf("Package \"mco\" needed for this function to work.")
+    BBmisc::stopf("Package \"mco\" needed for this function to work.")
 
   par.set = ParamHelpers::getParamSet(fn)
 
@@ -35,8 +38,8 @@ visualizeParetoOptimalFront = function(fn, ...) {
   res = mco::nsga2(fn,
     idim = getNumberOfParameters(fn),
     odim = n.objectives,
-    lower.bounds = getLower(par.set),
-    upper.bounds = getUpper(par.set),
+    lower.bounds = ParamHelpers::getLower(par.set),
+    upper.bounds = ParamHelpers::getUpper(par.set),
     ...
   )
   eff.points = res$value[res$pareto.optimal, ]
@@ -45,10 +48,10 @@ visualizeParetoOptimalFront = function(fn, ...) {
   eff.points = as.data.frame(eff.points)
   colnames(eff.points) = c("f1", "f2")
 
-  pl = ggplot(eff.points, mapping = aes_string(x = "f1", y = "f2"))
-  pl = pl + geom_line(colour = "darkgray")
-  pl = pl + xlab(expression(f[1])) + ylab(expression(f[2]))
-  pl = pl + ggtitle(sprintf("Objective space with shape of Pareto-optimal\n
-    front for the bi-criteria %s", getName(fn)))
+  pl = ggplot2::ggplot(eff.points, mapping = ggplot2::aes_string(x = "f1", y = "f2"))
+  pl = pl + ggplot2::geom_line(colour = "darkgray")
+  pl = pl + ggplot2::xlab(expression(f[1])) + ggplot2::ylab(expression(f[2]))
+  pl = pl + ggplot2::ggtitle(sprintf("Objective space with shape of Pareto-optimal\n
+    front for the bi-criteria %s", berryFunctions::getName(fn)))
   return(pl)
 }

@@ -1,7 +1,8 @@
-#' Return the description of the function.
+#' Returns the description of the function.
 #'
 #' @template arg_smoof_function
 #' @return [\code{character(1)}]
+#'  A character string representing the description of the function.
 #' @export
 getDescription = function(fn) {
   UseMethod("getDescription")

@@ -1,8 +1,13 @@
+#' @title
 #' Dixon-Price Function
 #'
+#' @description
 #' Dixon and Price defined the function
 #' \deqn{f(\mathbf{x}) = (\mathbf{x}_1 - 1)^2 + \sum_{i = 1}^{n} i (2\mathbf{x}_i^2 - \mathbf{x}_{i - 1})}
 #' subject to \eqn{\mathbf{x}_i \in [-10, 10]} for \eqn{i = 1, \ldots, n}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Dixon-Price Function.
 #'
 #' @references L. C. W. Dixon, R. C. Price, The Truncated Newton Method for
 #' Sparse Unconstrained Optimisation Using Automatic Differentiation, Journal of
@@ -12,7 +17,7 @@
 #' @template ret_smoof_single
 #' @export
 makeDixonPriceFunction = function(dimensions) {
-  assertCount(dimensions)
+  checkmate::assertCount(dimensions)
   i = 1:dimensions
   force(dimensions)
   global.opt.params = 2^((-1) * (2^i - 2) / 2^i)
@@ -26,7 +31,7 @@ makeDixonPriceFunction = function(dimensions) {
       b = sum(i * (2 * x[i]^2 - x[i - 1])^2)
       return(a + b)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-10, dimensions),

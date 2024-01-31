@@ -29,7 +29,7 @@ getLocalOptimum.smoof_single_objective_function = function(fn) {
 
 #' @export
 getLocalOptimum.smoof_multi_objective_function = function(fn) {
-  stopf("No local optimum available for multi-objective function.")
+  BBmisc::stopf("No local optimum available for multi-objective function.")
 }
 
 #' @export

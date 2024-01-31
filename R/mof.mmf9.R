@@ -2,7 +2,7 @@
 #' MMF9 Function
 #'
 #' @description
-#' Test problem from the set of "multimodal multiobjective functions" as for
+#' Test problem from the set of "multi-modal multi-objective functions" as for
 #' instance used in the CEC2019 competition.
 #' 
 #' @param np [\code{integer}(1)]\cr
@@ -11,12 +11,13 @@
 #'
 #' @references
 #' Caitong Yue, Boyang Qu, Kunjie Yu, Jing Liang, and Xiaodong Li, "A novel
-#' scalable test problem suite for multimodal multiobjective optimization," in
+#' scalable test problem suite for multi-modal multi-objective optimization," in
 #' Swarm and Evolutionary Computation, Volume 48, August 2019, pp. 62–71, Elsevier.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the MMF9 function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeMMF9Function = function(np = 2L) {
-  assertInt(x = np, lower = 1L)
+  checkmate::assertInt(x = np, lower = 1L)
   force(np)
 
   # C implementation
@@ -31,7 +32,7 @@ makeMMF9Function = function(np = 2L) {
     id = sprintf("MMF9-%id-%io", 2L, n.objectives),
     description = "MMF9 function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = rep(0.1, 2),

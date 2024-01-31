@@ -1,6 +1,8 @@
+#' @title
 #' Hartmann Function
 #'
-#' Unimodal single-objective test function with six local minima.
+#' @description
+#' Uni-modal single-objective test function with six local minima.
 #' The implementation is based on the mathematical formulation
 #' \deqn{f(x) = - \sum_{i=1}^4 \alpha_i \ exp \left(-\sum_{j=1}^6 A_{ij}(x_j-P_{ij})^2 \right)}, where
 #' \deqn{\alpha = (1.0, 1.2, 3.0, 3.2)^T, \\
@@ -18,6 +20,9 @@
 #'  \end{array} \right)}
 #' The function is restricted to six dimensions with \eqn{\mathbf{x}_i \in [0,1], i = 1, \ldots, 6.}
 #' The function is not normalized in contrast to some benchmark applications in the literature.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Hartmann Function.
 #'
 #' @references Picheny, V., Wagner, T., & Ginsbourger, D. (2012). A benchmark
 #' of kriging-based infill criteria for noisy optimization.
@@ -26,7 +31,7 @@
 #' @template ret_smoof_single
 #' @export
 makeHartmannFunction = function(dimensions) {
-  assertChoice(dimensions, c(3L, 4L, 6L))
+  checkmate::assertChoice(dimensions, c(3L, 4L, 6L))
   force(dimensions)
   i = seq_len(dimensions)
 
@@ -73,7 +78,7 @@ makeHartmannFunction = function(dimensions) {
       inner = rowSums(A[, i] * (x.mat - P[, i])^2)
       -sum(alpha * exp(-inner))
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = 0,

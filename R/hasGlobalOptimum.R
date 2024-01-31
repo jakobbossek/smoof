@@ -1,7 +1,8 @@
-#' Checks whether global optimum is known.
+#' Checks whether the global optimum is known.
 #'
 #' @template arg_smoof_function
 #' @return [\code{logical(1)}]
+#'  \code{TRUE} if the global optimum is known, \code{FALSE} otherwise.
 #' @export
 hasGlobalOptimum = function(fn) {
   UseMethod("hasGlobalOptimum")

@@ -3,6 +3,9 @@
 #' @description Two-dimensional test function based on the formula
 #' \deqn{f(\mathbf{x}) = (x_1^4 + x_2^4 + 2 x_1^2 x_2^2 - 4 x_1 + 3}
 #' with \eqn{\mathbf{x}_1, \mathbf{x}_2 \in [-2000, 2000]}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Complex Function.
 #'
 #' @references See \url{https://al-roomi.org/benchmarks/unconstrained/2-dimensions/116-engvall-s-function}.
 #'
@@ -16,7 +19,7 @@ makeEngvallFunction = function() {
       checkNumericInput(x, 2L)
       x[1]^4 + x[2]^4 + 2 * x[1]^2 * x[2]^2 - 4 * x[1] + 3
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-2000, -2000),

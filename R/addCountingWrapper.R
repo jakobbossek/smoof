@@ -10,14 +10,15 @@
 #' @param fn [\code{smoof_function}]\cr
 #'   Smoof function which should be wrapped.
 #' @return [\code{smoof_counting_function}]
+#'   The function that includes the counting feature.
 #' @examples
 #' fn = makeBBOBFunction(dimensions = 2L, fid = 1L, iid = 1L)
 #' fn = addCountingWrapper(fn)
 #'
-#' # we get a value of 0 since the function has not been called yet
+#' # We get a value of 0 since the function has not been called yet
 #' print(getNumberOfEvaluations(fn))
 #'
-#' # now call the function 10 times consecutively
+#' # Now call the function 10 times consecutively
 #' for (i in seq(10L)) {
 #'   fn(runif(2))
 #' }
@@ -31,8 +32,8 @@
 #' @seealso \code{\link{getNumberOfEvaluations}}, \code{\link{resetEvaluationCounter}}
 #' @export
 addCountingWrapper = function(fn) {
-  if (!testClass(fn, "smoof_function") && !testClass(fn, "smoof_wrapped_function")) {
-    stopf("The passed function needs to be a (wrapped) smoof function.")
+  if (!checkmate::testClass(fn, "smoof_function") && !checkmate::testClass(fn, "smoof_wrapped_function")) {
+    BBmisc::stopf("The passed function needs to be a (wrapped) smoof function.")
   }
   force(fn)
   n.evals = 0L

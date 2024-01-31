@@ -2,6 +2,7 @@
 #'
 #' @template arg_smoof_function
 #' @return [\code{logical(1)}]
+#'  \code{TRUE} if the function has constraints, \code{FALSE} otherwise.
 #' @export
 hasConstraints = function(fn) {
   UseMethod("hasConstraints")
@@ -29,12 +30,12 @@ hasBoxConstraints = function(fn) {
 
 #' @export
 hasBoxConstraints.smoof_function = function(fn) {
-  return(hasFiniteBoxConstraints(getParamSet(fn)))
+  return(ParamHelpers::hasFiniteBoxConstraints(getParamSet(fn)))
 }
 
 #' @export
 hasBoxConstraints.smoof_wrapped_function = function(fn) {
-  return(hasFiniteBoxConstraints(getParamSet(getWrappedFunction(fn))))
+  return(ParamHelpers::hasFiniteBoxConstraints(getParamSet(getWrappedFunction(fn))))
 }
 
 #' Checks whether the objective function has other constraints.

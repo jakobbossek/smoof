@@ -20,10 +20,11 @@
 #' @param funs [\code{list}]\cr
 #'   List of single-objective smoof functions.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the GOMOP function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeGOMOPFunction = function(dimensions = 2L, funs = list()) {
-  dimensions = asCount(dimensions)
-  assertList(funs, types = "smoof_single_objective_function", min.len = 2L, any.missing = FALSE, all.missing = FALSE)
+  dimensions = checkmate::asCount(dimensions)
+  checkmate::assertList(funs, types = "smoof_single_objective_function", min.len = 2L, any.missing = FALSE, all.missing = FALSE)
 
   n.objectives = length(funs)
   funs.dimensions = sapply(funs, getNumberOfParameters)
@@ -31,8 +32,8 @@ makeGOMOPFunction = function(dimensions = 2L, funs = list()) {
   # check compatibility
   fail = which(funs.dimensions != dimensions)
   if (length(fail) > 0L) {
-    stopf("GOMOP: All passed single-objective functions need to have dimension %i, but %i functions (%s) do not.",
-      dimensions, length(fail), collapse(fail, sep = ", "))
+    BBmisc::stopf("GOMOP: All passed single-objective functions need to have dimension %i, but %i functions (%s) do not.",
+      dimensions, length(fail), BBmisc::collapse(fail, sep = ", "))
   }
 
   fn = function(x) {
@@ -48,11 +49,11 @@ makeGOMOPFunction = function(dimensions = 2L, funs = list()) {
   }
 
   makeMultiObjectiveFunction(
-    name = sprintf("GOMOP function (%s)", collapse(sapply(funs, getName), sep = ", ")),
-    id = collapse(sapply(funs, getID), sep = "_"),
+    name = sprintf("GOMOP function (%s)", BBmisc::collapse(sapply(funs, getName), sep = ", ")),
+    id = BBmisc::collapse(sapply(funs, getID), sep = "_"),
     description = "GOMOP function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

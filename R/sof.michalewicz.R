@@ -1,10 +1,15 @@
+#' @title
 #' Michalewicz Function
 #'
-#' Highly multimodal single-objective test function with \eqn{n!} local minima
+#' @description
+#' Highly multi-modal single-objective test function with \eqn{n!} local minima
 #' with the formula:
 #' \deqn{f(\mathbf{x}) = -\sum_{i=1}^{n} \sin(\mathbf{x}_i) \cdot \left(\sin\left(\frac{i \cdot \mathbf{x}_i}{\pi}\right)\right)^{2m}.}
 #' The recommended value \eqn{m = 10}, which is used as a default in the
 #' implementation.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Michalewicz Function.
 #'
 #' @note The location of the global optimum s varying based on both
 #' the dimension and \eqn{m} parameter and is thus not provided in the
@@ -19,8 +24,8 @@
 #' @template ret_smoof_single
 #' @export
 makeMichalewiczFunction = function(dimensions, m = 10) {
-  assertCount(dimensions)
-  assertNumber(m)
+  checkmate::assertCount(dimensions)
+  checkmate::assertNumber(m)
   force(m)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Michalewicz Function (m = ", m, ")", sep = ""),
@@ -30,7 +35,7 @@ makeMichalewiczFunction = function(dimensions, m = 10) {
       i = 1:length(x)
       (-1) * sum(sin(x) * (sin((i * x^2) / pi)^(2 * m)))
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

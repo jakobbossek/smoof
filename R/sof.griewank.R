@@ -1,9 +1,14 @@
+#' @title
 #' Griewank Function
 #'
-#' Highly multimodal function with a lot of regularly distributed local minima.
+#' @description
+#' Highly multi-modal function with a lot of regularly distributed local minima.
 #' The corresponding formula is:
 #' \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} \frac{\mathbf{x}_i^2}{4000} - \prod_{i=1}^{n} \cos\left(\frac{\mathbf{x}_i}{\sqrt{i}}\right) + 1}
 #' subject to \eqn{\mathbf{x}_i \in [-100, 100], i = 1, \ldots, n}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Griewank Function.
 #'
 #' @references A. O. Griewank, Generalized Descent for Global Optimization,
 #' Journal of Optimization Theory and Applications, vol. 34, no. 1,
@@ -13,7 +18,7 @@
 #' @template ret_smoof_single
 #' @export
 makeGriewankFunction = function(dimensions) {
-  assertCount(dimensions)
+  checkmate::assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Griewank Function", sep = ""),
@@ -24,7 +29,7 @@ makeGriewankFunction = function(dimensions) {
       b = prod(cos(x / sqrt(1:length(x))))
       return(a - b + 1)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-100, dimensions),

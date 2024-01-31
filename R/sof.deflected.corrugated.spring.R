@@ -14,12 +14,16 @@
 #' @param alpha [\code{numeric(1)}]\cr
 #'   Parameter.
 #'   Default is 5.
+#'
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Deflected Corrugated Spring Function. 
+#'   
 #' @template ret_smoof_single
 #' @export
 makeDeflectedCorrugatedSpringFunction = function(dimensions, K = 5, alpha = 5) {
-  assertCount(dimensions)
-  assertNumber(K)
-  assertNumber(alpha)
+  checkmate::assertCount(dimensions)
+  checkmate::assertNumber(K)
+  checkmate::assertNumber(alpha)
 
   force(K)
   force(alpha)
@@ -35,7 +39,7 @@ makeDeflectedCorrugatedSpringFunction = function(dimensions, K = 5, alpha = 5) {
       sa = sum(a)
       0.1 * sa - cos(K * sqrt(sa))
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

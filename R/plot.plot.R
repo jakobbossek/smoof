@@ -1,4 +1,8 @@
+#' @title
 #' Generate ggplot2 object.
+#' 
+#' @description
+#' This function generates a ggplot2 object for visualization.
 #'
 #' @param x [\code{smoof_function}]\cr
 #'   Function.
@@ -39,18 +43,18 @@ plot.smoof_wrapped_function = function(x, ...) {
 #' @export
 plot1DNumeric = function(x,
   show.optimum = FALSE,
-  main = getName(x), n.samples = 500L, ...) {
+  main = berryFunctions::getName(x), n.samples = 500L, ...) {
 
-  assertFlag(show.optimum, na.ok = TRUE)
-  assertString(main, na.ok = TRUE)
-  assertInt(n.samples, lower = 10L)
+  checkmate::assertFlag(show.optimum, na.ok = TRUE)
+  checkmate::assertString(main, na.ok = TRUE)
+  checkmate::assertInt(n.samples, lower = 10L)
 
   par.set = ParamHelpers::getParamSet(x)
-  par.name = getParamIds(par.set)
+  par.name = ParamHelpers::getParamIds(par.set)
 
   # get lower and upper bounds
-  lower = getBounds(bound = getLower(par.set), default = -10L)
-  upper = getBounds(bound = getUpper(par.set), default = 10L)
+  lower = getBounds(bound = ParamHelpers::getLower(par.set), default = -10L)
+  upper = getBounds(bound = ParamHelpers::getUpper(par.set), default = 10L)
 
   data = generateDataframeForGGPlot(fn = x, sequences = list(seq(lower, upper, length.out = n.samples)), par.set = par.set)
 
@@ -91,20 +95,20 @@ plot1DNumeric = function(x,
 #' @return Nothing
 #' @export
 plot2DNumeric = function(x,
-  show.optimum = FALSE, main = getName(x),
+  show.optimum = FALSE, main = berryFunctions::getName(x),
   render.levels = FALSE, render.contours = TRUE,
   n.samples = 100L, ...) {
 
-  assertFlag(show.optimum)
-  assertString(main, na.ok = TRUE)
-  assertFlag(render.levels)
-  assertFlag(render.contours)
+  checkmate::assertFlag(show.optimum)
+  checkmate::assertString(main, na.ok = TRUE)
+  checkmate::assertFlag(render.levels)
+  checkmate::assertFlag(render.contours)
 
   par.set = ParamHelpers::getParamSet(x)
-  par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+  par.names = ParamHelpers::getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
 
-  lower = getBounds(bound = getLower(par.set), default = -10L)
-  upper = getBounds(bound = getUpper(par.set), default = 10L)
+  lower = getBounds(bound = ParamHelpers::getLower(par.set), default = -10L)
+  upper = getBounds(bound = ParamHelpers::getUpper(par.set), default = 10L)
 
   sequence.x1 = seq(lower[1], upper[1], length.out = n.samples)
   sequence.x2 = seq(lower[2], upper[2], length.out = n.samples)
@@ -116,11 +120,11 @@ plot2DNumeric = function(x,
   dim(z) = c(n.samples, n.samples)
 
   if (render.levels) {
-    jet.colors = colorRampPalette(c("#00007F", "blue", "#007FFF", "cyan",
+    sommer::jet.colors = colorRampPalette(c("#00007F", "blue", "#007FFF", "cyan",
       "#7FFF7F", "yellow", "#FF7F00", "red", "#7F0000"))
     image(x = sequence.x1, y = sequence.x2, z = z,
     xlab = par.names[1], ylab = par.names[2], main = main,
-    col = jet.colors(100L), ...)
+    col = sommer::jet.colors(100L), ...)
   }
   if (render.contours) {
     contour(x = sequence.x1, y = sequence.x2, z = z,

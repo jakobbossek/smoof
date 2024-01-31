@@ -13,7 +13,7 @@
 #'
 #' @details The Expected Running Time (ERT) is one of the most popular performance
 #' measures in optimization. It is defined as the expected number of function
-#' evaluations needed to reach a given precision level, i. e., to reach a certain
+#' evaluations needed to reach a given precision level, i.e., to reach a certain
 #' objective value for the first time.
 #'
 #' @references A. Auger and N. Hansen. Performance evaluation of an advanced local
@@ -24,7 +24,7 @@
 #'   Vector containing the number of function evaluations.
 #' @param fun.success.runs [\code{logical}]\cr
 #'   Boolean vector indicating which algorithm runs were successful,
-#'   i. e., which runs reached the desired target value. Default is \code{NULL}.
+#'   i.e., which runs reached the desired target value. Default is \code{NULL}.
 #' @param fun.reached.target.values [\code{numeric} | \code{NULL}]\cr
 #'   Numeric vector with the objective values reached in the runs. Default is
 #'   \code{NULL}.
@@ -42,27 +42,27 @@ computeExpectedRunningTime = function(fun.evals,
   fun.target.value = NULL,
   penalty.value = Inf) {
   #FIXME: maybe enable missing values and offer inpute mechanism?
-  assertInteger(fun.evals, lower = 1L, any.missing = FALSE)
-  assertNumber(penalty.value)
+  checkmate::assertInteger(fun.evals, lower = 1L, any.missing = FALSE)
+  checkmate::assertNumber(penalty.value)
   n = length(fun.evals)
 
   # sanity check that one of the options is used (see docs).
   if (!xor(!is.null(fun.success.runs), (!is.null(fun.reached.target.values) || !is.null(fun.target.value)))) {
-    stopf("Either 'fun.success.runs' or 'fun.reached.target.values' and 'fun.target.value' need to be specified,
+    BBmisc::stopf("Either 'fun.success.runs' or 'fun.reached.target.values' and 'fun.target.value' need to be specified,
       but not both or none.")
   }
 
   # compute successful runs
   if (!is.null(fun.reached.target.values)) {
     if (is.null(fun.target.value)) {
-      stopf("You need to pass a 'fun.target.value' in case you passed 'fun.reached.target.values'.")
+      BBmisc::stopf("You need to pass a 'fun.target.value' in case you passed 'fun.reached.target.values'.")
     }
-    assertNumeric(fun.reached.target.values, len = n, any.missing = FALSE)
-    assertNumber(fun.target.value)
+    checkmate::assertNumeric(fun.reached.target.values, len = n, any.missing = FALSE)
+    checkmate::assertNumber(fun.target.value)
     fun.success.runs = (fun.reached.target.values <= fun.target.value)
   }
 
-  assertLogical(fun.success.runs, len = n, any.missing = FALSE)
+  checkmate::assertLogical(fun.success.runs, len = n, any.missing = FALSE)
 
   # Finally compute the ERT
   # compute the success rate (since fun.success.runs is logical, this is correct)

@@ -1,8 +1,13 @@
+#' @title
 #' Hansen Function
 #'
+#' @description
 #' Test function with multiple global optima based on the definition
 #' \deqn{f(\mathbf{x}) = \sum_{i = 1}^{4} (i + 1)\cos(i\mathbf{x}_1 + i - 1) \sum_{j = 1}^{4} (j + 1)\cos((j + 2) \mathbf{x}_2 + j + 1)}
 #' subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Hansen Function.
 #'
 #' @references C. Fraley, Software Performances on Nonlinear lems, Technical
 #' Report no. STAN-CS-89-1244, Computer Science, Stanford University, 1989.
@@ -20,7 +25,7 @@ makeHansenFunction = function() {
       b = sum((j + 1) * cos((j + 2) * x[2] + j + 1))
       return (a * b)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-10, -10),

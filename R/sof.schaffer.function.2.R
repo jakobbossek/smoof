@@ -1,8 +1,13 @@
+#' @title
 #' Modified Schaffer Function N. 2
 #'
-#' Second function by Schaffer. The defintion is given by the formula
+#' @description
+#' Second function by Schaffer. The definition is given by the formula
 #' \deqn{f(\mathbf{x}) = 0.5 + \frac{\sin^2(\mathbf{x}_1^2 - \mathbf{x}_2^2) - 0.5}{(1 + 0.001(\mathbf{x}_1^2 + \mathbf{x}_2^2))^2}}
 #' subject to \eqn{\mathbf{x}_i \in [-100, 100], i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Modified Schaffer N. 2 Function.
 #'
 #' @references S. K. Mishra, Some New Test Functions For Global Optimization
 #' And Performance of Repulsive Particle Swarm Method.
@@ -19,7 +24,7 @@ makeSchafferN2Function = function() {
       b = x[2]^2
       0.5 + (sin(a - b)^2 - 0.5) / (1 + 0.001 * (a + b))^2
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-100, -100),

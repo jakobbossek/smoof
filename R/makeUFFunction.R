@@ -6,18 +6,18 @@
 #' @return [\code{smoof_single_objective_function}]
 #'
 #' @author Jakob Bossek \email{j.bossek@@gmail.com}
-#' @note The implementation is based on the original CPP implemenation by Qingfu
+#' @note The implementation is based on the original CPP implementation by Qingfu
 #' Zhang, Aimin Zhou, Shizheng Zhaoy, Ponnuthurai Nagaratnam Suganthany, Wudong Liu
 #' and Santosh Tiwar.
 #'
 #' @export
 makeUFFunction = function(dimensions, id) {
   # do some sanity checks
-  dimensions = asCount(dimensions)
-  id = asCount(id)
+  dimensions = checkmate::asCount(dimensions)
+  id = checkmate::asCount(id)
   #FIXME: I guess the lowest possible search space dimension is 3
-  assertInt(dimensions, lower = 3L)
-  assertInt(id, lower = 1L, upper = 10L)
+  checkmate::assertInt(dimensions, lower = 3L)
+  checkmate::assertInt(id, lower = 1L, upper = 10L)
 
   # touch vars
   force(dimensions)
@@ -75,5 +75,5 @@ makeUFParamSet = function(id, dimensions) {
     lower = c(0, 0, rep(-2, dimensions - 2L))
     upper = c(1, 1, rep(2, dimensions - 2L))
   }
-  makeNumericParamSet("x", lower = lower, upper = upper, len = dimensions)
+  ParamHelpers::makeNumericParamSet("x", lower = lower, upper = upper, len = dimensions)
 }

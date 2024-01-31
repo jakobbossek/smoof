@@ -11,6 +11,7 @@
 #' Swarm and Evolutionary Computation, Volume 48, August 2019, pp. 62–71, Elsevier.
 #'
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the Omni function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeOmniTestFunction = function() {
   # C implementation
@@ -25,7 +26,7 @@ makeOmniTestFunction = function() {
     id = sprintf("Omni-test-%id-%io", 2L, n.objectives),
     description = "Omni test function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = rep(0, 2L),
