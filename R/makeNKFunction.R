@@ -40,6 +40,7 @@ makeNKFunction = function(N, K) {
 
   # delegate to flexible generator
   nk_properties = generateRMNKFunction(M = 1L, N, K, rho = 0)
+  # print(nk_properties)
 
   makeNKFunctionInternal(nk_properties, m = 1L)
 }
