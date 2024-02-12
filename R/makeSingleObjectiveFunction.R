@@ -178,7 +178,7 @@ preprocessOptima = function(opt.params, fn, par.set, type) {
 
     # check if the passed parameters are indeed within the feasible region
     lapply(1:nrow(opt.params), function(i) {
-      if (!editrules::isFeasible(par.set, ParamHelpers::dfRowToList(opt.params, par.set, i))) {
+      if (!ParamHelpers::isFeasible(par.set, ParamHelpers::dfRowToList(opt.params, par.set, i))) {
         BBmisc::stopf("%s optimum out of bounds.", type)
       }
     })
