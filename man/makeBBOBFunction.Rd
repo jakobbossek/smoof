@@ -2,8 +2,7 @@
 % Please edit documentation in R/makeBBOBFunction.R
 \name{makeBBOBFunction}
 \alias{makeBBOBFunction}
-\title{Generator for the noiseless function set of the real-parameter Black-Box
-Optimization Benchmarking (BBOB).}
+\title{Generator for noiseless function set of the real-parameter BBOB.}
 \usage{
 makeBBOBFunction(dimensions, fid, iid)
 }
@@ -19,6 +18,7 @@ Instance identifier. Integer value greater than or equal 1.}
 }
 \value{
 [\code{smoof_single_objective_function}]
+ Noiseless function from the BBOB benchmark.
 }
 \description{
 Generator for the noiseless function set of the real-parameter Black-Box

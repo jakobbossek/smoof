@@ -7,10 +7,12 @@
 makeBukinN2Function()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Bukin N.2 Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Muldimodal, non-scalable, continous optimization test function given by:
+Multi-modal, non-scalable, continuous optimization test function given by:
 \deqn{f(\mathbf{x}) = 100 (\mathbf{x}_2 - 0.01 * \mathbf{x}_1^2 + 1) + 0.01 (\mathbf{x}_1 + 10)^2}
 subject to \eqn{\mathbf{x}_1 \in [-15, -5]} and \eqn{\mathbf{x}_2 \in [-3, 3]}.
 }

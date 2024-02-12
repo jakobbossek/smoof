@@ -8,12 +8,13 @@ makeMOP7Function()
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the MOP7 function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 MOP7 function from Van Valedhuizen's test suite.
 }
 \references{
-R. Viennet, C. Fonteix, and I. Marc, "Multicriteria optimization using a
+R. Viennet, C. Fonteix, and I. Marc, "Multi-criteria optimization using a
 genetic algorithm for determining a Pareto set," Int. J. Syst. Sci., vol. 27,
 no. 2, pp. 255-260, 1996
 }

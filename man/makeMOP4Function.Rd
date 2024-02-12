@@ -8,6 +8,7 @@ makeMOP4Function()
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the MOP4 function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 MOP4 function from Van Valedhuizen's test suite based on Kursawe.

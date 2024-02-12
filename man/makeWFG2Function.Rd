@@ -22,6 +22,7 @@ be a multiple of 2.}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the WFG2 function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Second test problem from the "Walking Fish Group" problem generator toolkit.

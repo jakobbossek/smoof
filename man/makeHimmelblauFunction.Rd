@@ -7,12 +7,14 @@
 makeHimmelblauFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Himmelblau Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Two-dimensional test function based on the function defintion
+Two-dimensional test function based on the function definition
 \deqn{f(\mathbf{x}) = (\mathbf{x}_1^2 + \mathbf{x}_2 - 11)^2 + (\mathbf{x}_1 + \mathbf{x}_2^2 - 7)^2}
-with box-constraings \eqn{\mathbf{x}_i \in [-5, 5], i = 1, 2}.
+with box-constraints \eqn{\mathbf{x}_i \in [-5, 5], i = 1, 2}.
 }
 \references{
 D. M. Himmelblau, Applied Nonlinear Programming, McGraw-Hill, 1972.

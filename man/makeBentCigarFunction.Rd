@@ -11,6 +11,8 @@ makeBentCigarFunction(dimensions)
 Size of corresponding parameter space.}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Bent-Cigar Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{

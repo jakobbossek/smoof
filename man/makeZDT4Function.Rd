@@ -12,6 +12,7 @@ Number of decision variables.}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the ZDT4 function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Builds and returns the two-objective ZDT4 test problem. For \eqn{m} objective it
@@ -23,9 +24,9 @@ where
 \deqn{g(\mathbf{x}) = 1 + 10 (m - 1) + \sum_{i = 2}^{m} (\mathbf{x}_i^2 - 10\cos(4\pi\mathbf{x}_i)), h(f_1, g) = 1 - \sqrt{\frac{f_1(\mathbf{x})}{g(\mathbf{x})}}}
 and \eqn{\mathbf{x}_i \in [0,1], i = 1, \ldots, m}.
 This function has many Pareto-optimal fronts and is thus suited to test the
-algorithms ability to tackle multimodal problems.
+algorithms ability to tackle multi-modal problems.
 }
 \references{
-E. Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective
+E. Zitzler, K. Deb, and L. Thiele. Comparison of Multi-objective
 Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000
 }

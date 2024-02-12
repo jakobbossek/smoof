@@ -7,6 +7,8 @@
 makeBoothFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Booth Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/getMeanFunction.R
 \name{getMeanFunction}
 \alias{getMeanFunction}
-\title{Return the true mean function in the noisy case.}
+\title{Returns the true mean function in the noisy case.}
 \usage{
 getMeanFunction(fn)
 }
@@ -12,7 +12,8 @@ Objective function.}
 }
 \value{
 [\code{function}]
+ True mean function in the noisy case.
 }
 \description{
-Return the true mean function in the noisy case.
+Returns the true mean function in the noisy case.
 }

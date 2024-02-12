@@ -8,6 +8,7 @@ makeMOP1Function()
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the MOP1 function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 MOP1 function from Van Valedhuizen's test suite.

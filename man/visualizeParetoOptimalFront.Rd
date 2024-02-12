@@ -15,6 +15,7 @@ Arguments passed to \code{\link[mco]{nsga2}}.}
 }
 \value{
 [\code{\link[ggplot2]{ggplot}}]
+Returns a ggplot object representing the Pareto-optimal front visualization.
 }
 \description{
 Quickly visualize the Pareto-optimal front of a bi-criteria objective
@@ -28,4 +29,5 @@ vis = visualizeParetoOptimalFront(fn)
 
 # Alternatively we can pass some more algorithm parameters to the NSGA2 algorithm
 vis = visualizeParetoOptimalFront(fn, popsize = 1000L)
+
 }

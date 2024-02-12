@@ -21,6 +21,7 @@ the last \code{l} elements from the input vector.}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the WFG8 function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Eighth test problem from the "Walking Fish Group" problem generator toolkit.

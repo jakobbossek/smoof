@@ -19,6 +19,8 @@ Parameter.
 Default is 5.}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Deflected Corrugated Spring Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{

@@ -12,6 +12,7 @@ Number of decision variables.}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the Kursawe function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Builds and returns the bi-objective Kursawe test problem.

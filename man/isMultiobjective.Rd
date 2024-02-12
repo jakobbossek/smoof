@@ -11,7 +11,7 @@ isMultiobjective(fn)
 Objective function.}
 }
 \value{
-[\code{logical(1)}] \code{TRUE} if function is multi-objective.
+[\code{logical(1)}] \code{TRUE} if function is multi-objective, \code{FALSE} otherwise.
 }
 \description{
 Checks whether the given function is multi-objective.

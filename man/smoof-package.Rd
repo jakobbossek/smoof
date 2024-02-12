@@ -17,8 +17,8 @@ Given a set of criteria \eqn{\mathcal{F} = \{f_1, \ldots, f_m\}} with each
 \eqn{f_i : S \subseteq \mathbf{R}^d \to \mathbf{R} , i = 1, \ldots, m} being an
 objective-function, the goal in \emph{Global Optimization (GO)} is to find the best
 solution \eqn{\mathbf{x}^* \in S}. The set \eqn{S} is termed the \emph{set of
-feasible soluations}. In the case of only a single objective function \eqn{f},
-- which we want to restrict ourself in this brief description - the goal is to
+feasible solutions}. In the case of only a single objective function \eqn{f},
+- which we want to restrict ourselves in this brief description - the goal is to
 minimize the objective, i. e., \deqn{\min_{\mathbf{x}} f(\mathbf{x}).}
 Sometimes we may be interested in maximizing the objective function value, but
 since \eqn{min(f(\mathbf{x})) = -\min(-f(\mathbf{x}))}, we do not have to tackle

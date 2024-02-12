@@ -2,7 +2,7 @@
 % Please edit documentation in R/getNumberOfObjectives.R
 \name{getNumberOfObjectives}
 \alias{getNumberOfObjectives}
-\title{Determine the number of objectives.}
+\title{Determines the number of objectives.}
 \usage{
 getNumberOfObjectives(fn)
 }
@@ -12,7 +12,8 @@ Objective function.}
 }
 \value{
 [\code{integer(1)}]
+ The number of objectives.
 }
 \description{
-Determine the number of objectives.
+Determines the number of objectives.
 }

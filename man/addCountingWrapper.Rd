@@ -12,6 +12,7 @@ Smoof function which should be wrapped.}
 }
 \value{
 [\code{smoof_counting_function}]
+  The function that includes the counting feature.
 }
 \description{
 This is a counting wrapper for a \code{smoof_function}, i.e., the returned function
@@ -23,10 +24,10 @@ values and finally passes down the argument to the wrapped \code{smoof_function}
 fn = makeBBOBFunction(dimensions = 2L, fid = 1L, iid = 1L)
 fn = addCountingWrapper(fn)
 
-# we get a value of 0 since the function has not been called yet
+# We get a value of 0 since the function has not been called yet
 print(getNumberOfEvaluations(fn))
 
-# now call the function 10 times consecutively
+# Now call the function 10 times consecutively
 for (i in seq(10L)) {
   fn(runif(2))
 }

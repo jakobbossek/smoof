@@ -12,6 +12,7 @@ Number of decision variables.}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the ZDT3 function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Builds and returns the two-objective ZDT3 test problem. For \eqn{m} objective it
@@ -27,6 +28,6 @@ by the sine term in the \eqn{h} function (see above). The front consists of
 multiple convex parts.
 }
 \references{
-E. Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective
+E. Zitzler, K. Deb, and L. Thiele. Comparison of Multi-objective
 Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000
 }

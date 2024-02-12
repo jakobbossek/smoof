@@ -12,6 +12,7 @@ Arbitrary R object.}
 }
 \value{
 [\code{logical(1)}]
+ \code{TRUE} if the object is a SMOOF wrapped function, \code{FALSE} otherwise.
 }
 \description{
 Checks whether the function is of type \code{smoof_wrapped_function}.

@@ -7,10 +7,12 @@
 makeGiuntaFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Giunta Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Multimodal test function based on the definition
+Multi-modal test function based on the definition
 \deqn{f(\mathbf{x}) = 0.6 + \sum_{i = 1}^{n} \left[\sin(\frac{16}{15} \mathbf{x}_i - 1) + \sin^2(\frac{16}{15}\mathbf{x}_i - 1) + \frac{1}{50} \sin(4(\frac{16}{15}\mathbf{x}_i - 1))\right]}
 with box-constraints \eqn{\mathbf{x}_i \in [-1, 1]} for \eqn{i = 1, \ldots, n}.
 }

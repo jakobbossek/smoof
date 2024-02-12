@@ -2,12 +2,13 @@
 % Please edit documentation in R/mof.dent.R
 \name{makeDentFunction}
 \alias{makeDentFunction}
-\title{Dent Function}
+\title{Dent Function Generator}
 \usage{
 makeDentFunction()
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the Dent function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Builds and returns the bi-objective Dent test problem, which is defined as

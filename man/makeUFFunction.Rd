@@ -20,7 +20,7 @@ Instance identifier. Integer value between 1 and 10.}
 Generator for the functions UF1, ..., UF10 of the CEC 2009.
 }
 \note{
-The implementation is based on the original CPP implemenation by Qingfu
+The implementation is based on the original CPP implementation by Qingfu
 Zhang, Aimin Zhou, Shizheng Zhaoy, Ponnuthurai Nagaratnam Suganthany, Wudong Liu
 and Santosh Tiwar.
 }

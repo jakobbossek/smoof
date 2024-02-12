@@ -16,14 +16,15 @@ Smoof function.}
 }
 \value{
 [\code{smoof_function}]
+ Converted smoof function
 }
 \description{
 We can minimize f by maximizing -f. The majority of predefined objective functions
-in \pkg{smoof} should be minimized by default. However, there is a handful of
+in \pkg{smoof} should be minimized by default. However, there are a handful of
 functions, e.g., Keane or Alpine02, which shall be maximized by default.
 For benchmarking studies it might be beneficial to inverse the direction.
 The functions \code{convertToMaximization} and \code{convertToMinimization}
-do exactly that keeping the attributes.
+do exactly that, keeping the attributes.
 }
 \note{
 Both functions will quit with an error if multi-objective functions are passed.

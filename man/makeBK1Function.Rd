@@ -8,9 +8,11 @@ makeBK1Function()
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the BK1 function as a \code{smoof_multi_objective_function} object.
 }
 \description{
-...
+Generates the BK1 function, a multi-objective optimization test function. The BK1 function
+is commonly used in benchmarking studies for evaluating the performance of optimization algorithms.
 }
 \references{
 ...

@@ -11,10 +11,12 @@ makeAlpine01Function(dimensions)
 Size of corresponding parameter space.}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Alpine01 Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Highly multimodal single-objective optimization test function. It is defined
+Highly multi-modal single-objective optimization test function. It is defined
 as \deqn{f(\mathbf{x}) = \sum_{i = 1}^{n} |\mathbf{x}_i \sin(\mathbf{x}_i) + 0.1\mathbf{x}_i|}
 with box constraints \eqn{\mathbf{x}_i \in [-10, 10]} for \eqn{i = 1, \ldots, n}.
 }

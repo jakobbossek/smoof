@@ -14,7 +14,7 @@ Size of corresponding parameter space.}
 [\code{smoof_single_objective_function}]
 }
 \description{
-Simple unimodal test function similar to the Sphere and Hyper-Ellipsoidal functions.
+Simple uni-modal test function similar to the Sphere and Hyper-Ellipsoidal functions.
 Formula:
 \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} |\mathbf{x}_i|^{i+1}.}
 }

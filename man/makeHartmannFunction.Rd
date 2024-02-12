@@ -11,10 +11,12 @@ makeHartmannFunction(dimensions)
 Size of corresponding parameter space.}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Hartmann Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Unimodal single-objective test function with six local minima.
+Uni-modal single-objective test function with six local minima.
 The implementation is based on the mathematical formulation
 \deqn{f(x) = - \sum_{i=1}^4 \alpha_i \ exp \left(-\sum_{j=1}^6 A_{ij}(x_j-P_{ij})^2 \right)}, where
 \deqn{\alpha = (1.0, 1.2, 3.0, 3.2)^T, \\

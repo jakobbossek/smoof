@@ -82,7 +82,7 @@
 #' # or hide the legend
 #' pl + ggtitle("My fancy function") + theme(legend.position = "none")
 #' @export
-ggplot2::autoplot.smoof_function = function(object,
+  autoplot.smoof_function = function(object,
   ...,
   show.optimum = FALSE,
   main = berryFunctions::getName(x),
@@ -140,10 +140,10 @@ ggplot2::autoplot.smoof_function = function(object,
   }
 
   if (n.numeric == 1L) {
-    pl = ggplot2::ggplot(grid, aes_string(x = par.names[numeric.idx], y = "y")) + geom_line()
+    pl = ggplot2::ggplot(grid, ggplot2::aes_string(x = par.names[numeric.idx], y = "y")) + geom_line()
   }
   if (n.numeric == 2L) {
-    pl = ggplot2::ggplot(grid, aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]]))
+    pl = ggplot2::ggplot(grid, ggplot2::aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]]))
     if (render.levels) {
 
       if (!requireNamespace("RColorBrewer", quietly = TRUE))
@@ -152,11 +152,11 @@ ggplot2::autoplot.smoof_function = function(object,
       # see http://learnr.wordpress.com/2009/07/20/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-part-6/
       brewer.div = colorRampPalette(RColorBrewer::brewer.pal(11, "Spectral"), interpolate = "spline")
 
-      pl = pl + ggplot2::geom_raster(aes_string(fill = "y"))
+      pl = pl + ggplot2::geom_raster(ggplot2::aes_string(fill = "y"))
       pl = pl + ggplot2::scale_fill_gradientn(colours = brewer.div(200))
     }
     if (render.contours) {
-      pl = pl + ggplot2::stat_contour(aes_string(z = "y"), colour = "gray", alpha = 0.8)
+      pl = pl + ggplot2::stat_contour(ggplot2::aes_string(z = "y"), colour = "gray", alpha = 0.8)
     }
   }
 
@@ -174,16 +174,16 @@ ggplot2::autoplot.smoof_function = function(object,
 
     # add labeller (otherwise we only see the values but the user has no clue
     # about which values belong to which parameter)
-    pl = pl + ggpplot2::facet_grid(formula, ggplot2::labeller = ggplot2::labeller(.rows = label_both, .cols = label_both))
+    pl = pl + ggplot2::facet_grid(formula, labeller = labeller(.rows = ggplot2::label_both, .cols = ggplot2::label_both))
   }
 
   if (show.optimum && (hasGlobalOptimum(x) || hasLocalOptimum(x))) {
     # get optima coordinates in a nice data.frame
     opt.df = getOptimaDf(x)
     if (n.numeric == 1L) {
-      pl = pl + ggplot2::geom_point(opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = "y", colour = "optima", shape = "optima"))
+      pl = pl + ggplot2::geom_point(opt.df, mapping = ggplot2::aes_string(x = par.names[numeric.idx[1L]], y = "y", colour = "optima", shape = "optima"))
     } else {
-      pl = pl + ggplot2::geom_point(opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]], colour = "optima", shape = "optima"))
+      pl = pl + ggplot2::geom_point(opt.df, mapping = ggplot2::aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]], colour = "optima", shape = "optima"))
       # opt.df$y = round(opt.df$y, digits = 2L)
       # pl = pl + geom_text(opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]], label = "y"))
     }
@@ -200,7 +200,7 @@ ggplot2::autoplot.smoof_function = function(object,
 }
 
 #' @export
-ggplot2::autoplot.smoof_wrapped_function = function(object,
+autoplot.smoof_wrapped_function = function(object,
   ...,
   show.optimum = FALSE,
   main = berryFunctions::getName(object),

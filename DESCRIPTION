@@ -36,7 +36,8 @@ Depends:
 Imports:
     BBmisc (>= 1.6),
     ggplot2 (>= 2.2.1),
-    Rcpp (>= 0.11.0)
+    Rcpp (>= 0.11.0),
+    editrules
 Suggests:
     testthat,
     MASS,

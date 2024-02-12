@@ -12,6 +12,7 @@ Objective function.}
 }
 \value{
 [\code{logical(1)}]
+ \code{TRUE} if the function has constraints, \code{FALSE} otherwise.
 }
 \description{
 Checks whether the objective function has constraints.

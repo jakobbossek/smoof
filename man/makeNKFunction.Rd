@@ -17,6 +17,7 @@ If a single value is passed a homogeneous NK-landscape is generated, i.e.
 }
 \value{
 [\code{smoof_single_objective_function}]
+  NK-landscape function.
 }
 \description{
 Generate a single-objective NK-landscape. NK-landscapes are combinatorial

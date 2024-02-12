@@ -2,7 +2,7 @@
 % Please edit documentation in R/mnof.R
 \name{mnof}
 \alias{mnof}
-\title{Helper function to create numeric multi-objective optimization test function.}
+\title{Helper function to create a numeric multi-objective optimization test function.}
 \usage{
 mnof(
   name = NULL,
@@ -79,7 +79,11 @@ are met or not. Default is \code{NULL}, which means, that there are no constrain
 beside possible box constraints defined via the \code{par.set} argument.}
 
 \item{ref.point}{[\code{numeric}]\cr
-Optional reference point in the objective space, e.g., for hypervolume computation.}
+Optional reference point in the objective space, e.g., for hyper-volume computation.}
+}
+\value{
+[\code{smoof_multi_objective_function}]
+ Returns a numeric multi-objective optimization test function created using the provided parameters.
 }
 \description{
 This is a simplifying wrapper around \code{\link{makeMultiObjectiveFunction}}.

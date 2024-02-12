@@ -43,6 +43,7 @@ MPM2 functions are used in a multi-objective setting.}
 }
 \value{
 [\code{smoof_single_objective_function}]
+ An object of class \code{SingleObjectiveFunction}, representing the Multiple peaks model 2 Function.
 }
 \description{
 Generator for function with multiple peaks following the multiple peaks model 2.

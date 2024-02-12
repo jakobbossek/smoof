@@ -17,5 +17,5 @@ Further parameters passed to the corresponding plot functions.}
 Nothing
 }
 \description{
-Generate ggplot2 object.
+This function generates a ggplot2 object for visualization.
 }

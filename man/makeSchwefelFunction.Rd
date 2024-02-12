@@ -11,10 +11,12 @@ makeSchwefelFunction(dimensions)
 Size of corresponding parameter space.}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Schwefel Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Highly multimodal test function. The cursial thing about this function is, that
+Highly multi-modal test function. The crucial thing about this function is, that
 the global optimum is far away from the next best local optimum.
 The function is computed via:
 \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} -\mathbf{x}_i \sin\left(\sqrt(|\mathbf{x}_i|)\right)}

@@ -15,6 +15,8 @@ Vector of numerical values of length \code{dimensions}.
 Default is \code{rep(1, dimensions)}}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Rastrigin Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
@@ -25,6 +27,6 @@ The box-constraints are given by \eqn{\mathbf{x}_i \in [0, 1]} for
 use, e.g., \eqn{k = (2, 2, 3, 4)} for \eqn{n = 4}. See the reference for details.
 }
 \references{
-Kalyanmoy Deb and Amit Saha. Multimodal optimization using a bi-
+Kalyanmoy Deb and Amit Saha. Multi-modal optimization using a bi-
 objective evolutionary algorithm. Evolutionary Computation, 20(1):27-62, 2012.
 }

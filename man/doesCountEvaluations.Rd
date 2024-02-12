@@ -12,9 +12,10 @@ Arbitrary R object.}
 }
 \value{
 \code{logical(1)}
+ \code{TRUE} if the function counts its evaluations, \code{FALSE} otherwise.
 }
 \description{
-In this case the function is of type \code{smoof_counting_function} or it
+In this case, the function is of type \code{smoof_counting_function} or it
 is further wrapped by another wrapper. This function then checks recursively,
 if there is a counting wrapper.
 }

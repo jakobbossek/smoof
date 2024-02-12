@@ -7,10 +7,12 @@
 makeEasomFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Easom Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Unimodal function with its global optimum in the center of the search space.
+Uni-modal function with its global optimum in the center of the search space.
 The attraction area of the global optimum is very small in relation to the
 search space:
 \deqn{f(\mathbf{x}) = -\cos(\mathbf{x}_1)\cos(\mathbf{x}_2)\exp\left(-\left((\mathbf{x}_1 - \pi)^2 + (\mathbf{x}_2 - pi)^2\right)\right)}

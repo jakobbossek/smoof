@@ -6,7 +6,13 @@
 \usage{
 makeAdjimanFunction()
 }
+\arguments{
+\item{A}{numeric vector of length 2 representing the input coordinates.
+\code{x[1]} should be in the range [-1, 2], and \code{x[2]} should be in the range [2, 1].}
+}
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Adjiman Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{

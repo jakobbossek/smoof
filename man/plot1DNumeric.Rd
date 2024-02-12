@@ -7,7 +7,7 @@
 plot1DNumeric(
   x,
   show.optimum = FALSE,
-  main = getName(x),
+  main = berryFunctions::getName(x),
   n.samples = 500L,
   ...
 )

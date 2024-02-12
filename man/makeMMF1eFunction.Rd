@@ -13,9 +13,10 @@ Parametrizable factor. In the CEC2019 competition, the organizers used
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the MMF1e function as a \code{smoof_multi_objective_function} object.
 }
 \description{
-Test problem from the set of "multimodal multiobjective functions" as for
+Test problem from the set of "multi-modal multi-objective functions" as for
 instance used in the CEC2019 competition.
 }
 \references{

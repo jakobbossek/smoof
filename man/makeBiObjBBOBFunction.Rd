@@ -2,9 +2,7 @@
 % Please edit documentation in R/makeBiObjBBOBFunction.R
 \name{makeBiObjBBOBFunction}
 \alias{makeBiObjBBOBFunction}
-\title{Generator for the function set of the real-parameter Bi-Objective
-Black-Box Optimization Benchmarking (BBOB) with Function IDs 1-55, as well as
-its extended version (bbob-biobj-ext) with Function IDs 1-92.}
+\title{Generate Bi-Objective Function from the Real-Parameter Bi-Objective Black-Box Optimization Benchmarking (BBOB)}
 \usage{
 makeBiObjBBOBFunction(dimensions, fid, iid)
 }
@@ -20,6 +18,7 @@ Instance identifier. Integer value greater than or equal 1.}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Bi-objective function from the BBOB benchmark.
 }
 \description{
 Generator for the function set of the real-parameter Bi-Objective

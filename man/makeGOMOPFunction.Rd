@@ -15,6 +15,7 @@ List of single-objective smoof functions.}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the GOMOP function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Construct a multi-objective function by putting together multiple single-objective

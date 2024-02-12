@@ -7,6 +7,8 @@
 makeSixHumpCamelFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Three-Hump Camel Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{

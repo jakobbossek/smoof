@@ -12,6 +12,7 @@ Objective function.}
 }
 \value{
 [\code{logical(1)}]
+ \code{TRUE} if the function is noisy, \code{FALSE} otherwise.
 }
 \description{
 Checks whether the given function is noisy.

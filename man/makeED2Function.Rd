@@ -22,6 +22,7 @@ The default is \code{theta = (pi/2) * x} (with \code{x} being the point from the
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the ED2 function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Builds and returns the multi-objective ED2 test problem.

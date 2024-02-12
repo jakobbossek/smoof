@@ -15,12 +15,13 @@ Number of objectives.}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the DTLZ5 family as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Builds and returns the multi-objective DTLZ5 test problem. This problem
 can be characterized by a disconnected Pareto-optimal front in the search
 space. This introduces a new challenge to evolutionary multi-objective
-optimizers, i.e., to maintain different subpopulations within the search
+optimizers, i.e., to maintain different sub-populations within the search
 space to cover the entire Pareto-optimal front.
 
 The DTLZ5 test problem is defined as follows:

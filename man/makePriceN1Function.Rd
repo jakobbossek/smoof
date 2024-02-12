@@ -7,16 +7,18 @@
 makePriceN1Function()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Price N. 1 Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Second function by Price. The implementation is based on the defintion
+Second function by Price. The implementation is based on the definition
 \deqn{f(\mathbf{x}) = (|\mathbf{x}_1| - 5)^2 + (|\mathbf{x}_2 - 5)^2}
 subject to \eqn{\mathbf{x}_i \in [-500, 500], i = 1, 2}.
 }
 \references{
 W. L. Price, A Controlled Random Search Procedure for Global
-Optimisation, Computer journal, vol. 20, no. 4, pp. 367-370, 1977.
+Optimization, Computer journal, vol. 20, no. 4, pp. 367-370, 1977.
 }
 \seealso{
 \code{\link{makePriceN2Function}}, \code{\link{makePriceN4Function}}
