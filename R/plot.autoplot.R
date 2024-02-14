@@ -85,7 +85,7 @@
   autoplot.smoof_function = function(object,
   ...,
   show.optimum = FALSE,
-  main = berryFunctions::getName(x),
+  main = getName(x),
   render.levels = FALSE,
   render.contours = TRUE,
   log.scale = FALSE,
@@ -190,7 +190,7 @@
   }
 
   # add title
-  title = BBmisc::coalesce(main, berryFunctions::getName(x))
+  title = BBmisc::coalesce(main, getName(x))
   pl = pl + ggplot2::ggtitle(title)
 
   # cosmetic stuff
@@ -203,7 +203,7 @@
 autoplot.smoof_wrapped_function = function(object,
   ...,
   show.optimum = FALSE,
-  main = berryFunctions::getName(object),
+  main = getName(object),
   render.levels = FALSE,
   render.contours = TRUE,
   log.scale = FALSE,

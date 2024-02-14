@@ -48,7 +48,7 @@ getOptimaDf = function(fn) {
 generateDataframeForGGPlot = function(fn, sequences, par.set) {
   data = do.call(expand.grid, sequences)
   colnames(data) = ParamHelpers::getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
-  data.as.list = BBmisc::dfRowsToList(par.set = par.set, df = data)
+  data.as.list = ParamHelpers::dfRowsToList(par.set = par.set, df = data)
   data[["y"]] = sapply(data.as.list, function(data.row) {
     if (violatesConstraints(fn, unlist(data.row))) {
       return(NA)
@@ -136,7 +136,7 @@ generateDataframeForGGPlot2 = function(fun, length.out = 50L) {
   # now compute the function values and append
   #FIXME: check if one of the parameters is named "y"
 
-  grid2 = BBmisc::dfRowsToList(par.set = par.set, df = grid, enforce.col.types = TRUE)
+  grid2 = ParamHelpers::dfRowsToList(par.set = par.set, df = grid, enforce.col.types = TRUE)
   grid[, "y"] = sapply(grid2, fun)
 
   return(grid)

@@ -67,7 +67,7 @@ makeMPM2Function = function(n.peaks, dimensions, topology, seed, rotated = TRUE,
   force(peak.shape)
 
   # build parameter set (bounds are [0, 1]^d)
-  par.set = ParammHelpers::makeNumericParamSet("x", len = dimensions, lower = 0, upper = 1)
+  par.set = ParamHelpers::makeNumericParamSet("x", len = dimensions, lower = 0, upper = 1)
 
   # import reticulate namespace
   BBmisc::requirePackages("_reticulate", why = "smoof::makeMultiplePeaksModel2Function")

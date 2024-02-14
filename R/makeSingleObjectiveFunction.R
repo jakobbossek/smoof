@@ -110,7 +110,7 @@ makeSingleObjectiveFunction = function(
   if (is.null(local.opt.values) && !is.null(local.opt.params)) {
     # print(local.opt.params)
     # print(par.set)
-    local.opt.params2 = BBmisc::dfRowsToList(df = local.opt.params, par.set = par.set, enforce.col.types = TRUE)
+    local.opt.params2 = ParamHelpers::dfRowsToList(df = local.opt.params, par.set = par.set, enforce.col.types = TRUE)
     local.opt.values = sapply(local.opt.params2, smoof.fn)
   }
 

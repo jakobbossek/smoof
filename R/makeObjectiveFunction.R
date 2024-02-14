@@ -1,7 +1,9 @@
 #' Internal generator for function of smoof type.
 #'
 #' @param name [\code{character(1)}]\cr
-#'  Optional function name used e.g. in plots.
+#'   Optional function name used e.g. in plots.
+#' @param id [\code{character(1)}]\cr
+#'   Optional identifier for the function
 #' @param description [\code{character(1)} | \code{NULL}]\cr
 #'   Optional function description.
 #' @param fn [\code{function}]\cr
@@ -19,12 +21,12 @@
 #' @param noisy [\code{logical(1)}]\cr
 #'   Is the function noisy? Defaults to \code{FALSE}.
 #' @param fn.mean [\code{function}]\cr
-#'  Optional true mean function in case of a noisy objective function. This functions should
+#'   Optional true mean function in case of a noisy objective function. This functions should
 #'   have the same mean as \code{fn}.
 #' @param minimize [\code{logical}]\cr
 #'   Logical vector of length \code{n.objectives} indicating which objectives shall
 #'   be minimized/maximized.
-#'  The default is \code{TRUE} \code{n.objectives} times.
+#'   The default is \code{TRUE} \code{n.objectives} times.
 #' @param vectorized [\code{logical(1)}]\cr
 #'   Can the handle \dQuote{vector} input, i. e., does it accept matrix of
 #'   parameters? Default is \code{FALSE}.

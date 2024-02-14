@@ -52,6 +52,6 @@ visualizeParetoOptimalFront = function(fn, ...) {
   pl = pl + ggplot2::geom_line(colour = "darkgray")
   pl = pl + ggplot2::xlab(expression(f[1])) + ggplot2::ylab(expression(f[2]))
   pl = pl + ggplot2::ggtitle(sprintf("Objective space with shape of Pareto-optimal\n
-    front for the bi-criteria %s", berryFunctions::getName(fn)))
+    front for the bi-criteria %s", getName(fn)))
   return(pl)
 }

@@ -23,6 +23,9 @@ makeObjectiveFunction(
 \item{name}{[\code{character(1)}]\cr
 Optional function name used e.g. in plots.}
 
+\item{id}{[\code{character(1)}]\cr
+Optional identifier for the function}
+
 \item{description}{[\code{character(1)} | \code{NULL}]\cr
 Optional function description.}
 
@@ -47,11 +50,11 @@ Is the function noisy? Defaults to \code{FALSE}.}
 
 \item{fn.mean}{[\code{function}]\cr
 Optional true mean function in case of a noisy objective function. This functions should
- have the same mean as \code{fn}.}
+have the same mean as \code{fn}.}
 
 \item{minimize}{[\code{logical}]\cr
- Logical vector of length \code{n.objectives} indicating which objectives shall
- be minimized/maximized.
+Logical vector of length \code{n.objectives} indicating which objectives shall
+be minimized/maximized.
 The default is \code{TRUE} \code{n.objectives} times.}
 
 \item{vectorized}{[\code{logical(1)}]\cr

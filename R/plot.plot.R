@@ -43,7 +43,7 @@ plot.smoof_wrapped_function = function(x, ...) {
 #' @export
 plot1DNumeric = function(x,
   show.optimum = FALSE,
-  main = berryFunctions::getName(x), n.samples = 500L, ...) {
+  main = getName(x), n.samples = 500L, ...) {
 
   checkmate::assertFlag(show.optimum, na.ok = TRUE)
   checkmate::assertString(main, na.ok = TRUE)
@@ -95,7 +95,7 @@ plot1DNumeric = function(x,
 #' @return Nothing
 #' @export
 plot2DNumeric = function(x,
-  show.optimum = FALSE, main = berryFunctions::getName(x),
+  show.optimum = FALSE, main = getName(x),
   render.levels = FALSE, render.contours = TRUE,
   n.samples = 100L, ...) {
 
@@ -120,11 +120,11 @@ plot2DNumeric = function(x,
   dim(z) = c(n.samples, n.samples)
 
   if (render.levels) {
-    sommer::jet.colors = colorRampPalette(c("#00007F", "blue", "#007FFF", "cyan",
+    jet.colors = colorRampPalette(c("#00007F", "blue", "#007FFF", "cyan",
       "#7FFF7F", "yellow", "#FF7F00", "red", "#7F0000"))
     image(x = sequence.x1, y = sequence.x2, z = z,
     xlab = par.names[1], ylab = par.names[2], main = main,
-    col = sommer::jet.colors(100L), ...)
+    col = jet.colors(100L), ...)
   }
   if (render.contours) {
     contour(x = sequence.x1, y = sequence.x2, z = z,

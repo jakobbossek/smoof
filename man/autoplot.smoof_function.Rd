@@ -8,7 +8,7 @@
   object,
   ...,
   show.optimum = FALSE,
-  main = berryFunctions::getName(x),
+  main = getName(x),
   render.levels = FALSE,
   render.contours = TRUE,
   log.scale = FALSE,
