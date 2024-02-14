@@ -70,7 +70,7 @@ are met or not. Default is \code{NULL}, which means, that there are no constrain
 beside possible box constraints defined via the \code{par.set} argument.}
 
 \item{ref.point}{[\code{numeric}]\cr
-Optional reference point in the objective space, e.g., for hypervolume computation.}
+Optional reference point in the objective space, e.g., for hyper-volume computation.}
 }
 \value{
 [\code{function}] Target function with additional stuff attached as attributes.

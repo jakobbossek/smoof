@@ -1,8 +1,13 @@
+#' @title
 #' Bukin function N. 2
 #'
-#' Muldimodal, non-scalable, continous optimization test function given by:
+#' @description
+#' Multi-modal, non-scalable, continuous optimization test function given by:
 #' \deqn{f(\mathbf{x}) = 100 (\mathbf{x}_2 - 0.01 * \mathbf{x}_1^2 + 1) + 0.01 (\mathbf{x}_1 + 10)^2}
 #' subject to \eqn{\mathbf{x}_1 \in [-15, -5]} and \eqn{\mathbf{x}_2 \in [-3, 3]}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Bukin N.2 Function.
 #'
 #' @references Z. K. Silagadze, Finding Two-Dimensional Peaks, Physics of Particles
 #' and Nuclei Letters, vol. 4, no. 1, pp. 73-80, 2007.
@@ -19,7 +24,7 @@ makeBukinN2Function = function() {
       checkNumericInput(x, 2L)
       100 * (x[2]^2 - 0.01 * x[1]^2 + 1) + 0.01 * (x[1] + 10)^2
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-15, -3),

@@ -2,7 +2,7 @@
 #' MMF1 Function
 #'
 #' @description
-#' Test problem from the set of "multimodal multiobjective functions" as for
+#' Test problem from the set of "multi-modal multi-objective functions" as for
 #' instance used in the CEC2019 competition.
 #' 
 #' @references
@@ -10,6 +10,7 @@
 #' scalable test problem suite for multimodal multiobjective optimization," in
 #' Swarm and Evolutionary Computation, Volume 48, August 2019, pp. 62–71, Elsevier.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the MMF1 function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeMMF1Function = function() {
 
@@ -25,7 +26,7 @@ makeMMF1Function = function() {
     id = sprintf("MMF1-%id-%io", 2L, n.objectives),
     description = "MMF1 function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(1, -1),

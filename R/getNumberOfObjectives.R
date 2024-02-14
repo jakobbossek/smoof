@@ -1,7 +1,8 @@
-#' Determine the number of objectives.
+#' Determines the number of objectives.
 #'
 #' @template arg_smoof_function
 #' @return [\code{integer(1)}]
+#'  The number of objectives.
 #' @export
 getNumberOfObjectives = function(fn) {
   UseMethod("getNumberOfObjectives")

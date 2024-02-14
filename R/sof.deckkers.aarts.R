@@ -1,8 +1,13 @@
+#' @title
 #' Deckkers-Aarts Function
 #'
+#' @description
 #' This continuous single-objective test function is defined by the formula
 #' \deqn{f(\mathbf{x}) = 10^5\mathbf{x}_1^2 + \mathbf{x}_2^2 - (\mathbf{x}_1^2 + \mathbf{x}_2^2)^2 + 10^{-5} (\mathbf{x}_1^2 + \mathbf{x}_2^2)^4}
 #' with the bounding box \eqn{-20 \leq \mathbf{x}_i \leq 20} for \eqn{i = 1, 2}.
+#'
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Deckkers-Aarts Function.
 #'
 #' @references M. M. Ali, C. Khompatraporn, Z. B. Zabinsky, A Numerical Evaluation
 #' of Several Stochastic Algorithms on Selected Continuous Global Optimization
@@ -20,7 +25,7 @@ makeDeckkersAartsFunction = function() {
       b = x[2]^2
       1e+05 * a + b - (a + b)^2 + 1e-05 * (a + b)^4
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-20, -20),

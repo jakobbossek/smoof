@@ -11,6 +11,7 @@
 #' Problem Solving From Nature. 1st Workshop, PPSN I, pp. 193-197.
 #'
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the MOP4 function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeMOP4Function = function() {
 
@@ -25,7 +26,7 @@ makeMOP4Function = function() {
     id = sprintf("MOP4-%id-%io", 3L, 2L),
     description = "MOP4 function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = 3L,
       id = "x",
       lower = rep(-5, 3L),

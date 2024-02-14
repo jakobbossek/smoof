@@ -2,7 +2,7 @@
 % Please edit documentation in R/getNumberOfEvaluations.R
 \name{getNumberOfEvaluations}
 \alias{getNumberOfEvaluations}
-\title{Return the number of function evaluations performed by the wrapped
+\title{Returns the number of function evaluations performed by the wrapped
 \code{smoof_function}.}
 \usage{
 getNumberOfEvaluations(fn)
@@ -13,8 +13,9 @@ Wrapped \code{smoof_function}.}
 }
 \value{
 [\code{integer(1)}]
+ The number of function evaluations.
 }
 \description{
-Return the number of function evaluations performed by the wrapped
+Returns the number of function evaluations performed by the wrapped
 \code{smoof_function}.
 }

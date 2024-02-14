@@ -2,7 +2,7 @@
 % Please edit documentation in R/getBoxConstraints.R
 \name{getLowerBoxConstraints}
 \alias{getLowerBoxConstraints}
-\title{Return lower box constaints.}
+\title{Returns lower box constraints for a Smoof function.}
 \usage{
 getLowerBoxConstraints(fn)
 }
@@ -12,7 +12,8 @@ Objective function.}
 }
 \value{
 [\code{numeric}]
+ Numeric vector representing the lower box constraints
 }
 \description{
-Return lower box constaints.
+Returns lower box constraints for a Smoof function.
 }

@@ -1,6 +1,8 @@
+#' @title
 #' Sum of Different Squares Function
 #'
-#' Simple unimodal test function similar to the Sphere and Hyper-Ellipsoidal functions.
+#' @description
+#' Simple uni-modal test function similar to the Sphere and Hyper-Ellipsoidal functions.
 #' Formula:
 #' \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} |\mathbf{x}_i|^{i+1}.}
 #'
@@ -8,7 +10,7 @@
 #' @template ret_smoof_single
 #' @export
 makeSumOfDifferentSquaresFunction = function(dimensions) {
-  assertCount(dimensions)
+  checkmate::assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Sum of Different Squares Function", sep = ""),
@@ -18,7 +20,7 @@ makeSumOfDifferentSquaresFunction = function(dimensions) {
       n = length(x)
       sum(abs(x)^(1:n + 1))
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-1, dimensions),

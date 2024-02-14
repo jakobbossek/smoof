@@ -37,11 +37,13 @@
 #'   Parameter vector, whose components have to be between \code{0} and \code{0.5*pi}.
 #'   The default is \code{theta = (pi/2) * x} (with \code{x} being the point from the decision space) as recommended by Emmerich and Deutz.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the ED1 function as a \code{smoof_multi_objective_function} object.
+#'  
 #' @export
 makeED1Function = function(dimensions, n.objectives, gamma = 2, theta) {
-  assertInt(n.objectives, lower = 2L)
-  assertInt(dimensions, lower = n.objectives)
-  assertNumber(gamma, na.ok = FALSE, lower = .Machine$double.eps)
+  checkmate::assertInt(n.objectives, lower = 2L)
+  checkmate::assertInt(dimensions, lower = n.objectives)
+  checkmate::assertNumber(gamma, na.ok = FALSE, lower = .Machine$double.eps)
 
   force(n.objectives)
   force(dimensions)
@@ -65,7 +67,7 @@ makeED1Function = function(dimensions, n.objectives, gamma = 2, theta) {
     id = paste0("ED1_", dimensions, "d_", n.objectives, "o"),
     description = "Emmerich and Deutz",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

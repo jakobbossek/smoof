@@ -11,13 +11,14 @@
 #' @param a [\code{numeric(1)}]\cr
 #'   Shift parameter for the second objective. Default is (0,...,0).
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the sphere function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeBiSphereFunction = function(dimensions, a = rep(0, dimensions)) {
   force(dimensions)
   force(a)
 
-  assertInt(dimensions, lower = 2L)
-  assertNumeric(a, len = dimensions, any.missing = FALSE, all.missing = FALSE)
+  checkmate::assertInt(dimensions, lower = 2L)
+  checkmate::assertNumeric(a, len = dimensions, any.missing = FALSE, all.missing = FALSE)
 
   # define the two-objective Dent function
   fn = function(x) {
@@ -30,7 +31,7 @@ makeBiSphereFunction = function(dimensions, a = rep(0, dimensions)) {
     id = paste0("bisphere_", dimensions, "d_2o"),
     description = "Bi-objective Sphere Function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

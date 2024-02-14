@@ -18,6 +18,7 @@ Optional parameter. Default is 100, which is recommended by Deb et al.}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the DTLZ4 family as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Builds and returns the multi-objective DTLZ4 test problem. It is a slight

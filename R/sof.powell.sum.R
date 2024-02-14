@@ -1,8 +1,13 @@
+#' @title
 #' Powell-Sum Function
 #'
+#' @description
 #' The formula that underlies the implementation is given by
 #' \deqn{f(\mathbf{x}) = \sum_{i=1}^n |\mathbf{x}_i|^{i+1}}
 #' with \eqn{\mathbf{x}_i \in [-1, 1], i = 1, \ldots, n}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Powell-Sum Function.
 #'
 #' @references S. Rahnamyan, H. R. Tizhoosh, N. M. M. Salama, A Novel Population
 #' Initialization Method for Accelerating Evolutionary Algorithms, Computers and
@@ -12,7 +17,7 @@
 #' @template ret_smoof_single
 #' @export
 makePowellSumFunction = function(dimensions) {
-  assertCount(dimensions)
+  checkmate::assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Powell-Sum Function", sep = ""),
@@ -22,7 +27,7 @@ makePowellSumFunction = function(dimensions) {
       a = (1:length(x)) + 1L
       sum(abs(x)^a)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-1, dimensions),

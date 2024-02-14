@@ -12,6 +12,7 @@ Number of decision variables.}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the ZDT6 function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Builds and returns the two-objective ZDT6 test problem. For \eqn{m} objective it
@@ -22,11 +23,11 @@ with
 where
 \deqn{g(\mathbf{x}) = 1 + 9 \left(\frac{\sum_{i = 2}^{m}\mathbf{x}_i}{m - 1}\right)^{0.25}, h(f_1, g) = 1 - \left(\frac{f_1(\mathbf{x})}{g(\mathbf{x})}\right)^2}
 and \eqn{\mathbf{x}_i \in [0,1], i = 1, \ldots, m}.
-This function introduced two difficulities (see reference):
+This function introduced two difficulties (see reference):
 1. the density of solutions decreases with the closeness to the Pareto-optimal front and
-2. the Pareto-optimal solutions are nonuniformly distributed along the front.
+2. the Pareto-optimal solutions are non-uniformly distributed along the front.
 }
 \references{
-E. Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective
+E. Zitzler, K. Deb, and L. Thiele. Comparison of Multi-objective
 Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000
 }

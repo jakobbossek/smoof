@@ -2,7 +2,7 @@
 #' MMF1e Function
 #'
 #' @description
-#' Test problem from the set of "multimodal multiobjective functions" as for
+#' Test problem from the set of "multi-modal multi-objective functions" as for
 #' instance used in the CEC2019 competition.
 #'
 #' @param a [\code{double}(1)]\cr
@@ -14,10 +14,10 @@
 #' scalable test problem suite for multimodal multiobjective optimization," in
 #' Swarm and Evolutionary Computation, Volume 48, August 2019, pp. 62–71, Elsevier.
 #' @return [\code{smoof_multi_objective_function}]
-#' 
+#'  Returns an instance of the MMF1e function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeMMF1eFunction = function(a = exp(1L)) {
-  assertNumber(a, finite = TRUE)
+  checkmate::assertNumber(a, finite = TRUE)
   force(a)
 
   # C implementation
@@ -32,7 +32,7 @@ makeMMF1eFunction = function(a = exp(1L)) {
     id = sprintf("MMF1e-%id-%io", 2L, n.objectives),
     description = "MMF1e function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(1, -(a^3)),

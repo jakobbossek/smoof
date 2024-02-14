@@ -1,9 +1,14 @@
+#' @title  
 #' Alpine02 function
-#'
-#' Another multimodal optimization test function. The implementation is based on
+#' 
+#' @description
+#' Another multi-modal optimization test function. The implementation is based on
 #' the formula
 #' \deqn{f(\mathbf{x}) = \prod_{i = 1}^{n} \sqrt{\mathbf{x}_i}\sin(\mathbf{x}_i)}
 #' with \eqn{\mathbf{x}_i \in [0, 10]} for \eqn{i = 1, \ldots, n}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Alpine02 Function.
 #'
 #' @references M. Clerc, The Swarm and the Queen, Towards a Deterministic and
 #' Adaptive Particle Swarm Optimization, IEEE Congress on Evolutionary Computation,
@@ -13,7 +18,7 @@
 #' @template ret_smoof_single
 #' @export
 makeAlpine02Function = function(dimensions) {
-  assertCount(dimensions)
+  checkmate::assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = paste(dimensions, "-d Alpine N. 2 Function", sep = ""),
@@ -22,7 +27,7 @@ makeAlpine02Function = function(dimensions) {
       checkNumericInput(x, dimensions)
       prod(sqrt(x) * sin(x))
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

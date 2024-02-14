@@ -50,10 +50,11 @@
 #' @param n.objectives [\code{integer(1)}]\cr
 #'   Number of objectives.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the DTLZ6 family as a \code{smoof_multi_objective_function} object.
 #' @export
 makeDTLZ6Function = function(dimensions, n.objectives) {
-  assertInt(n.objectives, lower = 2L)
-  assertInt(dimensions, lower = n.objectives)
+  checkmate::assertInt(n.objectives, lower = 2L)
+  checkmate::assertInt(dimensions, lower = n.objectives)
 
   # Renaming n.objectives here to stick to the notation in the paper
   M = n.objectives
@@ -92,7 +93,7 @@ makeDTLZ6Function = function(dimensions, n.objectives) {
     id = paste0("dtlz6_", dimensions, "d_", n.objectives, "o"),
     description = "Deb et al.",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

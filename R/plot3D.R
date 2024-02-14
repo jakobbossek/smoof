@@ -1,5 +1,9 @@
+#' @title
 #' Surface plot of two-dimensional test function.
-#'
+#' 
+#' @description
+#' This function generates a surface plot of a two-dimensional smoof function.
+#' 
 #' @param x [\code{smoof_function}]\cr
 #'   Two-dimensional snoof function.
 #' @param length.out [\code{integer(1)}]\cr
@@ -11,11 +15,11 @@
 #'   String describing the package to use for 3D visualization.
 #'   At the moment \dQuote{plot3D} (package \pkg{plot3D}) and
 #'   \dQuote{plotly} (package \pkg{plotly}) are supported.
-#'   The latter opens a highly interactive plot in a web brower
+#'   The latter opens a highly interactive plot in a web browser
 #'   and is thus suited well to explore a function by hand.
 #'   Default is \dQuote{plot3D}.
 #' @param ... [any]\cr
-#'    Furhter parameters passed to method used for visualization
+#'    Further parameters passed to method used for visualization
 #'    (which is determined by the \code{package} argument.
 #' @examples
 #' library(plot3D)
@@ -31,26 +35,26 @@
 #' }
 #' @export
 plot3D = function(x, length.out = 100L, package = "plot3D", ...) {
-  assertClass(x, "smoof_function")
-  assertInt(length.out, lower = 10L)
-  assertChoice(package, choices = c("plot3D", "plotly"))
+  checkmate::assertClass(x, "smoof_function")
+  checkmate::assertInt(length.out, lower = 10L)
+  checkmate::assertChoice(package, choices = c("plot3D", "plotly"))
 
   if (!requireNamespace(package, quietly = TRUE))
-    stopf("Package \"%s\" needed for this function to work.", package)
+    BBmisc::stopf("Package \"%s\" needed for this function to work.", package)
 
   obj.fn = x
   n = getNumberOfParameters(obj.fn)
   par.set = ParamHelpers::getParamSet(obj.fn)
   if (n != 2L) {
-    stopf("Surface plots are possible only for 2D numeric functions, but your function expects %i parameters.", n)
+    BBmisc::stopf("Surface plots are possible only for 2D numeric functions, but your function expects %i parameters.", n)
   }
-  if (!isNumeric(par.set, include.int = FALSE)) {
-    stopf("Surface plots are possible only for 2D numeric functions, but your function expects non-numeric parameters.")
+  if (!ParamHelpers::isNumeric(par.set, include.int = FALSE)) {
+    BBmisc::stopf("Surface plots are possible only for 2D numeric functions, but your function expects non-numeric parameters.")
   }
 
   # build z[i, j] = f(x[i], y[j]) matrix
-  lower = getLower(par.set)
-  upper = getUpper(par.set)
+  lower = ParamHelpers::getLower(par.set)
+  upper = ParamHelpers::getUpper(par.set)
   x = seq(lower[1], upper[1], length.out = length.out)
   y = seq(lower[2], upper[2], length.out = length.out)
   grid = expand.grid(x, y)

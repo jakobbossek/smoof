@@ -12,12 +12,13 @@ Size of corresponding parameter space.}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the MOP2 function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 MOP2 function from Van Valedhuizen's test suite due to Fonseca and Fleming.
 }
 \references{
-C. M. Fonseca and P. J. Fleming, "Multiobjective genetic algorithms
+C. M. Fonseca and P. J. Fleming, "Multi-objective genetic algorithms
 made easy: Selection, sharing and mating restriction," Genetic Algorithms
 in Engineering Systems: Innovations and Applications, pp. 45-52, Sep. 1995. IEE.
 }

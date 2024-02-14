@@ -2,6 +2,7 @@
 #'
 #' @template arg_smoof_function
 #' @return [\code{numeric}]
+#'  The reference point.
 #' @note Keep in mind, that this method makes sense only for multi-objective target functions.
 #' @export
 getRefPoint = function(fn) {
@@ -10,7 +11,7 @@ getRefPoint = function(fn) {
 
 #' @export
 getRefPoint.smoof_single_objective_function = function(fn) {
-  stopf("No reference point available for single-objective function.")
+  BBmisc::stopf("No reference point available for single-objective function.")
 }
 
 #' @export

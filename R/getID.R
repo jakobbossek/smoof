@@ -1,7 +1,11 @@
-#' Return the ID / short name of the function or \code{NA} if no ID is set.
+#' @title
+#' Returns the ID / short name of the function.
+#' 
+#' @description
+#' Returns the ID / short name of the function or \code{NA} if no ID is set.
 #'
 #' @template arg_smoof_function
-#' @return [\code{character(1)}] or \code{NA}
+#' @return [\code{character(1)}] ID / short name or \code{NA}
 #' @export
 getID = function(fn) {
   UseMethod("getID")

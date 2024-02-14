@@ -14,15 +14,17 @@
 #' by the sine term in the \eqn{h} function (see above). The front consists of
 #' multiple convex parts.
 #'
-#' @references E. Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective
+#' @references E. Zitzler, K. Deb, and L. Thiele. Comparison of Multi-objective
 #' Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000
 #'
 #' @param dimensions [\code{integer(1)}]\cr
 #'   Number of decision variables.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the ZDT3 function as a \code{smoof_multi_objective_function} object.
+#' 
 #' @export
 makeZDT3Function = function(dimensions) {
-  assertInt(dimensions, lower = 2L)
+  checkmate::assertInt(dimensions, lower = 2L)
   force(dimensions)
 
     # define the two-objective ZDT1 function
@@ -41,7 +43,7 @@ makeZDT3Function = function(dimensions) {
     id = paste0("zdt3_", dimensions, "d_2o"),
     description = "Zitzler et al. Function N. 3",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

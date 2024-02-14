@@ -1,7 +1,8 @@
-#' Return the name of the function.
+#' Returns the name of the function.
 #'
 #' @template arg_smoof_function
 #' @return [\code{character(1)}]
+#'  The name of the function.
 #' @export
 getName = function(fn) {
   UseMethod("getName")

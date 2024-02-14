@@ -16,6 +16,7 @@ Further arguments passed to generator.}
 }
 \value{
 [\code{smoof_function}]
+ Smoof function generated based on the specified names and arguments.
 }
 \description{
 This function is especially useful in combination with

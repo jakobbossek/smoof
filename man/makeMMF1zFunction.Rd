@@ -13,13 +13,14 @@ Parametrizable factor. In the CEC2019 competition, the organizers used
 }
 \value{
 [\code{smoof_multi_objective_function}]
+Returns an instance of the MMF1z function as a \code{smoof_multi_objective_function} object.
 }
 \description{
-Test problem from the set of "multimodal multiobjective functions" as for
+Test problem from the set of "multi-modal multi-objective functions" as for
 instance used in the CEC2019 competition.
 }
 \references{
 Caitong Yue, Boyang Qu, Kunjie Yu, Jing Liang, and Xiaodong Li, "A novel
-scalable test problem suite for multimodal multiobjective optimization," in
+scalable test problem suite for multi-modal multi-objective optimization," in
 Swarm and Evolutionary Computation, Volume 48, August 2019, pp. 62–71, Elsevier.
 }

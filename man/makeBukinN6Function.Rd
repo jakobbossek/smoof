@@ -7,6 +7,8 @@
 makeBukinN6Function()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Bukin N.6 Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
@@ -16,7 +18,7 @@ It is given by the formula
 and the box constraints \eqn{mathbf{x}_1 \in [-15, 5], \mathbf{x}_2 \in [-3, 3]}.
 }
 \references{
-Z. K. Silagadze, Finding Two-Dimesnional Peaks, Physics of Particles
+Z. K. Silagadze, Finding Two-Dimensional Peaks, Physics of Particles
 and Nuclei Letters, vol. 4, no. 1, pp. 73-80, 2007.
 }
 \seealso{

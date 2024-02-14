@@ -11,6 +11,8 @@ makeInvertedVincentFunction(dimensions)
 Size of corresponding parameter space.}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Inverted Vincent Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
@@ -21,6 +23,6 @@ subject to \eqn{\mathbf{x}_i \in [0.25, 10]} for \eqn{i = 1, \ldots, n}.
 \references{
 Xiadong Li, Andries Engelbrecht, and Michael G. Epitropakis. Benchmark
 functions for CEC2013 special session and competition on niching methods for
-multimodal function optimization. Technical report, RMIT University, Evolutionary
+multi-modal function optimization. Technical report, RMIT University, Evolutionary
 Computation and Machine Learning Group, Australia, 2013.
 }

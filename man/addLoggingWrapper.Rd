@@ -24,11 +24,12 @@ Default is 100. I.e., there is space reserved for 100 function evaluations.
 In case of an overflow (i.e., more function evaluations than space reserved)
 the data structures are re-initialized by adding space for another \code{size} evaluations.
 This comes handy if you know the number of function evaluations (or at least
-an upper bound thereof) a-priori and may serve to reduce the time complextity
+an upper bound thereof) a-priori and may serve to reduce the time complexity
 of logging values.}
 }
 \value{
 [\code{smoof_logging_function}]
+  The function with an added logging capability.
 }
 \description{
 Often it is desired and useful to store the optimization path, i.e., the evaluated

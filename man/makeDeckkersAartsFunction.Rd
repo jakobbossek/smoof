@@ -7,6 +7,8 @@
 makeDeckkersAartsFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Deckkers-Aarts Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{

@@ -8,6 +8,7 @@ makeOmniTestFunction()
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the Omni function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Test problem from the set of "multimodal multiobjective functions" as for

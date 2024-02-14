@@ -7,10 +7,12 @@
 makeShubertFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Shubert Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-The defintion of this two-dimensional function is given by
+The definition of this two-dimensional function is given by
 \deqn{f(\mathbf{x}) = \prod_{i = 1}^{2} \left(\sum_{j = 1}^{5} \cos((j + 1)\mathbf{x}_i + j\right)}
 subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
 }

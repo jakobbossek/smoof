@@ -1,3 +1,7 @@
+#' @title
+#' Generator for noiseless function set of the real-parameter BBOB.
+#' 
+#' @description
 #' Generator for the noiseless function set of the real-parameter Black-Box
 #' Optimization Benchmarking (BBOB).
 #'
@@ -12,6 +16,7 @@
 #' @param iid [\code{integer(1)}]\cr
 #'   Instance identifier. Integer value greater than or equal 1.
 #' @return [\code{smoof_single_objective_function}]
+#'  Noiseless function from the BBOB benchmark.
 #' @examples
 #' # get the first instance of the 2D Sphere function
 #' fn = makeBBOBFunction(dimensions = 2L, fid = 1L, iid = 1L)
@@ -23,12 +28,12 @@
 #' @export
 makeBBOBFunction = function(dimensions, fid, iid) {
   # do some sanity checks
-  dimensions = asCount(dimensions)
-  fid = asCount(fid)
-  iid = asCount(iid)
-  assertInt(dimensions, lower = 2L, upper = 40L)
-  assertInt(fid, lower = 1L, upper = 24L)
-  assertInt(iid, lower = 1L)
+  dimensions = checkmate::asCount(dimensions)
+  fid = checkmate::asCount(fid)
+  iid = checkmate::asCount(iid)
+  checkmate::assertInt(dimensions, lower = 2L, upper = 40L)
+  checkmate::assertInt(fid, lower = 1L, upper = 24L)
+  checkmate::assertInt(iid, lower = 1L)
 
   # touch vars
   force(dimensions)
@@ -36,7 +41,7 @@ makeBBOBFunction = function(dimensions, fid, iid) {
   force(iid)
 
   # build parameter set (bounds are [-5, 5] for all BBOB funs)
-  par.set = makeNumericParamSet("x", len = dimensions, lower = -5, upper = 5)
+  par.set = ParamHelpers::makeNumericParamSet("x", len = dimensions, lower = -5, upper = 5)
 
   # get optimal values
   optimals = getOptimumForBBOBFunction(dimensions, fid, iid)

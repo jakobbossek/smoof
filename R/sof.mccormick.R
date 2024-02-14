@@ -1,8 +1,13 @@
+#' @title
 #' McCormick Function
 #'
-#' Two-dimensional, multimodal test function. The defintion is given by
+#' @description
+#' Two-dimensional, multi-modal test function. The definition is given by
 #' \deqn{f(\mathbf{x}) = \sin(\mathbf{x}_1 + \mathbf{x}_2) + (\mathbf{x}_1 - \mathbf{x}_2)^2 - 1.5 \mathbf{x}_1 + 2.5 \mathbf{x}_2 + 1}
 #' subject to \eqn{\mathbf{x}_1 \in [-1.5, 4], \mathbf{x}_2 \in [-3, 3]}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the McCormick Function.
 #'
 #' @references F. A. Lootsma (ed.), Numerical Methods for Non-Linear
 #' Optimization, Academic Press, 1972.
@@ -17,7 +22,7 @@ makeMcCormickFunction = function() {
       checkNumericInput(x, 2L)
       sin(x[1] + x[2]) + (x[1] - x[2])^2 - 1.5 * x[1] + 2.5 * x[2] + 1
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-1.5, -3),

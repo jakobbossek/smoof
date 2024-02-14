@@ -1,8 +1,13 @@
-#' @title Kearfott function.
+#' @title 
+#' Kearfott function.
 #'
-#' @description Two-dimensional test function based on the formula
+#' @description 
+#' Two-dimensional test function based on the formula
 #' \deqn{f(\mathbf{x}) = (x_1^2 + x_2^2 - 2)^2 + (x_1^2 - x_2^2 - 1)^2}
 #' with \eqn{\mathbf{x}_1, \mathbf{x}_2 \in [-3, 4]}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Kearfott Function.
 #'
 #' @references See \url{https://al-roomi.org/benchmarks/unconstrained/2-dimensions/59-kearfott-s-function}.
 #'
@@ -16,7 +21,7 @@ makeKearfottFunction = function() {
       checkNumericInput(x, 2L)
       (x[1]^2 + x[2]^2 - 2)^2 + (x[1]^2 - x[2]^2 - 1)^2
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-3, -3),

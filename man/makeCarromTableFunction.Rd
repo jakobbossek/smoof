@@ -7,6 +7,8 @@
 makeCarromTableFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Carrom Table Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{

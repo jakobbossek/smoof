@@ -14,10 +14,12 @@ Size of corresponding parameter space.}
 \dQuote{Steepness} parameter.}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Michalewicz Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Highly multimodal single-objective test function with \eqn{n!} local minima
+Highly multi-modal single-objective test function with \eqn{n!} local minima
 with the formula:
 \deqn{f(\mathbf{x}) = -\sum_{i=1}^{n} \sin(\mathbf{x}_i) \cdot \left(\sin\left(\frac{i \cdot \mathbf{x}_i}{\pi}\right)\right)^{2m}.}
 The recommended value \eqn{m = 10}, which is used as a default in the

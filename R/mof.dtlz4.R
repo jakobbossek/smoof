@@ -41,11 +41,12 @@
 #' @param alpha [\code{numeric(1)}]\cr
 #'   Optional parameter. Default is 100, which is recommended by Deb et al.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the DTLZ4 family as a \code{smoof_multi_objective_function} object.
 #' @export
 makeDTLZ4Function = function(dimensions, n.objectives, alpha = 100) {
-  assertInt(n.objectives, lower = 2L)
-  assertInt(dimensions, lower = n.objectives)
-  assertNumber(alpha)
+  checkmate::assertInt(n.objectives, lower = 2L)
+  checkmate::assertInt(dimensions, lower = n.objectives)
+  checkmate::assertNumber(alpha)
 
   # Renaming n.objectives here to stick to the notation in the paper
   M = n.objectives
@@ -81,7 +82,7 @@ makeDTLZ4Function = function(dimensions, n.objectives, alpha = 100) {
     id = paste0("dtlz4_", dimensions, "d_", n.objectives, "o"),
     description = "Deb et al.",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

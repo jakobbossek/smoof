@@ -1,8 +1,13 @@
+#' @title
 #' Periodic Function
 #'
+#' @description
 #' Single-objective two-dimensional test function. The formula is given as
 #' \deqn{f(\mathbf{x}) = 1 + \sin^2(\mathbf{x}_1) + \sin^2(\mathbf{x}_2) - 0.1e^{-(\mathbf{x}_1^2 + \mathbf{x}_2^2)}}
 #' subject to the constraints \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2.}
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Periodic Function.
 #'
 #' @references M. M. Ali, C. Khompatraporn, Z. B. Zabinsky, A Numerical
 #' Evaluation of Several Stochastic Algorithms on Selected Continuous Global
@@ -19,7 +24,7 @@ makePeriodicFunction = function() {
       checkNumericInput(x, 2L)
       1 + sin(x[1])^2 + sin(x[2])^2 - 0.1 * exp(-x[1]^2 - x[2]^2)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-10, -10),

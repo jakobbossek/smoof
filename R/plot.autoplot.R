@@ -5,12 +5,12 @@
 #' This function expects a smoof function and returns a ggplot object depicting
 #' the function landscape. The output depends highly on the decision space of the
 #' smoof function or more technically on the \code{\link[ParamHelpers]{ParamSet}}
-#' of the function. The following destinctions regarding the parameter types are
+#' of the function. The following distinctions regarding the parameter types are
 #' made. In case of a single numeric parameter a simple line plot is drawn. For
 #' two numeric parameters or a single numeric vector parameter of length 2 either a
 #' contour plot or a heatmap (or a combination of both depending on the choice
 #' of additional parameters) is depicted. If there are both up to two numeric
-#' and at least one discrete vector parameter, ggplot facetting is used to
+#' and at least one discrete vector parameter, ggplot faceting is used to
 #' generate subplots of the above-mentioned types for all combinations of discrete
 #' parameters.
 #'
@@ -82,7 +82,7 @@
 #' # or hide the legend
 #' pl + ggtitle("My fancy function") + theme(legend.position = "none")
 #' @export
-autoplot.smoof_function = function(object,
+  autoplot.smoof_function = function(object,
   ...,
   show.optimum = FALSE,
   main = getName(x),
@@ -94,18 +94,18 @@ autoplot.smoof_function = function(object,
   x = object
   checkPlotFunParams(x)
 
-  assertFlag(show.optimum)
-  assertString(main, na.ok = TRUE)
-  length.out = convertInteger(length.out)
-  assertInt(length.out, lower = 10L)
-  assertFlag(render.levels)
-  assertFlag(render.contours)
-  assertFlag(log.scale)
+  checkmate::assertFlag(show.optimum)
+  checkmate::assertString(main, na.ok = TRUE)
+  length.out = BBmisc::convertInteger(length.out)
+  checkmate::assertInt(length.out, lower = 10L)
+  checkmate::assertFlag(render.levels)
+  checkmate::assertFlag(render.contours)
+  checkmate::assertFlag(log.scale)
 
   par.set = ParamHelpers::getParamSet(x)
-  par.types = getParamTypes(par.set, df.cols = TRUE, with.nr = TRUE)
-  par.types.count = getParamTypeCounts(par.set)
-  par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+  par.types = ParamHelpers::getParamTypes(par.set, df.cols = TRUE, with.nr = TRUE)
+  par.types.count = ParamHelpers::getParamTypeCounts(par.set)
+  par.names = ParamHelpers::getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
   n.pars = length(par.names)
 
   # determine IDs of numeric and factor-like parameters
@@ -117,15 +117,15 @@ autoplot.smoof_function = function(object,
   n.discrete = length(discrete.idx)
 
   if (n.pars > 6L) {
-    stopf("At most 4D funtions with mixed parameter spaces can be visualized.")
+    BBmisc::stopf("At most 4D funtions with mixed parameter spaces can be visualized.")
   }
 
   if (par.types.count$numeric > 2L || (par.types.count$discrete + par.types.count$logical) > 4L) {
-    stopf("Not possible to plot this combination of parameters.")
+    BBmisc::stopf("Not possible to plot this combination of parameters.")
   }
 
   if (n.numeric > 1L && !(render.levels || render.contours)) {
-    stopf("For functions with 2 numeric parameters one of render.levels or render.contours needs to be TRUE.")
+    BBmisc::stopf("For functions with 2 numeric parameters one of render.levels or render.contours needs to be TRUE.")
   }
 
   grid = generateDataframeForGGPlot2(x, length.out)
@@ -140,23 +140,23 @@ autoplot.smoof_function = function(object,
   }
 
   if (n.numeric == 1L) {
-    pl = ggplot(grid, aes_string(x = par.names[numeric.idx], y = "y")) + geom_line()
+    pl = ggplot2::ggplot(grid, ggplot2::aes_string(x = par.names[numeric.idx], y = "y")) + geom_line()
   }
   if (n.numeric == 2L) {
-    pl = ggplot(grid, aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]]))
+    pl = ggplot2::ggplot(grid, ggplot2::aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]]))
     if (render.levels) {
 
       if (!requireNamespace("RColorBrewer", quietly = TRUE))
-        stopf("For render.levels=TRUE the package \"RColorBrewer\" is required.")
+        BBmisc::stopf("For render.levels=TRUE the package \"RColorBrewer\" is required.")
       # nice color palette for render.levels
       # see http://learnr.wordpress.com/2009/07/20/ggplot2-version-of-figures-in-lattice-multivariate-data-visualization-with-r-part-6/
       brewer.div = colorRampPalette(RColorBrewer::brewer.pal(11, "Spectral"), interpolate = "spline")
 
-      pl = pl + geom_raster(aes_string(fill = "y"))
-      pl = pl + scale_fill_gradientn(colours = brewer.div(200))
+      pl = pl + ggplot2::geom_raster(ggplot2::aes_string(fill = "y"))
+      pl = pl + ggplot2::scale_fill_gradientn(colours = brewer.div(200))
     }
     if (render.contours) {
-      pl = pl + stat_contour(aes_string(z = "y"), colour = "gray", alpha = 0.8)
+      pl = pl + ggplot2::stat_contour(ggplot2::aes_string(z = "y"), colour = "gray", alpha = 0.8)
     }
   }
 
@@ -174,27 +174,27 @@ autoplot.smoof_function = function(object,
 
     # add labeller (otherwise we only see the values but the user has no clue
     # about which values belong to which parameter)
-    pl = pl + facet_grid(formula, labeller = labeller(.rows = label_both, .cols = label_both))
+    pl = pl + ggplot2::facet_grid(formula, labeller = labeller(.rows = ggplot2::label_both, .cols = ggplot2::label_both))
   }
 
   if (show.optimum && (hasGlobalOptimum(x) || hasLocalOptimum(x))) {
     # get optima coordinates in a nice data.frame
     opt.df = getOptimaDf(x)
     if (n.numeric == 1L) {
-      pl = pl + geom_point(opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = "y", colour = "optima", shape = "optima"))
+      pl = pl + ggplot2::geom_point(opt.df, mapping = ggplot2::aes_string(x = par.names[numeric.idx[1L]], y = "y", colour = "optima", shape = "optima"))
     } else {
-      pl = pl + geom_point(opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]], colour = "optima", shape = "optima"))
+      pl = pl + ggplot2::geom_point(opt.df, mapping = ggplot2::aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]], colour = "optima", shape = "optima"))
       # opt.df$y = round(opt.df$y, digits = 2L)
       # pl = pl + geom_text(opt.df, mapping = aes_string(x = par.names[numeric.idx[1L]], y = par.names[numeric.idx[2L]], label = "y"))
     }
   }
 
   # add title
-  title = coalesce(main, getName(x))
-  pl = pl + ggtitle(title)
+  title = BBmisc::coalesce(main, getName(x))
+  pl = pl + ggplot2::ggtitle(title)
 
   # cosmetic stuff
-  pl = pl + theme(legend.position = "top")
+  pl = pl + ggplot2::theme(legend.position = "top")
 
   return(pl)
 }
@@ -208,7 +208,7 @@ autoplot.smoof_wrapped_function = function(object,
   render.contours = TRUE,
   log.scale = FALSE,
   length.out = 50L) {
-  autoplot(
+  ggplot2::autoplot(
     getWrappedFunction(object),
     ...,
     show.optimum = show.optimum,

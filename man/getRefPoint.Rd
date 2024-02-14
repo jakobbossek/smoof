@@ -12,6 +12,7 @@ Objective function.}
 }
 \value{
 [\code{numeric}]
+ The reference point.
 }
 \description{
 Returns the reference point of a multi-objective function.

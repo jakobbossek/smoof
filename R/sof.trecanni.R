@@ -1,10 +1,15 @@
+#' @title
 #' Trecanni Function
 #'
-#' The Trecanni function belongs to the unimodal test functions. It is based
+#' @description
+#' The Trecanni function belongs to the uni-modal test functions. It is based
 #' on the formula
 #' \deqn{f(\mathbf(x)) = \mathbf(x)_1^4 - 4 \mathbf(x)_1^3 + 4 \mathbf(x)_1 + \mathbf(x)_2^2.}
 #' The box-constraints \eqn{\mathbf{x}_i \in [-5, 5], i = 1, 2} define the
-#' domain of defintion.
+#' domain of definition.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Trecanni Function.
 #'
 #' @references L. C. W. Dixon, G. P. Szego (eds.), Towards Global Optimization 2,
 #' Elsevier, 1978.
@@ -19,7 +24,7 @@ makeTrecanniFunction = function() {
       checkNumericInput(x, 2L)
       x[1]^4 + 4 * (x[1]^3 + x[1]^2) + x[2]^2
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-5, -5),

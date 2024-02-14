@@ -7,6 +7,8 @@
 makeCrossInTrayFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Cross-In-Tray Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{

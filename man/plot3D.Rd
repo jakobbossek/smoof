@@ -20,16 +20,16 @@ the drawing can take quite a lot of time. Default is \code{100}.}
 String describing the package to use for 3D visualization.
 At the moment \dQuote{plot3D} (package \pkg{plot3D}) and
 \dQuote{plotly} (package \pkg{plotly}) are supported.
-The latter opens a highly interactive plot in a web brower
+The latter opens a highly interactive plot in a web browser
 and is thus suited well to explore a function by hand.
 Default is \dQuote{plot3D}.}
 
 \item{...}{[any]\cr
-Furhter parameters passed to method used for visualization
+Further parameters passed to method used for visualization
 (which is determined by the \code{package} argument.}
 }
 \description{
-Surface plot of two-dimensional test function.
+This function generates a surface plot of a two-dimensional smoof function.
 }
 \examples{
 library(plot3D)

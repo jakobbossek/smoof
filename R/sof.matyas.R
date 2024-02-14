@@ -1,8 +1,13 @@
+#' @title
 #' Matyas Function
 #'
-#' Two-dimensional, unimodal test function
+#' @description
+#' Two-dimensional, uni-modal test function
 #' \deqn{f(\mathbf{x}) = 0.26 (\mathbf{x}_1^2 + \mathbf{x}_2^2) - 0.48\mathbf{x}_1\mathbf{x}_2}
 #' subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Matyas Function.
 #'
 #' @references A.-R. Hedar, Global Optimization Test Problems.
 #'
@@ -16,7 +21,7 @@ makeMatyasFunction = function() {
       checkNumericInput(x, 2L)
       0.26 * (x[1]^2 + x[2]^2) - 0.48 * x[1] * x[2]
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-10, -10),

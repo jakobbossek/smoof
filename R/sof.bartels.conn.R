@@ -1,8 +1,13 @@
+#' @title
 #' Bartels Conn Function
-#'
+#' 
+#' @description
 #' The Bartels Conn Function is defined as
 #' \deqn{f(\mathbf{x}) = |\mathbf{x}_1^2 + \mathbf{x}_2^2 + \mathbf{x}_1\mathbf{x}_2| + |\sin(\mathbf{x}_1)| + |\cos(\mathbf{x})|}
 #' subject to \eqn{\mathbf{x}_i \in [-500, 500]} for \eqn{i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Bartels Conn Function.
 #'
 #' @template ret_smoof_single
 #' @export
@@ -14,7 +19,7 @@ makeBartelsConnFunction = function() {
       checkNumericInput(x, 2L)
       abs(x[1]^2 + x[2]^2 + x[1] * x[2]) + abs(sin(x[1])) + abs(cos(x[2]))
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-500, -500),

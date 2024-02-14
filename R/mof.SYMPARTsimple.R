@@ -1,8 +1,8 @@
 #' @title
-#' MMF13 Function
+#' SYM-PART Simple Function
 #'
 #' @description
-#' Test problem from the set of "multimodal multiobjective functions" as for
+#' Test problem from the set of "multi-modal multi-objective functions" as for
 #' instance used in the CEC2019 competition.
 #' 
 #' @param a [\code{double}(1)]\cr
@@ -17,14 +17,15 @@
 #'
 #' @references
 #' Caitong Yue, Boyang Qu, Kunjie Yu, Jing Liang, and Xiaodong Li, "A novel
-#' scalable test problem suite for multimodal multiobjective optimization," in
+#' scalable test problem suite for multi-modal multi-objective optimization," in
 #' Swarm and Evolutionary Computation, Volume 48, August 2019, pp. 62–71, Elsevier.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the SYM-PART Simple function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeSYMPARTsimpleFunction = function(a = 1, b = 10, c = 8) {
-  assertNumber(x = a, finite = TRUE)
-  assertNumber(x = b, finite = TRUE)
-  assertNumber(x = c, finite = TRUE)
+  checkmate::assertNumber(x = a, finite = TRUE)
+  checkmate::assertNumber(x = b, finite = TRUE)
+  checkmate::assertNumber(x = c, finite = TRUE)
   force(a)
   force(b)
   force(c)
@@ -41,7 +42,7 @@ makeSYMPARTsimpleFunction = function(a = 1, b = 10, c = 8) {
     id = sprintf("SYMPART-simple-%id-%io", 2L, n.objectives),
     description = "SYMPART-simple function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = rep(-20, 2L),

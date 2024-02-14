@@ -1,9 +1,14 @@
+#' @title
 #' Bird Function
 #'
-#' Multimodal single-objective test function. The implementation is based on the
+#' @description
+#' Multi-modal single-objective test function. The implementation is based on the
 #' mathematical formulation
 #' \deqn{f(\mathbf{x}) = (\mathbf{x}_1 - \mathbf{x}_2)^2 + \exp((1 - \sin(\mathbf{x}_1))^2)\cos(\mathbf{x}_2) + \exp((1 - \cos(\mathbf{x}_2))^2)\sin(\mathbf{x}_1).}
 #' The function is restricted to two dimensions with \eqn{\mathbf{x}_i \in [-2\pi, 2\pi], i = 1, 2.}
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Bird Function.
 #'
 #' @references S. K. Mishra, Global Optimization By Differential Evolution and
 #' Particle Swarm Methods: Evaluation On Some Benchmark Functions, Munich Research
@@ -22,7 +27,7 @@ makeBirdFunction = function() {
       c = exp((1 - cos(x[2]))^2) * sin(x[1])
       return(a + b + c)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-2 * pi, -2 * pi),

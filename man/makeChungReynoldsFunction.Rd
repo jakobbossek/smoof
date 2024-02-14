@@ -11,15 +11,17 @@ makeChungReynoldsFunction(dimensions)
 Size of corresponding parameter space.}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Chung Reynolds Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-The defintion is given by
+The definition is given by
 \deqn{f(\mathbf{x}) = \left(\sum_{i=1}^{n} \mathbf{x}_i^2\right)^2}
 with box-constraings \eqn{\mathbf{x}_i \in [-100, 100], i = 1, \ldots, n}.
 }
 \references{
 C. J. Chung, R. G. Reynolds, CAEP: An Evolution-Based Tool for
-Real-Valued Func- tion Optimization Using Cultural Algorithms, International
-Journal on Artificial In- telligence Tool, vol. 7, no. 3, pp. 239-291, 1998.
+Real-Valued Function Optimization Using Cultural Algorithms, International
+Journal on Artificial Intelligence Tool, vol. 7, no. 3, pp. 239-291, 1998.
 }

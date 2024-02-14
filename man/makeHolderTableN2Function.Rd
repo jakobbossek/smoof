@@ -7,10 +7,12 @@
 makeHolderTableN2Function()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Holder Table function N. 2 Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-This multimodal function is defined as
+This multi-modal function is defined as
 \deqn{f(\mathbf{x}) = -\left|\sin(\mathbf{x}_1)\cos(\mathbf{x}_2)\exp(|1 - \sqrt{\mathbf{x}_1 + \mathbf{x}_2}/\pi|)\right|}
 with box-constraints \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
 }

@@ -21,9 +21,10 @@
 #' @param dimensions [\code{integer(1)}]\cr
 #'   Number of decision variables.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the Kursawe function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeKursaweFunction = function(dimensions) {
-  assertInt(dimensions, lower = 2L)
+  checkmate::assertInt(dimensions, lower = 2L)
 
   # C++ implementation
   fn = function(x) {
@@ -36,7 +37,7 @@ makeKursaweFunction = function(dimensions) {
     id = paste0("kursawe_", dimensions, "d_2o"),
     description = "Kursawe",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-5, dimensions),

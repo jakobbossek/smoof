@@ -7,6 +7,8 @@
 makePriceN2Function()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Price N. 2 Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{

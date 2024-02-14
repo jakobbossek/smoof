@@ -2,7 +2,7 @@
 #' MMF15a Function
 #'
 #' @description
-#' Test problem from the set of "multimodal multiobjective functions" as for
+#' Test problem from the set of "multi-modal multi-objective functions" as for
 #' instance used in the CEC2019 competition.
 #' 
 #' @param dimensions [\code{integer(1)}]\cr
@@ -15,15 +15,16 @@
 #'
 #' @references
 #' Caitong Yue, Boyang Qu, Kunjie Yu, Jing Liang, and Xiaodong Li, "A novel
-#' scalable test problem suite for multimodal multiobjective optimization," in
+#' scalable test problem suite for multi-modal multi-objective optimization," in
 #' Swarm and Evolutionary Computation, Volume 48, August 2019, pp. 62–71, Elsevier.
 #' @return [\code{smoof_multi_objective_function}]
+#' Returns an instance of the MMF15a function as a \code{smoof_multi_objective_function} object.
 #' 
 #' @export
 makeMMF15aFunction = function(dimensions, n.objectives, np = 2L) {
-  assertInt(n.objectives, lower = 2L)
-  assertInt(dimensions, lower = n.objectives)
-  assertInt(x = np, lower = 1L)
+  checkmate::assertInt(n.objectives, lower = 2L)
+  checkmate::assertInt(dimensions, lower = n.objectives)
+  checkmate::assertInt(x = np, lower = 1L)
   force(np)
 
   # Renaming var here to stick to the notation in the paper
@@ -41,7 +42,7 @@ makeMMF15aFunction = function(dimensions, n.objectives, np = 2L) {
     id = sprintf("MMF15a-%id-%io", dimensions, n.objectives),
     description = "MMF15a function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

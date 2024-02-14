@@ -8,6 +8,7 @@ makeViennetFunction()
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the Viennet function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 The Viennet test problem VNT is designed for three objectives only. It has
@@ -20,6 +21,6 @@ with
 with box constraints \eqn{-3 \leq \mathbf{x}_1, \mathbf{x}_2 \leq 3}.
 }
 \references{
-Viennet, R. (1996). Multicriteria optimization using a genetic algorithm for determining the
+Viennet, R. (1996). Multi-criteria optimization using a genetic algorithm for determining the
 Pareto set. International Journal of Systems Science 27 (2), 255-260.
 }

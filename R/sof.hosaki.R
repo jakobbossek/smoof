@@ -1,8 +1,13 @@
+#' @title
 #' Hosaki Function
 #'
+#' @description
 #' Two-dimensional test function \eqn{f} with
 #' \deqn{f(\mathbf{x}) = (1 - 8 \mathbf{x}_1 + 7 \mathbf{x}_1^2 - 7/3 \mathbf{x}_1^3 + 1/4 \mathbf{x}_1^4)\mathbf{x}_2^2e^{-\mathbf{x}_2}}
 #' subject to \eqn{0 \leq \mathbf{x}_1 \leq 5} and \eqn{0 \leq \mathbf{x}_2 \leq 6}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Hosaki Function.
 #'
 #' @references G. A. Bekey, M. T. Ung, A Comparative Evaluation of Two Global
 #' Search Algorithms, IEEE Transaction on Systems, Man and Cybernetics, vol. 4,
@@ -18,7 +23,7 @@ makeHosakiFunction = function() {
       checkNumericInput(x, 2L)
       (1 - 8 * x[1] + 7 * x[1]^2 - 7 * x[1]^3 / 3 + 0.25 * x[1]^4) * x[2]^2 * exp(-x[2])
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(0, 0),

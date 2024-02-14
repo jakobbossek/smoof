@@ -17,6 +17,7 @@ Function may be wrapped with multiple wrappers. If \code{deepest} is set to
 }
 \value{
 [\code{function}]
+ The extracted wrapped function.
 }
 \description{
 The \pkg{smoof} package offers means to let a function log its evaluations or

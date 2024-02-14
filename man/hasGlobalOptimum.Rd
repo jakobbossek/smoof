@@ -2,7 +2,7 @@
 % Please edit documentation in R/hasGlobalOptimum.R
 \name{hasGlobalOptimum}
 \alias{hasGlobalOptimum}
-\title{Checks whether global optimum is known.}
+\title{Checks whether the global optimum is known.}
 \usage{
 hasGlobalOptimum(fn)
 }
@@ -12,7 +12,8 @@ Objective function.}
 }
 \value{
 [\code{logical(1)}]
+ \code{TRUE} if the global optimum is known, \code{FALSE} otherwise.
 }
 \description{
-Checks whether global optimum is known.
+Checks whether the global optimum is known.
 }

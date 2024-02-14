@@ -3,9 +3,9 @@
 #' @template arg_smoof_function
 #' @return [\code{list}] List containing the following entries:
 #' \itemize{
-#'   \item{param [\code{list}]}{Named list of parameter value(s).}
-#'   \item{value [\code{numeric(1)}]}{Optimal value.}
-#'   \item{is.minimum [\code{logical(1)}]}{Is the global optimum a minimum or maximum?}
+#'   \item{param [\code{list}]} {Named list of parameter value(s).}
+#'   \item{value [\code{numeric(1)}]} {Optimal value.}
+#'   \item{is.minimum [\code{logical(1)}]} {Is the global optimum a minimum or maximum?}
 #' }
 #' @note Keep in mind, that this method makes sense only for single-objective target function.
 #' @export
@@ -24,7 +24,7 @@ getGlobalOptimum.smoof_single_objective_function = function(fn) {
 
 #' @export
 getGlobalOptimum.smoof_multi_objective_function = function(fn) {
-  stopf("No global optimum available for multi-objective function.")
+  BBmisc::stopf("No global optimum available for multi-objective function.")
 }
 
 #' @export

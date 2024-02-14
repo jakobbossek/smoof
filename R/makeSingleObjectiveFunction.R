@@ -94,7 +94,7 @@ makeSingleObjectiveFunction = function(
   )
 
   #FIXME: currently we offer this only for single objective functions
-  assertSubset(tags, choices = getAvailableTags(), empty.ok = TRUE)
+  checkmate::assertSubset(tags, choices = getAvailableTags(), empty.ok = TRUE)
 
   global.opt.params = preprocessOptima(global.opt.params, smoof.fn, par.set, "global")
   local.opt.params = preprocessOptima(local.opt.params, smoof.fn, par.set, "local")
@@ -104,25 +104,25 @@ makeSingleObjectiveFunction = function(
   }
 
   if (!is.null(global.opt.params) && !is.null(global.opt.value)) {
-    assertNumber(global.opt.value, finite = TRUE)
+    checkmate::assertNumber(global.opt.value, finite = TRUE)
   }
 
   if (is.null(local.opt.values) && !is.null(local.opt.params)) {
     # print(local.opt.params)
     # print(par.set)
-    local.opt.params2 = dfRowsToList(df = local.opt.params, par.set = par.set, enforce.col.types = TRUE)
+    local.opt.params2 = ParamHelpers::dfRowsToList(df = local.opt.params, par.set = par.set, enforce.col.types = TRUE)
     local.opt.values = sapply(local.opt.params2, smoof.fn)
   }
 
   if (!is.null(local.opt.params) && !is.null(local.opt.values)) {
-    assertNumeric(local.opt.values, len = nrow(local.opt.params), finite = TRUE, any.missing = FALSE, all.missing = FALSE)
+    checkmate::assertNumeric(local.opt.values, len = nrow(local.opt.params), finite = TRUE, any.missing = FALSE, all.missing = FALSE)
   }
 
-  smoof.fn = setAttribute(smoof.fn, "global.opt.params", global.opt.params)
-  smoof.fn = setAttribute(smoof.fn, "global.opt.value", global.opt.value)
-  smoof.fn = setAttribute(smoof.fn, "local.opt.params", local.opt.params)
-  smoof.fn = setAttribute(smoof.fn, "local.opt.value", local.opt.values)
-  smoof.fn = setAttribute(smoof.fn, "tags", tags)
+  smoof.fn = BBmisc::setAttribute(smoof.fn, "global.opt.params", global.opt.params)
+  smoof.fn = BBmisc::setAttribute(smoof.fn, "global.opt.value", global.opt.value)
+  smoof.fn = BBmisc::setAttribute(smoof.fn, "local.opt.params", local.opt.params)
+  smoof.fn = BBmisc::setAttribute(smoof.fn, "local.opt.value", local.opt.values)
+  smoof.fn = BBmisc::setAttribute(smoof.fn, "tags", tags)
 
   class(smoof.fn) = c("smoof_single_objective_function", class(smoof.fn))
 
@@ -132,27 +132,27 @@ makeSingleObjectiveFunction = function(
 #' @export
 print.smoof_function = function(x, ...) {
   n.objectives.text = ifelse(isSingleobjective(x), "Single", "Multi")
-  catf("%s-objective function", n.objectives.text)
+  BBmisc::catf("%s-objective function", n.objectives.text)
   if (isMultiobjective(x)) {
-    catf("Number of objectives: %i", getNumberOfObjectives(x))
+    BBmisc::catf("Number of objectives: %i", getNumberOfObjectives(x))
     ref.point = getRefPoint(x)
     if (!is.null(x)) {
-      catf("Reference point:      (%s)", collapse(ref.point, ", "))
+      BBmisc::catf("Reference point:      (%s)", BBmisc::collapse(ref.point, ", "))
     }
   }
-  catf("Name: %s", getName(x))
+  BBmisc::catf("Name: %s", getName(x))
   description = getDescription(x)
-  catf("Description: %s", if (description == "") "no description" else description)
+  BBmisc::catf("Description: %s", if (description == "") "no description" else description)
 
-  catf("Tags: %s", collapse(getTags(x), sep = ", "))
-  catf("Noisy: %s", as.character(isNoisy(x)))
-  catf("Minimize: %s", collapse(shouldBeMinimized(x)))
-  catf("Constraints: %s", as.character(hasConstraints(x)))
-  catf("Number of parameters: %i", getNumberOfParameters(x))
+  BBmisc::catf("Tags: %s", BBmisc::collapse(getTags(x), sep = ", "))
+  BBmisc::catf("Noisy: %s", as.character(isNoisy(x)))
+  BBmisc::catf("Minimize: %s", BBmisc::collapse(shouldBeMinimized(x)))
+  BBmisc::catf("Constraints: %s", as.character(hasConstraints(x)))
+  BBmisc::catf("Number of parameters: %i", getNumberOfParameters(x))
   print(getParamSet(x))
   if (hasGlobalOptimum(x)) {
     opt = getGlobalOptimum(x)
-    catf("Global optimum objective value of %.4f at", opt$value)
+    BBmisc::catf("Global optimum objective value of %.4f at", opt$value)
     print(opt$param)
   }
 }
@@ -161,29 +161,29 @@ preprocessOptima = function(opt.params, fn, par.set, type) {
   n.params = getNumberOfParameters(fn)
 
   if (!is.null(opt.params)) {
-    if (!testDataFrame(opt.params)) {
+    if (!checkmate::testDataFrame(opt.params)) {
       # single numeric only value passed
-      if (testList(opt.params, len = n.params, any.missing = FALSE)) {
+      if (checkmate::testList(opt.params, len = n.params, any.missing = FALSE)) {
         opt.params = as.data.frame(opt.params)
-      } else if (testMatrix(opt.params)) {
+      } else if (checkmate::testMatrix(opt.params)) {
         opt.params = as.data.frame(opt.params)
-      } else if (testNumeric(opt.params, len = n.params, any.missing = FALSE)) {
+      } else if (checkmate::testNumeric(opt.params, len = n.params, any.missing = FALSE)) {
         opt.params = as.data.frame(t(opt.params))
       } else {
-        stopf("Parameter(s) for known %s optima must be passed as vector, list, matrix or data.frame.", type)
+        BBmisc::stopf("Parameter(s) for known %s optima must be passed as vector, list, matrix or data.frame.", type)
       }
-      colnames(opt.params) = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+      colnames(opt.params) = ParamHelpers::getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
     }
-    assertDataFrame(opt.params, ncols = n.params, col.names = "unique")
+    checkmate::assertDataFrame(opt.params, ncols = n.params, col.names = "unique")
 
     # check if the passed parameters are indeed within the feasible region
     lapply(1:nrow(opt.params), function(i) {
-      if (!isFeasible(par.set, ParamHelpers::dfRowToList(opt.params, par.set, i))) {
-        stopf("%s optimum out of bounds.", type)
+      if (!ParamHelpers::isFeasible(par.set, ParamHelpers::dfRowToList(opt.params, par.set, i))) {
+        BBmisc::stopf("%s optimum out of bounds.", type)
       }
     })
-    if (!setequal(getParamIds(par.set, repeated = TRUE, with.nr = TRUE), colnames(opt.params))) {
-      stopf("Names of passed %s optimum parameters do not match names in parameter set.", type)
+    if (!setequal(ParamHelpers::getParamIds(par.set, repeated = TRUE, with.nr = TRUE), colnames(opt.params))) {
+      BBmisc::stopf("Names of passed %s optimum parameters do not match names in parameter set.", type)
     }
   }
   return(opt.params)

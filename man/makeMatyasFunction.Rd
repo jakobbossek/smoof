@@ -7,10 +7,12 @@
 makeMatyasFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Matyas Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Two-dimensional, unimodal test function
+Two-dimensional, uni-modal test function
 \deqn{f(\mathbf{x}) = 0.26 (\mathbf{x}_1^2 + \mathbf{x}_2^2) - 0.48\mathbf{x}_1\mathbf{x}_2}
 subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
 }

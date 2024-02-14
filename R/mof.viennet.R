@@ -12,10 +12,11 @@
 #' with box constraints \eqn{-3 \leq \mathbf{x}_1, \mathbf{x}_2 \leq 3}.
 #'
 #' @references
-#' Viennet, R. (1996). Multicriteria optimization using a genetic algorithm for determining the
+#' Viennet, R. (1996). Multi-criteria optimization using a genetic algorithm for determining the
 #' Pareto set. International Journal of Systems Science 27 (2), 255-260.
 #'
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the Viennet function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeViennetFunction = function() {
 
@@ -30,7 +31,7 @@ makeViennetFunction = function() {
     id = "viennet",
     description = "Viennet function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = rep(-3, 2L),

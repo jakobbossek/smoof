@@ -1,9 +1,14 @@
+#' @title
 #' Keane Function
 #'
-#' Two-dimensional test function based on the defintion
+#' @description
+#' Two-dimensional test function based on the definition
 #' \deqn{f(\mathbf{x}) = \frac{\sin^2(\mathbf{x}_1 - \mathbf{x}_2)\sin^2(\mathbf{x}_1 + \mathbf{x}_2)}{\sqrt{\mathbf{x}_1^2 + \mathbf{x}_2^2}}.}
 #' The domain of definition is bounded by the box constraints
 #' \eqn{\mathbf{x}_i \in [0, 10], i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Keane Function.
 #'
 #' @template ret_smoof_single
 #' @export
@@ -17,7 +22,7 @@ makeKeaneFunction = function() {
       b = sqrt(x[1]^2 + x[2]^2)
       return (a / b)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(0, 0),

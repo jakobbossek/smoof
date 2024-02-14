@@ -19,6 +19,7 @@
 #'   the last \code{l} elements from the input vector. This value has to
 #'   be a multiple of 2.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the WFG2 function as a \code{smoof_multi_objective_function} object.
 #' @details 
 #'   Huband et al. recommend a value of \code{k = 4L} position-related
 #'   parameters for bi-objective problems and \code{k = 2L * (n.objectives - 1L)}
@@ -29,7 +30,7 @@
 #' 
 #' @export
 makeWFG2Function = function(n.objectives, k, l) {
-  assertInt(n.objectives, lower = 2L)
+  checkmate::assertInt(n.objectives, lower = 2L)
   force(n.objectives)
 
   if (missing(k)) {
@@ -39,15 +40,15 @@ makeWFG2Function = function(n.objectives, k, l) {
       k = 2L * (n.objectives - 1L)
     }
   }
-  assertInt(k, lower = n.objectives - 1L)
-  assertTRUE(k %% (n.objectives - 1L) == 0L)
+  checkmate::assertInt(k, lower = n.objectives - 1L)
+  checkmate::assertTRUE(k %% (n.objectives - 1L) == 0L)
   force(k)
 
   if (missing(l)) {
     l = 20L
   }
-  assertInt(l, lower = 1L)
-  assertTRUE(l %% 2 == 0)
+  checkmate::assertInt(l, lower = 1L)
+  checkmate::assertTRUE(l %% 2 == 0)
   force(l)
   dimensions = k + l
 
@@ -62,7 +63,7 @@ makeWFG2Function = function(n.objectives, k, l) {
     id = sprintf("WFG2-%id-%io", dimensions, n.objectives),
     description = "WFG2 function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

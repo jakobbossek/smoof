@@ -11,9 +11,11 @@ makeHyperEllipsoidFunction(dimensions)
 Size of corresponding parameter space.}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Hyper-Ellipsoid Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Unimodal, convex test function similar to the Sphere function (see \code{\link{makeSphereFunction}}).
+Uni-modal, convex test function similar to the Sphere function (see \code{\link{makeSphereFunction}}).
 Calculated via the formula: \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} i \cdot \mathbf{x}_i.}
 }

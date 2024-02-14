@@ -1,3 +1,7 @@
+#' @title
+#' Generate Bi-Objective Function from the Real-Parameter Bi-Objective Black-Box Optimization Benchmarking (BBOB)
+#' 
+#' @description
 #' Generator for the function set of the real-parameter Bi-Objective
 #' Black-Box Optimization Benchmarking (BBOB) with Function IDs 1-55, as well as
 #' its extended version (bbob-biobj-ext) with Function IDs 1-92.
@@ -13,6 +17,7 @@
 #' @param iid [\code{integer(1)}]\cr
 #'   Instance identifier. Integer value greater than or equal 1.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Bi-objective function from the BBOB benchmark.
 #' @examples
 #' # get the fifth instance of the concatenation of the
 #' # 3D versions of sphere and Rosenbrock
@@ -34,12 +39,12 @@ makeBiObjBBOBFunction = function(dimensions, fid, iid) {
   
   # ==== Sanity Checks ====
   
-  dimensions = asCount(dimensions)
-  fid = asCount(fid)
-  iid = asCount(iid)
-  assertInt(dimensions, lower = 2L, upper = 40L)
-  assertInt(fid, lower = 1L, upper = 92L)
-  assertInt(iid, lower = 1L, upper = 15L) # restrict to documented "safe" range
+  dimensions = checkmate::asCount(dimensions)
+  fid = checkmate::asCount(fid)
+  iid = checkmate::asCount(iid)
+  checkmate::assertInt(dimensions, lower = 2L, upper = 40L)
+  checkmate::assertInt(fid, lower = 1L, upper = 92L)
+  checkmate::assertInt(iid, lower = 1L, upper = 15L) # restrict to documented "safe" range
 
   # touch vars
   force(dimensions)
@@ -104,7 +109,7 @@ makeBiObjBBOBFunction = function(dimensions, fid, iid) {
   # ==== Build smoof function ====
   
   # build parameter set (bounds are [-5, 5] for all BBOB funs)
-  par.set = makeNumericParamSet("x", len = dimensions, lower = -5, upper = 5)
+  par.set = ParamHelpers::makeNumericParamSet("x", len = dimensions, lower = -5, upper = 5)
 
   makeMultiObjectiveFunction(
     name = sprintf("Bi-Objective BBOB_%i_%i_%i", dimensions, fid, iid),

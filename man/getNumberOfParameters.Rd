@@ -2,7 +2,7 @@
 % Please edit documentation in R/getNumberOfParameters.R
 \name{getNumberOfParameters}
 \alias{getNumberOfParameters}
-\title{Determine the number of parameters.}
+\title{Determines the number of parameters.}
 \usage{
 getNumberOfParameters(fn)
 }
@@ -12,7 +12,8 @@ Objective function.}
 }
 \value{
 [\code{integer(1)}]
+ The number of parameters.
 }
 \description{
-Determine the number of parameters.
+Determines the number of parameters.
 }

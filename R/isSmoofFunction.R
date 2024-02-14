@@ -4,6 +4,7 @@
 #' @param object [any]\cr
 #'   Arbitrary R object.
 #' @return [\code{logical(1)}]
+#'  \code{TRUE} if the object is a SMOOF function or wrapped function, \code{FALSE} otherwise.
 #' @seealso \code{\link{addCountingWrapper}}, \code{\link{addLoggingWrapper}}
 #' @export
 isSmoofFunction = function(object) {

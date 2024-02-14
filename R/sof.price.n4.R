@@ -1,8 +1,13 @@
+#' @title
 #' Price Function N. 4
 #'
-#' Fourth function by Price. The implementation is based on the defintion
+#' @description
+#' Fourth function by Price. The implementation is based on the definition
 #' \deqn{f(\mathbf{x}) = (2\mathbf{x}_1^3 \mathbf{x}_2 - \mathbf{x}_2^3)^2 + (6\mathbf{x}_1 - \mathbf{x}_2^2 + \mathbf{x}_2)^2}
 #' subject to \eqn{\mathbf{x}_i \in [-500, 500]}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Price N. 4 Function.
 #'
 #' @references W. L. Price, A Controlled Random Search Procedure for Global
 #' Optimisation, Computer journal, vol. 20, no. 4, pp. 367-370, 1977.
@@ -19,7 +24,7 @@ makePriceN4Function = function() {
       checkNumericInput(x, 2L)
       (2 * x[1]^3 * x[2] - x[2]^3)^2 + (6 * x[1] - x[2]^2 + x[2])^2
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-500, -500),

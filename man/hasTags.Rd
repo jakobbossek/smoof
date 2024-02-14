@@ -2,7 +2,7 @@
 % Please edit documentation in R/hasTags.R
 \name{hasTags}
 \alias{hasTags}
-\title{Check if function has assigend special tags.}
+\title{Checks if the function has assigned special tags.}
 \usage{
 hasTags(fn, tags)
 }
@@ -15,6 +15,7 @@ Vector of tags/properties to check \code{fn} for.}
 }
 \value{
 [\code{logical(1)}]
+ Logical vector indicating the presence of specified tags.
 }
 \description{
 Each single-objective smoof function has tags assigned to it (see

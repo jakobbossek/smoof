@@ -1,8 +1,13 @@
+#' @title
 #' Egg Crate Function
 #'
+#' @description
 #' This single-objective function follows the definition
 #' \deqn{f(\mathbf{x}) = \mathbf{x}_1^2 + \mathbf{x}_2^2 + 25(\sin^2(\mathbf{x}_1) + \sin^2(\mathbf{x}_2))}
 #' with \eqn{\mathbf{x}_i \in [-5, 5]} for \eqn{i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Egg Crate Function.
 #'
 #' @template ret_smoof_single
 #' @export
@@ -14,7 +19,7 @@ makeEggCrateFunction = function() {
       checkNumericInput(x, 2L)
       x[1]^2 + x[2]^2 + 25 * (sin(x[1])^2 + sin(x[2])^2)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-5, -5),

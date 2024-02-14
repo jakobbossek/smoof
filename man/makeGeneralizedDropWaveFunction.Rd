@@ -11,10 +11,12 @@ makeGeneralizedDropWaveFunction(dimensions = 2L)
 Size of corresponding parameter space.}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Generalized Drop-Wave Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Multimodal single-objective function following the formula:
+Multi-modal single-objective function following the formula:
 \deqn{\mathbf{x} = -\frac{1 + \cos(\sqrt{\sum_{i = 1}^{n} \mathbf{x}_i^2})}{2 + 0.5 \sum_{i = 1}^{n} \mathbf{x}_i^2}}
 with \eqn{\mathbf{x}_i \in [-5.12, 5.12], i = 1, \ldots, n}.
 }

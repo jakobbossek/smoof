@@ -11,10 +11,12 @@ makeGriewankFunction(dimensions)
 Size of corresponding parameter space.}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Griewank Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Highly multimodal function with a lot of regularly distributed local minima.
+Highly multi-modal function with a lot of regularly distributed local minima.
 The corresponding formula is:
 \deqn{f(\mathbf{x}) = \sum_{i=1}^{n} \frac{\mathbf{x}_i^2}{4000} - \prod_{i=1}^{n} \cos\left(\frac{\mathbf{x}_i}{\sqrt{i}}\right) + 1}
 subject to \eqn{\mathbf{x}_i \in [-100, 100], i = 1, \ldots, n}.

@@ -7,10 +7,12 @@
 makeBukinN4Function()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Bukin N.4 Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Second continous Bukin function test function. The formula is given by
+Second continuous Bukin function test function. The formula is given by
 \deqn{f(\mathbf{x}) = 100 \mathbf{x}_2^2 + 0.01 * ||\mathbf{x}_1 +10||}
 and the box constraints \eqn{mathbf{x}_1 \in [-15, 5], \mathbf{x}_2 \in [-3, 3]}.
 }

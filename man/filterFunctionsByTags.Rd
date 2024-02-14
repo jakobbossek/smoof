@@ -23,7 +23,7 @@ Default is \code{FALSE}.}
 \description{
 Single objective functions can be tagged, e.g., as unimodal. Searching for all
 functions with a specific tag by hand is tedious. The \code{filterFunctionsByTags}
-function helps to filter all single objective smoof function.
+function helps to filter all single objective smoof functions.
 }
 \examples{
 # list all functions which are unimodal

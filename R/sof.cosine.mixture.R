@@ -1,8 +1,13 @@
+#' @title
 #' Cosine Mixture Function
 #'
+#' @description
 #' Single-objective test function based on the formula
 #' \deqn{f(\mathbf{x}) = -0.1 \sum_{i = 1}^{n} \cos(5\pi\mathbf{x}_i) - \sum_{i = 1}^{n} \mathbf{x}_i^2}
 #' subject to \eqn{\mathbf{x}_i \in [-1, 1]} for \eqn{i = 1, \ldots, n}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Cosine Mixture Function.
 #'
 #' @references M. M. Ali, C. Khompatraporn, Z. B. Zabinsky, A Numerical Evaluation
 #' of Several Stochastic Algorithms on Selected Continuous Global Optimization
@@ -12,7 +17,7 @@
 #' @template ret_smoof_single
 #' @export
 makeCosineMixtureFunction = function(dimensions) {
-  assertCount(dimensions)
+  checkmate::assertCount(dimensions)
   force(dimensions)
   makeSingleObjectiveFunction(
     name = "Cosine Mixture Function",
@@ -23,7 +28,7 @@ makeCosineMixtureFunction = function(dimensions) {
       b = sum(x^2)
       (a - b)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-1, dimensions),

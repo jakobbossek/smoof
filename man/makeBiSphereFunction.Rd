@@ -15,6 +15,7 @@ Shift parameter for the second objective. Default is (0,...,0).}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the sphere function as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Builds and returns the bi-objective Sphere test problem:

@@ -7,10 +7,12 @@
 makeStyblinkskiTangFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Styblinkski-Tang Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-This function is based on the defintion
+This function is based on the definition
 \deqn{f(\mathbf{x}) = \frac{1}{2} \sum_{i = 1}^{2} (\mathbf{x}_i^4 - 16 \mathbf{x}_i^2 + 5\mathbf{x}_i)}
 with box-constraints given by \eqn{\mathbf{x}_i \in [-5, 5], i = 1, 2}.
 }

@@ -15,6 +15,7 @@ Number of objectives.}
 }
 \value{
 [\code{smoof_multi_objective_function}]
+ Returns an instance of the DTLZ6 family as a \code{smoof_multi_objective_function} object.
 }
 \description{
 Builds and returns the multi-objective DTLZ6 test problem. This problem

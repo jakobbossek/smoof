@@ -1,4 +1,8 @@
+#' @title
 #' Generate ggplot2 object.
+#' 
+#' @description
+#' This function generates a ggplot2 object for visualization.
 #'
 #' @param x [\code{smoof_function}]\cr
 #'   Function.
@@ -41,16 +45,16 @@ plot1DNumeric = function(x,
   show.optimum = FALSE,
   main = getName(x), n.samples = 500L, ...) {
 
-  assertFlag(show.optimum, na.ok = TRUE)
-  assertString(main, na.ok = TRUE)
-  assertInt(n.samples, lower = 10L)
+  checkmate::assertFlag(show.optimum, na.ok = TRUE)
+  checkmate::assertString(main, na.ok = TRUE)
+  checkmate::assertInt(n.samples, lower = 10L)
 
   par.set = ParamHelpers::getParamSet(x)
-  par.name = getParamIds(par.set)
+  par.name = ParamHelpers::getParamIds(par.set)
 
   # get lower and upper bounds
-  lower = getBounds(bound = getLower(par.set), default = -10L)
-  upper = getBounds(bound = getUpper(par.set), default = 10L)
+  lower = getBounds(bound = ParamHelpers::getLower(par.set), default = -10L)
+  upper = getBounds(bound = ParamHelpers::getUpper(par.set), default = 10L)
 
   data = generateDataframeForGGPlot(fn = x, sequences = list(seq(lower, upper, length.out = n.samples)), par.set = par.set)
 
@@ -95,16 +99,16 @@ plot2DNumeric = function(x,
   render.levels = FALSE, render.contours = TRUE,
   n.samples = 100L, ...) {
 
-  assertFlag(show.optimum)
-  assertString(main, na.ok = TRUE)
-  assertFlag(render.levels)
-  assertFlag(render.contours)
+  checkmate::assertFlag(show.optimum)
+  checkmate::assertString(main, na.ok = TRUE)
+  checkmate::assertFlag(render.levels)
+  checkmate::assertFlag(render.contours)
 
   par.set = ParamHelpers::getParamSet(x)
-  par.names = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+  par.names = ParamHelpers::getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
 
-  lower = getBounds(bound = getLower(par.set), default = -10L)
-  upper = getBounds(bound = getUpper(par.set), default = 10L)
+  lower = getBounds(bound = ParamHelpers::getLower(par.set), default = -10L)
+  upper = getBounds(bound = ParamHelpers::getUpper(par.set), default = 10L)
 
   sequence.x1 = seq(lower[1], upper[1], length.out = n.samples)
   sequence.x2 = seq(lower[2], upper[2], length.out = n.samples)

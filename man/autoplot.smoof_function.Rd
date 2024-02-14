@@ -57,12 +57,12 @@ Default is 50.}
 This function expects a smoof function and returns a ggplot object depicting
 the function landscape. The output depends highly on the decision space of the
 smoof function or more technically on the \code{\link[ParamHelpers]{ParamSet}}
-of the function. The following destinctions regarding the parameter types are
+of the function. The following distinctions regarding the parameter types are
 made. In case of a single numeric parameter a simple line plot is drawn. For
 two numeric parameters or a single numeric vector parameter of length 2 either a
 contour plot or a heatmap (or a combination of both depending on the choice
 of additional parameters) is depicted. If there are both up to two numeric
-and at least one discrete vector parameter, ggplot facetting is used to
+and at least one discrete vector parameter, ggplot faceting is used to
 generate subplots of the above-mentioned types for all combinations of discrete
 parameters.
 }

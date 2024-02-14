@@ -1,9 +1,14 @@
+#' @title
 #' Egg Holder function
 #'
+#' @description
 #' The Egg Holder function is a difficult to optimize function based on the
 #' definition
 #' \deqn{f(\mathbf{x}) = \sum_{i = 1}^{n-1} \left[-(\mathbf{x}_{i + 1} + 47)\sin\sqrt{|\mathbf{x}_{i + 1} + 0.5 \mathbf{x}_{i} + 47|} - \mathbf{x}_i\sin(\sqrt{|\mathbf{x}_i - (\mathbf{x}_{i + 1} - 47)|})\right]}
 #' subject to \eqn{-512 \leq \mathbf{x}_i \leq 512} for \eqn{i = 1, \ldots, n}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Egg Holder Function.
 #'
 #' @template ret_smoof_single
 #' @export

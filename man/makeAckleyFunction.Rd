@@ -11,11 +11,13 @@ makeAckleyFunction(dimensions)
 Size of corresponding parameter space.}
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Ackley Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
 Also known as \dQuote{Ackley's Path Function}.
-Multimodal test function with its global optimum in the center of the defintion
+Multi-modal test function with its global optimum in the center of the definition
 space. The implementation is based on the formula
 \deqn{f(\mathbf{x}) = -a \cdot \exp\left(-b \cdot \sqrt{\left(\frac{1}{n} \sum_{i=1}^{n} \mathbf{x}_i\right)}\right) - \exp\left(\frac{1}{n} \sum_{i=1}^{n} \cos(c \cdot \mathbf{x}_i)\right),}
 with \eqn{a = 20}, \eqn{b = 0.2} and \eqn{c = 2\pi}. The feasible region is

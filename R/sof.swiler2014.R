@@ -20,13 +20,13 @@ makeSwiler2014Function = function() {
     name = "Swiler2014 Function",
     id = paste0("swiler2014_3d"),
     fn = function(x) {
-      assertList(x)
+      checkmate::assertList(x)
       x1 = x$x1
       x2 = x$x2
       x3 = x$x3
-      assertChoice(x1, choices = c("1", "2", "3", "4", "5"))
-      assertNumber(x2, lower = 0, upper = 1)
-      assertNumber(x3, lower = 0, upper = 1)
+      checkmate::assertChoice(x1, choices = c("1", "2", "3", "4", "5"))
+      checkmate::assertNumber(x2, lower = 0, upper = 1)
+      checkmate::assertNumber(x3, lower = 0, upper = 1)
 
       a = sin(2 * pi * x3 - pi)
       b = 7 * sin(2 * pi * x2 - pi)^2
@@ -36,10 +36,10 @@ makeSwiler2014Function = function() {
       val = a + b + fac * sin(2 * pi * x3 - pi)
       return(val)
     },
-    par.set = makeParamSet(
-      makeDiscreteParam("x1", values = c("1", "2", "3", "4", "5")),
-      makeNumericParam("x2", lower = 0, upper = 1),
-      makeNumericParam("x3", lower = 0, upper = 1)
+    par.set = ParamHelpers::makeParamSet(
+      ParamHelpers::makeDiscreteParam("x1", values = c("1", "2", "3", "4", "5")),
+      ParamHelpers::makeNumericParam("x2", lower = 0, upper = 1),
+      ParamHelpers::makeNumericParam("x3", lower = 0, upper = 1)
     ),
     tags = attr(makeSwiler2014Function, "tags"),
     has.simple.signature = FALSE

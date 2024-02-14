@@ -7,6 +7,8 @@
 makeThreeHumpCamelFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Three-Hump Camel Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
@@ -16,6 +18,6 @@ subject to \eqn{-5 \leq \mathbf{x}_i \leq 5}.
 }
 \references{
 F. H. Branin Jr., Widely Convergent Method of Finding Multiple
-Solutions of Simul- taneous Nonlinear Equations, IBM Journal of Research
+Solutions of Simultaneous Nonlinear Equations, IBM Journal of Research
 and Development, vol. 16, no. 5, pp. 504-522, 1972.
 }

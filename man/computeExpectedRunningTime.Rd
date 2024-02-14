@@ -18,7 +18,7 @@ Vector containing the number of function evaluations.}
 
 \item{fun.success.runs}{[\code{logical}]\cr
 Boolean vector indicating which algorithm runs were successful,
-i. e., which runs reached the desired target value. Default is \code{NULL}.}
+i.e., which runs reached the desired target value. Default is \code{NULL}.}
 
 \item{fun.reached.target.values}{[\code{numeric} | \code{NULL}]\cr
 Numeric vector with the objective values reached in the runs. Default is
@@ -48,7 +48,7 @@ The functions can be called in two different ways
 \details{
 The Expected Running Time (ERT) is one of the most popular performance
 measures in optimization. It is defined as the expected number of function
-evaluations needed to reach a given precision level, i. e., to reach a certain
+evaluations needed to reach a given precision level, i.e., to reach a certain
 objective value for the first time.
 }
 \references{

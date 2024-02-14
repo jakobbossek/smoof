@@ -7,6 +7,8 @@
 makeElAttarVidyasagarDuttaFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the El-Attar-Vidyasagar-Dutta Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
@@ -16,6 +18,6 @@ subject to \eqn{\mathbf{x}_i \in [-500, 500], i = 1, 2}.
 }
 \references{
 R. A. El-Attar, M. Vidyasagar, S. R. K. Dutta, An Algorithm for
-II-norm Minimiza- tion With Application to Nonlinear II-approximation, SIAM
-Journal on Numverical Analysis, vol. 16, no. 1, pp. 70-86, 1979.
+II-norm Minimization With Application to Nonlinear II-approximation, SIAM
+Journal on Numerical Analysis, vol. 16, no. 1, pp. 70-86, 1979.
 }

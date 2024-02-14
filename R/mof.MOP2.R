@@ -5,15 +5,16 @@
 #' MOP2 function from Van Valedhuizen's test suite due to Fonseca and Fleming.
 #'
 #' @references
-#' C. M. Fonseca and P. J. Fleming, "Multiobjective genetic algorithms
+#' C. M. Fonseca and P. J. Fleming, "Multi-objective genetic algorithms
 #' made easy: Selection, sharing and mating restriction," Genetic Algorithms
 #' in Engineering Systems: Innovations and Applications, pp. 45-52, Sep. 1995. IEE.
 #'
 #' @template arg_dimensions
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the MOP2 function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeMOP2Function = function(dimensions = 2L) {
-  assertInt(dimensions, lower = 1L)
+  checkmate::assertInt(dimensions, lower = 1L)
   force(dimensions)
 
   # C implementation
@@ -27,7 +28,7 @@ makeMOP2Function = function(dimensions = 2L) {
     id = sprintf("MOP2-%id-%io", dimensions, 2L),
     description = "MOP2 function",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(-4, dimensions),

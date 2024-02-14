@@ -1,19 +1,25 @@
-#' @title Shekel functions
+#' @title 
+#' Shekel functions
 #'
-#' @description Single-objective test function based on the formula
+#' @description 
+#' Single-objective test function based on the formula
 #' \deqn{f(\mathbf{x}) = -\sum_{i=1}^{m} \left(\sum_{j=1}^{4} (x_j - C_{ji})^2 + \beta_{i}\right)^{-1}}.
 #' Here, \eqn{m \in \{5, 7, 10\}} defines the number of local optima, \eqn{C} is a \eqn{4 x 10} matrix
 #' and \eqn{\beta = \frac{1}{10}(1, 1, 2, 2, 4, 4, 6, 3, 7, 5, 5)} is a vector. See \url{https://www.sfu.ca/~ssurjano/shekel.html}
-#' for a defintion of \eqn{C}.
+#' for a definition of \eqn{C}.
 #'
 #' @param m [\code{numeric(1)}]\cr
 #'   Integer parameter (defines the number of local optima).
 #'   Possible values are 5, 7 or 10.
+#'   
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Shekel Functions.
+#' 
 #' @template ret_smoof_single
 #' @export
 makeShekelFunction = function(m) {
   if (m %nin% c(5, 7, 10))
-    stopf("Shekel function only defined for m = 5, 7, 10, but not %i.", m)
+    BBmisc::stopf("Shekel function only defined for m = 5, 7, 10, but not %i.", m)
 
   force(m)
 
@@ -50,7 +56,7 @@ makeShekelFunction = function(m) {
     name = sprintf("4-d Shekel%i function", m),
     id = sprintf("shekel_4d_m%i", m),
     fn = fn,
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 4L,
       id = "x",
       lower = rep(0, 4L),

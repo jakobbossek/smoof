@@ -10,19 +10,20 @@
 #' where
 #' \deqn{g(\mathbf{x}) = 1 + 9 \left(\frac{\sum_{i = 2}^{m}\mathbf{x}_i}{m - 1}\right)^{0.25}, h(f_1, g) = 1 - \left(\frac{f_1(\mathbf{x})}{g(\mathbf{x})}\right)^2}
 #' and \eqn{\mathbf{x}_i \in [0,1], i = 1, \ldots, m}.
-#' This function introduced two difficulities (see reference):
+#' This function introduced two difficulties (see reference):
 #' 1. the density of solutions decreases with the closeness to the Pareto-optimal front and
-#' 2. the Pareto-optimal solutions are nonuniformly distributed along the front.
+#' 2. the Pareto-optimal solutions are non-uniformly distributed along the front.
 #'
-#' @references E. Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective
+#' @references E. Zitzler, K. Deb, and L. Thiele. Comparison of Multi-objective
 #' Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000
 #'
 #' @param dimensions [\code{integer(1)}]\cr
 #'   Number of decision variables.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the ZDT6 function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeZDT6Function = function(dimensions) {
-  assertInt(dimensions, lower = 2L)
+  checkmate::assertInt(dimensions, lower = 2L)
   force(dimensions)
 
     # define the two-objective ZDT1 function
@@ -41,7 +42,7 @@ makeZDT6Function = function(dimensions) {
     id = paste0("zdt6_", dimensions, "d_2o"),
     description = "Zitzler et al. Function N. 6",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

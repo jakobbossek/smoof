@@ -7,10 +7,12 @@
 makeAdjimanFunction()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Adjiman Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-This two-dimensional multimodal test function follows the formula
+This two-dimensional multi-modal test function follows the formula
 \deqn{f(\mathbf{x}) = \cos(\mathbf{x}_1)\sin(\mathbf{x}_2) - \frac{\mathbf{x}_1}{(\mathbf{x}_2^2 + 1)}}
 with \eqn{\mathbf{x}_1 \in [-1, 2], \mathbf{x}_2 \in [2, 1]}.
 }

@@ -17,6 +17,7 @@
 #'   \code{TRUE} the function unwraps recursively until the \dQuote{deepest} wrapped
 #'   \code{smoof_function} is reached. Default is \code{FALSE}.
 #' @return [\code{function}]
+#'  The extracted wrapped function.
 #' @seealso \code{\link{addCountingWrapper}}, \code{\link{addLoggingWrapper}}
 #' @export
 getWrappedFunction = function(fn, deepest = FALSE) {
@@ -25,7 +26,7 @@ getWrappedFunction = function(fn, deepest = FALSE) {
 
 #' @export
 getWrappedFunction.smoof_wrapped_function = function(fn, deepest = FALSE) {
-  assertFlag(deepest)
+  checkmate::assertFlag(deepest)
   wrapped.fn = environment(fn)$fn
   if (deepest) {
     return(getWrappedFunction(wrapped.fn, deepest))

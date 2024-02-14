@@ -11,17 +11,18 @@
 #' \deqn{g(\mathbf{x}) = 1 + 10 (m - 1) + \sum_{i = 2}^{m} (\mathbf{x}_i^2 - 10\cos(4\pi\mathbf{x}_i)), h(f_1, g) = 1 - \sqrt{\frac{f_1(\mathbf{x})}{g(\mathbf{x})}}}
 #' and \eqn{\mathbf{x}_i \in [0,1], i = 1, \ldots, m}.
 #' This function has many Pareto-optimal fronts and is thus suited to test the
-#' algorithms ability to tackle multimodal problems.
+#' algorithms ability to tackle multi-modal problems.
 #'
-#' @references E. Zitzler, K. Deb, and L. Thiele. Comparison of Multiobjective
+#' @references E. Zitzler, K. Deb, and L. Thiele. Comparison of Multi-objective
 #' Evolutionary Algorithms: Empirical Results. Evolutionary Computation, 8(2):173-195, 2000
 #'
 #' @param dimensions [\code{integer(1)}]\cr
 #'   Number of decision variables.
 #' @return [\code{smoof_multi_objective_function}]
+#'  Returns an instance of the ZDT4 function as a \code{smoof_multi_objective_function} object.
 #' @export
 makeZDT4Function = function(dimensions) {
-  assertInt(dimensions, lower = 2L)
+  checkmate::assertInt(dimensions, lower = 2L)
   force(dimensions)
 
   # define the two-objective ZDT1 function
@@ -40,7 +41,7 @@ makeZDT4Function = function(dimensions) {
     id = paste0("zdt4_", dimensions, "d_2o"),
     description = "Zitzler et al. Function N. 4",
     fn = fn,
-    par.set =  makeNumericParamSet(
+    par.set =  ParamHelpers::makeNumericParamSet(
       len = dimensions,
       id = "x",
       lower = rep(0, dimensions),

@@ -7,10 +7,12 @@
 makePriceN4Function()
 }
 \value{
+An object of class \code{SingleObjectiveFunction}, representing the Price N. 4 Function.
+
 [\code{smoof_single_objective_function}]
 }
 \description{
-Fourth function by Price. The implementation is based on the defintion
+Fourth function by Price. The implementation is based on the definition
 \deqn{f(\mathbf{x}) = (2\mathbf{x}_1^3 \mathbf{x}_2 - \mathbf{x}_2^3)^2 + (6\mathbf{x}_1 - \mathbf{x}_2^2 + \mathbf{x}_2)^2}
 subject to \eqn{\mathbf{x}_i \in [-500, 500]}.
 }

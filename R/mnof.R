@@ -1,5 +1,5 @@
 #' @title
-#' Helper function to create numeric multi-objective optimization test function.
+#' Helper function to create a numeric multi-objective optimization test function.
 #'
 #' @description
 #' This is a simplifying wrapper around \code{\link{makeMultiObjectiveFunction}}.
@@ -11,6 +11,9 @@
 #' @template arg_par.id
 #' @template arg_par.lower
 #' @template arg_par.upper
+#' @return [\code{smoof_multi_objective_function}]
+#'  Returns a numeric multi-objective optimization test function created using the provided parameters.
+#' 
 #' @examples
 #' # first we generate the 10d sphere function the long way
 #' fn = makeMultiObjectiveFunction(
@@ -48,17 +51,17 @@ mnof = function(name = NULL,
   ref.point = NULL
   ) {
 
-  assertString(par.id, null.ok = TRUE)
-  par.len = asCount(par.len)
-  n.objectives = asCount(n.objectives)
+  checkmate::assertString(par.id, null.ok = TRUE)
+  par.len = checkmate::asCount(par.len)
+  n.objectives = checkmate::asCount(n.objectives)
 
   # furhter checks are performed by ParamHelpers
   if (is.null(par.lower))
     par.lower = -Inf
   if (is.null(par.upper))
     par.upper = Inf
-  assertNumeric(par.lower, min.len = 1L)
-  assertNumeric(par.upper, min.len = 1L)
+  checkmate::assertNumeric(par.lower, min.len = 1L)
+  checkmate::assertNumeric(par.upper, min.len = 1L)
 
   makeMultiObjectiveFunction(
     name = name,
@@ -67,7 +70,7 @@ mnof = function(name = NULL,
     description = description,
     fn = fn,
     has.simple.signature = TRUE, # numeric funs always have a simple signature
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = par.len,
       id = par.id,
       lower = par.lower,

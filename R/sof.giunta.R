@@ -1,8 +1,13 @@
+#' @title
 #' Giunta Function
 #'
-#' Multimodal test function based on the definition
+#' @description
+#' Multi-modal test function based on the definition
 #' \deqn{f(\mathbf{x}) = 0.6 + \sum_{i = 1}^{n} \left[\sin(\frac{16}{15} \mathbf{x}_i - 1) + \sin^2(\frac{16}{15}\mathbf{x}_i - 1) + \frac{1}{50} \sin(4(\frac{16}{15}\mathbf{x}_i - 1))\right]}
 #' with box-constraints \eqn{\mathbf{x}_i \in [-1, 1]} for \eqn{i = 1, \ldots, n}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Giunta Function.
 #'
 #' @references S. K. Mishra, Global Optimization By Differential Evolution and
 #' Particle Swarm Methods: Evaluation On Some Benchmark Functions, Munich
@@ -21,7 +26,7 @@ makeGiuntaFunction = function() {
       b = sin(a)
       0.6 + sum(b + b^2 + 0.02 * sin(4 * a))
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = rep(-1, 2),

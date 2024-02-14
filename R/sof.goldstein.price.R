@@ -1,9 +1,14 @@
+#' @title
 #' Goldstein-Price Function
 #'
+#' @description
 #' Two-dimensional test function for global optimization. The implementation
 #' follows the formula:
 #' \deqn{f(\mathbf{x}) = \left(1 + (\mathbf{x}_1 + \mathbf{x}_2 + 1)^2 \cdot (19 - 14\mathbf{x}_1 + 3\mathbf{x}_1^2 - 14\mathbf{x}_2 + 6\mathbf{x}_1\mathbf{x}_2 + 3\mathbf{x}_2^2)\right)\\ \qquad \cdot \left(30 + (2\mathbf{x}_1 - 3\mathbf{x}_2)^2 \cdot (18 - 32\mathbf{x}_1 + 12\mathbf{x}_1^2 + 48\mathbf{x}_2 - 36\mathbf{x}_1\mathbf{x}_2 + 27\mathbf{x}_2^2)\right)}
 #' with \eqn{\mathbf{x}_i \in [-2, 2], i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Goldstein-Price Function.
 #'
 #' @references Goldstein, A. A. and Price, I. F.: On descent from local minima.
 #' Math. Comput., Vol. 25, No. 115, 1971.
@@ -23,7 +28,7 @@ makeGoldsteinPriceFunction = function() {
       b = 30 + (2 * x[1] - 3 * x[2])^2 * (18 - 32 * x[1] + 12 * xx1 + 48 * x[2] - 36 * xx12 + 27 * xx2)
       return (a * b)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-2, -2),

@@ -1,7 +1,8 @@
-#' Checks whether the given function accept \dQuote{vectorized} input.
+#' Checks whether the given function accepts \dQuote{vectorized} input.
 #'
 #' @template arg_smoof_function
 #' @return [\code{logical(1)}]
+#'  \code{TRUE} if the function accepts vectorized input, \code{FALSE} otherwise.
 #' @export
 isVectorized = function(fn) {
   UseMethod("isVectorized")

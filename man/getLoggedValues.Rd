@@ -2,7 +2,7 @@
 % Please edit documentation in R/getLoggedValues.R
 \name{getLoggedValues}
 \alias{getLoggedValues}
-\title{Extract logged values of a function wrapped by a logging wrapper.}
+\title{Extracts the logged values of a function wrapped by a logging wrapper.}
 \usage{
 getLoggedValues(fn, compact = FALSE)
 }
@@ -20,12 +20,12 @@ Wrap all logged values in a single data frame? Default is \code{FALSE}.}
   \describe{
     \item{pars}{Data frame of parameter values, i.e., x-values or the empty
     data frame if x-values were not logged.}
-    \item{obj.vals}{Numeric vector of objective vals in the single-objective
-    case respectively a matrix of objective vals for multi-objective functions.}
+    \item{obj.vals}{Numeric vector of objective values in the single-objective
+    case respectively a matrix of objective values for multi-objective functions.}
   }
 }
 \description{
-Extract logged values of a function wrapped by a logging wrapper.
+Extracts the logged values of a function wrapped by a logging wrapper.
 }
 \seealso{
 \code{\link{addLoggingWrapper}}

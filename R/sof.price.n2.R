@@ -1,8 +1,13 @@
+#' @title
 #' Price Function N. 2
-#'
+#' 
+#' @description
 #' Second function by Price. The implementation is based on the defintion
 #' \deqn{f(\mathbf{x}) = 1 + \sin^2(\mathbf{x}_1) + \sin^2(\mathbf{x}_2) - 0.1 \exp(-\mathbf{x}^2 - \mathbf{x}_2^2)}
 #' subject to \eqn{\mathbf{x}_i \in [-10, 10], i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Price N. 2 Function.
 #'
 #' @references W. L. Price, A Controlled Random Search Procedure for Global
 #' Optimisation, Computer journal, vol. 20, no. 4, pp. 367-370, 1977.
@@ -19,7 +24,7 @@ makePriceN2Function = function() {
       checkNumericInput(x, 2L)
       1 + sin(x[1])^2 + sin(x[2])^2 - 0.1 * exp(-x[1]^2 - x[2]^2)
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-10, -10),

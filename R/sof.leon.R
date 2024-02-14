@@ -1,8 +1,13 @@
+#' @title
 #' Leon Function
 #'
-#' The function is based on the defintion
+#' @description
+#' The function is based on the definition
 #' \deqn{f(\mathbf{x}) = 100 (\mathbf{x}_2 - \mathbf{x}_1^2)^2 + (1 - \mathbf{x}_1)^2}.
 #' Box-constraints: \eqn{\mathbf{x}_i \in [-1.2, 1.2]} for \eqn{i = 1, 2}.
+#' 
+#' @return
+#' An object of class \code{SingleObjectiveFunction}, representing the Leon Function.
 #'
 #' @references A. Lavi, T. P. Vogel (eds), Recent Advances in Optimization
 #' Techniques, John Wliley & Sons, 1966.
@@ -17,7 +22,7 @@ makeLeonFunction = function() {
       checkNumericInput(x, 2L)
       100 * (x[2] - x[1]^2)^2 + (1 - x[1])^2
     },
-    par.set = makeNumericParamSet(
+    par.set = ParamHelpers::makeNumericParamSet(
       len = 2L,
       id = "x",
       lower = c(-1.2, -1.2),

@@ -3,11 +3,11 @@
 #'
 #' @description
 #' We can minimize f by maximizing -f. The majority of predefined objective functions
-#' in \pkg{smoof} should be minimized by default. However, there is a handful of
+#' in \pkg{smoof} should be minimized by default. However, there are a handful of
 #' functions, e.g., Keane or Alpine02, which shall be maximized by default.
 #' For benchmarking studies it might be beneficial to inverse the direction.
 #' The functions \code{convertToMaximization} and \code{convertToMinimization}
-#' do exactly that keeping the attributes.
+#' do exactly that, keeping the attributes.
 #'
 #' @note
 #' Both functions will quit with an error if multi-objective functions are passed.
@@ -15,6 +15,7 @@
 #' @param fn [\code{smoof_function}]\cr
 #'  Smoof function.
 #' @return [\code{smoof_function}]
+#'  Converted smoof function
 #' @examples
 #' # create a function which should be minimized by default
 #' fn = makeSphereFunction(1L)
@@ -43,15 +44,15 @@ convertToMinimization = function(fn) {
 }
 
 convertProblemDirection = function(fn, minimize.after = TRUE) {
-  assertFlag(minimize.after)
+  checkmate::assertFlag(minimize.after)
 
   if (isWrappedSmoofFunction(fn)) {
-    stopf("Conversion works only for unwrapped functions! Apply, e.g., counting wrapper
+    BBmisc::stopf("Conversion works only for unwrapped functions! Apply, e.g., counting wrapper
       after conversion.")
   }
 
   if (isMultiobjective(fn)) {
-    stopf("Conversion to maximization only supported for single-objective problems
+    BBmisc::stopf("Conversion to maximization only supported for single-objective problems
       at the moment, but your function '%s' has %i objectives.", getName(fn), getNumberOfObjectives(fn))
   }
 
@@ -59,7 +60,7 @@ convertProblemDirection = function(fn, minimize.after = TRUE) {
   # If both are false, we want to convert max to max
   # Otherwise the conversion is ok
   if ((shouldBeMinimized(fn) && minimize.after) || (!shouldBeMinimized(fn) && !minimize.after)) {
-    stopf("Function should already be %s.", (if (minimize.after) "minimized" else "maximized"))
+    BBmisc::stopf("Function should already be %s.", (if (minimize.after) "minimized" else "maximized"))
   }
 
   # get attributes
@@ -77,12 +78,12 @@ convertProblemDirection = function(fn, minimize.after = TRUE) {
 
   # flip sign(s) of optima
   if (hasGlobalOptimum(fn2))
-    fn2 = setAttribute(fn2, "global.opt.value", -1.0 * attr(fn2, "global.opt.value"))
+    fn2 = BBmisc::setAttribute(fn2, "global.opt.value", -1.0 * attr(fn2, "global.opt.value"))
 
   if (hasLocalOptimum(fn2))
-    fn2 = setAttribute(fn2, "local.opt.value", -1.0 * attr(fn2, "local.opt.value"))
+    fn2 = BBmisc::setAttribute(fn2, "local.opt.value", -1.0 * attr(fn2, "local.opt.value"))
 
   # flip maximization stuff
-  fn2 = setAttribute(fn2, "minimize", !should.minimize)
+  fn2 = BBmisc::setAttribute(fn2, "minimize", !should.minimize)
   return(fn2)
 }

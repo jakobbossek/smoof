@@ -20,9 +20,10 @@
 #'   In case of an overflow (i.e., more function evaluations than space reserved)
 #'   the data structures are re-initialized by adding space for another \code{size} evaluations.
 #'   This comes handy if you know the number of function evaluations (or at least
-#'   an upper bound thereof) a-priori and may serve to reduce the time complextity
+#'   an upper bound thereof) a-priori and may serve to reduce the time complexity
 #'   of logging values.
 #' @return [\code{smoof_logging_function}]
+#'   The function with an added logging capability.
 #' @examples
 #' # We first build the smoof function and apply the logging wrapper to it
 #' fn = makeSphereFunction(dimensions = 2L)
@@ -44,20 +45,20 @@
 #'
 #' @export
 addLoggingWrapper = function(fn, logg.x = FALSE, logg.y = TRUE, size = 100L) {
-  if (!testClass(fn, "smoof_function") && !testClass(fn, "smoof_wrapped_function")) {
-    stopf("The passed function needs to be a (wrapped) smoof function.")
+  if (!checkmate::testClass(fn, "smoof_function") && !checkmate::testClass(fn, "smoof_wrapped_function")) {
+    BBmisc::stopf("The passed function needs to be a (wrapped) smoof function.")
   }
-  assertFlag(logg.x)
-  assertFlag(logg.y)
+  checkmate::assertFlag(logg.x)
+  checkmate::assertFlag(logg.y)
 
   size = checkmate::asInt(size, lower = 1L)
 
   if (!logg.x && !logg.y) {
-    stopf("At least x or y values must be logged.")
+    BBmisc::stopf("At least x or y values must be logged.")
   }
 
   par.set = ParamHelpers::getParamSet(fn)
-  par.ids = getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
+  par.ids = ParamHelpers::getParamIds(par.set, with.nr = TRUE, repeated = TRUE)
   n.obj = getNumberOfObjectives(fn)
   n.pars = getNumberOfParameters(fn)
 
